@@ -125,7 +125,7 @@
       }
     }
   {% endstyle %}
-  <div class="cart-progress-bar pt-3 pb-4" x-data="{ active: false }" x-intersect:enter="active = true" x-intersect:leave="active = false" style="display: none !important;">
+  <div class="cart-progress-bar pt-3 pb-4" x-data="{ active: false }" x-intersect:enter="active = true" x-intersect:leave="active = false">
     {% if current_tier < 4 %}
       <p class="text-sm text-[rgb(var(--colors-text))] mb-3">
         {{ 'general.cart.progress_message_html' | t: amount: amount_needed_formatted, benefit: next_tier_label }}

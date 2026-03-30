@@ -113,7 +113,6 @@
       render 'css-variables'
       render 'theme-mode-control'
     %}
-    {{ 'main.css' | asset_url | stylesheet_tag: preload: true }}
     {% if request.page_type == 'policy' %}
       {{ 'page.css' | asset_url | stylesheet_tag: preload: true }}
     {% endif %}

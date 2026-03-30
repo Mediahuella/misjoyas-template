@@ -46,7 +46,6 @@
         },
         "html_z7HzVj": {
           "type": "html",
-          "disabled": true,
           "settings": {
             "custom_html": "<div class=\"misjoyas-promo-banner\">\n\n  <div class=\"misjoyas-badge\">\n    Exclusivo por tiempo limitado\n  </div>\n\n  <div class=\"misjoyas-timer\">\n    ⏳ Oferta termina en: <span id=\"misjoyas-countdown\">05:00:00</span>\n  </div>\n\n  <div class=\"misjoyas-row\">\n    <div class=\"misjoyas-icon\">💎</div>\n    <div class=\"misjoyas-text\">\n      <strong>10% OFF</strong>\n      <span>Descuentos exclusivos por cantidad</span>\n    </div>\n    <div class=\"misjoyas-price\">Sobre compras de $150.000</div>\n  </div>\n\n  <div class=\"misjoyas-row\">\n    <div class=\"misjoyas-icon\">✨</div>\n    <div class=\"misjoyas-text\">\n      <strong>15% OFF</strong>\n      <span>Descuentos exclusivos por cantidad</span>\n    </div>\n    <div class=\"misjoyas-price\">Sobre compras de $400.000</div>\n  </div>\n\n  <div class=\"misjoyas-row\">\n    <div class=\"misjoyas-icon\">👑</div>\n    <div class=\"misjoyas-text\">\n      <strong>20% OFF</strong>\n      <span>Descuentos exclusivos por cantidad</span>\n    </div>\n    <div class=\"misjoyas-price\">Sobre compras de $1.000.000</div>\n  </div>\n\n</div>\n\n<style>\n\n.misjoyas-promo-banner{\nbackground:#ffffff;\nborder:1px solid #eee;\nborder-radius:12px;\npadding:18px;\nmargin-top:12px;\nfont-family:inherit;\nbox-shadow:0 6px 18px rgba(0,0,0,0.06);\nanimation:misjoyasFade 0.6s ease;\n}\n\n.misjoyas-badge{\nbackground:linear-gradient(135deg,#000,#1a1a1a);\ncolor:#ffffff;\nfont-weight:600;\nfont-size:13px;\ntext-align:center;\npadding:8px 12px;\nborder-radius:6px;\nmargin-bottom:10px;\nletter-spacing:.5px;\n}\n\n.misjoyas-timer{\ntext-align:center;\nfont-size:14px;\nfont-weight:600;\nmargin-bottom:14px;\ncolor:#000;\n}\n\n#misjoyas-countdown{\nfont-weight:700;\n}\n\n.misjoyas-row{\ndisplay:flex;\nalign-items:center;\njustify-content:space-between;\npadding:10px 0;\nborder-top:1px solid #f3f3f3;\ntransition:all .25s ease;\n}\n\n.misjoyas-row:first-of-type{\nborder-top:none;\n}\n\n.misjoyas-row:hover{\ntransform:translateY(-2px);\n}\n\n.misjoyas-icon{\nfont-size:18px;\nmargin-right:10px;\n}\n\n.misjoyas-text{\nflex:1;\ndisplay:flex;\nflex-direction:column;\nfont-size:14px;\ncolor:#333;\n}\n\n.misjoyas-text strong{\nfont-size:16px;\ncolor:#000;\n}\n\n.misjoyas-text span{\nfont-size:12px;\ncolor:#777;\n}\n\n.misjoyas-price{\nfont-size:13px;\ncolor:#666;\ntext-align:right;\n}\n\n@keyframes misjoyasFade{\nfrom{\nopacity:0;\ntransform:translateY(10px);\n}\nto{\nopacity:1;\ntransform:translateY(0);\n}\n}\n\n/* RESPONSIVE */\n\n@media (max-width:600px){\n\n.misjoyas-row{\nflex-direction:column;\nalign-items:flex-start;\ngap:4px;\n}\n\n.misjoyas-price{\ntext-align:left;\nfont-size:12px;\n}\n\n}\n\n</style>\n\n<script>\n\nconst TIMER_DURATION = 5 * 60 * 60 * 1000;\n\nfunction startTimer(){\n\nlet endTime = sessionStorage.getItem(\"misjoyasTimerEnd\");\n\nif(!endTime){\nendTime = Date.now() + TIMER_DURATION;\nsessionStorage.setItem(\"misjoyasTimerEnd\", endTime);\n}\n\nfunction updateTimer(){\n\nlet remaining = endTime - Date.now();\n\nif(remaining <= 0){\nendTime = Date.now() + TIMER_DURATION;\nsessionStorage.setItem(\"misjoyasTimerEnd\", endTime);\nremaining = TIMER_DURATION;\n}\n\nlet hours = Math.floor((remaining / (1000*60*60)) % 24);\nlet minutes = Math.floor((remaining / (1000*60)) % 60);\nlet seconds = Math.floor((remaining / 1000) % 60);\n\ndocument.getElementById(\"misjoyas-countdown\").innerHTML =\nString(hours).padStart(2,'0') + \":\" +\nString(minutes).padStart(2,'0') + \":\" +\nString(seconds).padStart(2,'0');\n\n}\n\nsetInterval(updateTimer,1000);\nupdateTimer();\n\n}\n\nstartTimer();\n\n</script>"
           }
@@ -266,14 +265,12 @@
           "type": "shopify://apps/subscriptions/blocks/app-block/a3bfe9ec-96f8-4508-a003-df608a36d2ad",
           "disabled": true,
           "settings": {
-            "widget_style": "card",
-            "widget_style_card_selector": "radio_button",
-            "subscription_policy_url": "",
             "color_text_body": "#6d7175",
             "dividers_color": "#8f8d8d",
-            "background_color": "#ffffff",
+            "bacgkround_color": "#ffffff",
             "border_thickness": 1,
             "border_radius": 0,
+            "subscription_policy_url": "",
             "product": "{{product}}"
           }
         },

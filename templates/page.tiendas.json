@@ -323,14 +323,13 @@
             "hours": "<p>Lunes a Viernes: 10:00 a 19:00 hrs<br/>Sábado: 10:00 a 15:00 hrs<br/>Domingo: Cerrado</p>",
             "phone": "+56932598603",
             "email": "misjoyasprovidencia@misjoyas.cl",
-            "store_image": "shopify://shop_images/IMG_5500_JPG.jpg",
+            "store_image": "shopify://shop_images/misjoyas-providencia-ext4.jpg",
             "youtube_url": "",
             "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3330.011318272407!2d-70.61435522426075!3d-33.422949273400484!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cf6673ce1e99%3A0xa324c3125ed7fffd!2sAv.%20Providencia%202072%2C%20Providencia%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses-419!2scl!4v1766436569320!5m2!1ses-419!2scl\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
           }
         },
         "store_fJqFVx": {
           "type": "store",
-          "disabled": true,
           "settings": {
             "store_name": "Tienda Principal",
             "address": "",
@@ -357,21 +356,6 @@
             "store_image": "shopify://shop_images/IMG-20250325-WA0056.jpg",
             "youtube_url": "",
             "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3301.068246080582!2d-70.7466721242293!3d-34.17017277311279!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9663431586e49fef%3A0x6525477253fee26f!2sP.%C2%BA%20Independencia%20634%2C%202840526%20Rancagua%2C%20O'Higgins!5e0!3m2!1ses-419!2scl!4v1766446956025!5m2!1ses-419!2scl\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
-          }
-        },
-        "store_a7AG4z": {
-          "type": "store",
-          "disabled": true,
-          "settings": {
-            "store_name": "Tienda Principal",
-            "address": "",
-            "additional_info": "",
-            "special_hours": "",
-            "hours": "<p>Lunes a Viernes: 10:30 a 19:00 hrs<br/>Sábado: 10:30 a 15:00 hrs<br/>Domingo: CERRADO</p>",
-            "phone": "",
-            "email": "",
-            "youtube_url": "",
-            "map_embed": ""
           }
         },
         "store_FtXEji": {
@@ -652,7 +636,6 @@
         "store_3TCc3R",
         "store_fJqFVx",
         "store_Ne3nEm",
-        "store_a7AG4z",
         "store_FtXEji",
         "store_bf88TF",
         "store_nQxqkp",
