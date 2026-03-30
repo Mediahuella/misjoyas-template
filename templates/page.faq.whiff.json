@@ -1,0 +1,415 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "show_heading": true,
+        "heading_size": 170,
+        "heading_tag": "h1",
+        "show_breadcrumbs": true,
+        "show_breadcrumbs_border": false,
+        "full_width_breadcrumb": true,
+        "desktop_content_alignment": "text-left",
+        "mobile_content_alignment": "text-left",
+        "background_color_light": "#f2f2f2",
+        "text_color_light": "rgba(0,0,0,0)",
+        "textlink_color_light": "rgba(0,0,0,0)",
+        "background_color_dark": "#313131",
+        "text_color_dark": "rgba(0,0,0,0)",
+        "textlink_color_dark": "rgba(0,0,0,0)",
+        "padding_top": 28,
+        "padding_bottom": 28,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    },
+    "rich_text_fThHGn": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_mHJQWm": {
+          "type": "heading",
+          "settings": {
+            "heading": "{{ page.title }}",
+            "highlight_type": "underline",
+            "heading_size": 50,
+            "heading_tag": "h2"
+          }
+        }
+      },
+      "block_order": [
+        "heading_mHJQWm"
+      ],
+      "custom_css": [
+        "h2 {font-size: 30px;}"
+      ],
+      "name": "t:sections.rich-text.name",
+      "settings": {
+        "heading_light": "#ffffff",
+        "text_light": "rgba(0,0,0,0)",
+        "color_heading_highlight_light": "rgba(0,0,0,0)",
+        "background_color_light": "#000000",
+        "heading_dark": "rgba(0,0,0,0)",
+        "text_dark": "rgba(0,0,0,0)",
+        "color_heading_highlight_dark": "rgba(0,0,0,0)",
+        "background_color_dark": "rgba(0,0,0,0)",
+        "content_alignment": "center",
+        "show_section_divider": false,
+        "make_full_page_width": false,
+        "padding_top": 52,
+        "padding_bottom": 52,
+        "content_alignment_mobile": "center",
+        "show_section_divider_mobile": false,
+        "padding_top_mobile": 28,
+        "padding_bottom_mobile": 28
+      }
+    },
+    "b42d8edf-4509-4747-9b36-c56b5ade893d": {
+      "type": "promotion-banner",
+      "blocks": {
+        "template--21744624894253__b42d8edf-4509-4747-9b36-c56b5ade893d-image_banner-1": {
+          "type": "image_banner",
+          "settings": {
+            "heading": "Preguntas Frecuentes",
+            "highlight_type": "underline",
+            "heading_size": 170,
+            "heading_tag": "h2",
+            "subheading": "",
+            "text": "",
+            "text_size": 130,
+            "content_box_type": "square",
+            "add_frame": false,
+            "color_content_box_light": "rgba(0,0,0,0)",
+            "color_content_box_dark": "rgba(0,0,0,0)"
+          }
+        }
+      },
+      "block_order": [
+        "template--21744624894253__b42d8edf-4509-4747-9b36-c56b5ade893d-image_banner-1"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "Preguntas Frecuentes",
+        "image": "shopify://shop_images/caballos_negros.png",
+        "image_link": "",
+        "open_new_window": false,
+        "image_overlay_opacity": 60,
+        "content_position": "center",
+        "content_horizontal": 50,
+        "content_vertical": 90,
+        "position_content_mobile": "bottom-center",
+        "content_alignment": "center",
+        "show_hero": true,
+        "full_width": true,
+        "padding_full_width": false,
+        "rounded_corner_image": false,
+        "desktop_height": "natural",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "full_width_mobile": true,
+        "rounded_corner_image_mobile": false,
+        "mobile_height": "250px",
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "5105504b-9704-47a7-80d9-dedd99dba321": {
+      "type": "faq",
+      "blocks": {
+        "template--21744624894253__5105504b-9704-47a7-80d9-dedd99dba321-frequently_asked_question-1": {
+          "type": "frequently_asked_question",
+          "settings": {
+            "icon": "none",
+            "another_icon": "",
+            "custom_icon": "",
+            "heading": "¿Cuál es el pedido mínimo para comprar por mayor en la página?",
+            "row_content": "<p>La compra mínima es de $49.900. Los pedidos sobre $99.900 tienen despacho gratis a todo Chile (Cubre hasta 10% del monto de compra).  </p>"
+          }
+        },
+        "template--21744624894253__5105504b-9704-47a7-80d9-dedd99dba321-frequently_asked_question-2": {
+          "type": "frequently_asked_question",
+          "settings": {
+            "icon": "none",
+            "another_icon": "",
+            "custom_icon": "",
+            "heading": "¿Si quiero comprar una gran cantidad de productos puedo acceder a un descuento?",
+            "row_content": "<p>Sí, podemos otorgar un descuento sobre su pedido dependiendo del monto, comunícate con nuestro equipo.<br/><br/></p>"
+          }
+        },
+        "template--21744624894253__5105504b-9704-47a7-80d9-dedd99dba321-frequently_asked_question-3": {
+          "type": "frequently_asked_question",
+          "settings": {
+            "icon": "none",
+            "another_icon": "",
+            "custom_icon": "",
+            "heading": "¿Cuál es el medio de transporte por el que es enviado mi pedido? ",
+            "row_content": "<p>Despachamos a todo Chile por Chilexpress. <br/><br/></p>"
+          }
+        },
+        "template--21744624894253__5105504b-9704-47a7-80d9-dedd99dba321-frequently_asked_question-4": {
+          "type": "frequently_asked_question",
+          "settings": {
+            "icon": "none",
+            "another_icon": "",
+            "custom_icon": "",
+            "heading": "¿Cuál es el tiempo de entrega?",
+            "row_content": "<p>Una vez confirmado su pago en nuestras cuentas bancarias, procederemos a preparar su pedido. Demoraremos 4 a 6 días hábiles máximo entre recibido el pago y realizado su despacho, ya que este plazo dependerá de la demanda que tengamos.</p><p>Luego, una vez entregado a la empresa de Courier el envío demora entre 1 a 3 días, según sea la ciudad.</p><p>Los Courier podrías demorar más debido a la contingencia que está atravesando nuestro país.</p>"
+          }
+        },
+        "f1015c68-0f33-4136-ad63-a6875f15266b": {
+          "type": "frequently_asked_question",
+          "settings": {
+            "icon": "none",
+            "another_icon": "",
+            "custom_icon": "",
+            "heading": "¿De qué material son las Joyas?",
+            "row_content": "<p>Nos especializamos en las Joyas de Plata, las Joyas Importadas son Plata Ley 925 y las Joyas Nacionales son Plata Ley 950. <br/></p>"
+          }
+        },
+        "frequently_asked_question_zAeC8G": {
+          "type": "frequently_asked_question",
+          "settings": {
+            "icon": "none",
+            "another_icon": "",
+            "custom_icon": "",
+            "heading": "¿Qué significa Plata 925 y 950?",
+            "row_content": "<p>Para poder trabajar la plata se mezcla con otros metales. La “Ley” es la proporción en peso en que el metal precioso puro entra en una aleación con otros metales. Los estándares son Ley 925 y 950.<br/></p>"
+          }
+        },
+        "frequently_asked_question_Bz8qXw": {
+          "type": "frequently_asked_question",
+          "settings": {
+            "icon": "none",
+            "another_icon": "",
+            "custom_icon": "",
+            "heading": "¿Cuál es la garantía de los productos?",
+            "row_content": "<p>Todos los productos vendidos en nuestros locales cuentan con una garantía de 3 meses.</p><p>Si recibió algún producto con falla o caída de piedra, tiene hasta 48 horas para dar aviso y hacer uso de la garantía.</p><p>La garantía queda automáticamente cancelada si hay evidencia o se detecta mal uso, como golpes o caídas, modificación o reparación entendiéndose como tal el uso de pegamentos no aptos para la joyería.</p><p>Los productos nuevos con problemas de piedras o de cualquier otro tipo se cambiaran por cualquier otro producto a elección, los productos usados con problemas se reparan o se cambian en caso de no tener arreglo. </p><p>Si las joyas vienen con las piedras quebradas por golpes o caídas, no se cambian, no se reparan y no tienen garantía.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--21744624894253__5105504b-9704-47a7-80d9-dedd99dba321-frequently_asked_question-1",
+        "template--21744624894253__5105504b-9704-47a7-80d9-dedd99dba321-frequently_asked_question-2",
+        "template--21744624894253__5105504b-9704-47a7-80d9-dedd99dba321-frequently_asked_question-3",
+        "template--21744624894253__5105504b-9704-47a7-80d9-dedd99dba321-frequently_asked_question-4",
+        "f1015c68-0f33-4136-ad63-a6875f15266b",
+        "frequently_asked_question_zAeC8G",
+        "frequently_asked_question_Bz8qXw"
+      ],
+      "settings": {
+        "heading": "",
+        "highlight_type": "underline",
+        "heading_size": 100,
+        "heading_tag": "h2",
+        "heading_alignment": "left",
+        "show_border": true,
+        "row_background": true,
+        "collapsible": true,
+        "show_view_all": false,
+        "view_all_position": "top",
+        "button_link": "",
+        "open_new_window": false,
+        "background_color_light": "rgba(0,0,0,0)",
+        "background_color_dark": "rgba(0,0,0,0)",
+        "image": "shopify://shop_images/Captura_de_pantalla_2025-08-01_154946.png",
+        "enable_microdata_schema": false,
+        "desktop_layout": "1",
+        "image_alignment": "left",
+        "desktop_height": "adapt",
+        "show_section_divider": false,
+        "make_full_page_width": false,
+        "padding_top": 28,
+        "padding_bottom": 32,
+        "image_alignment_mobile": "left",
+        "mobile_height": "250px",
+        "show_section_divider_mobile": false,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 48
+      }
+    },
+    "multicolumn_R8DpiB": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_WYVeqp": {
+          "type": "column",
+          "settings": {
+            "icon": "none",
+            "another_icon": "",
+            "custom_icon": "",
+            "title": "¿Necesitas ayuda?",
+            "highlight_type": "underline",
+            "title_link": "shopify://pages/contacto",
+            "open_new_window": false,
+            "heading_size": 90,
+            "text": "<p>Contáctanos</p>"
+          }
+        },
+        "column_jFRKTV": {
+          "type": "column",
+          "settings": {
+            "icon": "none",
+            "another_icon": "",
+            "custom_icon": "",
+            "title": "Encuentra tu tienda",
+            "highlight_type": "underline",
+            "title_link": "shopify://pages/tiendas",
+            "open_new_window": false,
+            "heading_size": 90,
+            "text": "<p>En todo Chile</p>"
+          }
+        },
+        "column_j9XwdL": {
+          "type": "column",
+          "settings": {
+            "icon": "none",
+            "another_icon": "",
+            "custom_icon": "",
+            "title": "¿Tienes dudas?",
+            "highlight_type": "underline",
+            "title_link": "shopify://pages/preguntas-frecuentes",
+            "open_new_window": false,
+            "heading_size": 90,
+            "text": "<p>Revisa nuestras Preguntas Frecuentes</p>"
+          }
+        }
+      },
+      "block_order": [
+        "column_WYVeqp",
+        "column_jFRKTV",
+        "column_j9XwdL"
+      ],
+      "settings": {
+        "title": "",
+        "highlight_type": "underline",
+        "heading_size": 100,
+        "heading_tag": "h2",
+        "secondary_background": "section",
+        "border_column": "line_vertical",
+        "column_content_alignment": "center",
+        "icon_position": "next",
+        "icon_size": 36,
+        "enable_desktop_slider": false,
+        "swiper_on_mobile": true,
+        "enable_arrow_mobile": false,
+        "auto_play": true,
+        "change_bar_every": 3,
+        "background_color_light": "#68b5a3",
+        "heading_light": "#ffffff",
+        "text_light": "#ffffff",
+        "color_heading_highlight_light": "rgba(0,0,0,0)",
+        "line_border_light": "#ffffff",
+        "color_icon_light": "#c2a27a",
+        "background_color_dark": "#68b5a3",
+        "heading_dark": "rgba(0,0,0,0)",
+        "text_dark": "rgba(0,0,0,0)",
+        "color_heading_highlight_dark": "rgba(0,0,0,0)",
+        "line_border_dark": "rgba(0,0,0,0)",
+        "color_icon_dark": "#c2a27a",
+        "column_layout_desktop": "lg:w-1/3",
+        "section_height_desktop": "md:py-7",
+        "spacing_desktop": 0,
+        "full_width": false,
+        "padding_full_width": false,
+        "show_section_divider": false,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "column_layout_mobile": "w-full",
+        "section_height_mobile": "py-0",
+        "spacing_mobile": 0,
+        "full_width_mobile": true,
+        "show_section_divider_mobile": false,
+        "padding_top_mobile": 28,
+        "padding_bottom_mobile": 28
+      }
+    },
+    "aa46638c-a246-453c-9ecc-6158fbaed09b": {
+      "type": "contact-form",
+      "blocks": {
+        "template--21744624894253__aa46638c-a246-453c-9ecc-6158fbaed09b-name-1": {
+          "type": "name",
+          "settings": {
+            "heading": "Nombre",
+            "mark_as_required": true
+          }
+        },
+        "template--21744624894253__aa46638c-a246-453c-9ecc-6158fbaed09b-email-1": {
+          "type": "email",
+          "settings": {
+            "heading": "Email"
+          }
+        },
+        "template--21744624894253__aa46638c-a246-453c-9ecc-6158fbaed09b-phone-1": {
+          "type": "phone",
+          "settings": {
+            "heading": "Teléfono",
+            "mark_as_required": true
+          }
+        },
+        "template--21744624894253__aa46638c-a246-453c-9ecc-6158fbaed09b-message-1": {
+          "type": "message",
+          "settings": {
+            "heading": "Mensaje",
+            "mark_as_required": true
+          }
+        }
+      },
+      "block_order": [
+        "template--21744624894253__aa46638c-a246-453c-9ecc-6158fbaed09b-name-1",
+        "template--21744624894253__aa46638c-a246-453c-9ecc-6158fbaed09b-email-1",
+        "template--21744624894253__aa46638c-a246-453c-9ecc-6158fbaed09b-phone-1",
+        "template--21744624894253__aa46638c-a246-453c-9ecc-6158fbaed09b-message-1"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "¿Sigues necesitando ayuda?",
+        "highlight_type": "underline",
+        "heading_size": 100,
+        "heading_tag": "h2",
+        "heading_alignment": "center",
+        "text": "<p>Escríbenos y te responderemos lo antes posible</p>",
+        "background_color_light": "#ffffff",
+        "background_color_dark": "rgba(0,0,0,0)",
+        "button_label": "ENVIAR",
+        "button_alignment": "center",
+        "success_message": "Gracias por contactarnos. Nos pondremos en contacto con usted lo antes posible.",
+        "show_content": "none",
+        "form_alignment": "left",
+        "desktop_height": "550px",
+        "mobile_height": "400px",
+        "contact_heading": "Contact infomation",
+        "highlight_type_1": "underline",
+        "heading_tag_2": "h2",
+        "infomation": "",
+        "address": "75 9th Ave, New York, NY 10011-7006",
+        "phone_nummber": "+1234567890",
+        "email_address": "info@yourstore.com",
+        "contact_text": "<p>Opening hours</p><p>Mon - Fri, 8:30am - 10:30pm,<br/>Saturday, 8:30am - 10:30pm,<br/>Sunday, 8:30am - 10:30pm</p>",
+        "full_width": false,
+        "show_section_divider": false,
+        "padding_top": 0,
+        "padding_bottom": 72,
+        "full_width_mobile": false,
+        "show_section_divider_mobile": false,
+        "padding_top_mobile": 28,
+        "padding_bottom_mobile": 28
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_fThHGn",
+    "b42d8edf-4509-4747-9b36-c56b5ade893d",
+    "5105504b-9704-47a7-80d9-dedd99dba321",
+    "multicolumn_R8DpiB",
+    "aa46638c-a246-453c-9ecc-6158fbaed09b"
+  ]
+}

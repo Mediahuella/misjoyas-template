@@ -1,0 +1,284 @@
+{{ 'store-locator.css' | asset_url | stylesheet_tag }}
+
+<div class="store-locator-section">
+  <div class="page-width">
+    {% if section.settings.heading != blank %}
+      <div class="section-header text-center">
+        <h2 class="section-header__title">{{ section.settings.heading }}</h2>
+      </div>
+    {% endif %}
+
+    <div class="store-locator-container">
+      <div class="store-locator-layout">
+        <!-- Sidebar con tabs verticales -->
+        <div class="store-sidebar">
+          {% for block in section.blocks %}
+            <button
+              class="store-tab-vertical{% if forloop.first %} active{% endif %}"
+              onclick="showStore(event, 'store-{{ forloop.index }}')"
+              data-store="{{ forloop.index }}"
+              style="--tab-active-color: {{ section.settings.tab_active_color }}; --tab-active-bg: {{ section.settings.tab_active_bg }};"
+            >
+              {{ block.settings.store_name }}
+            </button>
+          {% endfor %}
+        </div>
+
+        <!-- Contenido principal -->
+        <div class="store-main-content">
+          {% for block in section.blocks %}
+            <div
+              id="store-{{ forloop.index }}"
+              class="store-content{% if forloop.first %} active{% endif %}"
+            >
+              <div class="store-info">
+                <h3>{{ block.settings.store_name }}</h3>
+
+                {% if block.settings.address != blank %}
+                  <p class="store-address">{{ block.settings.address }}</p>
+                {% endif %}
+
+                {% if block.settings.additional_info != blank %}
+                  <div class="store-additional-top">
+                    {{ block.settings.additional_info }}
+                  </div>
+                {% endif %}
+
+                {% if block.settings.special_hours != blank %}
+                  <p class="store-special" style="color: {{ section.settings.special_hours_color }};">
+                    <strong>{{ block.settings.special_hours }}</strong>
+                  </p>
+                {% endif %}
+
+                {% if block.settings.hours != blank %}
+                  <div class="store-hours" style="background-color: {{ section.settings.hours_bg_color }};">
+                    <p>
+                      <strong>{{ section.settings.hours_label | default: 'Horario' }}</strong>
+                    </p>
+                    {{ block.settings.hours }}
+                  </div>
+                {% endif %}
+
+                {% if block.settings.phone != blank %}
+                  <p class="store-phone">Tel: {{ block.settings.phone }}</p>
+                {% endif %}
+
+                {% if block.settings.email != blank %}
+                  <p class="store-email">
+                    Email: <a href="mailto:{{ block.settings.email }}">{{ block.settings.email }}</a>
+                  </p>
+                {% endif %}
+
+                {% if section.settings.pickup_text != blank %}
+                  <p class="store-pickup" style="color: {{ section.settings.pickup_text_color }};">
+                    <strong>{{ section.settings.pickup_text }}</strong>
+                  </p>
+                {% endif %}
+
+                {% if block.settings.store_image != blank %}
+                  <div class="store-image">
+                    <img
+                      src="{{ block.settings.store_image | img_url: 'master' }}"
+                      alt="{{ block.settings.store_name }}"
+                      loading="lazy"
+                    >
+                  </div>
+                {% endif %}
+
+                {% if block.settings.youtube_url != blank %}
+                  <div class="store-video">
+                    {% assign video_id = block.settings.youtube_url | split: 'v=' | last | split: '&' | first %}
+                    {% if video_id == block.settings.youtube_url %}
+                      {% assign video_id = block.settings.youtube_url | split: 'youtu.be/' | last | split: '?' | first %}
+                    {% endif %}
+                    <iframe
+                      src="https://www.youtube.com/embed/{{ video_id }}"
+                      frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen
+                      loading="lazy"
+                    ></iframe>
+                  </div>
+                {% endif %}
+              </div>
+
+              {% if block.settings.map_embed != blank %}
+                <div class="store-map">
+                  {{ block.settings.map_embed }}
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function showStore(event, storeId) {
+    // Remover clases activas
+    document.querySelectorAll('.store-content').forEach(function(content) {
+      content.classList.remove('active');
+    });
+
+    document.querySelectorAll('.store-tab-vertical').forEach(function(tab) {
+      tab.classList.remove('active');
+    });
+
+    // Agregar clase activa
+    document.getElementById(storeId).classList.add('active');
+    event.currentTarget.classList.add('active');
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Store Locator",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Título de la sección",
+      "default": "Nuestras Tiendas"
+    },
+    {
+      "type": "header",
+      "content": "Configuración de Tabs"
+    },
+    {
+      "type": "color",
+      "id": "tab_active_color",
+      "label": "Color de texto tab activo",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "tab_active_bg",
+      "label": "Color de fondo tab activo",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Configuración de Textos"
+    },
+    {
+      "type": "text",
+      "id": "hours_label",
+      "label": "Texto para 'Horario'",
+      "default": "Horario"
+    },
+    {
+      "type": "text",
+      "id": "pickup_text",
+      "label": "Texto de retiro",
+      "default": "Compra online y retira en 30 minutos"
+    },
+    {
+      "type": "header",
+      "content": "Configuración de Colores"
+    },
+    {
+      "type": "color",
+      "id": "special_hours_color",
+      "label": "Color horarios especiales",
+      "default": "#e74c3c"
+    },
+    {
+      "type": "color",
+      "id": "pickup_text_color",
+      "label": "Color texto de retiro",
+      "default": "#27ae60"
+    },
+    {
+      "type": "color",
+      "id": "hours_bg_color",
+      "label": "Color de fondo sección horarios",
+      "default": "#f8f9fa"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "store",
+      "name": "Tienda",
+      "settings": [
+        {
+          "type": "text",
+          "id": "store_name",
+          "label": "Nombre de la tienda",
+          "default": "Tienda Principal"
+        },
+        {
+          "type": "text",
+          "id": "address",
+          "label": "Dirección completa"
+        },
+        {
+          "type": "richtext",
+          "id": "additional_info",
+          "label": "Información adicional",
+          "info": "Ej: Sala de ventas en primer y segundo piso. Galería Plaza de Armas."
+        },
+        {
+          "type": "text",
+          "id": "special_hours",
+          "label": "Horario especial",
+          "info": "Ej: Miércoles 16 de julio abierto de 10:30 a 15 hrs"
+        },
+        {
+          "type": "richtext",
+          "id": "hours",
+          "label": "Horario regular",
+          "default": "<p>Lunes a Viernes: 10:30 a 19:00 hrs<br>Sábado: 10:30 a 15:00 hrs<br>Domingo: CERRADO</p>"
+        },
+        {
+          "type": "text",
+          "id": "phone",
+          "label": "Teléfono",
+          "placeholder": "+56 2 12345678"
+        },
+        {
+          "type": "text",
+          "id": "email",
+          "label": "Correo electrónico",
+          "placeholder": "tienda@ejemplo.com"
+        },
+        {
+          "type": "image_picker",
+          "id": "store_image",
+          "label": "Imagen de la tienda"
+        },
+        {
+          "type": "url",
+          "id": "youtube_url",
+          "label": "URL de video de YouTube",
+          "info": "Pega la URL completa del video de YouTube (ej: https://www.youtube.com/watch?v=XXXXXXXXXXX o https://youtu.be/XXXXXXXXXXX)"
+        },
+        {
+          "type": "html",
+          "id": "map_embed",
+          "label": "Código embed de Google Maps",
+          "info": "Pega aquí el código iframe completo de Google Maps"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Store Locator",
+      "blocks": [
+        {
+          "type": "store",
+          "settings": {
+            "store_name": "Tienda Principal",
+            "address": "Av. Principal 123, Comuna, Ciudad",
+            "phone": "+56 2 12345678"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

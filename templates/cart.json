@@ -1,0 +1,93 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "cart-items": {
+      "type": "main-cart-items",
+      "blocks": {
+        "buttons_XYzM4R": {
+          "type": "buttons",
+          "settings": {
+            "show_dynamic_checkout": true
+          }
+        },
+        "subtotal_PCGBPb": {
+          "type": "subtotal",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "buttons_XYzM4R",
+        "subtotal_PCGBPb"
+      ],
+      "custom_css": [
+        "label.cursor-pointer {color: #ffffff;}",
+        "small .nav-link {color: white;}",
+        "small {color: lightgray;}",
+        ".button-link {color: white;}",
+        "#x-cart-agree {accent-color: black; background-color: white;}",
+        ".checkbox-checked:checked:after {border-color: black;}"
+      ],
+      "settings": {
+        "heading_tag": "h1",
+        "padding_top": 44,
+        "padding_bottom": 0,
+        "padding_top_mobile": 36,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "cart-footer": {
+      "type": "main-cart-footer",
+      "blocks": {
+        "subtotal": {
+          "type": "subtotal",
+          "settings": {}
+        },
+        "buttons_yxhpgj": {
+          "type": "buttons",
+          "settings": {
+            "show_dynamic_checkout": true
+          }
+        }
+      },
+      "block_order": [
+        "subtotal",
+        "buttons_yxhpgj"
+      ],
+      "settings": {
+        "padding_top": 40,
+        "padding_bottom": 84,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 84
+      }
+    },
+    "cart-upsell": {
+      "type": "main-cart-upsell",
+      "disabled": true,
+      "settings": {
+        "heading_tag": "h2",
+        "number_of_columns_on_desktop": 4,
+        "show_quickview": true,
+        "show_highlighted_attributes": true,
+        "spacing": 28,
+        "padding_top": 64,
+        "padding_bottom": 16,
+        "spacing_mobile": 16,
+        "padding_top_mobile": 52,
+        "padding_bottom_mobile": 12
+      }
+    }
+  },
+  "order": [
+    "cart-items",
+    "cart-footer",
+    "cart-upsell"
+  ]
+}

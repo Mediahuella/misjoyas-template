@@ -1,0 +1,772 @@
+{% liquid
+  assign size_heading = section.settings.heading_size | times: settings.heading_base_size | times: 0.000225
+  if settings.edges_type == 'rounded_corners'
+    assign rounded_corner = true
+  endif
+  if settings.lang_direction contains request.locale.iso_code
+    assign is_rtl = true
+  else
+    assign is_rtl = false
+  endif
+%}
+
+{% style %}
+  .heading-{{ section.id }} { 
+    font-size: {{ size_heading | times: 0.6 }}rem; 
+  }
+  .order-list-header {
+    background-color: rgba({{ settings.secondary_background.red }}, {{ settings.secondary_background.green }}, {{ settings.secondary_background.blue }})
+  }
+  .order-list-item{
+    border-bottom: 1px solid rgba(var(--colors-line-and-border));
+  }
+  .tooltip-item:not(:last-child) {
+    border-bottom: 1px solid rgba(var(--colors-line-and-border));
+  }
+  .heading-order-list--{{ section.id }} { 
+    font-size: {{ size_heading | times: 0.5 }}rem; 
+  }
+  @media screen and (min-width: 768px) {
+    .heading-{{ section.id }}{ font-size: {{ size_heading }}rem; } 
+    .heading-order-list--{{ section.id }}{ font-size: {{ size_heading | times: 0.65 }}rem; } 
+  }
+  .secondary-text {
+    color: {{ settings.secondary_text }};
+  }
+{% endstyle %}
+{% style %}
+  #order-list-sticky {
+    {%- if section.settings.background_color_light.alpha != 0.0 -%}
+      --colors-line-and-border: {{ section.settings.background_color_light.red }}, {{ section.settings.background_color_light.green }}, {{ section.settings.background_color_light.blue }};
+      --background-color: {{ section.settings.background_color_light.red }}, {{ section.settings.background_color_light.green }}, {{ section.settings.background_color_light.blue }};
+    {%- else -%}
+      --background-color: {{ settings.colors_background.red }}, {{ settings.colors_background.green }}, {{ settings.colors_background.blue }};
+    {%- endif -%}
+  }
+  .dark #order-list-sticky {
+    {%- if section.settings.background_color_dark.alpha != 0.0 -%}
+      --background-color: {{ section.settings.background_color_dark.red }}, {{ section.settings.background_color_dark.green }}, {{ section.settings.background_color_dark.blue }};
+      --colors-line-and-border: {{ section.settings.background_color_dark.red }}, {{ section.settings.background_color_dark.green }}, {{ section.settings.background_color_dark.blue }};
+    {%- else -%}
+      --colors-line-and-border: {{ settings.colors_dark_line_and_borders.red }}, {{ settings.colors_dark_line_and_borders.green }}, {{ settings.colors_dark_line_and_borders.blue }};
+      --background-color: {{ settings.colors_dark_background.red }}, {{ settings.colors_dark_background.green }}, {{ settings.colors_dark_background.blue }};
+    {%- endif -%}
+  }
+  #order-list-sticky, #order-list-sticky *:before {
+    {% if section.settings.title_color.alpha != 0.0 %}
+      --colors-heading: {{ section.settings.title_color.red }}, {{ section.settings.title_color.green }}, {{ section.settings.title_color.blue }};
+    {% endif %}
+    {% if section.settings.text_light.alpha != 0.0 %}
+      --colors-text: {{ section.settings.text_light.red }}, {{ section.settings.text_light.green }}, {{ section.settings.text_light.blue }};
+    {% endif %}
+    {% if section.settings.button_light.alpha != 0.0 %}
+      --colors-button: {{ section.settings.button_light.red }}, {{ section.settings.button_light.green }}, {{ section.settings.button_light.blue }};
+    {% endif %}
+    {% if section.settings.button_text_light.alpha != 0.0 %}
+      --colors-button-text: {{ section.settings.button_text_light.red }}, {{ section.settings.button_text_light.green }}, {{ section.settings.button_text_light.blue }};
+    {% endif %}
+    {% if section.settings.button_hover_light.alpha != 0.0 %}
+      --colors-button-hover: rgb({{ section.settings.button_hover_light.red }}, {{ section.settings.button_hover_light.green }}, {{ section.settings.button_hover_light.blue }});
+    {% endif %}
+    {% if section.settings.button_text_hover_light.alpha != 0.0 %}
+      --colors-button-text-hover: {{ section.settings.button_text_hover_light.red }}, {{ section.settings.button_text_hover_light.green }}, {{ section.settings.button_text_hover_light.blue }};
+    {% endif %}
+    {% if section.settings.line_border.alpha != 0.0 %}
+      --colors-line-and-border: {{ section.settings.line_border.red }},{{ section.settings.line_border.green }},{{ section.settings.line_border.blue }};
+    {% endif %}
+    {%- if section.settings.background_color_light.alpha != 0.0 -%}
+      --colors-line-and-border: {{ section.settings.background_color_light.red }}, {{ section.settings.background_color_light.green }}, {{ section.settings.background_color_light.blue }};
+    {%- endif -%}
+  }
+  .dark #order-list-sticky, .dark #order-list-sticky *:before {
+    {% if section.settings.title_color_dark.alpha != 0.0 %}
+      --colors-heading: {{ section.settings.title_color_dark.red }}, {{ section.settings.title_color_dark.green }}, {{ section.settings.title_color_dark.blue }};
+    {% else %}        
+      --colors-heading: {{ settings.colors_dark_heading.red }}, {{ settings.colors_dark_heading.green }}, {{ settings.colors_dark_heading.blue }};
+    {% endif %}
+    {% if section.settings.text_dark.alpha != 0.0 %}
+      --colors-text: {{ section.settings.text_dark.red }}, {{ section.settings.text_dark.green }}, {{ section.settings.text_dark.blue }};
+    {% else %}        
+      --colors-text: {{ settings.colors_dark_text.red }}, {{ settings.colors_dark_text.green }}, {{ settings.colors_dark_text.blue }};
+    {% endif %}
+    {% if section.settings.button_dark.alpha != 0.0 %}
+      --colors-button: {{ section.settings.button_dark.red }}, {{ section.settings.button_dark.green }}, {{ section.settings.button_dark.blue }};
+    {% else %}  
+      --colors-button: {{ settings.colors_dark_button.red }}, {{ settings.colors_dark_button.green }}, {{ settings.colors_dark_button.blue }};
+    {% endif %}
+    {% if section.settings.button_text_dark.alpha != 0.0 %}
+      --colors-button-text: {{ section.settings.button_text_dark.red }}, {{ section.settings.button_text_dark.green }}, {{ section.settings.button_text_dark.blue }};
+    {% else %} 
+      --colors-button-text: {{ settings.colors_dark_button_text.red }}, {{ settings.colors_dark_button_text.green }}, {{ settings.colors_dark_button_text.blue }}; 
+    {% endif %}
+    {% if section.settings.button_hover_dark.alpha != 0.0 %}
+      --colors-button-hover: rgb({{ section.settings.button_hover_dark.red }}, {{ section.settings.button_hover_dark.green }}, {{ section.settings.button_hover_dark.blue }});
+    {% else %}  
+      --colors-button-hover: rgb({{ settings.colors_dark_button_hover.red }}, {{ settings.colors_dark_button_hover.green }}, {{ settings.colors_dark_button_hover.blue }});
+    {% endif %}
+    {% if section.settings.button_text_hover_dark.alpha != 0.0 %}
+      --colors-button-text-hover: {{ section.settings.button_text_hover_dark.red }}, {{ section.settings.button_text_hover_dark.green }}, {{ section.settings.button_text_hover_dark.blue }};
+    {% else %}  
+      --colors-button-text-hover: {{ settings.colors_dark_button_text_hover.red }}, {{ settings.colors_dark_button_text_hover.green }}, {{ settings.colors_dark_button_text_hover.blue }};
+    {% endif %}
+    {% if section.settings.line_border_dark.alpha != 0.0 %}
+      --colors-line-and-border: {{ section.settings.line_border_dark.red }},{{ section.settings.line_border_dark.green }},{{ section.settings.line_border_dark.blue }};
+    {% else %}        
+      --colors-line-and-border: {{ settings.colors_line_and_borders.red }}, {{ settings.colors_line_and_borders.green }}, {{ settings.colors_line_and_borders.blue }};
+    {% endif %}
+    {%- if section.settings.background_color_dark.alpha != 0.0 -%}
+      --colors-line-and-border: {{ section.settings.background_color_dark.red }}, {{ section.settings.background_color_dark.green }}, {{ section.settings.background_color_dark.blue }};
+    {%- endif -%}
+  }
+{% endstyle %}
+
+{% render 'section-divider' %}
+<div class="pt-[{{ section.settings.padding_top_mobile }}px] md:pt-[{{ section.settings.padding_top }}px] pb-[{{ section.settings.padding_bottom_mobile }}px] md:pb-[{{ section.settings.padding_bottom }}px]">
+  {%- if section.settings.heading != blank or section.settings.text != blank or section.settings.subheading != blank -%}
+    {%- style -%} 
+      .heading-{{ section.id }} { font-size: {{ size_heading | times: 0.6 }}rem; }
+      @media screen and (min-width: 768px) {
+        .heading-{{ section.id }}{ font-size: {{ size_heading }}rem; }
+      }
+    {%- endstyle -%}
+    <div class="text-{{ section.settings.heading_alignment }} mb-6{% if section.settings.full_width %} full-width{% else %} x-page-width page-width{% endif %} pl-5 pr-5">
+      {%- if section.settings.subheading != blank -%}
+        <p class="rte mb-1.5">{{ section.settings.subheading }}</p>
+      {% endif %}
+      {%- if section.settings.heading != blank -%}
+        {% render 'heading-highlight',
+          headingId: section.id,
+          heading: section.settings.heading,
+          highlight_type: section.settings.highlight_type,
+          class: 'h2 block py-2 leading-tight',
+          heading_tag: section.settings.heading_tag
+        %}
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <div class="rte mt-2 mb-6 lg:mb-12">{{ section.settings.text }}</div>
+      {% endif %}
+    </div>
+  {%- endif -%}
+  {%liquid 
+    assign line_in_cart_list = ''
+    assign total_price = 0
+    assign total_quantity = 0
+  %}
+  <div class="mx-auto{% if section.settings.full_width %} full-width{% else %} x-page-width page-width{% endif %} pl-5 pr-5">
+    <div class="flex flex-col {% if section.settings.desktop_layout == "horizontal" %}lg:flex-col{% else %}lg:flex-row{% endif %} gap-3" x-data="xQuickOrderList">
+      <div id="QuickOrderList" class="w-full {% if section.settings.desktop_layout != "horizontal" %}lg:w-3/4{% endif %}">
+        <table class="w-full{% if rounded_corner %} rounded-md overflow-hidden{% endif %} {% if is_rtl %} text-right{% else %} text-left{% endif %}">
+          <thead class="order-list-header">
+            <tr>
+              <th class="pt-5 pb-5 pr-5 pl-5 md:pt-6 md:pb-6 md:pr-8 md:pl-8">{{ 'sections.quick-order-list.variant' | t }}</th>
+              <th class="pt-5 pb-5 pr-5 pl-5 md:pt-6 md:pb-6 md:pr-8 md:pl-8 hidden md:table-cell">{{ 'sections.cart.headings.price' | t }}</th>
+              <th class="pt-5 pb-5 pr-5 pl-5 md:pt-6 md:pb-6 md:pr-8 md:pl-8 hidden md:table-cell">{{ 'sections.cart.headings.quantity' | t }}</th>             
+              <th class="pt-5 pb-5 pr-5 pl-0 md:pt-6 md:pb-6 md:pr-8 md:pl-8">{{ 'sections.quick-order-list.variant-total' | t }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for variant in product.variants %}
+              {% liquid
+                assign check_against_inventory = true
+                assign quantity_rule_soldout = false
+                if variant.inventory_management != 'shopify' or variant.inventory_policy == 'continue'
+                  assign check_against_inventory = false
+                endif
+                if variant.quantity_rule.min > variant.inventory_quantity and check_against_inventory
+                  assign quantity_rule_soldout = true
+                endif
+
+                assign can_show_preorder = false
+                if settings.preorder_show == 'yes' or settings.preorder_show == 'on_backordered' and variant.inventory_policy == 'continue' and variant.inventory_quantity < 1 and variant.inventory_management != nil
+                  if settings.applied_products_preorder == blank and settings.applied_collections_preorder == blank
+                    assign can_show_preorder = true
+                  else 
+                    assign list_product = ''
+                    for prod in settings.applied_products_preorder
+                      assign list_product = list_product | append: ';' | append: prod.id
+                    endfor 
+                    for collec in settings.applied_collections_preorder
+                      for prod in collec.products 
+                        assign list_product = list_product | append: ';' | append: prod.id
+                      endfor
+                    endfor
+                    if list_product contains variant.id 
+                      assign can_show_preorder = true
+                    endif
+                  endif
+                endif
+                assign section_id = section.id
+              %}
+              {% liquid
+                assign quantity = 0
+                assign in_cart = false
+                assign total_variant_price = 0
+                for item in cart.items
+                  if item.variant_id == variant.id
+                    assign quantity = item.quantity
+                    assign total_quantity = total_quantity | plus: quantity
+                    assign total_variant_price = item.final_line_price
+                    assign total_price = total_price | plus: total_variant_price
+                    assign in_cart = true
+                    assign line_in_cart = item.variant_id
+                    assign line_in_cart_list = line_in_cart_list | append: line_in_cart | append: ', '                  
+                  endif
+                endfor
+              %}            
+              <tr id="quick-order-list-item-{{ variant.id }}" class="order-list-item" x-data="xQuickOrderListItem({{ variant | json | escape }}, {{ quantity }})">
+                <td class="pt-5 pb-5 pr-5 pl-5 md:pt-6 md:pb-6 md:pr-8 md:pl-8">
+                  <div class="flex items-start md:items-center gap-8">
+                    {% if section.settings.show_images %}
+                      {% if product.has_only_default_variant %}
+                        <picture class="w-[75px]">
+                          <img
+                            srcset="{{ product.featured_media | image_url: width: 225 }} 225w,
+                              {{ product.featured_media | image_url: width: 375 }} 375w,
+                              {{ product.featured_media | image_url: width: 450 }} 450w,
+                              {{ product.featured_media | image_url: width: 750 }} 750w,
+                              {{ product.featured_media | image_url: width: 900 }} 900w,
+                              {{ product.featured_media | image_url: width: 1100 }} 1100w,
+                              {{ product.featured_media | image_url: width: 1500 }} 1500w
+                              {% if product.featured_media.width %},{{ product.featured_media | image_url }} {{ product.featured_media.width }}w{% endif %}" 
+                            src="{{ product.featured_media | image_url: width: 1080 }}"
+                            sizes="{% unless section.settings.full_width %}(min-width: {{ settings.page_width }}px) {{ settings.page_width | times: 0.4 }}px, {% endunless %}(min-width: 767px) 40vw, calc(50vw - 50px))"
+                            alt="{{ product.featured_media.alt | escape }}"
+                            class="w-full h-full object-cover {% if rounded_corner %}rounded-md{% endif %}"
+                            loading="lazy"
+                            width="{{ product.featured_media.width }}"
+                            height="{{ product.featured_media.height }}"
+                          >
+                        </picture>
+                      {% else %}
+                        {% if variant.featured_media %}
+                          <picture class="w-[75px]">
+                            <img
+                              srcset="{{ variant.featured_media | image_url: width: 225 }} 225w,
+                                {{ variant.featured_media | image_url: width: 375 }} 375w,
+                                {{ variant.featured_media | image_url: width: 450 }} 450w,
+                                {{ variant.featured_media | image_url: width: 750 }} 750w,
+                                {{ variant.featured_media | image_url: width: 900 }} 900w,
+                                {{ variant.featured_media | image_url: width: 1100 }} 1100w,
+                                {{ variant.featured_media | image_url: width: 1500 }} 1500w
+                                {% if variant.featured_media.width %},{{ variant.featured_media | image_url }} {{ variant.featured_media.width }}w{% endif %}" 
+                              src="{{ variant.featured_media | image_url: width: 1080 }}"
+                              sizes="{% unless section.settings.full_width %}(min-width: {{ settings.page_width }}px) {{ settings.page_width | times: 0.4 }}px, {% endunless %}(min-width: 767px) 40vw, calc(50vw - 50px))"
+                              alt="{{ variant.featured_media.alt | escape }}"
+                              class="w-full h-full object-cover {% if rounded_corner %}rounded-md{% endif %}"
+                              loading="lazy"
+                              width="{{ variant.featured_media.width }}"
+                              height="{{ variant.featured_media.height }}"
+                            >
+                          </picture>
+                        {% endif %}
+                      {% endif %}
+                    {% endif %}
+                    <div class="flex flex-col gap-2">
+                      <div class="font-semibold">{% if product.has_only_default_variant %}{{ product.title }}{% else %}{{ variant.title }}{% endif %}</div>
+                      {% if section.settings.show_skus %}
+                        <div class="secondary-text">{{ variant.sku }}</div>
+                      {% endif %}
+                      <span class="block md:hidden">{{ variant.price | money }}</span>
+                      <div class="product-form__quantity w-full block md:hidden">
+                        {% if settings.show_in_cart_items != 'none' %}
+                          {% if settings.hide_when_pre_order %}                   
+                            <div class="hidden" id="cart-edt-{{ section_id }}">
+                              {% if can_show_preorder == false %}
+                                {% render 'estimate-variant-shipping-cart', variant: variant, message: settings.message_estimate_cart %}
+                              {% endif %}
+                            </div>
+                          {% else %}
+                            <div class="hidden" id="cart-edt-{{ section_id }}">
+                              {% render 'estimate-variant-shipping-cart', variant: variant, message: settings.message_estimate_cart %}
+                            </div>
+                          {% endif %}
+                        {% endif %}
+                        {% if settings.preorder_show != 'no' %}
+                          <div class="hidden" id="preorder-{{ section_id }}">
+                            {% if can_show_preorder %}
+                              {% liquid  
+                                assign message_preorder = 'general.preorder.message_preorder' | t
+                                if settings.message_preorder != blank
+                                  assign message_preorder = settings.message_preorder
+                                endif 
+                              %}
+                              <input name="properties[{{ 'general.preorder.name' | t }}]" class="hidden preorder-edt-properties" value="{{ message_preorder }}"/>
+                            {% endif %}
+                          </div>
+                        {% endif %}
+                        {%- if variant.available == false or quantity_rule_soldout -%}
+                          {{ 'products.product.sold_out' | t }}
+                        {%- else -%}
+                          <div class="w-fit relative group">
+                            <div class="inline-flex border w-fit items-center bg-[rgba(var(--background-color),1)]{% if rounded_corner %} rounded-md{% endif %}">
+                              <button class="w-10 cursor-pointer pt-4 pb-4 md:pt-5 md:pb-5 bg-transparent pl-3.5 pr-3.5 select-none opacity-70" name="minus" aria-label="minus" @click.prevent="minus($event, {{ in_cart }});">
+                                {% render 'icon-alls', icon: 'icon-minus' %}
+                              </button>
+                              <input class="outer-spin-button hide-spin-input focus:outline-none w-8 md:w-10 pt-2 pb-2 md:pt-2.5 md:pb-2.5 text-center bg-transparent"
+                                type="number"
+                                name="quantity"
+                                id="quick-order-list-quantity-mobile-{{ variant.id }}"
+                                min="0"
+                                x-on:change="invalid($el); onChangeQuantity($event, {{ in_cart }}, $el)"
+                                @keydown="handleKeydown($event, $el)"
+                                value="{{ quantity }}"
+                              >
+                              <button class="w-10 cursor-pointer pt-2.5 pb-2.5 md:pt-3.5 md:pb-3.5 bg-transparent pr-3.5 pl-3.5 select-none opacity-70" name="plus" @click.prevent="plus($event, {{ in_cart }}); " aria-label="plus">
+                                {% render 'icon-alls', icon: 'icon-plus' %}
+                              </button>
+                            </div>
+                            <div id="LineItemErrorMobile-{{ variant.id }}" class="hidden bg-[rgba(var(--color-error),0.2)] cart-item__error mt-2 py-3 px-3.5 mb-3{% if settings.edges_type == 'rounded_corners' %} rounded-md{% endif %}" role="alert">
+                              <p class="flex relative w-full">
+                                <span class="absolute{% if is_rtl %} right-0{% else %} left-0{% endif %} top-1/2 -translate-y-1/2 w-3">{% render 'icon-alls', icon: 'icon-error' %}</span>
+                                <span class="cart-item__error-text text-small{% if is_rtl %} pr-5{% else %} pl-5{% endif %} p-break-words"></span>
+                              </p>
+                            </div>
+                            <div><a class="nav-link effect-inline relative leading-normal cursor-pointer" @click="removeItem({{ variant.id }})" x-cloak x-show="!loadingMobile && {{ quantity }}>0">Remove</a></div>
+                            <div id="loading-mobile-{{ variant.id }}" class="animate-spin w-4 h-4 md:w-5 md:h-5 hidden" x-cloak>
+                              {% render 'icon-alls', icon: 'icon-loading' %}
+                            </div>   
+                          </div>
+                        {%- endif -%}
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td class="pt-5 pb-5 pr-5 pl-5 md:pt-6 md:pb-6 md:pr-8 md:pl-8 hidden md:table-cell">
+                  <span>{{ variant.price | money }}</span>
+                </td>               
+                <td class="pt-5 pb-5 pr-5 pl-5 md:pt-6 md:pb-6 md:pr-8 md:pl-8 hidden md:table-cell">
+                  {%- liquid
+                    assign product_form_id = 'product-form-' | append: variant.id 
+                    assign disable_cart_edt = false
+                    if variant.gift_card? or can_show_preorder and settings.hide_when_pre_order
+                      assign disable_cart_edt = true
+                    endif
+                  %}
+
+                  {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form', x-ref: 'product_form' -%}
+                    <div class="product-form__quantity w-full">
+                      <input type="hidden" id="update-variant-{{ section.id }}" name="id" value="{{ variant.id }}"/>
+                      {% if settings.show_in_cart_items != 'none' %}
+                        {% if settings.hide_when_pre_order %}                   
+                          <div class="hidden" id="cart-edt-{{ section_id }}">
+                            {% if can_show_preorder == false %}
+                              {% render 'estimate-variant-shipping-cart', variant: variant, message: settings.message_estimate_cart, product_form_id: product_form_id, disable_cart_edt: disable_cart_edt %}
+                            {% endif %}
+                          </div>
+                        {% else %}
+                          <div class="hidden" id="cart-edt-{{ section_id }}">
+                            {% render 'estimate-variant-shipping-cart', variant: variant, message: settings.message_estimate_cart, product_form_id: product_form_id, disable_cart_edt: disable_cart_edt %}
+                          </div>
+                        {% endif %}
+                      {% endif %}
+                      {% if settings.preorder_show != 'no' %}
+                        <div class="hidden" id="preorder-{{ section_id }}">
+                          {% if can_show_preorder %}
+                            {% liquid  
+                              assign message_preorder = 'general.preorder.message_preorder' | t
+                              if settings.message_preorder != blank
+                                assign message_preorder = settings.message_preorder
+                              endif 
+                            %}
+                            <input name="properties[{{ 'general.preorder.name' | t }}]" class="hidden preorder-edt-properties" value="{{ message_preorder }}"/>
+                          {% endif %}
+                        </div>
+                      {% endif %}
+                      {%- if variant.available == false or quantity_rule_soldout -%}
+                        {{ 'products.product.sold_out' | t }}
+                      {%- else -%}
+                        <div class="w-fit relative group">
+                          <div class="inline-flex border w-fit items-center bg-[rgba(var(--background-color),1)]{% if rounded_corner %} rounded-md{% endif %}">
+                            <button class="w-10 cursor-pointer pt-4 pb-4 md:pt-5 md:pb-5 bg-transparent pl-3.5 pr-3.5 select-none opacity-70" name="minus" aria-label="minus" @click.prevent="minus($event, {{ in_cart }})">
+                              {% render 'icon-alls', icon: 'icon-minus' %}
+                            </button>
+                            <input class="outer-spin-button hide-spin-input focus:outline-none w-8 md:w-10 pt-2 pb-2 md:pt-2.5 md:pb-2.5 text-center bg-transparent"
+                              type="number"
+                              name="quantity"
+                              id="quick-order-list-quantity-{{ variant.id }}"
+                              min="0"
+                              form="{{ product_form_id }}"
+                              x-on:change="invalid($el); onChangeQuantity($event, {{ in_cart }}, $el)"
+                              @keydown="handleKeydown($event, $el)"
+                              value="{{ quantity }}"
+                            >
+                            <button class="w-10 cursor-pointer pt-2.5 pb-2.5 md:pt-3.5 md:pb-3.5 bg-transparent pr-3.5 pl-3.5 select-none opacity-70" name="plus" @click.prevent="plus($event, {{ in_cart }})" aria-label="plus">
+                              {% render 'icon-alls', icon: 'icon-plus' %}
+                            </button>
+                          </div>
+                          <div id="LineItemError-{{ variant.id }}" class="hidden bg-[rgba(var(--color-error),0.2)] cart-item__error mt-2 py-3 px-3.5 mb-3{% if settings.edges_type == 'rounded_corners' %} rounded-md{% endif %}" role="alert">
+                            <p class="flex relative w-full">
+                              <span class="absolute{% if is_rtl %} right-0{% else %} left-0{% endif %} top-1/2 -translate-y-1/2 w-3">{% render 'icon-alls', icon: 'icon-error' %}</span>
+                              <span class="cart-item__error-text text-small{% if is_rtl %} pr-5{% else %} pl-5{% endif %} p-break-words"></span>
+                            </p>
+                          </div>
+                          <div><a class="nav-link effect-inline relative leading-normal cursor-pointer" @click="removeItem({{ variant.id }})" x-cloak x-show="!loading && {{ quantity }}>0">Remove</a></div>
+                          <div id="loading-{{ variant.id }}" class="animate-spin w-4 h-4 md:w-5 md:h-5 hidden" x-cloak>
+                            {% render 'icon-alls', icon: 'icon-loading' %}
+                          </div>   
+                        </div>
+                      {%- endif -%}
+                    </div>
+                  {%- endform -%}
+                </td>
+                <td class="pt-5 pb-5 pr-5 pl-0 md:pt-6 md:pb-6 md:pr-8 md:pl-8">
+                  <span>{{ total_variant_price | money }}</span>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div class="{% if is_rtl %}rtl {% endif %}w-full {% if section.settings.desktop_layout != "horizontal" %}lg:w-1/4{% endif %} sticky {% if section.settings.desktop_layout != "horizontal" %}lg:relative{% endif %}{% if template.name == "product" %} bottom-14{% else %} bottom-5{% endif %} {% if section.settings.desktop_layout != "horizontal" %}lg:bottom-auto{% endif %} z-10">
+        <div  id="order-list-sticky" class="pb-5{% if rounded_corner %} rounded-[10px]{% endif %} bg-[rgba(var(--background-color))] lg:sticky top-[calc(var(--height-header)+5rem)] md:pl-5 md:pr-5 md:pt-5 md:pb-5 lg:pl-8 lg:pr-8 lg:pt-8 lg:pb-8 lg:block border-[2px] mt-[2px]"> 
+          <div id="QuickOrderList1" class="bundler__header relative pl-5 pr-5 pt-5 md:pl-0 md:pr-0 md:pt-0 flex items-center flex-col lg:block">
+            <h3 class="heading-order-list--{{ section.id }} title hidden lg:block">
+              {{- product.title | escape -}}
+            </h3>
+            <p class="text-base text-[rgba(var(--colors-text))] mt-1.5">{{ 'sections.quick-order-list.total-items' | t }}: <span>{{ total_quantity }}</span></p>
+            <p class="text-lg text-[rgba(var(--colors-heading))] font-medium mt-1.5">{{ 'sections.cart.subtotal' | t }}: <span>{{ total_price | money }}</span></p>
+            <p class="mt-3 mb-3 xl:mb-4 block text-normal">{{ 'sections.cart.taxes_included_but_shipping_at_checkout' | t }}</p>
+            <div class="flex justify-center mt-1.5 lg:block">
+              <a @click="clearCart([{{ line_in_cart_list }}])" class="nav-link effect-inline relative leading-normal cursor-pointer" x-cloak x-show="!allListLoading && {{ total_quantity }}>0">Remove all</a>
+              <div id="remove-all-loading" class="animate-spin w-4 h-4 md:w-5 md:h-5 hidden" x-cloak>
+                {% render 'icon-alls', icon: 'icon-loading' %}
+              </div> 
+            </div>
+          </div>
+          
+          <div class="bundler-footer pl-5 pr-5 md:pl-0 md:pr-0 mt-1 mb-1">
+            {%- if section.settings.button_label != blank -%}
+              <a href="/cart" role="link" aria-disabled="true" class="button-atc button button-solid mt-4 lg:mt-6 block w-full pl-7 pr-7 pt-3 pb-3 disabled:cursor-not-allowed disabled:opacity-60 text-center">
+                {% render 'button-label', button_label: section.settings.button_label, show_button_style: 'primary' %}
+              </a>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="{{ 'quick-order-list.js' | asset_url }}" defer></script> 
+
+{% schema %}
+{
+  "name": "t:sections.quick-order-list.name",
+  "class": "x-section-quick-order-list",
+  "enabled_on": {
+    "templates": ["product"]
+  },
+  "limit": 1,
+  "settings": [
+    {
+      "type": "select",
+      "id": "desktop_layout",
+      "default": "sidebar",
+      "label": "t:sections.all.padding.section_padding_heading",
+      "options": [
+        {
+          "value": "horizontal",
+          "label": "t:sections.featured-collection.settings.slider_style.options__1"
+        },
+        {
+          "value": "sidebar",
+          "label": "t:sections.quick-order-list.settings.desktop_layout.sidebar"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "show_images",
+      "label": "t:sections.quick-order-list.settings.show_images.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_skus",
+      "label": "t:sections.quick-order-list.settings.show_skus.label",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Quick order list",
+      "label": "t:sections.all.text.heading",
+      "info": "t:settings_schema.typography.settings.heading_highlight_type.info"
+    },
+    {
+      "type": "select",
+      "id": "highlight_type",
+      "default": "underline",
+      "label": "t:settings_schema.typography.settings.heading_highlight_type.label",
+      "options": [
+        {
+          "value": "underline",
+          "label": "t:settings_schema.typography.settings.heading_highlight_type.option__1.label"
+        },
+        {
+          "value": "font_highlight",
+          "label": "t:settings_schema.typography.settings.heading_highlight_type.option__3.label"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 50,
+      "max": 200,
+      "step": 10,
+      "unit": "%",
+      "default": 100,
+      "label": "t:sections.all.text.heading_size"
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "default": "h2",
+      "label": "t:sections.all.text.heading_tag",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        },
+        {
+          "value": "p",
+          "label": "p"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "default": "center",
+      "label": "t:sections.all.text.heading_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.all.content_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.all.content_alignment.options__2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.all.content_alignment.options__3.label"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "t:sections.all.text.subheading"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:sections.all.text.text"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.quick-order-list.settings.order_list_summary.label"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "t:sections.all.button.label",
+      "default": "View cart"
+    },
+    {
+      "type": "color",
+      "id": "background_color_light",
+      "default": "rgba(0,0,0,0)",
+      "label": "t:sections.all.background.background_color_light"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "default": "rgba(0,0,0,0)",
+      "label": "t:sections.all.text.colors_title_light"
+    },
+    {
+      "type": "color",
+      "id": "text_light",
+      "label": "t:sections.all.text.color",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "button_light",
+      "label": "t:sections.all.button.primary_button_light",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "button_text_light",
+      "label": "t:sections.all.button.primary_button_text_light",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_light",
+      "label": "t:sections.all.button.primary_button_hover_light",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "button_text_hover_light",
+      "label": "t:sections.all.button.primary_button_hover_text_light",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "line_border",
+      "label": "t:sections.all.text.line_border",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "background_color_dark",
+      "default": "rgba(0,0,0,0)",
+      "label": "t:sections.all.background.background_color_dark"
+    },
+    {
+      "type": "color",
+      "id": "title_color_dark",
+      "default": "rgba(0,0,0,0)",
+      "label": "t:sections.all.text.colors_title_dark"
+    },
+    {
+      "type": "color",
+      "id": "text_dark",
+      "label": "t:sections.all.text.color_dark",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "button_dark",
+      "label": "t:sections.all.button.primary_button_dark",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "button_text_dark",
+      "label": "t:sections.all.button.primary_button_text_dark",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_dark",
+      "label": "t:sections.all.button.primary_button_hover_dark",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "button_text_hover_dark",
+      "label": "t:sections.all.button.primary_button_hover_text_dark",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "line_border_dark",
+      "label": "t:sections.all.text.line_border_dark",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_section_divider",
+      "default": false,
+      "label": "t:sections.all.show_section_divider.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "default": false,
+      "label": "t:sections.all.full_width.label"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "step": 4,
+      "default": 28,
+      "label": "t:sections.all.padding.padding_top"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "step": 4,
+      "default": 28,
+      "label": "t:sections.all.padding.padding_bottom"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_layout_mobile"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_section_divider_mobile",
+      "default": false,
+      "label": "t:sections.all.show_section_divider.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width_mobile",
+      "label": "t:sections.all.full_width.label",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "step": 4,
+      "default": 28,
+      "label": "t:sections.all.padding.padding_top"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "step": 4,
+      "default": 28,
+      "label": "t:sections.all.padding.padding_bottom"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.quick-order-list.name"
+    }
+  ]
+}
+{% endschema %}

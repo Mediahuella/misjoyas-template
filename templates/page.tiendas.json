@@ -1,0 +1,776 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "17640823479e5c0ec1": {
+      "type": "_blocks",
+      "settings": {}
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "show_heading": false,
+        "heading_size": 170,
+        "heading_tag": "h1",
+        "show_breadcrumbs": false,
+        "show_breadcrumbs_border": false,
+        "full_width_breadcrumb": true,
+        "desktop_content_alignment": "text-left",
+        "mobile_content_alignment": "text-left",
+        "background_color_light": "#f2f2f2",
+        "text_color_light": "rgba(0,0,0,0)",
+        "textlink_color_light": "rgba(0,0,0,0)",
+        "background_color_dark": "#313131",
+        "text_color_dark": "rgba(0,0,0,0)",
+        "textlink_color_dark": "rgba(0,0,0,0)",
+        "padding_top": 28,
+        "padding_bottom": 28,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    },
+    "store_locator_EiPKUk": {
+      "type": "store-locator",
+      "blocks": {
+        "store_rhYqLn": {
+          "type": "store",
+          "name": "Mis Joyas Antofagasta",
+          "settings": {
+            "store_name": "MISJOYAS Antofagasta",
+            "address": "Arturo Prat 482 Local 11",
+            "additional_info": "",
+            "special_hours": "",
+            "hours": "<p>Lunes a Viernes: 09:30 a 18:30 hrs<br/>Sábado 10:00 a 15:00 hrs<br/>Domingo Cerrado</p>",
+            "phone": "56957313888",
+            "email": "misjoyasantofagasta@misjoyas.cl",
+            "store_image": "shopify://shop_images/tienda-antofagasta-thumb.jpg",
+            "youtube_url": "https://youtu.be/kYUDOeV8u6k",
+            "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3654.789009950006!2d-70.40003992461277!3d-23.64772597874053!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x96afd517bca870a7%3A0x3e9e97b7f75f557b!2sArturo%20Prat%20482%2C%201271499%20Antofagasta!5e0!3m2!1ses-419!2scl!4v1766442477937!5m2!1ses-419!2scl\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+          }
+        },
+        "store_7XhJXF": {
+          "type": "store",
+          "name": "Mis Joyas Calama",
+          "settings": {
+            "store_name": "MISJOYAS Calama",
+            "address": "Almte. J. Latorre 1820",
+            "additional_info": "",
+            "special_hours": "",
+            "hours": "<p>Lunes a Viernes: 09:30 a 18:30 hrs<br/>Sábado 10:00 a 15:00 hrs<br/>Domingo Cerrado</p>",
+            "phone": "56933902166",
+            "email": "misjoyascalama@misjoyas.cl",
+            "store_image": "shopify://shop_images/misjoyas-calama.jpg",
+            "youtube_url": "https://youtu.be/kYUDOeV8u6k",
+            "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3687.111032629574!2d-68.9283695246479!3d-22.462461479570273!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x96ac09c91fb63b13%3A0xdb8aece26f9a9443!2sAlmte.%20J.%20Latorre%201820%2C%201390798%20Calama%2C%20Antofagasta!5e0!3m2!1ses-419!2scl!4v1766442315221!5m2!1ses-419!2scl\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+          }
+        },
+        "store_YgBe4H": {
+          "type": "store",
+          "name": "Mis Joyas Copiapo",
+          "settings": {
+            "store_name": "MISJOYAS Copiapó",
+            "address": "Chacabuco 310 Local 02",
+            "additional_info": "",
+            "special_hours": "",
+            "hours": "<p>Lunes a Viernes: 09:30 a 18:30 hrs<br/>Sábado 10:00 a 15:00 hrs<br/>Domingo Cerrado</p>",
+            "phone": "56942067809",
+            "email": "misjoyascopiapo@misjoyas.cl",
+            "store_image": "shopify://shop_images/54883228011_0c05b1c87e_c.jpg",
+            "youtube_url": "",
+            "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3543.2665303209856!2d-70.33643942373953!3d-27.367390376379092!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x969804764331ec93%3A0xf1552ec6204f823d!2sChacabuco%20310%2C%201530427%20Copiap%C3%B3%2C%20Atacama!5e0!3m2!1ses-419!2scl!4v1766502988668!5m2!1ses-419!2scl\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+          }
+        },
+        "store_UyAfY9": {
+          "type": "store",
+          "name": "Mis Joyas La Serena",
+          "settings": {
+            "store_name": "MISJOYAS La Serena",
+            "address": "Av. Balmaceda 475",
+            "additional_info": "",
+            "special_hours": "",
+            "hours": "<p>Lunes a Viernes: 09:30 a 18:30 hrs<br/>Sábado 10:00 a 15:00 hrs<br/>Domingo Cerrado</p>",
+            "phone": "56957313678",
+            "email": "misjoyaslaserena@misjoyas.cl",
+            "store_image": "shopify://shop_images/fachada-laserena.jpg",
+            "youtube_url": "",
+            "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3458.6634842081894!2d-71.25484501692792!3d-29.902795610522087!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9691ca7a5f5a7f0b%3A0xfc62a862f26aa294!2sAv.%20Balmaceda%20475%2C%201710104%20La%20Serena%2C%20Coquimbo!5e0!3m2!1ses-419!2scl!4v1766442608891!5m2!1ses-419!2scl\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+          }
+        },
+        "store_qYpqcE": {
+          "type": "store",
+          "name": "Mis Joyas Viña del Mar",
+          "settings": {
+            "store_name": "MISJOYAS Viña del Mar",
+            "address": "Av. Valparaíso 553 Local 10",
+            "additional_info": "<p>Galería Portal Álamos</p>",
+            "special_hours": "",
+            "hours": "<p>Lunes a Viernes: 10:00 a 19:00 hrs<br/>Sábado 10:00 a 15:00 hrs<br/>Domingo Cerrado</p>",
+            "phone": "56933768037",
+            "email": "misjoyasvina@misjoyas.cl",
+            "store_image": "shopify://shop_images/misjoyas-vina-exterior.jpg",
+            "youtube_url": "",
+            "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3345.214804483964!2d-71.55748212427716!3d-33.024470873561306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9689dde201399769%3A0x5c91d040a50672a8!2sAv.%20Valpara%C3%ADso%20553%2C%202571511%20Vi%C3%B1a%20del%20Mar%2C%20Valpara%C3%ADso!5e0!3m2!1ses-419!2scl!4v1766446519472!5m2!1ses-419!2scl\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+          }
+        },
+        "store_BYE4KX": {
+          "type": "store",
+          "name": "Mis Joyas Viña del Mar - Av. Valparaiso",
+          "settings": {
+            "store_name": "MISJOYAS Viña del Mar - Av. Valparaiso",
+            "address": "Avda Valparaíso 469 Local 3",
+            "additional_info": "<p>Galería Cristal</p>",
+            "special_hours": "",
+            "hours": "<p>Lunes a Viernes: 10:00 a 19:00 hrs<br/>Sábado 10:00 a 15:00 hrs<br/>Domingo Cerrado</p>",
+            "phone": "56934356200",
+            "email": "misjoyasvina2@misjoyas.cl",
+            "store_image": "shopify://shop_images/mj-vina-l3.jpg",
+            "youtube_url": "",
+            "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3345.214804483964!2d-71.55748212427716!3d-33.024470873561306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9689dde20d458ead%3A0x7414709a7e9d3c3e!2sAv.%20Valpara%C3%ADso%20469%2C%20Vi%C3%B1a%20del%20Mar%2C%20Valpara%C3%ADso!5e0!3m2!1ses-419!2scl!4v1766446773024!5m2!1ses-419!2scl\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+          }
+        },
+        "store_t9VjDh": {
+          "type": "store",
+          "name": "Mis Joyas Santiago",
+          "settings": {
+            "store_name": "MISJOYAS Santiago",
+            "address": "Monjitas 879 Local 143",
+            "additional_info": "<p>Segundo piso, Galería Plaza de Armas</p>",
+            "special_hours": "",
+            "hours": "<p>Lunes a Viernes: 10:00 a 18:30 hrs<br/>Sábado 10:00 a 15:00 hrs<br/>Domingo Cerrado</p>",
+            "phone": "56946241294",
+            "email": "misjoyassantiago143@misjoyas.cl",
+            "store_image": "shopify://shop_images/misjoyas-exterior1.jpg",
+            "youtube_url": "https://youtu.be/Vno4Ny5O_Bo",
+            "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.4695947894957!2d-70.65446221597988!3d-33.43707010479514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5cf19a96515%3A0x13cf6f8527892894!2sMonjitas%20879%2C%208320000%20Santiago%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses-419!2scl!4v1766442000471!5m2!1ses-419!2scl\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+          }
+        },
+        "store_jTKtWV": {
+          "type": "store",
+          "name": "Mis Joyas Santiago Monjitas",
+          "settings": {
+            "store_name": "MISJOYAS Santiago Monjitas",
+            "address": "Monjitas 879 Local 105",
+            "additional_info": "<p>Sala de ventas en primer y segundo piso. Galería Plaza de Armas.</p>",
+            "special_hours": "",
+            "hours": "<p>Lunes a Viernes: 10:30 a 19:00 hrs<br/>Sábado: 10:30 a 15:00 hrs<br/>Domingo: Cerrado</p>",
+            "phone": "56942495874",
+            "email": "misjoyassantiago105@misjoyas.cl",
+            "store_image": "shopify://shop_images/misjoyas105-frente.jpg",
+            "youtube_url": "https://youtu.be/8RmUspcIJMQ",
+            "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.469849240203!2d-70.65214372426018!3d-33.43706347339483!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5a30dd85dcf%3A0x16901d71bbe309f3!2sMonjitas%20879%2C%20Local%20105%2C%207510000%20Santiago%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses-419!2scl!4v1766439718849!5m2!1ses-419!2scl\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+          }
+        },
+        "store_9rNgyb": {
+          "type": "store",
+          "name": "Mis Joyas Santiago Galería Plaza de Armas",
+          "settings": {
+            "store_name": "MISJOYAS Santiago Galería Plaza de Armas",
+            "address": "Monjitas 879 Local 508 B",
+            "additional_info": "<p>Primer piso, Galería Plaza de Armas</p>",
+            "special_hours": "",
+            "hours": "<p>Lunes a Viernes: 10:00 a 19:00 hrs<br/>Sábado 10:00 a 15:00 hrs<br/>Domingo Cerrado</p>",
+            "phone": "56935571930",
+            "email": "misjoyassantiago508@misjoyas.cl",
+            "store_image": "shopify://shop_images/mj-508-exterior.jpg",
+            "youtube_url": "https://youtu.be/ogLpEOmW6kQ",
+            "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.469592157284!2d-70.65216622426001!3d-33.43707017339488!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5cf19a96515%3A0x944cd39aa710a1af!2sMonjitas%20879%2C%20Local%20508%20B%2C%208320000%20Santiago%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses-419!2scl!4v1766440040739!5m2!1ses-419!2scl\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+          }
+        },
+        "store_wffkUd": {
+          "type": "store",
+          "name": "Mis Joyas Santiago Santo Domingo",
+          "settings": {
+            "store_name": "MISJOYAS Santiago Santo Domingo",
+            "address": "Santo Domingo 863 Local 35",
+            "additional_info": "<p>Galería Santo Domingo</p>",
+            "special_hours": "",
+            "hours": "<p>Lunes a Viernes: 10:00 a 18:30 hrs<br/>Sábado 10:00 a 15:00 hrs<br/>Domingo Cerrado</p>",
+            "phone": "56991277883",
+            "email": "misjoyas35@misjoyas.cl",
+            "store_image": "shopify://shop_images/exterior1.jpg",
+            "youtube_url": "",
+            "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.5134414031068!2d-70.65223312426028!3d-33.43592737339514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5a339360629%3A0x1d298da3a9d6c768!2sSanto%20Domingo%20863%2C%20Local%2035%2C%208320044%20Santiago%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses-419!2scl!4v1766440938369!5m2!1ses-419!2scl\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+          }
+        },
+        "store_LJ4mdk": {
+          "type": "store",
+          "name": "Venecia",
+          "settings": {
+            "store_name": "Venecia",
+            "address": "Monjitas 887 Local 101",
+            "additional_info": "<p>Galeria Plaza de Armas</p>",
+            "special_hours": "",
+            "hours": "<p>Lunes a Viernes: 10:00 a 19:00 hrs<br/>Sabado 10:00 a 15:00 hrs<br/>Domingo Cerrado</p>",
+            "phone": "56966996529",
+            "email": "veneciasantiago@joyasvenecia.cl",
+            "store_image": "shopify://shop_images/misjoyas-osorno-fachada2.jpg",
+            "youtube_url": "",
+            "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.469333869463!2d-70.65457391119376!3d-33.43707690479542!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5a30da4b3f3%3A0x9bb9e6b1e19a98bd!2sMonjitas%20887%2C%20Santiago%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses-419!2scl!4v1766502910724!5m2!1ses-419!2scl\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+          }
+        },
+        "store_XEPWMt": {
+          "type": "store",
+          "name": "MISJOYAS LA FLORIDA",
+          "settings": {
+            "store_name": "MISJOYAS LA FLORIDA",
+            "address": "Serafín Zamora N°13 local 23 Centro comercial la Rotonda",
+            "additional_info": "",
+            "special_hours": "",
+            "hours": "<p>Lunes a Viernes: 10:00 a 19:00 hrs<br/>Sábado: 10:00 a 15:00 hrs</p><p>Domingo Cerrado</p>",
+            "phone": "56992148511",
+            "email": "misjoyaslaflorida@misjoyas.cl",
+            "store_image": "shopify://shop_images/WhatsApp_Image_2026-03-02_at_11.05.53_AM_1.jpg",
+            "youtube_url": "",
+            "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2665.6108784673834!2d-70.60044951215252!3d-33.52004363899326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662d060f7174733%3A0x317e4436e318cb52!2sSeraf%C3%ADn%20Zamora%2013%2C%20local%2023%2C%208260212%20La%20Florida%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses!2scl!4v1772464483294!5m2!1ses!2scl\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+          }
+        },
+        "store_8z9GUR": {
+          "type": "store",
+          "name": "Mis Joyas Mall Arauco Estación",
+          "settings": {
+            "store_name": "MISJOYAS Mall Arauco Estación",
+            "address": "Mall Arauco Estación Local 1085",
+            "additional_info": "<p>(Av. Libertador General Bernardo O'Higgins)</p>",
+            "special_hours": "",
+            "hours": "<p>Lunes a Sábado: 10:00 a 19:30 hrs<br/>Domingo 11:00 a 19:00 hrs</p>",
+            "phone": "56979954940",
+            "email": "misjoyasestacion@misjoyas.cl",
+            "store_image": "shopify://shop_images/mj-mall-fachada.jpg",
+            "youtube_url": "",
+            "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3328.900949585297!2d-70.68229227425948!3d-33.45188702338895!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5f4727c331d%3A0xf16ddc8f7bfce526!2sArauco%20Estaci%C3%B3n!5e0!3m2!1ses-419!2scl!4v1766441394338!5m2!1ses-419!2scl\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+          }
+        },
+        "store_zTCc4R": {
+          "type": "store",
+          "name": "Mis Joyas Espacio Urbano Las Rejas",
+          "settings": {
+            "store_name": "MISJOYAS LAS REJAS",
+            "address": "ESPACIO URBANO LAS REJAS",
+            "additional_info": "<p>AV. B OHIGGINS 5091  - LOCAL 2004<br/>ESTACIÓN CENTRAL </p>",
+            "special_hours": "",
+            "hours": "<p>Lunes a Sábado: 10:00 a 20:00 hrs<br/>Domingo 10:00 a 20:00 hrs</p>",
+            "phone": "56976788891",
+            "email": "Misjoyaslasrejas@misjoyas.cl",
+            "store_image": "shopify://shop_images/55065809064_e86c37396a_c.jpg",
+            "youtube_url": "",
+            "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3328.7112671068853!2d-70.7051843!3d-33.456828200000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c487d7091093%3A0xcaa848b0d1763ade!2sAv.%20Alameda%20Libertador%20Bernardo%20O'Higgins%205091%2C%209170428%20Estaci%C3%B3n%20Central%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses!2scl!4v1769625994991!5m2!1ses!2scl\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+          }
+        },
+        "store_KbxMji": {
+          "type": "store",
+          "name": "Mis Joyas Mall Arauco El Bosque",
+          "settings": {
+            "store_name": "MISJOYAS Mall Arauco El Bosque",
+            "address": "Gran Av. José Miguel Carrera 10375 Local 85",
+            "additional_info": "<p>Mall Arauco El Bosque</p>",
+            "special_hours": "",
+            "hours": "<p>Lunes a Sábado: 10:00 a 20:30 hrs<br/>Domingo 11:00 a 20:00 hrs</p>",
+            "phone": "56933768030",
+            "email": "misjoyaselbosque@misjoyas.cl",
+            "store_image": "shopify://shop_images/misjoyas-elbosque-fachada.jpg",
+            "youtube_url": "",
+            "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3324.9948753987546!2d-70.67927352425534!3d-33.55350947334879!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662dbb6c7281567%3A0xde21e3157b6f134!2sGran%20Av.%20Jos%C3%A9%20Miguel%20Carrera%2010375%2C%20Local%2085%2C%20El%20Bosque%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses-419!2scl!4v1766441562220!5m2!1ses-419!2scl\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+          }
+        },
+        "store_rmfiUp": {
+          "type": "store",
+          "name": "Mis Joyas Mall Arauco El Bosque",
+          "settings": {
+            "store_name": "MISJOYAS Puente Alto",
+            "address": "Balmaceda 279",
+            "additional_info": "<p>Frente de la plaza de Puente Alto</p>",
+            "special_hours": "",
+            "hours": "<p>Lunes a Viernes: 10:00 a 19:00 hrs                                    </p><p>Sábado: 10:00 a 15:00 hrs<br/>Domingo: Cerrado</p>",
+            "phone": "56975373552",
+            "email": "misjoyaspuentealto@misjoyas.cl",
+            "store_image": "shopify://shop_images/IMG_1759-_1_1.png",
+            "youtube_url": "",
+            "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3322.845232954463!2d-70.575001!3d-33.609319899999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662d7ab256b0017%3A0xe07337fed5bd22a7!2sBalmaceda%20279%2C%208180915%20Puente%20Alto%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses!2scl!4v1768853532315!5m2!1ses!2scl\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+          }
+        },
+        "store_MhLgcY": {
+          "type": "store",
+          "name": "Mis Joyas Apumanque",
+          "settings": {
+            "store_name": "MISJOYAS Apumanque",
+            "address": "Av. Manquehue Sur 31 Local 496",
+            "additional_info": "<p>Piso 2, Mall Apumanque</p>",
+            "special_hours": "",
+            "hours": "<p>Lunes a Sábado: 10:00 a 20:00 hrs<br/>Domingo 11:00 a 20:00 hrs</p>",
+            "phone": "56982830514",
+            "email": "misjoyasapumanque@misjoyas.cl",
+            "store_image": "shopify://shop_images/mj-apumanque-exterior.jpg",
+            "youtube_url": "",
+            "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3330.5111599977686!2d-70.5702495242613!3d-33.40991547340555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cedde267e4cd%3A0xb3714bcbe1171e4!2sAv.%20Manquehue%20Sur%2031%2C%20Las%20Condes%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses-419!2scl!4v1766442235639!5m2!1ses-419!2scl\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+          }
+        },
+        "store_3TCc3R": {
+          "type": "store",
+          "name": "Mis Joyas Providencia",
+          "settings": {
+            "store_name": "MISJOYAS Providencia",
+            "address": "Av. Providencia 2072",
+            "additional_info": "",
+            "special_hours": "",
+            "hours": "<p>Lunes a Viernes: 10:00 a 19:00 hrs<br/>Sábado: 10:00 a 15:00 hrs<br/>Domingo: Cerrado</p>",
+            "phone": "+56932598603",
+            "email": "misjoyasprovidencia@misjoyas.cl",
+            "store_image": "shopify://shop_images/IMG_5500_JPG.jpg",
+            "youtube_url": "",
+            "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3330.011318272407!2d-70.61435522426075!3d-33.422949273400484!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cf6673ce1e99%3A0xa324c3125ed7fffd!2sAv.%20Providencia%202072%2C%20Providencia%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses-419!2scl!4v1766436569320!5m2!1ses-419!2scl\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+          }
+        },
+        "store_fJqFVx": {
+          "type": "store",
+          "disabled": true,
+          "settings": {
+            "store_name": "Tienda Principal",
+            "address": "",
+            "additional_info": "",
+            "special_hours": "",
+            "hours": "<p>Lunes a Viernes: 10:30 a 19:00 hrs<br/>Sábado: 10:30 a 15:00 hrs<br/>Domingo: CERRADO</p>",
+            "phone": "",
+            "email": "",
+            "youtube_url": "",
+            "map_embed": ""
+          }
+        },
+        "store_Ne3nEm": {
+          "type": "store",
+          "name": "Mis Joyas Rancagua",
+          "settings": {
+            "store_name": "MISJOYAS Rancagua",
+            "address": "P.º Independencia 634 Local 4",
+            "additional_info": "<p>Galería Cobrecol</p>",
+            "special_hours": "",
+            "hours": "<p>Lunes a Viernes: 10:00 a 19:00 hrs<br/>Sábado 10:00 a 15:00 hrs<br/>Domingo Cerrado</p>",
+            "phone": "56982830746",
+            "email": "misjoyasrancagua@misjoyas.cl",
+            "store_image": "shopify://shop_images/IMG-20250325-WA0056.jpg",
+            "youtube_url": "",
+            "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3301.068246080582!2d-70.7466721242293!3d-34.17017277311279!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9663431586e49fef%3A0x6525477253fee26f!2sP.%C2%BA%20Independencia%20634%2C%202840526%20Rancagua%2C%20O'Higgins!5e0!3m2!1ses-419!2scl!4v1766446956025!5m2!1ses-419!2scl\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+          }
+        },
+        "store_a7AG4z": {
+          "type": "store",
+          "disabled": true,
+          "settings": {
+            "store_name": "Tienda Principal",
+            "address": "",
+            "additional_info": "",
+            "special_hours": "",
+            "hours": "<p>Lunes a Viernes: 10:30 a 19:00 hrs<br/>Sábado: 10:30 a 15:00 hrs<br/>Domingo: CERRADO</p>",
+            "phone": "",
+            "email": "",
+            "youtube_url": "",
+            "map_embed": ""
+          }
+        },
+        "store_FtXEji": {
+          "type": "store",
+          "name": "Mis Joyas Rancagua",
+          "settings": {
+            "store_name": "MISJOYAS Rancagua",
+            "address": "Independencia 622",
+            "additional_info": "",
+            "special_hours": "",
+            "hours": "<p>Lunes a Viernes: 10:00 a 19:00 hrs<br/>Sábado 10:00 a 15:00 hrs<br/>Domingo Cerrado</p>",
+            "phone": "56977411139",
+            "email": "misjoyasrancagua622@misjoyas.cl",
+            "store_image": "shopify://shop_images/WhatsApp_Image_2026-01-14_at_12.07.21_PM.jpg",
+            "youtube_url": "",
+            "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3301.0728533435376!2d-70.74646042447809!3d-34.170054973112904!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9663431584f01aeb%3A0x30420b7a44fc6879!2sP.%C2%BA%20Independencia%20622%2C%20Rancagua%2C%20O'Higgins!5e0!3m2!1ses!2scl!4v1768402534396!5m2!1ses!2scl\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+          }
+        },
+        "store_bf88TF": {
+          "type": "store",
+          "name": "Mis Joyas Curicó",
+          "settings": {
+            "store_name": "MISJOYAS Curicó",
+            "address": "Yungay 802 Local 2",
+            "additional_info": "",
+            "special_hours": "",
+            "hours": "<p>Lunes a Viernes: 10:00 a 19:00 hrs<br/>Sábado 10:00 a 15:00 hrs<br/>Domingo Cerrado</p>",
+            "phone": "56926295530",
+            "email": "misjoyascurico@misjoyas.cl",
+            "store_image": "shopify://shop_images/misjoyas-curico-frente2.jpg",
+            "youtube_url": "",
+            "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3268.9682511258975!2d-71.24280492419467!3d-34.98245997282082!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x96645709dd7aac17%3A0x4d580c68b3944217!2sYungay%20802%2C%203341646%20Curic%C3%B3%2C%20Maule!5e0!3m2!1ses-419!2scl!4v1766447055809!5m2!1ses-419!2scl\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+          }
+        },
+        "store_nQxqkp": {
+          "type": "store",
+          "name": "Mis Joyas Talca",
+          "settings": {
+            "store_name": "MISJOYAS Talca",
+            "address": "Calle 1 Sur 1271 Local 3",
+            "additional_info": "<p>Galería Zaror</p>",
+            "special_hours": "",
+            "hours": "<p>Lunes a Viernes: 10:00 a 19:00 hrs<br/>Sábado 10:00 a 15:00 hrs<br/>Domingo Cerrado</p>",
+            "phone": "56940210906",
+            "email": "misjoyastalca@misjoyas.cl",
+            "store_image": "shopify://shop_images/misjoyas-talca2.jpg",
+            "youtube_url": "",
+            "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3251.1077814098703!2d-71.66152492417518!3d-35.427359972670246!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9665c6a3af703955%3A0x7629ad36188aa462!2sC.%201%20Sur%201271%2C%203460000%20Talca%2C%20Maule!5e0!3m2!1ses-419!2scl!4v1766447155965!5m2!1ses-419!2scl\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+          }
+        },
+        "store_ibLdBV": {
+          "type": "store",
+          "name": "Mis Joyas Barros Arana Concepción",
+          "settings": {
+            "store_name": "MISJOYAS Concepción Barros Arana",
+            "address": "Barros Arana 653 Local 17",
+            "additional_info": "",
+            "special_hours": "",
+            "hours": "<p>Lunes a Viernes: 10:00 a 19:00 hrs<br/>Sábado 10:00 a 15:00 hrs<br/>Domingo Cerrado</p>",
+            "phone": "56966828682",
+            "email": "misjoyasconcepcion653@misjoyas.cl",
+            "store_image": "shopify://shop_images/misjoyas-barros-exterior1.jpg",
+            "youtube_url": "https://youtu.be/-F17HBgo9Qk",
+            "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3193.682202245204!2d-73.05327172411299!3d-36.82613457223974!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9669b5d041851b5d%3A0xddff7e3aee887858!2sBarros%20Arana%20653%2C%204030575%20Concepci%C3%B3n%2C%20B%C3%ADo%20B%C3%ADo!5e0!3m2!1ses-419!2scl!4v1766449329036!5m2!1ses-419!2scl\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+          }
+        },
+        "store_jeX6ii": {
+          "type": "store",
+          "name": "Mis Joyas Concepción",
+          "settings": {
+            "store_name": "MISJOYAS Concepción",
+            "address": "Freire 522 Local 114",
+            "additional_info": "<p>Galería Caracol</p>",
+            "special_hours": "",
+            "hours": "<p>Lunes a Viernes: 10:00 a 19:00 hrs<br/>Sábado 10:00 a 15:00 hrs<br/>Domingo Cerrado</p>",
+            "phone": "56950405322",
+            "email": "misjoyasconcepcion@misjoyas.cl",
+            "store_image": "shopify://shop_images/misjoyas-concepcion-frente-2.jpg",
+            "youtube_url": "https://youtu.be/kYUDOeV8u6k",
+            "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3193.671951186977!2d-73.05538652411293!3d-36.8263801722397!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9669b5da9914c88f%3A0x14450296aa58e12b!2zRnJlaXJlIDUyMiwgNDAzMDU2MCBDb25jZXBjacOzbiwgQsOtbyBCw61v!5e0!3m2!1ses-419!2scl!4v1766449449406!5m2!1ses-419!2scl\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+          }
+        },
+        "store_4pfHgc": {
+          "type": "store",
+          "name": "Mis Joyas Concepción 574",
+          "settings": {
+            "store_name": "MISJOYAS Concepción 574",
+            "address": "Rengo 574 Local D",
+            "additional_info": "<p>Galería Caracol</p>",
+            "special_hours": "",
+            "hours": "<p>Lunes a Viernes: 10:00 a 19:00 hrs<br/>Sábado 10:00 a 15:00 hrs<br/>Domingo Cerrado</p>",
+            "phone": "56982960069",
+            "email": "misjoyasconcepcion574@misjoyas.cl",
+            "store_image": "shopify://shop_images/mj-574.jpg",
+            "youtube_url": "",
+            "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3193.671951186977!2d-73.05538652411293!3d-36.8263801722397!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9669b5da9bbb2773%3A0x845358430672d012!2zUmVuZ28gNTc0LCA0MDMwNTk3IENvbmNlcGNpw7NuLCBCw61vIELDrW8!5e0!3m2!1ses-419!2scl!4v1766449534991!5m2!1ses-419!2scl\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+          }
+        },
+        "store_DCWQHt": {
+          "type": "store",
+          "name": "Mis Joyas Concepción Local 61",
+          "settings": {
+            "store_name": "MISJOYAS Concepción Local 61",
+            "address": "Caupolicán 543 Local 61",
+            "additional_info": "<p>Galería Internacional, Subterráneo</p>",
+            "special_hours": "",
+            "hours": "<p>Lunes a Viernes: 10:00 a 19:00 hrs<br/>Sábado 10:00 a 15:00 hrs<br/>Domingo Cerrado</p>",
+            "phone": "56954662557",
+            "email": "misjoyasconcepcion61@misjoyas.cl",
+            "store_image": "shopify://shop_images/mj-concepcion61.jpg",
+            "youtube_url": "",
+            "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3193.6637578111918!2d-73.055380724113!3d-36.82657647223966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9669b5d076b23099%3A0x93334e156ecb7ec5!2zQ2F1cG9saWPDoW4gNTQzLCA0MDMwNTk1IENvbmNlcGNpw7NuLCBCw61vIELDrW8!5e0!3m2!1ses-419!2scl!4v1766449621706!5m2!1ses-419!2scl\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+          }
+        },
+        "store_dPXPKC": {
+          "type": "store",
+          "name": "Sammit Concepción",
+          "settings": {
+            "store_name": "Sammit Concepción",
+            "address": "Freire 522 Local 108",
+            "additional_info": "<p>Galería Caracol, Primer Nivel</p>",
+            "special_hours": "",
+            "hours": "<p>Lunes a Viernes: 10:00 a 19:00 hrs<br/>Sabado 10:00 a 15:00 hrs<br/>Domingo Cerrado</p>",
+            "phone": "56972814206",
+            "email": "sammitconcepcion@sammit.cl",
+            "store_image": "shopify://shop_images/sammit-fachada3.jpg",
+            "youtube_url": "https://youtu.be/LnRo3FF9pY0",
+            "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3193.671951186977!2d-73.05538652411292!3d-36.8263801722397!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9669b5da9914c88f%3A0x14450296aa58e12b!2zRnJlaXJlIDUyMiwgNDAzMDU2MCBDb25jZXBjacOzbiwgQsOtbyBCw61v!5e0!3m2!1ses-419!2scl!4v1766449716661!5m2!1ses-419!2scl\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+          }
+        },
+        "store_FUymjU": {
+          "type": "store",
+          "name": "Dharma Concepción",
+          "settings": {
+            "store_name": "Dharma Concepción",
+            "address": "Rengo 578 Local 103",
+            "additional_info": "<p>Galería Caracol</p>",
+            "special_hours": "",
+            "hours": "<p>Lunes a Viernes: 10:00 a 19:00 hrs<br/>Sabado 10:00 a 15:00 hrs<br/>Domingo Cerrado</p>",
+            "phone": "56998943317",
+            "email": "dharmaconcepcion@joyasdharma.cl",
+            "store_image": "shopify://shop_images/dharma-concepcion-exterior1.jpg",
+            "youtube_url": "https://youtu.be/8mIdwIdJGyA",
+            "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3193.671951186977!2d-73.05538652411292!3d-36.8263801722397!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9669b5da9bb9dd85%3A0x5153f803f761f794!2zUmVuZ28gNTc4LCAxMjQwMDA5IENvbmNlcGNpw7NuLCBCw61vIELDrW8!5e0!3m2!1ses-419!2scl!4v1766449850076!5m2!1ses-419!2scl\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+          }
+        },
+        "store_4UFEQ6": {
+          "type": "store",
+          "name": "Mis Joyas Los Angeles",
+          "settings": {
+            "store_name": "MISJOYAS Los Ángeles",
+            "address": "Colón 457 local B",
+            "additional_info": "",
+            "special_hours": "",
+            "hours": "<p>Lunes a Viernes: 10:00 a 19:00 hrs<br/>Sábado 10:00 a 15:00 hrs<br/>Domingo Cerrado</p>",
+            "phone": "56940221682",
+            "email": "misjoyaslosangeles@misjoyas.cl",
+            "store_image": "shopify://shop_images/misjoyas-losangeles.jpg",
+            "youtube_url": "",
+            "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3166.6761885296455!2d-72.35519541023326!3d-37.46836670003391!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x966bdd48a0078cb7%3A0x1335b8f988e3a0f5!2zQ29sw7NuIDQ1NywgNDQ0MTEyOCBMb3MgQW5nZWxlcywgTG9zIMOBbmdlbGVzLCBCw61vIELDrW8!5e0!3m2!1ses-419!2scl!4v1766502007212!5m2!1ses-419!2scl\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+          }
+        },
+        "store_HcEXrJ": {
+          "type": "store",
+          "name": "Mis Joyas Temuco",
+          "settings": {
+            "store_name": "MISJOYAS Temuco",
+            "address": "Calle Aldunate 413 Local 105",
+            "additional_info": "",
+            "special_hours": "",
+            "hours": "<p>Lunes a Viernes: 10:00 a 19:00 hrs<br/>Sábado 10:00 a 15:00 hrs<br/>Domingo Cerrado</p>",
+            "phone": "56999980190",
+            "email": "misjoyastemuco@misjoyas.cl",
+            "store_image": "shopify://shop_images/misjoyas-temuco-105.jpg",
+            "youtube_url": "",
+            "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3112.115998463935!2d-72.59023842336364!3d-38.738100271758555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9614d33f3a72322d%3A0x512565b3f8c0a7a2!2sMis%20Joyas%20Temuco%20Aldunate%20413%2C%20local%20105!5e0!3m2!1ses-419!2scl!4v1766502029051!5m2!1ses-419!2scl\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+          }
+        },
+        "store_HJ4qRB": {
+          "type": "store",
+          "name": "Mis Joyas Temuco",
+          "settings": {
+            "store_name": "MISJOYAS Temuco",
+            "address": "Diego Portales 873, local 12 - Galería Teodoro Rivera, Temuco",
+            "additional_info": "",
+            "special_hours": "",
+            "hours": "<p>Lunes a Viernes: 10:00 a 19:00 hrs<br/>Sábado 10:00 a 15:00 hrs<br/>Domingo Cerrado</p>",
+            "phone": "56932027200",
+            "email": "misjoyastemuco12@misjoyas.cl",
+            "store_image": "shopify://shop_images/FACHADA_MIS_JOYAS_TEMUCO_LOCAL_12_1.jpg",
+            "youtube_url": "",
+            "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3112.1462219895902!2d-72.59170352407085!3d-38.73740667175878!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9614d3dd05e3c273%3A0x7b70747714072f7!2sDiego%20Portales%20873%2C%204790891%20Temuco%2C%20Araucan%C3%ADa!5e0!3m2!1ses!2scl!4v1768401838882!5m2!1ses!2scl\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+          }
+        },
+        "store_bhUd4r": {
+          "type": "store",
+          "name": "Mis Joyas Valdivia",
+          "settings": {
+            "store_name": "MISJOYAS Valdivia",
+            "address": "Ramón Picarte 491",
+            "additional_info": "",
+            "special_hours": "",
+            "hours": "<p>Lunes a Viernes: 10:00 a 19:00 hrs<br/>Sábado 10:00 a 15:00 hrs<br/>Domingo Cerrado</p>",
+            "phone": "56982746523",
+            "email": "misjoyasvaldivia@misjoyas.cl",
+            "store_image": "shopify://shop_images/mj-valdivia1-thumb.jpg",
+            "youtube_url": "https://youtu.be/UVVSkxi-3TY",
+            "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3064.6579526400265!2d-73.24756200963118!3d-39.814663698168104!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9615ee77a00ebcbb%3A0x947974a15867d1e9!2sAv.%20Ram%C3%B3n%20Picarte%20491%2C%205090000%20Valdivia%2C%20Los%20R%C3%ADos!5e0!3m2!1ses-419!2scl!4v1766502306135!5m2!1ses-419!2scl\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+          }
+        },
+        "store_dceYEh": {
+          "type": "store",
+          "name": "Mis Joyas Osorno",
+          "settings": {
+            "store_name": "MISJOYAS Osorno",
+            "address": "Eleuterio Ramírez 952 Local 21",
+            "additional_info": "<p>Galería Rombolcol</p>",
+            "special_hours": "",
+            "hours": "<p>Lunes a Viernes: 9:30 a 18:30 hrs<br/>Sábado 10:00 a 15:00 hrs<br/>Domingo Cerrado</p>",
+            "phone": "56932027201",
+            "email": "misjoyasosorno@misjoyas.cl",
+            "store_image": "shopify://shop_images/misjoyas-osorno-fachada2.jpg",
+            "youtube_url": "https://youtu.be/IsmgrK70Ffs",
+            "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3030.5739848343414!2d-73.13886330943009!3d-40.57308409771041!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x961637002aa7b559%3A0xdf8da33e1426fa95!2sOro%20Servicio!5e0!3m2!1ses-419!2scl!4v1766502457728!5m2!1ses-419!2scl\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+          }
+        },
+        "store_7Gy8TG": {
+          "type": "store",
+          "name": "Mis Joyas Osorno 1036",
+          "settings": {
+            "store_name": "MISJOYAS Osorno 1036",
+            "address": "Eleuterio Ramírez 1036 Local 2",
+            "additional_info": "",
+            "special_hours": "",
+            "hours": "<p>Lunes a Viernes: 10:00 a 19:00 hrs<br/>Sábado 10:00 a 15:00 hrs<br/>Domingo Cerrado</p>",
+            "phone": "56940221618",
+            "email": "misjoyasosorno1036@misjoyas.cl",
+            "store_image": "shopify://shop_images/mj-1036.jpg",
+            "youtube_url": "https://youtu.be/IsmgrK70Ffs",
+            "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3030.5684060287417!2d-73.13533832329264!3d-40.573207271414844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x961636604373c44d%3A0x391aa943bb7274a6!2sEleuterio%20Ram%C3%ADrez%201036%2C%20Osorno%2C%20Los%20Lagos!5e0!3m2!1ses-419!2scl!4v1766502606052!5m2!1ses-419!2scl\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+          }
+        },
+        "store_aEHGfW": {
+          "type": "store",
+          "name": "Mis Joyas Puerto Montt",
+          "settings": {
+            "store_name": "MISJOYAS Puerto Montt",
+            "address": "Antonio Varas 447 Local 1A",
+            "additional_info": "",
+            "special_hours": "",
+            "hours": "<p>Lunes a Viernes: 09:30 a 18:30 hrs<br/>Sábado 10:00 a 15:00 hrs<br/>Domingo Cerrado</p>",
+            "phone": "56934356001",
+            "email": "misjoyaspuertomontt@misjoyas.cl",
+            "store_image": "shopify://shop_images/misjoyas-puertomontt.jpg",
+            "youtube_url": "https://youtu.be/UVVSkxi-3TY",
+            "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.676747853451!2d-70.61902912355335!3d-33.43167097339711!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cf7c84d2cbc9%3A0x6f95c9ee527a272c!2sAntonio%20Varas%20447%2C%20Local%201A%2C%20Providencia%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses-419!2scl!4v1766502703426!5m2!1ses-419!2scl\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+          }
+        }
+      },
+      "block_order": [
+        "store_rhYqLn",
+        "store_7XhJXF",
+        "store_YgBe4H",
+        "store_UyAfY9",
+        "store_qYpqcE",
+        "store_BYE4KX",
+        "store_t9VjDh",
+        "store_jTKtWV",
+        "store_9rNgyb",
+        "store_wffkUd",
+        "store_LJ4mdk",
+        "store_XEPWMt",
+        "store_8z9GUR",
+        "store_zTCc4R",
+        "store_KbxMji",
+        "store_rmfiUp",
+        "store_MhLgcY",
+        "store_3TCc3R",
+        "store_fJqFVx",
+        "store_Ne3nEm",
+        "store_a7AG4z",
+        "store_FtXEji",
+        "store_bf88TF",
+        "store_nQxqkp",
+        "store_ibLdBV",
+        "store_jeX6ii",
+        "store_4pfHgc",
+        "store_DCWQHt",
+        "store_dPXPKC",
+        "store_FUymjU",
+        "store_4UFEQ6",
+        "store_HcEXrJ",
+        "store_HJ4qRB",
+        "store_bhUd4r",
+        "store_dceYEh",
+        "store_7Gy8TG",
+        "store_aEHGfW"
+      ],
+      "name": "Store Locator",
+      "settings": {
+        "heading": "Nuestras tiendas",
+        "tab_active_color": "#ffffff",
+        "tab_active_bg": "#000000",
+        "hours_label": "Horario",
+        "pickup_text": "",
+        "special_hours_color": "#e74c3c",
+        "pickup_text_color": "#27ae60",
+        "hours_bg_color": "#f8f9fa"
+      }
+    },
+    "rich_text_MjKD8g": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_qfVmxh": {
+          "type": "heading",
+          "settings": {
+            "heading": "{{ page.title }}",
+            "highlight_type": "underline",
+            "heading_size": 100,
+            "heading_tag": "h2"
+          }
+        }
+      },
+      "block_order": [
+        "heading_qfVmxh"
+      ],
+      "disabled": true,
+      "name": "t:sections.rich-text.name",
+      "settings": {
+        "heading_light": "rgba(0,0,0,0)",
+        "text_light": "rgba(0,0,0,0)",
+        "color_heading_highlight_light": "rgba(0,0,0,0)",
+        "background_color_light": "#cccccc",
+        "heading_dark": "rgba(0,0,0,0)",
+        "text_dark": "rgba(0,0,0,0)",
+        "color_heading_highlight_dark": "rgba(0,0,0,0)",
+        "background_color_dark": "rgba(0,0,0,0)",
+        "content_alignment": "center",
+        "show_section_divider": false,
+        "make_full_page_width": true,
+        "padding_top": 28,
+        "padding_bottom": 28,
+        "content_alignment_mobile": "center",
+        "show_section_divider_mobile": false,
+        "padding_top_mobile": 28,
+        "padding_bottom_mobile": 28
+      }
+    },
+    "rich_text_zTFRwh": {
+      "type": "rich-text",
+      "blocks": {
+        "text_cwWrND": {
+          "type": "text",
+          "settings": {
+            "text": "{{ page.content }}",
+            "number_of_lines_shown": "none",
+            "read_more_label": "Read more",
+            "see_less_label": "See less"
+          }
+        }
+      },
+      "block_order": [
+        "text_cwWrND"
+      ],
+      "disabled": true,
+      "name": "t:sections.rich-text.name",
+      "settings": {
+        "heading_light": "rgba(0,0,0,0)",
+        "text_light": "rgba(0,0,0,0)",
+        "color_heading_highlight_light": "rgba(0,0,0,0)",
+        "background_color_light": "#ffffff",
+        "heading_dark": "rgba(0,0,0,0)",
+        "text_dark": "rgba(0,0,0,0)",
+        "color_heading_highlight_dark": "rgba(0,0,0,0)",
+        "background_color_dark": "rgba(0,0,0,0)",
+        "content_alignment": "center",
+        "show_section_divider": false,
+        "make_full_page_width": true,
+        "padding_top": 28,
+        "padding_bottom": 28,
+        "content_alignment_mobile": "center",
+        "show_section_divider_mobile": false,
+        "padding_top_mobile": 28,
+        "padding_bottom_mobile": 28
+      }
+    },
+    "17458847979e5a522c": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "17640823479e5c0ec1",
+    "main",
+    "store_locator_EiPKUk",
+    "rich_text_MjKD8g",
+    "rich_text_zTFRwh",
+    "17458847979e5a522c"
+  ]
+}

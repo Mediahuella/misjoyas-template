@@ -1,0 +1,316 @@
+.store-locator-section {
+  padding: 60px 0;
+}
+
+.store-locator-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* AJUSTE 1: Más espacio entre título y contenido */
+.section-header {
+  margin-bottom: 50px; /* Aumentado de ~20px a 50px */
+}
+
+.section-header__title {
+  margin-bottom: 0;
+}
+
+/* Layout principal con sidebar */
+.store-locator-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* Sidebar con tabs verticales - STICKY con scroll interno */
+.store-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #fff;
+  position: sticky;
+  top: 20px;
+  max-height: calc(100vh - 40px);
+  /* Estilos del scrollbar personalizado (opcional) */
+  scrollbar-width: thin;
+  scrollbar-color: #ccc #f8f9fa;
+}
+
+/* Scrollbar personalizado para Chrome/Safari */
+.store-sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.store-sidebar::-webkit-scrollbar-track {
+  background: #f8f9fa;
+  border-radius: 0 8px 8px 0;
+}
+
+.store-sidebar::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+.store-sidebar::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
+.store-tab-vertical {
+  background: #f8f9fa;
+  border: none;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 18px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #666;
+  text-align: left;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.store-tab-vertical:last-child {
+  border-bottom: none;
+}
+
+.store-tab-vertical:hover {
+  background: #e9ecef;
+  color: #000;
+}
+
+.store-tab-vertical.active {
+  background: var(--tab-active-bg, #000);
+  color: var(--tab-active-color, #fff);
+  font-weight: 600;
+}
+
+/* Contenido principal */
+.store-main-content {
+  position: relative;
+}
+
+.store-content {
+  display: none;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: stretch; /* AJUSTE 2: Cambio de start a stretch para igualar alturas */
+}
+
+.store-content.active {
+  display: grid;
+}
+
+.store-info h3 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #000;
+}
+
+.store-info p {
+  margin-bottom: 12px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.store-address {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+/* Información adicional justo debajo de la dirección */
+.store-additional-top {
+  margin: 8px 0 15px 0;
+  color: #555;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.store-additional-top p {
+  margin-bottom: 8px;
+}
+
+.store-additional-top strong {
+  font-weight: 600;
+  color: #333;
+}
+
+.store-additional-top em {
+  font-style: italic;
+}
+
+.store-additional-top ul,
+.store-additional-top ol {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+.store-additional-top li {
+  margin-bottom: 5px;
+}
+
+.store-special {
+  font-weight: 600 !important;
+}
+
+.store-hours {
+  margin: 20px 0;
+  padding: 15px;
+  border-radius: 6px;
+}
+
+.store-hours p:first-child {
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.store-phone {
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.store-email {
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.store-email a {
+  color: #3498db;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.store-email a:hover {
+  color: #2980b9;
+  text-decoration: underline;
+}
+
+.store-pickup {
+  font-weight: 600 !important;
+  margin-top: 15px !important;
+}
+
+/* CORREGIDO: Imagen se muestra completa sin recortes */
+.store-image {
+  margin: 20px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f8f9fa;
+}
+
+.store-image img {
+  width: 100%;
+  height: auto; /* Cambiado de height: 200px fijo */
+  display: block;
+  object-fit: contain; /* Cambiado de cover a contain para mostrar imagen completa */
+  max-height: 350px; /* Altura máxima opcional */
+  border-radius: 8px;
+}
+
+/* Estilos para el video de YouTube */
+.store-video {
+  margin: 20px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 56.25%; /* Aspect ratio 16:9 */
+  height: 0;
+  background: #000;
+}
+
+.store-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+}
+
+/* AJUSTE 2: Mapa que ocupe toda la altura disponible */
+.store-map {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Ocupa toda la altura del contenedor */
+  min-height: 500px; /* Altura mínima para que se vea bien */
+}
+
+.store-map iframe {
+  width: 100%;
+  height: 100%; /* Ocupa toda la altura del contenedor padre */
+  flex: 1; /* Se expande para llenar el espacio */
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .store-locator-section {
+    padding: 40px 0;
+  }
+  
+  .section-header {
+    margin-bottom: 30px; /* Menos espacio en móvil */
+  }
+  
+  .store-locator-layout {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .store-sidebar {
+    order: -1;
+    position: static; /* Quitar sticky en móvil */
+    max-height: 400px; /* Altura máxima en móvil */
+  }
+  
+  .store-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    align-items: start; /* En móvil volvemos a start */
+  }
+  
+  .store-image img {
+    max-height: 250px; /* Altura máxima menor en móvil */
+  }
+  
+  .store-video {
+    margin: 15px 0;
+  }
+  
+  .store-map {
+    position: static;
+    min-height: 250px; /* Altura mínima en móvil */
+  }
+  
+  .store-map iframe {
+    height: 250px; /* Altura fija en móvil */
+  }
+}
+
+@media (max-width: 480px) {
+  .store-tab-vertical {
+    padding: 16px 15px;
+    font-size: 13px;
+  }
+  
+  .store-info h3 {
+    font-size: 20px;
+  }
+  
+  .section-header {
+    margin-bottom: 25px; /* Aún menos espacio en móviles pequeños */
+  }
+}

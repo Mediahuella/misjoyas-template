@@ -1,0 +1,148 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "footer-3": {
+          "type": "email_footer",
+          "settings": {
+            "open_by_default": true,
+            "heading_email": "Regístrate",
+            "subtext_email": "<p>Y recibe nuestras noticias y ofertas</p>",
+            "show_social_icons": false
+          }
+        },
+        "contact_pcVEj8": {
+          "type": "contact",
+          "disabled": true,
+          "settings": {
+            "open_by_default": false,
+            "heading_menu": "Atención al cliente",
+            "icon_1": "telephone",
+            "another_icon_1": "",
+            "custom_icon": "",
+            "title_1": "+56 2 2745 8392",
+            "text_1": "",
+            "text_link_1": "tel:+56227458392",
+            "open_new_window_1": true,
+            "enable_text_link_1": false,
+            "icon_2": "message-text",
+            "another_icon_2": "",
+            "custom_icon_2": "",
+            "title_2": "+569 4545 4917",
+            "text_2": "",
+            "text_link_2": "https://wa.me/+56945454917",
+            "open_new_window_2": true,
+            "enable_text_link_2": false,
+            "icon_3": "help",
+            "another_icon_3": "",
+            "custom_icon_3": "",
+            "title_3": "contacto@MISJOYAS.cl",
+            "text_3": "",
+            "text_link_3": "mailto:contacto@misjoyas.cl",
+            "open_new_window_3": false,
+            "enable_text_link_3": true
+          }
+        },
+        "7fcecb2f-a55e-4a53-b50d-d34d8d9d4e9d": {
+          "type": "link_list",
+          "settings": {
+            "open_by_default": false,
+            "heading_menu": "Te ayudamos",
+            "menu": "footer",
+            "show_social_icons": false
+          }
+        },
+        "footer-1": {
+          "type": "link_list",
+          "settings": {
+            "open_by_default": false,
+            "heading_menu": "Políticas",
+            "menu": "pol-ticas",
+            "show_social_icons": false
+          }
+        },
+        "image_XWzAfG": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/color_de_peloRecurso_4.svg",
+            "image_width": 200,
+            "link_image_footer": "",
+            "open_new_window": false,
+            "rounded_corner_image": false,
+            "alignment": "left",
+            "text": "",
+            "spacing": 96
+          }
+        },
+        "text_RYHYaG": {
+          "type": "text",
+          "settings": {
+            "open_by_default": false,
+            "heading_text": "",
+            "subtext": "",
+            "show_social_icons": false,
+            "icon_layout": "horizontal",
+            "image_width": 100,
+            "link_image_footer": "",
+            "open_new_window": false
+          }
+        },
+        "text_3fDFDR": {
+          "type": "text",
+          "settings": {
+            "open_by_default": false,
+            "heading_text": "",
+            "subtext": "",
+            "show_social_icons": true,
+            "icon_layout": "horizontal",
+            "image_width": 100,
+            "link_image_footer": "",
+            "open_new_window": false
+          }
+        }
+      },
+      "block_order": [
+        "footer-3",
+        "contact_pcVEj8",
+        "7fcecb2f-a55e-4a53-b50d-d34d8d9d4e9d",
+        "footer-1",
+        "image_XWzAfG",
+        "text_RYHYaG",
+        "text_3fDFDR"
+      ],
+      "settings": {
+        "columns_desktop": 3,
+        "show_language_selector": false,
+        "show_currency_selector": false,
+        "show_social_icons": false,
+        "payment_enable": false,
+        "custom_payment": "",
+        "show_copyright": false,
+        "add_copyright_text": "",
+        "additional_layout": "horizontal",
+        "show_powered": false,
+        "enable_follow_on_shop": false,
+        "horizontal_position": "right",
+        "top_padding": 0,
+        "bottom_padding": 0,
+        "top_padding_mobile": 0,
+        "bottom_padding_mobile": 20
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

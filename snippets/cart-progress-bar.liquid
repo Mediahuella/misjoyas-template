@@ -1,0 +1,154 @@
+{% comment %}
+  Renders cart progress bar with 4 tiers: Envío Gratis, 10% OFF, 15% OFF, 20% OFF
+{% endcomment %}
+{%- if settings.enable_cart_progress_bar and cart.item_count > 0 -%}
+  {%- liquid
+    assign cart_total = cart.total_price | divided_by: 100.00
+
+    assign tier_1_threshold = nil
+    assign freeshipping_thresholds = settings.order_amount_freeshipping | newline_to_br | strip_newlines | split: '<br />'
+    if settings.order_amount_freeshipping contains ';'
+      assign freeshipping_thresholds = settings.order_amount_freeshipping | remove: " " | split: ';'
+    endif
+    for threshold in freeshipping_thresholds
+      unless threshold contains ':'
+        if threshold != blank
+          assign check_currency = threshold | remove: "0" | remove: "1" | remove: "2" | remove: "3" | remove: "4" | remove: "5" | remove: "6" | remove: "7" | remove: "8" | remove: "9" | remove: ":" | remove: " "
+          if check_currency == '' or check_currency == '.'
+            assign tier_1_threshold = threshold | strip | plus: 0
+          endif
+        endif
+      else
+        assign check_currency_first = threshold | split: ":" | first
+        assign check_currency_last = threshold | split: ":" | last
+        assign check_currency = threshold | remove_first: check_currency_first | remove: check_currency_last
+        if check_currency == ':'
+          if check_currency_first == cart.currency.iso_code
+            assign tier_1_threshold = check_currency_last | strip | plus: 0
+          endif
+        else
+          assign check_currency_country = check_currency | remove: ":"
+          if check_currency_first == localization.country.iso_code and check_currency_country == cart.currency.iso_code
+            assign tier_1_threshold = check_currency_last | strip | plus: 0
+          endif
+        endif
+      endunless
+    endfor
+
+    assign tier_2_threshold = settings.cart_progress_tier_2 | default: '150000' | plus: 0
+    assign tier_3_threshold = settings.cart_progress_tier_3 | default: '400000' | plus: 0
+    assign tier_4_threshold = settings.cart_progress_tier_4 | default: '1000000' | plus: 0
+
+    if tier_1_threshold == nil or tier_1_threshold == 0
+      assign tier_1_threshold = 90000
+    endif
+
+    assign current_tier = 0
+    assign next_tier_label = 'general.cart.progress_tier_1' | t
+    assign progress_percent = 0
+    assign amount_needed = 0
+
+    if cart_total >= tier_4_threshold
+      assign current_tier = 4
+      assign progress_percent = 100
+    elsif cart_total >= tier_3_threshold
+      assign current_tier = 3
+      assign next_tier_label = 'general.cart.progress_tier_4' | t
+      assign segment_size = tier_4_threshold | minus: tier_3_threshold
+      assign progress_in_segment = cart_total | minus: tier_3_threshold
+      assign segment_percent = progress_in_segment | times: 25.0 | divided_by: segment_size
+      assign progress_percent = 75 | plus: segment_percent
+      assign amount_needed = tier_4_threshold | minus: cart_total
+    elsif cart_total >= tier_2_threshold
+      assign current_tier = 2
+      assign next_tier_label = 'general.cart.progress_tier_3' | t
+      assign segment_size = tier_3_threshold | minus: tier_2_threshold
+      assign progress_in_segment = cart_total | minus: tier_2_threshold
+      assign segment_percent = progress_in_segment | times: 25.0 | divided_by: segment_size
+      assign progress_percent = 50 | plus: segment_percent
+      assign amount_needed = tier_3_threshold | minus: cart_total
+    elsif cart_total >= tier_1_threshold
+      assign current_tier = 1
+      assign next_tier_label = 'general.cart.progress_tier_2' | t
+      assign segment_size = tier_2_threshold | minus: tier_1_threshold
+      assign progress_in_segment = cart_total | minus: tier_1_threshold
+      assign segment_percent = progress_in_segment | times: 25.0 | divided_by: segment_size
+      assign progress_percent = 25 | plus: segment_percent
+      assign amount_needed = tier_2_threshold | minus: cart_total
+    else
+      assign next_tier_label = 'general.cart.progress_tier_1' | t
+      assign progress_percent = cart_total | times: 25.0 | divided_by: tier_1_threshold
+      assign amount_needed = tier_1_threshold | minus: cart_total
+    endif
+
+    assign amount_needed_formatted = amount_needed | times: 100 | money
+  -%}
+  {% style %}
+    .cart-progress-bar .progress-track {
+      background: #e5e7eb;
+      height: 8px;
+      border-radius: 4px;
+      overflow: visible;
+      position: relative;
+    }
+    .cart-progress-bar .progress-fill {
+      height: 100%;
+      background: #e91e8c;
+      border-radius: 4px;
+      width: {{ progress_percent }}%;
+      transition: width 0.5s ease-in-out;
+    }
+    .cart-progress-bar .milestone {
+      width: 14px;
+      height: 14px;
+      border: 2px solid #9ca3af;
+      border-radius: 50%;
+      background: #fff;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      box-sizing: border-box;
+    }
+    .cart-progress-bar .milestone.reached {
+      border-color: #e91e8c;
+      background: #e91e8c;
+    }
+    .cart-progress-bar {
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+    @media (min-width: 1024px) {
+      .cart-progress-bar {
+        padding-left: 28px;
+        padding-right: 28px;
+      }
+    }
+  {% endstyle %}
+  <div class="cart-progress-bar pt-3 pb-4" x-data="{ active: false }" x-intersect:enter="active = true" x-intersect:leave="active = false" style="display: none !important;">
+    {% if current_tier < 4 %}
+      <p class="text-sm text-[rgb(var(--colors-text))] mb-3">
+        {{ 'general.cart.progress_message_html' | t: amount: amount_needed_formatted, benefit: next_tier_label }}
+      </p>
+    {% else %}
+      <p class="text-sm text-[rgb(var(--colors-text))] mb-3">
+        {{ 'general.cart.progress_max' | t }}
+      </p>
+    {% endif %}
+    <div class="relative pt-1 pb-5">
+      <div class="progress-track relative">
+        <div class="progress-fill absolute left-0 top-0"></div>
+        <div class="milestone {% if current_tier >= 1 %}reached{% endif %}" style="left: 0;"></div>
+        <div class="milestone {% if current_tier >= 2 %}reached{% endif %}" style="left: 33.33%;"></div>
+        <div class="milestone {% if current_tier >= 3 %}reached{% endif %}" style="left: 66.66%;"></div>
+        <div class="milestone {% if current_tier >= 4 %}reached{% endif %}" style="left: 100%;"></div>
+      </div>
+      <div class="flex justify-between text-xs text-[rgb(var(--colors-text-secondary))] mt-3 absolute left-0 right-0">
+        <span>{{ 'general.cart.progress_tier_1' | t }}</span>
+        <span>10% OFF</span>
+        <span>15% OFF</span>
+        <span>20% OFF</span>
+      </div>
+    </div>
+  </div>
+{%- endif -%}

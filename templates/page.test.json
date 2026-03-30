@@ -1,0 +1,306 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "promotion-banner": {
+      "type": "promotion-banner",
+      "blocks": {
+        "text": {
+          "type": "image_banner",
+          "settings": {
+            "heading": "Contáctanos",
+            "highlight_type": "underline",
+            "heading_size": 170,
+            "heading_tag": "h2",
+            "subheading": "",
+            "text": "¿Preguntas? ¿Comentarios? Ponte en contacto con nosotros por alguno de nuestros canales de atención y te responderemos lo antes posible.",
+            "text_size": 130,
+            "content_box_type": "square",
+            "add_frame": false,
+            "color_content_box_light": "rgba(0,0,0,0)",
+            "color_content_box_dark": "rgba(0,0,0,0)"
+          }
+        }
+      },
+      "block_order": [
+        "text"
+      ],
+      "settings": {
+        "heading": "",
+        "image": "shopify://shop_images/caballos_negros.png",
+        "image_link": "",
+        "open_new_window": false,
+        "image_overlay_opacity": 70,
+        "content_position": "center",
+        "content_horizontal": 50,
+        "content_vertical": 50,
+        "position_content_mobile": "center",
+        "content_alignment": "center",
+        "show_hero": false,
+        "full_width": true,
+        "padding_full_width": false,
+        "rounded_corner_image": false,
+        "desktop_height": "natural",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "full_width_mobile": true,
+        "rounded_corner_image_mobile": false,
+        "mobile_height": "250px",
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "show_heading": false,
+        "heading_size": 100,
+        "heading_tag": "h1",
+        "show_breadcrumbs": true,
+        "show_breadcrumbs_border": false,
+        "full_width_breadcrumb": true,
+        "desktop_content_alignment": "text-left",
+        "mobile_content_alignment": "text-left",
+        "background_color_light": "#f2f2f2",
+        "text_color_light": "rgba(0,0,0,0)",
+        "textlink_color_light": "rgba(0,0,0,0)",
+        "background_color_dark": "#313131",
+        "text_color_dark": "rgba(0,0,0,0)",
+        "textlink_color_dark": "rgba(0,0,0,0)",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "form": {
+      "type": "contact-form",
+      "blocks": {
+        "name": {
+          "type": "name",
+          "settings": {
+            "heading": "Nombre",
+            "mark_as_required": true
+          }
+        },
+        "email": {
+          "type": "email",
+          "settings": {
+            "heading": "Email"
+          }
+        },
+        "phone": {
+          "type": "phone",
+          "settings": {
+            "heading": "Teléfono",
+            "mark_as_required": true
+          }
+        },
+        "message": {
+          "type": "message",
+          "settings": {
+            "heading": "Mensaje",
+            "mark_as_required": true
+          }
+        }
+      },
+      "block_order": [
+        "name",
+        "email",
+        "phone",
+        "message"
+      ],
+      "settings": {
+        "heading": "¿Preguntas? Escríbenos",
+        "highlight_type": "underline",
+        "heading_size": 70,
+        "heading_tag": "h2",
+        "heading_alignment": "left",
+        "text": "",
+        "background_color_light": "rgba(0,0,0,0)",
+        "background_color_dark": "rgba(0,0,0,0)",
+        "button_label": "Enviar",
+        "button_alignment": "right",
+        "success_message": "Gracias por contactarnos. Nos pondremos en contacto con usted lo antes posible.",
+        "show_content": "info",
+        "form_alignment": "left",
+        "desktop_height": "550px",
+        "mobile_height": "400px",
+        "contact_heading": "Información de Contacto",
+        "highlight_type_1": "underline",
+        "heading_tag_2": "h2",
+        "infomation": "<p>Casa Matriz</p>",
+        "address": "Monjitas 879, Local 105 Piso 1 y 2, Galería Plaza de Armas.Santiago - Chile",
+        "phone_nummber": "+56 2 2745 8392",
+        "email_address": "contacto@misjoyas.cl",
+        "contact_text": "<p>Horarios de Atención</p><p>Lun - Jue: 08:30 a 18:00 hrs</p><p>Viernes: 08:30 a 15:30 hrs</p>",
+        "full_width": false,
+        "show_section_divider": false,
+        "padding_top": 76,
+        "padding_bottom": 100,
+        "full_width_mobile": false,
+        "show_section_divider_mobile": false,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 60
+      }
+    },
+    "collage_YMjHTa": {
+      "type": "collage",
+      "blocks": {
+        "video_NHpW6L": {
+          "type": "video",
+          "settings": {
+            "show_sound_control": false,
+            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+            "enable_video_autoplay": false,
+            "video_alt_text": "",
+            "number_of_columns": 2,
+            "number_of_row": 2
+          }
+        },
+        "product_RLjwJR": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "show_quickview": true,
+            "info_alignment": "center",
+            "desktop_size": "large",
+            "number_of_columns": 1,
+            "number_of_row": 1
+          }
+        },
+        "collection_JhkXew": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "number_of_columns": 1,
+            "number_of_row": 1
+          }
+        }
+      },
+      "block_order": [
+        "video_NHpW6L",
+        "product_RLjwJR",
+        "collection_JhkXew"
+      ],
+      "name": "t:sections.collage.name",
+      "settings": {
+        "heading": "",
+        "highlight_type": "underline",
+        "heading_size": 100,
+        "heading_tag": "h2",
+        "heading_alignment": "center",
+        "subheading": "",
+        "text": "",
+        "background_color_light": "rgba(0,0,0,0)",
+        "heading_color_light": "rgba(0,0,0,0)",
+        "text_color_light": "rgba(0,0,0,0)",
+        "heading_highlight_color_light": "rgba(0,0,0,0)",
+        "background_color_dark": "rgba(0,0,0,0)",
+        "heading_color_dark": "rgba(0,0,0,0)",
+        "text_color_dark": "rgba(0,0,0,0)",
+        "heading_highlight_color_dark": "rgba(0,0,0,0)",
+        "show_vendor": false,
+        "show_rating": false,
+        "show_highlighted_attributes": true,
+        "max_columns": 3,
+        "spacing": 28,
+        "full_width": false,
+        "show_section_divider": false,
+        "padding_top": 28,
+        "padding_bottom": 28,
+        "min_columns_mobile": "2",
+        "spacing_mobile": 20,
+        "full_width_mobile": false,
+        "show_section_divider_mobile": false,
+        "padding_top_mobile": 28,
+        "padding_bottom_mobile": 28
+      }
+    },
+    "video_GKtCkQ": {
+      "type": "video",
+      "name": "t:sections.video.name",
+      "settings": {
+        "heading": "",
+        "highlight_type": "underline",
+        "heading_size": 100,
+        "heading_tag": "h2",
+        "sub_heading_video": "",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video_alt_text": "",
+        "full_width": false,
+        "rounded_corners": false,
+        "video_desktop_height": "natural",
+        "padding_top": 28,
+        "padding_bottom": 28,
+        "full_width_mobile": false,
+        "rounded_corners_mobile": false,
+        "video_mobile_height": "natural",
+        "padding_top_mobile": 28,
+        "padding_bottom_mobile": 28
+      }
+    },
+    "featured_blog_LNDxNw": {
+      "type": "featured-blog",
+      "name": "t:sections.featured-blog.name",
+      "settings": {
+        "heading": "Blog posts",
+        "highlight_type": "underline",
+        "heading_size": 100,
+        "heading_tag": "h2",
+        "heading_alignment": "center",
+        "subheading": "",
+        "blog": "news",
+        "post_limit": 3,
+        "columns_desktop": 3,
+        "show_show_more": false,
+        "show_view_all": false,
+        "view_all_position": "top",
+        "title_size": 140,
+        "content_alignment": "left",
+        "show_image": true,
+        "image_ratio": "75",
+        "item_secondary_background": false,
+        "show_author": true,
+        "show_name": false,
+        "show_date": true,
+        "show_excerpt": true,
+        "show_tag": true,
+        "show_comment_counts": true,
+        "show_read_more": false,
+        "button_read_more_label": "READ NOW",
+        "enable_desktop_slider": false,
+        "swiper_on_mobile": false,
+        "enable_arrow_mobile": false,
+        "auto_play": false,
+        "change_slides_speed": 5,
+        "full_width": false,
+        "spacing": 28,
+        "show_section_divider": false,
+        "padding_top": 28,
+        "padding_bottom": 28,
+        "columns_mobile": "1",
+        "spacing_mobile": 28,
+        "show_section_divider_mobile": false,
+        "padding_top_mobile": 28,
+        "padding_bottom_mobile": 28
+      }
+    }
+  },
+  "order": [
+    "promotion-banner",
+    "main",
+    "form",
+    "collage_YMjHTa",
+    "video_GKtCkQ",
+    "featured_blog_LNDxNw"
+  ]
+}
