@@ -331,6 +331,14 @@ requestAnimationFrame(() => {
           return false;
         }
 
+        if (label.type == 'tag-label') {
+          const requiredTag = (label.settings.product_tag || '').trim();
+          const tags = Array.isArray(productData.tags) ? productData.tags : [];
+          if (!requiredTag || !tags.includes(requiredTag)) {
+            return false;
+          }
+        }
+
         if (label.type == "sale-label" && productData.compare_at_price > productData.price) {
           return true;
         }

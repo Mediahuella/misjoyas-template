@@ -121,7 +121,8 @@
           "container": "card",
           "can_show_preorder": {{ can_show_preorder }},
           "diff_day_create": {{ difference_in_days_created }},
-          "diff_day_publish": {{ difference_in_days_published }}{% if settings.metafield_label != blank -%},{%- endif %}
+          "diff_day_publish": {{ difference_in_days_published }},
+          "tags": {{ card_product.tags | json }}{% if settings.metafield_label != blank -%},{%- endif %}
           {% if settings.metafield_label != blank -%}
             "metafield_label": { 
             {{ list_metafield_label }}
