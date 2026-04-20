@@ -1,5 +1,36 @@
 requestAnimationFrame(() => {
   document.addEventListener('alpine:init', () => {
+    /**
+     * Tags from Liquid `| json` are usually an array; normalize edge cases (string, missing).
+     * Matching is case-insensitive so admin tag casing does not break the filter.
+     */
+    const normalizeProductTags = (productData) => {
+      const raw = productData && productData.tags;
+      if (raw == null || raw === '') return [];
+      if (Array.isArray(raw)) {
+        return raw.map((t) => String(t).trim()).filter(Boolean);
+      }
+      if (typeof raw === 'string') {
+        try {
+          const parsed = JSON.parse(raw);
+          if (Array.isArray(parsed)) {
+            return parsed.map((t) => String(t).trim()).filter(Boolean);
+          }
+        } catch (e) {
+          /* comma-separated */
+        }
+        return raw.split(',').map((t) => t.trim()).filter(Boolean);
+      }
+      return [];
+    };
+
+    const productHasTag = (productData, requiredTag) => {
+      const req = (requiredTag || '').trim();
+      if (!req) return false;
+      const lower = req.toLowerCase();
+      return normalizeProductTags(productData).some((t) => t.toLowerCase() === lower);
+    };
+
     Alpine.store('xBadges', {
       fixedPositionTemplate: `<div
         class="x-badge-{label-id} x-badge-container pointer-events-none{container-img-class} ltr"
@@ -331,10 +362,9 @@ requestAnimationFrame(() => {
           return false;
         }
 
-        if (label.type == 'tag-label') {
-          const requiredTag = (label.settings.product_tag || '').trim();
-          const tags = Array.isArray(productData.tags) ? productData.tags : [];
-          if (!requiredTag || !tags.includes(requiredTag)) {
+        const productTagFilter = (label.settings.product_tag || '').trim();
+        if (label.type === 'tag-label' || productTagFilter) {
+          if (!productTagFilter || !productHasTag(productData, productTagFilter)) {
             return false;
           }
         }
@@ -392,20 +422,30 @@ requestAnimationFrame(() => {
           }
         }
         
-        if (label.settings.applied_products.includes(productData.product_id)) {
+        const appliedProducts = label.settings.applied_products || [];
+        const appliedCollections = label.settings.applied_collections || [];
+
+        if (appliedProducts.some((id) => id == productData.product_id)) {
           return true;
         }
 
-        for(let i=0;i<label.settings.applied_collections.length;i++) {
-          if (productData.collections.includes(label.settings.applied_collections[i])) {
+        for (let i = 0; i < appliedCollections.length; i++) {
+          if (productData.collections && productData.collections.includes(appliedCollections[i])) {
             return true;
           }
         }
 
         if (label.type != "sale-label"
           && label.type != "sold-out-label"
-          && label.settings.applied_products.length == 0
-          && label.settings.applied_collections.length == 0) {
+          && label.type != "tag-label"
+          && appliedProducts.length == 0
+          && appliedCollections.length == 0) {
+          return true;
+        }
+
+        if (label.type === 'tag-label'
+          && appliedProducts.length == 0
+          && appliedCollections.length == 0) {
           return true;
         }
 
