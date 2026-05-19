@@ -316,6 +316,35 @@
     }
   },
   "sections": {
+    "huincha-header": {
+      "aria_label": "Huincha promocional",
+      "alt": "Aquí hay algo especial para ti"
+    },
+    "banner-principal": {
+      "aria_label": "Banner principal",
+      "slide_alt": "Banner promocional",
+      "placeholder": "Sube la imagen de escritorio (recomendado 1920×580 px) en este bloque.",
+      "previous": "Diapositiva anterior",
+      "next": "Siguiente diapositiva"
+    },
+    "countdown-timer": {
+      "aria_label": "Contador regresivo",
+      "hours": "horas",
+      "minutes": "minutos",
+      "seconds": "segundos",
+      "minutes_short": "min",
+      "seconds_short": "seg"
+    },
+    "coupon-badges": {
+      "aria_label": "Badges de cupones",
+      "badge_alt": "Cupón de descuento",
+      "placeholder": "Sube la imagen del cupón (recomendado 360×212 px) en este bloque."
+    },
+    "category-cards": {
+      "aria_label": "Tarjetas de categorías",
+      "card_alt": "Categoría",
+      "placeholder": "Sube una imagen cuadrada (recomendado 360×360 px) en este bloque."
+    },
     "mobile-navigation": {
       "my_cart": "Mi carro"
     },

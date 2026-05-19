@@ -1,0 +1,155 @@
+{%- if section.settings.enable -%}
+  {%- unless section.settings.show_only_on_homepage and request.page_type != 'index' -%}
+  {%- liquid
+    assign huincha_image = section.settings.image
+    assign huincha_image_mobile = section.settings.image_mobile
+    if section.settings.image_alt != blank
+      assign huincha_alt = section.settings.image_alt
+    else
+      assign huincha_alt = 'sections.huincha-header.alt' | t
+    endif
+    assign huincha_link = section.settings.link
+    assign huincha_height = section.settings.banner_height
+    assign huincha_height_mobile = section.settings.banner_height_mobile
+  -%}
+
+  {%- style -%}
+    .huincha-header-{{ section.id }} {
+      --huincha-height: {{ huincha_height }}px;
+      --huincha-height-mobile: {{ huincha_height_mobile }}px;
+      width: 100%;
+      line-height: 0;
+    }
+    .huincha-header-{{ section.id }} .huincha-header__link,
+    .huincha-header-{{ section.id }} .huincha-header__picture {
+      display: block;
+      width: 100%;
+    }
+    .huincha-header-{{ section.id }} .huincha-header__img {
+      display: block;
+      width: 100%;
+      height: var(--huincha-height-mobile);
+      object-fit: cover;
+      object-position: center;
+    }
+    @media (min-width: 768px) {
+      .huincha-header-{{ section.id }} .huincha-header__img {
+        height: var(--huincha-height);
+      }
+    }
+  {%- endstyle -%}
+
+  <div
+    class="huincha-header-{{ section.id }} tw-w-full"
+    role="region"
+    aria-label="{{ 'sections.huincha-header.aria_label' | t }}"
+  >
+    {%- if huincha_link != blank -%}
+      <a
+        href="{{ huincha_link }}"
+        class="huincha-header__link"
+        {% if section.settings.open_new_window %}target="_blank" rel="noopener noreferrer"{% endif %}
+      >
+    {%- endif -%}
+
+    <picture class="huincha-header__picture">
+      {%- if huincha_image_mobile != blank -%}
+        <source
+          media="(max-width: 767px)"
+          srcset="{{ huincha_image_mobile | image_url: width: 800 }}"
+        >
+      {%- endif -%}
+      {%- if huincha_image != blank -%}
+        {{
+          huincha_image
+          | image_url: width: 3840
+          | image_tag:
+            class: 'huincha-header__img',
+            widths: '800, 1200, 1920, 2560, 3840',
+            sizes: '100vw',
+            alt: huincha_alt,
+            loading: 'eager',
+            fetchpriority: 'high'
+        }}
+      {%- endif -%}
+    </picture>
+
+    {%- if huincha_link != blank -%}
+      </a>
+    {%- endif -%}
+  </div>
+  {%- endunless -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Huincha header",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable",
+      "label": "Mostrar huincha",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_only_on_homepage",
+      "label": "Solo en la página de inicio",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Imagen (escritorio)",
+      "info": "Recomendado 1920×100 px. Si está vacía, se usa el asset huincha-header.png del tema."
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Imagen (móvil)",
+      "info": "Opcional. Si está vacía, se usa la imagen de escritorio."
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Texto alternativo de la imagen",
+      "default": "Aquí hay algo especial para ti"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Enlace de la huincha",
+      "info": "En el diseño, el texto «Aquí» es el enlace principal."
+    },
+    {
+      "type": "checkbox",
+      "id": "open_new_window",
+      "label": "Abrir enlace en nueva pestaña",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "banner_height",
+      "label": "Altura en escritorio (px)",
+      "min": 48,
+      "max": 160,
+      "step": 2,
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "banner_height_mobile",
+      "label": "Altura en móvil (px)",
+      "min": 40,
+      "max": 120,
+      "step": 2,
+      "default": 56
+    }
+  ],
+  "presets": [
+    {
+      "name": "Huincha header"
+    }
+  ]
+}
+{% endschema %}

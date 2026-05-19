@@ -1,0 +1,381 @@
+{%- liquid
+  assign cards_gap = section.settings.gap
+  assign cards_gap_mobile = section.settings.gap_mobile
+  assign cards_padding_y = section.settings.padding_y
+  assign cards_padding_y_mobile = section.settings.padding_y_mobile
+  assign card_max_width = section.settings.card_max_width
+  assign card_width_mobile = section.settings.card_width_mobile
+  assign enable_mobile_carousel = false
+  if section.blocks.size > 1
+    assign enable_mobile_carousel = true
+  endif
+  assign show_heading = false
+  if section.settings.heading != blank
+    assign show_heading = true
+  endif
+-%}
+
+{%- style -%}
+  .category-cards-{{ section.id }} {
+    --category-cards-gap: {{ cards_gap }}px;
+    --category-cards-gap-mobile: {{ cards_gap_mobile }}px;
+    --category-cards-padding-y: {{ cards_padding_y }}px;
+    --category-cards-padding-y-mobile: {{ cards_padding_y_mobile }}px;
+    --category-cards-max-width: {{ card_max_width }}px;
+    --category-cards-width-mobile: {{ card_width_mobile }}px;
+    width: 100%;
+    padding-top: var(--category-cards-padding-y-mobile);
+    padding-bottom: var(--category-cards-padding-y-mobile);
+  }
+  @media (min-width: 768px) {
+    .category-cards-{{ section.id }} {
+      padding-top: var(--category-cards-padding-y);
+      padding-bottom: var(--category-cards-padding-y);
+    }
+  }
+  .category-cards-{{ section.id }} .category-cards__carousel {
+    position: relative;
+    width: 100%;
+  }
+  .category-cards-{{ section.id }} .category-cards__track {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  @media (min-width: 768px) {
+    .category-cards-{{ section.id }} .category-cards__track {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  .category-cards-{{ section.id }} .preload-slide-{{ section.id }} {
+    margin-right: var(--category-cards-gap-mobile);
+  }
+  @media (min-width: 768px) {
+    .category-cards-{{ section.id }} .preload-slide-{{ section.id }} {
+      margin-right: 0;
+    }
+  }
+  .category-cards-{{ section.id }} .category-cards__item {
+    width: min(var(--category-cards-width-mobile), calc(100vw - 5.5rem));
+  }
+  .category-cards-{{ section.id }} .category-cards__card {
+    display: block;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 4px;
+    overflow: hidden;
+    line-height: 0;
+    text-decoration: none;
+  }
+  .category-cards-{{ section.id }} .category-cards__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 4px;
+  }
+  .category-cards-{{ section.id }} .category-cards__label {
+    position: absolute;
+    left: 50%;
+    bottom: 5.56%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    max-width: calc(100% - 2rem);
+    padding: 11px 32px 12px;
+    border-radius: 4px;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 1rem;
+    line-height: 1.375rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: center;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+  .category-cards-{{ section.id }} .category-cards__placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    min-height: 12rem;
+    background-color: #e5e5e5;
+    color: #000000;
+    font-size: 0.875rem;
+    text-align: center;
+    padding: 1rem;
+  }
+  .category-cards-{{ section.id }} .category-cards__heading {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+  @media (min-width: 768px) {
+    .category-cards-{{ section.id }} .splide__list.category-cards__list {
+      display: flex !important;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--category-cards-gap);
+    }
+    .category-cards-{{ section.id }} .category-cards__item {
+      width: auto !important;
+      flex: 1 1 0;
+      min-width: 0;
+      max-width: var(--category-cards-max-width);
+      margin-right: 0 !important;
+    }
+  }
+{%- endstyle -%}
+
+<div
+  class="category-cards-{{ section.id }} tw-w-full"
+  role="region"
+  aria-label="{{ 'sections.category-cards.aria_label' | t }}"
+>
+  {%- if show_heading -%}
+    <div class="x-page-width page-width">
+      <h2 class="category-cards__heading">{{ section.settings.heading | escape }}</h2>
+    </div>
+  {%- endif -%}
+
+  <div
+    id="category-cards-{{ section.id }}"
+    class="category-cards__carousel x-page-width page-width carousel-mobile{% if enable_mobile_carousel %} x-splide splide visible{% endif %}"
+    {% if enable_mobile_carousel %}
+      x-intersect.once.margin.200px='$store.xSplide.load($el, {
+        "autoWidth": true,
+        "height": "{{ card_width_mobile }}px",
+        "focus": 0,
+        "type": "slide",
+        "mediaQuery": "min",
+        "gap": "{{ cards_gap_mobile }}px",
+        "arrows": false,
+        "pagination": false,
+        "drag": true,
+        "trimSpace": false,
+        "breakpoints": {
+          768: {
+            "destroy": true
+          }
+        },
+        "classes": {
+          "pagination": "hidden"
+        }
+      })'
+    {% endif %}
+  >
+    {% if enable_mobile_carousel %}
+      <div class="splide__track category-cards__track overflow-hidden w-full">
+        <div class="splide__list category-cards__list w-full h-full">
+    {% else %}
+      <div class="category-cards__track">
+        <div class="category-cards__list tw-flex tw-flex-wrap tw-justify-center" style="gap: {{ cards_gap }}px;">
+    {% endif %}
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign card_image = block.settings.image
+          assign card_image_mobile = block.settings.image_mobile
+          assign card_link = block.settings.link
+          assign card_label = block.settings.label
+          if block.settings.image_alt != blank
+            assign card_alt = block.settings.image_alt
+          elsif card_label != blank
+            assign card_alt = card_label
+          else
+            assign card_alt = 'sections.category-cards.card_alt' | t
+          endif
+        -%}
+        <div
+          class="category-cards__item{% if enable_mobile_carousel %} splide__slide x-splide-slide preload-slide-{{ section.id }}{% endif %}"
+          {{ block.shopify_attributes }}
+        >
+          {%- if card_image != blank -%}
+            {%- if card_link != blank -%}
+              <a
+                href="{{ card_link }}"
+                class="category-cards__card"
+                {% if block.settings.open_new_window %}target="_blank" rel="noopener noreferrer"{% endif %}
+              >
+            {%- else -%}
+              <div class="category-cards__card">
+            {%- endif -%}
+            <picture>
+              {%- if card_image_mobile != blank -%}
+                <source
+                  media="(max-width: 767px)"
+                  srcset="{{ card_image_mobile | image_url: width: 800 }}"
+                >
+              {%- endif -%}
+              {{
+                card_image
+                | image_url: width: 800
+                | image_tag:
+                  class: 'category-cards__img',
+                  widths: '360, 480, 720, 800',
+                  sizes: '(max-width: 767px) min(280px, calc(100vw - 5.5rem)), 360px',
+                  alt: card_alt,
+                  loading: 'lazy'
+              }}
+            </picture>
+            {%- if card_label != blank -%}
+              <span class="category-cards__label">{{ card_label | escape }}</span>
+            {%- endif -%}
+            {%- if card_link != blank -%}
+              </a>
+            {%- else -%}
+              </div>
+            {%- endif -%}
+          {%- elsif request.design_mode -%}
+            <div class="category-cards__card">
+              <p class="category-cards__placeholder">
+                {{ 'sections.category-cards.placeholder' | t }}
+              </p>
+              {%- if card_label != blank -%}
+                <span class="category-cards__label">{{ card_label | escape }}</span>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    {% if enable_mobile_carousel %}
+        </div>
+      </div>
+    {% else %}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Category cards",
+  "tag": "section",
+  "class": "section-category-cards",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Título de sección",
+      "info": "Opcional. El diseño Figma no incluye título."
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Espacio entre tarjetas — escritorio (px)",
+      "min": 8,
+      "max": 40,
+      "step": 2,
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "gap_mobile",
+      "label": "Espacio entre tarjetas — móvil (px)",
+      "min": 4,
+      "max": 24,
+      "step": 2,
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "padding_y",
+      "label": "Padding vertical — escritorio (px)",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "padding_y_mobile",
+      "label": "Padding vertical — móvil (px)",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "card_max_width",
+      "label": "Ancho máximo por tarjeta — escritorio (px)",
+      "min": 200,
+      "max": 480,
+      "step": 10,
+      "default": 360
+    },
+    {
+      "type": "range",
+      "id": "card_width_mobile",
+      "label": "Ancho de tarjeta — móvil (px)",
+      "info": "Más bajo = se ve más la siguiente tarjeta (sugerido 280 px).",
+      "min": 220,
+      "max": 360,
+      "step": 10,
+      "default": 280
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Categoría",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagen",
+          "info": "Cuadrada 360×360 px recomendado."
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Imagen (móvil)",
+          "info": "Opcional."
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Etiqueta del botón",
+          "default": "categoría"
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Texto alternativo de la imagen"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Enlace"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_new_window",
+          "label": "Abrir enlace en nueva pestaña",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Category cards",
+      "blocks": [
+        { "type": "category", "settings": { "label": "aros" } },
+        { "type": "category", "settings": { "label": "anillos" } },
+        { "type": "category", "settings": { "label": "cadenas" } },
+        { "type": "category", "settings": { "label": "pulseras" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

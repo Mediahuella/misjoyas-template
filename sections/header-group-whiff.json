@@ -1037,6 +1037,21 @@
         "highlight_color_light": "#157f7f",
         "highlight_color_dark": "rgba(0,0,0,0)"
       }
+    },
+    "huincha_header_Na6hkQ": {
+      "type": "huincha-header",
+      "name": "Huincha header",
+      "settings": {
+        "enable": true,
+        "show_only_on_homepage": false,
+        "image": "shopify://shop_images/huincha-header_desktop_e36dd9b6-3fc7-49d8-a113-786cbeb39f9a.jpg",
+        "image_mobile": "shopify://shop_images/huincha-header_mobile_8b933893-dc65-486f-84d3-d109386c2bd1.jpg",
+        "image_alt": "Aquí hay algo especial para ti",
+        "link": "",
+        "open_new_window": false,
+        "banner_height": 100,
+        "banner_height_mobile": 56
+      }
     }
   },
   "order": [
@@ -1044,6 +1059,7 @@
     "scrolling_banner_hGGpmb",
     "announcement-bar",
     "header",
-    "mobile-navigation"
+    "mobile-navigation",
+    "huincha_header_Na6hkQ"
   ]
 }

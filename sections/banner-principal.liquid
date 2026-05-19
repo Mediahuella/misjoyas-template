@@ -1,0 +1,306 @@
+{%- liquid
+  assign enable_slider = false
+  if section.blocks.size > 1
+    assign enable_slider = true
+  endif
+  assign desktop_height = section.settings.banner_height
+  assign mobile_height = section.settings.banner_height_mobile
+-%}
+
+{%- style -%}
+  .banner-principal-{{ section.id }} {
+    --banner-principal-height: {{ desktop_height }}px;
+    --banner-principal-height-mobile: {{ mobile_height }}px;
+    position: relative;
+    width: 100%;
+  }
+  .banner-principal-{{ section.id }} .banner-principal__slide,
+  .banner-principal-{{ section.id }} .banner-principal__placeholder {
+    position: relative;
+    width: 100%;
+    height: var(--banner-principal-height-mobile);
+    overflow: hidden;
+  }
+  @media (min-width: 768px) {
+    .banner-principal-{{ section.id }} .banner-principal__slide,
+    .banner-principal-{{ section.id }} .banner-principal__placeholder {
+      height: var(--banner-principal-height);
+    }
+  }
+  .banner-principal-{{ section.id }} .banner-principal__link,
+  .banner-principal-{{ section.id }} .banner-principal__picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .banner-principal-{{ section.id }} .banner-principal__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .banner-principal-{{ section.id }} .banner-principal__placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f4f2;
+    color: #222222;
+    text-align: center;
+    padding: 1.5rem;
+  }
+  .banner-principal-{{ section.id }} .banner-principal__placeholder-text {
+    font-size: 0.875rem;
+    line-height: 1.4;
+    max-width: 20rem;
+  }
+  .banner-principal-{{ section.id }} .splide__arrows {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .banner-principal-{{ section.id }} .banner-principal__arrow {
+    pointer-events: auto;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    padding: 10px 2px;
+    border: none;
+    background: rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+  }
+  .banner-principal-{{ section.id }} .banner-principal__arrow:hover {
+    opacity: 1;
+  }
+  .banner-principal-{{ section.id }} .banner-principal__arrow:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  .banner-principal-{{ section.id }} .banner-principal__arrow--prev {
+    left: 0;
+    border-radius: 0 6px 6px 0;
+  }
+  .banner-principal-{{ section.id }} .banner-principal__arrow--next {
+    right: 0;
+    border-radius: 6px 0 0 6px;
+  }
+  .banner-principal-{{ section.id }} .banner-principal__arrow::after {
+    font-size: 20px;
+    line-height: 1;
+  }
+{%- endstyle -%}
+
+<div
+  class="banner-principal-{{ section.id }} tw-w-full"
+  role="region"
+  aria-label="{{ 'sections.banner-principal.aria_label' | t }}"
+>
+  <div
+    id="x-banner-principal-{{ section.id }}"
+    class="banner-principal__slider splide-slideshow overflow-hidden visible tw-w-full{% if enable_slider %} x-splide splide{% endif %}"
+    {% if enable_slider %}
+      x-intersect.once.margin.200px='$store.xSplide.load($el, {
+        "speed": 800,
+        "type": "loop",
+        "pauseOnHover": true,
+        "pauseOnFocus": false,
+        {%- if section.settings.auto_play -%}
+          "autoplay": true,
+          "interval": {{ section.settings.change_slides_speed | times: 1000 }},
+        {%- endif -%}
+        {%- if settings.lang_direction contains request.locale.iso_code -%}
+          "direction": "rtl",
+        {%- endif -%}
+        "classes": {
+          "arrows": "splide__arrows",
+          "pagination": "hidden"
+        }
+      })'
+    {% endif %}
+  >
+    <div class="{% if enable_slider %}splide__track{% endif %} overflow-hidden">
+      <div class="{% if enable_slider %}splide__list flex{% endif %}">
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign slide_image = block.settings.image
+            assign slide_image_mobile = block.settings.image_mobile
+            assign slide_link = block.settings.link
+            if block.settings.image_alt != blank
+              assign slide_alt = block.settings.image_alt
+            else
+              assign slide_alt = 'sections.banner-principal.slide_alt' | t
+            endif
+            if forloop.first
+              assign slide_loading = 'eager'
+              assign slide_fetchpriority = 'high'
+            else
+              assign slide_loading = 'lazy'
+              assign slide_fetchpriority = 'low'
+            endif
+          -%}
+          <div
+            class="banner-principal__slide{% if enable_slider %} splide__slide x-splide-slide flex-shrink-0 w-full{% endif %}"
+            {{ block.shopify_attributes }}
+          >
+            {%- if slide_image != blank -%}
+              {%- if slide_link != blank -%}
+                <a
+                  href="{{ slide_link }}"
+                  class="banner-principal__link"
+                  {% if block.settings.open_new_window %}target="_blank" rel="noopener noreferrer"{% endif %}
+                >
+              {%- endif -%}
+              <picture class="banner-principal__picture">
+                {%- if slide_image_mobile != blank -%}
+                  <source
+                    media="(max-width: 767px)"
+                    srcset="{{ slide_image_mobile | image_url: width: 1200 }}"
+                  >
+                {%- endif -%}
+                {{
+                  slide_image
+                  | image_url: width: 3840
+                  | image_tag:
+                    class: 'banner-principal__img',
+                    widths: '800, 1200, 1920, 2560, 3840',
+                    sizes: '100vw',
+                    alt: slide_alt,
+                    loading: slide_loading,
+                    fetchpriority: slide_fetchpriority
+                }}
+              </picture>
+              {%- if slide_link != blank -%}
+                </a>
+              {%- endif -%}
+            {%- else -%}
+              <div class="banner-principal__placeholder">
+                {%- if request.design_mode -%}
+                  <p class="banner-principal__placeholder-text">
+                    {{ 'sections.banner-principal.placeholder' | t }}
+                  </p>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+
+    {%- if enable_slider and section.settings.show_arrows -%}
+      <div class="splide__arrows{% if settings.lang_direction contains request.locale.iso_code %} rtl{% endif %}">
+        <button
+          type="button"
+          class="banner-principal__arrow banner-principal__arrow--prev splide__arrow splide__arrow--prev button-arrow rotate-90 after:text-[20px]"
+          aria-label="{{ 'sections.banner-principal.previous' | t }}"
+        ></button>
+        <button
+          type="button"
+          class="banner-principal__arrow banner-principal__arrow--next splide__arrow splide__arrow--next button-arrow -rotate-90 after:text-[20px]"
+          aria-label="{{ 'sections.banner-principal.next' | t }}"
+        ></button>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Banner principal",
+  "tag": "section",
+  "class": "section-banner-principal",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "auto_play",
+      "label": "Reproducción automática",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "change_slides_speed",
+      "label": "Segundos por diapositiva",
+      "min": 3,
+      "max": 12,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows",
+      "label": "Mostrar flechas de navegación",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "banner_height",
+      "label": "Altura en escritorio (px)",
+      "min": 300,
+      "max": 800,
+      "step": 10,
+      "default": 580
+    },
+    {
+      "type": "range",
+      "id": "banner_height_mobile",
+      "label": "Altura en móvil (px)",
+      "min": 240,
+      "max": 600,
+      "step": 10,
+      "default": 400
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Diapositiva",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagen (escritorio)",
+          "info": "Recomendado 1920×580 px. Sube el banner completo desde Figma."
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Imagen (móvil)",
+          "info": "Opcional. Si está vacía, se usa la imagen de escritorio."
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Texto alternativo"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Enlace del banner"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_new_window",
+          "label": "Abrir enlace en nueva pestaña",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner principal",
+      "blocks": [
+        {
+          "type": "slide"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

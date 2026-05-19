@@ -316,6 +316,35 @@
     }
   },
   "sections": {
+    "huincha-header": {
+      "aria_label": "Promotional banner",
+      "alt": "Here is something special for you"
+    },
+    "banner-principal": {
+      "aria_label": "Main banner",
+      "slide_alt": "Promotional banner",
+      "placeholder": "Upload a desktop image (1920×580 px recommended) in this slide block.",
+      "previous": "Previous slide",
+      "next": "Next slide"
+    },
+    "countdown-timer": {
+      "aria_label": "Countdown timer",
+      "hours": "hours",
+      "minutes": "minutes",
+      "seconds": "seconds",
+      "minutes_short": "min",
+      "seconds_short": "sec"
+    },
+    "coupon-badges": {
+      "aria_label": "Coupon badges",
+      "badge_alt": "Discount coupon",
+      "placeholder": "Upload a coupon image (360×212 px recommended) in this block."
+    },
+    "category-cards": {
+      "aria_label": "Category cards",
+      "card_alt": "Category",
+      "placeholder": "Upload a square image (360×360 px recommended) in this block."
+    },
     "mobile-navigation": {
       "my_cart": "My cart"
     },
