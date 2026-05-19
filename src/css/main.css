@@ -76,3 +76,54 @@
 .card-product-equal-height .card-product-atc-wrapper .card-product-variant-area {
   margin-top: 0;
 }
+
+/* ===== Badges en tarjetas: esquina, sin borde (Figma Cyber Day) ===== */
+
+.card-product .label-container,
+.card-product .x-badge-container {
+  gap: 0;
+}
+
+.card-product .top-left-container,
+.card-product .label-top-left {
+  top: 0 !important;
+  left: 0 !important;
+  right: auto !important;
+  bottom: auto !important;
+  transform: none !important;
+}
+
+.card-product .label-top-left:not(.label-flag) {
+  top: 0 !important;
+}
+
+.card-product .bottom-left-container,
+.card-product .label-bottom-left {
+  top: auto !important;
+  left: 0 !important;
+  right: auto !important;
+  bottom: 0 !important;
+  transform: none !important;
+}
+
+.card-product .label-bottom-left:not(.label-bottom-flag) {
+  bottom: 0 !important;
+}
+
+.card-product .x-badge-content.x-badge-text {
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 5px 12px;
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+
+.card-product .x-badge-content.label-img {
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+.card-product .x-badge-container .x-badge-content {
+  border: none !important;
+  border-radius: 0 !important;
+}

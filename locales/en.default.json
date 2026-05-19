@@ -345,6 +345,13 @@
       "card_alt": "Category",
       "placeholder": "Upload a square image (360×360 px recommended) in this block."
     },
+    "featured-collection-misjoyas": {
+      "aria_label": "Featured collection",
+      "placeholder": "Add a collection block and choose a collection.",
+      "empty_collection": "This collection has no products yet.",
+      "previous": "Previous products",
+      "next": "Next products"
+    },
     "mobile-navigation": {
       "my_cart": "My cart"
     },

@@ -540,6 +540,9 @@ video {
 .tw-mb-4 {
   margin-bottom: 16px;
 }
+.tw-mb-6 {
+  margin-bottom: 24px;
+}
 .tw-mt-4 {
   margin-top: 16px;
 }
@@ -621,6 +624,9 @@ video {
 .tw-whitespace-nowrap {
   white-space: nowrap;
 }
+.tw-rounded {
+  border-radius: 4px;
+}
 .tw-rounded-\[4px\] {
   border-radius: 4px;
 }
@@ -632,6 +638,13 @@ video {
 }
 .tw-border-t {
   border-top-width: 1px;
+}
+.tw-border-solid {
+  border-style: solid;
+}
+.tw-border-\[\#222\] {
+  --tw-border-opacity: 1;
+  border-color: rgb(34 34 34 / var(--tw-border-opacity, 1));
 }
 .tw-border-black\/10 {
   border-color: rgb(0 0 0 / 0.1);
@@ -645,6 +658,9 @@ video {
 .tw-bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+.tw-p-8 {
+  padding: 32px;
 }
 .tw-px-2\.5 {
   padding-left: 10px;
@@ -662,13 +678,24 @@ video {
   padding-top: 6px;
   padding-bottom: 6px;
 }
+.tw-py-2 {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
 .tw-py-3 {
   padding-top: 12px;
   padding-bottom: 12px;
 }
+.tw-text-center {
+  text-align: center;
+}
 .tw-text-base {
   font-size: 16px;
   line-height: 24px;
+}
+.tw-text-sm {
+  font-size: 14px;
+  line-height: 20px;
 }
 .tw-text-xs {
   font-size: 12px;
@@ -676,6 +703,10 @@ video {
 }
 .tw-font-semibold {
   font-weight: 600;
+}
+.tw-text-\[\#737373\] {
+  --tw-text-opacity: 1;
+  color: rgb(115 115 115 / var(--tw-text-opacity, 1));
 }
 .tw-text-black {
   --tw-text-opacity: 1;
@@ -782,23 +813,80 @@ video {
 .card-product-equal-height .card-product-atc-wrapper .card-product-variant-area {
   margin-top: 0;
 }
+
+/* ===== Badges en tarjetas: esquina, sin borde (Figma Cyber Day) ===== */
+
+.card-product .label-container,
+.card-product .x-badge-container {
+  gap: 0;
+}
+
+.card-product .top-left-container,
+.card-product .label-top-left {
+  top: 0 !important;
+  left: 0 !important;
+  right: auto !important;
+  bottom: auto !important;
+  transform: none !important;
+}
+
+.card-product .label-top-left:not(.label-flag) {
+  top: 0 !important;
+}
+
+.card-product .bottom-left-container,
+.card-product .label-bottom-left {
+  top: auto !important;
+  left: 0 !important;
+  right: auto !important;
+  bottom: 0 !important;
+  transform: none !important;
+}
+
+.card-product .label-bottom-left:not(.label-bottom-flag) {
+  bottom: 0 !important;
+}
+
+.card-product .x-badge-content.x-badge-text {
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 5px 12px;
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+
+.card-product .x-badge-content.label-img {
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+.card-product .x-badge-container .x-badge-content {
+  border: none !important;
+  border-radius: 0 !important;
+}
+
 .placeholder\:tw-text-\[\#737373\]::-moz-placeholder {
   --tw-text-opacity: 1;
   color: rgb(115 115 115 / var(--tw-text-opacity, 1));
 }
+
 .placeholder\:tw-text-\[\#737373\]::placeholder {
   --tw-text-opacity: 1;
   color: rgb(115 115 115 / var(--tw-text-opacity, 1));
 }
+
 .placeholder\:tw-opacity-70::-moz-placeholder {
   opacity: 0.7;
 }
+
 .placeholder\:tw-opacity-70::placeholder {
   opacity: 0.7;
 }
+
 .hover\:tw-opacity-100:hover {
   opacity: 1;
 }
+
 @media (min-width: 768px) {
 
   .md\:tw-mt-0 {
@@ -813,6 +901,7 @@ video {
     display: none;
   }
 }
+
 @media (min-width: 1024px) {
 
   .lg\:tw-my-0 {
@@ -840,6 +929,7 @@ video {
     grid-area: navigation;
   }
 }
+
 @media (min-width: 1280px) {
 
   .xl\:\!tw-w-\[488px\] {

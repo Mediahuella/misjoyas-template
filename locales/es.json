@@ -345,6 +345,13 @@
       "card_alt": "Categoría",
       "placeholder": "Sube una imagen cuadrada (recomendado 360×360 px) en este bloque."
     },
+    "featured-collection-misjoyas": {
+      "aria_label": "Colección destacada",
+      "placeholder": "Agrega un bloque de colección y elige la colección.",
+      "empty_collection": "Esta colección aún no tiene productos.",
+      "previous": "Productos anteriores",
+      "next": "Siguientes productos"
+    },
     "mobile-navigation": {
       "my_cart": "Mi carro"
     },
