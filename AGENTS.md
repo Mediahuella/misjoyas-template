@@ -95,10 +95,13 @@ Cuando un archivo upstream necesite modificarse, hacer el cambio mínimo necesar
 
 ## CSS y Tailwind
 
+> **REGLA OBLIGATORIA:** Toda clase de Tailwind en este proyecto **debe** llevar el prefijo `tw-`. Sin excepción. Ejemplos: `tw-flex`, `tw-text-sm`, `tw-gap-4`, `tw-hidden`, `tw-mt-4`. Nunca usar clases sin prefijo (`flex`, `text-sm`, etc.) — pertenecen al tema upstream y generan conflictos.
+
 - Tailwind tiene el prefijo `tw-`. Siempre usar `tw-flex`, `tw-text-sm`, etc.
 - No usar clases de Tailwind sin prefijo; chocan con los estilos del tema upstream.
 - Los estilos del tema base viven en `assets/theme.css.liquid` (procesado con variables Liquid desde settings). No duplicar variables CSS de allí en otros archivos.
 - Para overrides puntuales en secciones, usar `{% style %}` dentro del propio archivo `.liquid`.
+- Para CSS propio que no sea una utilidad de Tailwind (selectores, media queries, etc.) usar `src/css/main.css` con CSS puro.
 
 ## Liquid
 
