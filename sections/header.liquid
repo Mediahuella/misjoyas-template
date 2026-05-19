@@ -197,21 +197,7 @@
           {% if section.settings.mobile_header_layout == 'left-right' %}
             <div class="flex justify-end lg:order-4 [grid-area:icons] -mr-2{% unless logo_above %} pb-header{% endunless %}">
               {%- if settings.search_enabled -%}
-                <div class="flex items-center justify-center mobile-{{ section.settings.mobile_header_layout }}" 
-                  @init-run.window="$store.xHeaderMenu.renderAjax($el, 'header-search-block', '#ajax-loading-header-search');"
-                >
-                  <a 
-                    id="SearchOpen"
-                    href="{{ routes.search_url }}" 
-                    aria-label="search"
-                    class="flex items-center cursor-pointer justify-center link focus-inset bg-none" 
-                    @click.prevent="$store.xModal.setActiveElement('SearchOpen');">
-                    <span class="w-11 h-10 px-3 pt-2.5 pb-2">{% render 'icon-alls', icon: 'icon-search' %}</span>
-                  </a>
-                </div>
-                {% if settings.show_speech_search %}
-                  <script src="{{ 'speech-search.js' | asset_url }}" defer></script>
-                {%- endif -%}
+                {%- render 'header-search-mobile' -%}
               {%- endif -%}
               {%- if shop.customer_accounts_enabled -%}
                 <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
@@ -337,19 +323,8 @@
         >
           <div class="x-header-store-selector-container self-center md:block hidden"></div>
           {%- if settings.search_enabled -%}
-            <div class="x-header-icon-search flex items-center justify-center mobile-{{ section.settings.mobile_header_layout }}" @init-run.window="$store.xHeaderMenu.renderAjax($el, 'header-search-block', '#ajax-loading-header-search');">
-              <a 
-                id="SearchOpen"
-                href="{{ routes.search_url }}" 
-                aria-label="search"
-                class="flex items-center cursor-pointer justify-center link focus-inset bg-none" 
-                @click.prevent="$store.xModal.setActiveElement('SearchOpen');">
-                <span class="w-11 h-10 px-3 pt-2.5 pb-2">{% render 'icon-alls', icon: 'icon-search' %}</span>
-              </a>
-            </div>
-            {% if settings.show_speech_search %}
-              <script src="{{ 'speech-search.js' | asset_url }}" defer></script>
-            {%- endif -%}
+            {%- render 'header-search-inline' -%}
+            {%- render 'header-search-mobile' -%}
           {%- endif -%}
           {%- if shop.customer_accounts_enabled -%}
             <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
@@ -433,6 +408,57 @@
 
         {%- render 'header-megamenu-block', logo_above: logo_above, logo_center: logo_center, select_motion: section.settings.select_motion, transparent: transparent -%}
       </header>
+
+      {%- if settings.search_enabled -%}
+        {%- liquid
+          assign search_type_mobile = 'query,' | append: settings.search_type
+        -%}
+        <div
+          class="lg:hidden bg-white border-t border-black/10 tw-relative"
+          x-data="xInlineSearch('{{ search_type_mobile }}', {{ settings.search_mobile_maximun_results | default: 4 }})"
+          @keyup.escape="closeResults();"
+        >
+          <div class="tw-px-4 tw-py-3">
+            <form
+              action="{{ routes.search_url }}"
+              method="get"
+              role="search"
+              class="tw-flex tw-items-center tw-h-[44px] tw-w-full tw-bg-white tw-border tw-border-black/[0.15] tw-rounded-[4px] tw-px-3 tw-gap-2"
+            >
+              <input type="hidden" name="options[prefix]" value="last">
+              <input
+                type="search"
+                name="q"
+                x-model="query"
+                x-ref="mobileInput"
+                @input="keyUp()"
+                @focus="focusForm()"
+                class="tw-flex-1 tw-min-w-0 tw-bg-transparent tw-outline-none tw-text-base tw-text-black placeholder:tw-text-[#737373] placeholder:tw-opacity-70 [appearance:none] [-webkit-appearance:none]"
+                placeholder="{{ 'general.search.search' | t }}"
+                autocomplete="off"
+                aria-label="{{ 'general.search.search' | t }}"
+              >
+              <button
+                type="submit"
+                class="tw-shrink-0 tw-w-[18px] tw-h-[18px] tw-opacity-60 hover:tw-opacity-100"
+                aria-label="{{ 'general.search.search' | t }}"
+              >
+                {%- render 'icon-alls', icon: 'icon-search' -%}
+              </button>
+            </form>
+          </div>
+
+          {%- if settings.predictive_search_enabled -%}
+            <div
+              x-show="openResults"
+              x-cloak
+              x-html="result"
+              class="tw-absolute tw-top-full tw-left-0 tw-right-0 tw-z-[60] tw-bg-white tw-shadow-md tw-border-t tw-border-black/10 tw-max-h-[55vh] tw-overflow-y-auto text-[rgb(var(--colors-text))]"
+            ></div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
       {%- unless template == 'cart' -%}
         <div @init-run.window="$store.xHeaderMenu.renderAjax($el, 'cart-drawer', '#ajax-loading-cart');"></div>
       {%- endunless -%}

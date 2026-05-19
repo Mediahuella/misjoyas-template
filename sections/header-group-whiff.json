@@ -619,19 +619,17 @@
         "padding_bottom_mobile": 16
       }
     },
-    "custom_liquid_3NWxfQ": {
-      "type": "custom-liquid",
-      "name": "t:sections.custom-liquid.name",
+    "misjoyas-topbar": {
+      "type": "misjoyas-topbar",
       "settings": {
-        "custom_liquid": "<div class=\"misjoyas-topbar\">\n  <div class=\"misjoyas-topbar-track\">\n    <span>🎁Todas las Compras desde $49.990 durante MAYO participan en el sorteo de 20 Giftcards de $50.000🎁</span>\n    <span>🎁Todas las Compras desde $49.990 durante MAYO participan en el sorteo de 20 Giftcards de $50.000🎁</span>\n    <span>🎁Todas las Compras desde $49.990 durante MAYO participan en el sorteo de 20 Giftcards de $50.000🎁</span>\n  </div>\n</div>\n\n<style>\n\n.misjoyas-topbar{\nwidth:100%;\nbackground:linear-gradient(135deg,#000,#1a1a1a);\ncolor:#fff;\noverflow:hidden;\nwhite-space:nowrap;\nborder-bottom:1px solid rgba(255,255,255,0.08);\n}\n\n.misjoyas-topbar-track{\ndisplay:flex;\ngap:60px;\npadding:10px 0;\nfont-size:14px;\nfont-weight:500;\nletter-spacing:.4px;\nanimation:misjoyasScroll 20s linear infinite;\n}\n\n.misjoyas-topbar-track span{\ndisplay:inline-block;\n}\n\n@keyframes misjoyasScroll{\n\n0%{\ntransform:translateX(0);\n}\n\n100%{\ntransform:translateX(-50%);\n}\n\n}\n\n/* responsive */\n\n@media (max-width:600px){\n\n.misjoyas-topbar-track{\nfont-size:12px;\ngap:40px;\npadding:8px 0;\n}\n\n}\n\n</style>",
-        "full_width": true,
-        "show_section_divider": true,
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "full_width_mobile": true,
-        "show_section_divider_mobile": false,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0
+        "enable": true,
+        "text": "🎁Todas las Compras desde $49.990 durante MAYO participan en el sorteo de 20 Giftcards de $50.000🎁",
+        "text_color": "#ffffff",
+        "background_color": "#000000",
+        "animation_speed": 20,
+        "font_size": 14,
+        "gap": 60,
+        "padding_vertical": 10
       }
     },
     "mobile-navigation": {
@@ -1042,10 +1040,10 @@
     }
   },
   "order": [
+    "misjoyas-topbar",
     "scrolling_banner_hGGpmb",
     "announcement-bar",
     "header",
-    "custom_liquid_3NWxfQ",
     "mobile-navigation"
   ]
 }

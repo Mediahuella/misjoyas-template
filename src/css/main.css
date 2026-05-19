@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Protect existing theme elements from Tailwind Preflight resets.
+  Preflight resets h1-h6, a, img globally; these overrides restore
+  expected behavior inside the upstream theme components.
+*/
+@layer base {
+  /* Restore heading styles overridden by Preflight inside predictive search */
+  .predictive-search-results-list h1,
+  .predictive-search-results-list h2,
+  .predictive-search-results-list h3,
+  .predictive-search-results-list h4,
+  .predictive-search-results-list h5,
+  .predictive-search-results-list h6 {
+    font-size: revert;
+    font-weight: revert;
+  }
+
+  /* Keep links using theme colors (inherit from parent), not browser default blue */
+  .predictive-search-results-list a {
+    color: inherit;
+    text-decoration: none;
+  }
+}

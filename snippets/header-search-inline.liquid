@@ -1,0 +1,45 @@
+{%- liquid
+  assign search_type = 'query,' | append: settings.search_type
+-%}
+<div
+  class="hidden lg:flex items-center relative lg:!tw-w-[350px] xl:!tw-w-[488px]"
+  x-data="xInlineSearch('{{ search_type }}', {{ settings.search_desktop_maximun_results | default: 6 }})"
+  @click.away="closeResults()"
+  @keyup.escape="closeResults()"
+>
+  <form
+    action="{{ routes.search_url }}"
+    method="get"
+    role="search"
+    class="flex items-center tw-h-[42px] lg:tw-w-[350px] xl:tw-w-[488px] bg-white border border-black/[0.15] rounded-[4px] px-3 gap-2"
+  >
+    <input type="hidden" name="options[prefix]" value="last">
+    <input
+      type="search"
+      name="q"
+      x-model="query"
+      @input="keyUp()"
+      @focus="focusForm()"
+      class="flex-1 min-w-0 bg-transparent outline-none text-[16px] leading-[22px] text-black placeholder:text-[#737373] placeholder:opacity-70 [appearance:none] [-webkit-appearance:none]"
+      placeholder="{{ 'general.search.search' | t }}"
+      autocomplete="off"
+      aria-label="{{ 'general.search.search' | t }}"
+    >
+    <button
+      type="submit"
+      class="shrink-0 w-[18px] h-[18px] opacity-60 hover:opacity-100 tw-transition-opacity"
+      aria-label="{{ 'general.search.search' | t }}"
+    >
+      {%- render 'icon-alls', icon: 'icon-search' -%}
+    </button>
+  </form>
+
+  {%- if settings.predictive_search_enabled -%}
+    <div
+      x-show="openResults"
+      x-cloak
+      x-html="result"
+      class="absolute top-full tw-mt-[6px] left-0 lg:tw-w-[350px] xl:tw-w-[488px] z-50 bg-white shadow-md rounded-[4px] border border-black/10 max-h-96 overflow-y-auto text-[rgb(var(--colors-text))]"
+    ></div>
+  {%- endif -%}
+</div>

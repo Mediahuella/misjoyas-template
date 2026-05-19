@@ -11,6 +11,19 @@
   "name": "t:sections.header.name",
   "type": "header",
   "sections": {
+    "misjoyas-topbar": {
+      "type": "misjoyas-topbar",
+      "settings": {
+        "enable": true,
+        "text": "🎁Todas las Compras desde $49.990 durante MAYO participan en el sorteo de 20 Giftcards de $50.000🎁",
+        "text_color": "#ffffff",
+        "background_color": "#000000",
+        "animation_speed": 20,
+        "font_size": 14,
+        "gap": 60,
+        "padding_vertical": 10
+      }
+    },
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
@@ -94,7 +107,7 @@
       "settings": {
         "enable": true,
         "show_only_on_homepage": false,
-        "enable_sticky_bar": false,
+        "enable_sticky_bar": true,
         "enable_carousel_on_desktop": true,
         "backgound_color": "#ded5cd",
         "text_color": "#2b2b2b",
@@ -178,6 +191,7 @@
     }
   },
   "order": [
+    "misjoyas-topbar",
     "announcement-bar",
     "header",
     "mobile-navigation"

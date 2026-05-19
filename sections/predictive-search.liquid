@@ -51,7 +51,7 @@
                 {{ 'templates.search.pages' | t }}
               </h2>
               <div class="predictive-result-item pb-7 pl-6 pr-6 lg:pl-10 lg:pr-10 gap-5{% if settings.search_style == 'horizontal' %} flex{% endif %}">
-                {%- for page in predictive_search.resources.pages -%} 
+                {%- for page in predictive_search.resources.pages -%}
                   <div class="block">
                     <a href="{{ page.url }}" class="search_heading predictive-search-item nav-link relative hover-text-link">
                       {{ page.title | escape }}
@@ -60,7 +60,7 @@
                 {%- endfor -%}
               </div>
             </div>
-          {%- endif -%} 
+          {%- endif -%}
         </div>
       {%- endif -%}
       {%- if results_size > 0 -%}
@@ -76,7 +76,7 @@
                 {% if settings.gift_wrapping_product != product and settings.product_shipping_insurance != product %}
                   <li id="predictive-search-option-{{ forloop.index }}" class="py-2" role="option" aria-selected="false">
                     <a href="{{ product.url }}" class="flex relative disable-effect h-full">
-                      <div class="w-24 relative">
+                      <div class="tw-w-[56px] tw-shrink-0 relative">
                         <div class="relative overflow-hidden w-full float-left before:h-0 before:block{% if settings.edges_type == 'rounded_corners' %} rounded-md{% endif %}{% unless settings.product_image_ratio == "natural" %} before:pb-[{{ ratio | times: 100.0 }}%]{% else %}{% if product.featured_media.media_type == "model" %} pb-[100%]{% endif %}{% endunless %}"{% if settings.product_image_ratio == "natural" and product.featured_media and product.featured_media.media_type != "model" %} style="padding-bottom: {{ 1 | divided_by: product.featured_media.aspect_ratio | times: 100 }}%;"{% endif %} >
                           {%- if product.featured_media != blank -%}
                             <img
@@ -122,7 +122,7 @@
                   {% unless exclude_id contains collection.id %}
                     <div class="block py-2">
                       <a href="{{ collection.url }}" class="flex relative disable-effect h-full">
-                        <div class="w-24 relative">
+                        <div class="tw-w-[56px] tw-shrink-0 relative">
                           <div class="relative overflow-hidden w-full float-left before:h-0 before:block before:pb-[75.0%]{% if settings.edges_type == 'rounded_corners' %} rounded-md{% endif %}">
                             {%- if collection.featured_image != blank -%}
                               <img
@@ -149,17 +149,17 @@
               </div>
             </div>
           {%- endif -%}
-          {%- if predictive_search.resources.articles.size > 0 -%} 
+          {%- if predictive_search.resources.articles.size > 0 -%}
             {%- if predictive_search.resources.products.size > 0 or resources_collections.size > 0 -%}<div class="line-spacing flex-shrink-0"></div>{%- endif -%}
             <div class="flex-1">
               <h2 id="predictive-search-articles" class="predictive-search-heading pl-6 pr-6 lg:pl-10 lg:pr-10{% if predictive_search.resources.products.size > 0 or resources_collections.size > 0 %}  pt-6 lg:pt-7{% else %} pt-6 lg:pt-2{% endif %} pb-2 uppercase text-[{{ settings.text_base_size | times: 0.007875 }}rem] md:text-[{{ settings.text_base_size | times: 0.00875 }}rem]">
                 {{ 'templates.search.articles' | t }}
               </h2>
               <div class="predictive-result-item pb-2.5 pl-6 pr-6 lg:pl-10 lg:pr-10 gap-2">
-                {%- for article in predictive_search.resources.articles -%} 
+                {%- for article in predictive_search.resources.articles -%}
                   <div class="block py-2">
                     <a href="{{ article.url }}" class="flex relative disable-effect h-full">
-                      <div class="w-24 relative">
+                      <div class="tw-w-[56px] tw-shrink-0 relative">
                         <div class="relative overflow-hidden w-full float-left before:h-0 before:block before:pb-[75.0%]{% if settings.edges_type == 'rounded_corners' %} rounded-md{% endif %}">
                           {%- if article.image != blank -%}
                             <img
@@ -177,17 +177,16 @@
                         </div>
                       </div>
                       <div class="pt-2{% if settings.lang_direction contains request.locale.iso_code %} mr-5{% else %} ml-5{% endif %} flex-1">
-                        <p class="search_heading line-clamp-2 capitalize hover-text-link disable-effect p-break-words leading-tight duration-200 transition hover-text-link text-[rgba(var(--colors-heading))]">{{ article.title | escape }}</p> 
+                        <p class="search_heading line-clamp-2 capitalize hover-text-link disable-effect p-break-words leading-tight duration-200 transition hover-text-link text-[rgba(var(--colors-heading))]">{{ article.title | escape }}</p>
                       </div>
                     </a>
-                    
                   </div>
                 {%- endfor -%}
               </div>
             </div>
           {%- endif -%}
         </div>
-      {%- else -%} 
+      {%- else -%}
         <div class="text-center pt-5 pb-5 pl-5 pr-5" data-predictive-search-live-region-count-value>
           {{ 'templates.search.no_results' | t: terms: predictive_search.terms }}  
         </div>
