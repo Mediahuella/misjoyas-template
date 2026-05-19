@@ -176,6 +176,29 @@
     "header": {
       "type": "header",
       "blocks": {
+        "button_4QAbNM": {
+          "type": "button",
+          "settings": {
+            "button_label": "Día del Padre",
+            "button_link": "shopify://collections/dia-del-padre",
+            "open_new_window": false,
+            "show_button_style": "primary",
+            "button_light": "rgba(0,0,0,0)",
+            "button_text_light": "rgba(0,0,0,0)",
+            "button_hover_light": "rgba(0,0,0,0)",
+            "button_text_hover_light": "rgba(0,0,0,0)",
+            "secondary_button_light": "rgba(0,0,0,0)",
+            "secondary_button_text_light": "rgba(0,0,0,0)",
+            "colors_text_link": "rgba(0,0,0,0)",
+            "button_dark": "rgba(0,0,0,0)",
+            "button_text_dark": "rgba(0,0,0,0)",
+            "button_hover_dark": "rgba(0,0,0,0)",
+            "button_text_hover_dark": "rgba(0,0,0,0)",
+            "secondary_button_dark": "rgba(0,0,0,0)",
+            "secondary_button_text_dark": "rgba(0,0,0,0)",
+            "colors_text_link_dark": "rgba(0,0,0,0)"
+          }
+        },
         "tree_menu_4Hjg4P": {
           "type": "tree_menu",
           "settings": {
@@ -543,6 +566,7 @@
         }
       },
       "block_order": [
+        "button_4QAbNM",
         "tree_menu_4Hjg4P",
         "simple_menu_BUnEyR",
         "tree_menu_eMW3PW",
@@ -599,7 +623,7 @@
       "type": "custom-liquid",
       "name": "t:sections.custom-liquid.name",
       "settings": {
-        "custom_liquid": "<div class=\"misjoyas-topbar\">\n  <div class=\"misjoyas-topbar-track\">\n    <span>✨ Precios exclusivos por tiempo limitado — ¡No te lo pierdas! ✨</span>\n    <span>✨ Precios exclusivos por tiempo limitado — ¡No te lo pierdas! ✨</span>\n    <span>✨ Precios exclusivos por tiempo limitado — ¡No te lo pierdas! ✨</span>\n  </div>\n</div>\n\n<style>\n\n.misjoyas-topbar{\nwidth:100%;\nbackground:linear-gradient(135deg,#000,#1a1a1a);\ncolor:#fff;\noverflow:hidden;\nwhite-space:nowrap;\nborder-bottom:1px solid rgba(255,255,255,0.08);\n}\n\n.misjoyas-topbar-track{\ndisplay:flex;\ngap:60px;\npadding:10px 0;\nfont-size:14px;\nfont-weight:500;\nletter-spacing:.4px;\nanimation:misjoyasScroll 20s linear infinite;\n}\n\n.misjoyas-topbar-track span{\ndisplay:inline-block;\n}\n\n@keyframes misjoyasScroll{\n\n0%{\ntransform:translateX(0);\n}\n\n100%{\ntransform:translateX(-50%);\n}\n\n}\n\n/* responsive */\n\n@media (max-width:600px){\n\n.misjoyas-topbar-track{\nfont-size:12px;\ngap:40px;\npadding:8px 0;\n}\n\n}\n\n</style>",
+        "custom_liquid": "<div class=\"misjoyas-topbar\">\n  <div class=\"misjoyas-topbar-track\">\n    <span>🎁Todas las Compras desde $49.990 durante MAYO participan en el sorteo de 20 Giftcards de $50.000🎁</span>\n    <span>🎁Todas las Compras desde $49.990 durante MAYO participan en el sorteo de 20 Giftcards de $50.000🎁</span>\n    <span>🎁Todas las Compras desde $49.990 durante MAYO participan en el sorteo de 20 Giftcards de $50.000🎁</span>\n  </div>\n</div>\n\n<style>\n\n.misjoyas-topbar{\nwidth:100%;\nbackground:linear-gradient(135deg,#000,#1a1a1a);\ncolor:#fff;\noverflow:hidden;\nwhite-space:nowrap;\nborder-bottom:1px solid rgba(255,255,255,0.08);\n}\n\n.misjoyas-topbar-track{\ndisplay:flex;\ngap:60px;\npadding:10px 0;\nfont-size:14px;\nfont-weight:500;\nletter-spacing:.4px;\nanimation:misjoyasScroll 20s linear infinite;\n}\n\n.misjoyas-topbar-track span{\ndisplay:inline-block;\n}\n\n@keyframes misjoyasScroll{\n\n0%{\ntransform:translateX(0);\n}\n\n100%{\ntransform:translateX(-50%);\n}\n\n}\n\n/* responsive */\n\n@media (max-width:600px){\n\n.misjoyas-topbar-track{\nfont-size:12px;\ngap:40px;\npadding:8px 0;\n}\n\n}\n\n</style>",
         "full_width": true,
         "show_section_divider": true,
         "padding_top": 0,
@@ -613,6 +637,29 @@
     "mobile-navigation": {
       "type": "mobile-navigation",
       "blocks": {
+        "button_LVneNi": {
+          "type": "button",
+          "settings": {
+            "button_label": "Día del Padre",
+            "button_link": "shopify://collections/dia-del-padre",
+            "open_new_window": false,
+            "show_button_style": "primary",
+            "button_light": "rgba(0,0,0,0)",
+            "button_text_light": "rgba(0,0,0,0)",
+            "button_hover_light": "rgba(0,0,0,0)",
+            "button_text_hover_light": "rgba(0,0,0,0)",
+            "secondary_button_light": "rgba(0,0,0,0)",
+            "secondary_button_text_light": "rgba(0,0,0,0)",
+            "colors_text_link": "rgba(0,0,0,0)",
+            "button_dark": "rgba(0,0,0,0)",
+            "button_text_dark": "rgba(0,0,0,0)",
+            "button_hover_dark": "rgba(0,0,0,0)",
+            "button_text_hover_dark": "rgba(0,0,0,0)",
+            "secondary_button_dark": "rgba(0,0,0,0)",
+            "secondary_button_text_dark": "rgba(0,0,0,0)",
+            "colors_text_link_dark": "rgba(0,0,0,0)"
+          }
+        },
         "menu_PKxhN3": {
           "type": "menu",
           "settings": {
@@ -962,6 +1009,7 @@
         }
       },
       "block_order": [
+        "button_LVneNi",
         "menu_PKxhN3",
         "menu_EhKMaa",
         "menu_rCBWkB",
