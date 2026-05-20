@@ -540,9 +540,6 @@ video {
 .tw-mb-4 {
   margin-bottom: 16px;
 }
-.tw-mb-6 {
-  margin-bottom: 24px;
-}
 .tw-mt-4 {
   margin-top: 16px;
 }
@@ -624,9 +621,6 @@ video {
 .tw-whitespace-nowrap {
   white-space: nowrap;
 }
-.tw-rounded {
-  border-radius: 4px;
-}
 .tw-rounded-\[4px\] {
   border-radius: 4px;
 }
@@ -638,13 +632,6 @@ video {
 }
 .tw-border-t {
   border-top-width: 1px;
-}
-.tw-border-solid {
-  border-style: solid;
-}
-.tw-border-\[\#222\] {
-  --tw-border-opacity: 1;
-  border-color: rgb(34 34 34 / var(--tw-border-opacity, 1));
 }
 .tw-border-black\/10 {
   border-color: rgb(0 0 0 / 0.1);
@@ -677,10 +664,6 @@ video {
 .tw-py-1\.5 {
   padding-top: 6px;
   padding-bottom: 6px;
-}
-.tw-py-2 {
-  padding-top: 8px;
-  padding-bottom: 8px;
 }
 .tw-py-3 {
   padding-top: 12px;
@@ -821,6 +804,9 @@ video {
   gap: 0;
 }
 
+/* Sobre la imagen del producto */
+.card-product .link-product-variant .top-left-container,
+.card-product .link-product-variant .label-top-left,
 .card-product .top-left-container,
 .card-product .label-top-left {
   top: 0 !important;
@@ -834,6 +820,9 @@ video {
   top: 0 !important;
 }
 
+/* Descuento: esquina inferior izquierda de la imagen */
+.card-product .link-product-variant .bottom-left-container,
+.card-product .link-product-variant .label-bottom-left,
 .card-product .bottom-left-container,
 .card-product .label-bottom-left {
   top: auto !important;
@@ -845,6 +834,22 @@ video {
 
 .card-product .label-bottom-left:not(.label-bottom-flag) {
   bottom: 0 !important;
+}
+
+/* Posición personalizada en imagen: anclar abajo-izquierda (descuentos) */
+.card-product .link-product-variant > .x-badge-container.absolute.w-max {
+  left: 0 !important;
+  top: auto !important;
+  bottom: 0 !important;
+  transform: none !important;
+}
+
+/* Imagen de etiqueta (ej. Cyber Day): mantener arriba-izquierda */
+.card-product .link-product-variant > .x-badge-container.absolute.w-max:has(.label-img) {
+  top: 0 !important;
+  bottom: auto !important;
+  left: 0 !important;
+  transform: none !important;
 }
 
 .card-product .x-badge-content.x-badge-text {

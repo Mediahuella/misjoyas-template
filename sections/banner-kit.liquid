@@ -1,0 +1,248 @@
+{%- if section.settings.enable -%}
+  {%- unless section.settings.show_only_on_homepage and request.page_type != 'index' -%}
+    {%- liquid
+      assign kit_image = section.settings.image
+      assign kit_image_mobile = section.settings.image_mobile
+      if section.settings.image_alt != blank
+        assign kit_alt = section.settings.image_alt
+      else
+        assign kit_alt = 'sections.banner-kit.alt' | t
+      endif
+      assign kit_link = section.settings.link
+      assign kit_height = section.settings.banner_height
+      assign kit_height_mobile = section.settings.banner_height_mobile
+    -%}
+
+    {%- style -%}
+      .banner-kit-{{ section.id }} {
+        --banner-kit-height: {{ kit_height }}px;
+        --banner-kit-height-mobile: {{ kit_height_mobile }}px;
+        --banner-kit-radius: {{ section.settings.border_radius }}px;
+        width: 100%;
+        padding-top: {{ section.settings.padding_y_mobile }}px;
+        padding-bottom: {{ section.settings.padding_y_mobile }}px;
+        line-height: 0;
+      }
+      @media (min-width: 768px) {
+        .banner-kit-{{ section.id }} {
+          padding-top: {{ section.settings.padding_y }}px;
+          padding-bottom: {{ section.settings.padding_y }}px;
+        }
+      }
+      .banner-kit-{{ section.id }} .banner-kit__inner {
+        width: 100%;
+        max-width: 93rem;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      @media (min-width: 768px) {
+        .banner-kit-{{ section.id }} .banner-kit__inner {
+          padding-left: 0;
+          padding-right: 0;
+        }
+      }
+      .banner-kit-{{ section.id }} .banner-kit__frame {
+        position: relative;
+        width: 100%;
+        height: var(--banner-kit-height-mobile);
+        border-radius: var(--banner-kit-radius);
+        overflow: hidden;
+      }
+      @media (min-width: 768px) {
+        .banner-kit-{{ section.id }} .banner-kit__frame {
+          height: var(--banner-kit-height);
+        }
+      }
+      .banner-kit-{{ section.id }} .banner-kit__link,
+      .banner-kit-{{ section.id }} .banner-kit__picture {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+      .banner-kit-{{ section.id }} .banner-kit__img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        border-radius: var(--banner-kit-radius);
+      }
+      .banner-kit-{{ section.id }} .banner-kit__placeholder {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        background-color: #eae3d9;
+        color: #222222;
+        font-size: 0.875rem;
+        line-height: 1.4;
+        text-align: center;
+        padding: 1.5rem;
+      }
+    {%- endstyle -%}
+
+    <div
+      class="banner-kit-{{ section.id }} tw-w-full"
+      role="region"
+      aria-label="{{ 'sections.banner-kit.aria_label' | t }}"
+    >
+      <div class="banner-kit__inner x-page-width page-width">
+        <div class="banner-kit__frame">
+          {%- if kit_link != blank -%}
+            <a
+              href="{{ kit_link }}"
+              class="banner-kit__link"
+              {% if section.settings.open_new_window %}target="_blank" rel="noopener noreferrer"{% endif %}
+            >
+          {%- endif -%}
+
+          {%- if kit_image != blank or kit_image_mobile != blank -%}
+            <picture class="banner-kit__picture">
+              {%- if kit_image_mobile != blank -%}
+                <source
+                  media="(max-width: 767px)"
+                  srcset="{{ kit_image_mobile | image_url: width: 880 }}"
+                >
+              {%- endif -%}
+              {%- if kit_image != blank -%}
+                {{
+                  kit_image
+                  | image_url: width: 2976
+                  | image_tag:
+                    class: 'banner-kit__img',
+                    widths: '440, 750, 1488, 1920, 2976',
+                    sizes: '(max-width: 767px) 100vw, min(93rem, 100vw)',
+                    alt: kit_alt,
+                    loading: 'lazy'
+                }}
+              {%- elsif kit_image_mobile != blank -%}
+                {{
+                  kit_image_mobile
+                  | image_url: width: 880
+                  | image_tag:
+                    class: 'banner-kit__img',
+                    widths: '440, 750, 880',
+                    sizes: '100vw',
+                    alt: kit_alt,
+                    loading: 'lazy'
+                }}
+              {%- endif -%}
+            </picture>
+          {%- elsif request.design_mode -%}
+            <div class="banner-kit__placeholder">
+              {{ 'sections.banner-kit.placeholder' | t }}
+            </div>
+          {%- endif -%}
+
+          {%- if kit_link != blank -%}
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  {%- endunless -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Banner kit",
+  "tag": "section",
+  "class": "section-banner-kit",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable",
+      "label": "Mostrar banner",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_only_on_homepage",
+      "label": "Solo en la página de inicio",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Imagen (escritorio)",
+      "info": "Recomendado 1488×400 px (banner completo con textos y panel rosa)."
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Imagen (móvil)",
+      "info": "Recomendado 440×400 px o proporción equivalente. Si está vacía, se usa la imagen de escritorio."
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Texto alternativo",
+      "default": "Kit de regalo en tu primera compra"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Enlace del banner"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_new_window",
+      "label": "Abrir enlace en nueva pestaña",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "banner_height",
+      "label": "Altura en escritorio (px)",
+      "min": 280,
+      "max": 560,
+      "step": 10,
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "banner_height_mobile",
+      "label": "Altura en móvil (px)",
+      "min": 280,
+      "max": 560,
+      "step": 10,
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Radio de esquinas (px)",
+      "min": 0,
+      "max": 16,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "padding_y",
+      "label": "Padding vertical — escritorio (px)",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_y_mobile",
+      "label": "Padding vertical — móvil (px)",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "default": 30
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner kit"
+    }
+  ]
+}
+{% endschema %}

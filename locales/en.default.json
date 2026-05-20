@@ -320,12 +320,21 @@
       "aria_label": "Promotional banner",
       "alt": "Here is something special for you"
     },
+    "ticker": {
+      "name": "Ticker",
+      "aria_label": "Promotional ticker"
+    },
     "banner-principal": {
       "aria_label": "Main banner",
       "slide_alt": "Promotional banner",
       "placeholder": "Upload a desktop image (1920×580 px recommended) in this slide block.",
       "previous": "Previous slide",
       "next": "Next slide"
+    },
+    "banner-kit": {
+      "aria_label": "Gift kit promotional banner",
+      "alt": "Gift kit on your first purchase",
+      "placeholder": "Upload a desktop image (1488×400 px recommended) and a mobile image (440×400 px recommended)."
     },
     "countdown-timer": {
       "aria_label": "Countdown timer",
@@ -347,7 +356,7 @@
     },
     "featured-collection-misjoyas": {
       "aria_label": "Featured collection",
-      "placeholder": "Add a collection block and choose a collection.",
+      "placeholder": "Choose a collection in the section settings.",
       "empty_collection": "This collection has no products yet.",
       "previous": "Previous products",
       "next": "Next products"

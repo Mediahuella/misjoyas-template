@@ -413,14 +413,30 @@
                       --colors-text-link: {{ settings.colors_dark_text_link.red }}, {{ settings.colors_dark_text_link.green }}, {{ settings.colors_dark_text_link.blue }};
                     {% endif %}
                   }
+                  @media (max-width: 767px) {
+                    .button-{{ block.id }} .button.button-solid {
+                      color: rgb(var(--colors-button-text));
+                      background-color: rgba(var(--colors-button));
+                      border: none;
+                      box-shadow: none;
+                    }
+                    .button-{{ block.id }} .button.button-outline {
+                      color: rgb(var(--colors-secondary-button));
+                      box-shadow: inset 0 0 0 1px rgba(var(--colors-line-secondary-button), 0.5);
+                      background: rgba(var(--background-secondary-button), 0.7);
+                    }
+                    .button-{{ block.id }} .button.button-text-link {
+                      color: rgb(var(--colors-text-link));
+                    }
+                  }
                 {% endstyle %}
-                <div class="button-{{ block.id }} flex justify-{{ section.settings.text_alignment }} mb-9 md:mb-4{% if block.settings.show_button_style == 'text-link' %} mt-2 md:mt-5{% else %} mt-4 md:mt-8{% endif %}"{{ block.shopify_attributes }}>
+                <div class="button-{{ block.id }} flex justify-{{ section.settings.text_alignment }} mb-9 md:mb-4{% if block.settings.show_button_style == 'text-link' %} mt-2 md:mt-5{% else %} mt-4 md:mt-8{% endif %}{% unless block.settings.show_button_mobile %} hidden md:flex{% endunless %}"{{ block.shopify_attributes }}>
                   {% if block.settings.button_link == blank %}
-                    <div class="button{% if block.settings.show_button_style == 'secondary' %} button-outline{% elsif block.settings.show_button_style == 'text-link' %} button-text-link {% else %} button-solid{% endif %} leading-normal empty:hidden text-center pl-7 pr-7 pt-2.5 pb-2.5 md:pl-8 md:pr-8 md:pt-3 md:pb-3 opacity-70 hover:cursor-not-allowed">
+                    <div class="button{% if block.settings.show_button_style == 'secondary' %} button-outline{% elsif block.settings.show_button_style == 'text-link' %} button-text-link {% else %} button-solid{% endif %} leading-normal empty:hidden text-center pl-8 pr-8 pt-3 pb-3 opacity-70 hover:cursor-not-allowed">
                       {% render 'button-label', button_label: block.settings.button_label, show_button_style: block.settings.show_button_style %}
                     </div>
                   {% else %}
-                    <a class="button{% if block.settings.show_button_style == 'secondary' %} button-outline{% elsif block.settings.show_button_style == 'text-link' %} button-text-link {% else %} button-solid{% endif %} leading-normal empty:hidden text-center pl-7 pr-7 pt-2.5 pb-2.5 md:pl-8 md:pr-8 md:pt-3 md:pb-3" href="{{ block.settings.button_link }}"{% if block.settings.open_new_window %} target="_blank"{% endif %}>
+                    <a class="button{% if block.settings.show_button_style == 'secondary' %} button-outline{% elsif block.settings.show_button_style == 'text-link' %} button-text-link {% else %} button-solid{% endif %} leading-normal empty:hidden text-center pl-8 pr-8 pt-3 pb-3" href="{{ block.settings.button_link }}"{% if block.settings.open_new_window %} target="_blank"{% endif %}>
                       {% render 'button-label', button_label: block.settings.button_label, show_button_style: block.settings.show_button_style %}
                     </a>
                   {% endif %}
@@ -1268,6 +1284,12 @@
           "id": "open_new_window",
           "default": false,
           "label": "t:sections.all.open_new_window.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_button_mobile",
+          "label": "Mostrar botón en móvil",
+          "default": true
         },
         {
           "type": "select",

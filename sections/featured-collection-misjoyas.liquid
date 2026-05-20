@@ -1,15 +1,15 @@
 {%- liquid
-  assign active_block = section.blocks | where: 'type', 'collection' | first
-  assign featured_collection = blank
-  if active_block != blank
-    assign featured_collection = active_block.settings.collection
-  endif
-
+  assign featured_collection = section.settings.collection
   assign products_limit = section.settings.products_to_show
-  assign card_width_mobile = section.settings.card_width_mobile
-  assign card_width_desktop = section.settings.card_width_desktop
+  assign columns_mobile = 2
+  assign columns_desktop = section.settings.columns_desktop
   assign gap_mobile = section.settings.gap_mobile
   assign gap_desktop = section.settings.gap
+
+  assign enable_slider = false
+  if featured_collection != blank and featured_collection.products_count > 1
+    assign enable_slider = true
+  endif
 
   assign disable_quickview = true
   if section.settings.show_quickview
@@ -21,8 +21,6 @@
   .featured-collection-mj-{{ section.id }} {
     --fc-mj-gap: {{ gap_desktop }}px;
     --fc-mj-gap-mobile: {{ gap_mobile }}px;
-    --fc-mj-card-width-mobile: {{ card_width_mobile }}px;
-    --fc-mj-card-width-desktop: {{ card_width_desktop }}px;
     width: 100%;
     padding-top: {{ section.settings.padding_y_mobile }}px;
     padding-bottom: {{ section.settings.padding_y_mobile }}px;
@@ -40,7 +38,10 @@
     font-size: 1.875rem;
     line-height: 2.25rem;
     font-weight: 400;
-    text-transform: none;
+  }
+  .featured-collection-mj-{{ section.id }} .featured-collection-mj__heading-icon {
+    color: {{ section.settings.title_icon_color }};
+    margin-right: 0.25em;
   }
   @media (min-width: 768px) {
     .featured-collection-mj-{{ section.id }} .featured-collection-mj__heading {
@@ -55,24 +56,28 @@
   }
   @media (min-width: 768px) {
     .featured-collection-mj-{{ section.id }} .featured-collection-mj__track {
-      padding-left: 1rem;
-      padding-right: 1rem;
+      padding-left: 0;
+      padding-right: 0;
     }
   }
-  .featured-collection-mj-{{ section.id }} .preload-slide-{{ section.id }} {
-    margin-right: var(--fc-mj-gap-mobile);
+  .featured-collection-mj-{{ section.id }} .featured-collection-mj__carousel {
+    position: relative;
   }
   @media (min-width: 768px) {
-    .featured-collection-mj-{{ section.id }} .preload-slide-{{ section.id }} {
-      margin-right: var(--fc-mj-gap);
+    .featured-collection-mj-{{ section.id }} .splide__arrows {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      transform: translateY(-50%);
+      pointer-events: none;
+      z-index: 2;
     }
-  }
-  .featured-collection-mj-{{ section.id }} .featured-collection-mj__slide {
-    width: min(var(--fc-mj-card-width-mobile), calc(100vw - 3rem));
-  }
-  @media (min-width: 768px) {
-    .featured-collection-mj-{{ section.id }} .featured-collection-mj__slide {
-      width: var(--fc-mj-card-width-desktop);
+    .featured-collection-mj-{{ section.id }} .splide__arrow {
+      pointer-events: auto;
     }
   }
   .featured-collection-mj-{{ section.id }} .featured-collection-mj__view-all {
@@ -107,30 +112,18 @@
 {%- endstyle -%}
 
 <div
-  class="featured-collection-mj-{{ section.id }} tw-w-full misjoyas-product-badges"
+  class="featured-collection-mj-{{ section.id }} tw-w-full"
   role="region"
   aria-label="{{ 'sections.featured-collection-misjoyas.aria_label' | t }}"
 >
   <div class="x-page-width page-width">
     {%- if section.settings.title != blank -%}
-      <h2 class="featured-collection-mj__heading">{{ section.settings.title | escape }}</h2>
-    {%- endif -%}
-
-    {%- if section.blocks.size > 1 -%}
-      <div class="featured-collection-mj__tabs tw-flex tw-flex-wrap tw-justify-center tw-gap-2 tw-mb-6">
-        {%- for block in section.blocks -%}
-          {%- if block.type == 'collection' and block.settings.collection != blank -%}
-            <button
-              type="button"
-              class="featured-collection-mj__tab tw-px-4 tw-py-2 tw-text-sm tw-border tw-border-solid tw-border-[#222] tw-rounded"
-              data-collection-tab="{{ block.id }}"
-              {{ block.shopify_attributes }}
-            >
-              {{ block.settings.collection.title | escape }}
-            </button>
-          {%- endif -%}
-        {%- endfor -%}
-      </div>
+      <h2 class="featured-collection-mj__heading">
+        {%- if section.settings.title_icon != blank -%}
+          <span class="featured-collection-mj__heading-icon" aria-hidden="true">{{ section.settings.title_icon | escape }}</span>
+        {%- endif -%}
+        {{- section.settings.title | escape -}}
+      </h2>
     {%- endif -%}
 
     {%- if featured_collection == blank -%}
@@ -140,98 +133,86 @@
         </p>
       {%- endif -%}
     {%- else -%}
-      {%- for block in section.blocks -%}
-        {%- if block.type == 'collection' and block.settings.collection != blank -%}
-          {%- assign block_collection = block.settings.collection -%}
-          {%- liquid
-            assign block_slider = false
-            if block_collection.products_count > 1
-              assign block_slider = true
-            endif
-          -%}
-          <div
-            class="featured-collection-mj__panel{% unless forloop.first %} tw-hidden{% endunless %}"
-            data-collection-panel="{{ block.id }}"
-            {% unless forloop.first %}hidden{% endunless %}
-          >
-            <div
-              id="featured-collection-mj-{{ section.id }}-{{ block.id }}"
-              class="featured-collection-mj__carousel carousel-mobile x-splide splide visible{% unless block_slider %} featured-collection-mj__carousel--static{% endunless %}"
-              {% if block_slider %}
-                x-intersect.once.margin.200px='$store.xSplide.load($el, {
-                  "type": "slide",
-                  "autoWidth": true,
-                  "focus": 0,
-                  "gap": "{{ gap_mobile }}px",
-                  "arrows": false,
-                  "pagination": false,
-                  "drag": true,
-                  "trimSpace": false,
-                  "mediaQuery": "min",
-                  "breakpoints": {
-                    768: {
-                      "autoWidth": true,
-                      "gap": "{{ gap_desktop }}px",
-                      "arrows": true,
-                      "pagination": false
-                    }
-                  },
-                  "classes": {
-                    "pagination": "hidden"
-                  }
-                })'
-              {% endif %}
-            >
-              <div class="splide__track featured-collection-mj__track overflow-hidden w-full">
-                <div class="splide__list w-full">
-                  {%- for product in block_collection.products limit: products_limit -%}
-                    <div class="splide__slide x-splide-slide preload-slide-{{ section.id }} featured-collection-mj__slide h-auto">
-                      {% render 'card-product',
-                        card_product: product,
-                        show_vendor: section.settings.show_vendor,
-                        show_rating: section.settings.show_rating,
-                        show_highlighted_attributes: section.settings.show_highlighted_attributes,
-                        section_id: section.id,
-                        class_slide: 'h-auto',
-                        column_mobile: 1,
-                        index: forloop.index,
-                        list_name: block_collection.title,
-                        collection: block_collection,
-                        block_id: block.id,
-                        product_card_id: forloop.index,
-                        disable_quickview: disable_quickview,
-                        media_aspect_ratio: '100',
-                        swiper_on_mobile: block_slider,
-                        enable_desktop_slider: block_slider
-                      %}
-                    </div>
-                  {%- else -%}
-                    {%- if request.design_mode -%}
-                      <p class="tw-text-center tw-text-sm tw-p-8">
-                        {{ 'sections.featured-collection-misjoyas.empty_collection' | t }}
-                      </p>
-                    {%- endif -%}
-                  {%- endfor -%}
-                </div>
+      <div
+        id="featured-collection-mj-{{ section.id }}"
+        class="featured-collection-mj__carousel carousel-mobile x-splide splide visible{% unless enable_slider %} featured-collection-mj__carousel--static{% endunless %}"
+        {% if enable_slider %}
+          x-intersect.once.margin.200px='$store.xSplide.load($el, {
+            "type": "slide",
+            "mediaQuery": "min",
+            "focus": 0,
+            "gap": "{{ gap_mobile }}px",
+            "perPage": {{ columns_mobile }},
+            "perMove": 1,
+            "autoWidth": false,
+            "arrows": false,
+            "pagination": false,
+            "drag": true,
+            "trimSpace": false,
+            "breakpoints": {
+              768: {
+                "perPage": {{ columns_desktop }},
+                "perMove": {{ columns_desktop }},
+                "autoWidth": false,
+                "gap": "{{ gap_desktop }}px",
+                "arrows": true,
+                "pagination": false
+              }
+            },
+            "classes": {
+              "pagination": "hidden"
+            }
+          })'
+        {% endif %}
+      >
+        <div class="splide__track featured-collection-mj__track overflow-hidden w-full">
+          <div class="splide__list w-full">
+            {%- for product in featured_collection.products limit: products_limit -%}
+              <div class="splide__slide x-splide-slide preload-slide-{{ section.id }} featured-collection-mj__slide h-auto">
+                {% render 'card-product',
+                  card_product: product,
+                  show_vendor: section.settings.show_vendor,
+                  show_rating: section.settings.show_rating,
+                  show_highlighted_attributes: section.settings.show_highlighted_attributes,
+                  section_id: section.id,
+                  class_slide: 'h-auto',
+                  column_mobile: columns_mobile,
+                  columns_desktop: columns_desktop,
+                  index: forloop.index,
+                  list_name: featured_collection.title,
+                  collection: featured_collection,
+                  block_id: section.id,
+                  product_card_id: forloop.index,
+                  disable_quickview: disable_quickview,
+                  media_aspect_ratio: '100',
+                  swiper_on_mobile: enable_slider,
+                  enable_desktop_slider: enable_slider
+                %}
               </div>
-              {%- if block_slider -%}
-                <div class="splide__arrows tw-hidden md:tw-flex">
-                  <button
-                    type="button"
-                    class="splide__arrow splide__arrow--prev button-arrow"
-                    aria-label="{{ 'sections.featured-collection-misjoyas.previous' | t }}"
-                  ></button>
-                  <button
-                    type="button"
-                    class="splide__arrow splide__arrow--next button-arrow"
-                    aria-label="{{ 'sections.featured-collection-misjoyas.next' | t }}"
-                  ></button>
-                </div>
+            {%- else -%}
+              {%- if request.design_mode -%}
+                <p class="tw-text-center tw-text-sm tw-p-8">
+                  {{ 'sections.featured-collection-misjoyas.empty_collection' | t }}
+                </p>
               {%- endif -%}
-            </div>
+            {%- endfor -%}
+          </div>
+        </div>
+        {%- if enable_slider -%}
+          <div class="splide__arrows tw-hidden md:tw-flex">
+            <button
+              type="button"
+              class="splide__arrow splide__arrow--prev button-arrow"
+              aria-label="{{ 'sections.featured-collection-misjoyas.previous' | t }}"
+            ></button>
+            <button
+              type="button"
+              class="splide__arrow splide__arrow--next button-arrow"
+              aria-label="{{ 'sections.featured-collection-misjoyas.next' | t }}"
+            ></button>
           </div>
         {%- endif -%}
-      {%- endfor -%}
+      </div>
 
       {%- liquid
         assign view_all_url = featured_collection.url
@@ -254,45 +235,35 @@
   </div>
 </div>
 
-{%- if section.blocks.size > 1 -%}
-  <script>
-    (() => {
-      const root = document.querySelector('.featured-collection-mj-{{ section.id }}');
-      if (!root) return;
-      const tabs = root.querySelectorAll('[data-collection-tab]');
-      const panels = root.querySelectorAll('[data-collection-panel]');
-      tabs.forEach((tab) => {
-        tab.addEventListener('click', () => {
-          const id = tab.getAttribute('data-collection-tab');
-          panels.forEach((panel) => {
-            const active = panel.getAttribute('data-collection-panel') === id;
-            panel.classList.toggle('tw-hidden', !active);
-            panel.hidden = !active;
-          });
-        });
-      });
-    })();
-  </script>
-{%- endif -%}
-
 {% schema %}
 {
   "name": "Colección destacada",
   "tag": "section",
   "class": "section-featured-collection-misjoyas",
-  "max_blocks": 6,
   "settings": [
+    {
+      "type": "text",
+      "id": "title_icon",
+      "label": "Icono del título",
+      "default": "✦",
+      "info": "Símbolo decorativo antes del título (ej. ✦)."
+    },
+    {
+      "type": "color",
+      "id": "title_icon_color",
+      "label": "Color del icono del título",
+      "default": "#68B5A3"
+    },
     {
       "type": "text",
       "id": "title",
       "label": "Título",
-      "default": "Ofertas exclusivas Cyber Day"
+      "default": "¡Lo último!"
     },
     {
       "type": "collection",
       "id": "collection",
-      "label": "Colección (si no usas bloques)",
-      "info": "Opcional si agregas bloques de colección abajo."
+      "label": "Colección"
     },
     {
       "type": "range",
@@ -323,21 +294,12 @@
     },
     {
       "type": "range",
-      "id": "card_width_desktop",
-      "label": "Ancho tarjeta — escritorio (px)",
-      "min": 280,
-      "max": 400,
-      "step": 10,
-      "default": 360
-    },
-    {
-      "type": "range",
-      "id": "card_width_mobile",
-      "label": "Ancho tarjeta — móvil (px)",
-      "min": 160,
-      "max": 280,
-      "step": 2,
-      "default": 194
+      "id": "columns_desktop",
+      "label": "Productos visibles — escritorio",
+      "min": 2,
+      "max": 5,
+      "step": 1,
+      "default": 4
     },
     {
       "type": "range",
@@ -397,7 +359,7 @@
       "type": "url",
       "id": "button_link",
       "label": "Enlace del botón",
-      "info": "Vacío = URL de la colección activa."
+      "info": "Vacío = URL de la colección."
     },
     {
       "type": "checkbox",
@@ -406,27 +368,9 @@
       "default": false
     }
   ],
-  "blocks": [
-    {
-      "type": "collection",
-      "name": "Colección",
-      "settings": [
-        {
-          "type": "collection",
-          "id": "collection",
-          "label": "Colección"
-        }
-      ]
-    }
-  ],
   "presets": [
     {
-      "name": "Colección destacada",
-      "blocks": [
-        {
-          "type": "collection"
-        }
-      ]
+      "name": "Colección destacada"
     }
   ]
 }

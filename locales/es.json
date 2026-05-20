@@ -320,12 +320,21 @@
       "aria_label": "Huincha promocional",
       "alt": "Aquí hay algo especial para ti"
     },
+    "ticker": {
+      "name": "Ticker",
+      "aria_label": "Ticker promocional"
+    },
     "banner-principal": {
       "aria_label": "Banner principal",
       "slide_alt": "Banner promocional",
       "placeholder": "Sube la imagen de escritorio (recomendado 1920×580 px) en este bloque.",
       "previous": "Diapositiva anterior",
       "next": "Siguiente diapositiva"
+    },
+    "banner-kit": {
+      "aria_label": "Banner promocional kit de regalo",
+      "alt": "Kit de regalo en tu primera compra",
+      "placeholder": "Sube la imagen de escritorio (recomendado 1488×400 px) y la de móvil (recomendado 440×400 px)."
     },
     "countdown-timer": {
       "aria_label": "Contador regresivo",
@@ -347,7 +356,7 @@
     },
     "featured-collection-misjoyas": {
       "aria_label": "Colección destacada",
-      "placeholder": "Agrega un bloque de colección y elige la colección.",
+      "placeholder": "Elige una colección en la configuración de la sección.",
       "empty_collection": "Esta colección aún no tiene productos.",
       "previous": "Productos anteriores",
       "next": "Siguientes productos"
