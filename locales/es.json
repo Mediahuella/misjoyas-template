@@ -361,6 +361,12 @@
       "previous": "Productos anteriores",
       "next": "Siguientes productos"
     },
+    "text-column-image": {
+      "boxes_aria_label": "Columnas con imagen",
+      "boxes_placeholder": "Añade bloques de columna con imagen.",
+      "boxes_block_placeholder": "Sube una imagen para esta columna.",
+      "boxes_card_alt": "Imagen promocional"
+    },
     "mobile-navigation": {
       "my_cart": "Mi carro"
     },

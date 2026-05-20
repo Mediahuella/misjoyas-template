@@ -60,3 +60,52 @@ document.addEventListener('alpine:init', () => {
     }
   }));
 });
+
+/**
+ * Flechas custom para featured-collection-misjoyas (Splide arrows: false).
+ */
+window.bindFeaturedCollectionMjArrows = function (root, desktopMove, mobileMove) {
+  if (!root?.splide) return;
+
+  const prev = root.querySelector('[data-fc-mj-arrow="prev"]');
+  const next = root.querySelector('[data-fc-mj-arrow="next"]');
+  const getMove = () => (window.innerWidth >= 768 ? desktopMove : mobileMove);
+
+  const updateDisabled = () => {
+    const end = root.splide.Components.Controller.getEnd();
+    const index = root.splide.index;
+    if (prev) {
+      prev.disabled = index <= 0;
+      prev.setAttribute('aria-disabled', index <= 0 ? 'true' : 'false');
+    }
+    if (next) {
+      next.disabled = index >= end;
+      next.setAttribute('aria-disabled', index >= end ? 'true' : 'false');
+    }
+  };
+
+  if (prev && !prev.dataset.fcMjBound) {
+    prev.dataset.fcMjBound = '1';
+    prev.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      root.splide.go('-' + getMove());
+    });
+  }
+
+  if (next && !next.dataset.fcMjBound) {
+    next.dataset.fcMjBound = '1';
+    next.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      root.splide.go('+' + getMove());
+    });
+  }
+
+  if (!root.dataset.fcMjMoveBound) {
+    root.dataset.fcMjMoveBound = '1';
+    root.splide.on('move refresh resized', updateDisabled);
+  }
+
+  updateDisabled();
+};

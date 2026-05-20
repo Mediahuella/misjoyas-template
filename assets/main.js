@@ -74,6 +74,51 @@ document.addEventListener('alpine:init', function () {
   });
 });
 
+/**
+ * Flechas custom para featured-collection-misjoyas (Splide arrows: false).
+ */
+window.bindFeaturedCollectionMjArrows = function (root, desktopMove, mobileMove) {
+  if (!(root !== null && root !== void 0 && root.splide)) return;
+  var prev = root.querySelector('[data-fc-mj-arrow="prev"]');
+  var next = root.querySelector('[data-fc-mj-arrow="next"]');
+  var getMove = function getMove() {
+    return window.innerWidth >= 768 ? desktopMove : mobileMove;
+  };
+  var updateDisabled = function updateDisabled() {
+    var end = root.splide.Components.Controller.getEnd();
+    var index = root.splide.index;
+    if (prev) {
+      prev.disabled = index <= 0;
+      prev.setAttribute('aria-disabled', index <= 0 ? 'true' : 'false');
+    }
+    if (next) {
+      next.disabled = index >= end;
+      next.setAttribute('aria-disabled', index >= end ? 'true' : 'false');
+    }
+  };
+  if (prev && !prev.dataset.fcMjBound) {
+    prev.dataset.fcMjBound = '1';
+    prev.addEventListener('click', function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      root.splide.go('-' + getMove());
+    });
+  }
+  if (next && !next.dataset.fcMjBound) {
+    next.dataset.fcMjBound = '1';
+    next.addEventListener('click', function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      root.splide.go('+' + getMove());
+    });
+  }
+  if (!root.dataset.fcMjMoveBound) {
+    root.dataset.fcMjMoveBound = '1';
+    root.splide.on('move refresh resized', updateDisabled);
+  }
+  updateDisabled();
+};
+
 /***/ },
 
 /***/ "./src/css/main.css"

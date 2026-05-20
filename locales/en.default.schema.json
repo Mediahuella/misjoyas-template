@@ -3528,6 +3528,33 @@
     "text-column-image": {
       "name": "Text columns with images",
       "settings": {
+        "layout_style": {
+          "label": "Layout style",
+          "options__classic": {
+            "label": "Classic (text + image)"
+          },
+          "options__image_boxes": {
+            "label": "Image boxes (Mis Joyas)"
+          }
+        },
+        "box_layout_header": {
+          "content": "Image boxes layout (Figma)"
+        },
+        "box_gap": {
+          "label": "Gap between columns",
+          "info": "Used when layout style is Image boxes."
+        },
+        "box_border_radius": {
+          "label": "Image corner radius"
+        },
+        "box_padding_y": {
+          "label": "Vertical padding (desktop)",
+          "info": "Figma default: 40 px (node 76:9849)."
+        },
+        "box_padding_y_mobile": {
+          "label": "Vertical padding (mobile)",
+          "info": "Figma default: 15 px (node 344:4507)."
+        },
         "image_position_desktop": {
           "label": "Image position"
         },
@@ -3544,7 +3571,14 @@
         "column": {
           "settings": {
             "image": {
-              "info": "For recommended image sizes, check our [user guide](https://support.omnithemes.com/blogs/faqs/can-you-recommend-image-sizes-for-the-different-image-layouts-of-different-section). Use a transparent background image to emphasize crucial element, such as highlighted ingredient or important material."
+              "info": "Image boxes (Mis Joyas): 736×400 px per card. Classic layout: see [user guide](https://support.omnithemes.com/blogs/faqs/can-you-recommend-image-sizes-for-the-different-image-layouts-of-different-section)."
+            },
+            "image_mobile": {
+              "label": "Mobile image (optional)",
+              "info": "Image boxes layout: 440×239 px (Figma). Falls back to desktop image if empty."
+            },
+            "image_alt": {
+              "label": "Image alt text"
             }
           }
         }

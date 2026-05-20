@@ -68,14 +68,26 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
     width: 28px;
+    min-height: 44px;
     padding: 10px 2px;
     border: none;
     background: rgba(255, 255, 255, 0.9);
+    color: #222222;
+    box-shadow: none;
     cursor: pointer;
-    transition: opacity 0.15s ease;
+    transition: background-color 0.15s ease, opacity 0.15s ease;
   }
-  .banner-principal-{{ section.id }} .banner-principal__arrow:hover {
+  .banner-principal-{{ section.id }} .x-splide:hover .banner-principal__arrow {
+    transform: translateY(-50%);
+  }
+  .banner-principal-{{ section.id }} .banner-principal__arrow:hover,
+  .banner-principal-{{ section.id }} .banner-principal__arrow:focus,
+  .banner-principal-{{ section.id }} .banner-principal__arrow:focus-visible {
+    background: rgba(255, 255, 255, 1);
+    color: #222222;
+    box-shadow: none;
     opacity: 1;
   }
   .banner-principal-{{ section.id }} .banner-principal__arrow:disabled {
@@ -90,9 +102,17 @@
     right: 0;
     border-radius: 6px 0 0 6px;
   }
-  .banner-principal-{{ section.id }} .banner-principal__arrow::after {
-    font-size: 20px;
-    line-height: 1;
+  .banner-principal-{{ section.id }} .banner-principal__arrow-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+  .banner-principal-{{ section.id }} .banner-principal__arrow-icon svg {
+    width: 24px;
+    height: 24px;
   }
 {%- endstyle -%}
 
@@ -103,7 +123,7 @@
 >
   <div
     id="x-banner-principal-{{ section.id }}"
-    class="banner-principal__slider splide-slideshow overflow-hidden visible tw-w-full{% if enable_slider %} x-splide splide{% endif %}"
+    class="banner-principal__slider splide-slideshow overflow-hidden visible tw-w-full{% if enable_slider %} x-splide splide disable-effect-hover{% endif %}"
     {% if enable_slider %}
       x-intersect.once.margin.200px='$store.xSplide.load($el, {
         "speed": 800,
@@ -196,14 +216,22 @@
       <div class="splide__arrows{% if settings.lang_direction contains request.locale.iso_code %} rtl{% endif %}">
         <button
           type="button"
-          class="banner-principal__arrow banner-principal__arrow--prev splide__arrow splide__arrow--prev button-arrow rotate-90 after:text-[20px]"
+          class="banner-principal__arrow banner-principal__arrow--prev splide__arrow splide__arrow--prev none_border"
           aria-label="{{ 'sections.banner-principal.previous' | t }}"
-        ></button>
+        >
+          <span class="banner-principal__arrow-icon rotate-90 rtl:-rotate-90" aria-hidden="true">
+            {% render 'icon-alls', icon: 'icon-caret' %}
+          </span>
+        </button>
         <button
           type="button"
-          class="banner-principal__arrow banner-principal__arrow--next splide__arrow splide__arrow--next button-arrow -rotate-90 after:text-[20px]"
+          class="banner-principal__arrow banner-principal__arrow--next splide__arrow splide__arrow--next none_border"
           aria-label="{{ 'sections.banner-principal.next' | t }}"
-        ></button>
+        >
+          <span class="banner-principal__arrow-icon -rotate-90 rtl:rotate-90" aria-hidden="true">
+            {% render 'icon-alls', icon: 'icon-caret' %}
+          </span>
+        </button>
       </div>
     {%- endif -%}
   </div>

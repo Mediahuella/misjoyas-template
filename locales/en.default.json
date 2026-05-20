@@ -361,6 +361,12 @@
       "previous": "Previous products",
       "next": "Next products"
     },
+    "text-column-image": {
+      "boxes_aria_label": "Image columns",
+      "boxes_placeholder": "Add image column blocks to this section.",
+      "boxes_block_placeholder": "Upload an image for this column.",
+      "boxes_card_alt": "Promotional image"
+    },
     "mobile-navigation": {
       "my_cart": "My cart"
     },
