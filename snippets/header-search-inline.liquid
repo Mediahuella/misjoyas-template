@@ -11,7 +11,7 @@
     action="{{ routes.search_url }}"
     method="get"
     role="search"
-    class="flex items-center tw-h-[42px] lg:tw-w-[350px] xl:tw-w-[488px] bg-white border border-black/[0.15] rounded-[4px] px-3 gap-2"
+    class="tw-flex tw-items-center tw-h-[42px] lg:tw-w-[350px] xl:tw-w-[488px] tw-bg-white tw-border tw-border-[#2d2d2d] tw-rounded-[4px] tw-px-3 tw-gap-2"
   >
     <input type="hidden" name="options[prefix]" value="last">
     <input
@@ -21,7 +21,7 @@
       @input="keyUp()"
       @focus="focusForm()"
       class="flex-1 min-w-0 bg-transparent outline-none text-[16px] leading-[22px] text-black placeholder:text-[#737373] placeholder:opacity-70 [appearance:none] [-webkit-appearance:none]"
-      placeholder="{{ 'general.search.search' | t }}"
+      placeholder="{{ 'general.search.placeholder' | t }}"
       autocomplete="off"
       aria-label="{{ 'general.search.search' | t }}"
     >

@@ -171,9 +171,12 @@
     text-align: center;
     max-width: 21.25rem;
     width: calc(100% - 2.5rem);
+    background-color: transparent;
+    transition: background-color 0.15s ease;
   }
-  .featured-collection-mj-{{ section.id }} .featured-collection-mj__view-all:hover {
-    opacity: 0.85;
+  .featured-collection-mj-{{ section.id }} .featured-collection-mj__view-all:hover,
+  .featured-collection-mj-{{ section.id }} .featured-collection-mj__view-all:focus-visible {
+    background-color: #f2f2f2;
   }
   .featured-collection-mj-{{ section.id }} .featured-collection-mj__footer {
     display: flex;

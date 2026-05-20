@@ -71,7 +71,8 @@
       "previous": "Previous"
     },
     "search": {
-      "search": "Search..."
+      "search": "Search...",
+      "placeholder": "What are you looking for?"
     },
     "cart": {
       "item_added_to_cart": "Item added to cart",

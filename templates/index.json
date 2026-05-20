@@ -41,7 +41,7 @@
       ],
       "settings": {
         "auto_play": true,
-        "change_slides_speed": 3,
+        "change_slides_speed": 4,
         "show_arrows": true,
         "banner_height": 580,
         "banner_height_mobile": 400
@@ -512,7 +512,7 @@
         "title_icon_color": "#68b5a3",
         "title": "Las cadenas que más se venden",
         "collection": "cadenas",
-        "products_to_show": 8,
+        "products_to_show": 16,
         "gap": 16,
         "gap_mobile": 12,
         "columns_desktop": 4,

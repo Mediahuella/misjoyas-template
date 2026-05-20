@@ -64,17 +64,26 @@
 /* ===== Botón ATC siempre en el borde inferior ===== */
 
 /*
-  El upstream (theme.css.liquid) ya tiene la cadena flex para igualar alturas.
-  El bug: variant-area Y botón tienen margin-top:auto, dividiendo el espacio libre
-  en dos, dejando el botón en el centro en vez del fondo.
-  Fix: justify-end en form-fields agrupa variant+botón al fondo; margin-top:0
-  en variant-area elimina el margin auto conflictivo.
+  Ranura fija encima del botón ATC: misma altura con o sin <select>.
+  Select en tarjeta = 40px + margen inferior del área (8px, theme.css.liquid).
 */
 .card-product-equal-height .card-product-atc-wrapper .card-product-form-fields {
-  justify-content: flex-end;
+  flex: 0 0 auto;
 }
+
 .card-product-equal-height .card-product-atc-wrapper .card-product-variant-area {
   margin-top: 0;
+  margin-bottom: 8px;
+  min-height: 40px;
+  display: flex;
+  align-items: flex-end;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.card-product-equal-height .card-product-atc-wrapper .card-product-variant-area .product-form__input {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
 }
 
 /* ===== Badges en tarjetas: esquina, sin borde (Figma Cyber Day) ===== */

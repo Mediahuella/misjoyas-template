@@ -16,8 +16,8 @@
     "colors_heading_highlight": "#444444",
     "colors_text": "#2d2d2d",
     "colors_text_link": "#2d2d2d",
-    "colors_price": "#2d2d2d",
-    "colors_price_sale": "#f83785",
+    "colors_price": "#f83785",
+    "colors_price_sale": "#2d2d2d",
     "colors_error": "#f40f0f",
     "colors_success": "#157f7f",
     "colors_line_and_borders": "#2d2d2d",
@@ -106,7 +106,7 @@
     "product_card_effect_reveal_image": "slide",
     "transition_arrows": "#000000",
     "transition_arrows_dark": "#ffffff",
-    "info_alignment_card_product": "right",
+    "info_alignment_card_product": "left",
     "show_quantity": true,
     "low_stock_threshold": 4,
     "in_stock_message_light": "#157f7f",
@@ -371,9 +371,7 @@
       "5149645339031002760": {
         "type": "shopify://apps/minmaxify-order-limits/blocks/app-embed-block/3acfba32-89f3-4377-ae20-cbb9abc48475",
         "disabled": false,
-        "settings": {
-          "async": false
-        }
+        "settings": {}
       },
       "12711036393401670242": {
         "type": "shopify://apps/whatsup-whatsapp-button/blocks/float-button/7e68b675-2a94-4586-a750-8b8ca8c9d069",
