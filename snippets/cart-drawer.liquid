@@ -70,7 +70,7 @@
 -%}
 <div
   id="CartDrawer"
-  class="{{ settings.cart_type }} text-[rgb(var(--colors-text))]{% if is_rtl %} rtl{% endif %}"
+  class="misjoyas-cart {{ settings.cart_type }} text-[rgb(var(--colors-text))]{% if is_rtl %} rtl{% endif %}"
   x-data="xCart"
   x-init="$store.xMiniCart.type = '{{ settings.cart_type }}';{% if settings.enable_save_share_cart %} $store.xCartHelper.handleShareCart(){% endif %}"
   x-show="$store.xMiniCart.open"
@@ -91,7 +91,7 @@
       aria-modal="true"
       aria-label="{{ 'sections.cart.title' | t }}"
       tabindex="-1"
-      class="z-30 overflow-hidden flex flex-col fixed bottom-0 left-0 {{ mobile_cart_height }} {{ max_mobile_cart_height }}{%- if settings.edges_type == "rounded_corners" %} md:max-h-[calc(100vh-20px)]{% else %} md:max-h-[100vh]{% endif %} w-full bg-[rgba(var(--background-color),1)] md:w-96
+      class="misjoyas-cart__panel z-30 overflow-hidden flex flex-col fixed bottom-0 left-0 {{ mobile_cart_height }} {{ max_mobile_cart_height }}{%- if settings.edges_type == "rounded_corners" %} md:max-h-[calc(100vh-20px)]{% else %} md:max-h-[100vh]{% endif %} w-full bg-[rgba(var(--background-color),1)] md:w-96
         {%- if settings.edges_type == "rounded_corners" %}{% unless settings.cart_drawer_size_mobile == "fullscreen" %} rounded-t-[10px]{% endunless %} md:rounded-[10px]{%- if settings.cart_type == "popup" %} md:mb-2.5 md:mx-2.5{% else %} md:m-2.5{% endif %}{% endif -%}
         {%- if settings.cart_type == "popup" %} md:border-t md:h-auto md:bottom-auto shadow-md{% unless is_rtl %} right-0{% endunless %} md:absolute{% else %} md:h-full md:z-auto md:relative{% endif -%}
         {%- if cart == empty %} lg:w-[32rem]{% endif -%}{% if is_rtl %} text-right {% else %} md:left-auto{% endif %}"
@@ -113,13 +113,14 @@
       </div>
       <button 
         id="CloseCart"
-        class="cursor-pointer absolute w-11 h-11 pt-4 pr-4 pb-4 pl-4 z-10 top-1 lg:top-auto lg:end-10{% if is_rtl %} left-3 {% else %} right-3{% endif %}"
+        class="misjoyas-cart__close cursor-pointer absolute w-11 h-11 pt-4 pr-4 pb-4 pl-4 z-10 top-1 lg:top-auto lg:end-10{% if is_rtl %} left-3 {% else %} right-3{% endif %}"
         @click="$store.xModal.removeFocus(); $store.xMiniCart.hideCart();" 
       >
         {% render 'icon-alls', icon: 'icon-close' %}
       </button>
-      <h2 class="relative pl-5 pr-5 lg:pl-14 lg:pr-14 pt-4 pb-4 md:pt-3 md:pb-3 z-0 text-medium">{{ 'sections.cart.title' | t }}</h2>
-      <div class="border-t flex-1 overflow-auto scrollbar-body grow lg:pl-14 lg:pr-14 pb-4" :class="$store.xMiniCart.loading ? 'opacity-0': 'opacity-1'">
+      <h2 class="misjoyas-cart__title z-0">{{ 'sections.cart.title' | t }}</h2>
+      <div class="misjoyas-cart__header-divider" aria-hidden="true"></div>
+      <div class="misjoyas-cart__scroll border-t flex-1 overflow-auto scrollbar-body grow pb-4" :class="$store.xMiniCart.loading ? 'opacity-0': 'opacity-1'">
         <div class="flex flex-col h-full relative justify-between">
           {%- if cart == empty -%}
             <div 
@@ -181,7 +182,7 @@
             {% render 'cart-progress-bar' %}
             {% comment %} Cart items {% endcomment %}
             <div {% if is_update_date %}x-intersect.once="updateDate(`{{ update_date_string }}`)"{% endif %} 
-              class="relative pl-5 pr-5 lg:pl-0 lg:pr-0 bg-[rgba(var(--colors-text),0.05)] lg:bg-none overflow-auto scrollbar-body scrollbar-visible flex-1 z-20 pt-2 pb-2
+              class="misjoyas-cart__items relative pl-5 pr-5 lg:pl-0 lg:pr-0 bg-[rgba(var(--colors-text),0.05)] lg:bg-none overflow-auto scrollbar-body scrollbar-visible flex-1 z-20 pt-2 pb-2
                 {%- if settings.cart_type == 'popup' %} md:max-h-[13.5rem]{% else %} md:max-h-screen xl:pt-4 xl:pb-8{% endif -%}" 
               :class="{ 'pointer-events-none' : loading , 'lg:w-7/12{% if is_rtl %} lg:pl-14{% else %} lg:pr-14{% endif %} min-h-[200px]' : show, 'lg:pr-5 max-h-96 h-full': !show }"
             >
@@ -925,7 +926,7 @@
                               }
                             {%- endcapture -%}
                           {% endif %}
-                          <tr class="flex relative cart-item{% if is_rtl %} justify-end{% endif %}" role="row" 
+                          <tr class="flex relative cart-item misjoyas-cart-item{% if is_rtl %} justify-end{% endif %}" role="row"
                             {%- if is_update_date -%}
                               {% if item.product.selected_or_first_available_variant.id != settings.product_shipping_insurance.selected_or_first_available_variant.id or settings.enable_shipping_insurance == false %}
                                 x-init="updateEstimateShipping($el, `{{ item.index | plus: 1 }}`, `{{ item.key }}`, `{{ settings.estimate_delivery_cutoff_hour }}`, `{{ settings.estimate_delivery_cutoff_minute }}`, `{{ 'sections.popup.hours' | t | downcase }}`, `{{ 'sections.popup.mins' | t | downcase }}`, `{{ shipping_insurance.key }}`)"
@@ -933,188 +934,170 @@
                               {% endif %}
                             {%- endif -%}
                            bss-b2b-cart-item-key="{{ item.key }}">
-                            <td class="w-24 md:w-32 relative" role="cell" headers="CartDrawer-ColumnProductImage">
-                              <a href="{{ item.url }}" class="block disable-effect w-full">
-                                <div class="relative w-full overflow-hidden float-left before:h-0 before:block{% unless settings.product_image_ratio == "natural" %} before:pb-[{{ ratio | times: 100.0 }}%]{% endunless %}{% if settings.edges_type == 'rounded_corners' %} rounded-md{% endif %}" {% if settings.product_image_ratio == "natural" and item.image %} style="padding-bottom: {{ 1 | divided_by: item.image.aspect_ratio | times: 100 }}%;"{% endif %}>
-                                  {%- if item.image -%}
-                                    <img 
-                                      class="absolute top-0 right-0 left-0 bottom-0 object-cover h-full w-full image-hover" 
-                                      src="{{ item.image | image_url: width: 300 }}" 
-                                      alt="{{ item.image.alt | escape }}" 
-                                      loading="lazy" 
-                                      width="150"
-                                      height="{{ 150 | divided_by: item.image.aspect_ratio | ceil }}"
-                                    >
-                                  {%- else -%}
-                                    <div class="bg-[#c9c9c9]{% unless settings.product_image_ratio == "natural" %} absolute{% endunless %} top-0 left-0 w-full h-full">{%- render 'icon-placeholder', icon: 'icon-product', class: 'w-full h-full' %}</div>
-                                  {%- endif -%}
-                                </div>
+                            <td class="misjoyas-cart-item__media relative" role="cell" headers="CartDrawer-ColumnProductImage">
+                              <a href="{{ item.url }}" class="misjoyas-cart-item__media-link block disable-effect">
+                                {%- if item.image -%}
+                                  <img
+                                    class="misjoyas-cart-item__image object-cover"
+                                    src="{{ item.image | image_url: width: 260 }}"
+                                    alt="{{ item.image.alt | escape }}"
+                                    loading="lazy"
+                                    width="130"
+                                    height="130"
+                                  >
+                                {%- else -%}
+                                  <div class="misjoyas-cart-item__image misjoyas-cart-item__image--placeholder tw-flex tw-items-center tw-justify-center tw-bg-[#f2f2f2]">
+                                    {%- render 'icon-placeholder', icon: 'icon-product', class: 'w-full h-full' -%}
+                                  </div>
+                                {%- endif -%}
                               </a>
                             </td>
-                            <td class="px-5 flex-1{% if is_rtl %} lg:pl-0{% else %} lg:pr-0{% endif %}" role="cell" headers="CartDrawer-ColumnProduct"> <div class='bss-b2b-qb-table'></div>
-                              {%- if settings.cart_show_vendor -%}
-                                <p class="mb-2 text-small uppercase p-break-words">
-                                  {{ item.product.vendor }}
-                                </p>
-                              {%- endif -%}
-                              <div>
-                                <a href="{{ item.url }}" class="text-[rgba(var(--colors-heading))] mr-0 duration-200 transition disable-effect hover-text-link p-break-words">
-                                  {{ item.product.title | escape }}
-                                </a>
-                              </div>
-                              <div class="price mt-2 mb-2" bss-b2b-item-original-price>
-                                {%- assign item_original_price = item.variant.compare_at_price | default: item.original_price -%}
-                                {%- if item_original_price > item.final_price -%}
-                                  <s class="cap mr-1 rtl:ml-1 rtl:mr-0 inline-block opacity-70">{{ item_original_price | money }}
-                                  </s> 
-                                  <span class="selection:bg-text-[rgb(var(--colors-price-sale),0.2)] price-sale">
-                                    {{ item.final_price | money }}
-                                  </span>
-                                {%- else -%}
-                                  {{ item.final_price | money }}
-                                {%- endif -%}
-                                {%- if item.variant.available and item.unit_price_measurement -%}
-                                  <small class="flex opacity-70 gap-1">
-                                    {{ item.variant.unit_price | money }}
-                                    <span aria-hidden="true">/</span>
-                                    {%- if item.variant.unit_price_measurement.reference_value != 1 -%}
-                                      {{- item.variant.unit_price_measurement.reference_value -}}
-                                    {%- endif -%}
-                                    {{ item.variant.unit_price_measurement.reference_unit }}
-                                  </small>
-                                {%- endif -%}
-                              </div>
-
-                              {%- if item.product.has_only_default_variant == false or item.properties.size != 0 or item.selling_plan_allocation != nil -%}
-                                <dl>
-                                  {%- if item.product.has_only_default_variant == false -%}
-                                    {%- for option in item.options_with_values -%}
-                                      <div class="product-option flex mt-1 text-normal opacity-70 p-break-words">
-                                        <dt>{{ option.name }}:&ensp;</dt>
-                                        <dd> {{ option.value | escape  }}
-                                          {% unless forloop.last %}
-                                          {% endunless %}
-                                        </dd>
-                                      </div>
-                                    {%- endfor -%}
+                            <td class="misjoyas-cart-item__content flex-1 min-w-0" role="cell" headers="CartDrawer-ColumnProduct">
+                              <div class="bss-b2b-qb-table"></div>
+                              <div class="misjoyas-cart-item__body">
+                                <div class="misjoyas-cart-item__info">
+                                  {%- if settings.cart_show_vendor -%}
+                                    <p class="misjoyas-cart-item__vendor">{{ item.product.vendor }}</p>
                                   {%- endif -%}
-                                  {{ item.properties.size }}                                 
-                                  {% liquid
-                                    assign requires_shipping = false
-                                    assign requires_shipping = item.requires_shipping
-                                  %}
-                                  {%- for property in item.properties -%}
-                                    {%- assign property_first_char = property.first | slice: 0 -%}
-                                    {%- if property.last != blank and property_first_char != '_' -%}
-                                      <div class="product-option {% if property.first == 'id_link' %}hidden{% endif %} mt-1 text-normal opacity-70 p-break-words">
-                                        <dt class="p-break-words inline">
-                                          {% if property.first == name_edt and is_update_date %}
-                                            {% if requires_shipping %}
-                                              {{ property.first }}:
-                                            {% endif %}
-                                          {% else %}
-                                            {{ property.first }}:
-                                          {% endif %}
-                                        </dt>
-                                        <dd class="p-break-words inline" data-max="{{ data_max }}" delivery_date_max="{{ delivery_date_max }}">
+                                  <a href="{{ item.url }}" class="misjoyas-cart-item__title disable-effect hover-text-link p-break-words">
+                                    {{ item.product.title | escape }}
+                                  </a>
+                                  <div class="misjoyas-cart-item__price" bss-b2b-item-original-price>
+                                    {%- assign item_original_price = item.variant.compare_at_price | default: item.original_price -%}
+                                    {%- if item_original_price > item.final_price -%}
+                                      <span class="misjoyas-cart-item__price-sale price-sale">
+                                        {{ item.final_price | money }}
+                                      </span>
+                                      <s class="misjoyas-cart-item__price-compare">{{ item_original_price | money }}</s>
+                                    {%- else -%}
+                                      <span class="misjoyas-cart-item__price-current">{{ item.final_price | money }}</span>
+                                    {%- endif -%}
+                                    {%- if item.variant.available and item.unit_price_measurement -%}
+                                      <small class="misjoyas-cart-item__unit-price">
+                                        {{ item.variant.unit_price | money }}
+                                        <span aria-hidden="true">/</span>
+                                        {%- if item.variant.unit_price_measurement.reference_value != 1 -%}
+                                          {{- item.variant.unit_price_measurement.reference_value -}}
+                                        {%- endif -%}
+                                        {{ item.variant.unit_price_measurement.reference_unit }}
+                                      </small>
+                                    {%- endif -%}
+                                  </div>
+                                </div>
+
+                                {%- if item.product.has_only_default_variant == false or item.properties.size != 0 or item.selling_plan_allocation != nil -%}
+                                  <div class="misjoyas-cart-item__meta">
+                                    {%- if item.product.has_only_default_variant == false -%}
+                                      {%- for option in item.options_with_values -%}
+                                        <p class="misjoyas-cart-item__option p-break-words">
+                                          {{ option.name }}: {{ option.value | escape }}
+                                        </p>
+                                      {%- endfor -%}
+                                    {%- endif -%}
+                                    {% liquid
+                                      assign requires_shipping = item.requires_shipping
+                                    %}
+                                    {%- for property in item.properties -%}
+                                      {%- assign property_first_char = property.first | slice: 0 -%}
+                                      {%- if property.last != blank and property_first_char != '_' -%}
+                                        <p class="misjoyas-cart-item__option{% if property.first == 'id_link' %} hidden{% endif %} p-break-words">
                                           {%- if property.last contains '/uploads/' -%}
-                                            <a href="{{ property.last }}" class="inline hover-text-link">
-                                              {{ 'products.product.file' | t }}
-                                            </a>
+                                            {{ property.first }}:
+                                            <a href="{{ property.last }}" class="hover-text-link">{{ 'products.product.file' | t }}</a>
                                           {%- else -%}
                                             {% if property.first == name_edt and is_update_date %}
                                               {% if requires_shipping %}
-                                                {{ message_update | replace: "time_to_cut_off", cut_off_time }}
+                                                {{ property.first }}: {{ message_update | replace: "time_to_cut_off", cut_off_time }}
                                               {% endif %}
                                             {% else %}
-                                              {{ property.last }}
+                                              {{ property.first }}: {{ property.last }}
                                             {% endif %}
                                           {%- endif -%}
-                                        </dd>
-                                      </div>
+                                        </p>
+                                      {%- endif -%}
+                                    {%- endfor -%}
+                                    {%- if item.selling_plan_allocation -%}
+                                      <p class="misjoyas-cart-item__option">{{ item.selling_plan_allocation.selling_plan.name }}</p>
                                     {%- endif -%}
-                                  {%- endfor -%}
-                                </dl>          
-                                <p class="text-normal opacity-70">{{ item.selling_plan_allocation.selling_plan.name }}</p>
-                              {%- endif -%}
-                              {%- if item.discounts.size > 0 -%}
-                                <ul class="discounts pl-4 pr-4 pt-3 pb-3 bg-[rgba(var(--colors-text),0.1)] mt-4 mb-2{% if settings.edges_type == 'rounded_corners' %} rounded-md{% endif %}" role="list" aria-label="{{ 'customer.order.discount' | t }}">
-                                  {%- for discount in item.discounts -%}
-                                    <li class="flex relative">
-                                      <span class="w-4 absolute top-1/2 -translate-y-1/2{% if is_rtl %} right-0{% else %} left-0{% endif %}">{%- render 'icon-alls', icon: 'icon-discount' -%}</span>
-                                      <span class="{% if is_rtl %} pr-5{% else %} pl-5{% endif %} text-small discount-title">{{ discount.title }}</span>
-                                    </li>
-                                  {%- endfor -%}
-                                </ul>
-                              {%- endif -%}
-                              <div id="LineItemError-{{ item.key }}" class="hidden bg-[rgba(var(--color-error),0.2)] cart-item__error mt-2 py-3 px-3.5 mb-3{% if settings.edges_type == 'rounded_corners' %} rounded-md{% endif %}" role="alert">
-                                <p class="flex relative w-full">
-                                  <span class="absolute{% if is_rtl %} right-0{% else %} left-0{% endif %} top-1/2 -translate-y-1/2 w-3">{% render 'icon-alls', icon: 'icon-error' %}</span>
-                                  <span class="cart-item__error-text text-small{% if is_rtl %} pr-5{% else %} pl-5{% endif %} p-break-words"></span>
-                                </p>
-                              </div>
-                              {% if item.product.selected_or_first_available_variant.id != settings.product_shipping_insurance.selected_or_first_available_variant.id or settings.enable_shipping_insurance == false %}
-                                {% if item.product.selected_or_first_available_variant.id != settings.gift_wrapping_product.selected_or_first_available_variant.id %}
-                                  {% liquid
-                                    assign will_remove_shipping_insurance = false
-                                    if cart.items.size == 2
-                                      for item in cart.items
-                                        if item.product.selected_or_first_available_variant.id == settings.product_shipping_insurance.selected_or_first_available_variant.id
-                                          assign will_remove_shipping_insurance = true
-                                          break
+                                  </div>
+                                {%- endif -%}
+
+                                {%- if item.discounts.size > 0 -%}
+                                  <ul class="misjoyas-cart-item__discounts discounts" role="list" aria-label="{{ 'customer.order.discount' | t }}">
+                                    {%- for discount in item.discounts -%}
+                                      <li class="misjoyas-cart-item__discount">{{ discount.title }}</li>
+                                    {%- endfor -%}
+                                  </ul>
+                                {%- endif -%}
+
+                                <div id="LineItemError-{{ item.key }}" class="hidden misjoyas-cart-item__error cart-item__error" role="alert">
+                                  <span class="cart-item__error-text p-break-words"></span>
+                                </div>
+
+                                {% if item.product.selected_or_first_available_variant.id != settings.product_shipping_insurance.selected_or_first_available_variant.id or settings.enable_shipping_insurance == false %}
+                                  {% if item.product.selected_or_first_available_variant.id != settings.gift_wrapping_product.selected_or_first_available_variant.id %}
+                                    {% liquid
+                                      assign will_remove_shipping_insurance = false
+                                      if cart.items.size == 2
+                                        for cart_item in cart.items
+                                          if cart_item.product.selected_or_first_available_variant.id == settings.product_shipping_insurance.selected_or_first_available_variant.id
+                                            assign will_remove_shipping_insurance = true
+                                            break
+                                          endif
+                                        endfor
+                                      endif
+                                      assign gift_wrapping_item_key = nil
+                                      for lineItem in cart.items
+                                        if lineItem.properties._key_link == item.key
+                                          assign gift_wrapping_item_key = lineItem.key
                                         endif
                                       endfor
-                                    endif
-                                    assign gift_wrapping_item_key = nil
-                                    for lineItem in cart.items
-                                      if lineItem.properties._key_link == item.key
-                                        assign gift_wrapping_item_key = lineItem.key
-                                      endif
-                                    endfor
-                                  %}
-                                  <div class="cart-item__quantity{% unless item.discounts.size > 0 %} mt-3.5{% endunless %}" role="cell" headers="CartDrawer-ColumnQuantity">
-                                    <div class="flex items-center">
-                                      <div class="relative flex w-28 h-10 border border-solid justify-between{% if settings.edges_type == 'rounded_corners' %} !rounded-md{% endif %}">
+                                    %}
+                                    <div class="misjoyas-cart-item__actions cart-item__quantity" role="cell" headers="CartDrawer-ColumnQuantity">
+                                      <div class="misjoyas-cart-item__qty-control border border-solid">
                                         <button
-                                          class="items-center w-1/3 justify-center flex no-js-hidden opacity-70 cursor-pointer"
+                                          type="button"
+                                          class="misjoyas-cart-item__qty-btn no-js-hidden"
                                           @click.prevent="minusItemQty('{{ item.key }}', {{ item.index | plus: 1 }}, '{{ item.variant.inventory_policy }}', '{{ item.variant.inventory_management }}', {{ item.variant.inventory_quantity }}, '{{ gift_wrapping_item_key }}')"
+                                          aria-label="{{ 'products.product.quantity.decrease' | t: product: item.product.title | escape }}"
                                         >
-                                          {% render 'icon-alls', icon: 'icon-minus', class: "w-3" %}
+                                          {% render 'icon-alls', icon: 'icon-minus', class: 'w-3' %}
                                         </button>
                                         <input
                                           id="cart-qty-{{ item.key }}"
-                                          class="cart-qty cart-item-qty-{{ item.index | plus: 1 }} outer-spin-button w-1/3 bg-transparent text-center pt-2 pb-2 placeholder:opacity-60 focus-within:outline-none"
+                                          class="cart-qty cart-item-qty-{{ item.index | plus: 1 }} outer-spin-button misjoyas-cart-item__qty-input bg-transparent text-center focus-within:outline-none"
                                           aria-label="{{ 'products.product.quantity.input_label' | t: product: item.product.title | escape }}"
                                           type="number"
                                           value="{{ item.quantity }}"
                                           min="0"
                                           x-on:change="updateItemQty('{{ item.key }}', {{ item.index | plus: 1 }}, '{{ item.variant.inventory_policy }}', '{{ item.variant.inventory_management }}', {{ item.variant.inventory_quantity }}, '{{ gift_wrapping_item_key }}')"
                                           @keydown="handleKeydown($event, $el)"
-                                        />
-                                        <button
-                                          class="items-center w-1/3 justify-center flex opacity-70 cursor-pointer"
-                                          @click.prevent="plusItemQty('{{ item.key }}', {{ item.index | plus: 1 }}, '{{ item.variant.inventory_policy }}', '{{ item.variant.inventory_management }}', {{ item.variant.inventory_quantity }})"
                                         >
-                                          {% render 'icon-alls', icon: 'icon-plus', class: "w-3" %}
+                                        <button
+                                          type="button"
+                                          class="misjoyas-cart-item__qty-btn"
+                                          @click.prevent="plusItemQty('{{ item.key }}', {{ item.index | plus: 1 }}, '{{ item.variant.inventory_policy }}', '{{ item.variant.inventory_management }}', {{ item.variant.inventory_quantity }})"
+                                          aria-label="{{ 'products.product.quantity.increase' | t: product: item.product.title | escape }}"
+                                        >
+                                          {% render 'icon-alls', icon: 'icon-plus', class: 'w-3' %}
                                         </button>
                                       </div>
-                                      <button class="flex pt-2 pb-2 pl-2 pr-2 ml-2 rtl:ml-0 rtl:mr-2 cursor-pointer z-50 opacity-40" 
+                                      <button
+                                        type="button"
+                                        class="misjoyas-cart-item__remove"
+                                        aria-label="{{ 'customer.order.remove' | t }}: {{ item.product.title | escape }}"
                                         {% if will_remove_shipping_insurance %}
                                           @click.prevent="clearCart('{{ item.key }}')"
                                         {% else %}
                                           @click.prevent="removeItem('{{ item.key }}', {{ item.index | plus: 1 }}, '{{ gift_wrapping_item_key }}')"
                                         {% endif %}
                                       >
-                                        <span
-                                          class="inline-block w-[18px] h-[18px]"
-                                        >
-                                          {% render 'icon-alls', icon: 'icon-remove' %}
-                                        </span>
+                                        {% render 'icon-trash', class: 'misjoyas-cart-item__remove-icon' %}
                                       </button>
-                                    </div> 
-                                  </div>
+                                    </div>
+                                  {% endif %}
                                 {% endif %}
-                              {% endif %}
+                              </div>
                             </td>
                             <td id="loading-{{ item.key }}" class="absolute hidden top-0 bottom-0 h-full w-full">
                               <div class="absolute top-0 right-0 w-full h-full opacity-20 bg-black"></div>
@@ -1133,7 +1116,7 @@
                 <div id="CartDrawer-CartErrors" role="alert"></div>
               </form>
             </div>
-            <div class="footer-cart-drawer-mobile">
+            <div class="footer-cart-drawer-mobile misjoyas-cart__footer">
               {% comment %} Cart upsell {% endcomment %}
               {% if settings.enable_upsell_minicart %}
                 <div
@@ -1286,7 +1269,7 @@
                   {% endunless %}
                 </div>
               {% endif  %}
-              <div class="border-solid border-t lg:border-none pl-5 pr-5 lg:pl-0 lg:pr-0 overflow-y-auto hide-scrollbar">
+              <div class="misjoyas-cart__footer-inner overflow-y-auto hide-scrollbar">
                 {% comment %} Cart custom field {% endcomment %}
                 {%- if settings.show_cart_custom_field and settings.cart_custom_field_label != blank -%}
                   {%- capture cart_fields_data -%}
@@ -1342,111 +1325,61 @@
                     </div>
                   </div>
                 {%- endif -%}
+                <div class="misjoyas-cart__footer-summary">
                 {%- if settings.enable_featured_discount -%}
-                  <div
-                    x-data="xCouponCode"
-                    class="relative hidden md:block"
-                    :class="show && 'lg:w-7/12 lg:pr-14 rtl:lg:pr-0 rtl:lg:pl-14'"
-                  >
+                  <div class="misjoyas-cart__promo" x-data="xCouponCode">
+                    <div class="misjoyas-cart__promo-divider" aria-hidden="true"></div>
                     <button
-                      class="flex items-center relative w-full py-3 cursor-pointer lg:border-solid border-t{% if settings.show_cart_custom_field and settings.cart_custom_field_label != blank %} border-solid{% else %} border-none{% endif %}"
+                      type="button"
+                      class="misjoyas-cart__promo-toggle"
                       @click.prevent="$store.xCartHelper.openField = ($store.xCartHelper.openField == 'discount_field') ? false : 'discount_field'"
+                      :aria-expanded="$store.xCartHelper.openField == 'discount_field'"
                     >
-                      <div class="summary__title p-break-words pr-5 rtl:pr-0 rtl:pl-5">{{ 'general.cart.discount' | t }}</div>
-                      <span
-                        class="w-3 block absolute right-1 opacity-70 rtl:right-auto rtl:left-1"
-                        :class="$store.xCartHelper.openField == 'discount_field' && 'rotate-180'"
-                      >
-                        {% render 'icon-alls', icon: 'icon-caret' %}
+                      <span class="misjoyas-cart__promo-label">{{ 'general.cart.discount' | t }}</span>
+                      <span class="misjoyas-cart__promo-icon" aria-hidden="true">
+                        {% render 'icon-alls', icon: 'icon-plus', class: 'misjoyas-cart__promo-plus' %}
                       </span>
                     </button>
+                    <div class="misjoyas-cart__promo-divider" aria-hidden="true"></div>
                     <div
-                      class="pb-4 bg-[rgba(var(--background-color),1)] w-full z-20 pl-[1px] pr-[1px]"
+                      class="misjoyas-cart__promo-panel"
                       x-show="$store.xCartHelper.openField == 'discount_field'"
-                      {% if settings.cart_type == 'popup' %}
-                        :class="{ 'pt-3 xl:pt-0 absolute': $store.xCartHelper.openField == 'discount_field', 'lg:pr-14 rtl:pr-0 rtl:lg:pl-14': show }"
-                      {% else %}
-                        :class="$store.xCartHelper.openField == 'discount_field' && 'pt-3 xl:pt-0 absolute md:relative'"
-                      {% endif %}
+                      x-collapse
+                      x-cloak
                       @keydown.escape.stop="$store.xCartHelper.openField = false"
                     >
-                      <div class="flex pt-1 pb-1 pl-1 pr-1 border border-solid rounded-[var(--border-radius)]">
-                        <div class="grow">
-                          <label class="hidden" for="x-cart-discount-field">{{ 'general.cart.discount_code' | t }}</label>
-                          <input
-                            id="x-cart-discount-field"
-                            type="text"
-                            class="w-full pl-5 pr-5 pt-2.5 pb-2.5 focus:outline-none focus-within:outline-none focus:border-0 bg-transparent placeholder:text-current placeholder:opacity-60"
-                            placeholder="{{ 'general.cart.placeholder_discount' | t }}"
-                            x-on:change="onChange()"
-                            @keyup.enter="applyDiscountToCart()"
-                          />
-                        </div>
-                        <button @click="applyDiscountToCart()"
-                          class="button button-solid p-break-words border inline-block empty:hidden pl-4 pr-4 lg:pl-6 lg:pr-6 pt-2 pb-2 leading-normal cursor-pointer pointer-events-auto"
+                      <div class="misjoyas-cart__promo-field">
+                        <label class="hidden" for="x-cart-discount-field">{{ 'general.cart.discount_code' | t }}</label>
+                        <input
+                          id="x-cart-discount-field"
+                          type="text"
+                          class="misjoyas-cart__promo-input"
+                          placeholder="{{ 'general.cart.placeholder_discount' | t }}"
+                          x-on:change="onChange()"
+                          @keyup.enter="applyDiscountToCart()"
+                        />
+                        <button
+                          type="button"
+                          class="misjoyas-cart__promo-apply button button-solid"
+                          @click="applyDiscountToCart()"
                         >
-                          <span :class="{ 'lg:block opacity-0 is-focus-button' : loading }">
-                            <span class="flex items-center justify-center">
-                              {% assign button_label = 'general.cart.apply' | t %}
-                              {% render 'button-label', button_label: button_label, show_button_style: 'primary' %}
-                            </span>
+                          <span :class="{ 'opacity-0' : loading }">
+                            {% assign button_label = 'general.cart.apply' | t %}
+                            {% render 'button-label', button_label: button_label, show_button_style: 'primary' %}
                           </span>
-
-                          <div class="lg:inline-block animate-spin w-4 h-4 md:w-5 md:h-5 absolute top-[calc(50%-8px)] left-[calc(50%-8px)] md:top-[calc(50%-10px)] md:left-[calc(50%-10px)]" x-show="loading" x-cloak>
+                          <div class="misjoyas-cart__promo-loading animate-spin w-4 h-4 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" x-show="loading" x-cloak>
                             {% render 'icon-alls', icon: 'icon-loading' %}
                           </div>
                         </button>
                       </div>
-                      <p x-show="$store.xCouponCodeDetail.discountFaild" x-cloak class="text-[rgba(var(--color-error))] mt-2">{{ 'general.cart.discount_wrong' | t }}</p>
-                      <p x-show="$store.xCouponCodeDetail.discountApplied" x-cloak class="text-[rgba(var(--color-success))] mt-2">{{ 'general.cart.discount_applied' | t }}</p>
-                      <p x-show="$store.xCouponCodeDetail.discountCorrect" x-cloak class="text-[rgba(var(--color-success))] mt-2">{{ 'general.cart.discount_correct' | t }}</p>
+                      <p x-show="$store.xCouponCodeDetail.discountFaild" x-cloak class="misjoyas-cart__promo-message misjoyas-cart__promo-message--error">{{ 'general.cart.discount_wrong' | t }}</p>
+                      <p x-show="$store.xCouponCodeDetail.discountApplied" x-cloak class="misjoyas-cart__promo-message misjoyas-cart__promo-message--success">{{ 'general.cart.discount_applied' | t }}</p>
+                      <p x-show="$store.xCouponCodeDetail.discountCorrect" x-cloak class="misjoyas-cart__promo-message misjoyas-cart__promo-message--success">{{ 'general.cart.discount_correct' | t }}</p>
                     </div>
                   </div>
                 {%- endif -%}
-                <div :class="show && 'lg:w-7/12 lg:pr-14 rtl:lg:pr-0 rtl:lg:pl-14'">
-                  <div class="mobile-cart-note lg:border-solid border-t flex md:flex-wrap justify-between gap-2{% if settings.show_cart_custom_field and settings.cart_custom_field_label != blank %} border-solid{% elsif settings.enable_featured_discount %} border-solid{% else %} border-none{% endif %}">
-                    {% comment %} Discount code {% endcomment %}
-                    {%- if settings.enable_featured_discount -%}
-                      <button
-                        class="pt-3 pb-3 cursor-pointer underline md:hidden w-1/3 flex-1"
-                        @click.prevent="$store.xCartHelper.openField = ($store.xCartHelper.openField == 'discount_field') ? false : 'discount_field'"
-                        x-data="xCouponCode"
-                        :class="show && 'lg:w-7/12 lg:pr-14 rtl:lg:pr-0 rtl:lg:pl-14'"
-                      >
-                        <div class="summary__title p-break-words">{{ 'general.cart.discount' | t }}</div>
-                      </button>
-                    {%- endif -%}
-                    {% comment %} Cart note {% endcomment %}
-                    {%- if settings.show_cart_note -%}
-                      <button
-                        class="pt-3 pb-3 cursor-pointer underline w-1/3 flex-1{% if is_rtl %} md:text-right{% else %} md:text-left{% endif %}"
-                        @click.prevent="$store.xCartHelper.openField = ($store.xCartHelper.openField == 'note') ? false : 'note'">
-                        <div class="summary__title">
-                          {{ 'sections.cart.order_note' | t }}
-                        </div>
-                      </button>
-                      <textarea x-ref="cart_field_note_data" hidden>{{- cart.note -}}</textarea>
-                    {%- endif -%}
-                    {% comment %} estimate shipping {% endcomment %}
-                    {% if settings.enable_estimate_shipping %}
-                      <button class="pt-3 pb-3 cursor-pointer underline w-1/3 flex-1{% if settings.show_cart_note and settings.enable_save_share_cart == false %} justify-end{% endif %}{% unless settings.show_cart_note %} {% if is_rtl %} md:text-right{% else %} md:text-left{% endif %}{% endunless %}">
-                        <p @click="$store.xPopupShipping.open = true;">{{ 'customer.order.shipping' | t }}</p>
-                      </button>
-                    {% endif %}
-                    {% if settings.enable_save_share_cart %}
-                      <button class="flex items-center pt-3 pb-3 cursor-pointer underline flex-1 justify-end" x-intersect.once.margin.200px="$store.xCartHelper.generateUrl()">
-                        <p @click="$store.xCartHelper.openShareCart = true;">
-                          {{ 'general.cart.share_cart' | t }}
-                        </p>
-                      </button>
-                    {% endif %}
-                  </div>
-                </div>
-                
-                <div
-                  class="lg:float-left cart-drawer-price-total w-full rtl:float-right" {{ block.shopify_attributes }}
-                  :class="show && ' lg:w-7/12 lg:pr-14 rtl:lg:pr-0 rtl:lg:pl-14'"
-                >
+
+                  <div class="misjoyas-cart__footer-meta">
                   {% if cart.items_subtotal_price > cart.total_price %}
                     <div class="pb-3 flex justify-between items-end" role="status">
                       <p>{{ 'sections.cart.subtotal' | t }}</p>
@@ -1534,69 +1467,66 @@
                       </div>
                     </div>
                   {% endif %}
-                  <div class="flex justify-between items-end text-medium" role="status">
-                    <p class="h4">{{ 'sections.cart.headings.total' | t }}</p>
-                    <p class="h4{% if is_rtl %} mr-8{% else %} ml-8{% endif %}" id="total-price" bss-b2b-cart-total-price>{{ cart.total_price | money }}</p>
-                  </div> 
+                  </div>
+
+                  <div class="misjoyas-cart__total" role="status">
+                    <p class="misjoyas-cart__total-label">{{ 'sections.cart.estimated_total' | t }}</p>
+                    <p class="misjoyas-cart__total-value" id="total-price" bss-b2b-cart-total-price>{{ cart.total_price | money }}</p>
+                  </div>
+
                   {%- if settings.cart_enable_savings_amount and cart.cart_level_discount_applications.size > 0 -%}
                     {% assign total_discount = cart.total_discount | money %}
-                    <div class="flex justify-between items-end pt-3" role="status">
+                    <div class="misjoyas-cart__savings" role="status">
                       <p>{{ 'sections.cart.total_savings' | t: total_discount: total_discount }}</p>
-                      <s class="{% if is_rtl %} mr-8{% else %} ml-8{% endif %}" id="total-price" bss-b2b-cart-total-price>{{ cart.items_subtotal_price | money }}</s>
-                    </div> 
+                      <s id="total-price" bss-b2b-cart-total-price>{{ cart.items_subtotal_price | money }}</s>
+                    </div>
                   {%- endif -%}
+
                   {% if settings.auto_calculate_shipping %}
                     {% render 'auto-caculate-shipping' %}
                   {% else %}
-                    <p class="mt-3 xl:mt-3 mb-3 xl:mb-4 block text-normal">
-                      {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
-                        {{ 'sections.cart.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
-                      {%- elsif cart.taxes_included -%}
-                        {{ 'sections.cart.taxes_included_but_shipping_at_checkout' | t }}
-                      {%- elsif shop.shipping_policy.body != blank -%}
-                        {{ 'sections.cart.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}
+                    <p class="misjoyas-cart__shipping-note">
+                      {%- if shop.shipping_policy.body != blank -%}
+                        {{ 'sections.cart.misjoyas_shipping_note_html' | t: link: shop.shipping_policy.url }}
                       {%- else -%}
-                        {{ 'sections.cart.taxes_and_shipping_at_checkout' | t }}
+                        {{ 'sections.cart.misjoyas_shipping_note_plain' | t }}
                       {%- endif -%}
                     </p>
                   {% endif %}
-                </div>
-                {%- if settings.cart_enable_terms_and_conditions -%}
-                  <div x-data="xCartTerm" class="relative clear-both w-full lg:float-left rtl:lg:float-right{% if is_rtl %} lg:pl-14{% else %} lg:pr-14{% endif %}" :class="show && 'lg:w-7/12'">
-                    <div class="flex items-center eurus pt-3">
-                      <input
-                        id="x-cart-agree" 
-                        class="checkbox-checked h-4 w-4 cursor-pointer border checked:border-[rgba(var(--colors-text-link))] checked:bg-[rgba(var(--colors-text-link))] relative mr-2 rtl:mr-0 rtl:ml-2{% if settings.edges_type == 'rounded_corners' %} rounded{% else %} rounded-none{% endif %}" 
-                        type="checkbox"
-                        x-model="checked"
-                      />
-                      <label for="x-cart-agree" class="cursor-pointer">
-                        {% if settings.cart_terms_and_conditions_page != blank %}
-                          {{ 'sections.cart.cart_enable_terms_and_conditions_html' | t: url: settings.cart_terms_and_conditions_page.url }}
-                        {% else %}
-                          {{ 'sections.cart.cart_enable_terms_and_conditions' | t }}
-                        {% endif %}
-                      </label>
-                    </div>
-                    <p class="clear-both text-[rgba(var(--color-error))] text-normal" x-show="!checked" x-cloak>{{ 'general.cart.terms_confirm' | t }}</p>
-                  </div>
-                  <script src="{{ 'cart-term.js' | asset_url }}" defer></script>
-                {%- else -%}
-                  <input id="x-cart-agree" class="hidden" type="checkbox" checked="checked" />
-                {%- endif -%}
 
-              </div>
-              <div class="flex flex-col lg:gap-1 text-center mt-3 pl-5 pr-5 lg:pl-0 lg:pr-0 lg:float-left" :class="show && '{% if is_rtl %} lg:pl-14 lg:pr-0{% else %} lg:pr-14 lg:pl-0{% endif %} lg:w-7/12' || 'w-full'" {{ block.shopify_attributes }}>
-                <div class="flex">
+                  {%- if settings.cart_enable_terms_and_conditions -%}
+                    <div x-data="xCartTerm" class="misjoyas-cart__terms">
+                      <div class="misjoyas-cart__terms-row">
+                        <input
+                          id="x-cart-agree"
+                          class="misjoyas-cart__terms-checkbox checkbox-checked h-4 w-4 cursor-pointer border checked:border-[rgba(var(--colors-text-link))] checked:bg-[rgba(var(--colors-text-link))] relative mr-2 rtl:mr-0 rtl:ml-2{% if settings.edges_type == 'rounded_corners' %} rounded{% else %} rounded-none{% endif %}"
+                          type="checkbox"
+                          x-model="checked"
+                        />
+                        <label for="x-cart-agree" class="misjoyas-cart__terms-label cursor-pointer">
+                          {% if settings.cart_terms_and_conditions_page != blank %}
+                            {{ 'sections.cart.cart_enable_terms_and_conditions_html' | t: url: settings.cart_terms_and_conditions_page.url }}
+                          {% else %}
+                            {{ 'sections.cart.cart_enable_terms_and_conditions' | t }}
+                          {% endif %}
+                        </label>
+                      </div>
+                      <p class="misjoyas-cart__terms-error text-[rgba(var(--color-error))]" x-show="!checked" x-cloak>{{ 'general.cart.terms_confirm' | t }}</p>
+                    </div>
+                    <script src="{{ 'cart-term.js' | asset_url }}" defer></script>
+                  {%- else -%}
+                    <input id="x-cart-agree" class="hidden" type="checkbox" checked="checked" />
+                  {%- endif -%}
+
                   <button
                     id="checkout-submit"
-                    class="button button-solid leading-normal w-full justify-center pt-2.5 pb-2.5 md:pt-3 md:pb-3 cursor-pointer"
-                    style="background-color: #000; color: #fff; border-radius: 4px;"
+                    class="misjoyas-cart__checkout button button-solid leading-normal w-full justify-center cursor-pointer"
                     type="submit"
                     name="checkout"
                     form="CartDrawer-Form"
                     @click="$store.xCartHelper.goToCheckout($event)"
                     {% if cart == empty %}disabled{% endif %}
+                    {{ block.shopify_attributes }}
                   >
                     {% assign button_label = 'sections.cart.checkout' | t %}
                     <span class="flex items-center justify-center">
@@ -1604,28 +1534,7 @@
                     </span>
                   </button>
                 </div>
-                {%- if settings.show_cart_payment_methods -%}
-                  <div class="flex flex-col pt-3 pl-4 pr-4 gap-3 md:gap-2.5">
-                    {% if settings.custom_payment != blank %}
-                      {% assign enabled_payment_types = settings.custom_payment | remove: ' ' | split: ',' %}
-                      <ul class="flex justify-center gap-2 flex-wrap" role="list">
-                      {%- for type in enabled_payment_types -%}
-                        <li class="pl-1 pr-1">
-                          {{ type | payment_type_svg_tag }}
-                        </li>
-                      {%- endfor -%}
-                      </ul>
-                    {% else %}
-                      <ul class="flex justify-center gap-2 flex-wrap" role="list">
-                        {%- for type in shop.enabled_payment_types -%}
-                          <li class="pl-1 pr-1">
-                            {{ type | payment_type_svg_tag }}
-                          </li>
-                        {%- endfor -%}
-                    </ul>
-                    {% endif %}
-                  </div>
-                {%- endif -%}
+
               </div>
             </div>
           {%- endif -%}
