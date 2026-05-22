@@ -194,8 +194,8 @@
     "enable_cart_timer": false,
     "hide_cart": false,
     "enable_free_shipping": false,
-    "enable_cart_progress_bar": true,
     "order_amount_freeshipping": "CLP:90000",
+    "enable_cart_progress_bar": true,
     "enable_estimate_shipping": false,
     "auto_calculate_shipping": false,
     "show_estimate_cart": false,
@@ -402,6 +402,11 @@
           "drop_shadow_mobile": true,
           "visibility_mobile": true
         }
+      },
+      "855628211100114053": {
+        "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
+        "disabled": false,
+        "settings": {}
       }
     }
   },

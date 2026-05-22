@@ -1085,7 +1085,7 @@
                                       <button
                                         type="button"
                                         class="misjoyas-cart-item__remove"
-                                        aria-label="{{ 'customer.order.remove' | t }}: {{ item.product.title | escape }}"
+                                        aria-label="{{ 'products.product.remove' | t }}: {{ item.product.title | escape }}"
                                         {% if will_remove_shipping_insurance %}
                                           @click.prevent="clearCart('{{ item.key }}')"
                                         {% else %}

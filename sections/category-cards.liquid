@@ -68,6 +68,23 @@
     line-height: 0;
     text-decoration: none;
   }
+  .category-cards-{{ section.id }} .category-cards__media {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .category-cards-{{ section.id }} .category-cards__picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .category-cards-{{ section.id }} .category-cards__picture--hover {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
   .category-cards-{{ section.id }} .category-cards__img {
     display: block;
     width: 100%;
@@ -97,6 +114,15 @@
     text-align: center;
     white-space: nowrap;
     pointer-events: none;
+    transition: background-color 0.3s ease;
+  }
+  @media (hover: hover) {
+    .category-cards-{{ section.id }} .category-cards__card:hover .category-cards__label {
+      background-color: #F83785;
+    }
+    .category-cards-{{ section.id }} .category-cards__card--has-hover:hover .category-cards__picture--hover {
+      opacity: 1;
+    }
   }
   .category-cards-{{ section.id }} .category-cards__placeholder {
     display: flex;
@@ -183,8 +209,14 @@
         {%- liquid
           assign card_image = block.settings.image
           assign card_image_mobile = block.settings.image_mobile
+          assign card_image_hover = block.settings.image_hover
+          assign card_image_hover_mobile = block.settings.image_hover_mobile
           assign card_link = block.settings.link
           assign card_label = block.settings.label
+          assign has_hover_image = false
+          if card_image_hover != blank or card_image_hover_mobile != blank
+            assign has_hover_image = true
+          endif
           if block.settings.image_alt != blank
             assign card_alt = block.settings.image_alt
           elsif card_label != blank
@@ -201,30 +233,58 @@
             {%- if card_link != blank -%}
               <a
                 href="{{ card_link }}"
-                class="category-cards__card"
+                class="category-cards__card{% if has_hover_image %} category-cards__card--has-hover{% endif %}"
                 {% if block.settings.open_new_window %}target="_blank" rel="noopener noreferrer"{% endif %}
               >
             {%- else -%}
-              <div class="category-cards__card">
+              <div class="category-cards__card{% if has_hover_image %} category-cards__card--has-hover{% endif %}">
             {%- endif -%}
-            <picture>
-              {%- if card_image_mobile != blank -%}
-                <source
-                  media="(max-width: 767px)"
-                  srcset="{{ card_image_mobile | image_url: width: 800 }}"
-                >
+            <div class="category-cards__media">
+              <picture class="category-cards__picture category-cards__picture--default">
+                {%- if card_image_mobile != blank -%}
+                  <source
+                    media="(max-width: 767px)"
+                    srcset="{{ card_image_mobile | image_url: width: 800 }}"
+                  >
+                {%- endif -%}
+                {{
+                  card_image
+                  | image_url: width: 800
+                  | image_tag:
+                    class: 'category-cards__img',
+                    widths: '360, 480, 720, 800',
+                    sizes: '(max-width: 767px) min(280px, calc(100vw - 5.5rem)), 360px',
+                    alt: card_alt,
+                    loading: 'lazy'
+                }}
+              </picture>
+              {%- if has_hover_image -%}
+                {%- liquid
+                  assign hover_fallback = card_image_hover
+                  if hover_fallback == blank
+                    assign hover_fallback = card_image_hover_mobile
+                  endif
+                -%}
+                <picture class="category-cards__picture category-cards__picture--hover">
+                  {%- if card_image_hover_mobile != blank -%}
+                    <source
+                      media="(max-width: 767px)"
+                      srcset="{{ card_image_hover_mobile | image_url: width: 800 }}"
+                    >
+                  {%- endif -%}
+                  {{
+                    hover_fallback
+                    | image_url: width: 800
+                    | image_tag:
+                      class: 'category-cards__img',
+                      widths: '360, 480, 720, 800',
+                      sizes: '(max-width: 767px) min(280px, calc(100vw - 5.5rem)), 360px',
+                      alt: '',
+                      loading: 'lazy'
+                  }}
+                </picture>
               {%- endif -%}
-              {{
-                card_image
-                | image_url: width: 800
-                | image_tag:
-                  class: 'category-cards__img',
-                  widths: '360, 480, 720, 800',
-                  sizes: '(max-width: 767px) min(280px, calc(100vw - 5.5rem)), 360px',
-                  alt: card_alt,
-                  loading: 'lazy'
-              }}
-            </picture>
+            </div>
             {%- if card_label != blank -%}
               <span class="category-cards__label">{{ card_label | escape }}</span>
             {%- endif -%}
@@ -340,6 +400,18 @@
           "id": "image_mobile",
           "label": "Imagen (móvil)",
           "info": "Opcional."
+        },
+        {
+          "type": "image_picker",
+          "id": "image_hover",
+          "label": "Imagen hover",
+          "info": "Se muestra al pasar el mouse. Cuadrada 360×360 px recomendado."
+        },
+        {
+          "type": "image_picker",
+          "id": "image_hover_mobile",
+          "label": "Imagen hover (móvil)",
+          "info": "Opcional. Si no se sube, en móvil se mantiene la imagen normal."
         },
         {
           "type": "text",

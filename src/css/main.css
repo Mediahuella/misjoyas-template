@@ -33,6 +33,48 @@
   }
 }
 
+/* Medios de pago — Figma: mobile 364×62, desktop 410×126 */
+.footer-medios-pago {
+  display: block;
+  width: 364px;
+  max-width: 100%;
+  height: 62px;
+  object-fit: contain;
+  object-position: left center;
+}
+
+@media (min-width: 768px) {
+  .footer-medios-pago {
+    width: 410px;
+    height: 126px;
+  }
+}
+
+/* PDP: recomendaciones con mismo margen que colección destacada / últimos vistos */
+.product-recommendations .splide__track {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 768px) {
+  .product-recommendations .splide__track {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.product-recommendations .page-width .pl-5,
+.product-recommendations .page-width .pr-5 {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* PDP: información de producto alineada con page-width del resto del sitio */
+.section-product-info .page-width .product-content-container.pl-5.pr-5 {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 /* ===== Badge plata 925 (página de producto) ===== */
 
 .misjoyas-silver-badge {
@@ -134,9 +176,25 @@
   border: 1px solid #e0e0e0;
 }
 
-/* Botón ATC: texto 16px y sin subrayado en hover */
+/* Botón ATC: texto 16px, negro default, rosa Mis Joyas en hover */
 .card-product-atc-btn {
   font-size: 16px !important;
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+.card-product-atc-btn.button-solid,
+.card-product-atc-btn.button-solid:before {
+  --colors-button-hover: #F83785;
+}
+@media (hover: hover) {
+  .card-product:hover .card-product-atc-btn:not(:disabled) {
+    background-color: #F83785 !important;
+  }
+  .card-product:hover .card-product-atc-btn.button-solid:not(:disabled):before {
+    background-color: #F83785;
+  }
 }
 .card-product-atc-btn,
 .card-product-atc-btn:hover,
@@ -251,6 +309,7 @@
 .card-product .x-badge-container .x-badge-content {
   border: none !important;
   border-radius: 0 !important;
+  opacity: 1 !important;
 }
 
 /* ===== Últimos vistos: sin zoom ni animaciones de imagen ===== */

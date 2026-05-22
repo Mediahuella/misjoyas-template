@@ -19,25 +19,13 @@
             "image": "shopify://shop_images/banner-princiapl_desktop_318671d2-853b-43e0-a30c-5b632a570a24.jpg",
             "image_mobile": "shopify://shop_images/banner-princiapl_mobile_711d5b21-4e5d-4e8e-807d-497a386c181d.jpg",
             "image_alt": "",
-            "link": "",
-            "open_new_window": false
-          }
-        },
-        "slide_KGMRdV": {
-          "type": "slide",
-          "name": "Banner principal",
-          "settings": {
-            "image": "shopify://shop_images/3edf39b4d018601a5e3a75388e512c47741562e7_9f8c0612-cf22-4f4a-a6c1-1afa9ccdc757.jpg",
-            "image_mobile": "shopify://shop_images/banner-princiapl_mobile_711d5b21-4e5d-4e8e-807d-497a386c181d.jpg",
-            "image_alt": "",
-            "link": "",
+            "link": "shopify://pages/formulario",
             "open_new_window": false
           }
         }
       },
       "block_order": [
-        "slide_banner_principal_1",
-        "slide_KGMRdV"
+        "slide_banner_principal_1"
       ],
       "settings": {
         "auto_play": true,

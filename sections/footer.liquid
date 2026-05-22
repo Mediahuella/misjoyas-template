@@ -399,7 +399,14 @@
         </div>
       </div>
       {%- if section.settings.payment_enable -%}
-        <img src="{{ 'footer-medios-pago.png' | asset_url }}" alt="Medios de pago: Visa, Mastercard, American Express, Diners Club, RedCompra" loading="lazy" height="40" class="tw-h-10 tw-w-auto tw-mt-4 md:tw-mt-0">
+        <img
+          src="{{ 'footer-medios-pago.png' | asset_url }}"
+          alt="Medios de pago: Visa, Mastercard, American Express, Diners Club, RedCompra"
+          loading="lazy"
+          width="410"
+          height="126"
+          class="footer-medios-pago tw-mt-4 md:tw-mt-0"
+        >
       {%- endif -%}
     </div>
   </div>

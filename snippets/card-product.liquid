@@ -766,15 +766,27 @@
           {%- if show_vendor -%}
             <div class="mb-0.5 uppercase tracking-widest {% if mediaGallery %}card-product-vendor-text-{{ block_id }}{% else %}text-small{% endif %} p-break-words">{{ card_product.vendor }}</div>
           {%- endif -%}
-          <{% if product_complementary %}p{% else %}h3{% endif %} class="card__heading h5 font-medium no-collage:mb-2 mb-3 leading-tight"{% if card_product.featured_media %} id="title-{{ section_id }}-{{ card_product.id }}"{% endif %}>
-            <a href="{{ card_product.url | within: collection }}"
-              class="x-card-title full-unstyled-link link-product-variant {% if mediaGallery %}card-product-title-text-{{ block_id }}{% endif %} text-[rgba(var(--colors-heading))] hover:text-[rgba(var(--colors-text-link))] cursor-pointer duration-200 p-break-words"
-              @click='$store.xCustomerEvent.fire("product_selected", $el)'
-              x-customer-event-data="{{ data_for_customer_event | escape }}"
-            >
-              {{ card_product.title | escape }}
-            </a>
-          {% if product_complementary %}</p>{% else %}</h3>{% endif %}
+          {%- if product_complementary -%}
+            <p class="card__heading h5 font-medium no-collage:mb-2 mb-3 leading-tight"{% if card_product.featured_media %} id="title-{{ section_id }}-{{ card_product.id }}"{% endif %}>
+              <a href="{{ card_product.url | within: collection }}"
+                class="x-card-title full-unstyled-link link-product-variant {% if mediaGallery %}card-product-title-text-{{ block_id }}{% endif %} text-[rgba(var(--colors-heading))] hover:text-[rgba(var(--colors-text-link))] cursor-pointer duration-200 p-break-words"
+                @click='$store.xCustomerEvent.fire("product_selected", $el)'
+                x-customer-event-data="{{ data_for_customer_event | escape }}"
+              >
+                {{ card_product.title | escape }}
+              </a>
+            </p>
+          {%- else -%}
+            <h3 class="card__heading h5 font-medium no-collage:mb-2 mb-3 leading-tight"{% if card_product.featured_media %} id="title-{{ section_id }}-{{ card_product.id }}"{% endif %}>
+              <a href="{{ card_product.url | within: collection }}"
+                class="x-card-title full-unstyled-link link-product-variant {% if mediaGallery %}card-product-title-text-{{ block_id }}{% endif %} text-[rgba(var(--colors-heading))] hover:text-[rgba(var(--colors-text-link))] cursor-pointer duration-200 p-break-words"
+                @click='$store.xCustomerEvent.fire("product_selected", $el)'
+                x-customer-event-data="{{ data_for_customer_event | escape }}"
+              >
+                {{ card_product.title | escape }}
+              </a>
+            </h3>
+          {%- endif -%}
           {% if show_highlighted_attributes %}
             {% render 'highlight-icon-card-product', card_product: card_product, content_alignment: content_alignment %}
           {% endif %}
@@ -821,8 +833,8 @@
               {% style %}
                 .card-product-atc-btn.button-solid,
                 .card-product-atc-btn.button-solid:before {
-                  --colors-button: rgb(0,0,0);
-                  --colors-button-hover: rgb(0, 0, 0);
+                  --colors-button: 0, 0, 0;
+                  --colors-button-hover: #F83785;
                 }
               {% endstyle %}
               <div class="mt-3 card-product-atc-wrapper" x-data="xProductCart()">
@@ -895,7 +907,6 @@
                     type="submit"
                     name="add"
                     @click.prevent="errorMessage == false && addToCart($event)"
-                    style="background-color: #000; color:white; border-radius: 4px;"
                     class="card-product-atc-btn button button--quickview button-solid not-icon leading-normal w-full py-2.5 h-full text-[12px] disabled:cursor-not-allowed disabled:opacity-60"
                     {% if settings.enable_shipping_insurance and settings.shipping_insurance_added_by_default and shipping_insurance %}
                       x-init="loadInsurance('{{ shipping_insurance }}')"
