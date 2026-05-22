@@ -555,6 +555,9 @@ video {
 .tw-hidden {
   display: none;
 }
+.tw-aspect-square {
+  aspect-ratio: 1 / 1;
+}
 .tw-h-10 {
   height: 40px;
 }
@@ -633,15 +636,19 @@ video {
 .tw-border-t {
   border-top-width: 1px;
 }
+.tw-border-\[\#2d2d2d\] {
+  --tw-border-opacity: 1;
+  border-color: rgb(45 45 45 / var(--tw-border-opacity, 1));
+}
 .tw-border-black\/10 {
   border-color: rgb(0 0 0 / 0.1);
 }
 .tw-border-black\/\[0\.15\] {
   border-color: rgb(0 0 0 / 0.15);
 }
-.tw-border-\[\#2d2d2d\] {
-  --tw-border-opacity: 1;
-  border-color: rgb(45 45 45 / var(--tw-border-opacity, 1));
+.tw-bg-\[\#f2f2f2\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(242 242 242 / var(--tw-bg-opacity, 1));
 }
 .tw-bg-transparent {
   background-color: transparent;
@@ -649,6 +656,9 @@ video {
 .tw-bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+.tw-p-4 {
+  padding: 16px;
 }
 .tw-p-8 {
   padding: 32px;
@@ -754,6 +764,100 @@ video {
 @media (min-width: 768px) {
   .section-footer div[class*="footer-col--"] {
     width: 25% !important;
+  }
+}
+
+/* ===== Badge plata 925 (página de producto) ===== */
+
+.misjoyas-silver-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #f2f2f2;
+  color: #222;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+}
+
+.misjoyas-silver-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: 26px;
+  height: 28px;
+}
+
+.misjoyas-silver-icon img {
+  display: block;
+  width: 28px;
+  height: 28px;
+}
+
+.misjoyas-silver-text {
+  letter-spacing: 0;
+}
+
+@media (max-width: 600px) {
+  .misjoyas-silver-badge {
+    font-size: 12px;
+    line-height: 18px;
+    padding: 5px 8px;
+  }
+}
+
+/* ===== Garantía de satisfacción (página de producto) ===== */
+
+.misjoyas-garantia {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f8f8f8;
+  border: 1px solid #e5e5e5;
+  padding: 14px;
+  border-radius: 8px;
+  margin-top: 15px;
+  font-size: 14px;
+  animation: misjoyasFade 0.4s ease;
+}
+
+.misjoyas-garantia-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+}
+
+.misjoyas-garantia-icon img {
+  display: block;
+  width: 40px;
+  height: 40px;
+}
+
+.misjoyas-garantia-texto {
+  line-height: 1.4;
+  color: #333;
+}
+
+@keyframes misjoyasFade {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .misjoyas-garantia {
+    font-size: 13px;
+    padding: 12px;
   }
 }
 
@@ -881,6 +985,40 @@ video {
 .card-product .x-badge-container .x-badge-content {
   border: none !important;
   border-radius: 0 !important;
+}
+
+/* ===== Últimos vistos: sin zoom ni animaciones de imagen ===== */
+#shopify-section-recently-viewed .animate_transition_card__image,
+#shopify-section-recently-viewed .animate_transition_card__image.active,
+#shopify-section-recently-viewed .animate_transition_card__image.lazy_active {
+  transform: scale(1) !important;
+  transition: none !important;
+}
+
+#shopify-section-recently-viewed .animate_transition_image,
+#shopify-section-recently-viewed .animate_transition_image.active {
+  opacity: 1 !important;
+  transition: none !important;
+}
+
+#shopify-section-recently-viewed .card-product .image-hover,
+#shopify-section-recently-viewed .card-product .group:hover .image-hover,
+#shopify-section-recently-viewed .card-product .image-first-hover,
+#shopify-section-recently-viewed .card-product .image-second-hover,
+#shopify-section-recently-viewed .card-product .image-first-slide-anm,
+#shopify-section-recently-viewed .card-product .image-first-hover-slide-anm {
+  transform: none !important;
+  --tw-scale-x: 1 !important;
+  --tw-scale-y: 1 !important;
+}
+
+#shopify-section-recently-viewed .card-product-img.x-splide {
+  display: none !important;
+}
+
+#shopify-section-recently-viewed .card-product .x-badge-container {
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .placeholder\:tw-text-\[\#737373\]::-moz-placeholder {

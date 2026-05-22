@@ -153,6 +153,9 @@
     "collection_title": "Your collection's name"
   },
   "products": {
+    "silver_badge": "Certified fine silver • Law 925",
+    "garantia_satisfaccion_heading": "Satisfaction guarantee",
+    "garantia_satisfaccion_text": "If the product does not meet your expectations, you can request a hassle-free return within the first few days after purchase.",
     "product": {
       "option_name": "Option name",
       "description_default": "This area is used to describe your product’s details. Tell customers about the look, feel, and style of your product. Add details on color, materials used, sizing, and where it was made.",
@@ -359,6 +362,13 @@
       "aria_label": "Featured collection",
       "placeholder": "Choose a collection in the section settings.",
       "empty_collection": "This collection has no products yet.",
+      "previous": "Previous products",
+      "next": "Next products"
+    },
+    "recently-viewed-products": {
+      "name": "Recently viewed",
+      "aria_label": "Recently viewed products",
+      "placeholder": "Browse products to see them here.",
       "previous": "Previous products",
       "next": "Next products"
     },

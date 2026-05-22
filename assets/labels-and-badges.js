@@ -101,6 +101,12 @@ requestAnimationFrame(() => {
       load(el, callback = () => {}, container = null, productCard = false) {
         if (container) el.container = container;
 
+        if (productCard && el.closest('#shopify-section-recently-viewed')) {
+          if (el.dataset.rvBadgesInitialized === '1') return;
+          this.doLoad(el, productCard, callback);
+          return;
+        }
+
         const sliderEl = el.closest('[x-data-slider]');
         if (sliderEl) {
           if (!sliderEl.classList.contains('is-initialized')) {
@@ -134,6 +140,10 @@ requestAnimationFrame(() => {
           let allLabels = document.getElementsByClassName('x-badges-block-data');
 
           if (!productDatas) return;
+
+          if (productCard && el.closest('#shopify-section-recently-viewed') && el.dataset.rvBadgesInitialized === '1') {
+            return;
+          }
 
           if (Shopify.designMode || productCard) {
             const cardProduct = el.closest('.card-product');
@@ -175,6 +185,10 @@ requestAnimationFrame(() => {
                   label.settings.icon = allLabels[i].getAttribute('x-badges-icon');
                   this.appendLabel(el, label, productDatas[0]);
                 }  
+              }
+
+              if (el.closest('#shopify-section-recently-viewed')) {
+                el.dataset.rvBadgesInitialized = '1';
               }
             });
           } else {

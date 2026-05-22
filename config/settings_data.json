@@ -373,11 +373,21 @@
         "disabled": false,
         "settings": {}
       },
+      "7280966411886983154": {
+        "type": "shopify://apps/monk/blocks/app-embed/e949adb6-87ca-4b97-8f31-0e51bf507f2d",
+        "disabled": false,
+        "settings": {}
+      },
+      "3720565183479497137": {
+        "type": "shopify://apps/globo-product-options/blocks/app-embed-block/fdc9fad5-1a0f-4bd4-9c8a-1af6a6eef6b8",
+        "disabled": false,
+        "settings": {}
+      },
       "12711036393401670242": {
         "type": "shopify://apps/whatsup-whatsapp-button/blocks/float-button/7e68b675-2a94-4586-a750-8b8ca8c9d069",
         "disabled": false,
         "settings": {
-          "alignment": "left",
+          "alignment": "right",
           "horizon_dis": 24,
           "bottom_dis": 16,
           "z_index": 100,
@@ -391,16 +401,6 @@
           "drop_shadow_mobile": true,
           "visibility_mobile": true
         }
-      },
-      "7280966411886983154": {
-        "type": "shopify://apps/monk/blocks/app-embed/e949adb6-87ca-4b97-8f31-0e51bf507f2d",
-        "disabled": false,
-        "settings": {}
-      },
-      "3720565183479497137": {
-        "type": "shopify://apps/globo-product-options/blocks/app-embed-block/fdc9fad5-1a0f-4bd4-9c8a-1af6a6eef6b8",
-        "disabled": false,
-        "settings": {}
       }
     }
   },

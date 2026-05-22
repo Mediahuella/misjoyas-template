@@ -153,6 +153,9 @@
     "collection_title": "El nombre de tu colección."
   },
   "products": {
+    "silver_badge": "Plata fina certificada • Ley 925",
+    "garantia_satisfaccion_heading": "Garantía de satisfacción",
+    "garantia_satisfaccion_text": "Si el producto no cumple tus expectativas, podés solicitar una devolución sin problemas dentro de los primeros días posteriores a la compra.",
     "product": {
       "option_name": "Nombre de la opción",
       "description_default": "Esta área se utiliza para describir los detalles de su producto. Dígale a los clientes sobre el aspecto, la sensación y el estilo de su producto. Agregue detalles sobre el color, los materiales utilizados, el tamaño y dónde se hizo.",
@@ -359,6 +362,13 @@
       "aria_label": "Colección destacada",
       "placeholder": "Elige una colección en la configuración de la sección.",
       "empty_collection": "Esta colección aún no tiene productos.",
+      "previous": "Productos anteriores",
+      "next": "Siguientes productos"
+    },
+    "recently-viewed-products": {
+      "name": "Últimos vistos",
+      "aria_label": "Productos vistos recientemente",
+      "placeholder": "Visita productos para verlos aquí.",
       "previous": "Productos anteriores",
       "next": "Siguientes productos"
     },

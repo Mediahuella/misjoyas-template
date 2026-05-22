@@ -3672,7 +3672,7 @@
       "name": "Recently viewed products",
       "settings": {
         "paragraph": {
-          "content": "Section is hidden if there's no products viewed yet."
+          "content": "Shows up to 10 products the customer viewed. Data is stored in the browser (localStorage). Section is hidden if there are no products viewed yet."
         },
         "enable_clear_history": {
           "label": "Enable clear history"

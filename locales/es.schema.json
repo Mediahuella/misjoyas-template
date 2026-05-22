@@ -3672,7 +3672,7 @@
       "name": "Productos vistos recientemente",
       "settings": {
         "paragraph": {
-          "content": "La sección está oculta si no hay productos vistos todavía."
+          "content": "Muestra hasta 10 productos que el cliente visitó. Los datos se guardan en el navegador (localStorage). La sección está oculta si no hay productos vistos todavía."
         },
         "enable_clear_history": {
           "label": "Habilitar historial claro"

@@ -1483,7 +1483,7 @@
                   </div>
                 {%- when 'html' -%}
                   <div class="custom-html mb-5 w-full"{{ block.shopify_attributes }}>
-                    {{ block.settings.custom_html }}
+                    {% echo block.settings.custom_html %}
                   </div>
                 {%- when 'rating' -%}
                   {% render 'review-product', product: product, show_content_center: show_content_center, is_product_page: true %}

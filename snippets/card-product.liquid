@@ -15,6 +15,7 @@
     - index: {Number} The index of the product card in the collection,
     - product_complementary: Classes are used for product complementary
     - disable_quickview: {Boolean} Show quick view button. Default: true (optional)
+    - disable_image_slider: {Boolean} Disable inner image slideshow on card. Default: false (optional)
     - block_id: {String} The ID of the block that contains this card.
     - product_metafield: {String} The handle of the metafield that contains a featured image for the product
     Usage:
@@ -50,6 +51,11 @@
     assign is_rtl = true
   else
     assign is_rtl = false
+  endif
+
+  assign is_recommendations_card = false
+  if disable_image_slider or class_slide contains 'recommendations'
+    assign is_recommendations_card = true
   endif
 
   assign can_show_preorder = false
@@ -275,15 +281,18 @@
       {%- if mediaGallery %} h-full pb-0 md:h-auto media-gallery-{{ block_id }}{% endif -%}
       {%- if media_aspect_ratio == "natural" %}{% if card_product.featured_media.media_type == "model" or card_product.featured_media == blank %} pb-[100%]{% endif %}{% else %} pb-[{{ ratio | times: 100 | round }}%]{% endif -%}
       {%- endif -%}
-      {%- if settings.product_image_type == "slide_img" and count_media > 1 and class_slide != 'recommendations' and settings.show_arrow == false %} disable-label-hover{% endif -%}"
+      {%- if settings.product_image_type == "slide_img" and count_media > 1 and is_recommendations_card == false and settings.show_arrow == false %} disable-label-hover{% endif -%}"
       {%- unless mediaGallery %}{% if media_aspect_ratio == "natural" and card_product.featured_media and card_product.featured_media.media_type != "model" %} style="height: 0; padding-bottom: {{ 1 | divided_by: card_product.featured_media.aspect_ratio | times: 100 }}%;"{% endif %}{% endunless -%}>
+      {%- if render_static_badges -%}
+        {% render 'card-product-static-badges', product: card_product %}
+      {%- endif -%}
       <div class="w-full h-full z-0 overflow-hidden absolute top-0 left-0{% if animation_loading and loading != 'eager' %} animate_transition_card__image{% endif %}">
         <div
           id="x-slideshow-card-product-{{ section_id }}-{{ product_card_id }}-{{ index | minus: 1 }}"
-          class="block h-full{% if settings.product_image_type == "slide_img" and count_media > 1 and class_slide != 'recommendations' %} visible{% unless media_aspect_ratio == "natural"  %} card-product-img{% endunless %} w-full top-0 left-0 absolute x-splide disable-effect-hover splide cursor-grab group{% endif %}" 
+          class="block h-full{% if settings.product_image_type == "slide_img" and count_media > 1 and is_recommendations_card == false %} visible{% unless media_aspect_ratio == "natural"  %} card-product-img{% endunless %} w-full top-0 left-0 absolute x-splide disable-effect-hover splide cursor-grab group{% endif %}" 
           @click='$store.xCustomerEvent.fire("product_selected", $el)'
           x-customer-event-data="{{ data_for_customer_event | escape }}"
-          {% if settings.product_image_type == "slide_img" and count_media > 1 and class_slide != 'recommendations' %}
+          {% if settings.product_image_type == "slide_img" and count_media > 1 and is_recommendations_card == false %}
             x-cloak
             x-intersect.once.margin.200px='$store.xSplide.load($el, {
               "drag": false,
@@ -314,7 +323,7 @@
             })'
           {%- endif -%}
         >
-          {% if settings.product_image_type == "slide_img" and count_media > 1 and class_slide != 'recommendations' %}
+          {% if settings.product_image_type == "slide_img" and count_media > 1 and is_recommendations_card == false %}
             <div 
               id="image-product-{{ section_id }}-{{ product_card_id }}-{{ index | minus: 1 }}"
               class="splide__track overflow-hidden max-h-full h-full w-full"
@@ -355,7 +364,7 @@
                 {%- else -%}
                 {%- if media_aspect_ratio != "natural" %} h-full min-h-full{% endif -%}
               {%- endif -%} 
-              {%- if settings.product_image_type != "slide_img" or count_media <= 1 or class_slide == 'recommendations' %} top-0 left-0 absolute{% else %} overflow-hidden splide__slide x-splide-slide max-h-full{% endif -%}"
+              {%- if settings.product_image_type != "slide_img" or count_media <= 1 or is_recommendations_card %} top-0 left-0 absolute{% else %} overflow-hidden splide__slide x-splide-slide max-h-full{% endif -%}"
             >
               {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
               <picture>
@@ -418,7 +427,7 @@
                     />
                   </picture>
                 </div>
-              {%- elsif settings.product_image_type == "slide_img" and count_media > 1 and class_slide != 'recommendations' -%}
+              {%- elsif settings.product_image_type == "slide_img" and count_media > 1 and is_recommendations_card == false -%}
                 {% for media in card_product.media %}
                   {%- if forloop.index > 1 -%}
                     <div 
@@ -466,7 +475,7 @@
               {%- render 'icon-placeholder', icon: 'icon-product', class: 'w-full h-full' %}
             </div>
           {%- endif -%}
-          {% if settings.product_image_type == "slide_img" and count_media > 1 and class_slide != 'recommendations' %}
+          {% if settings.product_image_type == "slide_img" and count_media > 1 and is_recommendations_card == false %}
               </div>
             </div>
             {%- if settings.show_arrow -%}
