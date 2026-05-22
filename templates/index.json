@@ -121,6 +121,7 @@
           "type": "category",
           "settings": {
             "image": "shopify://shop_images/Captura_de_pantalla_2025-08-01_151653.png",
+            "image_hover": "shopify://shop_images/aros-hover.jpg",
             "label": "aros",
             "image_alt": "",
             "link": "shopify://collections/aros",
@@ -131,6 +132,7 @@
           "type": "category",
           "settings": {
             "image": "shopify://shop_images/anillos_734f7939-5d66-48a9-86db-0d6e2b62d28e.jpg",
+            "image_hover": "shopify://shop_images/anillos-hover_9be2d7af-58dd-48b6-b7e0-9cb51c1491fa.jpg",
             "label": "anillos",
             "image_alt": "",
             "link": "shopify://collections/anillos",
@@ -141,6 +143,7 @@
           "type": "category",
           "settings": {
             "image": "shopify://shop_images/Captura_de_pantalla_2025-08-01_151642.png",
+            "image_hover": "shopify://shop_images/cadenas-hover.jpg",
             "label": "cadenas",
             "image_alt": "",
             "link": "shopify://collections/cadenas",
@@ -151,6 +154,7 @@
           "type": "category",
           "settings": {
             "image": "shopify://shop_images/Captura_de_pantalla_2025-08-01_151630.png",
+            "image_hover": "shopify://shop_images/pulseras-hover.jpg",
             "label": "pulseras",
             "image_alt": "",
             "link": "shopify://collections/pulseras",
