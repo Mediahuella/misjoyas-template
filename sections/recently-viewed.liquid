@@ -147,6 +147,37 @@
   role="region"
   aria-label="{{ 'sections.recently-viewed-products.aria_label' | t }}"
 >
+  <style data-recently-viewed-no-zoom>
+    #shopify-section-recently-viewed .static-card-image,
+    #shopify-section-recently-viewed .static-card-image *,
+    #shopify-section-recently-viewed .static-card-image-link,
+    #shopify-section-recently-viewed .static-card-image-link:hover,
+    #shopify-section-recently-viewed .static-card-image-link:active,
+    #shopify-section-recently-viewed .card-product .link-product-variant,
+    #shopify-section-recently-viewed .card-product .link-product-variant:hover,
+    #shopify-section-recently-viewed .card-product .link-product-variant:active,
+    #shopify-section-recently-viewed .card-product img,
+    #shopify-section-recently-viewed .card-product .group:hover img,
+    #shopify-section-recently-viewed .card-product [class*="animate_transition"],
+    #shopify-section-recently-viewed .card-product [class*="image-hover"],
+    #shopify-section-recently-viewed .card-product [class*="image-first"],
+    #shopify-section-recently-viewed .card-product [class*="image-second"] {
+      transform: none !important;
+      scale: 1 !important;
+      --tw-scale-x: 1 !important;
+      --tw-scale-y: 1 !important;
+      transition: none !important;
+      animation: none !important;
+      will-change: auto !important;
+    }
+    #shopify-section-recently-viewed .card-product .card-product-img,
+    #shopify-section-recently-viewed .card-product [id^="x-slideshow-card-product-"] .splide__track,
+    #shopify-section-recently-viewed .card-product [id^="x-slideshow-card-product-"] .splide__list,
+    #shopify-section-recently-viewed .card-product .media-slide,
+    #shopify-section-recently-viewed .card-product .splide__arrow {
+      display: none !important;
+    }
+  </style>
   <div class="x-page-width page-width">
     {%- if section.settings.heading != blank -%}
       <h2 class="recently-viewed__heading">
@@ -223,7 +254,7 @@
         <div class="splide__list md:grid-cols-none md:flex md:w-full md:gap-0 flex w-full">
           {%- for item in search.results limit: products_to_show -%}
             {%- liquid
-              assign rv_class_slide = 'splide__slide x-splide-slide preload-slide-' | append: section.id | append: ' h-auto'
+              assign rv_class_slide = 'splide__slide x-splide-slide preload-slide-' | append: section.id | append: ' rv-static-image h-auto'
             -%}
             {% render 'card-product',
               card_product: item,
@@ -252,7 +283,7 @@
             {%- if request.design_mode -%}
               {%- for i in (1..columns_desktop) -%}
                 {%- liquid
-                  assign rv_class_slide = 'splide__slide x-splide-slide preload-slide-' | append: section.id | append: ' h-auto'
+                  assign rv_class_slide = 'splide__slide x-splide-slide preload-slide-' | append: section.id | append: ' rv-static-image h-auto'
                 -%}
                 <div class="card-product overflow-hidden card relative pb-4 tw-flex tw-flex-col {{ rv_class_slide }}">
                   <div class="tw-aspect-square tw-bg-[#f2f2f2]"></div>

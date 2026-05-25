@@ -799,10 +799,99 @@ video {
   padding-right: 0;
 }
 
-/* PDP: información de producto alineada con page-width del resto del sitio */
-.section-product-info .page-width .product-content-container.pl-5.pr-5 {
-  padding-left: 0;
-  padding-right: 0;
+/* PDP desktop: quitar padding duplicado del page-width */
+@media (min-width: 768px) {
+  .section-product-info .page-width .product-content-container.pl-5.pr-5 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/* PDP mobile: márgenes 20px (Figma Product Info Container) */
+@media (max-width: 767px) {
+  .section-product-info .product-content-container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .section-product-info .product-info {
+    text-align: left;
+  }
+
+  .section-product-info .product-info .x-block-product-title,
+  .section-product-info .product-info .x-block-price,
+  .section-product-info .product-info .x-block-vendor,
+  .section-product-info .product-info .product-form__quantity,
+  .section-product-info .product-info .x-block-buy-buttons {
+    text-align: left;
+  }
+
+  /* Galería: imagen grande sin miniaturas + flechas overlay (Figma Product Image) */
+  .section-product-info .product-media-container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .section-product-info .product-media-container [id^="x-product-thumbnail-"] {
+    display: none !important;
+  }
+
+  .section-product-info .product-media-container .swiper-product {
+    position: relative;
+    width: 100% !important;
+  }
+
+  .section-product-info .product-media-container .splide__arrows {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .section-product-info .product-media-container .splide__arrows > .border-l-2 {
+    display: none;
+  }
+
+  .section-product-info .product-media-container .splide__arrow {
+    position: static;
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 46px;
+    padding: 10px 2px;
+    margin: 0;
+    background: rgba(255, 255, 255, 0.9);
+    opacity: 1;
+    transform: none;
+  }
+
+  .section-product-info .product-media-container .splide__arrow--prev {
+    border-radius: 0 6px 6px 0;
+  }
+
+  .section-product-info .product-media-container .splide__arrow--next {
+    border-radius: 6px 0 0 6px;
+  }
+
+  .section-product-info .product-media-container .splide__arrow:disabled {
+    opacity: 0.35;
+  }
+
+  .section-product-info .product-media-container .splide__arrow span {
+    width: 24px;
+    height: 24px;
+  }
 }
 
 /* ===== Badge plata 925 (página de producto) ===== */
@@ -1042,32 +1131,40 @@ video {
   opacity: 1 !important;
 }
 
-/* ===== Últimos vistos: sin zoom ni animaciones de imagen ===== */
-#shopify-section-recently-viewed .animate_transition_card__image,
-#shopify-section-recently-viewed .animate_transition_card__image.active,
-#shopify-section-recently-viewed .animate_transition_card__image.lazy_active {
-  transform: scale(1) !important;
-  transition: none !important;
-}
-
-#shopify-section-recently-viewed .animate_transition_image,
-#shopify-section-recently-viewed .animate_transition_image.active {
-  opacity: 1 !important;
-  transition: none !important;
-}
-
-#shopify-section-recently-viewed .card-product .image-hover,
-#shopify-section-recently-viewed .card-product .group:hover .image-hover,
-#shopify-section-recently-viewed .card-product .image-first-hover,
-#shopify-section-recently-viewed .card-product .image-second-hover,
-#shopify-section-recently-viewed .card-product .image-first-slide-anm,
-#shopify-section-recently-viewed .card-product .image-first-hover-slide-anm {
+/* ===== Últimos vistos: cero zoom / animaciones en imágenes ===== */
+#shopify-section-recently-viewed .static-card-image,
+#shopify-section-recently-viewed .static-card-image *,
+#shopify-section-recently-viewed .static-card-image-link,
+#shopify-section-recently-viewed .static-card-image-link:hover,
+#shopify-section-recently-viewed .static-card-image-link:active,
+#shopify-section-recently-viewed .card-product .link-product-variant,
+#shopify-section-recently-viewed .card-product .link-product-variant:hover,
+#shopify-section-recently-viewed .card-product .link-product-variant:active,
+#shopify-section-recently-viewed .card-product .group:hover .link-product-variant,
+#shopify-section-recently-viewed .card-product img,
+#shopify-section-recently-viewed .card-product .group:hover img,
+#shopify-section-recently-viewed .card-product .link-product-variant:hover img,
+#shopify-section-recently-viewed .card-product .link-product-variant:active img,
+#shopify-section-recently-viewed .card-product .preview-img,
+#shopify-section-recently-viewed .card-product [class*="animate_transition"],
+#shopify-section-recently-viewed .card-product [class*="image-hover"],
+#shopify-section-recently-viewed .card-product [class*="image-first"],
+#shopify-section-recently-viewed .card-product [class*="image-second"] {
   transform: none !important;
+  scale: 1 !important;
   --tw-scale-x: 1 !important;
   --tw-scale-y: 1 !important;
+  transition: none !important;
+  animation: none !important;
+  will-change: auto !important;
 }
 
-#shopify-section-recently-viewed .card-product-img.x-splide {
+#shopify-section-recently-viewed .card-product .card-product-img,
+#shopify-section-recently-viewed .card-product .card-product-img.x-splide,
+#shopify-section-recently-viewed .card-product [id^="x-slideshow-card-product-"] .splide__track,
+#shopify-section-recently-viewed .card-product [id^="x-slideshow-card-product-"] .splide__list,
+#shopify-section-recently-viewed .card-product .media-slide,
+#shopify-section-recently-viewed .card-product .splide__arrow {
   display: none !important;
 }
 

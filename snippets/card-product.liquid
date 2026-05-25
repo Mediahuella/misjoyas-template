@@ -54,7 +54,7 @@
   endif
 
   assign is_recommendations_card = false
-  if disable_image_slider or class_slide contains 'recommendations'
+  if disable_image_slider or class_slide contains 'recommendations' or class_slide contains 'rv-static-image'
     assign is_recommendations_card = true
   endif
 
@@ -275,6 +275,7 @@
       aria-label="{{ card_product.title }}"
       id="{{ card_product.id }}-{{ section.id }}"
       class="ltr group link-product-variant overflow-hidden block relative z-[15] cursor-pointer before:h-0 before:block
+      {%- if is_recommendations_card %} static-card-image-link{% endif -%}
       {%- if collage %} grow{% else %} no-collage{% endif -%}
       {%- if show_rounded_image %} rounded-[10px]{% endif -%}
       {%- if image_ratio_setting == 'fit_grid_layout' %} md:h-full h-full pb-0{% else -%}
@@ -286,7 +287,7 @@
       {%- if render_static_badges -%}
         {% render 'card-product-static-badges', product: card_product %}
       {%- endif -%}
-      <div class="w-full h-full z-0 overflow-hidden absolute top-0 left-0{% if animation_loading and loading != 'eager' %} animate_transition_card__image{% endif %}">
+      <div class="w-full h-full z-0 overflow-hidden absolute top-0 left-0{% if is_recommendations_card %} static-card-image{% elsif animation_loading and loading != 'eager' %} animate_transition_card__image{% endif %}">
         <div
           id="x-slideshow-card-product-{{ section_id }}-{{ product_card_id }}-{{ index | minus: 1 }}"
           class="block h-full{% if settings.product_image_type == "slide_img" and count_media > 1 and is_recommendations_card == false %} visible{% unless media_aspect_ratio == "natural"  %} card-product-img{% endunless %} w-full top-0 left-0 absolute x-splide disable-effect-hover splide cursor-grab group{% endif %}" 
@@ -353,7 +354,7 @@
                 endif
               endif
             %}
-            {%- if loading == 'eager' -%}
+            {%- if loading == 'eager' and is_recommendations_card == false -%}
               <div class="hidden">
                 {% assign featured_media_alt = product_featured_image.alt | split: "#" | first | escape %}
                 {{ product_featured_image | image_url: width: 1500 | image_tag: widths: '375, 450, 750, 900, 1100, 1500', preload: true, loading: 'lazy', onload: onload, sizes: sizes, alt: featured_media_alt }}
@@ -378,23 +379,28 @@
                   src="{{ product_featured_image | image_url: width: 1500 }}"
                   sizes="{{ sizes }}"
                   alt="{{ product_featured_image.alt | split: "#" | first | escape }}"
-                  class="w-full {% unless product_metafield != blank and card_product.metafields.custom[product_metafield] %} preview-img{% endunless %} motion-reduce aspect-{{ media_aspect_ratio }} relative animate-Xpulse skeleton-image object-cover
+                  class="w-full {% unless product_metafield != blank and card_product.metafields.custom[product_metafield] %} preview-img{% endunless %} motion-reduce aspect-{{ media_aspect_ratio }} relative object-cover
+                    {%- unless is_recommendations_card %} animate-Xpulse skeleton-image{% endunless -%}
                     {%- if image_ratio_setting == 'fit_grid_layout' %} md:h-full md:min-h-full h-full min-h-full
                       {%- else -%} 
                       {%- if media_aspect_ratio != "natural" %} h-full min-h-full{% endif -%}
                     {%- endif -%}
+                    {%- unless is_recommendations_card -%}
                     {%- if card_product.media[1] != nil and settings.product_image_type == 'hover_to_reveal_second_image' and settings.product_card_effect_reveal_image != 'slide' %} image-first-hover lg:group-hover:opacity-0
                       {%- elsif card_product.media[1] != nil and settings.product_image_type == 'hover_to_reveal_second_image' and settings.product_card_effect_reveal_image == 'slide' %} image-first-slide-anm lg:group-hover:opacity-0 transition-opacity duration-500
                       {%- elsif settings.product_image_type != 'slide_img' %} image-hover
                     {%- endif -%}
                     {%- if animation_loading and loading != 'eager' %} animate_transition_image{% endif -%}
+                    {%- endunless -%}
                   "
                   loading="{{ loading | default: 'lazy' }}"
                   width="{% if product_metafield != blank and card_product.metafields.custom[product_metafield] %}{{ product_featured_image.width }}{% else %}{{ product_featured_image.preview_image.width }}{% endif %}"
                   height="{% if product_metafield != blank and card_product.metafields.custom[product_metafield] %}{{ product_featured_image.height }}{% else %}{{ product_featured_image.preview_image.height }}{% endif %}"
+                  {%- unless is_recommendations_card -%}
                   onload="{% if animation_loading and loading != 'eager' %}this?.classList.add('active');{% endif -%}
                     this.closest('.skeleton-image')?.classList.remove('animate-Xpulse', 'skeleton-image');
                     setTimeout(() => { this.closest('.animate_transition_card__image')?.classList.add('lazy_active', 'active'); }, 250);"
+                  {%- endunless -%}
                 />
               </picture>
               {% comment %}theme-check-enable ImgLazyLoading{% endcomment %}
