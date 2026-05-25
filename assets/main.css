@@ -2366,6 +2366,14 @@ video {
     width: 350px;
   }
 
+  .lg\:\!tw-w-\[345px\] {
+    width: 345px !important;
+  }
+
+  .lg\:tw-w-\[345px\] {
+    width: 345px;
+  }
+
   .lg\:\[grid-area\:auto\] {
     grid-area: auto;
   }

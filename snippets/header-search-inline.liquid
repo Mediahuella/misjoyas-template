@@ -2,7 +2,7 @@
   assign search_type = 'query,' | append: settings.search_type
 -%}
 <div
-  class="hidden lg:flex items-center relative lg:!tw-w-[350px] xl:!tw-w-[488px]"
+  class="hidden lg:flex items-center relative lg:!tw-w-[345px]"
   x-data="xInlineSearch('{{ search_type }}', {{ settings.search_desktop_maximun_results | default: 6 }})"
   @click.away="closeResults()"
   @keyup.escape="closeResults()"
@@ -11,7 +11,7 @@
     action="{{ routes.search_url }}"
     method="get"
     role="search"
-    class="tw-flex tw-items-center tw-h-[42px] lg:tw-w-[350px] xl:tw-w-[488px] tw-bg-white tw-border tw-border-[#2d2d2d] tw-rounded-[4px] tw-px-3 tw-gap-2"
+    class="tw-flex tw-items-center tw-h-[42px] lg:tw-w-[345px] tw-bg-white tw-border tw-border-[#2d2d2d] tw-rounded-[4px] tw-px-3 tw-gap-2"
   >
     <input type="hidden" name="options[prefix]" value="last">
     <input
@@ -39,7 +39,7 @@
       x-show="openResults"
       x-cloak
       x-html="result"
-      class="absolute top-full tw-mt-[6px] left-0 lg:tw-w-[350px] xl:tw-w-[488px] z-50 bg-white shadow-md rounded-[4px] border border-black/10 max-h-96 overflow-y-auto text-[rgb(var(--colors-text))]"
+      class="absolute top-full tw-mt-[6px] left-0 lg:tw-w-[345px] z-50 bg-white shadow-md rounded-[4px] border border-black/10 max-h-96 overflow-y-auto text-[rgb(var(--colors-text))]"
     ></div>
   {%- endif -%}
 </div>
