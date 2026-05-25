@@ -398,9 +398,15 @@
                     }
                   {% endstyle %}
                   <div class="x-block-product-title mb-5 w-full{% if show_content_center %} text-center{% endif %}" {{ block.shopify_attributes }}>
-                    <{{ block.settings.heading_tag }} class="product-title h2 title-size--{{ block.id }} mb-3 leading-tight">
-                      {{ product.title | escape }}
-                    </{{ block.settings.heading_tag }}>
+                    <div class="misjoyas-product-title-row{% if show_content_center %} misjoyas-product-title-row--center{% endif %}">
+                      <{{ block.settings.heading_tag }} class="product-title h2 title-size--{{ block.id }} mb-0 leading-tight misjoyas-product-title-row__title">
+                        {{ product.title | escape }}
+                      </{{ block.settings.heading_tag }}>
+                      <div class="misjoyas-product-title-row__actions">
+                        {% render 'product-wishlist-button', product: product %}
+                        {% render 'product-share-button', product: product %}
+                      </div>
+                    </div>
                   </div>
                 {%- when 'price' -%}
                   <div class="x-block-price mb-5 w-full pricearea{% if show_content_center %} text-center{% endif %}" {{ block.shopify_attributes }}>

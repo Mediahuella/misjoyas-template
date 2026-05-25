@@ -85,8 +85,8 @@
             "message_color_dark": "rgba(0,0,0,0)",
             "button_light": "#000000",
             "button_text_light": "#ffffff",
-            "button_hover_light": "#000000",
-            "button_text_hover_light": "rgba(0,0,0,0)",
+            "button_hover_light": "#f83785",
+            "button_text_hover_light": "#ffffff",
             "secondary_button_light": "rgba(0,0,0,0)",
             "secondary_button_text_light": "rgba(0,0,0,0)",
             "button_dark": "#96d5c7",
@@ -438,7 +438,7 @@
         "padding_bottom_mobile": 32
       }
     },
-    "recently_viewed_YmEeUb": {
+    "recently_viewed_4h746e": {
       "type": "recently-viewed",
       "name": "t:sections.recently-viewed-products.name",
       "settings": {
@@ -480,7 +480,7 @@
       "type": "custom-liquid",
       "name": "t:sections.custom-liquid.name",
       "settings": {
-        "custom_liquid": "<div class=\"misjoyas-trust-section\">\n\n  <div class=\"misjoyas-trust-image\">\n    <img src=\"https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?q=80&w=1200&auto=format&fit=crop\" alt=\"Comunidad de joyería\">\n  </div>\n\n  <div class=\"misjoyas-trust-content\">\n    <h2>Una comunidad que confía en la joyería</h2>\n\n    <p>\n    Miles de personas han decidido confiar en la calidad de nuestras joyas de \n    <strong>plata fina Ley 925</strong> para comenzar o hacer crecer su negocio.\n    </p>\n\n    <p>\n    Gracias a nuestros diseños y precios exclusivos, hoy muchos clientes \n    han logrado construir proyectos exitosos en el mundo de la joyería.\n    </p>\n\n    <p>\n    Cuando eliges nuestras piezas no solo compras joyas, también formas parte \n    de una comunidad que sigue creciendo cada día.\n    </p>\n\n  </div>\n\n</div>\n\n<style>\n\n.misjoyas-trust-section{\ndisplay:flex;\nalign-items:center;\ngap:30px;\nmargin-top:40px;\nmargin-bottom:40px;\n}\n\n.misjoyas-trust-image img{\nwidth:100%;\nmax-width:420px;\nborder-radius:10px;\nobject-fit:cover;\nbox-shadow:0 8px 20px rgba(0,0,0,0.08);\n}\n\n.misjoyas-trust-content{\nmax-width:500px;\n}\n\n.misjoyas-trust-content h2{\nfont-size:26px;\nmargin-bottom:12px;\n}\n\n.misjoyas-trust-content p{\nfont-size:14px;\ncolor:#555;\nmargin-bottom:10px;\nline-height:1.6;\n}\n\n/* responsive */\n\n@media (max-width:768px){\n\n.misjoyas-trust-section{\nflex-direction:column;\ntext-align:center;\n}\n\n.misjoyas-trust-image img{\nmax-width:100%;\n}\n\n}\n\n</style>",
+        "custom_liquid": "{% render 'misjoyas-trust-section' %}",
         "full_width": false,
         "show_section_divider": false,
         "padding_top": 28,
@@ -738,7 +738,7 @@
     "custom_liquid_NLGn9E",
     "ticker_EDChGG",
     "product-recommendations",
-    "recently_viewed_YmEeUb",
+    "recently_viewed_4h746e",
     "1773246905d9151850",
     "custom_liquid_tRBp6e",
     "custom_liquid_iRmK4m",

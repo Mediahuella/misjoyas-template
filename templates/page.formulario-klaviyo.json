@@ -69,7 +69,8 @@
         "klaviyo_email_marketing_sms_form_embed_block_YMPweb"
       ],
       "settings": {
-        "include_margins": true
+        "include_margins": true,
+        "content_alignment": "center"
       }
     }
   },

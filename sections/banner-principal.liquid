@@ -5,27 +5,73 @@
   endif
   assign desktop_height = section.settings.banner_height
   assign mobile_height = section.settings.banner_height_mobile
+
+  assign mobile_ar_w = 750
+  assign mobile_ar_h = 400
+  assign desktop_ar_w = 1920
+  assign desktop_ar_h = 580
+
+  for block in section.blocks
+    assign block_desktop = block.settings.image
+    assign block_mobile = block.settings.image_mobile
+
+    if block_desktop != blank
+      assign cmp_desktop = block_desktop.height | times: desktop_ar_w
+      assign cmp_desktop_ref = desktop_ar_h | times: block_desktop.width
+      if cmp_desktop > cmp_desktop_ref
+        assign desktop_ar_h = block_desktop.height
+        assign desktop_ar_w = block_desktop.width
+      endif
+    endif
+
+    if block_mobile != blank
+      assign cmp_mobile = block_mobile.height | times: mobile_ar_w
+      assign cmp_mobile_ref = mobile_ar_h | times: block_mobile.width
+      if cmp_mobile > cmp_mobile_ref
+        assign mobile_ar_h = block_mobile.height
+        assign mobile_ar_w = block_mobile.width
+      endif
+    elsif block_desktop != blank
+      assign cmp_mobile = block_desktop.height | times: mobile_ar_w
+      assign cmp_mobile_ref = mobile_ar_h | times: block_desktop.width
+      if cmp_mobile > cmp_mobile_ref
+        assign mobile_ar_h = block_desktop.height
+        assign mobile_ar_w = block_desktop.width
+      endif
+    endif
+  endfor
 -%}
 
 {%- style -%}
   .banner-principal-{{ section.id }} {
-    --banner-principal-height: {{ desktop_height }}px;
-    --banner-principal-height-mobile: {{ mobile_height }}px;
+    --banner-principal-max-h: {{ desktop_height }}px;
+    --banner-principal-max-h-mobile: {{ mobile_height }}px;
+    --banner-principal-slide-h: calc(100vw * {{ mobile_ar_h }} / {{ mobile_ar_w }});
     position: relative;
     width: 100%;
+    line-height: 0;
+  }
+  @media (min-width: 768px) {
+    .banner-principal-{{ section.id }} {
+      --banner-principal-slide-h: min(
+        calc(100vw * {{ desktop_ar_h }} / {{ desktop_ar_w }}),
+        clamp(300px, 30vw, var(--banner-principal-max-h))
+      );
+    }
+  }
+  .banner-principal-{{ section.id }} .banner-principal__slider {
+    height: var(--banner-principal-slide-h);
   }
   .banner-principal-{{ section.id }} .banner-principal__slide,
   .banner-principal-{{ section.id }} .banner-principal__placeholder {
     position: relative;
     width: 100%;
-    height: var(--banner-principal-height-mobile);
+    height: var(--banner-principal-slide-h);
     overflow: hidden;
   }
-  @media (min-width: 768px) {
-    .banner-principal-{{ section.id }} .banner-principal__slide,
-    .banner-principal-{{ section.id }} .banner-principal__placeholder {
-      height: var(--banner-principal-height);
-    }
+  .banner-principal-{{ section.id }} .splide__track,
+  .banner-principal-{{ section.id }} .splide__list {
+    height: 100%;
   }
   .banner-principal-{{ section.id }} .banner-principal__link,
   .banner-principal-{{ section.id }} .banner-principal__picture {
@@ -39,6 +85,27 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
+  }
+  @media (max-width: 767px) {
+    .banner-principal-{{ section.id }} .banner-principal__slide {
+      height: auto;
+    }
+    .banner-principal-{{ section.id }} .banner-principal__slider,
+    .banner-principal-{{ section.id }} .splide__track,
+    .banner-principal-{{ section.id }} .splide__list {
+      height: auto;
+    }
+    .banner-principal-{{ section.id }} .banner-principal__link,
+    .banner-principal-{{ section.id }} .banner-principal__picture {
+      height: auto;
+    }
+    .banner-principal-{{ section.id }} .banner-principal__img {
+      width: 100%;
+      height: auto;
+      max-height: none;
+      object-fit: contain;
+      object-position: center top;
+    }
   }
   .banner-principal-{{ section.id }} .banner-principal__placeholder {
     display: flex;
@@ -144,8 +211,8 @@
       })'
     {% endif %}
   >
-    <div class="{% if enable_slider %}splide__track{% endif %} overflow-hidden">
-      <div class="{% if enable_slider %}splide__list flex{% endif %}">
+    <div class="{% if enable_slider %}splide__track{% endif %} overflow-hidden h-full">
+      <div class="{% if enable_slider %}splide__list flex h-full{% else %}h-full{% endif %}">
         {%- for block in section.blocks -%}
           {%- liquid
             assign slide_image = block.settings.image
@@ -168,7 +235,7 @@
             class="banner-principal__slide{% if enable_slider %} splide__slide x-splide-slide flex-shrink-0 w-full{% endif %}"
             {{ block.shopify_attributes }}
           >
-            {%- if slide_image != blank -%}
+            {%- if slide_image != blank or slide_image_mobile != blank -%}
               {%- if slide_link != blank -%}
                 <a
                   href="{{ slide_link }}"
@@ -180,20 +247,40 @@
                 {%- if slide_image_mobile != blank -%}
                   <source
                     media="(max-width: 767px)"
-                    srcset="{{ slide_image_mobile | image_url: width: 1200 }}"
+                    srcset="
+                      {{ slide_image_mobile | image_url: width: 550 }} 550w,
+                      {{ slide_image_mobile | image_url: width: 750 }} 750w,
+                      {{ slide_image_mobile | image_url: width: 990 }} 990w,
+                      {{ slide_image_mobile | image_url: width: 1200 }} 1200w
+                    "
+                    sizes="100vw"
                   >
                 {%- endif -%}
-                {{
-                  slide_image
-                  | image_url: width: 3840
-                  | image_tag:
-                    class: 'banner-principal__img',
-                    widths: '800, 1200, 1920, 2560, 3840',
-                    sizes: '100vw',
-                    alt: slide_alt,
-                    loading: slide_loading,
-                    fetchpriority: slide_fetchpriority
-                }}
+                {%- if slide_image != blank -%}
+                  {{
+                    slide_image
+                    | image_url: width: 3840
+                    | image_tag:
+                      class: 'banner-principal__img',
+                      widths: '750, 990, 1200, 1500, 1920, 2560, 3840',
+                      sizes: '100vw',
+                      alt: slide_alt,
+                      loading: slide_loading,
+                      fetchpriority: slide_fetchpriority
+                  }}
+                {%- elsif slide_image_mobile != blank -%}
+                  {{
+                    slide_image_mobile
+                    | image_url: width: 1200
+                    | image_tag:
+                      class: 'banner-principal__img',
+                      widths: '550, 750, 990, 1200',
+                      sizes: '100vw',
+                      alt: slide_alt,
+                      loading: slide_loading,
+                      fetchpriority: slide_fetchpriority
+                  }}
+                {%- endif -%}
               </picture>
               {%- if slide_link != blank -%}
                 </a>
@@ -268,7 +355,7 @@
     {
       "type": "range",
       "id": "banner_height",
-      "label": "Altura en escritorio (px)",
+      "label": "Altura máxima en escritorio (px)",
       "min": 300,
       "max": 800,
       "step": 10,
@@ -277,7 +364,8 @@
     {
       "type": "range",
       "id": "banner_height_mobile",
-      "label": "Altura en móvil (px)",
+      "label": "Altura máxima en móvil (px)",
+      "info": "Solo aplica como referencia. En móvil el banner usa la proporción completa de la imagen para evitar recortes.",
       "min": 240,
       "max": 600,
       "step": 10,
@@ -293,13 +381,13 @@
           "type": "image_picker",
           "id": "image",
           "label": "Imagen (escritorio)",
-          "info": "Recomendado 1920×580 px. Sube el banner completo desde Figma."
+          "info": "Recomendado 1920×580 px. La altura se adapta al ancho de pantalla según la proporción de la imagen."
         },
         {
           "type": "image_picker",
           "id": "image_mobile",
           "label": "Imagen (móvil)",
-          "info": "Opcional. Si está vacía, se usa la imagen de escritorio."
+          "info": "Recomendado 750×400 px o similar. Si está vacía, se usa la imagen de escritorio."
         },
         {
           "type": "text",

@@ -16,10 +16,10 @@
           "type": "slide",
           "name": "Banner principal",
           "settings": {
-            "image": "shopify://shop_images/banner-princiapl_desktop_318671d2-853b-43e0-a30c-5b632a570a24.jpg",
-            "image_mobile": "shopify://shop_images/banner-princiapl_mobile_711d5b21-4e5d-4e8e-807d-497a386c181d.jpg",
+            "image": "shopify://shop_images/banner-principal_desktop.jpg",
+            "image_mobile": "shopify://shop_images/banner-principal_mobile.jpg",
             "image_alt": "",
-            "link": "shopify://pages/formulario",
+            "link": "shopify://collections/descuentos-activos",
             "open_new_window": false
           }
         }
@@ -37,6 +37,7 @@
     },
     "home_countdown_timer": {
       "type": "countdown-timer",
+      "disabled": true,
       "settings": {
         "enable": true,
         "show_only_on_homepage": false,
@@ -102,6 +103,7 @@
         "badge_XAczzt",
         "badge_bqDeg7"
       ],
+      "disabled": true,
       "name": "Coupon badges",
       "settings": {
         "enable": true,
@@ -120,7 +122,7 @@
         "category_aros": {
           "type": "category",
           "settings": {
-            "image": "shopify://shop_images/Captura_de_pantalla_2025-08-01_151653.png",
+            "image": "shopify://shop_images/aros.jpg",
             "image_hover": "shopify://shop_images/aros-hover.jpg",
             "label": "aros",
             "image_alt": "",
@@ -131,7 +133,7 @@
         "category_anillos": {
           "type": "category",
           "settings": {
-            "image": "shopify://shop_images/anillos_734f7939-5d66-48a9-86db-0d6e2b62d28e.jpg",
+            "image": "shopify://shop_images/anillos_4e574ef7-be3d-45a3-9c8c-01d9856cda9c.jpg",
             "image_hover": "shopify://shop_images/anillos-hover_9be2d7af-58dd-48b6-b7e0-9cb51c1491fa.jpg",
             "label": "anillos",
             "image_alt": "",
@@ -142,7 +144,7 @@
         "category_cadenas": {
           "type": "category",
           "settings": {
-            "image": "shopify://shop_images/Captura_de_pantalla_2025-08-01_151642.png",
+            "image": "shopify://shop_images/cadenas.jpg",
             "image_hover": "shopify://shop_images/cadenas-hover.jpg",
             "label": "cadenas",
             "image_alt": "",
@@ -153,7 +155,7 @@
         "category_pulseras": {
           "type": "category",
           "settings": {
-            "image": "shopify://shop_images/Captura_de_pantalla_2025-08-01_151630.png",
+            "image": "shopify://shop_images/pulseras.jpg",
             "image_hover": "shopify://shop_images/pulseras-hover.jpg",
             "label": "pulseras",
             "image_alt": "",
@@ -177,6 +179,30 @@
         "padding_y_mobile": 30,
         "card_max_width": 360,
         "card_width_mobile": 280
+      }
+    },
+    "featured_collection_misjoyas_WHddHm": {
+      "type": "featured-collection-misjoyas",
+      "name": "Colección destacada",
+      "settings": {
+        "title_icon": "",
+        "title_icon_color": "#68b5a3",
+        "title": "Lo más vendido",
+        "collection": "c_mas-vendidos",
+        "products_to_show": 16,
+        "gap": 16,
+        "gap_mobile": 12,
+        "columns_desktop": 4,
+        "padding_y": 40,
+        "padding_y_mobile": 30,
+        "show_quickview": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "show_highlighted_attributes": true,
+        "show_view_all": true,
+        "button_label": "Ver todos los productos",
+        "button_link": "",
+        "open_new_window": false
       }
     },
     "17733201952ee1ad52": {
@@ -264,12 +290,39 @@
     },
     "banner_kit_mfxgQe": {
       "type": "banner-kit",
+      "blocks": {
+        "slide_kit_1": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/banner-2_kit_desktop_3177c971-94e3-4d40-ac17-e3403dff791b.jpg",
+            "image_mobile": "shopify://shop_images/banner-2_kit_mobile.jpg",
+            "image_alt": "",
+            "link": "shopify://products/kit-primera-compra",
+            "open_new_window": false
+          }
+        },
+        "slide_zrye8m": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/banner-2_dia_del_padre_desktop.jpg",
+            "image_mobile": "shopify://shop_images/banner-2_dia_del_padre_mobile.jpg",
+            "image_alt": "",
+            "link": "shopify://collections/dia-del-padre",
+            "open_new_window": false
+          }
+        }
+      },
+      "block_order": [
+        "slide_kit_1",
+        "slide_zrye8m"
+      ],
       "name": "Banner kit",
       "settings": {
         "enable": true,
         "show_only_on_homepage": false,
-        "image": "shopify://shop_images/banner-2_kit_desktop.jpg",
-        "image_mobile": "shopify://shop_images/banner-2_kit_desktop_3be4b57b-dab5-4301-9768-c68a3c07e347.jpg",
+        "auto_play": true,
+        "change_slides_speed": 4,
+        "show_arrows": true,
         "image_alt": "Kit de regalo en tu primera compra",
         "link": "",
         "open_new_window": false,
@@ -713,6 +766,7 @@
     "home_countdown_timer",
     "coupon_badges_a6Th3k",
     "media_gallery_Fbr4fr",
+    "featured_collection_misjoyas_WHddHm",
     "17733201952ee1ad52",
     "ticker_6VWRFH",
     "featured_collection_misjoyas_PnenNE",

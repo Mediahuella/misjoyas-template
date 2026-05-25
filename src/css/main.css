@@ -258,6 +258,363 @@
   }
 }
 
+/* ===== PDP: título + compartir (Figma desktop + mobile) ===== */
+
+.misjoyas-product-title-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.misjoyas-product-title-row--center {
+  justify-content: center;
+  text-align: center;
+}
+
+.misjoyas-product-title-row__title {
+  flex: 1;
+  min-width: 0;
+}
+
+.misjoyas-product-title-row__actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.misjoyas-product-wishlist-slot:empty {
+  display: none;
+}
+
+.misjoyas-product-wishlist {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 19px;
+  height: 19px;
+}
+
+.misjoyas-product-wishlist__icons {
+  position: relative;
+  width: 19px;
+  height: 19px;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+.misjoyas-product-wishlist__icon {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 19px;
+  height: 19px;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.misjoyas-product-wishlist__icon--filled {
+  opacity: 0;
+  transform: scale(0.88);
+}
+
+.misjoyas-product-wishlist--added .misjoyas-product-wishlist__icon--outline {
+  opacity: 0;
+  transform: scale(0.88);
+}
+
+.misjoyas-product-wishlist--added .misjoyas-product-wishlist__icon--filled {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.misjoyas-product-wishlist__slot {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+.misjoyas-product-wishlist__slot .shopify-block.shopify-app-block {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 19px !important;
+  height: 19px !important;
+  min-height: 0 !important;
+}
+
+.misjoyas-product-wishlist__slot wishlist-button-block,
+.misjoyas-product-wishlist__slot .wishlist-hero-custom-button {
+  display: block !important;
+  width: 19px !important;
+  height: 19px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.misjoyas-product-wishlist__slot button,
+.misjoyas-product-wishlist__slot [role="button"] {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 19px !important;
+  height: 19px !important;
+  min-width: 19px !important;
+  min-height: 19px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  opacity: 0 !important;
+  cursor: pointer !important;
+  background: transparent !important;
+  border: 0 !important;
+}
+
+.misjoyas-product-wishlist__slot svg,
+.misjoyas-product-wishlist__slot .wlh-svg-Icon,
+.misjoyas-product-wishlist__slot span {
+  display: none !important;
+}
+
+/* Ocultar botón automático de Wishlist Hero fuera de la fila del título */
+.section-product-info .product-info .shopify-block.shopify-app-block:has(wishlist-button-block):not(.misjoyas-wishlist-mounted),
+.section-product-info .product-info .shopify-block.shopify-app-block:has([class*="wishlist"]):not(.misjoyas-wishlist-mounted),
+.section-product-info .product-info wishlist-button-block:not(.misjoyas-wishlist-mounted),
+.section-product-info .product-info .wishlist-hero-custom-button:not(.misjoyas-wishlist-hero-engine):not(.misjoyas-wishlist-mounted),
+.section-product-info .product-info .wishlist-engine-button,
+.section-product-info .product-info button.wishlist-page-widget,
+.section-product-info .product-info [data-wlh-id]:not(.misjoyas-product-wishlist__slot [data-wlh-id]) {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border: 0 !important;
+}
+
+.section-product-info .misjoyas-product-wishlist__slot .shopify-block.shopify-app-block,
+.section-product-info .misjoyas-product-wishlist__slot wishlist-button-block,
+.section-product-info .misjoyas-product-wishlist__slot .wishlist-hero-custom-button {
+  display: block !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  height: auto !important;
+}
+
+/* ===== PDP: botón añadir al carrito — hover rosa Mis Joyas (igual tarjetas) ===== */
+
+.section-product-info .button-product .add_to_cart_button.button-solid {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.section-product-info .button-product .add_to_cart_button.button-solid,
+.section-product-info .button-product .add_to_cart_button.button-solid:before {
+  --colors-button-hover: #F83785;
+  --colors-button-text-hover: 255, 255, 255;
+}
+
+.section-product-info .add_to_cart_button.button-solid:not(:disabled):hover,
+.section-product-info .add_to_cart_button.button-solid:not(:disabled):focus-visible {
+  background-color: #F83785 !important;
+  color: #ffffff !important;
+}
+
+.section-product-info .add_to_cart_button.button-solid:not(:disabled):hover .button-text,
+.section-product-info .add_to_cart_button.button-solid:not(:disabled):hover .x-atc-text,
+.section-product-info .add_to_cart_button.button-solid:not(:disabled):focus-visible .button-text,
+.section-product-info .add_to_cart_button.button-solid:not(:disabled):focus-visible .x-atc-text {
+  color: #ffffff !important;
+}
+
+.section-product-info .add_to_cart_button.button-solid:not(:disabled):hover:before,
+.section-product-info .add_to_cart_button.button-solid:not(:disabled):focus-visible:before {
+  background-color: #F83785;
+}
+
+.section-product-info .add_to_cart_button.button-solid:not(:disabled):hover .button-text::after,
+.section-product-info .add_to_cart_button.button-solid:not(:disabled):focus-visible .button-text::after {
+  background-color: #ffffff !important;
+}
+
+.misjoyas-share {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.misjoyas-share__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.misjoyas-share__btn:hover,
+.misjoyas-share__btn:focus-visible {
+  opacity: 0.85;
+}
+
+.misjoyas-share__btn img {
+  display: block;
+  width: 40px;
+  height: 40px;
+}
+
+.misjoyas-share__menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 40;
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 4px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  min-width: 48px;
+}
+
+.misjoyas-share__menu ul {
+  flex-direction: column;
+  gap: 0;
+}
+
+.misjoyas-share__menu li {
+  width: 100%;
+  height: auto;
+  opacity: 1;
+}
+
+.misjoyas-share__menu button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.misjoyas-share__menu button:hover,
+.misjoyas-share__menu button:focus-visible {
+  background: #f2f2f2;
+}
+
+/* ===== PDP: sección confianza + botón Quienes somos (Figma 208:1551) ===== */
+
+.misjoyas-trust-section {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.misjoyas-trust-image img {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.misjoyas-trust-content {
+  max-width: 500px;
+  text-align: left;
+}
+
+.misjoyas-trust-content h2 {
+  font-size: 26px;
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+.misjoyas-trust-content p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+  line-height: 1.6;
+  text-align: left;
+}
+
+.misjoyas-trust-content p:last-of-type {
+  margin-bottom: 0;
+}
+
+.misjoyas-trust-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  margin-top: 32px;
+  padding: 13px 32px 12px;
+  background: #000000;
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.misjoyas-trust-btn:hover,
+.misjoyas-trust-btn:focus-visible {
+  background: #F83785;
+  color: #ffffff;
+}
+
+@media (max-width: 767px) {
+  .custom-liquid .misjoyas-trust-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .custom-liquid .misjoyas-trust-image {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .custom-liquid .misjoyas-trust-image img {
+    max-width: 100%;
+  }
+
+  .custom-liquid .misjoyas-trust-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .custom-liquid .misjoyas-trust-content h2,
+  .custom-liquid .misjoyas-trust-content p {
+    width: 100%;
+    text-align: center;
+  }
+
+  .custom-liquid .misjoyas-trust-btn {
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 /* ===== Tarjeta de producto: diseño Figma ===== */
 
 /* Borde gris claro en cada tarjeta */

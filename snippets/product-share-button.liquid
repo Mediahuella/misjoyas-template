@@ -1,0 +1,52 @@
+{% comment %}
+  Botón compartir PDP — Figma node 254:1226
+  Accepts:
+  - product: {Object} Product Liquid object
+{% endcomment %}
+{%- liquid
+  assign share_title = product.title | escape
+  assign share_permalink = product.url
+-%}
+<div
+  class="misjoyas-share"
+  x-data="xProductShare()"
+  data-share-title="{{ share_title }}"
+  data-share-url="{{ shop.url | append: share_permalink }}"
+  @click.outside="open = false"
+>
+  <button
+    type="button"
+    class="misjoyas-share__btn none_border"
+    aria-label="{{ 'products.product.share' | t }}"
+    :aria-expanded="open.toString()"
+    @click="handleShare()"
+  >
+    <img
+      src="{{ 'compartir-icon.svg' | asset_url }}"
+      alt=""
+      width="40"
+      height="40"
+      loading="lazy"
+    >
+  </button>
+
+  <div
+    class="misjoyas-share__menu"
+    x-show="open"
+    x-cloak
+    x-transition:enter="transition ease-out duration-150"
+    x-transition:enter-start="opacity-0 translate-y-1"
+    x-transition:enter-end="opacity-100 translate-y-0"
+    x-transition:leave="transition ease-in duration-100"
+    x-transition:leave-start="opacity-100 translate-y-0"
+    x-transition:leave-end="opacity-0 translate-y-1"
+    role="menu"
+    aria-label="{{ 'products.product.share_social' | t }}"
+  >
+    {% render 'social-sharing',
+      share_title: product.title,
+      share_permalink: share_permalink,
+      share_image: product
+    %}
+  </div>
+</div>
