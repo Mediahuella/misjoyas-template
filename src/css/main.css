@@ -117,7 +117,7 @@
   min-width: 44px;
   height: 25px;
   padding: 5px 12px 6px;
-  background: #737373;
+  background: #9b0103;
   color: #fff;
   font-size: 12.5px;
   font-weight: 600;
@@ -858,10 +858,18 @@
   bottom: 0 !important;
 }
 
-/* Badge % descuento en cards: color Figma, tamaño hereda de .x-badge-content */
+/* Badge % descuento en cards — desktop 20px, mobile proporcional (ratio PDP 30/36) */
 .card-product .bottom-left-container .x-badge-content.x-badge-text {
-  background-color: #737373 !important;
+  background-color: #9b0103 !important;
   color: #ffffff !important;
+  font-size: calc(20px * 5 / 6) !important;
+  line-height: 1.2 !important;
+}
+
+@media (min-width: 768px) {
+  .card-product .bottom-left-container .x-badge-content.x-badge-text {
+    font-size: 20px !important;
+  }
 }
 
 /* Posición personalizada en imagen: anclar abajo-izquierda (descuentos) */
