@@ -813,10 +813,11 @@
               {%- render 'price',
                 product: card_product,
                 use_variant: true,
-                container: 'main-product-price'
+                container: 'main-product-price',
+                misjoyas_context: 'card'
               -%}
             {% elsif card_product.has_only_default_variant %}
-              {% render 'price', priceID: priceID, product: card_product, product_complementary: product_complementary, show_price_range: show_price_range %}
+              {% render 'price', priceID: priceID, product: card_product, product_complementary: product_complementary, show_price_range: show_price_range, misjoyas_context: 'card' %}
             {% else %}
               {%- render 'price',
                 product: card_product,
@@ -824,7 +825,8 @@
                 container: 'main-product-price',
                 priceID: priceID,
                 product_complementary: product_complementary,
-                show_price_range: show_price_range
+                show_price_range: show_price_range,
+                misjoyas_context: 'card'
               -%}
             {% endif %}
             <div class="next-price empty:hidden"></div>

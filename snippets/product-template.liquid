@@ -428,7 +428,8 @@
                       {%- render 'price',
                         product: product,
                         use_variant: true,
-                        container: 'main-product-price'
+                        container: 'main-product-price',
+                        misjoyas_context: 'pdp'
                       -%}
                     </div>
                     {% if block.settings.show_tax_and_shipping %}
@@ -2419,8 +2420,8 @@
                       {%- render 'price',
                         product: product,
                         use_variant: true,
-                        show_badges: false,
-                        price_class: "pt-1"
+                        container: 'main-product-price',
+                        misjoyas_context: 'pdp'
                       -%}
                     </div>
                   </div>
@@ -2513,7 +2514,8 @@
                       product: product,
                       use_variant: true,
                       show_badges: false,
-                      price_class: "md:pt-2"
+                      price_class: "md:pt-2",
+                      misjoyas_context: 'pdp'
                     -%}
                   </div>
                   <div class="flex justify-between rtl:flex-row-reverse gap-x-1 md:gap-x-2 md:flex-grow-0 lg:justify-end lg:mt-0 transition duration-200">

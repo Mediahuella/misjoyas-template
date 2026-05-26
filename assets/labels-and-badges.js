@@ -209,13 +209,27 @@ requestAnimationFrame(() => {
           return;
         }
 
-        let container = el.querySelector(`.${label.settings.position}-container`);
+        let position = label.settings.position;
+        if (productData.container == 'card' && label.type === 'sale-label') {
+          position = 'bottom-left';
+        }
+
+        let container = el.querySelector(`.${position}-container`);
         if (!container) {
-          container = this.createFixedPositionContainer(label.settings.position);
+          container = this.createFixedPositionContainer(position);
           el.appendChild(container);
         }
 
+        const originalPosition = label.settings.position;
+        if (position !== originalPosition) {
+          label.settings.position = position;
+        }
+
         container.innerHTML += this.processTemplate(el, label, productData);
+
+        if (position !== originalPosition) {
+          label.settings.position = originalPosition;
+        }
       },
       createFixedPositionContainer(position) {
         let HTMLClass = `${position}-container label-container absolute gap-1 space-y-1`;

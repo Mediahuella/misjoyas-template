@@ -220,7 +220,8 @@
         "vizup_videos_videos_block_JQJAWt"
       ],
       "settings": {
-        "include_margins": true
+        "include_margins": true,
+        "content_alignment": "left"
       }
     },
     "ticker_6VWRFH": {
@@ -294,8 +295,8 @@
         "slide_kit_1": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/banner-2_kit_desktop_3177c971-94e3-4d40-ac17-e3403dff791b.jpg",
-            "image_mobile": "shopify://shop_images/banner-2_kit_mobile.jpg",
+            "image": "shopify://shop_images/banner-2_kit_desktop_f6963582-dae0-469d-8a30-aa7cc720f347.jpg",
+            "image_mobile": "shopify://shop_images/banner-2_kit_mobile_ae851128-fb2c-4924-8f3e-74dc451a1325.jpg",
             "image_alt": "",
             "link": "shopify://products/kit-primera-compra",
             "open_new_window": false

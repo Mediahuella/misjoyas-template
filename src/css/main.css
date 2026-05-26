@@ -77,6 +77,125 @@
   }
 }
 
+/* PDP price — Figma desktop (node 154:2912) / mobile overrides below */
+.section-product-info .misjoyas-price--pdp {
+  line-height: 1;
+}
+
+.section-product-info .misjoyas-price__row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.section-product-info .misjoyas-price--pdp .misjoyas-price__current {
+  font-weight: 600;
+  color: #f83785;
+  font-size: 36px;
+  line-height: 42px;
+  white-space: nowrap;
+}
+
+.section-product-info .misjoyas-price--pdp .misjoyas-price__current--regular {
+  color: #2d2d2d;
+}
+
+.section-product-info .misjoyas-price--pdp .misjoyas-price__compare {
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: 400;
+  color: #2d2d2d;
+  text-decoration: line-through;
+  white-space: nowrap;
+}
+
+.section-product-info .misjoyas-price--pdp .misjoyas-price__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  height: 25px;
+  padding: 5px 12px 6px;
+  background: #737373;
+  color: #fff;
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 18.72px;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.section-product-info .misjoyas-price--pdp .misjoyas-price__unit {
+  display: block;
+  margin-top: 4px;
+  font-size: 70%;
+}
+
+.section-product-info .sticky_add_to_cart .misjoyas-price--pdp .misjoyas-price__current {
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.section-product-info .sticky_add_to_cart .misjoyas-price--pdp .misjoyas-price__compare {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.section-product-info .sticky_add_to_cart .misjoyas-price--pdp .misjoyas-price__badge {
+  min-width: 36px;
+  height: 20px;
+  padding: 3px 8px 4px;
+  font-size: 11px;
+  line-height: 14px;
+}
+
+/* Card price — Figma desktop (node 42:8559) / mobile (node 352:3736) */
+.card-product .misjoyas-price--card .misjoyas-price__row,
+.x-card-price .misjoyas-price--card .misjoyas-price__row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.card-product .misjoyas-price--card .misjoyas-price__current,
+.x-card-price .misjoyas-price--card .misjoyas-price__current {
+  font-weight: 600;
+  color: #f83785;
+  font-size: 20px;
+  line-height: 22px;
+  white-space: nowrap;
+}
+
+.card-product .misjoyas-price--card .misjoyas-price__current--regular,
+.x-card-price .misjoyas-price--card .misjoyas-price__current--regular {
+  color: #2d2d2d;
+}
+
+.card-product .misjoyas-price--card .misjoyas-price__compare,
+.x-card-price .misjoyas-price--card .misjoyas-price__compare {
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 400;
+  color: #2d2d2d;
+  text-decoration: line-through;
+  white-space: nowrap;
+}
+
+@media (max-width: 767px) {
+  .card-product .misjoyas-price--card .misjoyas-price__row,
+  .x-card-price .misjoyas-price--card .misjoyas-price__row {
+    gap: 8px;
+  }
+}
+
+/* Card title — 1rem (theme default: 0.9rem con title_size_card: 90) */
+.card-product .x-card-title,
+.card-product [class*="card-product-title-text-"] {
+  font-size: 1rem !important;
+}
+
 /* PDP mobile: márgenes 20px (Figma Product Info Container) */
 @media (max-width: 767px) {
   .section-product-info .product-content-container {
@@ -94,6 +213,22 @@
   .section-product-info .product-info .product-form__quantity,
   .section-product-info .product-info .x-block-buy-buttons {
     text-align: left;
+  }
+
+  /* PDP price — Figma mobile (node 366:8522) */
+  .section-product-info .misjoyas-price--pdp .misjoyas-price__current {
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .section-product-info .misjoyas-price--pdp .misjoyas-price__compare {
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  .section-product-info .misjoyas-price--pdp .misjoyas-price__badge {
+    min-width: 43px;
+    height: 24px;
   }
 
   /* Galería: imagen grande sin miniaturas + flechas overlay (Figma Product Image) */
@@ -707,7 +842,7 @@
   top: 0 !important;
 }
 
-/* Descuento: esquina inferior izquierda de la imagen */
+/* Descuento: esquina inferior izquierda de la imagen, sin margen */
 .card-product .link-product-variant .bottom-left-container,
 .card-product .link-product-variant .label-bottom-left,
 .card-product .bottom-left-container,
@@ -721,6 +856,12 @@
 
 .card-product .label-bottom-left:not(.label-bottom-flag) {
   bottom: 0 !important;
+}
+
+/* Badge % descuento en cards: color Figma, tamaño hereda de .x-badge-content */
+.card-product .bottom-left-container .x-badge-content.x-badge-text {
+  background-color: #737373 !important;
+  color: #ffffff !important;
 }
 
 /* Posición personalizada en imagen: anclar abajo-izquierda (descuentos) */
@@ -946,7 +1087,7 @@
   text-transform: uppercase;
 }
 
-#CartDrawer.misjoyas-cart .misjoyas-cart-progress__label-last {
+#CartDrawer.misjoyas-cart .misjoyas-cart-progress__label-first {
   font-weight: 600;
   text-transform: none;
 }
