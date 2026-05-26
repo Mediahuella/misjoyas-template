@@ -473,7 +473,8 @@
       ],
       "disabled": true,
       "settings": {
-        "include_margins": true
+        "include_margins": true,
+        "content_alignment": "left"
       }
     },
     "custom_liquid_tRBp6e": {

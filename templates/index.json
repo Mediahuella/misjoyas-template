@@ -12,20 +12,63 @@
     "banner_principal_home": {
       "type": "banner-principal",
       "blocks": {
-        "slide_banner_principal_1": {
+        "slide_iP9k3K": {
           "type": "slide",
-          "name": "Banner principal",
           "settings": {
-            "image": "shopify://shop_images/banner-principal_desktop.jpg",
-            "image_mobile": "shopify://shop_images/banner-principal_mobile.jpg",
+            "image": "shopify://shop_images/Banner1-MJDays_Desktop_Desktop_Desktop.jpg",
+            "image_mobile": "shopify://shop_images/Banner1-MJDays_Mobile.jpg",
             "image_alt": "",
             "link": "shopify://collections/descuentos-activos",
+            "open_new_window": false
+          }
+        },
+        "slide_Dei6nU": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Banner2_aros.jpg",
+            "image_mobile": "shopify://shop_images/Banner2_aros_Mobile.jpg",
+            "image_alt": "",
+            "link": "shopify://collections/aros",
+            "open_new_window": false
+          }
+        },
+        "slide_UaRP7F": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Banner3_anillos.jpg",
+            "image_mobile": "shopify://shop_images/Banner3_anillos_Mobile.jpg",
+            "image_alt": "",
+            "link": "shopify://collections/anillos",
+            "open_new_window": false
+          }
+        },
+        "slide_qikfwm": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Banner4_collares.jpg",
+            "image_mobile": "shopify://shop_images/Banner4_collares_Mobile.jpg",
+            "image_alt": "",
+            "link": "shopify://collections/collares",
+            "open_new_window": false
+          }
+        },
+        "slide_TcigXr": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Banner5_pulseras.jpg",
+            "image_mobile": "shopify://shop_images/Banner5_pulseras_Mobile.jpg",
+            "image_alt": "",
+            "link": "shopify://collections/pulseras",
             "open_new_window": false
           }
         }
       },
       "block_order": [
-        "slide_banner_principal_1"
+        "slide_iP9k3K",
+        "slide_Dei6nU",
+        "slide_UaRP7F",
+        "slide_qikfwm",
+        "slide_TcigXr"
       ],
       "settings": {
         "auto_play": true,
