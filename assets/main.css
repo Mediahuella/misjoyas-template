@@ -2358,14 +2358,6 @@ video {
     margin-bottom: 0px;
   }
 
-  .lg\:\!tw-w-\[350px\] {
-    width: 350px !important;
-  }
-
-  .lg\:tw-w-\[350px\] {
-    width: 350px;
-  }
-
   .lg\:\!tw-w-\[345px\] {
     width: 345px !important;
   }
@@ -2384,17 +2376,6 @@ video {
 
   .lg\:\[grid-area\:navigation\] {
     grid-area: navigation;
-  }
-}
-
-@media (min-width: 1280px) {
-
-  .xl\:\!tw-w-\[488px\] {
-    width: 488px !important;
-  }
-
-  .xl\:tw-w-\[488px\] {
-    width: 488px;
   }
 }
 
