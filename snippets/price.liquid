@@ -14,9 +14,9 @@
   assign price = target.price | default: 1999
   if settings.currency_code_enable
     assign money_price = price | money_with_currency
-  else 
+  else
     assign money_price = price | money
-  endif 
+  endif
 
   if target == product and product.price_varies and custom_price_format == ''
     assign money_price = 'products.product.price.from_price_html' | t: price: money_price
@@ -26,8 +26,8 @@
   assign min_price = 0
   assign max_price = 0
   if product.variants.size > 1
-    assign index = product.variants.size | divided_by: 2.0 | floor 
-    assign prices_variant =  product.variants | sort: "price" | map: "price"
+    assign index = product.variants.size | divided_by: 2.0 | floor
+    assign prices_variant = product.variants | sort: 'price' | map: 'price'
     assign middle_price = prices_variant[index]
   endif
   if settings.currency_code_enable
@@ -43,13 +43,74 @@
   assign enable_price_range = false
   if settings.enable_price_range and target.price_min < target.price_max and target == product
     assign enable_price_range = true
-  endif  
+  endif
+
+  assign misjoyas_context = misjoyas_context | default: ''
+  assign use_misjoyas_layout = false
+  if misjoyas_context == 'pdp' or misjoyas_context == 'card'
+    assign use_misjoyas_layout = true
+  endif
+
+  assign show_unit_price = false
+  if target.unit_price_measurement != nil and target.unit_price_measurement.reference_unit != blank and target.unit_price != blank
+    assign show_unit_price = true
+  endif
+
+  if use_misjoyas_layout
+    assign on_sale = false
+    if compare_at_price > price
+      assign on_sale = true
+      assign sale_pct = compare_at_price | minus: price | times: 100.0 | divided_by: compare_at_price | round
+      if sale_pct == 100
+        assign sale_pct = 99
+      endif
+    endif
+
+    if settings.currency_code_enable
+      assign money_compare = compare_at_price | money_with_currency
+    else
+      assign money_compare = compare_at_price | money
+    endif
+  endif
 -%}
-<div class="{{ container }} price leading-none">
+<div class="{{ container }} price leading-none{% if use_misjoyas_layout %} misjoyas-price misjoyas-price--{{ misjoyas_context }}{% endif %}">
   <div class="{% if enable_price_range %} inline-block{% endif %}">
     {% if target == product and custom_price_format and custom_price_format != '' and show_price_range %}
-      {% assign custom_price_html = custom_price_format | replace: "{price}", money_price | replace: "{max_price}", max_price | replace: "{middle_price}", middle_price | replace: "{min_price}", min_price %}
+      {% assign custom_price_html = custom_price_format | replace: '{price}', money_price | replace: '{max_price}', max_price | replace: '{middle_price}', middle_price | replace: '{min_price}', min_price %}
       {{ custom_price_html }}
+    {% elsif use_misjoyas_layout %}
+      <div class="hidden">{{ target.price }}</div>
+      {%- if on_sale -%}
+        <div class="misjoyas-price__row{% if price_class != blank %} {{ price_class }}{% endif %}">
+          <span class="misjoyas-price__current">{{ money_price }}</span>
+          <span class="misjoyas-price__compare">{{ money_compare }}</span>
+          {%- if misjoyas_context == 'pdp' -%}
+            <span class="misjoyas-price__badge">-{{ sale_pct }}%</span>
+          {%- endif -%}
+        </div>
+      {%- else -%}
+        <span class="misjoyas-price__current misjoyas-price__current--regular{% if price_class != blank %} {{ price_class }}{% endif %}">{{ money_price }}</span>
+      {%- endif -%}
+      {%- if show_unit_price and misjoyas_context == 'pdp' -%}
+        <small class="misjoyas-price__unit">
+          <span class="up price-item price-item--last">
+            <span>
+              {%- if settings.currency_code_enable -%}
+                {{- target.unit_price | money_with_currency -}}
+              {%- else -%}
+                {{- target.unit_price | money -}}
+              {%- endif -%}
+            </span>
+            <span aria-hidden="true">/</span>
+            <span>
+              {%- if target.unit_price_measurement.reference_value != 1 -%}
+                {{- target.unit_price_measurement.reference_value -}}
+              {%- endif -%}
+              {{ target.unit_price_measurement.reference_unit }}
+            </span>
+          </span>
+        </small>
+      {%- endif -%}
     {% else %}
       <div class="hidden">{{ target.price }}</div>
       {%- if compare_at_price > price %}
@@ -66,7 +127,7 @@
           <span>{{ money_price }}</span>
         </p>
       {%- endif -%}
-      <small class="text-[70%]{% if product.selected_or_first_available_variant.unit_price_measurement == nil %} hidden{% endif %}">
+      <small class="text-[70%]{% unless show_unit_price %} hidden{% endunless %}">
         <span class="hidden">{{ 'products.product.price.unit_price' | t }}</span>
         <span class="up price-item price-item--last">
           <span>{% if settings.currency_code_enable %}
@@ -88,19 +149,19 @@
     {% endif %}
   </div>
   {% if enable_price_range and show_price_range %}
-    <button 
+    <button
       id="price-range-{{ priceID }}"
       class="price-range flex-wrap pl-2 border-l border-solid inline-flex items-center gap-[3px] ml-1 rtl:border-r rtl:border-l-0 rtl:pl-0 rtl:pr-2 rtl:mr-1 rtl:ml-0{% if settings.price_popup != blank %} cursor-pointer{% else %} cursor-default{% endif %}"
-      {% if settings.price_popup != blank %} 
+      {% if settings.price_popup != blank %}
         @click.prevent="$store.xPopupPriceDetail.show($event, '{{ product.id }}', '{{ money_price }}', '{{ max_price }}', '{{ middle_price }}', '{{ min_price }}', '{{ shop.url }}', '{{ settings.price_popup.handle }}'); $store.xModal.setActiveElement('price-range-{{ priceID }}')"
       {% else %}
-        aria-hidden="true" 
+        aria-hidden="true"
         tabindex="-1"
       {% endif %}
       style="text-align: unset;"
     >
       <span style="word-break: break-all;">{{ min_price }} - {{ max_price }}</span>
-      {% if settings.price_popup != blank %} 
+      {% if settings.price_popup != blank %}
         <span class="w-3.5 h-3.5 min-w-[14px] pt-0.5 pb-0.5 border rounded-full flex items-center justify-center mb-0.5">
           {% render 'icon-alls', icon: 'icon-note-dot' %}
         </span>

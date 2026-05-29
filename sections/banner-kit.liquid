@@ -1,0 +1,612 @@
+{%- if section.settings.enable -%}
+  {%- unless section.settings.show_only_on_homepage and request.page_type != 'index' -%}
+    {%- liquid
+      assign kit_height = section.settings.banner_height
+      assign kit_height_mobile = section.settings.banner_height_mobile
+      assign has_blocks = false
+      if section.blocks.size > 0
+        assign has_blocks = true
+      endif
+      assign enable_slider = false
+      if section.blocks.size > 1
+        assign enable_slider = true
+      endif
+
+      assign mobile_ar_w = 440
+      assign mobile_ar_h = 400
+      assign desktop_ar_w = 1488
+      assign desktop_ar_h = 400
+
+      if has_blocks
+        for block in section.blocks
+          assign block_desktop = block.settings.image
+          assign block_mobile = block.settings.image_mobile
+
+          if block_desktop != blank
+            assign cmp_desktop = block_desktop.height | times: desktop_ar_w
+            assign cmp_desktop_ref = desktop_ar_h | times: block_desktop.width
+            if cmp_desktop > cmp_desktop_ref
+              assign desktop_ar_h = block_desktop.height
+              assign desktop_ar_w = block_desktop.width
+            endif
+          endif
+
+          if block_mobile != blank
+            assign cmp_mobile = block_mobile.height | times: mobile_ar_w
+            assign cmp_mobile_ref = mobile_ar_h | times: block_mobile.width
+            if cmp_mobile > cmp_mobile_ref
+              assign mobile_ar_h = block_mobile.height
+              assign mobile_ar_w = block_mobile.width
+            endif
+          elsif block_desktop != blank
+            assign cmp_mobile = block_desktop.height | times: mobile_ar_w
+            assign cmp_mobile_ref = mobile_ar_h | times: block_desktop.width
+            if cmp_mobile > cmp_mobile_ref
+              assign mobile_ar_h = block_desktop.height
+              assign mobile_ar_w = block_desktop.width
+            endif
+          endif
+        endfor
+      else
+        if section.settings.image != blank
+          assign desktop_ar_h = section.settings.image.height
+          assign desktop_ar_w = section.settings.image.width
+        endif
+        if section.settings.image_mobile != blank
+          assign mobile_ar_h = section.settings.image_mobile.height
+          assign mobile_ar_w = section.settings.image_mobile.width
+        elsif section.settings.image != blank
+          assign mobile_ar_h = section.settings.image.height
+          assign mobile_ar_w = section.settings.image.width
+        endif
+      endif
+    -%}
+
+    {%- style -%}
+      .banner-kit-{{ section.id }} {
+        --banner-kit-max-h: {{ kit_height }}px;
+        --banner-kit-max-h-mobile: {{ kit_height_mobile }}px;
+        --banner-kit-radius: {{ section.settings.border_radius }}px;
+        width: 100%;
+        padding-top: {{ section.settings.padding_y_mobile }}px;
+        padding-bottom: {{ section.settings.padding_y_mobile }}px;
+        line-height: 0;
+      }
+      @media (min-width: 768px) {
+        .banner-kit-{{ section.id }} {
+          padding-top: {{ section.settings.padding_y }}px;
+          padding-bottom: {{ section.settings.padding_y }}px;
+        }
+      }
+      .banner-kit-{{ section.id }} .banner-kit__inner {
+        width: 100%;
+        max-width: 93rem;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      @media (min-width: 768px) {
+        .banner-kit-{{ section.id }} .banner-kit__inner {
+          padding-left: 0;
+          padding-right: 0;
+        }
+      }
+      .banner-kit-{{ section.id }} .banner-kit__frame {
+        position: relative;
+        width: 100%;
+        border-radius: var(--banner-kit-radius);
+        overflow: hidden;
+      }
+      @media (min-width: 768px) {
+        .banner-kit-{{ section.id }} .banner-kit__frame {
+          height: auto;
+          aspect-ratio: {{ desktop_ar_w }} / {{ desktop_ar_h }};
+        }
+      }
+      .banner-kit-{{ section.id }} .banner-kit__slider {
+        width: 100%;
+        height: 100%;
+      }
+      .banner-kit-{{ section.id }} .splide__track,
+      .banner-kit-{{ section.id }} .splide__list {
+        height: 100%;
+      }
+      .banner-kit-{{ section.id }} .banner-kit__slide {
+        width: 100%;
+        height: 100%;
+      }
+      .banner-kit-{{ section.id }} .banner-kit__link,
+      .banner-kit-{{ section.id }} .banner-kit__picture {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+      .banner-kit-{{ section.id }} .banner-kit__img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        border-radius: var(--banner-kit-radius);
+      }
+      @media (max-width: 767px) {
+        .banner-kit-{{ section.id }} .banner-kit__frame {
+          height: auto;
+        }
+        .banner-kit-{{ section.id }} .banner-kit__slider,
+        .banner-kit-{{ section.id }} .splide__track,
+        .banner-kit-{{ section.id }} .splide__list,
+        .banner-kit-{{ section.id }} .banner-kit__slide {
+          height: auto;
+        }
+        .banner-kit-{{ section.id }} .banner-kit__link,
+        .banner-kit-{{ section.id }} .banner-kit__picture {
+          height: auto;
+        }
+        .banner-kit-{{ section.id }} .banner-kit__img {
+          width: 100%;
+          height: auto;
+          max-height: none;
+          object-fit: contain;
+          object-position: center top;
+        }
+      }
+      .banner-kit-{{ section.id }} .banner-kit__placeholder {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        background-color: #eae3d9;
+        color: #222222;
+        font-size: 0.875rem;
+        line-height: 1.4;
+        text-align: center;
+        padding: 1.5rem;
+      }
+      .banner-kit-{{ section.id }} .splide__arrows {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 2;
+      }
+      .banner-kit-{{ section.id }} .banner-kit__arrow {
+        pointer-events: auto;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        width: 28px;
+        min-height: 44px;
+        padding: 10px 2px;
+        border: none;
+        background: rgba(255, 255, 255, 0.9);
+        color: #222222;
+        box-shadow: none;
+        cursor: pointer;
+        transition: background-color 0.15s ease, opacity 0.15s ease;
+      }
+      .banner-kit-{{ section.id }} .x-splide:hover .banner-kit__arrow {
+        transform: translateY(-50%);
+      }
+      .banner-kit-{{ section.id }} .banner-kit__arrow:hover,
+      .banner-kit-{{ section.id }} .banner-kit__arrow:focus,
+      .banner-kit-{{ section.id }} .banner-kit__arrow:focus-visible {
+        background: rgba(255, 255, 255, 1);
+        color: #222222;
+        box-shadow: none;
+        opacity: 1;
+      }
+      .banner-kit-{{ section.id }} .banner-kit__arrow:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+      .banner-kit-{{ section.id }} .banner-kit__arrow--prev {
+        left: 0;
+        border-radius: 0 6px 6px 0;
+      }
+      .banner-kit-{{ section.id }} .banner-kit__arrow--next {
+        right: 0;
+        border-radius: 6px 0 0 6px;
+      }
+      .banner-kit-{{ section.id }} .banner-kit__arrow-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        flex-shrink: 0;
+      }
+      .banner-kit-{{ section.id }} .banner-kit__arrow-icon svg {
+        width: 24px;
+        height: 24px;
+      }
+    {%- endstyle -%}
+
+    <div
+      class="banner-kit-{{ section.id }} tw-w-full"
+      role="region"
+      aria-label="{{ 'sections.banner-kit.aria_label' | t }}"
+    >
+      <div class="banner-kit__inner x-page-width page-width">
+        <div class="banner-kit__frame">
+          <div
+            id="x-banner-kit-{{ section.id }}"
+            class="banner-kit__slider{% if enable_slider %} splide-slideshow overflow-hidden visible x-splide splide disable-effect-hover{% endif %}"
+            {% if enable_slider %}
+              x-intersect.once.margin.200px='$store.xSplide.load($el, {
+                "speed": 800,
+                "type": "loop",
+                "pauseOnHover": true,
+                "pauseOnFocus": false,
+                {%- if section.settings.auto_play -%}
+                  "autoplay": true,
+                  "interval": {{ section.settings.change_slides_speed | times: 1000 }},
+                {%- endif -%}
+                {%- if settings.lang_direction contains request.locale.iso_code -%}
+                  "direction": "rtl",
+                {%- endif -%}
+                "classes": {
+                  "arrows": "splide__arrows",
+                  "pagination": "hidden"
+                }
+              })'
+            {% endif %}
+          >
+            <div class="{% if enable_slider %}splide__track{% endif %} overflow-hidden h-full">
+              <div class="{% if enable_slider %}splide__list flex h-full{% else %}h-full{% endif %}">
+                {%- if has_blocks -%}
+                  {%- for block in section.blocks -%}
+                    {%- liquid
+                      assign slide_image = block.settings.image
+                      assign slide_image_mobile = block.settings.image_mobile
+                      assign slide_link = block.settings.link
+                      if block.settings.image_alt != blank
+                        assign slide_alt = block.settings.image_alt
+                      else
+                        assign slide_alt = 'sections.banner-kit.slide_alt' | t
+                      endif
+                      if forloop.first
+                        assign slide_loading = 'eager'
+                      else
+                        assign slide_loading = 'lazy'
+                      endif
+                    -%}
+                    <div
+                      class="banner-kit__slide{% if enable_slider %} splide__slide x-splide-slide flex-shrink-0 w-full{% endif %}"
+                      {{ block.shopify_attributes }}
+                    >
+                      {%- if slide_image != blank or slide_image_mobile != blank -%}
+                        {%- if slide_link != blank -%}
+                          <a
+                            href="{{ slide_link }}"
+                            class="banner-kit__link"
+                            {% if block.settings.open_new_window %}target="_blank" rel="noopener noreferrer"{% endif %}
+                          >
+                        {%- endif -%}
+                        <picture class="banner-kit__picture">
+                          {%- if slide_image_mobile != blank -%}
+                            <source
+                              media="(max-width: 767px)"
+                              srcset="
+                                {{ slide_image_mobile | image_url: width: 440 }} 440w,
+                                {{ slide_image_mobile | image_url: width: 750 }} 750w,
+                                {{ slide_image_mobile | image_url: width: 880 }} 880w
+                              "
+                              sizes="(max-width: 767px) calc(100vw - 2rem), min(93rem, 100vw)"
+                            >
+                          {%- endif -%}
+                          {%- if slide_image != blank -%}
+                            {{
+                              slide_image
+                              | image_url: width: 2976
+                              | image_tag:
+                                class: 'banner-kit__img',
+                                widths: '440, 750, 1488, 1920, 2976',
+                                sizes: '(max-width: 767px) 100vw, min(93rem, 100vw)',
+                                alt: slide_alt,
+                                loading: slide_loading
+                            }}
+                          {%- elsif slide_image_mobile != blank -%}
+                            {{
+                              slide_image_mobile
+                              | image_url: width: 880
+                              | image_tag:
+                                class: 'banner-kit__img',
+                                widths: '440, 750, 880',
+                                sizes: '100vw',
+                                alt: slide_alt,
+                                loading: slide_loading
+                            }}
+                          {%- endif -%}
+                        </picture>
+                        {%- if slide_link != blank -%}
+                          </a>
+                        {%- endif -%}
+                      {%- elsif request.design_mode -%}
+                        <div class="banner-kit__placeholder">
+                          {{ 'sections.banner-kit.placeholder' | t }}
+                        </div>
+                      {%- endif -%}
+                    </div>
+                  {%- endfor -%}
+                {%- else -%}
+                  {%- liquid
+                    assign slide_image = section.settings.image
+                    assign slide_image_mobile = section.settings.image_mobile
+                    assign slide_link = section.settings.link
+                    if section.settings.image_alt != blank
+                      assign slide_alt = section.settings.image_alt
+                    else
+                      assign slide_alt = 'sections.banner-kit.alt' | t
+                    endif
+                  -%}
+                  <div class="banner-kit__slide">
+                    {%- if slide_image != blank or slide_image_mobile != blank -%}
+                      {%- if slide_link != blank -%}
+                        <a
+                          href="{{ slide_link }}"
+                          class="banner-kit__link"
+                          {% if section.settings.open_new_window %}target="_blank" rel="noopener noreferrer"{% endif %}
+                        >
+                      {%- endif -%}
+                      <picture class="banner-kit__picture">
+                        {%- if slide_image_mobile != blank -%}
+                          <source
+                            media="(max-width: 767px)"
+                            srcset="
+                              {{ slide_image_mobile | image_url: width: 440 }} 440w,
+                              {{ slide_image_mobile | image_url: width: 750 }} 750w,
+                              {{ slide_image_mobile | image_url: width: 880 }} 880w
+                            "
+                            sizes="(max-width: 767px) calc(100vw - 2rem), min(93rem, 100vw)"
+                          >
+                        {%- endif -%}
+                        {%- if slide_image != blank -%}
+                          {{
+                            slide_image
+                            | image_url: width: 2976
+                            | image_tag:
+                              class: 'banner-kit__img',
+                              widths: '440, 750, 1488, 1920, 2976',
+                              sizes: '(max-width: 767px) 100vw, min(93rem, 100vw)',
+                              alt: slide_alt,
+                              loading: 'lazy'
+                          }}
+                        {%- elsif slide_image_mobile != blank -%}
+                          {{
+                            slide_image_mobile
+                            | image_url: width: 880
+                            | image_tag:
+                              class: 'banner-kit__img',
+                              widths: '440, 750, 880',
+                              sizes: '100vw',
+                              alt: slide_alt,
+                              loading: 'lazy'
+                          }}
+                        {%- endif -%}
+                      </picture>
+                      {%- if slide_link != blank -%}
+                        </a>
+                      {%- endif -%}
+                    {%- elsif request.design_mode -%}
+                      <div class="banner-kit__placeholder">
+                        {{ 'sections.banner-kit.placeholder' | t }}
+                      </div>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
+              </div>
+            </div>
+
+            {%- if enable_slider and section.settings.show_arrows -%}
+              <div class="splide__arrows{% if settings.lang_direction contains request.locale.iso_code %} rtl{% endif %}">
+                <button
+                  type="button"
+                  class="banner-kit__arrow banner-kit__arrow--prev splide__arrow splide__arrow--prev none_border"
+                  aria-label="{{ 'sections.banner-kit.previous' | t }}"
+                >
+                  <span class="banner-kit__arrow-icon rotate-90 rtl:-rotate-90" aria-hidden="true">
+                    {% render 'icon-alls', icon: 'icon-caret' %}
+                  </span>
+                </button>
+                <button
+                  type="button"
+                  class="banner-kit__arrow banner-kit__arrow--next splide__arrow splide__arrow--next none_border"
+                  aria-label="{{ 'sections.banner-kit.next' | t }}"
+                >
+                  <span class="banner-kit__arrow-icon -rotate-90 rtl:rotate-90" aria-hidden="true">
+                    {% render 'icon-alls', icon: 'icon-caret' %}
+                  </span>
+                </button>
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  {%- endunless -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Banner kit",
+  "tag": "section",
+  "class": "section-banner-kit",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable",
+      "label": "Mostrar banner",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_only_on_homepage",
+      "label": "Solo en la página de inicio",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Slider"
+    },
+    {
+      "type": "checkbox",
+      "id": "auto_play",
+      "label": "Reproducción automática",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "change_slides_speed",
+      "label": "Segundos por diapositiva",
+      "min": 3,
+      "max": 12,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows",
+      "label": "Mostrar flechas de navegación",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Imagen (legacy)",
+      "info": "Usa bloques Diapositiva abajo. Estos campos solo aplican si no hay bloques."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Imagen (escritorio)",
+      "info": "Recomendado 1488×400 px. La altura se adapta al ancho del contenedor según la proporción de la imagen."
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Imagen (móvil)",
+      "info": "Recomendado 440×400 px o proporción equivalente. Si está vacía, se usa la imagen de escritorio."
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Texto alternativo",
+      "default": "Kit de regalo en tu primera compra"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Enlace del banner"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_new_window",
+      "label": "Abrir enlace en nueva pestaña",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Diseño"
+    },
+    {
+      "type": "range",
+      "id": "banner_height",
+      "label": "Altura máxima en escritorio (px)",
+      "info": "Referencia opcional. En desktop el banner escala según el ancho del contenedor (max 93rem) y la proporción de la imagen.",
+      "min": 280,
+      "max": 560,
+      "step": 10,
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "banner_height_mobile",
+      "label": "Altura máxima en móvil (px)",
+      "info": "Solo aplica como referencia. En móvil el banner usa la proporción completa de la imagen para evitar recortes.",
+      "min": 280,
+      "max": 560,
+      "step": 10,
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Radio de esquinas (px)",
+      "min": 0,
+      "max": 16,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "padding_y",
+      "label": "Padding vertical — escritorio (px)",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_y_mobile",
+      "label": "Padding vertical — móvil (px)",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "default": 30
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Diapositiva",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagen (escritorio)",
+          "info": "Recomendado 1488×400 px. La altura se adapta al ancho del contenedor según la proporción de la imagen."
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Imagen (móvil)",
+          "info": "Recomendado 440×400 px. Si está vacía, se usa la imagen de escritorio."
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Texto alternativo"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Enlace del banner"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_new_window",
+          "label": "Abrir enlace en nueva pestaña",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner kit",
+      "blocks": [
+        {
+          "type": "slide"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

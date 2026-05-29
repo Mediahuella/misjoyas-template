@@ -1,0 +1,2530 @@
+*, ::before, ::after {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
+}
+
+::backdrop {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
+}/*
+! tailwindcss v3.4.19 | MIT License | https://tailwindcss.com
+*//*
+1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
+2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
+*/
+
+*,
+::before,
+::after {
+  box-sizing: border-box; /* 1 */
+  border-width: 0; /* 2 */
+  border-style: solid; /* 2 */
+  border-color: #e5e7eb; /* 2 */
+}
+
+::before,
+::after {
+  --tw-content: '';
+}
+
+/*
+1. Use a consistent sensible line-height in all browsers.
+2. Prevent adjustments of font size after orientation changes in iOS.
+3. Use a more readable tab size.
+4. Use the user's configured `sans` font-family by default.
+5. Use the user's configured `sans` font-feature-settings by default.
+6. Use the user's configured `sans` font-variation-settings by default.
+7. Disable tap highlights on iOS
+*/
+
+html,
+:host {
+  line-height: 1.5; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -moz-tab-size: 4; /* 3 */
+  -o-tab-size: 4;
+     tab-size: 4; /* 3 */
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* 4 */
+  font-feature-settings: normal; /* 5 */
+  font-variation-settings: normal; /* 6 */
+  -webkit-tap-highlight-color: transparent; /* 7 */
+}
+
+/*
+1. Remove the margin in all browsers.
+2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
+*/
+
+body {
+  margin: 0; /* 1 */
+  line-height: inherit; /* 2 */
+}
+
+/*
+1. Add the correct height in Firefox.
+2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
+3. Ensure horizontal rules are visible by default.
+*/
+
+hr {
+  height: 0; /* 1 */
+  color: inherit; /* 2 */
+  border-top-width: 1px; /* 3 */
+}
+
+/*
+Add the correct text decoration in Chrome, Edge, and Safari.
+*/
+
+abbr:where([title]) {
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
+}
+
+/*
+Remove the default font size and weight for headings.
+*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*
+Reset links to optimize for opt-in styling instead of opt-out.
+*/
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+/*
+Add the correct font weight in Edge and Safari.
+*/
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+/*
+1. Use the user's configured `mono` font-family by default.
+2. Use the user's configured `mono` font-feature-settings by default.
+3. Use the user's configured `mono` font-variation-settings by default.
+4. Correct the odd `em` font sizing in all browsers.
+*/
+
+code,
+kbd,
+samp,
+pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; /* 1 */
+  font-feature-settings: normal; /* 2 */
+  font-variation-settings: normal; /* 3 */
+  font-size: 1em; /* 4 */
+}
+
+/*
+Add the correct font size in all browsers.
+*/
+
+small {
+  font-size: 80%;
+}
+
+/*
+Prevent `sub` and `sup` elements from affecting the line height in all browsers.
+*/
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/*
+1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
+2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
+3. Remove gaps between table borders by default.
+*/
+
+table {
+  text-indent: 0; /* 1 */
+  border-color: inherit; /* 2 */
+  border-collapse: collapse; /* 3 */
+}
+
+/*
+1. Change the font styles in all browsers.
+2. Remove the margin in Firefox and Safari.
+3. Remove default padding in all browsers.
+*/
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-feature-settings: inherit; /* 1 */
+  font-variation-settings: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  font-weight: inherit; /* 1 */
+  line-height: inherit; /* 1 */
+  letter-spacing: inherit; /* 1 */
+  color: inherit; /* 1 */
+  margin: 0; /* 2 */
+  padding: 0; /* 3 */
+}
+
+/*
+Remove the inheritance of text transform in Edge and Firefox.
+*/
+
+button,
+select {
+  text-transform: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Remove default button styles.
+*/
+
+button,
+input:where([type='button']),
+input:where([type='reset']),
+input:where([type='submit']) {
+  -webkit-appearance: button; /* 1 */
+  background-color: transparent; /* 2 */
+  background-image: none; /* 2 */
+}
+
+/*
+Use the modern Firefox focus style for all focusable elements.
+*/
+
+:-moz-focusring {
+  outline: auto;
+}
+
+/*
+Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
+*/
+
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+
+/*
+Add the correct vertical alignment in Chrome and Firefox.
+*/
+
+progress {
+  vertical-align: baseline;
+}
+
+/*
+Correct the cursor style of increment and decrement buttons in Safari.
+*/
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/*
+1. Correct the odd appearance in Chrome and Safari.
+2. Correct the outline style in Safari.
+*/
+
+[type='search'] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/*
+Remove the inner padding in Chrome and Safari on macOS.
+*/
+
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Change font properties to `inherit` in Safari.
+*/
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/*
+Add the correct display in Chrome and Safari.
+*/
+
+summary {
+  display: list-item;
+}
+
+/*
+Removes the default spacing and border for appropriate elements.
+*/
+
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+  margin: 0;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+ol,
+ul,
+menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+Reset default styling for dialogs.
+*/
+dialog {
+  padding: 0;
+}
+
+/*
+Prevent resizing textareas horizontally by default.
+*/
+
+textarea {
+  resize: vertical;
+}
+
+/*
+1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
+2. Set the default placeholder color to the user's configured gray 400 color.
+*/
+
+input::-moz-placeholder, textarea::-moz-placeholder {
+  opacity: 1; /* 1 */
+  color: #9ca3af; /* 2 */
+}
+
+input::placeholder,
+textarea::placeholder {
+  opacity: 1; /* 1 */
+  color: #9ca3af; /* 2 */
+}
+
+/*
+Set the default cursor for buttons.
+*/
+
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+/*
+Make sure disabled buttons don't get the pointer cursor.
+*/
+:disabled {
+  cursor: default;
+}
+
+/*
+1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)
+2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)
+   This can trigger a poorly considered lint error in some tools but is included by design.
+*/
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block; /* 1 */
+  vertical-align: middle; /* 2 */
+}
+
+/*
+Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
+*/
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Make elements with the HTML hidden attribute stay hidden by default */
+[hidden]:where(:not([hidden="until-found"])) {
+  display: none;
+}
+  /* Restore heading styles overridden by Preflight inside predictive search */
+  .predictive-search-results-list h1,
+  .predictive-search-results-list h2,
+  .predictive-search-results-list h3,
+  .predictive-search-results-list h4,
+  .predictive-search-results-list h5,
+  .predictive-search-results-list h6 {
+    font-size: revert;
+    font-weight: revert;
+  }
+
+  /* Keep links using theme colors (inherit from parent), not browser default blue */
+  .predictive-search-results-list a {
+    color: inherit;
+    text-decoration: none;
+  }
+.tw-absolute {
+  position: absolute;
+}
+.tw-relative {
+  position: relative;
+}
+.tw-left-0 {
+  left: 0px;
+}
+.tw-right-0 {
+  right: 0px;
+}
+.tw-top-full {
+  top: 100%;
+}
+.tw-z-\[60\] {
+  z-index: 60;
+}
+.tw-my-2 {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+.tw-mb-4 {
+  margin-bottom: 16px;
+}
+.tw-mt-4 {
+  margin-top: 16px;
+}
+.tw-mt-\[6px\] {
+  margin-top: 6px;
+}
+.tw-block {
+  display: block;
+}
+.tw-flex {
+  display: flex;
+}
+.tw-hidden {
+  display: none;
+}
+.tw-aspect-square {
+  aspect-ratio: 1 / 1;
+}
+.tw-h-5 {
+  height: 20px;
+}
+.tw-h-\[18px\] {
+  height: 18px;
+}
+.tw-h-\[42px\] {
+  height: 42px;
+}
+.tw-h-\[44px\] {
+  height: 44px;
+}
+.tw-max-h-\[55vh\] {
+  max-height: 55vh;
+}
+.tw-w-5 {
+  width: 20px;
+}
+.tw-w-\[18px\] {
+  width: 18px;
+}
+.tw-w-\[56px\] {
+  width: 56px;
+}
+.tw-w-full {
+  width: 100%;
+}
+.tw-min-w-0 {
+  min-width: 0px;
+}
+.tw-flex-1 {
+  flex: 1 1 0%;
+}
+.tw-shrink-0 {
+  flex-shrink: 0;
+}
+.tw-flex-col {
+  flex-direction: column;
+}
+.tw-flex-wrap {
+  flex-wrap: wrap;
+}
+.tw-items-center {
+  align-items: center;
+}
+.tw-justify-center {
+  justify-content: center;
+}
+.tw-gap-1\.5 {
+  gap: 6px;
+}
+.tw-gap-2 {
+  gap: 8px;
+}
+.tw-overflow-y-auto {
+  overflow-y: auto;
+}
+.tw-whitespace-nowrap {
+  white-space: nowrap;
+}
+.tw-rounded-\[4px\] {
+  border-radius: 4px;
+}
+.tw-rounded-md {
+  border-radius: 6px;
+}
+.tw-border {
+  border-width: 1px;
+}
+.tw-border-t {
+  border-top-width: 1px;
+}
+.tw-border-\[\#2d2d2d\] {
+  --tw-border-opacity: 1;
+  border-color: rgb(45 45 45 / var(--tw-border-opacity, 1));
+}
+.tw-border-black\/10 {
+  border-color: rgb(0 0 0 / 0.1);
+}
+.tw-border-black\/\[0\.15\] {
+  border-color: rgb(0 0 0 / 0.15);
+}
+.tw-bg-\[\#f2f2f2\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(242 242 242 / var(--tw-bg-opacity, 1));
+}
+.tw-bg-transparent {
+  background-color: transparent;
+}
+.tw-bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+.tw-p-4 {
+  padding: 16px;
+}
+.tw-p-8 {
+  padding: 32px;
+}
+.tw-px-2\.5 {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.tw-px-3 {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+.tw-px-4 {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.tw-py-1\.5 {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.tw-py-3 {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.tw-text-center {
+  text-align: center;
+}
+.tw-text-base {
+  font-size: 16px;
+  line-height: 24px;
+}
+.tw-text-sm {
+  font-size: 14px;
+  line-height: 20px;
+}
+.tw-text-xs {
+  font-size: 12px;
+  line-height: 16px;
+}
+.tw-font-semibold {
+  font-weight: 600;
+}
+.tw-text-\[\#737373\] {
+  --tw-text-opacity: 1;
+  color: rgb(115 115 115 / var(--tw-text-opacity, 1));
+}
+.tw-text-black {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity, 1));
+}
+.tw-text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+.tw-opacity-60 {
+  opacity: 0.6;
+}
+.tw-shadow-md {
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.tw-outline-none {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+.tw-transition-opacity {
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.\[-webkit-appearance\:none\] {
+  -webkit-appearance: none;
+}
+.\[appearance\:none\] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+.\[grid-area\:drawer\] {
+  grid-area: drawer;
+}
+.\[grid-area\:heading\] {
+  grid-area: heading;
+}
+.\[grid-area\:iconsRight\] {
+  grid-area: iconsRight;
+}
+.\[grid-area\:icons\] {
+  grid-area: icons;
+}
+.\[grid-area\:navigation\] {
+  grid-area: navigation;
+}
+
+/*
+  Protect existing theme elements from Tailwind Preflight resets.
+  Preflight resets h1-h6, a, img globally; these overrides restore
+  expected behavior inside the upstream theme components.
+*/
+
+/* Footer: forzar 4 columnas en desktop (md:w-1/4 no está en el CSS upstream del tema) */
+@media (min-width: 768px) {
+  .section-footer div[class*="footer-col--"] {
+    width: 25% !important;
+  }
+}
+
+/* Medios de pago — Figma: mobile 364×62, desktop 410×126 */
+.footer-medios-pago {
+  display: block;
+  width: 364px;
+  max-width: 100%;
+  height: 62px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: left center;
+     object-position: left center;
+}
+
+@media (min-width: 768px) {
+  .footer-medios-pago {
+    width: 410px;
+    height: 126px;
+  }
+}
+
+/* PDP: recomendaciones con mismo margen que colección destacada / últimos vistos */
+.product-recommendations .splide__track {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 768px) {
+  .product-recommendations .splide__track {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.product-recommendations .page-width .pl-5,
+.product-recommendations .page-width .pr-5 {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* PDP desktop: quitar padding duplicado del page-width */
+@media (min-width: 768px) {
+  .section-product-info .page-width .product-content-container.pl-5.pr-5 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/* PDP price — Figma desktop (node 154:2912) / mobile overrides below */
+.section-product-info .misjoyas-price--pdp {
+  line-height: 1;
+}
+
+.section-product-info .misjoyas-price__row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.section-product-info .misjoyas-price--pdp .misjoyas-price__current {
+  font-weight: 600;
+  color: #f83785;
+  font-size: 36px;
+  line-height: 42px;
+  white-space: nowrap;
+}
+
+.section-product-info .misjoyas-price--pdp .misjoyas-price__current--regular {
+  color: #2d2d2d;
+}
+
+.section-product-info .misjoyas-price--pdp .misjoyas-price__compare {
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: 400;
+  color: #2d2d2d;
+  text-decoration: line-through;
+  white-space: nowrap;
+}
+
+.section-product-info .misjoyas-price--pdp .misjoyas-price__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  height: 25px;
+  padding: 5px 12px 6px;
+  background: #9b0103;
+  color: #fff;
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 18.72px;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.section-product-info .misjoyas-price--pdp .misjoyas-price__unit {
+  display: block;
+  margin-top: 4px;
+  font-size: 70%;
+}
+
+.section-product-info .sticky_add_to_cart .misjoyas-price--pdp .misjoyas-price__current {
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.section-product-info .sticky_add_to_cart .misjoyas-price--pdp .misjoyas-price__compare {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.section-product-info .sticky_add_to_cart .misjoyas-price--pdp .misjoyas-price__badge {
+  min-width: 36px;
+  height: 20px;
+  padding: 3px 8px 4px;
+  font-size: 11px;
+  line-height: 14px;
+}
+
+/* Card price — Figma desktop (node 42:8559) / mobile (node 352:3736) */
+.card-product .misjoyas-price--card .misjoyas-price__row,
+.x-card-price .misjoyas-price--card .misjoyas-price__row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.card-product .misjoyas-price--card .misjoyas-price__current,
+.x-card-price .misjoyas-price--card .misjoyas-price__current {
+  font-weight: 600;
+  color: #f83785;
+  font-size: 20px;
+  line-height: 22px;
+  white-space: nowrap;
+}
+
+.card-product .misjoyas-price--card .misjoyas-price__current--regular,
+.x-card-price .misjoyas-price--card .misjoyas-price__current--regular {
+  color: #2d2d2d;
+}
+
+.card-product .misjoyas-price--card .misjoyas-price__compare,
+.x-card-price .misjoyas-price--card .misjoyas-price__compare {
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 400;
+  color: #2d2d2d;
+  text-decoration: line-through;
+  white-space: nowrap;
+}
+
+@media (max-width: 767px) {
+  .card-product .misjoyas-price--card .misjoyas-price__row,
+  .x-card-price .misjoyas-price--card .misjoyas-price__row {
+    gap: 8px;
+  }
+}
+
+/* Card title — 1rem (theme default: 0.9rem con title_size_card: 90) */
+.card-product .x-card-title,
+.card-product [class*="card-product-title-text-"] {
+  font-size: 1rem !important;
+}
+
+/* PDP mobile: márgenes 20px (Figma Product Info Container) */
+@media (max-width: 767px) {
+  .section-product-info .product-content-container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .section-product-info .product-info {
+    text-align: left;
+  }
+
+  .section-product-info .product-info .x-block-product-title,
+  .section-product-info .product-info .x-block-price,
+  .section-product-info .product-info .x-block-vendor,
+  .section-product-info .product-info .product-form__quantity,
+  .section-product-info .product-info .x-block-buy-buttons {
+    text-align: left;
+  }
+
+  /* PDP price — Figma mobile (node 366:8522) */
+  .section-product-info .misjoyas-price--pdp .misjoyas-price__current {
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .section-product-info .misjoyas-price--pdp .misjoyas-price__compare {
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  .section-product-info .misjoyas-price--pdp .misjoyas-price__badge {
+    min-width: 43px;
+    height: 24px;
+  }
+
+  /* Galería: imagen grande sin miniaturas + flechas overlay (Figma Product Image) */
+  .section-product-info .product-media-container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .section-product-info .product-media-container [id^="x-product-thumbnail-"] {
+    display: none !important;
+  }
+
+  .section-product-info .product-media-container .swiper-product {
+    position: relative;
+    width: 100% !important;
+  }
+
+  .section-product-info .product-media-container .splide__arrows {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .section-product-info .product-media-container .splide__arrows > .border-l-2 {
+    display: none;
+  }
+
+  .section-product-info .product-media-container .splide__arrow {
+    position: static;
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 46px;
+    padding: 10px 2px;
+    margin: 0;
+    background: rgba(255, 255, 255, 0.9);
+    opacity: 1;
+    transform: none;
+  }
+
+  .section-product-info .product-media-container .splide__arrow--prev {
+    border-radius: 0 6px 6px 0;
+  }
+
+  .section-product-info .product-media-container .splide__arrow--next {
+    border-radius: 6px 0 0 6px;
+  }
+
+  .section-product-info .product-media-container .splide__arrow:disabled {
+    opacity: 0.35;
+  }
+
+  .section-product-info .product-media-container .splide__arrow span {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* ===== Badge plata 925 (página de producto) ===== */
+
+.misjoyas-silver-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #f2f2f2;
+  color: #222;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+}
+
+.misjoyas-silver-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: 26px;
+  height: 28px;
+}
+
+.misjoyas-silver-icon img {
+  display: block;
+  width: 28px;
+  height: 28px;
+}
+
+.misjoyas-silver-text {
+  letter-spacing: 0;
+}
+
+@media (max-width: 600px) {
+  .misjoyas-silver-badge {
+    font-size: 12px;
+    line-height: 18px;
+    padding: 5px 8px;
+  }
+}
+
+/* ===== Garantía de satisfacción (página de producto) ===== */
+
+.misjoyas-garantia {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f8f8f8;
+  border: 1px solid #e5e5e5;
+  padding: 14px;
+  border-radius: 8px;
+  margin-top: 15px;
+  font-size: 14px;
+  animation: misjoyasFade 0.4s ease;
+}
+
+.misjoyas-garantia-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+}
+
+.misjoyas-garantia-icon img {
+  display: block;
+  width: 40px;
+  height: 40px;
+}
+
+.misjoyas-garantia-texto {
+  line-height: 1.4;
+  color: #333;
+}
+
+@keyframes misjoyasFade {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .misjoyas-garantia {
+    font-size: 13px;
+    padding: 12px;
+  }
+}
+
+/* ===== PDP: título + compartir (Figma desktop + mobile) ===== */
+
+.misjoyas-product-title-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.misjoyas-product-title-row--center {
+  justify-content: center;
+  text-align: center;
+}
+
+.misjoyas-product-title-row__title {
+  flex: 1;
+  min-width: 0;
+}
+
+.misjoyas-product-title-row__actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.misjoyas-product-wishlist-slot:empty {
+  display: none;
+}
+
+.misjoyas-product-wishlist {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 19px;
+  height: 19px;
+}
+
+.misjoyas-product-wishlist__icons {
+  position: relative;
+  width: 19px;
+  height: 19px;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+.misjoyas-product-wishlist__icon {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 19px;
+  height: 19px;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.misjoyas-product-wishlist__icon--filled {
+  opacity: 0;
+  transform: scale(0.88);
+}
+
+.misjoyas-product-wishlist--added .misjoyas-product-wishlist__icon--outline {
+  opacity: 0;
+  transform: scale(0.88);
+}
+
+.misjoyas-product-wishlist--added .misjoyas-product-wishlist__icon--filled {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.misjoyas-product-wishlist__slot {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+.misjoyas-product-wishlist__slot .shopify-block.shopify-app-block {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 19px !important;
+  height: 19px !important;
+  min-height: 0 !important;
+}
+
+.misjoyas-product-wishlist__slot wishlist-button-block,
+.misjoyas-product-wishlist__slot .wishlist-hero-custom-button {
+  display: block !important;
+  width: 19px !important;
+  height: 19px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.misjoyas-product-wishlist__slot button,
+.misjoyas-product-wishlist__slot [role="button"] {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 19px !important;
+  height: 19px !important;
+  min-width: 19px !important;
+  min-height: 19px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  opacity: 0 !important;
+  cursor: pointer !important;
+  background: transparent !important;
+  border: 0 !important;
+}
+
+.misjoyas-product-wishlist__slot svg,
+.misjoyas-product-wishlist__slot .wlh-svg-Icon,
+.misjoyas-product-wishlist__slot span {
+  display: none !important;
+}
+
+/* Ocultar botón automático de Wishlist Hero fuera de la fila del título */
+.section-product-info .product-info .shopify-block.shopify-app-block:has(wishlist-button-block):not(.misjoyas-wishlist-mounted),
+.section-product-info .product-info .shopify-block.shopify-app-block:has([class*="wishlist"]):not(.misjoyas-wishlist-mounted),
+.section-product-info .product-info wishlist-button-block:not(.misjoyas-wishlist-mounted),
+.section-product-info .product-info .wishlist-hero-custom-button:not(.misjoyas-wishlist-hero-engine):not(.misjoyas-wishlist-mounted),
+.section-product-info .product-info .wishlist-engine-button,
+.section-product-info .product-info button.wishlist-page-widget,
+.section-product-info .product-info [data-wlh-id]:not(.misjoyas-product-wishlist__slot [data-wlh-id]) {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border: 0 !important;
+}
+
+.section-product-info .misjoyas-product-wishlist__slot .shopify-block.shopify-app-block,
+.section-product-info .misjoyas-product-wishlist__slot wishlist-button-block,
+.section-product-info .misjoyas-product-wishlist__slot .wishlist-hero-custom-button {
+  display: block !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  height: auto !important;
+}
+
+/* ===== PDP: botón añadir al carrito — hover rosa Mis Joyas (igual tarjetas) ===== */
+
+.section-product-info .button-product .add_to_cart_button.button-solid {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.section-product-info .button-product .add_to_cart_button.button-solid,
+.section-product-info .button-product .add_to_cart_button.button-solid:before {
+  --colors-button-hover: #F83785;
+  --colors-button-text-hover: 255, 255, 255;
+}
+
+.section-product-info .add_to_cart_button.button-solid:not(:disabled):hover,
+.section-product-info .add_to_cart_button.button-solid:not(:disabled):focus-visible {
+  background-color: #F83785 !important;
+  color: #ffffff !important;
+}
+
+.section-product-info .add_to_cart_button.button-solid:not(:disabled):hover .button-text,
+.section-product-info .add_to_cart_button.button-solid:not(:disabled):hover .x-atc-text,
+.section-product-info .add_to_cart_button.button-solid:not(:disabled):focus-visible .button-text,
+.section-product-info .add_to_cart_button.button-solid:not(:disabled):focus-visible .x-atc-text {
+  color: #ffffff !important;
+}
+
+.section-product-info .add_to_cart_button.button-solid:not(:disabled):hover:before,
+.section-product-info .add_to_cart_button.button-solid:not(:disabled):focus-visible:before {
+  background-color: #F83785;
+}
+
+.section-product-info .add_to_cart_button.button-solid:not(:disabled):hover .button-text::after,
+.section-product-info .add_to_cart_button.button-solid:not(:disabled):focus-visible .button-text::after {
+  background-color: #ffffff !important;
+}
+
+.misjoyas-share {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.misjoyas-share__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.misjoyas-share__btn:hover,
+.misjoyas-share__btn:focus-visible {
+  opacity: 0.85;
+}
+
+.misjoyas-share__btn img {
+  display: block;
+  width: 40px;
+  height: 40px;
+}
+
+.misjoyas-share__menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 40;
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 4px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  min-width: 48px;
+}
+
+.misjoyas-share__menu ul {
+  flex-direction: column;
+  gap: 0;
+}
+
+.misjoyas-share__menu li {
+  width: 100%;
+  height: auto;
+  opacity: 1;
+}
+
+.misjoyas-share__menu button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.misjoyas-share__menu button:hover,
+.misjoyas-share__menu button:focus-visible {
+  background: #f2f2f2;
+}
+
+/* ===== PDP: sección confianza + botón Quienes somos (Figma 208:1551) ===== */
+
+.misjoyas-trust-section {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.misjoyas-trust-image img {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 10px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.misjoyas-trust-content {
+  max-width: 500px;
+  text-align: left;
+}
+
+.misjoyas-trust-content h2 {
+  font-size: 26px;
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+.misjoyas-trust-content p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+  line-height: 1.6;
+  text-align: left;
+}
+
+.misjoyas-trust-content p:last-of-type {
+  margin-bottom: 0;
+}
+
+.misjoyas-trust-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  margin-top: 32px;
+  padding: 13px 32px 12px;
+  background: #000000;
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.misjoyas-trust-btn:hover,
+.misjoyas-trust-btn:focus-visible {
+  background: #F83785;
+  color: #ffffff;
+}
+
+@media (max-width: 767px) {
+  .custom-liquid .misjoyas-trust-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .custom-liquid .misjoyas-trust-image {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .custom-liquid .misjoyas-trust-image img {
+    max-width: 100%;
+  }
+
+  .custom-liquid .misjoyas-trust-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .custom-liquid .misjoyas-trust-content h2,
+  .custom-liquid .misjoyas-trust-content p {
+    width: 100%;
+    text-align: center;
+  }
+
+  .custom-liquid .misjoyas-trust-btn {
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* ===== Tarjeta de producto: diseño Figma ===== */
+
+/* Borde gris claro en cada tarjeta */
+.card-product {
+  border: 1px solid #e0e0e0;
+}
+
+/* Botón ATC: texto 16px, negro default, rosa Mis Joyas en hover */
+.card-product-atc-btn {
+  font-size: 16px !important;
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+.card-product-atc-btn.button-solid,
+.card-product-atc-btn.button-solid:before {
+  --colors-button-hover: #F83785;
+}
+@media (hover: hover) {
+  .card-product:hover .card-product-atc-btn:not(:disabled) {
+    background-color: #F83785 !important;
+  }
+  .card-product:hover .card-product-atc-btn.button-solid:not(:disabled):before {
+    background-color: #F83785;
+  }
+}
+.card-product-atc-btn,
+.card-product-atc-btn:hover,
+.card-product-atc-btn *,
+.card-product-atc-btn:hover * {
+  text-decoration: none !important;
+}
+
+/* Selector de variante en tarjeta */
+.card-product .product-form__input {
+  border: 1px solid #2d2d2d !important;
+  border-radius: 4px !important;
+  height: 40px;
+  font-size: 14px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* ===== Botón ATC siempre en el borde inferior ===== */
+
+/*
+  Ranura fija encima del botón ATC: misma altura con o sin <select>.
+  Select en tarjeta = 40px + margen inferior del área (8px, theme.css.liquid).
+*/
+.card-product-equal-height .card-product-atc-wrapper .card-product-form-fields {
+  flex: 0 0 auto;
+}
+
+.card-product-equal-height .card-product-atc-wrapper .card-product-variant-area {
+  margin-top: 0;
+  margin-bottom: 8px;
+  min-height: 40px;
+  display: flex;
+  align-items: flex-end;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.card-product-equal-height .card-product-atc-wrapper .card-product-variant-area .product-form__input {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* ===== Badges en tarjetas: esquina, sin borde (Figma Cyber Day) ===== */
+
+.card-product .label-container,
+.card-product .x-badge-container {
+  gap: 0;
+}
+
+/* Sobre la imagen del producto */
+.card-product .link-product-variant .top-left-container,
+.card-product .link-product-variant .label-top-left,
+.card-product .top-left-container,
+.card-product .label-top-left {
+  top: 0 !important;
+  left: 0 !important;
+  right: auto !important;
+  bottom: auto !important;
+  transform: none !important;
+}
+
+.card-product .label-top-left:not(.label-flag) {
+  top: 0 !important;
+}
+
+/* Descuento: esquina inferior izquierda de la imagen, sin margen */
+.card-product .link-product-variant .bottom-left-container,
+.card-product .link-product-variant .label-bottom-left,
+.card-product .bottom-left-container,
+.card-product .label-bottom-left {
+  top: auto !important;
+  left: 0 !important;
+  right: auto !important;
+  bottom: 0 !important;
+  transform: none !important;
+}
+
+.card-product .label-bottom-left:not(.label-bottom-flag) {
+  bottom: 0 !important;
+}
+
+/* Badge % descuento en cards — desktop 20px, mobile proporcional (ratio PDP 30/36) */
+.card-product .bottom-left-container .x-badge-content.x-badge-text {
+  background-color: #9b0103 !important;
+  color: #ffffff !important;
+  font-size: calc(20px * 5 / 6) !important;
+  line-height: 1.2 !important;
+}
+
+@media (min-width: 768px) {
+  .card-product .bottom-left-container .x-badge-content.x-badge-text {
+    font-size: 20px !important;
+  }
+}
+
+/* Posición personalizada en imagen: anclar abajo-izquierda (descuentos) */
+.card-product .link-product-variant > .x-badge-container.absolute.w-max {
+  left: 0 !important;
+  top: auto !important;
+  bottom: 0 !important;
+  transform: none !important;
+}
+
+/* Imagen de etiqueta (ej. Cyber Day): mantener arriba-izquierda */
+.card-product .link-product-variant > .x-badge-container.absolute.w-max:has(.label-img) {
+  top: 0 !important;
+  bottom: auto !important;
+  left: 0 !important;
+  transform: none !important;
+}
+
+.card-product .x-badge-content.x-badge-text {
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 5px 12px;
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+
+.card-product .x-badge-content.label-img {
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+.card-product .x-badge-container .x-badge-content {
+  border: none !important;
+  border-radius: 0 !important;
+  opacity: 1 !important;
+}
+
+/* ===== Últimos vistos: cero zoom / animaciones en imágenes ===== */
+#shopify-section-recently-viewed .static-card-image,
+#shopify-section-recently-viewed .static-card-image *,
+#shopify-section-recently-viewed .static-card-image-link,
+#shopify-section-recently-viewed .static-card-image-link:hover,
+#shopify-section-recently-viewed .static-card-image-link:active,
+#shopify-section-recently-viewed .card-product .link-product-variant,
+#shopify-section-recently-viewed .card-product .link-product-variant:hover,
+#shopify-section-recently-viewed .card-product .link-product-variant:active,
+#shopify-section-recently-viewed .card-product .group:hover .link-product-variant,
+#shopify-section-recently-viewed .card-product img,
+#shopify-section-recently-viewed .card-product .group:hover img,
+#shopify-section-recently-viewed .card-product .link-product-variant:hover img,
+#shopify-section-recently-viewed .card-product .link-product-variant:active img,
+#shopify-section-recently-viewed .card-product .preview-img,
+#shopify-section-recently-viewed .card-product [class*="animate_transition"],
+#shopify-section-recently-viewed .card-product [class*="image-hover"],
+#shopify-section-recently-viewed .card-product [class*="image-first"],
+#shopify-section-recently-viewed .card-product [class*="image-second"] {
+  transform: none !important;
+  scale: 1 !important;
+  --tw-scale-x: 1 !important;
+  --tw-scale-y: 1 !important;
+  transition: none !important;
+  animation: none !important;
+  will-change: auto !important;
+}
+
+#shopify-section-recently-viewed .card-product .card-product-img,
+#shopify-section-recently-viewed .card-product .card-product-img.x-splide,
+#shopify-section-recently-viewed .card-product [id^="x-slideshow-card-product-"] .splide__track,
+#shopify-section-recently-viewed .card-product [id^="x-slideshow-card-product-"] .splide__list,
+#shopify-section-recently-viewed .card-product .media-slide,
+#shopify-section-recently-viewed .card-product .splide__arrow {
+  display: none !important;
+}
+
+#shopify-section-recently-viewed .card-product .x-badge-container {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* ===== Mini cart / drawer Mis Joyas (Figma) ===== */
+
+#CartDrawer.misjoyas-cart #update-cart.misjoyas-cart__panel {
+  width: 100% !important;
+  max-width: 600px !important;
+}
+
+#CartDrawer.misjoyas-cart #update-cart.misjoyas-cart__panel.lg\:max-w-4xl {
+  max-width: min(960px, 100vw) !important;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__close {
+  top: 21px;
+  right: 30px;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #f0eee6;
+  border: none;
+}
+
+#CartDrawer.misjoyas-cart.rtl .misjoyas-cart__close {
+  right: auto;
+  left: 30px;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__scroll {
+  border-top: none !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__scroll .lg\:pl-14,
+#CartDrawer.misjoyas-cart .misjoyas-cart__scroll .lg\:pr-14,
+#CartDrawer.misjoyas-cart .misjoyas-cart__items.lg\:pl-0,
+#CartDrawer.misjoyas-cart .misjoyas-cart__items.lg\:pr-0 {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__title {
+  margin: 0;
+  padding: 30px 30px 0;
+  font-size: 36px !important;
+  line-height: 42px !important;
+  font-weight: 600 !important;
+  color: #0e1b1f !important;
+  letter-spacing: 0;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__header-divider {
+  height: 1px;
+  margin: 20px 30px 0;
+  background: #e0e0e0;
+}
+
+#CartDrawer.misjoyas-cart .border-t.flex-1.overflow-auto {
+  border-top: none !important;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-progress {
+  padding: 0 30px;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-progress__message {
+  margin: 0 0 20px;
+  font-size: 18px !important;
+  line-height: normal !important;
+  color: #000 !important;
+  font-weight: 400;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-progress__message strong {
+  font-weight: 600;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-progress__track-wrap {
+  position: relative;
+  padding-bottom: 28px;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-progress__track {
+  position: relative;
+  height: 20px;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-progress__track::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 6px;
+  background: #d9d9d9;
+  border-radius: 10px;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-progress__fill {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 6px;
+  background: #f83785;
+  border-radius: 10px;
+  max-width: calc(100% - 30px);
+  transition: width 0.5s ease-in-out;
+  z-index: 1;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-progress__dot {
+  position: absolute;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #d9d9d9;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-progress__dot.is-reached {
+  border-color: #f83785;
+  background: #f83785;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-progress__labels {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 11px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #000;
+  text-transform: uppercase;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-progress__label-first {
+  font-weight: 600;
+  text-transform: none;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__items {
+  background: rgba(255, 255, 255, 0.96) !important;
+  padding: 16px 30px !important;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__items.pl-5,
+#CartDrawer.misjoyas-cart .misjoyas-cart__items.pr-5 {
+  padding-left: 30px !important;
+  padding-right: 30px !important;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__footer-inner.pl-5,
+#CartDrawer.misjoyas-cart .misjoyas-cart__footer-inner.pr-5 {
+  padding-left: 30px !important;
+  padding-right: 30px !important;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-item__title.hover-text-link {
+  font-size: inherit !important;
+  line-height: inherit !important;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__items .cart-items tbody {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-item {
+  display: flex !important;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+  margin: 0 !important;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-item__media {
+  width: 130px;
+  min-width: 130px;
+  flex-shrink: 0;
+  padding: 0 !important;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-item__media-link {
+  display: block;
+  width: 130px;
+  height: 130px;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-item__image {
+  display: block;
+  width: 130px;
+  height: 130px;
+  border-radius: 4px;
+  background: #f2f2f2;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-item__content {
+  flex: 1;
+  min-width: 0;
+  padding: 0 !important;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-item__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  min-height: 0;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-item__info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-item__vendor {
+  margin: 0;
+  font-size: 12px;
+  line-height: 16px;
+  text-transform: uppercase;
+  color: #737373;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-item__title {
+  display: block;
+  margin: 0;
+  font-size: 22px !important;
+  line-height: 28px !important;
+  font-weight: 400 !important;
+  color: #2d2d2d !important;
+  text-decoration: none;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-item__title:hover {
+  color: #2d2d2d !important;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-item__price {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-item__price-sale,
+#CartDrawer.misjoyas-cart .misjoyas-cart-item__price-current,
+#CartDrawer.misjoyas-cart .misjoyas-cart-item__price .price-sale {
+  font-size: 24px !important;
+  line-height: 30px !important;
+  font-weight: 600 !important;
+  color: #f83785 !important;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-item__price-compare {
+  font-size: 18px !important;
+  line-height: 24px !important;
+  font-weight: 400 !important;
+  color: #2d2d2d !important;
+  text-decoration: line-through;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-item__unit-price {
+  width: 100%;
+  font-size: 12px;
+  line-height: 16px;
+  color: #737373;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-item__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-item__option {
+  margin: 0;
+  font-size: 13px;
+  line-height: 18px;
+  color: #737373;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-item__discounts {
+  margin: 0;
+  padding: 8px 12px;
+  list-style: none;
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-item__discount {
+  font-size: 13px;
+  line-height: 18px;
+  color: #2d2d2d;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-item__error {
+  width: 100%;
+  margin: 0;
+  padding: 8px 12px;
+  background: rgba(var(--color-error), 0.12);
+  border-radius: 4px;
+  font-size: 13px;
+  color: rgb(var(--color-error));
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-item__actions {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-top: 0;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-item__qty-control {
+  display: flex;
+  align-items: center;
+  width: auto;
+  min-width: 122px;
+  height: 40px;
+  padding: 1px;
+  border-color: #2d2d2d !important;
+  border-radius: 4px !important;
+  background: #fff;
+  overflow: hidden;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-item__qty-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  min-width: 40px;
+  height: 38px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #2d2d2d;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-item__qty-btn:hover {
+  opacity: 1;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-item__qty-input {
+  width: 40px;
+  min-width: 40px;
+  height: 38px;
+  padding: 0;
+  border: none;
+  font-size: 18px;
+  line-height: 25px;
+  color: #2d2d2d;
+  -moz-appearance: textfield;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-item__qty-input::-webkit-outer-spin-button,
+#CartDrawer.misjoyas-cart .misjoyas-cart-item__qty-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-item__remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #9da5af;
+  cursor: pointer;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-item__remove-icon,
+#CartDrawer.misjoyas-cart .misjoyas-icon-trash.misjoyas-cart-item__remove-icon {
+  display: block;
+  width: 24px !important;
+  height: 24px !important;
+  max-width: 24px;
+  max-height: 24px;
+  flex-shrink: 0;
+  fill: none !important;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-icon-trash path {
+  fill: none !important;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-item__remove:hover {
+  color: #737373;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__footer {
+  position: sticky;
+  bottom: 0;
+  z-index: 25;
+  margin-top: auto;
+  background: #fff;
+  flex-shrink: 0;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__footer-inner {
+  padding: 30px !important;
+  border-top: none !important;
+  overflow: visible !important;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__footer-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__promo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__promo-divider {
+  height: 1px;
+  width: 100%;
+  background: #e0e0e0;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__promo-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__promo-label {
+  font-size: 18px !important;
+  line-height: normal !important;
+  font-weight: 400 !important;
+  color: #000 !important;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__promo-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  color: #000;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__promo-plus {
+  width: 24px;
+  height: 24px;
+  fill: none !important;
+  transition: transform 0.2s ease;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__promo-plus path {
+  fill: none !important;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__promo-toggle[aria-expanded="true"] .misjoyas-cart__promo-plus {
+  transform: rotate(45deg);
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__promo-panel {
+  width: 100%;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__promo-field {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  width: 100%;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__promo-input {
+  flex: 1;
+  min-width: 0;
+  height: 44px;
+  padding: 0 16px;
+  border: 1px solid #2d2d2d;
+  border-radius: 4px;
+  background: #fff;
+  font-size: 16px;
+  line-height: 22px;
+  color: #2d2d2d;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__promo-input:focus {
+  outline: none;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__promo-apply {
+  position: relative;
+  min-width: 88px;
+  height: 44px;
+  padding: 0 16px !important;
+  border-radius: 4px !important;
+  background: #000 !important;
+  color: #fff !important;
+  font-size: 14px !important;
+  line-height: 20px !important;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__promo-message {
+  margin: 8px 0 0;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__promo-message--error {
+  color: #f40f0f;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__promo-message--success {
+  color: #157f7f;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__footer-meta:not(:has(*)) {
+  display: none;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__footer-meta > *:last-child {
+  margin-bottom: 0 !important;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  margin: 0;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__total-label,
+#CartDrawer.misjoyas-cart .misjoyas-cart__total-value {
+  font-size: 30px !important;
+  line-height: 36px !important;
+  font-weight: 600 !important;
+  color: #0e1b1f !important;
+  margin: 0 !important;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__total-value {
+  text-align: right;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__savings {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 16px;
+  line-height: 22px;
+  color: #2d2d2d;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__shipping-note {
+  margin: 0;
+  font-size: 18px !important;
+  line-height: normal !important;
+  font-weight: 400 !important;
+  color: #000 !important;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__shipping-note a {
+  color: #000 !important;
+  text-decoration: underline;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__terms {
+  width: 100%;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__terms-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__terms-label {
+  font-size: 14px;
+  line-height: 20px;
+  color: #2d2d2d;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__terms-error {
+  margin: 8px 0 0;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__checkout {
+  width: 100%;
+  min-height: 50px !important;
+  height: 50px;
+  margin: 0;
+  padding: 13px 32px 12px !important;
+  background: #000 !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 4px !important;
+  font-size: 16px !important;
+  line-height: 22px !important;
+  font-weight: 400 !important;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__checkout:hover,
+#CartDrawer.misjoyas-cart .misjoyas-cart__checkout:focus {
+  background: #000 !important;
+  color: #fff !important;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__checkout .button-text {
+  color: #fff !important;
+  font-size: 16px !important;
+  line-height: 22px !important;
+  text-transform: uppercase;
+}
+
+#CartDrawer.misjoyas-cart .md\:hidden[x-data="xCouponCode"] {
+  display: none !important;
+}
+
+#CartDrawer.misjoyas-cart #mini-cart-upsell .text-medium {
+  font-size: 26px !important;
+  line-height: 32px !important;
+  font-weight: 400 !important;
+  color: #222 !important;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-upsell-card > .card {
+  border: 1px solid #68b5a3;
+  border-radius: 4px;
+  padding: 8px 12px 8px 10px !important;
+  background: #fff !important;
+  gap: 16px;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-upsell-card .card {
+  flex-direction: row;
+  align-items: center;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-upsell-card .relative.z-20 {
+  width: 96px !important;
+  min-width: 96px;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-upsell-card .relative.z-20 img {
+  border-radius: 4px;
+}
+
+#CartDrawer.misjoyas-cart [x-data="xCouponCode"] .summary__title,
+#CartDrawer.misjoyas-cart .mobile-cart-note button .summary__title {
+  font-size: 18px;
+  line-height: 1.2;
+  color: #000;
+  text-decoration: none;
+}
+
+#CartDrawer.misjoyas-cart .mobile-cart-note {
+  display: none !important;
+}
+
+@media (max-width: 767px) {
+  #CartDrawer.misjoyas-cart .misjoyas-cart__title {
+    padding: 20px 20px 0;
+    font-size: 24px !important;
+    line-height: 30px !important;
+  }
+
+  #CartDrawer.misjoyas-cart .misjoyas-cart__header-divider {
+    margin: 16px 20px 0;
+  }
+
+  #CartDrawer.misjoyas-cart .misjoyas-cart__close {
+    top: 16px;
+    right: 20px;
+  }
+
+  #CartDrawer.misjoyas-cart.rtl .misjoyas-cart__close {
+    left: 20px;
+  }
+
+  #CartDrawer.misjoyas-cart .misjoyas-cart-progress {
+    padding: 0 20px;
+  }
+
+  #CartDrawer.misjoyas-cart .misjoyas-cart-progress__message {
+    font-size: 16px !important;
+  }
+
+  #CartDrawer.misjoyas-cart .misjoyas-cart__items,
+  #CartDrawer.misjoyas-cart .misjoyas-cart__items.pl-5,
+  #CartDrawer.misjoyas-cart .misjoyas-cart__items.pr-5 {
+    padding: 16px 20px !important;
+  }
+
+  #CartDrawer.misjoyas-cart .misjoyas-cart__items .cart-items tbody {
+    gap: 16px;
+  }
+
+  #CartDrawer.misjoyas-cart .misjoyas-cart-item__media,
+  #CartDrawer.misjoyas-cart .misjoyas-cart-item__media-link,
+  #CartDrawer.misjoyas-cart .misjoyas-cart-item__image {
+    width: 100px;
+    height: 100px;
+    min-width: 100px;
+  }
+
+  #CartDrawer.misjoyas-cart .misjoyas-cart-item__title {
+    font-size: 18px !important;
+    line-height: 24px !important;
+  }
+
+  #CartDrawer.misjoyas-cart .misjoyas-cart-item__price-sale,
+  #CartDrawer.misjoyas-cart .misjoyas-cart-item__price-current,
+  #CartDrawer.misjoyas-cart .misjoyas-cart-item__price .price-sale {
+    font-size: 20px !important;
+    line-height: 26px !important;
+    color: #f83785 !important;
+  }
+
+  #CartDrawer.misjoyas-cart .misjoyas-cart-item__price-compare {
+    font-size: 14px !important;
+    line-height: 20px !important;
+  }
+
+  #CartDrawer.misjoyas-cart .misjoyas-cart__footer-inner,
+  #CartDrawer.misjoyas-cart .misjoyas-cart__footer-inner.pl-5,
+  #CartDrawer.misjoyas-cart .misjoyas-cart__footer-inner.pr-5 {
+    padding: 20px !important;
+  }
+
+  #CartDrawer.misjoyas-cart .misjoyas-cart__promo-label {
+    font-size: 16px !important;
+  }
+
+  #CartDrawer.misjoyas-cart .misjoyas-cart__total-label,
+  #CartDrawer.misjoyas-cart .misjoyas-cart__total-value {
+    font-size: 24px !important;
+    line-height: 30px !important;
+  }
+
+  #CartDrawer.misjoyas-cart .misjoyas-cart__shipping-note {
+    font-size: 16px !important;
+  }
+}
+
+.placeholder\:tw-text-\[\#737373\]::-moz-placeholder {
+  --tw-text-opacity: 1;
+  color: rgb(115 115 115 / var(--tw-text-opacity, 1));
+}
+
+.placeholder\:tw-text-\[\#737373\]::placeholder {
+  --tw-text-opacity: 1;
+  color: rgb(115 115 115 / var(--tw-text-opacity, 1));
+}
+
+.placeholder\:tw-opacity-70::-moz-placeholder {
+  opacity: 0.7;
+}
+
+.placeholder\:tw-opacity-70::placeholder {
+  opacity: 0.7;
+}
+
+.hover\:tw-opacity-100:hover {
+  opacity: 1;
+}
+
+@media (min-width: 768px) {
+
+  .md\:tw-mt-0 {
+    margin-top: 0px;
+  }
+
+  .md\:tw-flex {
+    display: flex;
+  }
+
+  .md\:tw-hidden {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+
+  .lg\:tw-my-0 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  .lg\:\!tw-w-\[345px\] {
+    width: 345px !important;
+  }
+
+  .lg\:tw-w-\[345px\] {
+    width: 345px;
+  }
+
+  .lg\:\[grid-area\:auto\] {
+    grid-area: auto;
+  }
+
+  .lg\:\[grid-area\:icons\] {
+    grid-area: icons;
+  }
+
+  .lg\:\[grid-area\:navigation\] {
+    grid-area: navigation;
+  }
+}
+

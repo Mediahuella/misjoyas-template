@@ -71,7 +71,8 @@
       "previous": "Anterior"
     },
     "search": {
-      "search": "Buscar..."
+      "search": "Buscar...",
+      "placeholder": "¿Qué estás buscando?"
     },
     "cart": {
       "item_added_to_cart": "Artículo agregado al carro",
@@ -83,7 +84,7 @@
       "apply": "Aplicar",
       "placeholder_discount": "Por favor introduce el código de descuento",
       "discount_code": "Código de descuento",
-      "discount": "Descuento",
+      "discount": "Código promocional",
       "discount_wrong": "Descuento no válido. Asegúrese de que los detalles del descuento sean correctos.",
       "discount_correct": "¡Descuento aplicado!",
       "discount_applied": "El código de descuento ya está aplicado.",
@@ -91,9 +92,9 @@
       "share_cart": "Compartir carro",
       "copy_link": "",
       "share_link": "",
-      "progress_message_html": "Agrega <span class=\"text-[#e91e8c] font-medium\">{{ amount }}</span> para obtener <span class=\"text-[#e91e8c] font-medium\">{{ benefit }}</span>!",
+      "progress_message_html": "Agrega {{ amount }} para obtener <strong>{{ benefit }}</strong>.",
       "progress_max": "¡Felicidades! ¡Has desbloqueado todas las recompensas!",
-      "progress_tier_1": "Envío Gratis",
+      "progress_tier_1": "Envío gratis",
       "progress_tier_2": "10% OFF",
       "progress_tier_3": "15% OFF",
       "progress_tier_4": "20% OFF"
@@ -152,6 +153,9 @@
     "collection_title": "El nombre de tu colección."
   },
   "products": {
+    "silver_badge": "Plata fina certificada • Ley 925",
+    "garantia_satisfaccion_heading": "Garantía de satisfacción",
+    "garantia_satisfaccion_text": "Si el producto no cumple tus expectativas, podés solicitar una devolución sin problemas dentro de los primeros días posteriores a la compra.",
     "product": {
       "option_name": "Nombre de la opción",
       "description_default": "Esta área se utiliza para describir los detalles de su producto. Dígale a los clientes sobre el aspecto, la sensación y el estilo de su producto. Agregue detalles sobre el color, los materiales utilizados, el tamaño y dónde se hizo.",
@@ -222,6 +226,8 @@
       "size_chart": "Carta del tamaño",
       "share_social": "Compartir",
       "share": "Comparte este producto",
+      "add_to_wishlist": "Agregar a la lista de deseados",
+      "remove_from_wishlist": "Quitar de la lista de deseados",
       "sold_out": "Agotado",
       "unavailable": "Indisponible",
       "vendor": "Proveedor",
@@ -316,6 +322,68 @@
     }
   },
   "sections": {
+    "huincha-header": {
+      "aria_label": "Huincha promocional",
+      "alt": "Aquí hay algo especial para ti",
+      "placeholder": "Sube una imagen de escritorio (1920×100 px recomendado) y una imagen móvil (750×120 px recomendado)."
+    },
+    "ticker": {
+      "name": "Ticker",
+      "aria_label": "Ticker promocional"
+    },
+    "banner-principal": {
+      "aria_label": "Banner principal",
+      "slide_alt": "Banner promocional",
+      "placeholder": "Sube la imagen de escritorio (recomendado 1920×580 px) en este bloque.",
+      "previous": "Diapositiva anterior",
+      "next": "Siguiente diapositiva"
+    },
+    "banner-kit": {
+      "aria_label": "Banner promocional kit de regalo",
+      "alt": "Kit de regalo en tu primera compra",
+      "slide_alt": "Banner promocional kit de regalo",
+      "placeholder": "Sube la imagen de escritorio (recomendado 1488×400 px) y la de móvil (recomendado 440×400 px).",
+      "previous": "Diapositiva anterior",
+      "next": "Diapositiva siguiente"
+    },
+    "countdown-timer": {
+      "aria_label": "Contador regresivo",
+      "hours": "horas",
+      "minutes": "minutos",
+      "seconds": "segundos",
+      "minutes_short": "min",
+      "seconds_short": "seg"
+    },
+    "coupon-badges": {
+      "aria_label": "Badges de cupones",
+      "badge_alt": "Cupón de descuento",
+      "placeholder": "Sube la imagen del cupón (recomendado 360×212 px) en este bloque."
+    },
+    "category-cards": {
+      "aria_label": "Tarjetas de categorías",
+      "card_alt": "Categoría",
+      "placeholder": "Sube una imagen cuadrada (recomendado 360×360 px) en este bloque."
+    },
+    "featured-collection-misjoyas": {
+      "aria_label": "Colección destacada",
+      "placeholder": "Elige una colección en la configuración de la sección.",
+      "empty_collection": "Esta colección aún no tiene productos.",
+      "previous": "Productos anteriores",
+      "next": "Siguientes productos"
+    },
+    "recently-viewed-products": {
+      "name": "Últimos vistos",
+      "aria_label": "Productos vistos recientemente",
+      "placeholder": "Visita productos para verlos aquí.",
+      "previous": "Productos anteriores",
+      "next": "Siguientes productos"
+    },
+    "text-column-image": {
+      "boxes_aria_label": "Columnas con imagen",
+      "boxes_placeholder": "Añade bloques de columna con imagen.",
+      "boxes_block_placeholder": "Sube una imagen para esta columna.",
+      "boxes_card_alt": "Imagen promocional"
+    },
     "mobile-navigation": {
       "my_cart": "Mi carro"
     },
@@ -323,6 +391,7 @@
       "title": "Tu carro",
       "subtotal": "Total parcial",
       "total": "Total",
+      "estimated_total": "Total estimado",
       "total_savings": "Con tu pedido ahorras {{total_discount}}!",
       "order_note": "Nota del carro",
       "note": "Ordene instrucciones especiales",
@@ -335,6 +404,8 @@
       "taxes_included_but_shipping_at_checkout": "Envío calculado al finalizar la compra.",
       "taxes_included_and_shipping_policy_html": "<a target='_blank' href='{{ link }}' class='nav-link hover-text-link relativo effect-inline'>Envío</a> calculado al finalizar la compra.",
       "taxes_and_shipping_at_checkout": "Envío calculados al finalizar la compra",
+      "misjoyas_shipping_note_html": "<a href=\"{{ link }}\">Envío</a> calculado al finalizar la compra.",
+      "misjoyas_shipping_note_plain": "Envío calculado al finalizar la compra.",
       "cart_enable_terms_and_conditions": "Estoy de acuerdo con los términos y condiciones",
       "cart_enable_terms_and_conditions_html": "Estoy de acuerdo con los <a href='{{ url }}' class='button-link relative text-[rgba(var(--colors-text-link))]' target='_blank'>términos y condiciones</a>",
       "headings": {

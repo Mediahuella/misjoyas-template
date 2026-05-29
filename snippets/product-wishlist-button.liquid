@@ -1,0 +1,48 @@
+{% comment %}
+  Botón lista de deseados PDP — Figma node 487:3409
+  Reutiliza el botón real de Wishlist Hero (auto-inyectado) y lo coloca aquí.
+{% endcomment %}
+<div
+  class="misjoyas-product-wishlist"
+  x-data="xProductWishlist()"
+  :class="{ 'misjoyas-product-wishlist--added': added }"
+  data-wlh-product-id="{{ product.id }}"
+  data-wlh-variant-id="{{ product.selected_or_first_available_variant.id }}"
+  data-wlh-link="https://{{ shop.domain }}{{ product.url }}"
+  data-wlh-price="{{ product.selected_or_first_available_variant.price | remove: '.' | remove: ',' | divided_by: 100.0 }}"
+  data-wlh-name="{{ product.title | strip_html | escape }}"
+  data-wlh-image="{{ product.featured_image | img_url: '1024x' | remove: 'https:' | remove: 'http:' }}"
+>
+  <div class="misjoyas-product-wishlist__icons" aria-hidden="true">
+    <img
+      class="misjoyas-product-wishlist__icon misjoyas-product-wishlist__icon--outline"
+      src="{{ 'deseados.svg' | asset_url }}"
+      alt=""
+      width="19"
+      height="19"
+      loading="lazy"
+    >
+    <img
+      class="misjoyas-product-wishlist__icon misjoyas-product-wishlist__icon--filled"
+      src="{{ 'deseados-filled.svg' | asset_url }}"
+      alt=""
+      width="19"
+      height="19"
+      loading="lazy"
+    >
+  </div>
+  <div class="misjoyas-product-wishlist__slot" x-ref="slot" aria-hidden="true"></div>
+  <div
+    class="wishlist-hero-custom-button misjoyas-wishlist-hero-engine"
+    x-ref="engine"
+    data-wlh-id="{{ product.id }}"
+    data-wlh-link="https://{{ shop.domain }}{{ product.url }}"
+    data-wlh-variantid="{{ product.selected_or_first_available_variant.id }}"
+    data-wlh-price="{{ product.selected_or_first_available_variant.price | remove: '.' | remove: ',' | divided_by: 100.0 }}"
+    data-wlh-name="{{ product.title | strip_html | escape }}"
+    data-wlh-image="{{ product.featured_image | img_url: '1024x' }}"
+    data-wlh-mode="icon_only"
+    data-wlh-view="Product"
+    hidden
+  ></div>
+</div>

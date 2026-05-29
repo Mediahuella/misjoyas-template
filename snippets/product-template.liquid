@@ -398,9 +398,15 @@
                     }
                   {% endstyle %}
                   <div class="x-block-product-title mb-5 w-full{% if show_content_center %} text-center{% endif %}" {{ block.shopify_attributes }}>
-                    <{{ block.settings.heading_tag }} class="product-title h2 title-size--{{ block.id }} mb-3 leading-tight">
-                      {{ product.title | escape }}
-                    </{{ block.settings.heading_tag }}>
+                    <div class="misjoyas-product-title-row{% if show_content_center %} misjoyas-product-title-row--center{% endif %}">
+                      <{{ block.settings.heading_tag }} class="product-title h2 title-size--{{ block.id }} mb-0 leading-tight misjoyas-product-title-row__title">
+                        {{ product.title | escape }}
+                      </{{ block.settings.heading_tag }}>
+                      <div class="misjoyas-product-title-row__actions">
+                        {% render 'product-wishlist-button', product: product %}
+                        {% render 'product-share-button', product: product %}
+                      </div>
+                    </div>
                   </div>
                 {%- when 'price' -%}
                   <div class="x-block-price mb-5 w-full pricearea{% if show_content_center %} text-center{% endif %}" {{ block.shopify_attributes }}>
@@ -422,7 +428,8 @@
                       {%- render 'price',
                         product: product,
                         use_variant: true,
-                        container: 'main-product-price'
+                        container: 'main-product-price',
+                        misjoyas_context: 'pdp'
                       -%}
                     </div>
                     {% if block.settings.show_tax_and_shipping %}
@@ -1419,7 +1426,8 @@
                       "make_content_center": {{ show_content_center }},
                       "can_show_preorder": {{ can_show_preorder }},
                       "diff_day_create": {{ difference_in_days_created }},
-                      "diff_day_publish": {{ difference_in_days_published }}
+                      "diff_day_publish": {{ difference_in_days_published }},
+                      "tags": {{ product.tags | json }}
                       {% if settings.metafield_label != blank %}
                         ,"metafield_label": { 
                           {{ list_metafield_label }}
@@ -1482,7 +1490,7 @@
                   </div>
                 {%- when 'html' -%}
                   <div class="custom-html mb-5 w-full"{{ block.shopify_attributes }}>
-                    {{ block.settings.custom_html }}
+                    {% echo block.settings.custom_html %}
                   </div>
                 {%- when 'rating' -%}
                   {% render 'review-product', product: product, show_content_center: show_content_center, is_product_page: true %}
@@ -2412,8 +2420,8 @@
                       {%- render 'price',
                         product: product,
                         use_variant: true,
-                        show_badges: false,
-                        price_class: "pt-1"
+                        container: 'main-product-price',
+                        misjoyas_context: 'pdp'
                       -%}
                     </div>
                   </div>
@@ -2506,7 +2514,8 @@
                       product: product,
                       use_variant: true,
                       show_badges: false,
-                      price_class: "md:pt-2"
+                      price_class: "md:pt-2",
+                      misjoyas_context: 'pdp'
                     -%}
                   </div>
                   <div class="flex justify-between rtl:flex-row-reverse gap-x-1 md:gap-x-2 md:flex-grow-0 lg:justify-end lg:mt-0 transition duration-200">

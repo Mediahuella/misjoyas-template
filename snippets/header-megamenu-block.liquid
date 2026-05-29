@@ -70,7 +70,8 @@
                 <div class="relative">
                   <a
                     href="{{ link.url }}"
-                    class="{% if section.settings.primary_menu_label_animation %}front{% endif %} cursor-pointer tree-menu-item p-break-words{% if is_link or block.settings.label_position == "aside" %} flex items-center{% else %} inline-block{% endif %}{% if is_active or request.path == link.url %}  link-active{% endif %} justify-center pt-1 pb-1 relative duration-200 transition hover-text-link is-focus:link-active{% if request.path == link %} link-active{% endif %}" 
+                    class="{% if section.settings.primary_menu_label_animation %}front{% endif %} cursor-pointer tree-menu-item p-break-words{% if is_link or block.settings.label_position == "aside" %} flex items-center{% else %} inline-block{% endif %}{% if is_active or request.path == link.url %}  link-active{% endif %} justify-center pt-1 pb-1 relative duration-200 transition hover-text-link is-focus:link-active{% if request.path == link %} link-active{% endif %}"
+                    {% if forloop.first %}style="color: rgba(var(--colors-price-sale));"{% endif %}
                   >
                     {% assign title = link.title %}
                     {% if section.settings.enable_highlight %}

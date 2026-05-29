@@ -27,14 +27,13 @@
           <div class="footer-col--{{ forloop.index }}{% if is_rtl %} md:pl-5 md:first:pr-0{% else %} md:pr-5 md:first:pl-0{% endif %} md:mb-7{% if number == 1 %}{% if is_rtl %} md:pr-0{% else %} md:pl-0{% endif %}{% else %}{% if is_rtl %} md:pr-10{% else %} md:pl-10{% endif %}{% endif %} w-full md:w-1/{{ section.settings.columns_desktop }} {{ class_rtl }}" {{ block.shopify_attributes }}>
               {%- case block.type -%}
                 {%- when 'text' -%}
-                  <div x-data="{ open: {{ block.settings.open_by_default }} }" class="py-4 border-b border-b-solid md:border-none">
+                  <div class="py-4 border-b border-b-solid md:border-none">
                     {%- if block.settings.heading_text != blank -%}
-                    <div @click="open = ! open" class="relative{% if is_rtl %} pl-5{% else %} pr-5{% endif %} cursor-pointer md:cursor-default duration-200 transition">
+                    <div class="relative{% if is_rtl %} pl-5{% else %} pr-5{% endif %}">
                         <p class="h6 text-[115%]">{{- block.settings.heading_text | escape -}}</p>
-                        <span class="md:hidden absolute w-2.5	h-2.5 top-1/2 -translate-y-1/2 flex{% if is_rtl %} left-3.5{% else %} right-3.5{% endif %}" :class="open ? 'rotate-180' : ''">{% render 'icon-alls', icon: 'icon-caret' %}</span>
                       </div>
                     {%- endif -%}
-                    <div {% if block.settings.heading_text != blank %} :class="open ? 'block' : 'hidden md:block'"{% endif %}>
+                    <div>
                       {%- if block.settings.image != blank -%}
                         {%- capture sizes -%}
                           {{ block.settings.image_width | times: 1.1 | ceil }}px
@@ -75,18 +74,23 @@
                           {% render 'toolbar', enable_footer: true, show_social_icons: block.settings.show_social_icons, social_icons_layout: block.settings.icon_layout %}
                         </div>
                       {%- endif -%}
+                      {%- if forloop.first -%}
+                        <div class="tw-hidden md:tw-flex tw-flex-col tw-gap-2 tw-mt-4">
+                          <img src="{{ 'ccs-cyber-2026.png' | asset_url }}" alt="Empresa Oficial CCS Cyber 2026" width="103" height="103" loading="lazy">
+                          <img src="{{ 'ccs-confianza.png' | asset_url }}" alt="Sello Confianza Ecommerce CCS" width="112" height="118" loading="lazy">
+                        </div>
+                      {%- endif -%}
                     </div>
                   </div>
                 {%- when 'link_list' -%}
-                  <div x-data="{ open: {{ block.settings.open_by_default }} }" class="py-4 border-b md:border-none">
+                  <div class="py-4 border-b md:border-none">
                     {%- if block.settings.heading_menu != blank -%}
-                      <div @click="open = ! open" class="relative{% if is_rtl %} pl-5{% else %} pr-5{% endif %} cursor-pointer md:cursor-default duration-200 transition">
+                      <div class="relative{% if is_rtl %} pl-5{% else %} pr-5{% endif %}">
                         <p class="h6 text-[115%]">{{- block.settings.heading_menu | escape -}}</p>
-                        <span class="md:hidden absolute w-2.5	h-2.5 top-1/2 -translate-y-1/2 flex{% if is_rtl %} left-3.5{% else %} right-3.5{% endif %}" :class="open ? 'rotate-180' : ''">{% render 'icon-alls', icon: 'icon-caret' %}</span>
                       </div>
                     {%- endif -%}
                     {%- if block.settings.menu != blank -%}
-                      <ul class="mt-6"{% if block.settings.heading_menu != blank %} :class="open ? 'block' : 'hidden md:block'"{% endif %}>
+                      <ul class="mt-6">
                         {%- for link in block.settings.menu.links -%}
                           <li class="mb-1 first:pt-0 pt-2">
                             <a href="{{ link.url }}" class="hover-text-link nav-link relative block lg:inline-block">
@@ -161,12 +165,11 @@
                     {% endif %}
                   </div>
                 {%- when 'email_footer' -%}
-                  <div x-data="{ open: {{ block.settings.open_by_default }} }" class="pt-4 md:pb-5">
-                    <div @click="open = ! open" class="relative{% if is_rtl %} pl-5{% else %} pr-5{% endif %} cursor-pointer md:cursor-default duration-200 transition">
+                  <div class="pt-4 md:pb-5">
+                    <div class="relative{% if is_rtl %} pl-5{% else %} pr-5{% endif %}">
                       <p class="h6 text-[115%]">{{ block.settings.heading_email | escape }}</p>
-                      <span class="md:hidden absolute w-2.5	h-2.5 top-1/2 -translate-y-1/2 flex{% if is_rtl %} left-3.5{% else %} right-3.5{% endif %}" :class="open ? 'rotate-180' : ''">{% render 'icon-alls', icon: 'icon-caret' %}</span>
                     </div>
-                    <div :class="open ? 'block' : 'hidden md:block'">
+                    <div>
                       {%- form 'customer', id: 'ContactFooter', class: 'footer__newsletter newsletter-form mb-5' -%}
                         <input type="hidden" name="contact[tags]" value="newsletter">
                         <div class="mt-4 flex">
@@ -194,7 +197,7 @@
                             </label>
                           </div>
                           <div>
-                            <button type="submit" class="rounded-none border-solid border-current ml-1 w-12 h-full flex justify-center items-center bg-transparent border-b-2 border-b-solid border-x-0 border-t-0" name="commit" aria-label="{{ 'newsletter.button_label' | t }}">
+                            <button type="submit" class="rounded-none border-solid border-current ml-1 w-12 h-full flex justify-center items-center bg-transparent border-b-2 border-b-solid border-x-0 border-t-0" style="border-bottom-color: #f83785;" name="commit" aria-label="{{ 'newsletter.button_label' | t }}">
                               <span class="{% if is_rtl %} rotate-180{% endif %}"> 
                                 {% render 'icon-alls', icon: 'icon-arrow', enable_email_footer: true %}
                               </span>
@@ -229,14 +232,13 @@
                     </div>
                   </div>
                 {% when 'contact' %}
-                  <div x-data="{ open: {{ block.settings.open_by_default }} }" class="py-4 border-b md:border-none">
+                  <div class="py-4 border-b md:border-none">
                     {%- if block.settings.heading_menu != blank -%}
-                      <div @click="open = ! open" class="relative{% if is_rtl %} pl-5{% else %} pr-5{% endif %} cursor-pointer md:cursor-default duration-200 transition">
+                      <div class="relative{% if is_rtl %} pl-5{% else %} pr-5{% endif %}">
                         <p class="h6 text-[115%]">{{- block.settings.heading_menu | escape -}}</p>
-                      <span class="md:hidden absolute w-2.5	h-2.5 top-1/2 -translate-y-1/2 flex{% if is_rtl %} left-3.5{% else %} right-3.5{% endif %}" :class="open ? 'rotate-180' : ''">{% render 'icon-alls', icon: 'icon-caret' %}</span>
                       </div>
                     {%- endif -%}
-                    <div class="mt-6" :class="open ? 'block' : 'hidden md:block'">
+                    <div class="mt-6">
                       {% if block.settings.icon_1 != 'none' or block.settings.title_1 or block.settings.text_1 %}
                         <div class="mb-4 flex items-center gap-x-4">
                           {% if block.settings.icon_1 != 'none' %}
@@ -367,6 +369,14 @@
   <div class="additional-footer {{ class_rtl }}{% if section.settings.additional_layout == 'horizontal' %} x-page-width page-width mx-auto lg:flex lg:flex-row lg:justify-between items-center{% else %} mx-5{% endif -%}"
   >
     <div class="{% if section.settings.additional_layout == 'horizontal' %}flex flex-col lg:flex lg:flex-row gap-x-7 items-center w-full justify-between{% else %}flex flex-col{% endif %}">
+      <div class="tw-flex md:tw-hidden tw-flex-col tw-gap-2 tw-mb-4">
+        <img src="{{ 'ccs-cyber-2026.png' | asset_url }}" alt="Empresa Oficial CCS Cyber 2026" width="103" height="103" loading="lazy">
+        <img src="{{ 'ccs-confianza.png' | asset_url }}" alt="Sello Confianza Ecommerce CCS" width="112" height="118" loading="lazy">
+      </div>
+      <div class="tw-flex tw-items-center tw-gap-1.5 tw-rounded-md tw-px-2.5 tw-py-1.5 tw-my-2 lg:tw-my-0 tw-shrink-0" style="background-color: #222222;">
+        <span class="tw-block tw-w-5 tw-h-5 tw-shrink-0">{% render 'icon-alls', icon: 'icon-success' %}</span>
+        <span class="tw-text-xs tw-font-semibold tw-text-white tw-whitespace-nowrap" style="letter-spacing: 0.2px;">Plata fina certificada • Ley 925</span>
+      </div>
       {%- if section.settings.show_language_selector or section.settings.show_currency_selector -%}
         <div class="mb-3 md:mb-2{% if section.settings.additional_layout == 'vertical' %} lg:mb-2{% else %} lg:mb-0{% endif %}">
         {% render 'toolbar', enable_footer: true, show_currency_selector: section.settings.show_currency_selector, show_language_selector: section.settings.show_language_selector %}
@@ -389,24 +399,14 @@
         </div>
       </div>
       {%- if section.settings.payment_enable -%}
-        {% if section.settings.custom_payment != blank %}
-          {% assign enabled_payment_types = section.settings.custom_payment | remove: ' ' | split: ',' %}
-          <ul class="flex justify-center gap-y-2 flex-wrap{% unless section.settings.show_language_selector or section.settings.show_currency_selector %} mt-5 md:mt-0{% endunless %}" role="list">
-          {%- for type in enabled_payment_types -%}
-            <li class="pl-1 pr-1">
-              {{ type | payment_type_svg_tag }}
-            </li>
-          {%- endfor -%}
-          </ul>
-        {% else %}
-          <ul class="flex justify-center gap-y-2 flex-wrap{% unless section.settings.show_language_selector or section.settings.show_currency_selector %} mt-5 md:mt-0{% endunless %}" role="list">
-            {%- for type in shop.enabled_payment_types -%}
-              <li class="pl-1 pr-1">
-                {{ type | payment_type_svg_tag }}
-              </li>
-            {%- endfor -%}
-          </ul>
-        {% endif %}       
+        <img
+          src="{{ 'footer-medios-pago.png' | asset_url }}"
+          alt="Medios de pago: Visa, Mastercard, American Express, Diners Club, RedCompra"
+          loading="lazy"
+          width="410"
+          height="126"
+          class="footer-medios-pago tw-mt-4 md:tw-mt-0"
+        >
       {%- endif -%}
     </div>
   </div>

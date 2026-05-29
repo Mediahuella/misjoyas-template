@@ -1,0 +1,273 @@
+{%- if section.settings.enable -%}
+  {%- unless section.settings.show_only_on_homepage and request.page_type != 'index' -%}
+  {%- liquid
+    assign badge_gap = section.settings.gap
+    assign badge_gap_mobile = section.settings.gap_mobile
+    assign badge_height = section.settings.badge_height
+    assign badge_height_mobile = section.settings.badge_height_mobile
+    assign badge_max_width = section.settings.badge_max_width
+    assign badge_padding_mobile_y = section.settings.padding_mobile_y
+  -%}
+
+  {%- style -%}
+    .coupon-badges-{{ section.id }} {
+      --coupon-badge-gap: {{ badge_gap }}px;
+      --coupon-badge-gap-mobile: {{ badge_gap_mobile }}px;
+      --coupon-badge-height: {{ badge_height }}px;
+      --coupon-badge-height-mobile: {{ badge_height_mobile }}px;
+      --coupon-badge-max-width: {{ badge_max_width }}px;
+      --coupon-badge-padding-mobile-y: {{ badge_padding_mobile_y }}px;
+      width: 100%;
+    }
+    .coupon-badges-{{ section.id }} .coupon-badges__track {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--coupon-badge-gap-mobile);
+      max-width: 25rem;
+      margin-inline: auto;
+      padding: var(--coupon-badge-padding-mobile-y) 1rem;
+    }
+    .coupon-badges-{{ section.id }} .coupon-badges__item {
+      width: 100%;
+      min-width: 0;
+    }
+    .coupon-badges-{{ section.id }} .coupon-badges__link,
+    .coupon-badges-{{ section.id }} .coupon-badges__card {
+      display: block;
+      width: 100%;
+      height: var(--coupon-badge-height-mobile);
+      border-radius: 4px;
+      overflow: hidden;
+      line-height: 0;
+    }
+    @media (min-width: 768px) {
+      .coupon-badges-{{ section.id }} .coupon-badges__track {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--coupon-badge-gap);
+        max-width: none;
+        margin-inline: 0;
+        padding: 1.25rem 0;
+      }
+      .coupon-badges-{{ section.id }} .coupon-badges__item {
+        flex: 1 1 0;
+        width: auto;
+        max-width: var(--coupon-badge-max-width);
+      }
+      .coupon-badges-{{ section.id }} .coupon-badges__link,
+      .coupon-badges-{{ section.id }} .coupon-badges__card {
+        height: var(--coupon-badge-height);
+      }
+    }
+    .coupon-badges-{{ section.id }} .coupon-badges__img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 4px;
+    }
+    .coupon-badges-{{ section.id }} .coupon-badges__placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      background-color: #f83785;
+      color: #ffffff;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.875rem;
+      line-height: 1.35;
+    }
+  {%- endstyle -%}
+
+  <div
+    class="coupon-badges-{{ section.id }} tw-w-full"
+    role="region"
+    aria-label="{{ 'sections.coupon-badges.aria_label' | t }}"
+  >
+    <div class="coupon-badges__track x-page-width page-width">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign badge_image = block.settings.image
+          assign badge_image_mobile = block.settings.image_mobile
+          assign badge_link = block.settings.link
+          if block.settings.image_alt != blank
+            assign badge_alt = block.settings.image_alt
+          else
+            assign badge_alt = 'sections.coupon-badges.badge_alt' | t
+          endif
+        -%}
+        <div class="coupon-badges__item" {{ block.shopify_attributes }}>
+          {%- if badge_image != blank -%}
+            {%- if badge_link != blank -%}
+              <a
+                href="{{ badge_link }}"
+                class="coupon-badges__link"
+                {% if block.settings.open_new_window %}target="_blank" rel="noopener noreferrer"{% endif %}
+              >
+            {%- else -%}
+              <div class="coupon-badges__card">
+            {%- endif -%}
+            <picture>
+              {%- if badge_image_mobile != blank -%}
+                <source
+                  media="(max-width: 767px)"
+                  srcset="{{ badge_image_mobile | image_url: width: 800 }}"
+                >
+              {%- endif -%}
+              {{
+                badge_image
+                | image_url: width: 800
+                | image_tag:
+                  class: 'coupon-badges__img',
+                  widths: '194, 360, 480, 720',
+                  sizes: '(max-width: 767px) calc(50vw - 1.375rem), 360px',
+                  alt: badge_alt,
+                  loading: 'lazy'
+              }}
+            </picture>
+            {%- if badge_link != blank -%}
+              </a>
+            {%- else -%}
+              </div>
+            {%- endif -%}
+          {%- elsif request.design_mode -%}
+            <div class="coupon-badges__card">
+              <p class="coupon-badges__placeholder">
+                {{ 'sections.coupon-badges.placeholder' | t }}
+              </p>
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+  {%- endunless -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Coupon badges",
+  "tag": "section",
+  "class": "section-coupon-badges",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable",
+      "label": "Mostrar badges",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_only_on_homepage",
+      "label": "Solo en la página de inicio",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Espacio entre badges — escritorio (px)",
+      "min": 8,
+      "max": 40,
+      "step": 2,
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "gap_mobile",
+      "label": "Espacio entre badges — móvil (px)",
+      "min": 4,
+      "max": 24,
+      "step": 2,
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "padding_mobile_y",
+      "label": "Padding vertical — móvil (px)",
+      "min": 0,
+      "max": 48,
+      "step": 2,
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "badge_height",
+      "label": "Altura en escritorio (px)",
+      "min": 120,
+      "max": 320,
+      "step": 2,
+      "default": 212
+    },
+    {
+      "type": "range",
+      "id": "badge_height_mobile",
+      "label": "Altura en móvil (px)",
+      "min": 80,
+      "max": 200,
+      "step": 2,
+      "default": 114
+    },
+    {
+      "type": "range",
+      "id": "badge_max_width",
+      "label": "Ancho máximo por badge (px)",
+      "min": 200,
+      "max": 480,
+      "step": 10,
+      "default": 360
+    }
+  ],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Badge cupón",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagen",
+          "info": "Escritorio: 360×212 px. Móvil (grid 2×2): 194×114 px."
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Imagen (móvil)",
+          "info": "Opcional. Si no subes una, se usa la de escritorio. Recomendado 194×114 px."
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Texto alternativo"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Enlace"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_new_window",
+          "label": "Abrir enlace en nueva pestaña",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Coupon badges",
+      "blocks": [
+        { "type": "badge" },
+        { "type": "badge" },
+        { "type": "badge" },
+        { "type": "badge" }
+      ]
+    }
+  ]
+}
+{% endschema %}

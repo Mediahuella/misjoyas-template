@@ -3528,6 +3528,33 @@
     "text-column-image": {
       "name": "Columnas de texto con imagen",
       "settings": {
+        "layout_style": {
+          "label": "Estilo de diseño",
+          "options__classic": {
+            "label": "Clásico (texto + imagen)"
+          },
+          "options__image_boxes": {
+            "label": "Cajas de imagen (Mis Joyas)"
+          }
+        },
+        "box_layout_header": {
+          "content": "Diseño cajas de imagen (Figma)"
+        },
+        "box_gap": {
+          "label": "Espacio entre columnas",
+          "info": "Se usa cuando el estilo es Cajas de imagen."
+        },
+        "box_border_radius": {
+          "label": "Radio de esquinas de la imagen"
+        },
+        "box_padding_y": {
+          "label": "Padding vertical (escritorio)",
+          "info": "Valor Figma: 40 px (nodo 76:9849)."
+        },
+        "box_padding_y_mobile": {
+          "label": "Padding vertical (móvil)",
+          "info": "Valor Figma: 15 px (nodo 344:4507)."
+        },
         "image_position_desktop": {
           "label": "Posición de la imagen"
         },
@@ -3544,7 +3571,14 @@
         "column": {
           "settings": {
             "image": {
-              "info": "Para conocer los tamaños de imagen recomendados, consulte nuestra [guía del usuario](https://support.omnithemes.com/blogs/faqs/can-you-recommend-image-sizes-for-the-different-image-layouts-of-different-section). Utilice una imagen de fondo transparente para enfatizar elementos cruciales, como ingredientes resaltados o materiales importantes."
+              "info": "Cajas de imagen (Mis Joyas): 736×400 px por tarjeta. Diseño clásico: ver [guía del usuario](https://support.omnithemes.com/blogs/faqs/can-you-recommend-image-sizes-for-the-different-image-layouts-of-different-section)."
+            },
+            "image_mobile": {
+              "label": "Imagen móvil (opcional)",
+              "info": "Cajas de imagen (Figma): 440×239 px. Si está vacía, se usa la imagen de escritorio."
+            },
+            "image_alt": {
+              "label": "Texto alternativo de la imagen"
             }
           }
         }
@@ -3638,7 +3672,7 @@
       "name": "Productos vistos recientemente",
       "settings": {
         "paragraph": {
-          "content": "La sección está oculta si no hay productos vistos todavía."
+          "content": "Muestra hasta 10 productos que el cliente visitó. Los datos se guardan en el navegador (localStorage). La sección está oculta si no hay productos vistos todavía."
         },
         "enable_clear_history": {
           "label": "Habilitar historial claro"

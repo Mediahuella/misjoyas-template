@@ -61,6 +61,27 @@ const xParseJSON = (jsonString) => {
   return JSON.parse(jsonString);
 }
 
+const buildCardPriceHtml = (v, priceEl) => {
+  const closeSpan = '<' + '/span>';
+  const closeDiv = '<' + '/div>';
+  const isMisjoyasCard = priceEl?.classList?.contains('misjoyas-price--card');
+
+  if (isMisjoyasCard) {
+    if (v.compare_at_price > v.price) {
+      return '<div class="misjoyas-price__row"><span class="misjoyas-price__current">' + v.price_formatted + closeSpan + '<span class="misjoyas-price__compare">' + v.compare_at_price_formatted + closeSpan + closeDiv;
+    }
+    return '<span class="misjoyas-price__current misjoyas-price__current--regular">' + v.price_formatted + closeSpan;
+  }
+
+  const closeS = '<' + '/s>';
+  const closeSmall = '<' + '/small>';
+  const closeP = '<' + '/p>';
+  if (v.compare_at_price > v.price) {
+    return '<div><small class="cap rtl:inline-block"><s class="rtl:leading-tight">' + v.compare_at_price_formatted + closeS + closeSmall + '<span class="price-sale ml-1 rtl:mr-1 rtl:ml-0">' + v.price_formatted + closeSpan + closeDiv;
+  }
+  return '<div><p class="price"><span>' + v.price_formatted + closeSpan + closeP + closeDiv;
+};
+
 (function initCardProductVariantPrice() {
   window.updateCardProductVariantPrice = function(selectEl) {
     console.log('[cardProduct] updateCardProductVariantPrice INICIO', { selectEl: !!selectEl, id: selectEl?.id, value: selectEl?.value });
@@ -110,18 +131,7 @@ const xParseJSON = (jsonString) => {
     }
     console.log('[cardProduct] elementos encontrados, actualizando precio a:', v.price_formatted);
 
-    const closeS = '<' + '/s>';
-    const closeSmall = '<' + '/small>';
-    const closeSpan = '<' + '/span>';
-    const closeP = '<' + '/p>';
-    const closeDiv = '<' + '/div>';
-    let html;
-    if (v.compare_at_price > v.price) {
-      html = '<div><small class="cap rtl:inline-block"><s class="rtl:leading-tight">' + v.compare_at_price_formatted + closeS + closeSmall + '<span class="price-sale ml-1 rtl:mr-1 rtl:ml-0">' + v.price_formatted + closeSpan + closeDiv;
-    } else {
-      html = '<div><p class="price"><span>' + v.price_formatted + closeSpan + closeP + closeDiv;
-    }
-    inner.outerHTML = html;
+    inner.outerHTML = buildCardPriceHtml(v, el);
     console.log('[cardProduct] updateCardProductVariantPrice FIN - precio actualizado correctamente');
   };
 
@@ -146,18 +156,7 @@ const xParseJSON = (jsonString) => {
     if (!el) return;
     const inner = el.firstElementChild;
     if (!inner) return;
-    const closeS = '<' + '/s>';
-    const closeSmall = '<' + '/small>';
-    const closeSpan = '<' + '/span>';
-    const closeP = '<' + '/p>';
-    const closeDiv = '<' + '/div>';
-    let html;
-    if (v.compare_at_price > v.price) {
-      html = '<div><small class="cap rtl:inline-block"><s class="rtl:leading-tight">' + v.compare_at_price_formatted + closeS + closeSmall + '<span class="price-sale ml-1 rtl:mr-1 rtl:ml-0">' + v.price_formatted + closeSpan + closeDiv;
-    } else {
-      html = '<div><p class="price"><span>' + v.price_formatted + closeSpan + closeP + closeDiv;
-    }
-    inner.outerHTML = html;
+    inner.outerHTML = buildCardPriceHtml(v, el);
   };
 
   const handleVariantChange = (e) => {
@@ -1760,18 +1759,7 @@ requestAnimationFrame(() => {
         if (!el) return;
         const inner = el.firstElementChild;
         if (!inner) return;
-        const closeS = '<' + '/s>';
-        const closeSmall = '<' + '/small>';
-        const closeSpan = '<' + '/span>';
-        const closeP = '<' + '/p>';
-        const closeDiv = '<' + '/div>';
-        let html;
-        if (v.compare_at_price > v.price) {
-          html = '<div><small class="cap rtl:inline-block"><s class="rtl:leading-tight">' + v.compare_at_price_formatted + closeS + closeSmall + '<span class="price-sale ml-1 rtl:mr-1 rtl:ml-0">' + v.price_formatted + closeSpan + closeDiv;
-        } else {
-          html = '<div><p class="price"><span>' + v.price_formatted + closeSpan + closeP + closeDiv;
-        }
-        inner.outerHTML = html;
+        inner.outerHTML = buildCardPriceHtml(v, el);
         console.log('[cardProduct] price updated', { price: v.price_formatted });
       }
     }));

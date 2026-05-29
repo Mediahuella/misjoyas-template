@@ -110,10 +110,10 @@
       render 'meta-tags'
       render 'font-face'
       echo 'theme.css' | asset_url | stylesheet_tag: preload: true
+      echo 'main.css' | asset_url | stylesheet_tag: preload: true
       render 'css-variables'
       render 'theme-mode-control'
     %}
-    {{ 'main.css' | asset_url | stylesheet_tag: preload: true }}
     {% if request.page_type == 'policy' %}
       {{ 'page.css' | asset_url | stylesheet_tag: preload: true }}
     {% endif %}
@@ -268,21 +268,13 @@
       <script src="{{ 'cart-countdown-timer.js' | asset_url }}" defer></script>
     {%- endif -%}
     <script src="{{ 'theme.js' | asset_url }}" defer></script>
+    <script src="{{ 'main.js' | asset_url }}" defer></script>
     <script src="{{ 'vendors.js' | asset_url }}" defer></script>
     <script>
       window.addEventListener("load", (event) => {
         deferScriptLoad('instant.page', '{{ 'instant.page.v5.1.1.js' | asset_url }}', () => {}, true);
       });
-    </script>
-    <script>
-      console.log('[card-product] script ejecutado');
-      window.addEventListener('click', function(e) {
-        console.log('[click]', e.target);
-      });
-      window.addEventListener('change', function(e) {
-        console.log('[change]', e.target);
-      });
-    </script>
+  </script>
   {% include 'store-credit-launcher' %}
   {% comment %}  {% endcomment %}
 

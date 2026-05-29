@@ -51,6 +51,11 @@
   if swiper_on_mobile and section.settings.enable_arrow_mobile
     assign arrow_swipe_mobile = true
   endif
+
+  assign use_image_boxes = false
+  if section.settings.layout_style == 'image_boxes'
+    assign use_image_boxes = true
+  endif
 -%}
 {%- style -%}
   .heading-{{ section.id }} {
@@ -155,9 +160,191 @@
       }
     }
   {% endif %}
+  {% if use_image_boxes %}
+    .tci-box-{{ section.id }} {
+      width: 100%;
+      box-sizing: border-box;
+      padding-top: {{ section.settings.box_padding_y_mobile }}px;
+      padding-bottom: {{ section.settings.box_padding_y_mobile }}px;
+    }
+    @media (min-width: 768px) {
+      .tci-box-{{ section.id }} {
+        padding-top: {{ section.settings.box_padding_y }}px;
+        padding-bottom: {{ section.settings.box_padding_y }}px;
+      }
+    }
+    .tci-box-{{ section.id }} .tci-box__inner {
+      width: 100%;
+      max-width: 440px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @media (min-width: 768px) {
+      .tci-box-{{ section.id }} .tci-box__inner {
+        max-width: 1488px;
+      }
+    }
+    .tci-box-{{ section.id }} .tci-box__grid {
+      display: flex;
+      flex-direction: column;
+      gap: {{ section.settings.box_gap }}px;
+      width: 100%;
+    }
+    @media (min-width: 768px) {
+      .tci-box-{{ section.id }} .tci-box__grid {
+        flex-direction: row;
+        align-items: stretch;
+      }
+    }
+    .tci-box-{{ section.id }} .tci-box__item {
+      width: 100%;
+      min-width: 0;
+    }
+    @media (min-width: 768px) {
+      .tci-box-{{ section.id }} .tci-box__item {
+        flex: 1 1 0;
+        width: auto;
+      }
+    }
+    .tci-box-{{ section.id }} .tci-box__link,
+    .tci-box-{{ section.id }} .tci-box__media {
+      display: block;
+      width: 100%;
+      border-radius: {{ section.settings.box_border_radius }}px;
+      overflow: hidden;
+      line-height: 0;
+      text-decoration: none;
+      aspect-ratio: 440 / 239;
+    }
+    @media (min-width: 768px) {
+      .tci-box-{{ section.id }} .tci-box__link,
+      .tci-box-{{ section.id }} .tci-box__media {
+        aspect-ratio: 736 / 400;
+      }
+    }
+    .tci-box-{{ section.id }} .tci-box__picture {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    .tci-box-{{ section.id }} .tci-box__img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      border-radius: {{ section.settings.box_border_radius }}px;
+    }
+    .tci-box-{{ section.id }} .tci-box__placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      aspect-ratio: 440 / 239;
+      border-radius: {{ section.settings.box_border_radius }}px;
+      background-color: #e5e5e5;
+      color: #737373;
+      font-size: 0.875rem;
+      text-align: center;
+      padding: 1rem;
+    }
+    @media (min-width: 768px) {
+      .tci-box-{{ section.id }} .tci-box__placeholder {
+        aspect-ratio: 736 / 400;
+      }
+    }
+  {% endif %}
 {%- endstyle -%}
 
 {% render 'section-divider' %}
+
+{%- if use_image_boxes -%}
+  <div
+    class="tci-box-{{ section.id }}"
+    role="region"
+    aria-label="{{ 'sections.text-column-image.boxes_aria_label' | t }}"
+  >
+    <div class="tci-box__inner">
+      {%- if section.settings.title != blank -%}
+        {% render 'heading-highlight',
+          headingId: section.id,
+          heading: section.settings.title,
+          highlight_type: section.settings.highlight_type,
+          class: 'text-center h2 block pb-3 md:pb-8',
+          heading_tag: section.settings.heading_tag
+        %}
+      {%- endif -%}
+      {%- if section.blocks.size == 0 -%}
+        {%- if request.design_mode -%}
+          <p class="tw-text-center tw-text-sm tw-text-[#737373]">
+            {{ 'sections.text-column-image.boxes_placeholder' | t }}
+          </p>
+        {%- endif -%}
+      {%- else -%}
+        {%- liquid
+          assign tci_box_image_sizes = '(min-width: 768px) calc((min(100vw, 1488px) - '
+          assign tci_box_image_sizes = tci_box_image_sizes | append: section.settings.box_gap | append: 'px) / 2), min(100vw, 440px)'
+        -%}
+        <div class="tci-box__grid">
+          {%- for block in section.blocks -%}
+            {%- liquid
+              assign card_image = block.settings.image
+              assign card_image_mobile = block.settings.image_mobile
+              assign card_link = block.settings.image_link
+              if block.settings.image_alt != blank
+                assign card_alt = block.settings.image_alt
+              elsif card_image != blank
+                assign card_alt = card_image.alt
+              else
+                assign card_alt = 'sections.text-column-image.boxes_card_alt' | t
+              endif
+            -%}
+            <div class="tci-box__item" {{ block.shopify_attributes }}>
+              {%- if card_image != blank -%}
+                {%- if card_link != blank -%}
+                  <a
+                    href="{{ card_link }}"
+                    class="tci-box__link"
+                    {% if block.settings.open_new_window_image %}target="_blank" rel="noopener noreferrer"{% endif %}
+                  >
+                {%- else -%}
+                  <div class="tci-box__media">
+                {%- endif -%}
+                <picture class="tci-box__picture">
+                  {%- if card_image_mobile != blank -%}
+                    <source
+                      media="(max-width: 767px)"
+                      srcset="{{ card_image_mobile | image_url: width: 880 }}"
+                    >
+                  {%- endif -%}
+                  {{
+                    card_image
+                    | image_url: width: 1472
+                    | image_tag:
+                      class: 'tci-box__img',
+                      widths: '440, 736, 880, 1472',
+                      sizes: tci_box_image_sizes,
+                      alt: card_alt,
+                      loading: 'lazy'
+                  }}
+                </picture>
+                {%- if card_link != blank -%}
+                  </a>
+                {%- else -%}
+                  </div>
+                {%- endif -%}
+              {%- elsif request.design_mode -%}
+                <div class="tci-box__placeholder">
+                  {{ 'sections.text-column-image.boxes_block_placeholder' | t }}
+                </div>
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+{%- else -%}
 <div class="section--{{ section.id }}{% if section.settings.secondary_background == "section" %} bg--{{ section.id }}{% endif %} pb-[{{ section.settings.padding_bottom_mobile }}px] pt-[{{ section.settings.padding_top_mobile }}px] md:pb-[{{ section.settings.padding_bottom }}px] md:pt-[{{ section.settings.padding_top }}px] section--{{ section.id }}{% if section.settings.padding_full_width and section.settings.full_width %} md:pl-5 md:pr-5{% endif %}">
   <div class="relative{% if section.settings.full_width %} md:pl-0 md:pr-0{% else %} x-page-width page-width mx-auto{% endif %}{% if section.settings.full_width_mobile %} full-width-mobile{% else %} pl-5 pr-5{% endif %}">
     {% if section.settings.title != blank %}
@@ -395,6 +582,7 @@
     </div>
   </div>
 </div>
+{%- endif -%}
 {% schema %}
 {
   "name": "t:sections.text-column-image.name",
@@ -476,6 +664,64 @@
           "label": "p"
         }
       ]
+    },
+    {
+      "type": "select",
+      "id": "layout_style",
+      "label": "t:sections.text-column-image.settings.layout_style.label",
+      "default": "classic",
+      "options": [
+        {
+          "value": "classic",
+          "label": "t:sections.text-column-image.settings.layout_style.options__classic.label"
+        },
+        {
+          "value": "image_boxes",
+          "label": "t:sections.text-column-image.settings.layout_style.options__image_boxes.label"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "t:sections.text-column-image.settings.box_layout_header.content"
+    },
+    {
+      "type": "range",
+      "id": "box_gap",
+      "label": "t:sections.text-column-image.settings.box_gap.label",
+      "min": 8,
+      "max": 32,
+      "step": 2,
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "box_border_radius",
+      "label": "t:sections.text-column-image.settings.box_border_radius.label",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "box_padding_y",
+      "label": "t:sections.text-column-image.settings.box_padding_y.label",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "default": 40,
+      "info": "t:sections.text-column-image.settings.box_padding_y.info"
+    },
+    {
+      "type": "range",
+      "id": "box_padding_y_mobile",
+      "label": "t:sections.text-column-image.settings.box_padding_y_mobile.label",
+      "min": 0,
+      "max": 80,
+      "step": 1,
+      "default": 15,
+      "info": "t:sections.text-column-image.settings.box_padding_y_mobile.info"
     },
     {
       "type": "select",
@@ -827,6 +1073,17 @@
           "id": "image",
           "label": "t:sections.all.image.label",
           "info": "t:sections.text-column-image.blocks.column.settings.image.info"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "t:sections.text-column-image.blocks.column.settings.image_mobile.label",
+          "info": "t:sections.text-column-image.blocks.column.settings.image_mobile.info"
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "t:sections.text-column-image.blocks.column.settings.image_alt.label"
         },
         {
           "type": "url",

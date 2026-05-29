@@ -71,7 +71,8 @@
       "previous": "Previous"
     },
     "search": {
-      "search": "Search..."
+      "search": "Search...",
+      "placeholder": "What are you looking for?"
     },
     "cart": {
       "item_added_to_cart": "Item added to cart",
@@ -85,15 +86,15 @@
       "share_link": "Share link",
       "placeholder_discount": "Please enter discount code",
       "discount_code": "Discount code",
-      "discount": "Discount",
+      "discount": "Promo code",
       "discount_wrong": "Discount invalid. Please make sure the discount details are correct.",
       "discount_correct": "Discount applied!",
       "discount_applied": "Discount code is already applied.",
       "payment_methods": "We accept",
       "share_cart": "Share cart",
-      "progress_message_html": "Add <span class=\"text-[#e91e8c] font-medium\">{{ amount }}</span> to get <span class=\"text-[#e91e8c] font-medium\">{{ benefit }}</span>!",
+      "progress_message_html": "Add {{ amount }} to get <strong>{{ benefit }}</strong>.",
       "progress_max": "Congratulations! You've unlocked all rewards!",
-      "progress_tier_1": "Free Shipping",
+      "progress_tier_1": "Free shipping",
       "progress_tier_2": "10% OFF",
       "progress_tier_3": "15% OFF",
       "progress_tier_4": "20% OFF"
@@ -152,6 +153,9 @@
     "collection_title": "Your collection's name"
   },
   "products": {
+    "silver_badge": "Certified fine silver • Law 925",
+    "garantia_satisfaccion_heading": "Satisfaction guarantee",
+    "garantia_satisfaccion_text": "If the product does not meet your expectations, you can request a hassle-free return within the first few days after purchase.",
     "product": {
       "option_name": "Option name",
       "description_default": "This area is used to describe your product’s details. Tell customers about the look, feel, and style of your product. Add details on color, materials used, sizing, and where it was made.",
@@ -222,6 +226,8 @@
       "size_chart": "Size Chart",
       "share_social": "Share",
       "share": "Share this product",
+      "add_to_wishlist": "Add to wishlist",
+      "remove_from_wishlist": "Remove from wishlist",
       "sold_out": "Sold out",
       "unavailable": "Unavailable",
       "vendor": "Vendor",
@@ -316,6 +322,68 @@
     }
   },
   "sections": {
+    "huincha-header": {
+      "aria_label": "Promotional banner",
+      "alt": "Here is something special for you",
+      "placeholder": "Upload a desktop image (1920×100 px recommended) and a mobile image (750×120 px recommended)."
+    },
+    "ticker": {
+      "name": "Ticker",
+      "aria_label": "Promotional ticker"
+    },
+    "banner-principal": {
+      "aria_label": "Main banner",
+      "slide_alt": "Promotional banner",
+      "placeholder": "Upload a desktop image (1920×580 px recommended) in this slide block.",
+      "previous": "Previous slide",
+      "next": "Next slide"
+    },
+    "banner-kit": {
+      "aria_label": "Gift kit promotional banner",
+      "alt": "Gift kit on your first purchase",
+      "slide_alt": "Gift kit promotional banner",
+      "placeholder": "Upload a desktop image (1488×400 px recommended) and a mobile image (440×400 px recommended).",
+      "previous": "Previous slide",
+      "next": "Next slide"
+    },
+    "countdown-timer": {
+      "aria_label": "Countdown timer",
+      "hours": "hours",
+      "minutes": "minutes",
+      "seconds": "seconds",
+      "minutes_short": "min",
+      "seconds_short": "sec"
+    },
+    "coupon-badges": {
+      "aria_label": "Coupon badges",
+      "badge_alt": "Discount coupon",
+      "placeholder": "Upload a coupon image (360×212 px recommended) in this block."
+    },
+    "category-cards": {
+      "aria_label": "Category cards",
+      "card_alt": "Category",
+      "placeholder": "Upload a square image (360×360 px recommended) in this block."
+    },
+    "featured-collection-misjoyas": {
+      "aria_label": "Featured collection",
+      "placeholder": "Choose a collection in the section settings.",
+      "empty_collection": "This collection has no products yet.",
+      "previous": "Previous products",
+      "next": "Next products"
+    },
+    "recently-viewed-products": {
+      "name": "Recently viewed",
+      "aria_label": "Recently viewed products",
+      "placeholder": "Browse products to see them here.",
+      "previous": "Previous products",
+      "next": "Next products"
+    },
+    "text-column-image": {
+      "boxes_aria_label": "Image columns",
+      "boxes_placeholder": "Add image column blocks to this section.",
+      "boxes_block_placeholder": "Upload an image for this column.",
+      "boxes_card_alt": "Promotional image"
+    },
     "mobile-navigation": {
       "my_cart": "My cart"
     },
@@ -323,6 +391,7 @@
       "title": "Your cart",
       "subtotal": "Subtotal",
       "total": "Total",
+      "estimated_total": "Estimated total",
       "total_savings": "You've saved {{total_discount}}!",
       "order_note": "Order note",
       "note": "Order special instructions",
@@ -335,6 +404,8 @@
       "taxes_included_but_shipping_at_checkout": "Tax included and shipping calculated at checkout",
       "taxes_included_and_shipping_policy_html": "Tax included. <a target='_blank' href='{{ link }}' class='nav-link hover-text-link relative effect-inline'>Shipping<\/a> calculated at checkout.",
       "taxes_and_shipping_at_checkout": "Taxes and shipping calculated at checkout",
+      "misjoyas_shipping_note_html": "<a href=\"{{ link }}\">Shipping</a> calculated at checkout.",
+      "misjoyas_shipping_note_plain": "Shipping calculated at checkout.",
       "cart_enable_terms_and_conditions": "I agree with the terms and conditions",
       "cart_enable_terms_and_conditions_html": "I agree with the <a href='{{ url }}' class='button-link relative text-[rgba(var(--colors-text-link))]' target='_blank'>terms and conditions<\/a>",
       "headings": {

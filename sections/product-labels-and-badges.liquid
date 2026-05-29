@@ -27,7 +27,11 @@
         }
       {%- endunless -%}
       .x-badge-{{ block.id }} {
-        --font-size-scale: {{ block.settings.font_size_mobile | times: 0.01 | times: text_base_size }}rem;
+        {%- if block.type == 'tag-label' -%}
+          --font-size-scale: 12px;
+        {%- else -%}
+          --font-size-scale: {{ block.settings.font_size_mobile | times: 0.01 | times: text_base_size }}rem;
+        {%- endif -%}
         {% if block.settings.image != blank %}
           --width-image-label: {{ block.settings.size_mobile | times: 15 }}px;
           --height-image-label: {{ block.settings.size_mobile | times: 15 | divided_by: block.settings.image.aspect_ratio }}px;
@@ -35,7 +39,11 @@
       }
       @media (min-width: 768px) {
         .x-badge-{{ block.id }} {
-          --font-size-scale: {{ block.settings.font_size | times: 0.01 | times: text_base_size }}rem;
+          {%- if block.type == 'tag-label' -%}
+            --font-size-scale: 13px;
+          {%- else -%}
+            --font-size-scale: {{ block.settings.font_size | times: 0.01 | times: text_base_size }}rem;
+          {%- endif -%}
           {% if block.settings.image != blank %}
             --width-image-label: {{ block.settings.size | times: 15 }}px;
             --height-image-label: {{ block.settings.size | times: 15 | divided_by: block.settings.image.aspect_ratio }}px;
@@ -55,6 +63,7 @@
         "applied_to": "{{ block.settings.applied_to }}",
         "applied_products": [{{ block.settings.applied_products | map: 'id' | join: ', ' }}],
         "applied_collections": [{{ block.settings.applied_collections | map: 'id' | join: ', ' }}],
+        "product_tag": {{ block.settings.product_tag | default: '' | json }},
         "content": "{{ block.settings.content | replace: "&", "&amp;" | replace: '"', "&#8221;" | replace: "'", "&#039;" | replace: "\", "&#8726;" }}",
         "type": "{{ block.settings.display_type | default: "square" }}",
         "background_color": "{{ block.settings.background_color }}",
@@ -163,7 +172,8 @@
               "inventory_management": "shopify",
               "qty": 6,
               "container": "card",
-              "isXBadgesPreview": true
+              "isXBadgesPreview": true,
+              "tags": ["dia-madre"]{% if settings.metafield_label != blank %},{% endif %}
               {% if settings.metafield_label != blank %}
                 ,"metafield_label": { 
                   {{ list_metafield_label }}
@@ -2773,6 +2783,260 @@
       ]
     },
     {
+      "type": "tag-label",
+      "name": "Tag label",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Shows when the product has the chosen tag. Optional product/collection limits work like other text labels."
+        },
+        {
+          "type": "checkbox",
+          "id": "show_on_product_card",
+          "label": "t:sections.product-labels-and-badges.blocks.show_on_product_card.label",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_on_product_page",
+          "label": "t:sections.product-labels-and-badges.blocks.show_on_product_page.label",
+          "info": "t:sections.product-labels-and-badges.blocks.show_on_product_page.info",
+          "default": true
+        },
+        {
+          "type": "product_list",
+          "id": "applied_products",
+          "label": "t:sections.product-labels-and-badges.blocks.applied_products.label"
+        },
+        {
+          "type": "collection_list",
+          "id": "applied_collections",
+          "label": "t:sections.product-labels-and-badges.blocks.applied_collections.label"
+        },
+        {
+          "type": "text",
+          "id": "product_tag",
+          "label": "Product tag",
+          "default": "dia-madre",
+          "info": "Exact tag handle (e.g. dia-madre). The badge shows only if the product has this tag."
+        },
+        {
+          "type": "text",
+          "id": "content",
+          "default": "Día de la Madre",
+          "label": "t:sections.collection-list.blocks.promotion_block.settings.content.label"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "options": [
+            {
+              "value": "none",
+              "label": "t:sections.all.icon.options.none"
+            },
+            {
+              "value": "heart",
+              "label": "t:sections.all.icon.options.heart"
+            }
+          ],
+          "label": "t:sections.all.icon.label",
+          "default": "none"
+        },
+        {
+          "type": "text",
+          "id": "another_icon",
+          "label": "t:sections.all.icon.another_icon_label"
+        },
+        {
+          "type": "html",
+          "id": "custom_icon",
+          "label": "t:sections.all.icon.custom_icon",
+          "info": "t:sections.all.icon.custom_icon_info"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.product-labels-and-badges.blocks.display_header.content"
+        },
+        {
+          "type": "select",
+          "id": "display_type",
+          "options": [
+            {
+              "value": "square",
+              "label": "t:settings_schema.products.square"
+            },
+            {
+              "value": "round",
+              "label": "t:settings_schema.buttons.rounded_corners"
+            },
+            {
+              "value": "rounded-full",
+              "label": "t:settings_schema.buttons.rounded"
+            }
+          ],
+          "default": "square",
+          "label": "t:sections.product-labels-and-badges.blocks.type.label"
+        },
+        {
+          "type": "range",
+          "id": "opacity",
+          "min": 10,
+          "max": 100,
+          "step": 10,
+          "unit": "%",
+          "label": "t:sections.product-labels-and-badges.blocks.opacity.label",
+          "default": 100
+        },
+        {
+          "type": "paragraph",
+          "content": "t:sections.product-labels-and-badges.blocks.config-separator-info-paragraph"
+        },
+        {
+          "type": "range",
+          "id": "font_size",
+          "min": 50,
+          "max": 200,
+          "step": 10,
+          "unit": "%",
+          "default": 90,
+          "label": "t:sections.product-labels-and-badges.blocks.font_size.label"
+        },
+        {
+          "type": "range",
+          "id": "font_size_mobile",
+          "min": 50,
+          "max": 200,
+          "step": 10,
+          "unit": "%",
+          "default": 90,
+          "label": "t:sections.product-labels-and-badges.blocks.font_size_mobile.label"
+        },
+        {
+          "type": "range",
+          "id": "size",
+          "min": 1,
+          "max": 10,
+          "step": 1,
+          "label": "t:sections.product-labels-and-badges.blocks.size.label",
+          "default": 2
+        },
+        {
+          "type": "range",
+          "id": "size_mobile",
+          "min": 1,
+          "max": 10,
+          "step": 1,
+          "label": "t:sections.product-labels-and-badges.blocks.size_mobile.label",
+          "default": 2
+        },
+        {
+          "type": "select",
+          "id": "position",
+          "options": [
+            {
+              "value": "top-left",
+              "label": "t:sections.all.content_position.options__1.label",
+              "group": "t:sections.all.on_product_image"
+            },
+            {
+              "value": "top-right",
+              "label": "t:sections.all.content_position.options__3.label",
+              "group": "t:sections.all.on_product_image"
+            },
+            {
+              "value": "bottom-left",
+              "label": "t:sections.all.content_position.options__7.label",
+              "group": "t:sections.all.on_product_image"
+            },
+            {
+              "value": "bottom-right",
+              "label": "t:sections.all.content_position.options__9.label",
+              "group": "t:sections.all.on_product_image"
+            },
+            {
+              "value": "custom",
+              "label": "t:sections.all.content_position.options__10.label",
+              "group": "t:sections.all.on_product_image"
+            },
+            {
+              "value": "below-image",
+              "label": "t:sections.all.content_position.below_image.label",
+              "group": "t:sections.all.outside_product_image"
+            },
+            {
+              "value": "bottom-card",
+              "label": "t:sections.all.content_position.botom_card.label",
+              "group": "t:sections.all.outside_product_image"
+            }
+          ],
+          "default": "top-left",
+          "label": "t:sections.product-labels-and-badges.blocks.positions.label"
+        },
+        {
+          "type": "range",
+          "id": "horizontal_position",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "t:sections.product-labels-and-badges.blocks.horizontal_position.label",
+          "default": 5,
+          "info": "t:sections.all.content_position.custom_position_info"
+        },
+        {
+          "type": "range",
+          "id": "vertical_position",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "t:sections.product-labels-and-badges.blocks.vertical_position.label",
+          "default": 5,
+          "info": "t:sections.all.content_position.custom_position_info"
+        },
+        {
+          "type": "header",
+          "content": "t:settings_schema.products.swatches_type.color"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "default": "#f83785",
+          "label": "t:sections.all.background.background_color_light"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "default": "#FFFFFF",
+          "label": "t:sections.all.text.color"
+        },
+        {
+          "type": "color",
+          "id": "border_color",
+          "default": "rgba(0,0,0,0)",
+          "label": "t:sections.product-labels-and-badges.blocks.border_color.label"
+        },
+        {
+          "type": "color",
+          "id": "background_color_dark",
+          "default": "#f83785",
+          "label": "t:sections.all.background.background_color_dark"
+        },
+        {
+          "type": "color",
+          "id": "text_color_dark",
+          "default": "#FFFFFF",
+          "label": "t:sections.all.text.color_dark"
+        },
+        {
+          "type": "color",
+          "id": "border_color_dark",
+          "default": "rgba(0,0,0,0)",
+          "label": "t:sections.product-labels-and-badges.blocks.border_color_dark.label"
+        }
+      ]
+    },
+    {
       "type": "image-label",
       "name": "t:sections.product-labels-and-badges.blocks.image-label.name",
       "settings": [
@@ -4909,6 +5173,17 @@
       },
       {
         "type": "new-label"
+      },
+      {
+        "type": "tag-label",
+        "settings": {
+          "product_tag": "dia-madre",
+          "content": "Día de la Madre",
+          "background_color": "#f83785",
+          "text_color": "#ffffff",
+          "background_color_dark": "#f83785",
+          "text_color_dark": "#ffffff"
+        }
       }
     ]
   }

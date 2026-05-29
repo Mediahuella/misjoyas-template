@@ -41,6 +41,7 @@
         "paragraph_pYKcP4",
         "email_form_CAEgrz"
       ],
+      "disabled": true,
       "settings": {
         "overlay_opacity": 0,
         "background_color_light": "#f9f4ef",
@@ -124,99 +125,70 @@
     "footer": {
       "type": "footer",
       "blocks": {
-        "footer-2": {
+        "footer-brand": {
           "type": "text",
           "settings": {
-            "open_by_default": false,
-            "heading_text": "About",
-            "subtext": "<p>Share store details, promotions, or brand content with your customers.</p>",
-            "show_social_icons": false,
-            "image_width": 100,
-            "link_image_footer": "",
+            "open_by_default": true,
+            "heading_text": "",
+            "subtext": "<p>DESDE 1990</p><p>Venta de joyas en plata 925 al por mayor Chile.</p>",
+            "show_social_icons": true,
+            "icon_layout": "horizontal",
+            "image": "shopify://shop_images/LOGOMIS_JOYAS.svg",
+            "image_width": 180,
+            "link_image_footer": "/",
             "open_new_window": false
           }
         },
-        "footer-0": {
+        "footer-te-ayudamos": {
           "type": "link_list",
           "settings": {
             "open_by_default": true,
-            "heading_menu": "Popular Shop",
-            "menu": "main-menu",
+            "heading_menu": "Te ayudamos",
+            "menu": "footer-te-ayudamos",
             "show_social_icons": false
           }
         },
-        "footer-1": {
+        "footer-politicas": {
           "type": "link_list",
           "settings": {
             "open_by_default": false,
-            "heading_menu": "Explore",
-            "menu": "main-menu",
+            "heading_menu": "Políticas",
+            "menu": "footer-politicas",
             "show_social_icons": false
           }
         },
-        "link_list_i9gHXh": {
-          "type": "link_list",
+        "footer-newsletter": {
+          "type": "email_footer",
           "settings": {
-            "open_by_default": false,
-            "heading_menu": "Information",
-            "menu": "main-menu",
+            "open_by_default": true,
+            "heading_email": "Regístrate",
+            "subtext_email": "<p>Y recibe nuestras noticias y ofertas</p>",
             "show_social_icons": false
-          }
-        },
-        "contact_LbERbb": {
-          "type": "contact",
-          "settings": {
-            "open_by_default": false,
-            "heading_menu": "Need help",
-            "icon_1": "question-mark",
-            "another_icon_1": "",
-            "custom_icon": "",
-            "title_1": "Got questions? Call us 24/7",
-            "text_1": "1908474783",
-            "text_link_1": "",
-            "open_new_window_1": false,
-            "enable_text_link_1": true,
-            "icon_2": "message-text",
-            "another_icon_2": "",
-            "custom_icon_2": "",
-            "title_2": "Need help with your order?",
-            "text_2": "Contact",
-            "text_link_2": "",
-            "open_new_window_2": false,
-            "enable_text_link_2": true,
-            "icon_3": "chat-bubble",
-            "another_icon_3": "",
-            "custom_icon_3": "",
-            "title_3": "Available 24/7 via chat",
-            "text_3": "Chat With US",
-            "text_link_3": "",
-            "open_new_window_3": false,
-            "enable_text_link_3": true
           }
         }
       },
       "block_order": [
-        "footer-2",
-        "footer-0",
-        "footer-1",
-        "link_list_i9gHXh",
-        "contact_LbERbb"
+        "footer-brand",
+        "footer-te-ayudamos",
+        "footer-politicas",
+        "footer-newsletter"
       ],
       "settings": {
-        "columns_desktop": 5,
-        "show_language_selector": true,
-        "show_currency_selector": true,
+        "columns_desktop": 4,
+        "show_language_selector": false,
+        "show_currency_selector": false,
         "show_social_icons": false,
         "payment_enable": true,
         "custom_payment": "",
-        "show_copyright": true,
+        "show_copyright": false,
         "add_copyright_text": "",
         "additional_layout": "horizontal",
-        "show_powered": true,
+        "show_powered": false,
         "enable_follow_on_shop": false,
-        "top_padding": 0,
+        "horizontal_position": "right",
+        "top_padding": 48,
         "bottom_padding": 40,
-        "top_padding_mobile": 0,
+        "top_padding_mobile": 20,
         "bottom_padding_mobile": 28
       }
     }

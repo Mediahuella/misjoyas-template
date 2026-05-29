@@ -1,7 +1,28 @@
-<div class="{% if section.settings.include_margins %}x-page-width page-width{% endif %}">
-  {%- for block in section.blocks -%}
-    {% render block %}
-  {%- endfor -%}
+{%- style -%}
+  .section-apps-{{ section.id }} .section-apps__blocks {
+    display: flex;
+    flex-direction: column;
+    align-items: {% case section.settings.content_alignment %}{% when 'center' %}center{% when 'right' %}flex-end{% else %}flex-start{% endcase %};
+  }
+  .section-apps-{{ section.id }} .section-apps__blocks .shopify-app-block {
+    width: 100%;
+  }
+  .section-apps-{{ section.id }}.section-apps--center .section-apps__blocks .shopify-app-block {
+    display: flex;
+    justify-content: center;
+  }
+  .section-apps-{{ section.id }}.section-apps--center .section-apps__blocks .shopify-app-block > * {
+    margin-left: auto;
+    margin-right: auto;
+  }
+{%- endstyle -%}
+
+<div class="section-apps-{{ section.id }}{% if section.settings.content_alignment == 'center' %} section-apps--center{% endif %}{% if section.settings.include_margins %} x-page-width page-width{% endif %}">
+  <div class="section-apps__blocks">
+    {%- for block in section.blocks -%}
+      {% render block %}
+    {%- endfor -%}
+  </div>
 </div>
 
 {% schema %}
@@ -15,6 +36,26 @@
       "id": "include_margins",
       "default": true,
       "label": "t:sections.apps.settings.include_margins.label"
+    },
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "label": "t:sections.all.content_alignment.label",
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.all.content_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.all.content_alignment.options__2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.all.content_alignment.options__3.label"
+        }
+      ]
     }
   ],
   "blocks": [

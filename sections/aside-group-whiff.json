@@ -139,13 +139,43 @@
             "text_color_dark": "#0d0d0d",
             "border_color_dark": "#ffffff"
           }
+        },
+        "tag_label_dia_madre": {
+          "type": "tag-label",
+          "settings": {
+            "show_on_product_card": true,
+            "show_on_product_page": true,
+            "applied_products": [],
+            "applied_collections": [],
+            "product_tag": "dia-madre",
+            "content": "Día de la Madre",
+            "icon": "none",
+            "another_icon": "",
+            "custom_icon": "",
+            "display_type": "square",
+            "opacity": 100,
+            "font_size": 90,
+            "font_size_mobile": 90,
+            "size": 1,
+            "size_mobile": 1,
+            "position": "top-right",
+            "horizontal_position": 95,
+            "vertical_position": 5,
+            "background_color": "#f83785",
+            "text_color": "#ffffff",
+            "border_color": "rgba(0,0,0,0)",
+            "background_color_dark": "#f83785",
+            "text_color_dark": "#ffffff",
+            "border_color_dark": "rgba(0,0,0,0)"
+          }
         }
       },
       "block_order": [
         "new_label_73ifFi",
         "db437385-f419-4af9-9154-0a7b80de9329",
         "product-labels-and-badges-0",
-        "product-labels-and-badges-1"
+        "product-labels-and-badges-1",
+        "tag_label_dia_madre"
       ],
       "settings": {
         "enable": true
