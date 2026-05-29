@@ -25,7 +25,10 @@
       gap: var(--coupon-badge-gap-mobile);
       max-width: 25rem;
       margin-inline: auto;
-      padding: var(--coupon-badge-padding-mobile-y) 1rem;
+      padding-top: var(--coupon-badge-padding-mobile-y);
+      padding-bottom: var(--coupon-badge-padding-mobile-y);
+      padding-left: 1rem;
+      padding-right: 1rem;
     }
     .coupon-badges-{{ section.id }} .coupon-badges__item {
       width: 100%;
@@ -48,7 +51,10 @@
         gap: var(--coupon-badge-gap);
         max-width: none;
         margin-inline: 0;
-        padding: 1.25rem 0;
+        padding-top: 1.25rem;
+        padding-bottom: 1.25rem;
+        padding-left: 0;
+        padding-right: 0;
       }
       .coupon-badges-{{ section.id }} .coupon-badges__item {
         flex: 1 1 0;
@@ -88,7 +94,8 @@
     role="region"
     aria-label="{{ 'sections.coupon-badges.aria_label' | t }}"
   >
-    <div class="coupon-badges__track x-page-width page-width">
+    <div class="coupon-badges__wrap x-page-width page-width">
+      <div class="coupon-badges__track">
       {%- for block in section.blocks -%}
         {%- liquid
           assign badge_image = block.settings.image
@@ -143,6 +150,7 @@
           {%- endif -%}
         </div>
       {%- endfor -%}
+      </div>
     </div>
   </div>
   {%- endunless -%}
