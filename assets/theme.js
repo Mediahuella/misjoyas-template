@@ -4,7 +4,7 @@ const installMediaQueryWatcher = (mediaQuery, changedCallback) => {
   changedCallback(mq.matches);
 };
 
-const deferScriptLoad = (name, src, onload, requestVisualChange = false) => {
+const deferScriptLoad = (name, src, onload, requestVisualChange = false, eager = false) => {
   window.Eurus.loadedScript.push(name);
   
   (events => {
@@ -36,7 +36,7 @@ const deferScriptLoad = (name, src, onload, requestVisualChange = false) => {
     };
 
     let autoloadScript;
-    if (Shopify.designMode) {
+    if (Shopify.designMode || eager) {
       loadScript();
     } else {
       const wait = window.innerWidth > 767 ? 2000 : 5000;
@@ -1861,6 +1861,9 @@ requestAnimationFrame(() => {
   document.addEventListener('alpine:init', () => {
     Alpine.store('xSplide', {
       load(el, configs) {
+        const eager = configs.eager === true;
+        if (eager) delete configs.eager;
+
         const initSlider = () => {
           const id = el.getAttribute("id");
           if(configs.classes != undefined) {
@@ -2028,7 +2031,7 @@ requestAnimationFrame(() => {
         }
 
         if (!window.Eurus.loadedScript.includes('slider')) {
-          deferScriptLoad('slider', window.Eurus.sliderScript, initSlider, true);
+          deferScriptLoad('slider', window.Eurus.sliderScript, initSlider, true, eager);
         } else if (window.Splide){
           initSlider();
         } else {

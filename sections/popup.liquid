@@ -1,0 +1,349 @@
+{% liquid
+    assign show = false
+    assign start_s = section.settings.start | strip
+    assign end_s = section.settings.ends | strip
+  
+    unless start_s contains ' '
+      if start_s != blank
+        assign start_s = start_s | append: ' 00:00:00'
+      endif
+    endunless
+    unless end_s contains ' '
+      if end_s != blank
+        assign end_s = end_s | append: ' 23:59:59'
+      endif
+    endunless
+  
+    assign current_time = 'now' | date: '%Y-%m-%d %H:%M:%S'
+  
+    if request.design_mode
+      assign show = true
+    elsif start_s != blank and end_s != blank
+      if current_time >= start_s and current_time <= end_s
+        assign show = true
+      endif
+    endif
+  %}
+  
+  {% comment %}
+    if current_time >= section.settings.start and current_time <= section.settings.ends
+      if request.path == '/collections/todo-libros-mas-vendidos' or request.path == '/collections/lectura-complementaria' or request.path == '/collections/accesorios-de-lectura' or request.path == '/collections/libros-infantil' or request.path == '/collections/libros-viva-leer' or request.path == '/collections/libros-clasicos' or request.path == '/collections/autoayuda' or request.path == '/collections/libros-de-series-y-peliculas' or request.path == '/collections/comic-y-manga' or request.path == '/collections/todo-libros' or request.path == '/' or request.path == '/collections/libros-sin-limites'
+        assign show = true
+      endif
+    endif
+  {% endcomment %}
+  
+  {% comment %} request.path == '/collections/promociones-copec' or request.path == '/' or request.path == '/collections/mochilas-y-bolsos2' or request.path == '/collections/promociones-copec' or request.path == '/collections/stitch-disney' or request.path == '/collections/pack-de-mochilas' or request.path == '/collections/mochilas-licencias' or request.path == '/collections/mochilas-infantiles' or request.path == '/collections/mochilas-y-bolsos2' or request.path == '/collections/mochila' or request.path == '/collections/mochilas-y-bolsos-yadatex' or request.path == '/collections/mochilas-casuales' or request.path == '/collections/mochilas-juveniles' or request.path == '/collections/mochilas-de-notebook' or request.path == '/collections/stitch-disney' {% endcomment %}
+  
+  {% if show %}
+    {% style %}
+      /* Backdrop y capa fija: no depender de Tailwind (theme puede no incluir bg-black/50) */
+      #shopify-popup-overlay-{{ section.id }} {
+        position: fixed;
+        inset: 0;
+        z-index: 2147483646;
+        width: 100%;
+        min-height: 100vh;
+        max-height: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        overflow-y: auto;
+        background-color: rgba(0, 0, 0, 0.55);
+        align-items: center;
+        justify-content: center;
+      }
+      /* Botón cerrar: color y tamaño fijos (sin depender de Tailwind / currentColor) */
+      #shopify-popup-close-{{ section.id }} {
+        color: #374151;
+        width: 36px;
+        height: 36px;
+        padding: 0;
+        margin: 0;
+        cursor: pointer;
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 9999px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        right: 8px;
+        top: 8px;
+        z-index: 10;
+      }
+      #shopify-popup-close-{{ section.id }}:hover {
+        background: #f3f4f6;
+        color: #111827;
+      }
+      #shopify-popup-close-{{ section.id }} .shopify-popup-close-icon {
+        display: flex;
+        width: 20px;
+        height: 20px;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+      }
+      #shopify-popup-close-{{ section.id }} .shopify-popup-close-icon svg {
+        width: 20px;
+        height: 20px;
+        display: block;
+      }
+      #shopify-popup-inner-{{ section.id }} .shopify-popup-image {
+        cursor: pointer;
+        display: block;
+        width: 100%;
+      }
+    {% endstyle %}
+    <div
+      id="shopify-popup-overlay-{{ section.id }}"
+      tabindex="-1"
+      aria-hidden="true"
+      style="display: none;"
+      class="shopify-popup-overlay"
+      data-popup-storage-key="popup-closed-{{ section.id }}"
+    >
+      <div
+        class="relative p-4 w-2xl max-w-2xl md:max-w-[450px] max-h-full"
+        id="shopify-popup-inner-{{ section.id }}"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Popup"
+      >
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-xl shadow overflow-hidden">
+          <button
+            type="button"
+            id="shopify-popup-close-{{ section.id }}"
+            aria-label="{{ 'accessibility.close' | t }}"
+          >
+            <span class="shopify-popup-close-icon" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                focusable="false"
+              >
+                <path
+                  d="M18 6L6 18M6 6l12 12"
+                  stroke="currentColor"
+                  stroke-width="2.25"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+          </button>
+          {{
+            section.settings.image
+            | image_url: width: 600
+            | image_tag:
+              loading: 'eager',
+              fetchpriority: 'high',
+              alt: 'Popup',
+              class: 'shopify-popup-image object-cover object-center aspect-square'
+          }}
+          {% if section.settings.countdown %}
+            <div
+              class="absolute bottom-1 left-1"
+              id="shopify-popup-countdown-{{ section.id }}"
+              data-popup-ends="{{ section.settings.ends | escape }}"
+            >
+              <div class="flex items-center gap-0.5">
+                <span
+                  class="bg-white text-gray-900 inline-flex flex-col text-center px-2 py-1 rounded-md hidden"
+                  data-popup-cd-days-wrap
+                >
+                  <span class="text-[6px] uppercase tracking-[1px]">Días</span>
+                  <span class="text-sm" data-popup-cd-days>00</span>
+                </span>
+                <span class="bg-white text-gray-900 inline-flex flex-col text-center px-2 py-1 rounded-md">
+                  <span class="text-[6px] uppercase tracking-[1px]">Hor</span>
+                  <span class="text-sm" data-popup-cd-hours>00</span>
+                </span>
+                <span class="bg-white text-gray-900 inline-flex flex-col text-center px-2 py-1 rounded-md">
+                  <span class="text-[6px] uppercase tracking-[1px]">Min</span>
+                  <span class="text-sm" data-popup-cd-minutes>00</span>
+                </span>
+                <span class="bg-white text-gray-900 inline-flex flex-col text-center px-2 py-1 rounded-md">
+                  <span class="text-[6px] uppercase tracking-[1px]">Seg</span>
+                  <span class="text-sm" data-popup-cd-seconds>00</span>
+                </span>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  
+    <script>
+      (function () {
+        var designMode = {{ request.design_mode | json }};
+  
+        function initPopup() {
+          var overlay = document.getElementById('shopify-popup-overlay-{{ section.id }}');
+          if (!overlay) return;
+  
+          var storageKey = overlay.getAttribute('data-popup-storage-key') || 'popup-closed-{{ section.id }}';
+          var inner = document.getElementById('shopify-popup-inner-{{ section.id }}');
+          var closeBtn = document.getElementById('shopify-popup-close-{{ section.id }}');
+  
+          function pad(n) {
+            return n < 10 ? '0' + String(n) : String(n);
+          }
+  
+          function closePopup() {
+            overlay.style.display = 'none';
+            overlay.setAttribute('aria-hidden', 'true');
+            if (!designMode) {
+              try {
+                sessionStorage.setItem(storageKey, 'true');
+              } catch (e) {}
+            }
+          }
+  
+          function openPopup() {
+            overlay.style.display = 'flex';
+            overlay.setAttribute('aria-hidden', 'false');
+          }
+  
+          var wasClosed = false;
+          if (!designMode) {
+            try {
+              wasClosed = sessionStorage.getItem(storageKey) === 'true';
+            } catch (e) {}
+          }
+  
+          if (!wasClosed) {
+            openPopup();
+          }
+  
+          if (closeBtn) {
+            closeBtn.addEventListener('click', function (e) {
+              e.preventDefault();
+              e.stopPropagation();
+              closePopup();
+            });
+          }
+  
+          var popupImage = inner && inner.querySelector('.shopify-popup-image');
+          if (popupImage) {
+            popupImage.addEventListener('click', function (e) {
+              e.preventDefault();
+              e.stopPropagation();
+              closePopup();
+            });
+          }
+  
+          overlay.addEventListener('click', function (e) {
+            if (e.target === overlay) {
+              closePopup();
+            }
+          });
+  
+          if (inner) {
+            inner.addEventListener('click', function (e) {
+              e.stopPropagation();
+            });
+          }
+  
+          var countdownRoot = document.getElementById('shopify-popup-countdown-{{ section.id }}');
+          if (countdownRoot) {
+            var ends = countdownRoot.getAttribute('data-popup-ends');
+            if (ends) {
+              var elDays = countdownRoot.querySelector('[data-popup-cd-days]');
+              var elHours = countdownRoot.querySelector('[data-popup-cd-hours]');
+              var elMinutes = countdownRoot.querySelector('[data-popup-cd-minutes]');
+              var elSeconds = countdownRoot.querySelector('[data-popup-cd-seconds]');
+              var wrapDays = countdownRoot.querySelector('[data-popup-cd-days-wrap]');
+  
+              function tick() {
+                var target = new Date(ends).getTime();
+                var now = Date.now();
+                var duration = target - now;
+  
+                if (duration <= 0) {
+                  if (elDays) elDays.textContent = '00';
+                  if (elHours) elHours.textContent = '00';
+                  if (elMinutes) elMinutes.textContent = '00';
+                  if (elSeconds) elSeconds.textContent = '00';
+                  if (wrapDays) wrapDays.classList.add('hidden');
+                  return;
+                }
+  
+                var days = Math.floor(duration / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((duration % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((duration % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((duration % (1000 * 60)) / 1000);
+  
+                if (wrapDays) {
+                  if (days > 0) {
+                    wrapDays.classList.remove('hidden');
+                    if (elDays) elDays.textContent = pad(days);
+                  } else {
+                    wrapDays.classList.add('hidden');
+                  }
+                }
+                if (elHours) elHours.textContent = pad(hours);
+                if (elMinutes) elMinutes.textContent = pad(minutes);
+                if (elSeconds) elSeconds.textContent = pad(seconds);
+              }
+  
+              tick();
+              setInterval(tick, 1000);
+            }
+          }
+        }
+  
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initPopup);
+        } else {
+          initPopup();
+        }
+      })();
+    </script>
+  {% endif %}
+  
+  {% schema %}
+  {
+    "name": "Popup imagen",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Imagen del popup"
+      },
+      {
+        "type": "text",
+        "id": "start",
+        "label": "Inicio",
+        "info": "Hora de la tienda. Ej: 2026-03-01 00:00:00 o solo fecha 2026-03-01 (se usa 00:00:00). En el editor del tema el popup se ve siempre para previsualizar."
+      },
+      {
+        "type": "text",
+        "id": "ends",
+        "label": "Finaliza",
+        "info": "Ej: 2026-12-31 23:59:59 o solo 2026-12-31 (se usa 23:59:59). La fecha/hora actual debe estar entre Inicio y Finaliza."
+      },
+      {
+        "type": "checkbox",
+        "id": "countdown",
+        "label": "¿Cuenta atrás?",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "available_routes",
+        "label": "Rutas disponibles",
+        "default": "/",
+        "info": "Debes agregar las rutas de la siguiente forma \"/collections/all, /\""
+      }
+    ],
+    "presets": [
+      {
+        "name": "Popup imagen"
+      }
+    ]
+  }
+  {% endschema %}
+  

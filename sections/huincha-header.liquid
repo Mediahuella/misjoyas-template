@@ -41,7 +41,7 @@
         width: 100%;
         height: min(
           calc(100vw * {{ mobile_ar_h }} / {{ mobile_ar_w }}),
-          clamp(40px, 12vw, var(--huincha-max-h-mobile))
+          var(--huincha-max-h-mobile)
         );
         overflow: hidden;
       }
@@ -55,8 +55,13 @@
         display: block;
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
         object-position: center;
+      }
+      @media (min-width: 768px) {
+        .huincha-header-{{ section.id }} .huincha-header__img {
+          object-fit: cover;
+        }
       }
       .huincha-header-{{ section.id }} .huincha-header__placeholder {
         display: flex;
@@ -177,7 +182,7 @@
       "type": "image_picker",
       "id": "image_mobile",
       "label": "Imagen (móvil)",
-      "info": "Recomendado 750×120 px o similar. Si está vacía, se usa la imagen de escritorio."
+      "info": "Estándar 750×120 px. Si está vacía, se usa la imagen de escritorio."
     },
     {
       "type": "text",
@@ -210,10 +215,11 @@
       "type": "range",
       "id": "banner_height_mobile",
       "label": "Altura máxima en móvil (px)",
+      "info": "Tope de seguridad. Con imágenes 750×120 px el alto real se calcula automáticamente según el ancho de pantalla (~120 px en 750 px de ancho).",
       "min": 40,
-      "max": 120,
+      "max": 160,
       "step": 2,
-      "default": 56
+      "default": 130
     }
   ],
   "presets": [

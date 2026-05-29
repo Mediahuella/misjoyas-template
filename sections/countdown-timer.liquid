@@ -1,12 +1,27 @@
 {%- if section.settings.enable -%}
   {%- unless section.settings.show_only_on_homepage and request.page_type != 'index' -%}
   {%- liquid
-    assign countdown_heading = section.settings.heading
-    assign countdown_subheading = section.settings.subheading
+    assign countdown_title = section.settings.title
+    assign countdown_subtitle = section.settings.subtitle
     assign box_bg = section.settings.box_background
     assign box_text = section.settings.box_text_color
     assign label_color = section.settings.label_color
     assign colon_color = section.settings.colon_color
+
+    assign target_date = section.settings.target_date | default: '2026-12-31'
+    assign target_time = section.settings.target_time | default: '23:59'
+    assign date_parts = target_date | split: '-'
+    assign time_parts = target_time | split: ':'
+    assign end_year = date_parts[0] | plus: 0
+    assign end_month = date_parts[1] | plus: 0
+    assign end_day = date_parts[2] | plus: 0
+    assign end_hour = time_parts[0] | plus: 0
+    assign end_minute = time_parts[1] | default: '0' | plus: 0
+    assign timezone = section.settings.timezone | default: '-4'
+
+    assign hours_label = section.settings.hours_label | default: 'horas'
+    assign minutes_label = section.settings.minutes_label | default: 'min'
+    assign seconds_label = section.settings.seconds_label | default: 'seg'
   -%}
 
   {%- style -%}
@@ -16,6 +31,14 @@
       --countdown-label-color: {{ label_color }};
       --countdown-colon-color: {{ colon_color }};
       width: 100%;
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+    @media (min-width: 768px) {
+      .countdown-timer-{{ section.id }} {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
     }
     .countdown-timer-{{ section.id }} .countdown-timer__inner {
       display: flex;
@@ -65,11 +88,18 @@
       gap: 0.5rem;
       align-items: center;
     }
-    .countdown-timer-{{ section.id }} .countdown-timer__digits {
+    .countdown-timer-{{ section.id }} .countdown-timer__timer {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
       gap: 1rem;
+    }
+    .countdown-timer-{{ section.id }} .countdown-timer__unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      width: 5rem;
     }
     .countdown-timer-{{ section.id }} .countdown-timer__box {
       display: flex;
@@ -86,31 +116,47 @@
       font-variant-numeric: tabular-nums;
     }
     .countdown-timer-{{ section.id }} .countdown-timer__colon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      align-self: flex-start;
+      height: 5.875rem;
       color: var(--countdown-colon-color);
       font-size: clamp(1.75rem, 4vw, 2.5rem);
       line-height: 2rem;
       font-weight: 400;
     }
-    .countdown-timer-{{ section.id }} .countdown-timer__labels {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
+    .countdown-timer-{{ section.id }} .countdown-timer__label {
       width: 100%;
-      max-width: 20.25rem;
       color: var(--countdown-label-color);
       font-size: clamp(1.125rem, 2.5vw, 1.625rem);
       line-height: 2rem;
       text-align: center;
     }
-    .countdown-timer-{{ section.id }} .countdown-timer__label {
-      width: 5rem;
-    }
     .countdown-timer-{{ section.id }} .countdown-timer__expired {
       margin: 0;
       text-align: center;
       font-size: 1.125rem;
+      font-weight: 600;
       color: var(--countdown-label-color);
+    }
+    .countdown-timer-{{ section.id }} .countdown-timer__cta {
+      width: 100%;
+      text-align: center;
+      margin-top: 1rem;
+    }
+    .countdown-timer-{{ section.id }} .countdown-timer__cta-link {
+      display: inline-block;
+      background-color: #000000;
+      color: #ffffff;
+      padding: 0.75rem 2rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 0.2s ease;
+    }
+    .countdown-timer-{{ section.id }} .countdown-timer__cta-link:hover {
+      background-color: #1f2937;
     }
   {%- endstyle -%}
 
@@ -131,12 +177,12 @@
       }
     }"
     x-intersect.once.margin.200px="$store.xHelper.countdown({
-      timezone: {{ section.settings.timezone | default: -4 }},
-      end_year: {{ section.settings.end_year }},
-      end_month: {{ section.settings.end_month }},
-      end_day: {{ section.settings.end_day }},
-      end_hour: {{ section.settings.end_hour }},
-      end_minute: {{ section.settings.end_minute }}
+      timezone: {{ timezone }},
+      end_year: {{ end_year }},
+      end_month: {{ end_month }},
+      end_day: {{ end_day }},
+      end_hour: {{ end_hour }},
+      end_minute: {{ end_minute }}
     }, (canShow, s, m, h) => {
       if (!canShow) {
         expired = true;
@@ -149,44 +195,58 @@
     })"
   >
     <div class="countdown-timer__inner x-page-width page-width">
-      {%- if countdown_heading != blank or countdown_subheading != blank -%}
+      {%- if countdown_title != blank or countdown_subtitle != blank -%}
         <div class="countdown-timer__copy">
-          {%- if countdown_heading != blank -%}
-            <h2 class="countdown-timer__heading">{{ countdown_heading | escape }}</h2>
+          {%- if countdown_title != blank -%}
+            <h2 class="countdown-timer__heading">{{ countdown_title | escape }}</h2>
           {%- endif -%}
-          {%- if countdown_subheading != blank -%}
-            <p class="countdown-timer__subheading">{{ countdown_subheading | escape }}</p>
+          {%- if countdown_subtitle != blank -%}
+            <p class="countdown-timer__subheading">{{ countdown_subtitle | escape }}</p>
           {%- endif -%}
         </div>
       {%- endif -%}
 
-      <div
-        class="countdown-timer__clock"
-      >
-        <p class="countdown-timer__expired" x-show="expired && !{{ section.settings.hide_when_expired | json }}" x-cloak>
+      <div class="countdown-timer__clock">
+        <p
+          class="countdown-timer__expired"
+          x-show="expired && !{{ section.settings.hide_when_expired | json }}"
+          x-cloak
+        >
           {{ section.settings.expired_message | escape }}
         </p>
         <div x-show="!expired" x-cloak>
-          <div class="countdown-timer__digits" aria-live="polite">
-              <div class="countdown-timer__box" aria-label="{{ 'sections.countdown-timer.hours' | t }}">
+          <div class="countdown-timer__timer" aria-live="polite">
+            <div class="countdown-timer__unit">
+              <div class="countdown-timer__box" aria-label="{{ hours_label | escape }}">
                 <span x-text="loading ? '--' : hours"></span>
               </div>
-              <span class="countdown-timer__colon" aria-hidden="true">:</span>
-              <div class="countdown-timer__box" aria-label="{{ 'sections.countdown-timer.minutes' | t }}">
+              <span class="countdown-timer__label">{{ hours_label | escape }}</span>
+            </div>
+            <span class="countdown-timer__colon" aria-hidden="true">:</span>
+            <div class="countdown-timer__unit">
+              <div class="countdown-timer__box" aria-label="{{ minutes_label | escape }}">
                 <span x-text="loading ? '--' : minutes"></span>
               </div>
-              <span class="countdown-timer__colon" aria-hidden="true">:</span>
-              <div class="countdown-timer__box" aria-label="{{ 'sections.countdown-timer.seconds' | t }}">
+              <span class="countdown-timer__label">{{ minutes_label | escape }}</span>
+            </div>
+            <span class="countdown-timer__colon" aria-hidden="true">:</span>
+            <div class="countdown-timer__unit">
+              <div class="countdown-timer__box" aria-label="{{ seconds_label | escape }}">
                 <span x-text="loading ? '--' : seconds"></span>
               </div>
-            </div>
-            <div class="countdown-timer__labels">
-              <span class="countdown-timer__label">{{ 'sections.countdown-timer.hours' | t }}</span>
-              <span class="countdown-timer__label">{{ 'sections.countdown-timer.minutes_short' | t }}</span>
-              <span class="countdown-timer__label">{{ 'sections.countdown-timer.seconds_short' | t }}</span>
+              <span class="countdown-timer__label">{{ seconds_label | escape }}</span>
             </div>
           </div>
+        </div>
       </div>
+
+      {%- if section.settings.cta_text != blank and section.settings.cta_url != blank -%}
+        <div class="countdown-timer__cta">
+          <a href="{{ section.settings.cta_url }}" class="countdown-timer__cta-link">
+            {{ section.settings.cta_text | escape }}
+          </a>
+        </div>
+      {%- endif -%}
     </div>
   </div>
   {%- endunless -%}
@@ -211,20 +271,34 @@
       "default": false
     },
     {
+      "type": "header",
+      "content": "Contador"
+    },
+    {
       "type": "text",
-      "id": "heading",
+      "id": "title",
       "label": "Título",
       "default": "Cyber Day"
     },
     {
       "type": "text",
-      "id": "subheading",
+      "id": "subtitle",
       "label": "Subtítulo",
       "default": "¡Apúrate! quedan"
     },
     {
-      "type": "header",
-      "content": "Fecha de término"
+      "type": "text",
+      "id": "target_date",
+      "label": "Fecha de término (AAAA-MM-DD)",
+      "default": "2026-12-31",
+      "info": "Formato: AAAA-MM-DD (ej. 2026-05-30)"
+    },
+    {
+      "type": "text",
+      "id": "target_time",
+      "label": "Hora de término (formato 24h)",
+      "default": "23:59",
+      "info": "Formato: HH:MM (ej. 12:00 para mediodía)"
     },
     {
       "type": "select",
@@ -239,114 +313,26 @@
       ]
     },
     {
-      "type": "number",
-      "id": "end_year",
-      "label": "Año",
-      "default": 2026
+      "type": "header",
+      "content": "Etiquetas"
     },
     {
-      "type": "select",
-      "id": "end_month",
-      "label": "Mes",
-      "default": "5",
-      "options": [
-        { "value": "1", "label": "Enero" },
-        { "value": "2", "label": "Febrero" },
-        { "value": "3", "label": "Marzo" },
-        { "value": "4", "label": "Abril" },
-        { "value": "5", "label": "Mayo" },
-        { "value": "6", "label": "Junio" },
-        { "value": "7", "label": "Julio" },
-        { "value": "8", "label": "Agosto" },
-        { "value": "9", "label": "Septiembre" },
-        { "value": "10", "label": "Octubre" },
-        { "value": "11", "label": "Noviembre" },
-        { "value": "12", "label": "Diciembre" }
-      ]
+      "type": "text",
+      "id": "hours_label",
+      "label": "Etiqueta horas",
+      "default": "horas"
     },
     {
-      "type": "select",
-      "id": "end_day",
-      "label": "Día",
-      "default": "31",
-      "options": [
-        { "value": "1", "label": "1" },
-        { "value": "2", "label": "2" },
-        { "value": "3", "label": "3" },
-        { "value": "4", "label": "4" },
-        { "value": "5", "label": "5" },
-        { "value": "6", "label": "6" },
-        { "value": "7", "label": "7" },
-        { "value": "8", "label": "8" },
-        { "value": "9", "label": "9" },
-        { "value": "10", "label": "10" },
-        { "value": "11", "label": "11" },
-        { "value": "12", "label": "12" },
-        { "value": "13", "label": "13" },
-        { "value": "14", "label": "14" },
-        { "value": "15", "label": "15" },
-        { "value": "16", "label": "16" },
-        { "value": "17", "label": "17" },
-        { "value": "18", "label": "18" },
-        { "value": "19", "label": "19" },
-        { "value": "20", "label": "20" },
-        { "value": "21", "label": "21" },
-        { "value": "22", "label": "22" },
-        { "value": "23", "label": "23" },
-        { "value": "24", "label": "24" },
-        { "value": "25", "label": "25" },
-        { "value": "26", "label": "26" },
-        { "value": "27", "label": "27" },
-        { "value": "28", "label": "28" },
-        { "value": "29", "label": "29" },
-        { "value": "30", "label": "30" },
-        { "value": "31", "label": "31" }
-      ]
+      "type": "text",
+      "id": "minutes_label",
+      "label": "Etiqueta minutos",
+      "default": "min"
     },
     {
-      "type": "select",
-      "id": "end_hour",
-      "label": "Hora",
-      "default": "23",
-      "options": [
-        { "value": "0", "label": "00" },
-        { "value": "1", "label": "01" },
-        { "value": "2", "label": "02" },
-        { "value": "3", "label": "03" },
-        { "value": "4", "label": "04" },
-        { "value": "5", "label": "05" },
-        { "value": "6", "label": "06" },
-        { "value": "7", "label": "07" },
-        { "value": "8", "label": "08" },
-        { "value": "9", "label": "09" },
-        { "value": "10", "label": "10" },
-        { "value": "11", "label": "11" },
-        { "value": "12", "label": "12" },
-        { "value": "13", "label": "13" },
-        { "value": "14", "label": "14" },
-        { "value": "15", "label": "15" },
-        { "value": "16", "label": "16" },
-        { "value": "17", "label": "17" },
-        { "value": "18", "label": "18" },
-        { "value": "19", "label": "19" },
-        { "value": "20", "label": "20" },
-        { "value": "21", "label": "21" },
-        { "value": "22", "label": "22" },
-        { "value": "23", "label": "23" }
-      ]
-    },
-    {
-      "type": "select",
-      "id": "end_minute",
-      "label": "Minutos",
-      "default": "59",
-      "options": [
-        { "value": "0", "label": "00" },
-        { "value": "15", "label": "15" },
-        { "value": "30", "label": "30" },
-        { "value": "45", "label": "45" },
-        { "value": "59", "label": "59" }
-      ]
+      "type": "text",
+      "id": "seconds_label",
+      "label": "Etiqueta segundos",
+      "default": "seg"
     },
     {
       "type": "header",
@@ -363,6 +349,20 @@
       "id": "expired_message",
       "label": "Mensaje si no se oculta",
       "default": "La promoción ha finalizado"
+    },
+    {
+      "type": "header",
+      "content": "Botón de acción"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Texto del botón"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Enlace del botón"
     },
     {
       "type": "header",
@@ -391,6 +391,50 @@
       "id": "label_color",
       "label": "Color de las etiquetas",
       "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Espaciado"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding superior (desktop)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding inferior (desktop)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding superior (mobile)",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding inferior (mobile)",
+      "default": 16
     }
   ],
   "presets": [

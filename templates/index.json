@@ -28,22 +28,24 @@
             "image": "shopify://shop_images/Banner2_aros_desktop_61b827bb-9178-470c-b686-fdd6eb9b209e.jpg",
             "image_mobile": "shopify://shop_images/Banner2_aros_Mobile_41c2a24d-4389-41e4-bc40-85c80e3bb6bf.jpg",
             "image_alt": "",
-            "link": "shopify://collections/aros",
+            "link": "shopify://collections/descuentos-activos",
             "open_new_window": false
           }
         },
         "slide_UaRP7F": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Banner3_anillos_desktop.jpg",
             "image_mobile": "shopify://shop_images/Banner3_anillos_Mobile_afaa744d-1f55-4415-92a1-286039f62e65.jpg",
             "image_alt": "",
-            "link": "shopify://collections/anillos",
+            "link": "shopify://collections/descuentos-activos",
             "open_new_window": false
           }
         },
         "slide_qikfwm": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Banner4_collares_desktop.jpg",
             "image_mobile": "shopify://shop_images/Banner4_collares_Mobile_399a20ec-e690-409e-820f-59d9ef024f2d.jpg",
@@ -67,8 +69,7 @@
         "slide_iP9k3K",
         "slide_Dei6nU",
         "slide_UaRP7F",
-        "slide_qikfwm",
-        "slide_TcigXr"
+        "slide_qikfwm"
       ],
       "settings": {
         "auto_play": true,
@@ -80,24 +81,29 @@
     },
     "home_countdown_timer": {
       "type": "countdown-timer",
-      "disabled": true,
       "settings": {
         "enable": true,
-        "show_only_on_homepage": false,
-        "heading": "Cyber Day",
-        "subheading": "¡Apúrate! quedan",
+        "show_only_on_homepage": true,
+        "title": "Cyber Day",
+        "subtitle": "¡Apúrate! quedan",
+        "target_date": "2026-05-30",
+        "target_time": "12:00",
         "timezone": "-4",
-        "end_year": 2026,
-        "end_month": "5",
-        "end_day": "31",
-        "end_hour": "23",
-        "end_minute": "59",
+        "hours_label": "horas",
+        "minutes_label": "min",
+        "seconds_label": "seg",
         "hide_when_expired": true,
         "expired_message": "La promoción ha finalizado",
+        "cta_text": "",
+        "cta_url": "",
         "box_background": "#f83785",
         "box_text_color": "#ffffff",
         "colon_color": "#000000",
-        "label_color": "#000000"
+        "label_color": "#000000",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "padding_top_mobile": 16,
+        "padding_bottom_mobile": 16
       }
     },
     "coupon_badges_a6Th3k": {
@@ -106,7 +112,7 @@
         "badge_mhjcNr": {
           "type": "badge",
           "settings": {
-            "image": "shopify://shop_images/f52e0a267d4788f57577c1a2144b5e33170cc2d7.jpg",
+            "image": "shopify://shop_images/Cajas-DCTO-70.jpg",
             "image_alt": "",
             "link": "",
             "open_new_window": false
@@ -115,7 +121,7 @@
         "badge_bCqfL6": {
           "type": "badge",
           "settings": {
-            "image": "shopify://shop_images/decf6c941845bcf10824edb6c0bccd5622499038.jpg",
+            "image": "shopify://shop_images/Cajas-DCTO-60.jpg",
             "image_alt": "",
             "link": "",
             "open_new_window": false
@@ -124,7 +130,7 @@
         "badge_XAczzt": {
           "type": "badge",
           "settings": {
-            "image": "shopify://shop_images/3a65c15957f6f9217d8fd50bb03b14b10cdd7cf8.jpg",
+            "image": "shopify://shop_images/Cajas-DCTO-50.jpg",
             "image_alt": "",
             "link": "",
             "open_new_window": false
@@ -133,7 +139,7 @@
         "badge_bqDeg7": {
           "type": "badge",
           "settings": {
-            "image": "shopify://shop_images/835eaf914333e89acf042f60027d018a59a492ca.jpg",
+            "image": "shopify://shop_images/Cajas-DCTO-40.jpg",
             "image_alt": "",
             "link": "",
             "open_new_window": false
@@ -146,7 +152,6 @@
         "badge_XAczzt",
         "badge_bqDeg7"
       ],
-      "disabled": true,
       "name": "Coupon badges",
       "settings": {
         "enable": true,
@@ -230,7 +235,7 @@
       "settings": {
         "title_icon": "",
         "title_icon_color": "#68b5a3",
-        "title": "Lo más vendido",
+        "title": "Ofertas exclusivas Cyber Day",
         "collection": "c_mas-vendidos",
         "products_to_show": 16,
         "gap": 16,
@@ -315,6 +320,7 @@
         "title_icon": "✦",
         "title_icon_color": "#68b5a3",
         "title": "¡Lo último!",
+        "collection": "nuevo",
         "collection": "nuevo",
         "products_to_show": 16,
         "gap": 16,
@@ -803,6 +809,41 @@
         "padding_top_mobile": 0,
         "padding_bottom_mobile": 0
       }
+    },
+    "popup_6AnBUK": {
+      "type": "popup",
+      "name": "Popup imagen",
+      "settings": {
+        "image": "shopify://shop_images/Dia1_joyero_popup_dc534a97-5d7e-4b31-a0cb-91c6f7895450.jpg",
+        "start": "2026-05-29 00:01:00",
+        "ends": "2026-05-30 00:01:00",
+        "countdown": false,
+        "available_routes": "/"
+      }
+    },
+    "popup_yGHy4R": {
+      "type": "popup",
+      "disabled": true,
+      "name": "Popup imagen",
+      "settings": {
+        "image": "shopify://shop_images/Dia2_kit_popup_8e7e8ef7-53e6-4c39-af97-51f023760e7b.jpg",
+        "start": "2026-05-29 00:01:00",
+        "ends": "2026-05-30 00:01:00",
+        "countdown": false,
+        "available_routes": "/"
+      }
+    },
+    "popup_h9bTpX": {
+      "type": "popup",
+      "disabled": true,
+      "name": "Popup imagen",
+      "settings": {
+        "image": "shopify://shop_images/Dia3_aros_popup_e0d881cf-996a-455e-a08e-e4a4c3a67cea.jpg",
+        "start": "2026-05-29 00:01:00",
+        "ends": "2026-05-30 00:01:00",
+        "countdown": false,
+        "available_routes": "/"
+      }
     }
   },
   "order": [
@@ -820,6 +861,9 @@
     "image_with_text_tCdRr9",
     "featured_collection_misjoyas_WKk9MB",
     "text_column_with_image_PEq4Ck",
-    "multicolumn_bQPMpc"
+    "multicolumn_bQPMpc",
+    "popup_6AnBUK",
+    "popup_yGHy4R",
+    "popup_h9bTpX"
   ]
 }

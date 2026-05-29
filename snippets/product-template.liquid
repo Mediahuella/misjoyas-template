@@ -222,6 +222,26 @@
             {%- endif -%}
             {%- for block in section.blocks -%}
               {%- case block.type -%}
+
+                {% comment %} Aqui van los tag de promociones {% endcomment %}
+
+              {% when 'logo_cyber' -%}
+                {% if product.tags contains 'cyber-2026' %}
+                  <div
+                    class="product__logo-cyber"
+                    {{ block.shopify_attributes }}
+                  >
+                    <img
+                      src="{{ block.settings.logo_cyber | image_url: width: 100 }}"
+                      alt="Logo Cyber"
+                      width="75"
+                      height="75"
+                      loading="lazy"
+                    >
+                  </div>
+                {% endif %}
+                {% comment %} Fin tag de promociones {% endcomment %}
+                 
                 {%- when '@app' -%}
                   <div class="mb-3 w-full app-block{% if show_content_center %} text-center{% endif %}">
                     {% render block %}

@@ -192,7 +192,8 @@
     id="x-banner-principal-{{ section.id }}"
     class="banner-principal__slider splide-slideshow overflow-hidden visible tw-w-full{% if enable_slider %} x-splide splide disable-effect-hover{% endif %}"
     {% if enable_slider %}
-      x-intersect.once.margin.200px='$store.xSplide.load($el, {
+      x-init='$store.xSplide.load($el, {
+        "eager": true,
         "speed": 800,
         "type": "loop",
         "pauseOnHover": true,
