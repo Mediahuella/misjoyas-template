@@ -38,6 +38,12 @@
             "custom_html": "<div class=\"misjoyas-silver-badge\">\n  <span class=\"misjoyas-silver-icon\" aria-hidden=\"true\">\n    <img src=\"{{ 'plata-925-icon.svg' | asset_url }}\" alt=\"\" width=\"28\" height=\"28\" loading=\"lazy\">\n  </span>\n  <span class=\"misjoyas-silver-text\">Plata fina certificada • Ley 925</span>\n</div>\n\n<style>\n\n.misjoyas-silver-badge{\ndisplay:inline-flex;\nalign-items:center;\ngap:6px;\nbackground:linear-gradient(135deg,#f5f5f5,#e3e3e3);\ncolor:#222;\nfont-size:13px;\nfont-weight:600;\npadding:6px 10px;\nborder-radius:6px;\nborder:1px solid #dcdcdc;\nbox-shadow:0 2px 6px rgba(0,0,0,0.08);\nmargin-bottom:6px;\nanimation:misjoyasBadgeFade 0.5s ease;\n}\n\n.misjoyas-silver-icon{\ndisplay:flex;\nalign-items:center;\nflex-shrink:0;\nwidth:28px;\nheight:28px;\n}\n\n.misjoyas-silver-icon img{\ndisplay:block;\nwidth:28px;\nheight:28px;\n}\n\n.misjoyas-silver-text{\nletter-spacing:.2px;\n}\n\n@keyframes misjoyasBadgeFade{\nfrom{\nopacity:0;\ntransform:translateY(5px);\n}\nto{\nopacity:1;\ntransform:translateY(0);\n}\n}\n\n@media (max-width:600px){\n\n.misjoyas-silver-badge{\nfont-size:12px;\npadding:5px 8px;\n}\n\n}\n\n</style>"
           }
         },
+        "html_EdbWHG": {
+          "type": "html",
+          "settings": {
+            "custom_html": "<div class=\"misjoyas-silver-badge\">\n  <span class=\"misjoyas-silver-icon\" aria-hidden=\"true\">\n    <img src=\"{{ 'plata-925-icon.svg' | asset_url }}\" alt=\"\" width=\"28\" height=\"28\" loading=\"lazy\">\n  </span>\n  <span class=\"misjoyas-silver-text\">Plata fina certificada • Ley 925</span>\n</div>\n\n<style>\n\n.misjoyas-silver-badge{\ndisplay:inline-flex;\nalign-items:center;\ngap:6px;\nbackground:linear-gradient(135deg,#f5f5f5,#e3e3e3);\ncolor:#222;\nfont-size:13px;\nfont-weight:600;\npadding:6px 10px;\nborder-radius:6px;\nborder:1px solid #dcdcdc;\nbox-shadow:0 2px 6px rgba(0,0,0,0.08);\nmargin-bottom:6px;\nanimation:misjoyasBadgeFade 0.5s ease;\n}\n\n.misjoyas-silver-icon{\ndisplay:flex;\nalign-items:center;\nflex-shrink:0;\nwidth:28px;\nheight:28px;\n}\n\n.misjoyas-silver-icon img{\ndisplay:block;\nwidth:28px;\nheight:28px;\n}\n\n.misjoyas-silver-text{\nletter-spacing:.2px;\n}\n\n@keyframes misjoyasBadgeFade{\nfrom{\nopacity:0;\ntransform:translateY(5px);\n}\nto{\nopacity:1;\ntransform:translateY(0);\n}\n}\n\n@media (max-width:600px){\n\n.misjoyas-silver-badge{\nfont-size:12px;\npadding:5px 8px;\n}\n\n}\n\n</style>"
+          }
+        },
         "html_z7HzVj": {
           "type": "html",
           "disabled": true,
@@ -285,6 +291,7 @@
         "product_sku_8UPmFF",
         "price",
         "html_FyjCUi",
+        "html_EdbWHG",
         "html_z7HzVj",
         "badges_CRMAFB",
         "variant_picker",
