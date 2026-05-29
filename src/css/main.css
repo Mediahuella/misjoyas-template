@@ -864,11 +864,41 @@
   color: #ffffff !important;
   font-size: calc(20px * 5 / 6) !important;
   line-height: 1.2 !important;
+  
 }
 
 @media (min-width: 768px) {
   .card-product .bottom-left-container .x-badge-content.x-badge-text {
     font-size: 20px !important;
+  }
+}
+
+/* Logo Cyber en cards — desktop 100px, mobile proporcional (ratio 5/6) */
+.card-product .link-product-variant .cyber-badge-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  width: auto;
+  height: auto;
+  max-width: calc(100px * 5 / 6);
+  pointer-events: none;
+}
+
+.card-product .link-product-variant .cyber-badge-container img {
+  display: block;
+  width: calc(100px * 5 / 6);
+  height: auto;
+  max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  .card-product .link-product-variant .cyber-badge-container {
+    max-width: 100px;
+  }
+
+  .card-product .link-product-variant .cyber-badge-container img {
+    width: 100px;
   }
 }
 

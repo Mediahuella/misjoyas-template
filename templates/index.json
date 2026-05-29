@@ -24,12 +24,11 @@
         },
         "slide_Dei6nU": {
           "type": "slide",
-          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/DIA1_Banner_joyero_desktop.jpg",
             "image_mobile": "shopify://shop_images/DIA1_Banner_joyero_mobile.jpg",
             "image_alt": "",
-            "link": "shopify://collections/aros",
+            "link": "shopify://collections/descuentos-activos",
             "open_new_window": false
           }
         },
@@ -40,7 +39,7 @@
             "image": "shopify://shop_images/DIA2_Banner_kit_desktop.jpg",
             "image_mobile": "shopify://shop_images/DIA2_Banner_kit_mobile.jpg",
             "image_alt": "",
-            "link": "shopify://collections/anillos",
+            "link": "shopify://collections/descuentos-activos",
             "open_new_window": false
           }
         },
@@ -51,7 +50,7 @@
             "image": "shopify://shop_images/DIA3_aros_desktop.jpg",
             "image_mobile": "shopify://shop_images/DIA3_Banner_aros_mobile.jpg",
             "image_alt": "",
-            "link": "shopify://collections/collares",
+            "link": "shopify://collections/descuentos-activos",
             "open_new_window": false
           }
         }
@@ -103,7 +102,7 @@
         "badge_mhjcNr": {
           "type": "badge",
           "settings": {
-            "image": "shopify://shop_images/f52e0a267d4788f57577c1a2144b5e33170cc2d7.jpg",
+            "image": "shopify://shop_images/Cajas-DCTO-70.jpg",
             "image_alt": "",
             "link": "",
             "open_new_window": false
@@ -112,7 +111,7 @@
         "badge_bCqfL6": {
           "type": "badge",
           "settings": {
-            "image": "shopify://shop_images/decf6c941845bcf10824edb6c0bccd5622499038.jpg",
+            "image": "shopify://shop_images/Cajas-DCTO-60.jpg",
             "image_alt": "",
             "link": "",
             "open_new_window": false
@@ -121,7 +120,7 @@
         "badge_XAczzt": {
           "type": "badge",
           "settings": {
-            "image": "shopify://shop_images/3a65c15957f6f9217d8fd50bb03b14b10cdd7cf8.jpg",
+            "image": "shopify://shop_images/Cajas-DCTO-50.jpg",
             "image_alt": "",
             "link": "",
             "open_new_window": false
@@ -130,7 +129,7 @@
         "badge_bqDeg7": {
           "type": "badge",
           "settings": {
-            "image": "shopify://shop_images/835eaf914333e89acf042f60027d018a59a492ca.jpg",
+            "image": "shopify://shop_images/Cajas-DCTO-40.jpg",
             "image_alt": "",
             "link": "",
             "open_new_window": false
@@ -800,74 +799,39 @@
         "padding_bottom_mobile": 0
       }
     },
-    "popup_promotion_6D63gd": {
-      "type": "popup-promotion",
-      "blocks": {
-        "heading_mpJNhg": {
-          "type": "heading",
-          "settings": {
-            "subheading": "",
-            "heading": "$10 off your first order",
-            "highlight_type": "underline",
-            "heading_color": "#ffffff",
-            "heading_color_dark": "#FFFFFF"
-          }
-        },
-        "text_Wrg6nf": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Simply enter code coupon_code at checkout</p>",
-            "coupon_code": "SIMPLY10",
-            "coupon_color": "#f83785",
-            "coupon_color_dark": "rgba(0,0,0,0)"
-          }
-        },
-        "button_UkDwbX": {
-          "type": "button",
-          "settings": {
-            "button_label": "SHOP NOW",
-            "button_link": "",
-            "open_new_window": false,
-            "button_color": "rgba(0,0,0,0)",
-            "button_text_color": "rgba(0,0,0,0)",
-            "button_color_hover": "rgba(0,0,0,0)",
-            "button_text_color_hover": "rgba(0,0,0,0)",
-            "button_color_dark": "rgba(0,0,0,0)",
-            "button_text_color_dark": "rgba(0,0,0,0)",
-            "button_color_hover_dark": "rgba(0,0,0,0)",
-            "button_text_color_hover_dark": "rgba(0,0,0,0)"
-          }
-        }
-      },
-      "block_order": [
-        "heading_mpJNhg",
-        "text_Wrg6nf",
-        "button_UkDwbX"
-      ],
-      "disabled": true,
-      "name": "t:settings_schema.cart.settings.cart_type.popup.label",
+    "popup_6AnBUK": {
+      "type": "popup",
+      "name": "Popup imagen",
       "settings": {
-        "popup_position": "center",
-        "image": "shopify://shop_images/Dia1_joyero_popup_b0f1afc5-019d-42b8-8fa3-472328477e2c.jpg",
-        "content_position": "left",
-        "content_alignment": "center",
-        "background_color_light": "rgba(0,0,0,0)",
-        "text_color_light": "rgba(0,0,0,0)",
-        "background_color_dark": "rgba(0,0,0,0)",
-        "text_color_dark": "rgba(0,0,0,0)",
-        "trigger_intent": "delay",
-        "delay": 5,
-        "scroll_height": 25,
-        "show_for_guests_only": false,
-        "show_on_mobile": false,
-        "schedule_enabled": false,
-        "reappear_after": 7,
-        "enable_desktop": true,
-        "default_style": "full",
-        "enable_mobile": false,
-        "default_style_mobile": "minimal",
-        "minimal_title": "",
-        "minimal_subtitle": ""
+        "image": "shopify://shop_images/Dia1_joyero_popup_dc534a97-5d7e-4b31-a0cb-91c6f7895450.jpg",
+        "start": "2026-05-29 00:01:00",
+        "ends": "2026-05-30 00:01:00",
+        "countdown": false,
+        "available_routes": "/"
+      }
+    },
+    "popup_yGHy4R": {
+      "type": "popup",
+      "disabled": true,
+      "name": "Popup imagen",
+      "settings": {
+        "image": "shopify://shop_images/Dia2_kit_popup_8e7e8ef7-53e6-4c39-af97-51f023760e7b.jpg",
+        "start": "2026-05-29 00:01:00",
+        "ends": "2026-05-30 00:01:00",
+        "countdown": false,
+        "available_routes": "/"
+      }
+    },
+    "popup_h9bTpX": {
+      "type": "popup",
+      "disabled": true,
+      "name": "Popup imagen",
+      "settings": {
+        "image": "shopify://shop_images/Dia3_aros_popup_e0d881cf-996a-455e-a08e-e4a4c3a67cea.jpg",
+        "start": "2026-05-29 00:01:00",
+        "ends": "2026-05-30 00:01:00",
+        "countdown": false,
+        "available_routes": "/"
       }
     }
   },
@@ -887,6 +851,8 @@
     "featured_collection_misjoyas_WKk9MB",
     "text_column_with_image_PEq4Ck",
     "multicolumn_bQPMpc",
-    "popup_promotion_6D63gd"
+    "popup_6AnBUK",
+    "popup_yGHy4R",
+    "popup_h9bTpX"
   ]
 }

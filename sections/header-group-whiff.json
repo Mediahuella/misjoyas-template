@@ -15,9 +15,9 @@
       "type": "misjoyas-topbar",
       "settings": {
         "enable": true,
-        "text": "🎁Todas las Compras desde $49.990 durante MAYO participan en el sorteo de 20 Giftcards de $50.000🎁",
+        "text": "✨ OFERTAS EXCLUSIVAS CYBER DAY HASTA 70% DCTO — ¡No te lo pierdas! ✨       🛍️ 1, 2 y 3 DE JUNIO 🛍️",
         "text_color": "#ffffff",
-        "background_color": "#000000",
+        "background_color": "#f83785",
         "animation_speed": 20,
         "font_size": 14,
         "gap": 60,
@@ -192,6 +192,30 @@
         "button_4QAbNM": {
           "type": "button",
           "settings": {
+            "button_label": "Cyber Day",
+            "button_link": "shopify://collections/descuentos-activos",
+            "open_new_window": false,
+            "show_button_style": "primary",
+            "button_light": "#f83785",
+            "button_text_light": "#ffffff",
+            "button_hover_light": "#f83785",
+            "button_text_hover_light": "#ffffff",
+            "secondary_button_light": "rgba(0,0,0,0)",
+            "secondary_button_text_light": "rgba(0,0,0,0)",
+            "colors_text_link": "rgba(0,0,0,0)",
+            "button_dark": "rgba(0,0,0,0)",
+            "button_text_dark": "rgba(0,0,0,0)",
+            "button_hover_dark": "rgba(0,0,0,0)",
+            "button_text_hover_dark": "rgba(0,0,0,0)",
+            "secondary_button_dark": "rgba(0,0,0,0)",
+            "secondary_button_text_dark": "rgba(0,0,0,0)",
+            "colors_text_link_dark": "rgba(0,0,0,0)"
+          }
+        },
+        "button_YfAny9": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
             "button_label": "Día del Padre",
             "button_link": "shopify://collections/dia-del-padre",
             "open_new_window": false,
@@ -238,7 +262,30 @@
           "type": "tree_menu",
           "settings": {
             "heading": "Colecciones",
-            "menu": "colecciones-1",
+            "menu": "colecciones-cyber",
+            "menu_item_link": "",
+            "open_new_window": false,
+            "show_image_collection": false,
+            "show_first_image_product": false,
+            "show_image_product": false,
+            "collection_metafield": "",
+            "label": "",
+            "label_position": "above",
+            "label_color": "#ce021e",
+            "label_text_color_light": "#ffffff",
+            "label_color_dark": "#ce021e",
+            "label_text_color_dark": "#ffffff",
+            "icon": "none",
+            "another_icon": "",
+            "custom_icon": ""
+          }
+        },
+        "tree_menu_FxFEXV": {
+          "type": "tree_menu",
+          "disabled": true,
+          "settings": {
+            "heading": "Descuentos",
+            "menu": "descuentos-black",
             "menu_item_link": "",
             "open_new_window": false,
             "show_image_collection": false,
@@ -305,8 +352,10 @@
       },
       "block_order": [
         "button_4QAbNM",
+        "button_YfAny9",
         "tree_menu_4Hjg4P",
         "tree_menu_eMW3PW",
+        "tree_menu_FxFEXV",
         "button_xHbCrf",
         "button_zagCDi"
       ],
@@ -756,34 +805,19 @@
         "highlight_color_dark": "rgba(0,0,0,0)"
       }
     },
-    "huincha_header_Na6hkQ": {
-      "type": "huincha-header",
-      "name": "Huincha header",
-      "settings": {
-        "enable": true,
-        "show_only_on_homepage": false,
-        "image": "shopify://shop_images/GENERAL_huincha_desktop.jpg",
-        "image_mobile": "shopify://shop_images/GENERAL_huincha_mobile_bb39ffd2-fbf4-4a20-80fc-6dee129b6fa6.jpg",
-        "image_alt": "",
-        "link": "",
-        "open_new_window": false,
-        "banner_height": 100,
-        "banner_height_mobile": 120
-      }
-    },
     "huincha_header_8CzzLy": {
       "type": "huincha-header",
-      "disabled": true,
       "name": "Huincha header",
       "settings": {
         "enable": true,
         "show_only_on_homepage": false,
-        "image": "shopify://shop_images/DIA1_huincha_desktop.jpg",
+        "image": "shopify://shop_images/DIA1_huincha_desktop_91b609d2-ba35-4021-920e-0c43f328dd35.jpg",
+        "image_mobile": "shopify://shop_images/DIA1_huincha_mobile.jpg",
         "image_alt": "",
-        "link": "",
+        "link": "shopify://collections/descuentos-activos",
         "open_new_window": false,
         "banner_height": 100,
-        "banner_height_mobile": 56
+        "banner_height_mobile": 130
       }
     },
     "huincha_header_qmfEWG": {
@@ -793,13 +827,29 @@
       "settings": {
         "enable": true,
         "show_only_on_homepage": false,
-        "image": "shopify://shop_images/huincha_VIP_desktop.jpg",
-        "image_mobile": "shopify://shop_images/huincha_VIP_mobile.jpg",
+        "image": "shopify://shop_images/DIA2_huincha_desktop_37b1e0be-dd16-43bf-9032-d92a6190a5b3.jpg",
+        "image_mobile": "shopify://shop_images/DIA2_huincha_mobile_c1d2238c-68b3-4b14-9635-09f53bec5372.jpg",
         "image_alt": "",
-        "link": "shopify://pages/formulario-klaviyo",
+        "link": "shopify://collections/descuentos-activos",
         "open_new_window": false,
         "banner_height": 100,
-        "banner_height_mobile": 56
+        "banner_height_mobile": 130
+      }
+    },
+    "huincha_header_JdEaTj": {
+      "type": "huincha-header",
+      "disabled": true,
+      "name": "Huincha header",
+      "settings": {
+        "enable": true,
+        "show_only_on_homepage": false,
+        "image": "shopify://shop_images/DIA3_huincha_desktop_bac46bbf-3359-494a-b165-1e0d2486a2e4.jpg",
+        "image_mobile": "shopify://shop_images/DIA3_huincha_mobile.jpg",
+        "image_alt": "",
+        "link": "shopify://collections/descuentos-activos",
+        "open_new_window": false,
+        "banner_height": 100,
+        "banner_height_mobile": 130
       }
     }
   },
@@ -809,8 +859,8 @@
     "announcement-bar",
     "header",
     "mobile-navigation",
-    "huincha_header_Na6hkQ",
     "huincha_header_8CzzLy",
-    "huincha_header_qmfEWG"
+    "huincha_header_qmfEWG",
+    "huincha_header_JdEaTj"
   ]
 }
