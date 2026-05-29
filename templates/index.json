@@ -15,8 +15,8 @@
         "slide_iP9k3K": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Banner1-MJDays_Desktop_Desktop_Desktop.jpg",
-            "image_mobile": "shopify://shop_images/Banner1-MJDays_Mobile.jpg",
+            "image": "shopify://shop_images/Banner1_General_Desktop.jpg",
+            "image_mobile": "shopify://shop_images/Banner1_General_Mobile.jpg",
             "image_alt": "",
             "link": "shopify://collections/descuentos-activos",
             "open_new_window": false
@@ -25,8 +25,8 @@
         "slide_Dei6nU": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Banner2_aros.jpg",
-            "image_mobile": "shopify://shop_images/Banner2_aros_Mobile.jpg",
+            "image": "shopify://shop_images/Banner2_aros_desktop_61b827bb-9178-470c-b686-fdd6eb9b209e.jpg",
+            "image_mobile": "shopify://shop_images/Banner2_aros_Mobile_41c2a24d-4389-41e4-bc40-85c80e3bb6bf.jpg",
             "image_alt": "",
             "link": "shopify://collections/aros",
             "open_new_window": false
@@ -35,8 +35,8 @@
         "slide_UaRP7F": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Banner3_anillos.jpg",
-            "image_mobile": "shopify://shop_images/Banner3_anillos_Mobile.jpg",
+            "image": "shopify://shop_images/Banner3_anillos_desktop.jpg",
+            "image_mobile": "shopify://shop_images/Banner3_anillos_Mobile_afaa744d-1f55-4415-92a1-286039f62e65.jpg",
             "image_alt": "",
             "link": "shopify://collections/anillos",
             "open_new_window": false
@@ -45,8 +45,8 @@
         "slide_qikfwm": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Banner4_collares.jpg",
-            "image_mobile": "shopify://shop_images/Banner4_collares_Mobile.jpg",
+            "image": "shopify://shop_images/Banner4_collares_desktop.jpg",
+            "image_mobile": "shopify://shop_images/Banner4_collares_Mobile_399a20ec-e690-409e-820f-59d9ef024f2d.jpg",
             "image_alt": "",
             "link": "shopify://collections/collares",
             "open_new_window": false
@@ -55,8 +55,8 @@
         "slide_TcigXr": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Banner5_pulseras.jpg",
-            "image_mobile": "shopify://shop_images/Banner5_pulseras_Mobile.jpg",
+            "image": "shopify://shop_images/Banner5_pulseras_desktop.jpg",
+            "image_mobile": "shopify://shop_images/Banner5_pulseras_Mobile_87980a70-68f4-40b5-8e48-7f54b92cac8a.jpg",
             "image_alt": "",
             "link": "shopify://collections/pulseras",
             "open_new_window": false
@@ -315,7 +315,7 @@
         "title_icon": "✦",
         "title_icon_color": "#68b5a3",
         "title": "¡Lo último!",
-        "collection": "aros",
+        "collection": "nuevo",
         "products_to_show": 16,
         "gap": 16,
         "gap_mobile": 12,
