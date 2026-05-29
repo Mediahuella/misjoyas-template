@@ -24,6 +24,7 @@
         },
         "slide_Dei6nU": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/DIA1_Banner_joyero_desktop.jpg",
             "image_mobile": "shopify://shop_images/DIA1_Banner_joyero_mobile.jpg",
@@ -34,6 +35,7 @@
         },
         "slide_UaRP7F": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/DIA2_Banner_kit_desktop.jpg",
             "image_mobile": "shopify://shop_images/DIA2_Banner_kit_mobile.jpg",
@@ -44,6 +46,7 @@
         },
         "slide_qikfwm": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/DIA3_aros_desktop.jpg",
             "image_mobile": "shopify://shop_images/DIA3_Banner_aros_mobile.jpg",
@@ -69,24 +72,29 @@
     },
     "home_countdown_timer": {
       "type": "countdown-timer",
-      "disabled": true,
       "settings": {
         "enable": true,
-        "show_only_on_homepage": false,
-        "heading": "Cyber Day",
-        "subheading": "¡Apúrate! quedan",
+        "show_only_on_homepage": true,
+        "title": "Cyber Day",
+        "subtitle": "¡Apúrate! quedan",
+        "target_date": "2026-05-30",
+        "target_time": "12:00",
         "timezone": "-4",
-        "end_year": 2026,
-        "end_month": "5",
-        "end_day": "31",
-        "end_hour": "23",
-        "end_minute": "59",
+        "hours_label": "horas",
+        "minutes_label": "min",
+        "seconds_label": "seg",
         "hide_when_expired": true,
         "expired_message": "La promoción ha finalizado",
+        "cta_text": "",
+        "cta_url": "",
         "box_background": "#f83785",
         "box_text_color": "#ffffff",
         "colon_color": "#000000",
-        "label_color": "#000000"
+        "label_color": "#000000",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "padding_top_mobile": 16,
+        "padding_bottom_mobile": 16
       }
     },
     "coupon_badges_a6Th3k": {
@@ -135,7 +143,6 @@
         "badge_XAczzt",
         "badge_bqDeg7"
       ],
-      "disabled": true,
       "name": "Coupon badges",
       "settings": {
         "enable": true,
@@ -219,7 +226,7 @@
       "settings": {
         "title_icon": "",
         "title_icon_color": "#68b5a3",
-        "title": "Lo más vendido",
+        "title": "Ofertas exclusivas Cyber Day",
         "collection": "c_mas-vendidos",
         "products_to_show": 16,
         "gap": 16,
@@ -792,6 +799,76 @@
         "padding_top_mobile": 0,
         "padding_bottom_mobile": 0
       }
+    },
+    "popup_promotion_6D63gd": {
+      "type": "popup-promotion",
+      "blocks": {
+        "heading_mpJNhg": {
+          "type": "heading",
+          "settings": {
+            "subheading": "",
+            "heading": "$10 off your first order",
+            "highlight_type": "underline",
+            "heading_color": "#ffffff",
+            "heading_color_dark": "#FFFFFF"
+          }
+        },
+        "text_Wrg6nf": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Simply enter code coupon_code at checkout</p>",
+            "coupon_code": "SIMPLY10",
+            "coupon_color": "#f83785",
+            "coupon_color_dark": "rgba(0,0,0,0)"
+          }
+        },
+        "button_UkDwbX": {
+          "type": "button",
+          "settings": {
+            "button_label": "SHOP NOW",
+            "button_link": "",
+            "open_new_window": false,
+            "button_color": "rgba(0,0,0,0)",
+            "button_text_color": "rgba(0,0,0,0)",
+            "button_color_hover": "rgba(0,0,0,0)",
+            "button_text_color_hover": "rgba(0,0,0,0)",
+            "button_color_dark": "rgba(0,0,0,0)",
+            "button_text_color_dark": "rgba(0,0,0,0)",
+            "button_color_hover_dark": "rgba(0,0,0,0)",
+            "button_text_color_hover_dark": "rgba(0,0,0,0)"
+          }
+        }
+      },
+      "block_order": [
+        "heading_mpJNhg",
+        "text_Wrg6nf",
+        "button_UkDwbX"
+      ],
+      "disabled": true,
+      "name": "t:settings_schema.cart.settings.cart_type.popup.label",
+      "settings": {
+        "popup_position": "center",
+        "image": "shopify://shop_images/Dia1_joyero_popup_b0f1afc5-019d-42b8-8fa3-472328477e2c.jpg",
+        "content_position": "left",
+        "content_alignment": "center",
+        "background_color_light": "rgba(0,0,0,0)",
+        "text_color_light": "rgba(0,0,0,0)",
+        "background_color_dark": "rgba(0,0,0,0)",
+        "text_color_dark": "rgba(0,0,0,0)",
+        "trigger_intent": "delay",
+        "delay": 5,
+        "scroll_height": 25,
+        "show_for_guests_only": false,
+        "show_on_mobile": false,
+        "schedule_enabled": false,
+        "reappear_after": 7,
+        "enable_desktop": true,
+        "default_style": "full",
+        "enable_mobile": false,
+        "default_style_mobile": "minimal",
+        "minimal_title": "",
+        "minimal_subtitle": ""
+      }
     }
   },
   "order": [
@@ -809,6 +886,7 @@
     "image_with_text_tCdRr9",
     "featured_collection_misjoyas_WKk9MB",
     "text_column_with_image_PEq4Ck",
-    "multicolumn_bQPMpc"
+    "multicolumn_bQPMpc",
+    "popup_promotion_6D63gd"
   ]
 }

@@ -762,9 +762,40 @@
       "settings": {
         "enable": true,
         "show_only_on_homepage": false,
+        "image": "shopify://shop_images/GENERAL_huincha_desktop.jpg",
+        "image_mobile": "shopify://shop_images/GENERAL_huincha_mobile_bb39ffd2-fbf4-4a20-80fc-6dee129b6fa6.jpg",
+        "image_alt": "",
+        "link": "",
+        "open_new_window": false,
+        "banner_height": 100,
+        "banner_height_mobile": 120
+      }
+    },
+    "huincha_header_8CzzLy": {
+      "type": "huincha-header",
+      "disabled": true,
+      "name": "Huincha header",
+      "settings": {
+        "enable": true,
+        "show_only_on_homepage": false,
+        "image": "shopify://shop_images/DIA1_huincha_desktop.jpg",
+        "image_alt": "",
+        "link": "",
+        "open_new_window": false,
+        "banner_height": 100,
+        "banner_height_mobile": 56
+      }
+    },
+    "huincha_header_qmfEWG": {
+      "type": "huincha-header",
+      "disabled": true,
+      "name": "Huincha header",
+      "settings": {
+        "enable": true,
+        "show_only_on_homepage": false,
         "image": "shopify://shop_images/huincha_VIP_desktop.jpg",
         "image_mobile": "shopify://shop_images/huincha_VIP_mobile.jpg",
-        "image_alt": "Aquí hay algo especial para ti",
+        "image_alt": "",
         "link": "shopify://pages/formulario-klaviyo",
         "open_new_window": false,
         "banner_height": 100,
@@ -778,6 +809,8 @@
     "announcement-bar",
     "header",
     "mobile-navigation",
-    "huincha_header_Na6hkQ"
+    "huincha_header_Na6hkQ",
+    "huincha_header_8CzzLy",
+    "huincha_header_qmfEWG"
   ]
 }

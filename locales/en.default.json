@@ -348,6 +348,7 @@
     },
     "countdown-timer": {
       "aria_label": "Countdown timer",
+      "image_alt": "Countdown promotion",
       "hours": "hours",
       "minutes": "minutes",
       "seconds": "seconds",

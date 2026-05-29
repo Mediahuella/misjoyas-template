@@ -847,7 +847,7 @@ video {
   min-width: 44px;
   height: 25px;
   padding: 5px 12px 6px;
-  background: #9b0103;
+  background: #0060F9;
   color: #fff;
   font-size: 12.5px;
   font-weight: 600;
@@ -1591,7 +1591,7 @@ video {
 
 /* Badge % descuento en cards — desktop 20px, mobile proporcional (ratio PDP 30/36) */
 .card-product .bottom-left-container .x-badge-content.x-badge-text {
-  background-color: #9b0103 !important;
+  background-color: #0060F9 !important;
   color: #ffffff !important;
   font-size: calc(20px * 5 / 6) !important;
   line-height: 1.2 !important;

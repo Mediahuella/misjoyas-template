@@ -348,6 +348,7 @@
     },
     "countdown-timer": {
       "aria_label": "Contador regresivo",
+      "image_alt": "Promoción con cuenta regresiva",
       "hours": "horas",
       "minutes": "minutos",
       "seconds": "segundos",
