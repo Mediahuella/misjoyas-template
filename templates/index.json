@@ -11,7 +11,10 @@
   "sections": {
     "banner_principal_home": {
       "type": "banner-principal",
+    "banner_principal_home": {
+      "type": "banner-principal",
       "blocks": {
+        "slide_iP9k3K": {
         "slide_iP9k3K": {
           "type": "slide",
           "settings": {
@@ -33,6 +36,7 @@
           }
         },
         "slide_UaRP7F": {
+        "slide_UaRP7F": {
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/Banner3_anillos_desktop.jpg",
@@ -44,6 +48,8 @@
         },
         "slide_qikfwm": {
           "type": "slide",
+        "slide_qikfwm": {
+          "type": "slide",
           "settings": {
             "image": "shopify://shop_images/Banner4_collares_desktop.jpg",
             "image_mobile": "shopify://shop_images/Banner4_collares_Mobile_399a20ec-e690-409e-820f-59d9ef024f2d.jpg",
@@ -52,6 +58,7 @@
             "open_new_window": false
           }
         },
+        "slide_TcigXr": {
         "slide_TcigXr": {
           "type": "slide",
           "settings": {
@@ -69,6 +76,11 @@
         "slide_UaRP7F",
         "slide_qikfwm",
         "slide_TcigXr"
+        "slide_iP9k3K",
+        "slide_Dei6nU",
+        "slide_UaRP7F",
+        "slide_qikfwm",
+        "slide_TcigXr"
       ],
       "settings": {
         "auto_play": true,
@@ -76,8 +88,14 @@
         "show_arrows": true,
         "banner_height": 580,
         "banner_height_mobile": 400
+        "change_slides_speed": 4,
+        "show_arrows": true,
+        "banner_height": 580,
+        "banner_height_mobile": 400
       }
     },
+    "home_countdown_timer": {
+      "type": "countdown-timer",
     "home_countdown_timer": {
       "type": "countdown-timer",
       "disabled": true,
@@ -98,14 +116,38 @@
         "box_text_color": "#ffffff",
         "colon_color": "#000000",
         "label_color": "#000000"
+        "enable": true,
+        "show_only_on_homepage": false,
+        "heading": "Cyber Day",
+        "subheading": "¡Apúrate! quedan",
+        "timezone": "-4",
+        "end_year": 2026,
+        "end_month": "5",
+        "end_day": "31",
+        "end_hour": "23",
+        "end_minute": "59",
+        "hide_when_expired": true,
+        "expired_message": "La promoción ha finalizado",
+        "box_background": "#f83785",
+        "box_text_color": "#ffffff",
+        "colon_color": "#000000",
+        "label_color": "#000000"
       }
     },
+    "coupon_badges_a6Th3k": {
+      "type": "coupon-badges",
     "coupon_badges_a6Th3k": {
       "type": "coupon-badges",
       "blocks": {
         "badge_mhjcNr": {
           "type": "badge",
+        "badge_mhjcNr": {
+          "type": "badge",
           "settings": {
+            "image": "shopify://shop_images/f52e0a267d4788f57577c1a2144b5e33170cc2d7.jpg",
+            "image_alt": "",
+            "link": "",
+            "open_new_window": false
             "image": "shopify://shop_images/f52e0a267d4788f57577c1a2144b5e33170cc2d7.jpg",
             "image_alt": "",
             "link": "",
@@ -114,7 +156,13 @@
         },
         "badge_bCqfL6": {
           "type": "badge",
+        "badge_bCqfL6": {
+          "type": "badge",
           "settings": {
+            "image": "shopify://shop_images/decf6c941845bcf10824edb6c0bccd5622499038.jpg",
+            "image_alt": "",
+            "link": "",
+            "open_new_window": false
             "image": "shopify://shop_images/decf6c941845bcf10824edb6c0bccd5622499038.jpg",
             "image_alt": "",
             "link": "",
@@ -123,7 +171,13 @@
         },
         "badge_XAczzt": {
           "type": "badge",
+        "badge_XAczzt": {
+          "type": "badge",
           "settings": {
+            "image": "shopify://shop_images/3a65c15957f6f9217d8fd50bb03b14b10cdd7cf8.jpg",
+            "image_alt": "",
+            "link": "",
+            "open_new_window": false
             "image": "shopify://shop_images/3a65c15957f6f9217d8fd50bb03b14b10cdd7cf8.jpg",
             "image_alt": "",
             "link": "",
@@ -132,7 +186,13 @@
         },
         "badge_bqDeg7": {
           "type": "badge",
+        "badge_bqDeg7": {
+          "type": "badge",
           "settings": {
+            "image": "shopify://shop_images/835eaf914333e89acf042f60027d018a59a492ca.jpg",
+            "image_alt": "",
+            "link": "",
+            "open_new_window": false
             "image": "shopify://shop_images/835eaf914333e89acf042f60027d018a59a492ca.jpg",
             "image_alt": "",
             "link": "",
@@ -145,10 +205,24 @@
         "badge_bCqfL6",
         "badge_XAczzt",
         "badge_bqDeg7"
+        "badge_mhjcNr",
+        "badge_bCqfL6",
+        "badge_XAczzt",
+        "badge_bqDeg7"
       ],
       "disabled": true,
       "name": "Coupon badges",
+      "disabled": true,
+      "name": "Coupon badges",
       "settings": {
+        "enable": true,
+        "show_only_on_homepage": false,
+        "gap": 16,
+        "gap_mobile": 12,
+        "padding_mobile_y": 20,
+        "badge_height": 212,
+        "badge_height_mobile": 114,
+        "badge_max_width": 360
         "enable": true,
         "show_only_on_homepage": false,
         "gap": 16,
@@ -161,10 +235,23 @@
     },
     "media_gallery_Fbr4fr": {
       "type": "category-cards",
+      "type": "category-cards",
       "blocks": {
         "category_aros": {
           "type": "category",
+        "category_aros": {
+          "type": "category",
           "settings": {
+            "image": "shopify://shop_images/aros.jpg",
+            "image_hover": "shopify://shop_images/aros-hover.jpg",
+            "label": "aros",
+            "image_alt": "",
+            "link": "shopify://collections/aros",
+            "open_new_window": false
+          }
+        },
+        "category_anillos": {
+          "type": "category",
             "image": "shopify://shop_images/aros.jpg",
             "image_hover": "shopify://shop_images/aros-hover.jpg",
             "label": "aros",
@@ -186,7 +273,27 @@
         },
         "category_cadenas": {
           "type": "category",
+            "image": "shopify://shop_images/anillos_4e574ef7-be3d-45a3-9c8c-01d9856cda9c.jpg",
+            "image_hover": "shopify://shop_images/anillos-hover_9be2d7af-58dd-48b6-b7e0-9cb51c1491fa.jpg",
+            "label": "anillos",
+            "image_alt": "",
+            "link": "shopify://collections/anillos",
+            "open_new_window": false
+          }
+        },
+        "category_cadenas": {
+          "type": "category",
           "settings": {
+            "image": "shopify://shop_images/cadenas.jpg",
+            "image_hover": "shopify://shop_images/cadenas-hover.jpg",
+            "label": "cadenas",
+            "image_alt": "",
+            "link": "shopify://collections/cadenas",
+            "open_new_window": false
+          }
+        },
+        "category_pulseras": {
+          "type": "category",
             "image": "shopify://shop_images/cadenas.jpg",
             "image_hover": "shopify://shop_images/cadenas-hover.jpg",
             "label": "cadenas",
@@ -204,6 +311,12 @@
             "image_alt": "",
             "link": "shopify://collections/pulseras",
             "open_new_window": false
+            "image": "shopify://shop_images/pulseras.jpg",
+            "image_hover": "shopify://shop_images/pulseras-hover.jpg",
+            "label": "pulseras",
+            "image_alt": "",
+            "link": "shopify://collections/pulseras",
+            "open_new_window": false
           }
         }
       },
@@ -212,9 +325,45 @@
         "category_anillos",
         "category_cadenas",
         "category_pulseras"
+        "category_aros",
+        "category_anillos",
+        "category_cadenas",
+        "category_pulseras"
       ],
       "name": "Category cards",
+      "name": "Category cards",
       "settings": {
+        "heading": "",
+        "gap": 16,
+        "gap_mobile": 12,
+        "padding_y": 30,
+        "padding_y_mobile": 30,
+        "card_max_width": 360,
+        "card_width_mobile": 280
+      }
+    },
+    "featured_collection_misjoyas_WHddHm": {
+      "type": "featured-collection-misjoyas",
+      "name": "Colección destacada",
+      "settings": {
+        "title_icon": "",
+        "title_icon_color": "#68b5a3",
+        "title": "Lo más vendido",
+        "collection": "c_mas-vendidos",
+        "products_to_show": 16,
+        "gap": 16,
+        "gap_mobile": 12,
+        "columns_desktop": 4,
+        "padding_y": 40,
+        "padding_y_mobile": 30,
+        "show_quickview": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "show_highlighted_attributes": true,
+        "show_view_all": true,
+        "button_label": "Ver todos los productos",
+        "button_link": "",
+        "open_new_window": false
         "heading": "",
         "gap": 16,
         "gap_mobile": 12,
@@ -265,14 +414,25 @@
       "settings": {
         "include_margins": true,
         "content_alignment": "left"
+        "include_margins": true,
+        "content_alignment": "left"
       }
     },
+    "ticker_6VWRFH": {
+      "type": "ticker",
     "ticker_6VWRFH": {
       "type": "ticker",
       "blocks": {
         "message_KqMqYG": {
           "type": "message",
+        "message_KqMqYG": {
+          "type": "message",
           "settings": {
+            "prefix": "✨",
+            "bold_text": "KIT EMPRENDEDOR DE REGALO EN TU PRIMERA COMPRA",
+            "suffix": "✨",
+            "link": "",
+            "open_new_window": false
             "prefix": "✨",
             "bold_text": "KIT EMPRENDEDOR DE REGALO EN TU PRIMERA COMPRA",
             "suffix": "✨",
@@ -288,15 +448,36 @@
             "suffix": "— Compra mínima $49.990 🛍️",
             "link": "",
             "open_new_window": false
+        },
+        "message_dAiT8j": {
+          "type": "message",
+          "settings": {
+            "prefix": "🛍️",
+            "bold_text": "VENTA EXCLUSIVA MAYORISTA",
+            "suffix": "— Compra mínima $49.990 🛍️",
+            "link": "",
+            "open_new_window": false
           }
         }
       },
       "block_order": [
         "message_KqMqYG",
         "message_dAiT8j"
+        "message_KqMqYG",
+        "message_dAiT8j"
       ],
       "name": "Ticker",
+      "name": "Ticker",
       "settings": {
+        "enable": true,
+        "show_only_on_homepage": false,
+        "background_color": "#68b5a3",
+        "text_color": "#ffffff",
+        "animation_speed": 25,
+        "gap": 60,
+        "gap_mobile": 20,
+        "padding_vertical": 10,
+        "pause_on_hover": false
         "enable": true,
         "show_only_on_homepage": false,
         "background_color": "#68b5a3",
@@ -336,8 +517,14 @@
       "type": "banner-kit",
       "blocks": {
         "slide_kit_1": {
+        "slide_kit_1": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/banner-2_kit_desktop_f6963582-dae0-469d-8a30-aa7cc720f347.jpg",
+            "image_mobile": "shopify://shop_images/banner-2_kit_mobile_ae851128-fb2c-4924-8f3e-74dc451a1325.jpg",
+            "image_alt": "",
+            "link": "shopify://products/kit-primera-compra",
+            "open_new_window": false
             "image": "shopify://shop_images/banner-2_kit_desktop_f6963582-dae0-469d-8a30-aa7cc720f347.jpg",
             "image_mobile": "shopify://shop_images/banner-2_kit_mobile_ae851128-fb2c-4924-8f3e-74dc451a1325.jpg",
             "image_alt": "",
@@ -346,8 +533,14 @@
           }
         },
         "slide_zrye8m": {
+        "slide_zrye8m": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/banner-2_dia_del_padre_desktop.jpg",
+            "image_mobile": "shopify://shop_images/banner-2_dia_del_padre_mobile.jpg",
+            "image_alt": "",
+            "link": "shopify://collections/dia-del-padre",
+            "open_new_window": false
             "image": "shopify://shop_images/banner-2_dia_del_padre_desktop.jpg",
             "image_mobile": "shopify://shop_images/banner-2_dia_del_padre_mobile.jpg",
             "image_alt": "",
@@ -359,12 +552,27 @@
       "block_order": [
         "slide_kit_1",
         "slide_zrye8m"
+        "slide_kit_1",
+        "slide_zrye8m"
       ],
+      "name": "Banner kit",
       "name": "Banner kit",
       "settings": {
         "enable": true,
         "show_only_on_homepage": false,
+        "enable": true,
+        "show_only_on_homepage": false,
         "auto_play": true,
+        "change_slides_speed": 4,
+        "show_arrows": true,
+        "image_alt": "Kit de regalo en tu primera compra",
+        "link": "",
+        "open_new_window": false,
+        "banner_height": 400,
+        "banner_height_mobile": 400,
+        "border_radius": 4,
+        "padding_y": 40,
+        "padding_y_mobile": 30
         "change_slides_speed": 4,
         "show_arrows": true,
         "image_alt": "Kit de regalo en tu primera compra",
@@ -404,10 +612,13 @@
           "type": "button",
           "settings": {
             "button_label": "VER TODO",
+            "button_label": "VER TODO",
             "button_link": "shopify://collections/aros",
             "open_new_window": true,
             "show_button_mobile": false,
+            "show_button_mobile": false,
             "show_button_style": "primary",
+            "button_light": "#222222",
             "button_light": "#222222",
             "button_text_light": "rgba(0,0,0,0)",
             "button_hover_light": "rgba(0,0,0,0)",
@@ -432,6 +643,7 @@
       "name": "t:sections.image-with-text.name",
       "settings": {
         "show_hero": false,
+        "video": "shopify://files/videos/video-aros.mp4",
         "video": "shopify://files/videos/video-aros.mp4",
         "show_sound_control": false,
         "video_url": "",
@@ -495,6 +707,28 @@
         "button_label": "Ver todos los aros",
         "button_link": "",
         "open_new_window": false
+    "featured_collection_misjoyas_yCxarR": {
+      "type": "featured-collection-misjoyas",
+      "name": "Colección destacada",
+      "settings": {
+        "title_icon": "",
+        "title_icon_color": "#68b5a3",
+        "title": "Elige tus aros favoritos",
+        "collection": "aros",
+        "products_to_show": 16,
+        "gap": 16,
+        "gap_mobile": 12,
+        "columns_desktop": 4,
+        "padding_y": 40,
+        "padding_y_mobile": 30,
+        "show_quickview": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "show_highlighted_attributes": true,
+        "show_view_all": true,
+        "button_label": "Ver todos los aros",
+        "button_link": "",
+        "open_new_window": false
       }
     },
     "image_with_text_tCdRr9": {
@@ -504,6 +738,7 @@
           "type": "heading",
           "settings": {
             "subheading": "",
+            "heading": "Cadenas de plata fina 925",
             "heading": "Cadenas de plata fina 925",
             "highlight_type": "underline",
             "heading_base_size": 100,
@@ -524,10 +759,13 @@
           "type": "button",
           "settings": {
             "button_label": "VER TODO",
+            "button_label": "VER TODO",
             "button_link": "shopify://collections/cadenas",
             "open_new_window": false,
             "show_button_mobile": false,
+            "show_button_mobile": false,
             "show_button_style": "primary",
+            "button_light": "#222222",
             "button_light": "#222222",
             "button_text_light": "rgba(0,0,0,0)",
             "button_hover_light": "rgba(0,0,0,0)",
@@ -552,6 +790,7 @@
       "name": "t:sections.image-with-text.name",
       "settings": {
         "show_hero": false,
+        "video": "shopify://files/videos/video-cadenas.mp4",
         "video": "shopify://files/videos/video-cadenas.mp4",
         "show_sound_control": false,
         "video_url": "",
@@ -615,6 +854,28 @@
         "button_label": "Ver todas las cadenas",
         "button_link": "",
         "open_new_window": false
+    "featured_collection_misjoyas_WKk9MB": {
+      "type": "featured-collection-misjoyas",
+      "name": "Colección destacada",
+      "settings": {
+        "title_icon": "",
+        "title_icon_color": "#68b5a3",
+        "title": "Las cadenas que más se venden",
+        "collection": "cadenas",
+        "products_to_show": 16,
+        "gap": 16,
+        "gap_mobile": 12,
+        "columns_desktop": 4,
+        "padding_y": 40,
+        "padding_y_mobile": 30,
+        "show_quickview": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "show_highlighted_attributes": true,
+        "show_view_all": true,
+        "button_label": "Ver todas las cadenas",
+        "button_link": "",
+        "open_new_window": false
       }
     },
     "text_column_with_image_PEq4Ck": {
@@ -625,16 +886,21 @@
           "settings": {
             "image": "shopify://shop_images/caja-emprende.jpg",
             "image_alt": "",
+            "image": "shopify://shop_images/caja-emprende.jpg",
+            "image_alt": "",
             "image_link": "shopify://pages/todo-para-emprender",
             "open_new_window_image": false,
             "sub_title": "",
             "title": "Column",
+            "title": "Column",
             "highlight_type": "underline",
             "heading_size": 100,
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post.</p>",
             "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post.</p>",
             "button_label": "",
             "button_link": "",
             "open_new_window": false,
+            "show_button_style": "primary"
             "show_button_style": "primary"
           }
         },
@@ -643,16 +909,22 @@
           "settings": {
             "image": "shopify://shop_images/caja-quienes-comos.jpg",
             "image_alt": "",
+            "image": "shopify://shop_images/caja-quienes-comos.jpg",
+            "image_alt": "",
             "image_link": "shopify://pages/quienes-somos",
             "open_new_window_image": false,
             "sub_title": "",
             "title": "Column",
+            "title": "Column",
             "highlight_type": "underline",
             "heading_size": 100,
             "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post.</p>",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post.</p>",
             "button_label": "",
             "button_link": "",
+            "button_link": "",
             "open_new_window": false,
+            "show_button_style": "primary"
             "show_button_style": "primary"
           }
         }
@@ -661,6 +933,7 @@
         "column_DFytx6",
         "column_NMDJkE"
       ],
+      "name": "Columnas con imagen",
       "name": "Columnas con imagen",
       "settings": {
         "title": "",
@@ -672,9 +945,18 @@
         "box_border_radius": 4,
         "box_padding_y": 40,
         "box_padding_y_mobile": 15,
+        "layout_style": "image_boxes",
+        "box_gap": 16,
+        "box_border_radius": 4,
+        "box_padding_y": 40,
+        "box_padding_y_mobile": 15,
         "secondary_background": "column",
         "image_ratio": "75%",
         "rounded_corner_image": false,
+        "column_content_alignment": "center",
+        "background_color_light": "rgba(0,0,0,0)",
+        "heading_light": "rgba(0,0,0,0)",
+        "text_light": "rgba(0,0,0,0)",
         "column_content_alignment": "center",
         "background_color_light": "rgba(0,0,0,0)",
         "heading_light": "rgba(0,0,0,0)",
@@ -691,10 +973,13 @@
         "change_bar_every": 5,
         "image_position_desktop": "top",
         "column_layout_desktop": "lg:w-1/4",
+        "column_layout_desktop": "lg:w-1/4",
         "spacing_desktop": 28,
         "full_width": false,
         "padding_full_width": false,
         "show_section_divider": false,
+        "padding_top": 28,
+        "padding_bottom": 28,
         "padding_top": 28,
         "padding_bottom": 28,
         "image_position_mobile": "top",
@@ -776,11 +1061,14 @@
         "auto_play": true,
         "change_bar_every": 5,
         "background_color_light": "#222222",
+        "background_color_light": "#222222",
         "heading_light": "#ffffff",
         "text_light": "#ffffff",
         "color_heading_highlight_light": "#ffffff",
         "line_border_light": "#222222",
+        "line_border_light": "#222222",
         "color_icon_light": "#ffffff",
+        "background_color_dark": "#222222",
         "background_color_dark": "#222222",
         "heading_dark": "rgba(0,0,0,0)",
         "text_dark": "rgba(0,0,0,0)",
@@ -809,17 +1097,27 @@
     "banner_principal_home",
     "home_countdown_timer",
     "coupon_badges_a6Th3k",
+    "banner_principal_home",
+    "home_countdown_timer",
+    "coupon_badges_a6Th3k",
     "media_gallery_Fbr4fr",
+    "featured_collection_misjoyas_WHddHm",
     "featured_collection_misjoyas_WHddHm",
     "17733201952ee1ad52",
     "ticker_6VWRFH",
     "featured_collection_misjoyas_PnenNE",
     "banner_kit_mfxgQe",
+    "ticker_6VWRFH",
+    "featured_collection_misjoyas_PnenNE",
+    "banner_kit_mfxgQe",
     "image_with_text_xTkd4d",
+    "featured_collection_misjoyas_yCxarR",
     "featured_collection_misjoyas_yCxarR",
     "image_with_text_tCdRr9",
     "featured_collection_misjoyas_WKk9MB",
+    "featured_collection_misjoyas_WKk9MB",
     "text_column_with_image_PEq4Ck",
+    "multicolumn_bQPMpc"
     "multicolumn_bQPMpc"
   ]
 }
