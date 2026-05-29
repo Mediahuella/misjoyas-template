@@ -15,8 +15,8 @@
         "slide_iP9k3K": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Banner1_General_Desktop.jpg",
-            "image_mobile": "shopify://shop_images/Banner1_General_Mobile.jpg",
+            "image": "shopify://shop_images/Banner_general_desktop.jpg",
+            "image_mobile": "shopify://shop_images/Banner_general_mobile.jpg",
             "image_alt": "",
             "link": "shopify://collections/descuentos-activos",
             "open_new_window": false
@@ -25,8 +25,8 @@
         "slide_Dei6nU": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Banner2_aros_desktop_61b827bb-9178-470c-b686-fdd6eb9b209e.jpg",
-            "image_mobile": "shopify://shop_images/Banner2_aros_Mobile_41c2a24d-4389-41e4-bc40-85c80e3bb6bf.jpg",
+            "image": "shopify://shop_images/DIA1_Banner_joyero_desktop.jpg",
+            "image_mobile": "shopify://shop_images/DIA1_Banner_joyero_mobile.jpg",
             "image_alt": "",
             "link": "shopify://collections/aros",
             "open_new_window": false
@@ -35,8 +35,8 @@
         "slide_UaRP7F": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Banner3_anillos_desktop.jpg",
-            "image_mobile": "shopify://shop_images/Banner3_anillos_Mobile_afaa744d-1f55-4415-92a1-286039f62e65.jpg",
+            "image": "shopify://shop_images/DIA2_Banner_kit_desktop.jpg",
+            "image_mobile": "shopify://shop_images/DIA2_Banner_kit_mobile.jpg",
             "image_alt": "",
             "link": "shopify://collections/anillos",
             "open_new_window": false
@@ -45,20 +45,10 @@
         "slide_qikfwm": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Banner4_collares_desktop.jpg",
-            "image_mobile": "shopify://shop_images/Banner4_collares_Mobile_399a20ec-e690-409e-820f-59d9ef024f2d.jpg",
+            "image": "shopify://shop_images/DIA3_aros_desktop.jpg",
+            "image_mobile": "shopify://shop_images/DIA3_Banner_aros_mobile.jpg",
             "image_alt": "",
             "link": "shopify://collections/collares",
-            "open_new_window": false
-          }
-        },
-        "slide_TcigXr": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/Banner5_pulseras_desktop.jpg",
-            "image_mobile": "shopify://shop_images/Banner5_pulseras_Mobile_87980a70-68f4-40b5-8e48-7f54b92cac8a.jpg",
-            "image_alt": "",
-            "link": "shopify://collections/pulseras",
             "open_new_window": false
           }
         }
@@ -67,8 +57,7 @@
         "slide_iP9k3K",
         "slide_Dei6nU",
         "slide_UaRP7F",
-        "slide_qikfwm",
-        "slide_TcigXr"
+        "slide_qikfwm"
       ],
       "settings": {
         "auto_play": true,

@@ -193,6 +193,7 @@
     class="banner-principal__slider splide-slideshow overflow-hidden visible tw-w-full{% if enable_slider %} x-splide splide disable-effect-hover{% endif %}"
     {% if enable_slider %}
       x-init='$store.xSplide.load($el, {
+        "eager": true,
         "speed": 800,
         "type": "loop",
         "pauseOnHover": true,
