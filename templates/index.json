@@ -71,6 +71,7 @@
     },
     "home_countdown_timer": {
       "type": "countdown-timer",
+      "disabled": true,
       "settings": {
         "enable": true,
         "show_only_on_homepage": true,
@@ -104,7 +105,7 @@
           "settings": {
             "image": "shopify://shop_images/Cajas-DCTO-70.jpg",
             "image_alt": "",
-            "link": "",
+            "link": "shopify://collections/descuento-70",
             "open_new_window": false
           }
         },
@@ -113,7 +114,7 @@
           "settings": {
             "image": "shopify://shop_images/Cajas-DCTO-60.jpg",
             "image_alt": "",
-            "link": "",
+            "link": "shopify://collections/descuento-60",
             "open_new_window": false
           }
         },
@@ -122,7 +123,7 @@
           "settings": {
             "image": "shopify://shop_images/Cajas-DCTO-50.jpg",
             "image_alt": "",
-            "link": "",
+            "link": "shopify://collections/descuento-50",
             "open_new_window": false
           }
         },
@@ -131,7 +132,7 @@
           "settings": {
             "image": "shopify://shop_images/Cajas-DCTO-40.jpg",
             "image_alt": "",
-            "link": "",
+            "link": "shopify://collections/descuento-40",
             "open_new_window": false
           }
         }
@@ -801,6 +802,7 @@
     },
     "popup_6AnBUK": {
       "type": "popup",
+      "disabled": true,
       "name": "Popup imagen",
       "settings": {
         "image": "shopify://shop_images/Dia1_joyero_popup_dc534a97-5d7e-4b31-a0cb-91c6f7895450.jpg",

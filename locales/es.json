@@ -167,6 +167,7 @@
       "pre_order": "Hacer un pedido",
       "choose_options": "Elige opciones",
       "description": "Descripción",
+      "piece_weight": "Peso de la pieza: ",
       "on_sale": "SALE",
       "product_variants": "Variantes de producto",
       "value_unavailable": "{{ value }} - No disponible",

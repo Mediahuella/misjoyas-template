@@ -341,6 +341,54 @@
   }
 }
 
+/* ===== Badge peso de la pieza (página de producto) ===== */
+
+.misjoyas-weight-badge {
+  display: inline-flex;
+  align-items: center;
+  background: #f2f2f2;
+  color: #222;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 6px 10px 6px 16px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+}
+
+.misjoyas-weight-text {
+  letter-spacing: 0;
+}
+
+@media (max-width: 600px) {
+  .misjoyas-weight-badge {
+    font-size: 12px;
+    line-height: 18px;
+    padding: 5px 8px 5px 12px;
+  }
+}
+
+.misjoyas-weight-debug {
+  display: block;
+  background: #fff8e6;
+  border: 1px dashed #e6b800;
+  border-radius: 6px;
+  color: #5c4a00;
+  font-size: 12px;
+  line-height: 1.5;
+  margin-bottom: 6px;
+  padding: 8px 10px;
+}
+
+.misjoyas-weight-debug ul {
+  margin: 6px 0 0;
+  padding-left: 18px;
+}
+
+.misjoyas-weight-debug p {
+  margin: 0;
+}
+
 /* ===== Garantía de satisfacción (página de producto) ===== */
 
 .misjoyas-garantia {

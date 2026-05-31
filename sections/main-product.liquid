@@ -156,6 +156,27 @@
       ]
     },
     {
+      "type": "variant_weight",
+      "name": "Peso de la pieza",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "metafield_namespace",
+          "label": "Namespace del metacampo",
+          "default": "custom",
+          "info": "Normalmente es \"custom\". El metacampo debe tener acceso de lectura para la tienda online (Settings → Custom data → Variants)."
+        },
+        {
+          "type": "text",
+          "id": "metafield_key",
+          "label": "Key del metacampo",
+          "default": "peso-varante",
+          "info": "Nombre exacto del metacampo de variante, por ejemplo peso-varante."
+        }
+      ]
+    },
+    {
       "type": "vendor",
       "name": "t:sections.featured-product.blocks.vendor_name.name",
       "limit": 1,

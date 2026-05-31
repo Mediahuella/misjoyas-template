@@ -1,0 +1,74 @@
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign metafield_namespace = metafield_namespace | default: 'custom'
+  assign metafield_key = metafield_key | default: 'peso-varante'
+  assign peso_metafield = blank
+  assign peso = blank
+
+  assign candidate_keys = metafield_key | append: '||peso-varante||peso-variante||peso_variante||peso_varante' | split: '||' | uniq
+
+  for candidate_key in candidate_keys
+    if candidate_key == blank
+      continue
+    endif
+
+    assign candidate_metafield = current_variant.metafields[metafield_namespace][candidate_key]
+    if candidate_metafield != blank and candidate_metafield.value != blank
+      assign peso_metafield = candidate_metafield
+      break
+    endif
+  endfor
+
+  if peso_metafield == blank
+    for candidate_key in candidate_keys
+      if candidate_key == blank
+        continue
+      endif
+
+      assign candidate_metafield = product.metafields[metafield_namespace][candidate_key]
+      if candidate_metafield != blank and candidate_metafield.value != blank
+        assign peso_metafield = candidate_metafield
+        break
+      endif
+    endfor
+  endif
+
+  if peso_metafield != blank
+    if peso_metafield.type == 'weight' and peso_metafield.value != blank
+      assign peso = peso_metafield.value.value | append: peso_metafield.value.unit
+    elsif peso_metafield.type contains 'number'
+      assign peso = peso_metafield.value
+    else
+      assign peso = peso_metafield.value | metafield_text | strip
+    endif
+  endif
+-%}
+
+{%- if peso != blank -%}
+  <span class="misjoyas-weight-badge">
+    <span class="misjoyas-weight-text">
+      {{- 'products.product.piece_weight' | t -}}
+      {%- assign peso_string = peso | append: '' -%}
+      {%- unless peso_string contains 'g' -%}
+        {{- peso_string -}}g
+      {%- else -%}
+        {{- peso_string -}}
+      {%- endunless -%}
+    </span>
+  </span>
+{%- elsif request.design_mode -%}
+  <div class="misjoyas-weight-debug">
+    <p><strong>Peso de la pieza:</strong> sin valor para SKU {{ current_variant.sku | escape }}.</p>
+    <p>Metacampos de variante accesibles en la tienda:</p>
+    <ul>
+      {%- assign has_variant_metafields = false -%}
+      {%- for metafield in current_variant.metafields.custom -%}
+        {%- assign has_variant_metafields = true -%}
+        <li>{{ metafield.key | escape }} = {{ metafield.value | metafield_text | default: metafield.value | escape }}</li>
+      {%- endfor -%}
+      {%- unless has_variant_metafields -%}
+        <li>Ninguno. Activa acceso Online Store en Settings → Custom data → Variants → {{ metafield_key | escape }}.</li>
+      {%- endunless -%}
+    </ul>
+  </div>
+{%- endif -%}

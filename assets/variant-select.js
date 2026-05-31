@@ -101,6 +101,7 @@ if (!window.Eurus.loadedScript.includes('variant-select.js')) {
             this._renderPriceProduct(html);
             this._renderProductAvailability(html);
             this._renderSkuProduct(html);
+            this._renderProductWeight(html);
             this._renderProductBadges(html);
             this._renderInventoryStatus(html);
             this._renderInventoryQuantity(html);
@@ -142,6 +143,7 @@ if (!window.Eurus.loadedScript.includes('variant-select.js')) {
                   && html.getElementById(`x-product-template-${productId}-${sectionId}`)) {                  
                   this._renderPriceProduct(html);
                   this._renderSkuProduct(html);
+                  this._renderProductWeight(html);
                   this._renderProductBadges(html);
                   this._renderInventoryStatus(html);
                   this._renderInventoryQuantity(html);
@@ -543,6 +545,12 @@ if (!window.Eurus.loadedScript.includes('variant-select.js')) {
   
           if (source && destination) destination.innerHTML = source.innerHTML;
         },
+        _renderProductWeight(html) {
+          const destination = document.getElementById('product-weight-' + sectionId);
+          const source = html.getElementById('product-weight-' + sectionId);
+
+          if (source && destination) destination.innerHTML = source.innerHTML;
+        },
         _renderProductBadges(html) {
           const destination = document.getElementById('x-badges-' + sectionId);
           const source = html.getElementById('x-badges-'+ sectionId);
@@ -836,6 +844,7 @@ if (!window.Eurus.loadedScript.includes('variant-select.js')) {
             this._renderInventoryQuantity(html);
             this._renderQuantityPricing(html);
             this._renderSkuProduct(html);
+            this._renderProductWeight(html);
             this._renderBuyButtons(html);
             this._setMessagePreOrder(html);
             this._setEstimateDelivery(html);
