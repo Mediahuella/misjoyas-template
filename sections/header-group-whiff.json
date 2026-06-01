@@ -240,7 +240,7 @@
           "type": "tree_menu",
           "settings": {
             "heading": "Catálogo",
-            "menu": "menu-ii",
+            "menu": "menu-iii",
             "menu_item_link": "",
             "open_new_window": false,
             "show_image_collection": false,
@@ -451,7 +451,7 @@
           "type": "menu",
           "settings": {
             "heading": "Catálogo",
-            "menu": "menu-ii",
+            "menu": "menu-iii",
             "menu_item_link": "",
             "open_new_window": false,
             "show_collection_image": false,
