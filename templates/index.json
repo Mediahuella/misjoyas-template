@@ -813,24 +813,22 @@
     },
     "popup_yGHy4R": {
       "type": "popup",
-      "disabled": true,
       "name": "Popup imagen",
       "settings": {
         "image": "shopify://shop_images/Dia2_kit_popup_8e7e8ef7-53e6-4c39-af97-51f023760e7b.jpg",
-        "start": "2026-05-29 00:01:00",
-        "ends": "2026-05-30 00:01:00",
+        "start": "2026-06-02 00:00:01",
+        "ends": "2026-06-02 23:59:00",
         "countdown": false,
         "available_routes": "/"
       }
     },
     "popup_h9bTpX": {
       "type": "popup",
-      "disabled": true,
       "name": "Popup imagen",
       "settings": {
         "image": "shopify://shop_images/Dia3_aros_popup_e0d881cf-996a-455e-a08e-e4a4c3a67cea.jpg",
-        "start": "2026-05-29 00:01:00",
-        "ends": "2026-05-30 00:01:00",
+        "start": "2026-06-03 00:00:01",
+        "ends": "2026-06-03 23:59:00",
         "countdown": false,
         "available_routes": "/"
       }
