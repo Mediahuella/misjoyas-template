@@ -253,6 +253,12 @@
             },
             "events": [
               {
+                "event": "ready",
+                "callback": function () {
+                  document.dispatchEvent(new CustomEvent("eurus:{{ section.id }}:splide-ready"));
+                }
+              },
+              {
                 "event": "mounted",
                 "callback": function () {
                   if (window.bindFeaturedCollectionMjArrows) {
