@@ -227,7 +227,7 @@
         "title_icon": "",
         "title_icon_color": "#68b5a3",
         "title": "Ofertas exclusivas Cyber Day",
-        "collection": "c_mas-vendidos",
+        "collection": "cyber-junio",
         "products_to_show": 16,
         "gap": 16,
         "gap_mobile": 12,
@@ -802,12 +802,11 @@
     },
     "popup_6AnBUK": {
       "type": "popup",
-      "disabled": true,
       "name": "Popup imagen",
       "settings": {
         "image": "shopify://shop_images/Dia1_joyero_popup_dc534a97-5d7e-4b31-a0cb-91c6f7895450.jpg",
-        "start": "2026-05-29 00:01:00",
-        "ends": "2026-05-30 00:01:00",
+        "start": "2026-05-01 00:01:00",
+        "ends": "2026-06-01 23:59:00",
         "countdown": false,
         "available_routes": "/"
       }
