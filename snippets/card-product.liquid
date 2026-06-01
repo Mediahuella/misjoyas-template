@@ -269,9 +269,7 @@
       href="{{ card_product.url | within: collection }}"
       {% unless disable_badges %} 
         x-data="{ lastWindowWidth: 0 }"
-        {% unless badges_preload %}
-          x-intersect.once.margin.200px='$nextTick(() => { $store.xBadges && $store.xBadges.load($el, () => {}, null, true); })'
-        {% endunless %}
+        x-intersect.once.margin.200px='$nextTick(() => { $store.xBadges && $store.xBadges.load($el, () => {}, null, true); })'
         x-labels-data="{{ data_for_label | escape }}"
       {% endunless %} 
       aria-label="{{ card_product.title }}"

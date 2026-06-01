@@ -212,8 +212,7 @@
         class="featured-collection-mj__carousel carousel-mobile carousel-tablet overflow-hidden x-splide splide visible disable-effect-hover{% unless enable_slider %} featured-collection-mj__carousel--static{% endunless %}"
         {% if enable_slider %}
           x-data-slider="{{ section.id }}"
-          x-init='$store.xSplide.load($el, {
-            "eager": true,
+          x-intersect.once.margin.200px='$store.xSplide.load($el, {
             "speed": 1000,
             "type": "slide",
             "mediaQuery": "min",
@@ -257,33 +256,6 @@
                 "event": "ready",
                 "callback": function () {
                   document.dispatchEvent(new CustomEvent("eurus:{{ section.id }}:splide-ready"));
-                  var root = document.getElementById("featured-collection-mj-{{ section.id }}");
-                  if (!root) return;
-                  function preloadBadges() {
-                    if (!window.Alpine || !Alpine.store("xBadges")) return false;
-                    root.querySelectorAll("[x-labels-data]").forEach(function (el) {
-                      Alpine.store("xBadges").load(el, function () {}, null, true);
-                    });
-                    return true;
-                  }
-                  if (!preloadBadges()) {
-                    if (window.Alpine) {
-                      requestAnimationFrame(function () {
-                        if (!preloadBadges()) {
-                          var attempts = 0;
-                          var timer = setInterval(function () {
-                            if (preloadBadges() || ++attempts > 50) clearInterval(timer);
-                          }, 50);
-                        }
-                      });
-                    } else {
-                      document.addEventListener("alpine:init", function () {
-                        if (!preloadBadges()) {
-                          requestAnimationFrame(preloadBadges);
-                        }
-                      }, { once: true });
-                    }
-                  }
                 }
               },
               {
@@ -326,9 +298,7 @@
                 media_aspect_ratio: '100',
                 swiper_on_mobile: enable_slider,
                 enable_desktop_slider: enable_slider,
-                animation_loading: true,
-                render_static_badges: true,
-                badges_preload: true
+                animation_loading: true
               %}
             {%- else -%}
               {%- if request.design_mode -%}

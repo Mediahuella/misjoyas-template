@@ -100,48 +100,48 @@
     "coupon_badges_a6Th3k": {
       "type": "coupon-badges",
       "blocks": {
-        "badge_mhjcNr": {
+        "badge_bqDeg7": {
           "type": "badge",
           "settings": {
-            "image": "shopify://shop_images/Cajas-DCTO-70.jpg",
+            "image": "shopify://shop_images/Caja-DCTO-sobre-60.jpg",
             "image_alt": "",
             "link": "shopify://collections/descuento-70",
-            "open_new_window": false
-          }
-        },
-        "badge_bCqfL6": {
-          "type": "badge",
-          "settings": {
-            "image": "shopify://shop_images/Cajas-DCTO-60.jpg",
-            "image_alt": "",
-            "link": "shopify://collections/descuento-60",
             "open_new_window": false
           }
         },
         "badge_XAczzt": {
           "type": "badge",
           "settings": {
-            "image": "shopify://shop_images/Cajas-DCTO-50.jpg",
+            "image": "shopify://shop_images/Caja-DCTO-40-60.jpg",
             "image_alt": "",
-            "link": "shopify://collections/descuento-50",
+            "link": "shopify://collections/descuento-60",
             "open_new_window": false
           }
         },
-        "badge_bqDeg7": {
+        "badge_bCqfL6": {
           "type": "badge",
           "settings": {
-            "image": "shopify://shop_images/Cajas-DCTO-40.jpg",
+            "image": "shopify://shop_images/Caja-DCTO-20-40.jpg",
             "image_alt": "",
             "link": "shopify://collections/descuento-40",
+            "open_new_window": false
+          }
+        },
+        "badge_mhjcNr": {
+          "type": "badge",
+          "settings": {
+            "image": "shopify://shop_images/Caja-DCTO-10-20.jpg",
+            "image_alt": "",
+            "link": "shopify://collections/descuento-20",
             "open_new_window": false
           }
         }
       },
       "block_order": [
-        "badge_mhjcNr",
-        "badge_bCqfL6",
+        "badge_bqDeg7",
         "badge_XAczzt",
-        "badge_bqDeg7"
+        "badge_bCqfL6",
+        "badge_mhjcNr"
       ],
       "name": "Coupon badges",
       "settings": {
@@ -227,7 +227,7 @@
         "title_icon": "",
         "title_icon_color": "#68b5a3",
         "title": "Ofertas exclusivas Cyber Day",
-        "collection": "cyber-junio",
+        "collection": "descuentos-activos",
         "products_to_show": 16,
         "gap": 16,
         "gap_mobile": 12,

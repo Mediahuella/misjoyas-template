@@ -117,6 +117,31 @@
             "secondary_button_text_dark": "rgba(0,0,0,0)"
           }
         },
+        "candy_rack_product_placement_button_dpec6K": {
+          "type": "shopify://apps/candy-rack/blocks/product-placement-button/cb9c657f-334f-4905-80c2-f69cca01460c",
+          "settings": {
+            "title_text": "Lleva tambien",
+            "subtitle_text": "",
+            "atc_button_layout_text_label": "Agregar",
+            "button_show_more_text": "Ver más",
+            "button_show_less_text": "Mostrar menos",
+            "image_size": "small",
+            "button_style": "solid_button",
+            "button_size": "small_button",
+            "clickable_product": true,
+            "max_products": 5,
+            "corner_radius": 0,
+            "background_color": "#FFFFFF",
+            "text_color": "#282A2C",
+            "solid_button_background_color": "#282A2C",
+            "solid_button_label_color": "#FFFFFF",
+            "outline_button_color": "#282A2C",
+            "top_padding": 24,
+            "bottom_padding": 24,
+            "specific_offer_id": "",
+            "custom_css": ""
+          }
+        },
         "html_HPUmhe": {
           "type": "html",
           "settings": {
@@ -313,6 +338,7 @@
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
+        "candy_rack_product_placement_button_dpec6K",
         "html_HPUmhe",
         "html_QpXa4B",
         "description",
