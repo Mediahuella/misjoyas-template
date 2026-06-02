@@ -131,11 +131,11 @@
             "clickable_product": true,
             "max_products": 5,
             "corner_radius": 0,
-            "background_color": "#FFFFFF",
-            "text_color": "#282A2C",
-            "solid_button_background_color": "#282A2C",
-            "solid_button_label_color": "#FFFFFF",
-            "outline_button_color": "#282A2C",
+            "background_color": "#ffffff",
+            "text_color": "#282a2c",
+            "solid_button_background_color": "#282a2c",
+            "solid_button_label_color": "#ffffff",
+            "outline_button_color": "#282a2c",
             "top_padding": 24,
             "bottom_padding": 24,
             "specific_offer_id": "",
@@ -430,7 +430,7 @@
           "settings": {
             "prefix": "🛍️",
             "bold_text": "VENTA EXCLUSIVA MAYORISTA",
-            "suffix": "— Compra mínima $49.990 🛍️",
+            "suffix": "— Compra mínima $39.990 🛍️",
             "link": "",
             "open_new_window": false
           }
