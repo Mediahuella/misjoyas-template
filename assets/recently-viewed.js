@@ -48,6 +48,43 @@ if (!window.Eurus.loadedScript.includes('recently-viewed.js')) {
     slides.forEach((slide) => list.appendChild(slide));
   }
 
+  function getRecentlyViewedSlideId(slide) {
+    return slide?.querySelector('.link-product-variant')?.id?.split('-')?.[0] || null;
+  }
+
+  function injectRecentlyViewedRemoveButtons(container) {
+    if (!container) return;
+
+    const label = container.getAttribute('x-rv-remove-label') || 'Remove';
+    const removeIcon =
+      '<svg viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false">' +
+      '<path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>';
+
+    container.querySelectorAll('.card-product').forEach((card) => {
+      if (card.querySelector('.rv-remove')) return;
+
+      const productId = getRecentlyViewedSlideId(card);
+      if (!productId) return;
+
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'rv-remove';
+      button.setAttribute('aria-label', label);
+      button.innerHTML = removeIcon;
+
+      button.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        const slide = card.closest('.splide__slide') || card;
+        if (window.Alpine) {
+          Alpine.store('xProductRecently').removeProduct(productId, slide);
+        }
+      });
+
+      card.appendChild(button);
+    });
+  }
+
   function disableRecentlyViewedCardAnimations(container) {
     if (!container) return;
 
@@ -110,13 +147,10 @@ if (!window.Eurus.loadedScript.includes('recently-viewed.js')) {
   }
 
   function enforceRecentlyViewedStaticImages(container) {
+    // Una sola pasada: el bloque <style data-recently-viewed-no-zoom> de la sección
+    // ya fuerza las imágenes estáticas con !important, y bindRecentlyViewedCarouselAnimations
+    // re-aplica esto en los eventos de Splide. No hace falta un setInterval (causaba titileo).
     disableRecentlyViewedCardAnimations(container);
-
-    let passes = 0;
-    const timer = setInterval(() => {
-      disableRecentlyViewedCardAnimations(container);
-      if (++passes >= 8) clearInterval(timer);
-    }, 250);
   }
 
   function bindRecentlyViewedCarouselAnimations(carousel, container) {
@@ -131,6 +165,7 @@ if (!window.Eurus.loadedScript.includes('recently-viewed.js')) {
     if (!container || container.dataset.rvRenderDone === '1') return;
     container.dataset.rvRenderDone = '1';
     enforceRecentlyViewedStaticImages(container);
+    injectRecentlyViewedRemoveButtons(container);
     window.initRecentlyViewedCarousel(container);
   }
 
@@ -190,12 +225,15 @@ if (!window.Eurus.loadedScript.includes('recently-viewed.js')) {
     document.addEventListener('alpine:init', () => {
       Alpine.store('xProductRecently', {
         show: false,
+        showEmpty: false,
+        emptyEnabled: false,
         productsToShow: 10,
         productsToShowMax: 10,
         init() {
           const root = document.getElementById('shopify-section-recently-viewed');
           if (root) {
             this.productsToShow = getRecentlyViewedLimit(root);
+            this.emptyEnabled = root.getAttribute('x-rv-show-empty') === 'true';
           }
         },
         showProductRecently() {
@@ -206,9 +244,9 @@ if (!window.Eurus.loadedScript.includes('recently-viewed.js')) {
 
           if (localStorage.getItem('recently-viewed')?.length) {
             productList = JSON.parse(localStorage.getItem('recently-viewed'));
-            productList = [...productList.filter((p) => p !== productViewed)].filter(
-              (_p, i) => i < this.productsToShowMax
-            );
+            productList = productList
+              .filter((p) => String(p) !== String(productViewed))
+              .filter((_p, i) => i < this.productsToShowMax);
           }
 
           localStorage.setItem('recently-viewed', JSON.stringify([productViewed, ...productList]));
@@ -224,22 +262,34 @@ if (!window.Eurus.loadedScript.includes('recently-viewed.js')) {
           let products = [];
           if (localStorage.getItem('recently-viewed')?.length) {
             products = JSON.parse(localStorage.getItem('recently-viewed'));
-            products = productId ? products.filter((p) => p !== productId) : products;
+            // Excluir el producto que se está viendo. Comparar como string: en localStorage
+            // pueden quedar IDs numéricos (de versiones previas) y productId llega como string.
+            products = productId ? products.filter((p) => String(p) !== String(productId)) : products;
             products = products.slice(0, limit);
           } else {
             this.show = false;
+            this.showEmpty = this.emptyEnabled;
             return;
           }
 
           if (!products.length) {
             this.show = false;
+            this.showEmpty = this.emptyEnabled;
             return;
           }
 
-          const query = products.map((value) => 'id:' + value).join(' OR ');
-          const searchUrl = `${Shopify.routes.root}search?section_id=${sectionId}&type=product&q=${encodeURIComponent(query)}`;
+          this.show = true;
+          this.showEmpty = false;
 
-          fetch(searchUrl)
+          const query = products.map((value) => 'id:' + value).join(' OR ');
+          // URL absoluta: los wrappers de fetch de apps de terceros (minMaxify, analytics)
+          // hacen new URL(input) y fallan con URLs relativas → "Failed to fetch".
+          const root = (window.Shopify && Shopify.routes && Shopify.routes.root) || '/';
+          const searchUrl = `${window.location.origin}${root}search?section_id=${encodeURIComponent(
+            sectionId
+          )}&type=product&q=${encodeURIComponent(query)}`;
+
+          fetch(searchUrl, { headers: { Accept: 'text/html' } })
             .then((response) => {
               if (!response.ok) throw new Error(response.status);
               return response.text();
@@ -257,15 +307,64 @@ if (!window.Eurus.loadedScript.includes('recently-viewed.js')) {
               stripRecentlyViewedCardHandlers(el);
               disableRecentlyViewedCardAnimations(el);
 
-              if (window.Alpine) Alpine.initTree(el);
+              if (window.Alpine) {
+                // OJO: NO hacer Alpine.initTree(el). El root #shopify-section-recently-viewed
+                // tiene el x-init que llama a getProductRecently; reinicializarlo re-ejecuta
+                // ese x-init → fetch → innerHTML → initTree → loop infinito (titileo).
+                // Inicializamos solo los hijos inyectados.
+                Array.from(el.children).forEach((child) => Alpine.initTree(child));
+              }
 
               stripRecentlyViewedCardHandlers(el);
               enforceRecentlyViewedStaticImages(el);
               scheduleRecentlyViewedFinish(el);
             })
             .catch((error) => {
+              // Ignorar abortos por navegación (el usuario cambió de página antes de resolver).
+              if (error && (error.name === 'AbortError' || error.name === 'TypeError')) return;
               console.error(error);
             });
+        },
+        removeProduct(productId, slide) {
+          let products = [];
+          if (localStorage.getItem('recently-viewed')?.length) {
+            products = JSON.parse(localStorage.getItem('recently-viewed'));
+          }
+
+          products = products.filter((p) => String(p) !== String(productId));
+
+          if (products.length) {
+            localStorage.setItem('recently-viewed', JSON.stringify(products));
+          } else {
+            localStorage.removeItem('recently-viewed');
+            this.show = false;
+            this.showEmpty = this.emptyEnabled;
+          }
+
+          const el = document.getElementById('shopify-section-recently-viewed');
+          const carousel = el?.querySelector('[data-recently-viewed-carousel]');
+          const slideEl = slide || null;
+
+          if (!slideEl) return;
+
+          if (carousel?.splide) {
+            const slides = Array.from(
+              carousel.querySelectorAll('.splide__list > .splide__slide:not(.splide__slide--clone)')
+            );
+            const index = slides.indexOf(slideEl);
+            try {
+              if (index > -1) {
+                carousel.splide.remove(index);
+              } else {
+                slideEl.remove();
+              }
+              carousel.splide.refresh();
+            } catch (_error) {
+              slideEl.remove();
+            }
+          } else {
+            slideEl.remove();
+          }
         },
         clearStory() {
           const result = confirm('Are you sure you want to clear your recently viewed products?');

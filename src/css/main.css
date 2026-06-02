@@ -867,6 +867,82 @@
   margin-bottom: 0 !important;
 }
 
+/* ===== Carruseles con tarjetas de producto: misma altura (botón/variante anclados abajo) =====
+   El equal-height de theme.css.liquid solo estira los grids (#items-grid y splide__list con
+   md:grid-cols-*), y excluye explícitamente los carruseles. Acá lo extendemos a los carruseles
+   splide que contienen .card-product (recently-viewed, featured-collection, recomendaciones, etc.).
+   La tarjeta puede SER el slide (via class_slide) o ir envuelta en un .splide__slide.
+   Se scopea con :has() para no afectar carruseles de colecciones, logos o blog. */
+
+.x-splide.splide .splide__list:has(> .splide__slide.card-product),
+.x-splide.splide .splide__list:has(> .splide__slide > .card-product) {
+  align-items: stretch;
+}
+
+/* Slide estirado a la altura de la fila (anula cualquier h-auto que impida el stretch) */
+.x-splide.splide .splide__list > .splide__slide.card-product,
+.x-splide.splide .splide__list > .splide__slide:has(> .card-product) {
+  height: auto;
+  align-self: stretch;
+}
+
+/* Cuando la card va ENVUELTA en el slide (.splide__slide > .card-product, ej. product-recommendations):
+   el slide estira y la card interna llena con height:100% → se activa el equal-height. */
+.x-splide.splide .splide__list > .splide__slide > .card-product {
+  height: 100%;
+}
+
+/* Cuando la card ES el slide (.splide__slide.card-product, ej. featured / recently-viewed):
+   NO ponerle height:100%. En flexbox, una altura distinta de `auto` desactiva el align-items:stretch,
+   y como el padre tiene altura indefinida, height:100% colapsa la card a su contenido → cards
+   de distinta altura. Forzamos height:auto para que el stretch las iguale; el equal-height de
+   theme.css (height:100%) se anula acá por especificidad. */
+.x-splide.splide .splide__list > .splide__slide.card-product {
+  height: auto !important;
+  align-self: stretch;
+}
+
+/* Completar la cadena flex hacia adentro: el div que envuelve el cuerpo (.card-info-wrapper)
+   debe crecer y ser columna. En grids esto lo da la clase 'grow' condicional del markup
+   (solo con fit_grid_layout o mediaGallery); en carruseles se pierde y la cadena se corta,
+   dejando el botón pegado al contenido en vez de al fondo del slide estirado. */
+.x-splide.splide .splide__list > .splide__slide.card-product > div:has(> .card-info-wrapper),
+.x-splide.splide .splide__list > .splide__slide > .card-product > div:has(> .card-info-wrapper) {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* En carruseles el slide ya se estira a la altura del más alto, así que el min-height
+   de .card-info-equal-height (188/180px, pensado para grids) sobra y empuja el contenido
+   fuera de la tarjeta → el botón se desborda/recorta abajo. Lo anulamos en carruseles. */
+.x-splide.splide .splide__list > .splide__slide.card-product .card-info-equal-height,
+.x-splide.splide .splide__list > .splide__slide > .card-product .card-info-equal-height {
+  min-height: 0;
+}
+
+/* El botón ATC trae h-full en el markup (card-product.liquid). Con el equal-height del
+   carrusel, el .card-product-atc-wrapper crece para llenar el slide estirado y el botón con
+   h-full se estira de más (sobre todo en mobile, con imágenes cuadradas). Lo fijamos a su
+   alto natural para que sea consistente con los botones de los otros componentes; sigue
+   pegado abajo por el margin-top:auto del wrapper. */
+.x-splide.splide .splide__list > .splide__slide.card-product .card-product-atc-btn,
+.x-splide.splide .splide__list > .splide__slide > .card-product .card-product-atc-btn {
+  height: auto;
+}
+
+/* El otro botón ATC del snippet (.bottom_atc, controlado por quickview, suele mostrarse en
+   MOBILE) vive fuera de la cadena equal-height y trae h-full en su form y su botón. En
+   carruseles eso lo estira de más y descuadra la nivelación. Lo fijamos a alto natural;
+   queda al fondo igual porque el .card-info-wrapper de arriba crece (flex:1). */
+.x-splide.splide .splide__list > .splide__slide.card-product .bottom_atc .form,
+.x-splide.splide .splide__list > .splide__slide > .card-product .bottom_atc .form,
+.x-splide.splide .splide__list > .splide__slide.card-product .bottom_atc .button,
+.x-splide.splide .splide__list > .splide__slide > .card-product .bottom_atc .button {
+  height: auto;
+}
+
 /* ===== Badges en tarjetas: esquina, sin borde (Figma Cyber Day) ===== */
 
 .card-product .label-container,

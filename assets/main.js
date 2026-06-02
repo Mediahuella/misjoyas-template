@@ -17,6 +17,69 @@ function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present,
 function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
 function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+// Sube el botón flotante de WhatsApp (app WhatsUp) por encima de la barra sticky
+// de "agregar al carro" en mobile, para que no se interpongan. El botón vive dentro
+// de un shadow DOM con `bottom: 16px` fijo, así que se controla via custom property
+// (las CSS custom properties sí cruzan el shadow boundary).
+(function () {
+  if (window.__mjWaStickyOffset) return;
+  window.__mjWaStickyOffset = true;
+  var GAP = 12; // separación entre el botón y la barra
+  var BASE_BOTTOM = 16; // bottom original del botón (app)
+  var isMobile = function isMobile() {
+    return window.matchMedia('(max-width: 767px)').matches;
+  };
+  var waEl = null;
+  var styleInjected = false;
+  function injectShadowStyle(el) {
+    if (styleInjected || !el || !el.shadowRoot) return;
+    var target = el.shadowRoot.querySelector('.whatsup-whatsapp-button');
+    if (!target) return;
+    var style = document.createElement('style');
+    style.textContent = '.whatsup-whatsapp-button{bottom:var(--mj-wa-bottom,' + BASE_BOTTOM + 'px)!important;' + 'transition:bottom .3s cubic-bezier(0.075,0.82,0.165,1);}';
+    el.shadowRoot.appendChild(style);
+    styleInjected = true;
+  }
+  function update() {
+    if (!waEl) return;
+    var bar = document.querySelector('[id^="sticky-add-to-cart-"]');
+    var bottom = BASE_BOTTOM;
+    if (isMobile() && bar && getComputedStyle(bar).display !== 'none') {
+      var h = bar.getBoundingClientRect().height;
+      if (h > 0) bottom = Math.round(h + GAP);
+    }
+    waEl.style.setProperty('--mj-wa-bottom', bottom + 'px');
+  }
+  function start() {
+    waEl = document.querySelector('whatsup-whatsapp-button');
+    if (!waEl) return false;
+    injectShadowStyle(waEl);
+    if (!styleInjected) return false;
+    var bar = document.querySelector('[id^="sticky-add-to-cart-"]');
+    if (bar) {
+      new MutationObserver(update).observe(bar, {
+        attributes: true,
+        attributeFilter: ['style', 'class']
+      });
+    }
+    window.addEventListener('resize', update, {
+      passive: true
+    });
+    window.addEventListener('scroll', update, {
+      passive: true
+    });
+    update();
+    return true;
+  }
+
+  // La app y el custom element cargan de forma diferida; reintentar hasta que existan.
+  if (!start()) {
+    var tries = 0;
+    var timer = setInterval(function () {
+      if (start() || ++tries > 60) clearInterval(timer);
+    }, 500);
+  }
+})();
 document.addEventListener('alpine:init', function () {
   Alpine.store('xSearchBar', {
     mobileOpen: false,

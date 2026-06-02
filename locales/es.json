@@ -378,7 +378,8 @@
       "aria_label": "Productos vistos recientemente",
       "placeholder": "Visita productos para verlos aquí.",
       "previous": "Productos anteriores",
-      "next": "Siguientes productos"
+      "next": "Siguientes productos",
+      "remove": "Quitar de últimos vistos"
     },
     "text-column-image": {
       "boxes_aria_label": "Columnas con imagen",
