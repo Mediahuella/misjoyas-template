@@ -22,7 +22,7 @@
         "logo_cyber_Va6mqR": {
           "type": "logo_cyber",
           "settings": {
-            "logo_cyber": "shopify://shop_images/tag-cyber-misjoyas.jpg"
+            "logo_cyber": "shopify://shop_images/tag-revancha.jpg"
           }
         },
         "product_sku_8UPmFF": {
@@ -500,6 +500,11 @@
         "show_rating": false,
         "show_highlighted_attributes": true,
         "show_quickview": false,
+        "show_empty_state": true,
+        "empty_heading": "Aún no tienes productos vistos",
+        "empty_text": "Explora nuestra tienda y los productos que veas aparecerán aquí.",
+        "empty_button_label": "Explorar productos",
+        "empty_button_link": "",
         "padding_top": 32,
         "padding_bottom": 40,
         "padding_top_mobile": 24,

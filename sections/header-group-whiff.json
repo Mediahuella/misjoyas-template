@@ -15,9 +15,9 @@
       "type": "misjoyas-topbar",
       "settings": {
         "enable": true,
-        "text": "✨ PRECIOS QUE NO VOLVERÁN ¡último día de CYBER! ✨",
-        "text_color": "#ffffff",
-        "background_color": "#f83785",
+        "text": "✨ OFERTAS EXCLUSIVAS REVANCHA MISJOYAS HASTA 70% DCTO — ¡No te lo pierdas! ✨  🛍️   4 Y 5 DE JUNIO   🛍️",
+        "text_color": "#fdbfd7",
+        "background_color": "#000000",
         "animation_speed": 20,
         "font_size": 14,
         "gap": 60,
@@ -192,7 +192,7 @@
         "button_4QAbNM": {
           "type": "button",
           "settings": {
-            "button_label": "Cyber Day",
+            "button_label": "Revancha",
             "button_link": "shopify://collections/descuentos-activos",
             "open_new_window": false,
             "show_button_style": "primary",
@@ -239,7 +239,7 @@
         "tree_menu_FxFEXV": {
           "type": "tree_menu",
           "settings": {
-            "heading": "Descuentos Cyber",
+            "heading": "Descuentos Revancha",
             "menu": "descuentos-black",
             "menu_item_link": "",
             "open_new_window": false,
@@ -891,6 +891,21 @@
         "highlight_color_dark": "rgba(0,0,0,0)"
       }
     },
+    "huincha_header_TEzGXy": {
+      "type": "huincha-header",
+      "name": "Huincha header",
+      "settings": {
+        "enable": true,
+        "show_only_on_homepage": false,
+        "image": "shopify://shop_images/Huincha-Revancha_desktop.jpg",
+        "image_mobile": "shopify://shop_images/Huincha-Revancha_mobile.jpg",
+        "image_alt": "",
+        "link": "shopify://collections/descuentos-activos",
+        "open_new_window": false,
+        "banner_height": 100,
+        "banner_height_mobile": 130
+      }
+    },
     "huincha_header_8CzzLy": {
       "type": "huincha-header",
       "disabled": true,
@@ -925,6 +940,7 @@
     },
     "huincha_header_JdEaTj": {
       "type": "huincha-header",
+      "disabled": true,
       "name": "Huincha header",
       "settings": {
         "enable": true,
@@ -945,6 +961,7 @@
     "announcement-bar",
     "header",
     "mobile-navigation",
+    "huincha_header_TEzGXy",
     "huincha_header_8CzzLy",
     "huincha_header_qmfEWG",
     "huincha_header_JdEaTj"

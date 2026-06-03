@@ -12,78 +12,52 @@
     "banner_principal_home": {
       "type": "banner-principal",
       "blocks": {
-        "slide_gzWX4Y": {
-          "type": "slide",
-          "name": "Colgantes",
-          "settings": {
-            "image": "shopify://shop_images/Banner_colgantes_desktop.jpg",
-            "image_mobile": "shopify://shop_images/Banner_colgantes_mobile.jpg",
-            "image_alt": "",
-            "link": "https://misjoyas.cl/search?options%5Bprefix%5D=last&q=colgantes",
-            "open_new_window": false
-          }
-        },
-        "slide_qikfwm": {
+        "slide_6gVGPW": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/DIA3_aros_desktop.jpg",
-            "image_mobile": "shopify://shop_images/DIA3_Banner_aros_mobile.jpg",
+            "image": "shopify://shop_images/Banner-general_desktop_e2d956bb-9c4c-4752-a869-9367051f721d.jpg",
+            "image_mobile": "shopify://shop_images/Banner_general_Mobile_4e3ea141-ece8-47d4-b171-7280e48511b6.jpg",
             "image_alt": "",
             "link": "shopify://collections/descuentos-activos",
             "open_new_window": false
           }
         },
-        "slide_iP9k3K": {
+        "slide_dqdmni": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Banner_general_desktop.jpg",
-            "image_mobile": "shopify://shop_images/Banner_general_mobile.jpg",
+            "image": "shopify://shop_images/Banner_compra_minima_desktop_e526dfe3-38d6-4f36-b4c8-363c5e0be1a9.jpg",
+            "image_mobile": "shopify://shop_images/Banner_compra-minima_Mobile.jpg",
             "image_alt": "",
             "link": "shopify://collections/descuentos-activos",
             "open_new_window": false
           }
         },
-        "slide_VJkFjC": {
+        "slide_fXkgiQ": {
           "type": "slide",
-          "name": "Aros",
           "settings": {
-            "image": "shopify://shop_images/Banner_aros_desktop.jpg",
-            "image_mobile": "shopify://shop_images/Banner_aros_mobile.jpg",
+            "image": "shopify://shop_images/Banner_aros_desktop_f6392721-4a12-4328-bcd1-8bcf8e9abde1.jpg",
+            "image_mobile": "shopify://shop_images/Banner_aros_Mobile_3fa3b627-6850-41ce-a4f1-ea4f2903746d.jpg",
             "image_alt": "",
-            "link": "https://misjoyas.cl/collections/aros",
+            "link": "shopify://collections/aros",
             "open_new_window": false
           }
         },
-        "slide_UaRP7F": {
+        "slide_aHtjLW": {
           "type": "slide",
-          "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/DIA2_Banner_kit_desktop.jpg",
-            "image_mobile": "shopify://shop_images/DIA2_Banner_kit_mobile.jpg",
+            "image": "shopify://shop_images/Banner_anillos_desktop_08c4c00d-7713-4c7e-b404-d323443445e6.jpg",
+            "image_mobile": "shopify://shop_images/Banner_anillos_Mobile.jpg",
             "image_alt": "",
-            "link": "shopify://collections/descuentos-activos",
-            "open_new_window": false
-          }
-        },
-        "slide_Dei6nU": {
-          "type": "slide",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/DIA1_Banner_joyero_desktop.jpg",
-            "image_mobile": "shopify://shop_images/DIA1_Banner_joyero_mobile.jpg",
-            "image_alt": "",
-            "link": "shopify://collections/descuentos-activos",
+            "link": "shopify://collections/anillos",
             "open_new_window": false
           }
         }
       },
       "block_order": [
-        "slide_gzWX4Y",
-        "slide_qikfwm",
-        "slide_iP9k3K",
-        "slide_VJkFjC",
-        "slide_UaRP7F",
-        "slide_Dei6nU"
+        "slide_6gVGPW",
+        "slide_dqdmni",
+        "slide_fXkgiQ",
+        "slide_aHtjLW"
       ],
       "settings": {
         "auto_play": true,
@@ -95,6 +69,7 @@
     },
     "home_countdown_timer": {
       "type": "countdown-timer",
+      "disabled": true,
       "settings": {
         "enable": true,
         "show_only_on_homepage": true,
@@ -126,7 +101,7 @@
         "badge_bqDeg7": {
           "type": "badge",
           "settings": {
-            "image": "shopify://shop_images/Caja-DCTO-sobre-60.jpg",
+            "image": "shopify://shop_images/caja-dcto_60.jpg",
             "image_alt": "",
             "link": "shopify://collections/descuento-70",
             "open_new_window": false
@@ -135,7 +110,7 @@
         "badge_XAczzt": {
           "type": "badge",
           "settings": {
-            "image": "shopify://shop_images/Caja-DCTO-40-60.jpg",
+            "image": "shopify://shop_images/caja-dcto_40-60.jpg",
             "image_alt": "",
             "link": "shopify://collections/descuento-60",
             "open_new_window": false
@@ -144,7 +119,7 @@
         "badge_bCqfL6": {
           "type": "badge",
           "settings": {
-            "image": "shopify://shop_images/Caja-DCTO-20-40.jpg",
+            "image": "shopify://shop_images/caja-dcto_20-40.jpg",
             "image_alt": "",
             "link": "shopify://collections/descuento-40",
             "open_new_window": false
@@ -153,7 +128,7 @@
         "badge_mhjcNr": {
           "type": "badge",
           "settings": {
-            "image": "shopify://shop_images/Caja-DCTO-10-20.jpg",
+            "image": "shopify://shop_images/caja-dcto_10-20.jpg",
             "image_alt": "",
             "link": "shopify://collections/descuento-20",
             "open_new_window": false
@@ -249,7 +224,7 @@
       "settings": {
         "title_icon": "",
         "title_icon_color": "#68b5a3",
-        "title": "Ofertas exclusivas Cyber Day",
+        "title": "Ofertas exclusivas Revancha MISJOYAS",
         "collection": "descuentos-activos",
         "products_to_show": 16,
         "gap": 16,
@@ -849,6 +824,7 @@
     },
     "popup_h9bTpX": {
       "type": "popup",
+      "disabled": true,
       "name": "Popup imagen",
       "settings": {
         "image": "shopify://shop_images/Dia3_aros_popup_e0d881cf-996a-455e-a08e-e4a4c3a67cea.jpg",
