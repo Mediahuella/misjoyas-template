@@ -12,6 +12,27 @@
     "banner_principal_home": {
       "type": "banner-principal",
       "blocks": {
+        "slide_gzWX4Y": {
+          "type": "slide",
+          "name": "Colgantes",
+          "settings": {
+            "image": "shopify://shop_images/Banner_colgantes_desktop.jpg",
+            "image_mobile": "shopify://shop_images/Banner_colgantes_mobile.jpg",
+            "image_alt": "",
+            "link": "https://misjoyas.cl/search?options%5Bprefix%5D=last&q=colgantes",
+            "open_new_window": false
+          }
+        },
+        "slide_qikfwm": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/DIA3_aros_desktop.jpg",
+            "image_mobile": "shopify://shop_images/DIA3_Banner_aros_mobile.jpg",
+            "image_alt": "",
+            "link": "shopify://collections/descuentos-activos",
+            "open_new_window": false
+          }
+        },
         "slide_iP9k3K": {
           "type": "slide",
           "settings": {
@@ -22,13 +43,14 @@
             "open_new_window": false
           }
         },
-        "slide_Dei6nU": {
+        "slide_VJkFjC": {
           "type": "slide",
+          "name": "Aros",
           "settings": {
-            "image": "shopify://shop_images/DIA1_Banner_joyero_desktop.jpg",
-            "image_mobile": "shopify://shop_images/DIA1_Banner_joyero_mobile.jpg",
+            "image": "shopify://shop_images/Banner_aros_desktop.jpg",
+            "image_mobile": "shopify://shop_images/Banner_aros_mobile.jpg",
             "image_alt": "",
-            "link": "shopify://collections/descuentos-activos",
+            "link": "https://misjoyas.cl/collections/aros",
             "open_new_window": false
           }
         },
@@ -43,12 +65,12 @@
             "open_new_window": false
           }
         },
-        "slide_qikfwm": {
+        "slide_Dei6nU": {
           "type": "slide",
           "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/DIA3_aros_desktop.jpg",
-            "image_mobile": "shopify://shop_images/DIA3_Banner_aros_mobile.jpg",
+            "image": "shopify://shop_images/DIA1_Banner_joyero_desktop.jpg",
+            "image_mobile": "shopify://shop_images/DIA1_Banner_joyero_mobile.jpg",
             "image_alt": "",
             "link": "shopify://collections/descuentos-activos",
             "open_new_window": false
@@ -56,10 +78,12 @@
         }
       },
       "block_order": [
+        "slide_gzWX4Y",
+        "slide_qikfwm",
         "slide_iP9k3K",
-        "slide_Dei6nU",
+        "slide_VJkFjC",
         "slide_UaRP7F",
-        "slide_qikfwm"
+        "slide_Dei6nU"
       ],
       "settings": {
         "auto_play": true,
@@ -281,7 +305,7 @@
           "settings": {
             "prefix": "🛍️",
             "bold_text": "VENTA EXCLUSIVA MAYORISTA",
-            "suffix": "— Compra mínima $49.990 🛍️",
+            "suffix": "— Compra mínima $39.990 🛍️",
             "link": "",
             "open_new_window": false
           }
@@ -815,7 +839,7 @@
       "type": "popup",
       "name": "Popup imagen",
       "settings": {
-        "image": "shopify://shop_images/Dia2_kit_popup_8e7e8ef7-53e6-4c39-af97-51f023760e7b.jpg",
+        "image": "shopify://shop_images/compra-minima_popup.jpg",
         "start": "2026-06-02 00:00:01",
         "ends": "2026-06-02 23:59:00",
         "countdown": false,

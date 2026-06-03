@@ -893,6 +893,7 @@
     },
     "huincha_header_8CzzLy": {
       "type": "huincha-header",
+      "disabled": true,
       "name": "Huincha header",
       "settings": {
         "enable": true,
@@ -913,8 +914,8 @@
       "settings": {
         "enable": true,
         "show_only_on_homepage": false,
-        "image": "shopify://shop_images/DIA2_huincha_desktop_37b1e0be-dd16-43bf-9032-d92a6190a5b3.jpg",
-        "image_mobile": "shopify://shop_images/DIA2_huincha_mobile_c1d2238c-68b3-4b14-9635-09f53bec5372.jpg",
+        "image": "shopify://shop_images/DIA2_huincha_desktop_02295313-9cf7-4dd2-8b06-1819bc37b694.jpg",
+        "image_mobile": "shopify://shop_images/DIA2_huincha_mobile_c99e817c-6bef-4ac9-96be-d33d07fd9383.jpg",
         "image_alt": "",
         "link": "shopify://collections/descuentos-activos",
         "open_new_window": false,
@@ -924,13 +925,12 @@
     },
     "huincha_header_JdEaTj": {
       "type": "huincha-header",
-      "disabled": true,
       "name": "Huincha header",
       "settings": {
         "enable": true,
         "show_only_on_homepage": false,
-        "image": "shopify://shop_images/DIA3_huincha_desktop_bac46bbf-3359-494a-b165-1e0d2486a2e4.jpg",
-        "image_mobile": "shopify://shop_images/DIA3_huincha_mobile.jpg",
+        "image": "shopify://shop_images/DIA3_huincha_desktop_66969f92-89c4-41ef-b2e8-78eb7c089a96.jpg",
+        "image_mobile": "shopify://shop_images/DIA3_huincha_mobile_56b19d3f-0235-4486-ad86-0ca67c81c442.jpg",
         "image_alt": "",
         "link": "shopify://collections/descuentos-activos",
         "open_new_window": false,

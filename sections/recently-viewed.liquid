@@ -15,6 +15,11 @@
     assign enable_slider = true
   endif
 
+  assign slide_count = result_count
+  if slide_count > products_to_show
+    assign slide_count = products_to_show
+  endif
+
   assign disable_quickview = true
   if section.settings.show_quickview
     assign disable_quickview = false
@@ -135,15 +140,119 @@
     width: 24px;
     height: 24px;
   }
+  .recently-viewed-{{ section.id }} .rv-remove {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 25;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border: none;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.85);
+    color: #0e1b1f;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    transition: background 0.15s ease, opacity 0.15s ease;
+  }
+  .recently-viewed-{{ section.id }} .rv-remove:hover,
+  .recently-viewed-{{ section.id }} .rv-remove:focus-visible {
+    background: #ffffff;
+    opacity: 0.85;
+  }
+  .recently-viewed-{{ section.id }} .rv-remove svg {
+    width: 14px;
+    height: 14px;
+    display: block;
+  }
+  {%- if settings.lang_direction contains request.locale.iso_code -%}
+  .recently-viewed-{{ section.id }} .rv-remove {
+    right: auto;
+    left: 8px;
+  }
+  {%- endif -%}
+  .recently-viewed-{{ section.id }} .recently-viewed__progress {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 1.25rem auto 0;
+  }
+  @media (min-width: 768px) {
+    .recently-viewed-{{ section.id }} .recently-viewed__progress {
+      max-width: 75%;
+    }
+  }
+  .recently-viewed-{{ section.id }} .recently-viewed__progress-track {
+    display: inline-block;
+    flex-grow: 1;
+    overflow: hidden;
+  }
+  .recently-viewed-{{ section.id }} .recently-viewed__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.75rem;
+    padding: 2.5rem 1rem;
+    color: #0e1b1f;
+  }
+  .recently-viewed-{{ section.id }} .recently-viewed__empty-icon {
+    display: flex;
+    width: 48px;
+    height: 48px;
+    color: #737373;
+  }
+  .recently-viewed-{{ section.id }} .recently-viewed__empty-icon svg {
+    width: 48px;
+    height: 48px;
+  }
+  .recently-viewed-{{ section.id }} .recently-viewed__empty-heading {
+    margin: 0;
+    font-size: 1.25rem;
+    line-height: 1.6rem;
+    font-weight: 500;
+  }
+  .recently-viewed-{{ section.id }} .recently-viewed__empty-text {
+    margin: 0;
+    max-width: 28rem;
+    font-size: 0.9375rem;
+    line-height: 1.5rem;
+    color: #737373;
+  }
+  .recently-viewed-{{ section.id }} .recently-viewed__empty-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    border: 1px solid #0e1b1f;
+    border-radius: 9999px;
+    background: #0e1b1f;
+    color: #ffffff;
+    font-size: 0.9375rem;
+    line-height: 1;
+    text-decoration: none;
+    transition: opacity 0.15s ease;
+  }
+  .recently-viewed-{{ section.id }} .recently-viewed__empty-btn:hover,
+  .recently-viewed-{{ section.id }} .recently-viewed__empty-btn:focus-visible {
+    opacity: 0.85;
+  }
 {%- endstyle -%}
 
 <div
   id="shopify-section-recently-viewed"
   class="recently-viewed-{{ section.id }} recently-viewed-section"
-  x-show="$store.xProductRecently.show"
+  x-show="$store.xProductRecently.show || $store.xProductRecently.showEmpty"
   x-cloak
   x-products-to-show="{{ products_to_show }}"
+  x-rv-show-empty="{{ section.settings.show_empty_state }}"
   x-init='$store.xProductRecently.showProductRecently(); $store.xProductRecently.getProductRecently("{{ section.id }}", {% if current_product_id != blank %}"{{ current_product_id }}"{% else %}null{% endif %})'
+  x-rv-remove-label="{{ 'sections.recently-viewed-products.remove' | t | escape }}"
   role="region"
   aria-label="{{ 'sections.recently-viewed-products.aria_label' | t }}"
 >
@@ -180,13 +289,14 @@
   </style>
   <div class="x-page-width page-width">
     {%- if section.settings.heading != blank -%}
-      <h2 class="recently-viewed__heading">
+      <h2 class="recently-viewed__heading" x-show="$store.xProductRecently.show">
         {{ section.settings.heading | escape }}
       </h2>
     {%- endif -%}
 
     <div
       id="recently-viewed-carousel-{{ section.id }}"
+      x-show="$store.xProductRecently.show"
       class="recently-viewed__carousel carousel-mobile carousel-tablet overflow-hidden x-splide splide visible disable-effect-hover disable-animation-slideshow{% unless enable_slider %} recently-viewed__carousel--static{% endunless %}"
       data-recently-viewed-carousel
       data-columns-desktop="{{ columns_desktop }}"
@@ -206,6 +316,7 @@
           "pagination": false,
           "drag": true,
           "trimSpace": false,
+          "progressBar": {{ slide_count }},
           {%- if settings.lang_direction contains request.locale.iso_code -%}
             "direction": "rtl",
           {%- endif -%}
@@ -323,7 +434,61 @@
           </button>
         </div>
       {%- endif -%}
+
+      {%- if enable_slider -%}
+        {%- liquid
+          assign slide_count_f = slide_count | times: 1.0
+          assign width_bar = columns_desktop | times: 1.0 | divided_by: slide_count_f
+          assign mobile_width_bar = columns_mobile | times: 1.0 | divided_by: slide_count_f
+          if width_bar > 1.0
+            assign width_bar = 1.0
+          endif
+          if mobile_width_bar > 1.0
+            assign mobile_width_bar = 1.0
+          endif
+        -%}
+        {%- style -%}
+          .splide-progress-bar-{{ section.id }} {
+            width: {{ mobile_width_bar | times: 100 }}%;
+          }
+          @media (min-width: 768px) {
+            .splide-progress-bar-{{ section.id }} {
+              width: {{ width_bar | times: 100 }}%;
+            }
+          }
+        {%- endstyle -%}
+        <div class="recently-viewed__progress">
+          <div class="splide-progress recently-viewed__progress-track rounded-md">
+            <div class="splide-progress-bar-{{ section.id }} splide-progress-bar rounded-md"></div>
+          </div>
+        </div>
+      {%- endif -%}
     </div>
+
+    {%- if section.settings.show_empty_state -%}
+      <div class="recently-viewed__empty" x-show="$store.xProductRecently.showEmpty" x-cloak>
+        <span class="recently-viewed__empty-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M1.5 12S5 5 12 5s10.5 7 10.5 7-3.5 7-10.5 7S1.5 12 1.5 12Z" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="12" cy="12" r="3.25" />
+          </svg>
+        </span>
+        {%- if section.settings.empty_heading != blank -%}
+          <p class="recently-viewed__empty-heading">{{ section.settings.empty_heading | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.empty_text != blank -%}
+          <p class="recently-viewed__empty-text">{{ section.settings.empty_text | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.empty_button_label != blank -%}
+          <a
+            class="recently-viewed__empty-btn"
+            href="{{ section.settings.empty_button_link | default: routes.all_products_collection_url }}"
+          >
+            {{ section.settings.empty_button_label | escape }}
+          </a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
   </div>
 </div>
 
@@ -439,6 +604,40 @@
       "id": "show_quickview",
       "default": false,
       "label": "t:sections.quick_view.show_quickview_button"
+    },
+    {
+      "type": "header",
+      "content": "Estado vacío"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_empty_state",
+      "default": true,
+      "label": "Mostrar estado vacío",
+      "info": "Muestra un mensaje cuando el visitante aún no tiene productos vistos, en lugar de ocultar la sección."
+    },
+    {
+      "type": "text",
+      "id": "empty_heading",
+      "label": "Título del estado vacío",
+      "default": "Aún no tienes productos vistos"
+    },
+    {
+      "type": "textarea",
+      "id": "empty_text",
+      "label": "Texto del estado vacío",
+      "default": "Explora nuestra tienda y los productos que veas aparecerán aquí."
+    },
+    {
+      "type": "text",
+      "id": "empty_button_label",
+      "label": "Texto del botón",
+      "default": "Explorar productos"
+    },
+    {
+      "type": "url",
+      "id": "empty_button_link",
+      "label": "Enlace del botón"
     },
     {
       "type": "header",
