@@ -280,6 +280,22 @@
             "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3322.845232954463!2d-70.575001!3d-33.609319899999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662d7ab256b0017%3A0xe07337fed5bd22a7!2sBalmaceda%20279%2C%208180915%20Puente%20Alto%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses!2scl!4v1768853532315!5m2!1ses!2scl\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
           }
         },
+        "store_6gNWHb": {
+          "type": "store",
+          "name": "Mis Joyas Puente Alto",
+          "settings": {
+            "store_name": "MISJOYAS Puente Alto",
+            "address": "Avenida Concha y Toro 1149 Local B2, Espacio Urbano Puente Alto",
+            "additional_info": "",
+            "special_hours": "",
+            "hours": "<p>Lunes a Viernes: 10:00 a 19:00 hrs<br/>Sábado: 10:00 a 14:00 hrs<br/>Domingo: Cerrado</p>",
+            "phone": "56996418771",
+            "email": "misjoyaspuentealto1149@misjoyas.cl",
+            "store_image": "shopify://shop_images/Tienda_Nueva_Puente_Alto.jpg",
+            "youtube_url": "",
+            "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.2087878204266!2d-70.57583860000001!3d-33.5998868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662d703d33320a9%3A0x1d258119ada0e6b9!2sEspacio%20Urbano%20Puente%20Alto%2B!5e0!3m2!1ses!2scl!4v1780518243747!5m2!1ses!2scl\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+          }
+        },
         "store_MhLgcY": {
           "type": "store",
           "name": "Mis Joyas Apumanque",
@@ -601,6 +617,7 @@
         "store_zTCc4R",
         "store_KbxMji",
         "store_rmfiUp",
+        "store_6gNWHb",
         "store_MhLgcY",
         "store_3TCc3R",
         "store_Ne3nEm",
@@ -712,7 +729,8 @@
     "17458847979e5a522c": {
       "type": "apps",
       "settings": {
-        "include_margins": true
+        "include_margins": true,
+        "content_alignment": "left"
       }
     }
   },
