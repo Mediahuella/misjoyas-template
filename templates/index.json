@@ -35,12 +35,11 @@
         },
         "slide_iP9k3K": {
           "type": "slide",
-          "name": "Aros",
           "settings": {
             "image": "shopify://shop_images/Banner_general_desktop.jpg",
             "image_mobile": "shopify://shop_images/Banner_general_mobile.jpg",
             "image_alt": "",
-            "link": "https://misjoyas.cl/collections/aros",
+            "link": "shopify://collections/descuentos-activos",
             "open_new_window": false
           }
         },
@@ -57,6 +56,7 @@
         },
         "slide_UaRP7F": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/DIA2_Banner_kit_desktop.jpg",
             "image_mobile": "shopify://shop_images/DIA2_Banner_kit_mobile.jpg",
@@ -305,7 +305,6 @@
           "settings": {
             "prefix": "🛍️",
             "bold_text": "VENTA EXCLUSIVA MAYORISTA",
-            "suffix": "— Compra mínima $39.990 🛍️",
             "suffix": "— Compra mínima $39.990 🛍️",
             "link": "",
             "open_new_window": false
@@ -840,7 +839,6 @@
       "type": "popup",
       "name": "Popup imagen",
       "settings": {
-        "image": "shopify://shop_images/compra-minima_popup.jpg",
         "image": "shopify://shop_images/compra-minima_popup.jpg",
         "start": "2026-06-02 00:00:01",
         "ends": "2026-06-02 23:59:00",

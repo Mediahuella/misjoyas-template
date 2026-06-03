@@ -15,7 +15,7 @@
       "type": "misjoyas-topbar",
       "settings": {
         "enable": true,
-        "text": "✨ OFERTAS EXCLUSIVAS CYBER DAY HASTA 70% DCTO — ¡No te lo pierdas! ✨       🛍️ 1, 2 y 3 DE JUNIO 🛍️",
+        "text": "✨ PRECIOS QUE NO VOLVERÁN ¡último día de CYBER! ✨",
         "text_color": "#ffffff",
         "background_color": "#f83785",
         "animation_speed": 20,
@@ -909,6 +909,7 @@
     },
     "huincha_header_qmfEWG": {
       "type": "huincha-header",
+      "disabled": true,
       "name": "Huincha header",
       "settings": {
         "enable": true,
