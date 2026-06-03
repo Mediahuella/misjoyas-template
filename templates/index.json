@@ -25,8 +25,8 @@
         "slide_dqdmni": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Banner_compra_minima_desktop_e526dfe3-38d6-4f36-b4c8-363c5e0be1a9.jpg",
-            "image_mobile": "shopify://shop_images/Banner_compra-minima_Mobile.jpg",
+            "image": "shopify://shop_images/Banner_compra-minima_desktop.jpg",
+            "image_mobile": "shopify://shop_images/Banner_compra-minima_Mobile_bc2ebfb3-8018-4658-86d3-d73106636a93.jpg",
             "image_alt": "",
             "link": "shopify://collections/descuentos-activos",
             "open_new_window": false
