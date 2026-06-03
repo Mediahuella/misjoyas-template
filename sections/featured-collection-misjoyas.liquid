@@ -128,9 +128,13 @@
   .featured-collection-mj-{{ section.id }} .featured-collection-mj__progress .splide-progress-bar {
     display: block;
     height: 3px;
+    max-width: 100%;
     border-radius: 4px;
     background: #222222;
-    transition: margin 400ms ease;
+    margin: 0;
+    transform: none;
+    transition: width 0.25s ease;
+    will-change: width;
   }
   .featured-collection-mj-{{ section.id }} .featured-collection-mj__arrow {
     pointer-events: auto;
@@ -290,22 +294,14 @@
                 "event": "ready",
                 "callback": function () {
                   document.dispatchEvent(new CustomEvent("eurus:{{ section.id }}:splide-ready"));
-                  if (window.updateFeaturedCollectionMjProgress) {
-                    window.updateFeaturedCollectionMjProgress("{{ section.id }}");
-                  }
-                }
-              },
-              {
-                "event": "mounted move resized",
-                "callback": function () {
-                  if (window.updateFeaturedCollectionMjProgress) {
-                    window.updateFeaturedCollectionMjProgress("{{ section.id }}");
-                  }
                 }
               },
               {
                 "event": "mounted resized",
                 "callback": function () {
+                  if (window.bindFeaturedCollectionMjProgress) {
+                    window.bindFeaturedCollectionMjProgress("{{ section.id }}");
+                  }
                   if (window.bindFeaturedCollectionMjArrows) {
                     window.bindFeaturedCollectionMjArrows(
                       document.getElementById("featured-collection-mj-{{ section.id }}"),
@@ -398,7 +394,10 @@
           class="featured-collection-mj__progress"
         >
           <div class="splide-progress rounded-md">
-            <div class="splide-progress-bar-{{ section.id }} splide-progress-bar rounded-md"></div>
+            <div
+              class="splide-progress-bar-{{ section.id }} splide-progress-bar rounded-md"
+              data-thumb-pct="{{ mobile_width_bar | times: 100 }}"
+            ></div>
           </div>
         </div>
       {%- endif -%}
@@ -427,37 +426,62 @@
 
 {%- if enable_slider and featured_collection != blank -%}
   <script>
-    window.updateFeaturedCollectionMjProgress = window.updateFeaturedCollectionMjProgress || function (sectionId) {
-        var root = document.getElementById('featured-collection-mj-' + sectionId);
-        var wrap = document.getElementById('featured-collection-mj-progress-' + sectionId);
-        if (!root || !root.splide || !wrap) return;
-        var bar = wrap.querySelector('.splide-progress-bar');
-        var track = wrap.querySelector('.splide-progress');
-        if (!bar || !track) return;
-        var splide = root.splide;
+    window.bindFeaturedCollectionMjProgress = window.bindFeaturedCollectionMjProgress || function (sectionId) {
+      var root = document.getElementById('featured-collection-mj-' + sectionId);
+      var wrap = document.getElementById('featured-collection-mj-progress-' + sectionId);
+      if (!root || !root.splide || !wrap) return false;
+      if (root.dataset.fcMjProgressBound === '1') return true;
+
+      var splide = root.splide;
+      var bar = wrap.querySelector('.splide-progress-bar');
+      if (!bar) return false;
+
+      root.dataset.fcMjProgressBound = '1';
+      var thumbPct = parseFloat(bar.dataset.thumbPct) || 25;
+      var rafId = null;
+
+      function applyWidth(animate) {
+        if (window.innerWidth >= 768) return;
         var end = splide.Components.Controller.getEnd();
-        var rate = end > 0 ? (100 * splide.index) / end : 0;
-        var widthBar = parseFloat(window.getComputedStyle(bar).width) || 0;
-        var widthTrack = parseFloat(window.getComputedStyle(track).width) || 1;
-        var percentBar = (100 * widthBar) / widthTrack;
-        if (rate + percentBar > 100) rate = 100 - percentBar;
-        if (document.body.classList.contains('rtl')) {
-          bar.style.marginRight = rate + '%';
-          bar.style.marginLeft = '';
-        } else {
-          bar.style.marginLeft = rate + '%';
-          bar.style.marginRight = '';
-        }
-      };
+        var index = Math.max(0, Math.min(splide.index, end));
+        var width = end <= 0 ? thumbPct : thumbPct + (index / end) * (100 - thumbPct);
+        bar.style.marginLeft = '0';
+        bar.style.marginRight = '0';
+        bar.style.transform = 'none';
+        bar.style.width = width + '%';
+        bar.style.transition = animate === false ? 'none' : 'width 0.25s ease';
+      }
+
+      function schedule(animate) {
+        if (rafId) cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(function () {
+          rafId = null;
+          applyWidth(animate);
+        });
+      }
+
+      splide.on('mounted', function () { schedule(true); });
+      splide.on('move', function () { schedule(true); });
+      splide.on('moved', function () { schedule(true); });
+      splide.on('scroll', function () { schedule(false); });
+      splide.on('dragged', function () { schedule(true); });
+      splide.on('resized', function () { schedule(true); });
+      splide.on('refresh', function () { schedule(true); });
+
+      schedule(true);
+      return true;
+    };
+
     (function () {
       var sid = '{{ section.id }}';
       var desktopMove = {{ columns_desktop }};
       var mobileMove = {{ columns_mobile }};
 
-      function tickProgress() {
-        if (window.updateFeaturedCollectionMjProgress) {
-          window.updateFeaturedCollectionMjProgress(sid);
+      function bindProgress() {
+        if (window.bindFeaturedCollectionMjProgress) {
+          return window.bindFeaturedCollectionMjProgress(sid);
         }
+        return false;
       }
 
       function bindArrows() {
@@ -469,8 +493,13 @@
       }
 
       function tick() {
-        tickProgress();
+        bindProgress();
         bindArrows();
+      }
+
+      function resetBindings() {
+        var root = document.getElementById('featured-collection-mj-' + sid);
+        if (root) delete root.dataset.fcMjProgressBound;
       }
 
       var attempts = 0;
@@ -480,8 +509,11 @@
         if ((root && root.splide) || ++attempts > 150) clearInterval(timer);
       }, 100);
 
-      document.addEventListener('shopify:section:load', function () {
-        setTimeout(tick, 300);
+      document.addEventListener('shopify:section:load', function (event) {
+        if (event.target && event.target.querySelector('#featured-collection-mj-' + sid)) {
+          resetBindings();
+          setTimeout(tick, 300);
+        }
       });
     })();
   </script>
