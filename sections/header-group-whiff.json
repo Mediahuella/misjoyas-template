@@ -909,7 +909,6 @@
     },
     "huincha_header_qmfEWG": {
       "type": "huincha-header",
-      "disabled": true,
       "name": "Huincha header",
       "settings": {
         "enable": true,

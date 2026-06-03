@@ -380,6 +380,8 @@
       "previous": "Previous products",
       "next": "Next products",
       "remove": "Remove from recently viewed"
+      "next": "Next products",
+      "remove": "Remove from recently viewed"
     },
     "text-column-image": {
       "boxes_aria_label": "Image columns",

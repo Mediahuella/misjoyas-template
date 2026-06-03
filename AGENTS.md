@@ -72,8 +72,12 @@ All interactive JS uses **Alpine.js**. The pattern is:
 - `assets/page.css.liquid` — page-specific styles
 - Tailwind classes must use the `tw-` prefix (e.g., `tw-flex`, `tw-text-sm`)
 
-### Shopify MCP
-A `@shopify/dev-mcp` server is configured in `.cursor/mcp.json` — use it for Shopify API lookups and Liquid documentation when needed.
+### MCP servers
+MCP servers are configured per tool:
+- **Claude Code** reads `.mcp.json` (repo root): `shopify-dev-mcp` (`@shopify/dev-mcp`) for Shopify API lookups and Liquid docs, and `figma` (HTTP, `https://mcp.figma.com/mcp`) for design references.
+- **Cursor** reads `.cursor/mcp.json`: `shopify-dev-mcp` only.
+
+`.claude/settings.json` sets `enableAllProjectMcpServers: true`, so the servers in `.mcp.json` are enabled automatically, and also enables the `shopify-plugin@shopify-ai-toolkit` plugin (the `/shopify-plugin:*` skills).
 
 ## Separación upstream / personalización
 

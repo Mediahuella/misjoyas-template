@@ -1,3 +1,69 @@
+// Sube el botón flotante de WhatsApp (app WhatsUp) por encima de la barra sticky
+// de "agregar al carro" en mobile, para que no se interpongan. El botón vive dentro
+// de un shadow DOM con `bottom: 16px` fijo, así que se controla via custom property
+// (las CSS custom properties sí cruzan el shadow boundary).
+(function () {
+  if (window.__mjWaStickyOffset) return;
+  window.__mjWaStickyOffset = true;
+
+  const GAP = 12; // separación entre el botón y la barra
+  const BASE_BOTTOM = 16; // bottom original del botón (app)
+  const isMobile = () => window.matchMedia('(max-width: 767px)').matches;
+
+  let waEl = null;
+  let styleInjected = false;
+
+  function injectShadowStyle(el) {
+    if (styleInjected || !el || !el.shadowRoot) return;
+    const target = el.shadowRoot.querySelector('.whatsup-whatsapp-button');
+    if (!target) return;
+    const style = document.createElement('style');
+    style.textContent =
+      '.whatsup-whatsapp-button{bottom:var(--mj-wa-bottom,' + BASE_BOTTOM + 'px)!important;' +
+      'transition:bottom .3s cubic-bezier(0.075,0.82,0.165,1);}';
+    el.shadowRoot.appendChild(style);
+    styleInjected = true;
+  }
+
+  function update() {
+    if (!waEl) return;
+    const bar = document.querySelector('[id^="sticky-add-to-cart-"]');
+    let bottom = BASE_BOTTOM;
+    if (isMobile() && bar && getComputedStyle(bar).display !== 'none') {
+      const h = bar.getBoundingClientRect().height;
+      if (h > 0) bottom = Math.round(h + GAP);
+    }
+    waEl.style.setProperty('--mj-wa-bottom', bottom + 'px');
+  }
+
+  function start() {
+    waEl = document.querySelector('whatsup-whatsapp-button');
+    if (!waEl) return false;
+    injectShadowStyle(waEl);
+    if (!styleInjected) return false;
+
+    const bar = document.querySelector('[id^="sticky-add-to-cart-"]');
+    if (bar) {
+      new MutationObserver(update).observe(bar, {
+        attributes: true,
+        attributeFilter: ['style', 'class'],
+      });
+    }
+    window.addEventListener('resize', update, { passive: true });
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+    return true;
+  }
+
+  // La app y el custom element cargan de forma diferida; reintentar hasta que existan.
+  if (!start()) {
+    let tries = 0;
+    const timer = setInterval(() => {
+      if (start() || ++tries > 60) clearInterval(timer);
+    }, 500);
+  }
+})();
+
 document.addEventListener('alpine:init', () => {
   Alpine.store('xSearchBar', {
     mobileOpen: false,
