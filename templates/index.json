@@ -95,14 +95,13 @@
     },
     "home_countdown_timer": {
       "type": "countdown-timer",
-      "disabled": true,
       "settings": {
         "enable": true,
         "show_only_on_homepage": true,
-        "title": "Cyber Day",
+        "title": "Últimas horas",
         "subtitle": "¡Apúrate! quedan",
-        "target_date": "2026-05-30",
-        "target_time": "12:00",
+        "target_date": "2026-06-03",
+        "target_time": "23:59",
         "timezone": "-4",
         "hours_label": "horas",
         "minutes_label": "min",

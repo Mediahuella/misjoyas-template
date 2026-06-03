@@ -419,8 +419,8 @@ document.addEventListener('alpine:init', function () {
  */
 window.bindFeaturedCollectionMjArrows = function (root, desktopMove, mobileMove) {
   if (!(root !== null && root !== void 0 && root.splide)) return;
-  var prev = root.querySelector('[data-fc-mj-arrow="prev"]');
-  var next = root.querySelector('[data-fc-mj-arrow="next"]');
+  var prev = root.querySelector('[data-fc-mj-arrow="prev"]') || root.querySelector('.splide__arrow--prev');
+  var next = root.querySelector('[data-fc-mj-arrow="next"]') || root.querySelector('.splide__arrow--next');
   var getMove = function getMove() {
     return window.innerWidth >= 768 ? desktopMove : mobileMove;
   };
@@ -439,6 +439,7 @@ window.bindFeaturedCollectionMjArrows = function (root, desktopMove, mobileMove)
   if (prev && !prev.dataset.fcMjBound) {
     prev.dataset.fcMjBound = '1';
     prev.addEventListener('click', function (event) {
+      if (window.innerWidth < 768) return;
       event.preventDefault();
       event.stopPropagation();
       root.splide.go('-' + getMove());
@@ -447,6 +448,7 @@ window.bindFeaturedCollectionMjArrows = function (root, desktopMove, mobileMove)
   if (next && !next.dataset.fcMjBound) {
     next.dataset.fcMjBound = '1';
     next.addEventListener('click', function (event) {
+      if (window.innerWidth < 768) return;
       event.preventDefault();
       event.stopPropagation();
       root.splide.go('+' + getMove());

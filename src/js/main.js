@@ -404,8 +404,12 @@ document.addEventListener('alpine:init', () => {
 window.bindFeaturedCollectionMjArrows = function (root, desktopMove, mobileMove) {
   if (!root?.splide) return;
 
-  const prev = root.querySelector('[data-fc-mj-arrow="prev"]');
-  const next = root.querySelector('[data-fc-mj-arrow="next"]');
+  const prev =
+    root.querySelector('[data-fc-mj-arrow="prev"]') ||
+    root.querySelector('.splide__arrow--prev');
+  const next =
+    root.querySelector('[data-fc-mj-arrow="next"]') ||
+    root.querySelector('.splide__arrow--next');
   const getMove = () => (window.innerWidth >= 768 ? desktopMove : mobileMove);
 
   const updateDisabled = () => {
@@ -424,6 +428,7 @@ window.bindFeaturedCollectionMjArrows = function (root, desktopMove, mobileMove)
   if (prev && !prev.dataset.fcMjBound) {
     prev.dataset.fcMjBound = '1';
     prev.addEventListener('click', (event) => {
+      if (window.innerWidth < 768) return;
       event.preventDefault();
       event.stopPropagation();
       root.splide.go('-' + getMove());
@@ -433,6 +438,7 @@ window.bindFeaturedCollectionMjArrows = function (root, desktopMove, mobileMove)
   if (next && !next.dataset.fcMjBound) {
     next.dataset.fcMjBound = '1';
     next.addEventListener('click', (event) => {
+      if (window.innerWidth < 768) return;
       event.preventDefault();
       event.stopPropagation();
       root.splide.go('+' + getMove());
