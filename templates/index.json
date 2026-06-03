@@ -825,6 +825,7 @@
     },
     "popup_6AnBUK": {
       "type": "popup",
+      "disabled": true,
       "name": "Popup imagen",
       "settings": {
         "image": "shopify://shop_images/Dia1_joyero_popup_dc534a97-5d7e-4b31-a0cb-91c6f7895450.jpg",
@@ -836,6 +837,7 @@
     },
     "popup_yGHy4R": {
       "type": "popup",
+      "disabled": true,
       "name": "Popup imagen",
       "settings": {
         "image": "shopify://shop_images/compra-minima_popup.jpg",
