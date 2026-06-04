@@ -258,7 +258,7 @@
           "settings": {
             "prefix": "🛍️",
             "bold_text": "VENTA EXCLUSIVA MAYORISTA",
-            "suffix": "— Compra mínima $39.990 🛍️",
+            "suffix": "— Compra mínima $49.990 🛍️",
             "link": "",
             "open_new_window": false
           }
@@ -694,7 +694,7 @@
             "title_link": "",
             "open_new_window": false,
             "heading_size": 80,
-            "text": "<p>A todo el país por compras sobre $99.900.</p>"
+            "text": "<p>A todo el país por compras sobre $49.900.</p>"
           }
         },
         "column_wN96ct": {
