@@ -15,8 +15,8 @@
       "type": "misjoyas-topbar",
       "settings": {
         "enable": true,
-        "text": "✨ OFERTAS EXCLUSIVAS REVANCHA MISJOYAS HASTA 70% DCTO — ¡No te lo pierdas! ✨  🛍️   4 Y 5 DE JUNIO   🛍️",
-        "text_color": "#fdbfd7",
+        "text": "Solo este fin de semana —  🚚 DESPACHO GRATIS por compras sobre $49.990 🚚",
+        "text_color": "#ffffff",
         "background_color": "#000000",
         "animation_speed": 20,
         "font_size": 14,
@@ -189,32 +189,8 @@
     "header": {
       "type": "header",
       "blocks": {
-        "button_4QAbNM": {
-          "type": "button",
-          "settings": {
-            "button_label": "Revancha",
-            "button_link": "shopify://collections/descuentos-activos",
-            "open_new_window": false,
-            "show_button_style": "primary",
-            "button_light": "#f83785",
-            "button_text_light": "#ffffff",
-            "button_hover_light": "#f83785",
-            "button_text_hover_light": "#ffffff",
-            "secondary_button_light": "rgba(0,0,0,0)",
-            "secondary_button_text_light": "rgba(0,0,0,0)",
-            "colors_text_link": "rgba(0,0,0,0)",
-            "button_dark": "rgba(0,0,0,0)",
-            "button_text_dark": "rgba(0,0,0,0)",
-            "button_hover_dark": "rgba(0,0,0,0)",
-            "button_text_hover_dark": "rgba(0,0,0,0)",
-            "secondary_button_dark": "rgba(0,0,0,0)",
-            "secondary_button_text_dark": "rgba(0,0,0,0)",
-            "colors_text_link_dark": "rgba(0,0,0,0)"
-          }
-        },
         "button_YfAny9": {
           "type": "button",
-          "disabled": true,
           "settings": {
             "button_label": "Día del Padre",
             "button_link": "shopify://collections/dia-del-padre",
@@ -238,6 +214,7 @@
         },
         "tree_menu_FxFEXV": {
           "type": "tree_menu",
+          "disabled": true,
           "settings": {
             "heading": "Descuentos Revancha",
             "menu": "descuentos-black",
@@ -284,7 +261,7 @@
           "type": "tree_menu",
           "settings": {
             "heading": "Colecciones",
-            "menu": "colecciones-cyber",
+            "menu": "colecciones-1",
             "menu_item_link": "",
             "open_new_window": false,
             "show_image_collection": false,
@@ -350,7 +327,6 @@
         }
       },
       "block_order": [
-        "button_4QAbNM",
         "button_YfAny9",
         "tree_menu_FxFEXV",
         "tree_menu_4Hjg4P",
@@ -897,58 +873,10 @@
       "settings": {
         "enable": true,
         "show_only_on_homepage": false,
-        "image": "shopify://shop_images/Huincha-Revancha_desktop.jpg",
-        "image_mobile": "shopify://shop_images/Huincha-Revancha_mobile.jpg",
+        "image": "shopify://shop_images/Huincha-sabado-y-domingo_desktop.jpg",
+        "image_mobile": "shopify://shop_images/Huincha-sabado-y-domingo_mobile.jpg",
         "image_alt": "",
-        "link": "shopify://collections/descuentos-activos",
-        "open_new_window": false,
-        "banner_height": 100,
-        "banner_height_mobile": 130
-      }
-    },
-    "huincha_header_8CzzLy": {
-      "type": "huincha-header",
-      "disabled": true,
-      "name": "Huincha header",
-      "settings": {
-        "enable": true,
-        "show_only_on_homepage": false,
-        "image": "shopify://shop_images/DIA1_huincha_desktop_91b609d2-ba35-4021-920e-0c43f328dd35.jpg",
-        "image_mobile": "shopify://shop_images/DIA1_huincha_mobile.jpg",
-        "image_alt": "",
-        "link": "shopify://collections/descuentos-activos",
-        "open_new_window": false,
-        "banner_height": 100,
-        "banner_height_mobile": 130
-      }
-    },
-    "huincha_header_qmfEWG": {
-      "type": "huincha-header",
-      "disabled": true,
-      "name": "Huincha header",
-      "settings": {
-        "enable": true,
-        "show_only_on_homepage": false,
-        "image": "shopify://shop_images/DIA2_huincha_desktop_02295313-9cf7-4dd2-8b06-1819bc37b694.jpg",
-        "image_mobile": "shopify://shop_images/DIA2_huincha_mobile_c99e817c-6bef-4ac9-96be-d33d07fd9383.jpg",
-        "image_alt": "",
-        "link": "shopify://collections/descuentos-activos",
-        "open_new_window": false,
-        "banner_height": 100,
-        "banner_height_mobile": 130
-      }
-    },
-    "huincha_header_JdEaTj": {
-      "type": "huincha-header",
-      "disabled": true,
-      "name": "Huincha header",
-      "settings": {
-        "enable": true,
-        "show_only_on_homepage": false,
-        "image": "shopify://shop_images/DIA3_huincha_desktop_66969f92-89c4-41ef-b2e8-78eb7c089a96.jpg",
-        "image_mobile": "shopify://shop_images/DIA3_huincha_mobile_56b19d3f-0235-4486-ad86-0ca67c81c442.jpg",
-        "image_alt": "",
-        "link": "shopify://collections/descuentos-activos",
+        "link": "shopify://collections/all",
         "open_new_window": false,
         "banner_height": 100,
         "banner_height_mobile": 130
@@ -961,9 +889,6 @@
     "announcement-bar",
     "header",
     "mobile-navigation",
-    "huincha_header_TEzGXy",
-    "huincha_header_8CzzLy",
-    "huincha_header_qmfEWG",
-    "huincha_header_JdEaTj"
+    "huincha_header_TEzGXy"
   ]
 }

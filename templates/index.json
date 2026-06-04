@@ -15,49 +15,27 @@
         "slide_6gVGPW": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Banner-general_desktop_e2d956bb-9c4c-4752-a869-9367051f721d.jpg",
-            "image_mobile": "shopify://shop_images/Banner_general_Mobile_4e3ea141-ece8-47d4-b171-7280e48511b6.jpg",
+            "image": "shopify://shop_images/Banner-despacho-gratis_desktop.jpg",
+            "image_mobile": "shopify://shop_images/Banner-despacho-gratis_mobile.jpg",
             "image_alt": "",
-            "link": "shopify://collections/descuentos-activos",
+            "link": "shopify://collections/all",
             "open_new_window": false
           }
         },
         "slide_dqdmni": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Banner_compra-minima_desktop.jpg",
-            "image_mobile": "shopify://shop_images/Banner_compra-minima_Mobile_bc2ebfb3-8018-4658-86d3-d73106636a93.jpg",
+            "image": "shopify://shop_images/Banner_general_desktop_63bac82c-dc7e-4bd6-a604-23a15312461c.jpg",
+            "image_mobile": "shopify://shop_images/Banner_general_mobile_cba64c29-6305-4fca-90d9-4a62da46c2c8.jpg",
             "image_alt": "",
-            "link": "shopify://collections/descuentos-activos",
-            "open_new_window": false
-          }
-        },
-        "slide_fXkgiQ": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/Banner_aros_desktop_f6392721-4a12-4328-bcd1-8bcf8e9abde1.jpg",
-            "image_mobile": "shopify://shop_images/Banner_aros_Mobile_3fa3b627-6850-41ce-a4f1-ea4f2903746d.jpg",
-            "image_alt": "",
-            "link": "shopify://collections/aros",
-            "open_new_window": false
-          }
-        },
-        "slide_aHtjLW": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/Banner_anillos_desktop_08c4c00d-7713-4c7e-b404-d323443445e6.jpg",
-            "image_mobile": "shopify://shop_images/Banner_anillos_Mobile.jpg",
-            "image_alt": "",
-            "link": "shopify://collections/anillos",
+            "link": "shopify://collections/all",
             "open_new_window": false
           }
         }
       },
       "block_order": [
         "slide_6gVGPW",
-        "slide_dqdmni",
-        "slide_fXkgiQ",
-        "slide_aHtjLW"
+        "slide_dqdmni"
       ],
       "settings": {
         "auto_play": true,
@@ -141,6 +119,7 @@
         "badge_bCqfL6",
         "badge_mhjcNr"
       ],
+      "disabled": true,
       "name": "Coupon badges",
       "settings": {
         "enable": true,
@@ -224,8 +203,8 @@
       "settings": {
         "title_icon": "",
         "title_icon_color": "#68b5a3",
-        "title": "Ofertas exclusivas Revancha MISJOYAS",
-        "collection": "descuentos-activos",
+        "title": "Lo más vendido",
+        "collection": "mas-vendidos",
         "products_to_show": 16,
         "gap": 16,
         "gap_mobile": 12,
@@ -237,7 +216,7 @@
         "show_rating": false,
         "show_highlighted_attributes": true,
         "show_view_all": true,
-        "button_label": "Ver todos los productos",
+        "button_label": "Ver todo lo más vendido",
         "button_link": "",
         "open_new_window": false
       }
@@ -321,7 +300,7 @@
         "show_rating": false,
         "show_highlighted_attributes": true,
         "show_view_all": true,
-        "button_label": "Ver todos los productos",
+        "button_label": "Ver todos los productos nuevos",
         "button_link": "",
         "open_new_window": false
       }

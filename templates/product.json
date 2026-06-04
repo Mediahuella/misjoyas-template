@@ -21,6 +21,7 @@
         },
         "logo_cyber_Va6mqR": {
           "type": "logo_cyber",
+          "disabled": true,
           "settings": {
             "logo_cyber": "shopify://shop_images/tag-revancha.jpg"
           }
