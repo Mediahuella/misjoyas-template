@@ -15,10 +15,10 @@
         "slide_6gVGPW": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Banner-despacho-gratis_desktop.jpg",
-            "image_mobile": "shopify://shop_images/Banner-despacho-gratis_mobile.jpg",
+            "image": "shopify://shop_images/Banner_dia_del_padre_desktop.jpg",
+            "image_mobile": "shopify://shop_images/Banner_dia_del_padre_mobile.jpg",
             "image_alt": "",
-            "link": "shopify://collections/all",
+            "link": "shopify://collections/dia-del-padre",
             "open_new_window": false
           }
         },
@@ -204,7 +204,7 @@
         "title_icon": "",
         "title_icon_color": "#68b5a3",
         "title": "Lo más vendido",
-        "collection": "mas-vendidos",
+        "collection": "c_mas-vendidos",
         "products_to_show": 16,
         "gap": 16,
         "gap_mobile": 12,
@@ -596,7 +596,7 @@
         "column_DFytx6": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/caja-emprende.jpg",
+            "image": "shopify://shop_images/emprende-07_jpg.jpg",
             "image_alt": "",
             "image_link": "shopify://pages/todo-para-emprender",
             "open_new_window_image": false,
@@ -694,7 +694,7 @@
             "title_link": "",
             "open_new_window": false,
             "heading_size": 80,
-            "text": "<p>A todo el país por compras sobre $49.900.</p>"
+            "text": "<p>A todo el país por compras sobre $99.900.</p>"
           }
         },
         "column_wN96ct": {

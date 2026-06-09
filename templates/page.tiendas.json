@@ -236,7 +236,7 @@
           "type": "store",
           "name": "Mis Joyas Espacio Urbano Las Rejas",
           "settings": {
-            "store_name": "MISJOYAS LAS REJAS",
+            "store_name": "MISJOYAS LAS REJAS ESPACIO URBANO",
             "address": "ESPACIO URBANO LAS REJAS",
             "additional_info": "<p>AV. B OHIGGINS 5091  - LOCAL 2004<br/>ESTACIÓN CENTRAL </p>",
             "special_hours": "",
@@ -288,7 +288,7 @@
             "address": "Avenida Concha y Toro 1149 Local B2, Espacio Urbano Puente Alto",
             "additional_info": "",
             "special_hours": "",
-            "hours": "<p>Lunes a Viernes: 10:00 a 20:00 hrs<br/>Sábado: 10:30 a 20:00 hrs<br/>Domingo: Cerrado</p>",
+            "hours": "<p>Lunes a Sábado: 10:00 a 20:00 hrs<br/>Domingo: 10:30 a 20:00 hrs<br/></p>",
             "phone": "56996418771",
             "email": "misjoyaspuentealto1149@misjoyas.cl",
             "store_image": "shopify://shop_images/Tienda_Nueva_Puente_Alto.jpg",

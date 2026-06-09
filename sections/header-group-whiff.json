@@ -15,7 +15,7 @@
       "type": "misjoyas-topbar",
       "settings": {
         "enable": true,
-        "text": "Solo este fin de semana —  🚚 DESPACHO GRATIS por compras sobre $49.990 🚚",
+        "text": "15% dcto en la categoría Día del Padre  — 🎁 ¡Prepara tu stock hoy! 🎁",
         "text_color": "#ffffff",
         "background_color": "#000000",
         "animation_speed": 20,
@@ -192,6 +192,29 @@
         "button_YfAny9": {
           "type": "button",
           "settings": {
+            "button_label": "Ofertas Black",
+            "button_link": "shopify://collections/descuentos-activos",
+            "open_new_window": false,
+            "show_button_style": "primary",
+            "button_light": "#f83785",
+            "button_text_light": "#ffffff",
+            "button_hover_light": "#f83785",
+            "button_text_hover_light": "#ffffff",
+            "secondary_button_light": "rgba(0,0,0,0)",
+            "secondary_button_text_light": "rgba(0,0,0,0)",
+            "colors_text_link": "rgba(0,0,0,0)",
+            "button_dark": "rgba(0,0,0,0)",
+            "button_text_dark": "rgba(0,0,0,0)",
+            "button_hover_dark": "rgba(0,0,0,0)",
+            "button_text_hover_dark": "rgba(0,0,0,0)",
+            "secondary_button_dark": "rgba(0,0,0,0)",
+            "secondary_button_text_dark": "rgba(0,0,0,0)",
+            "colors_text_link_dark": "rgba(0,0,0,0)"
+          }
+        },
+        "button_CEnHcy": {
+          "type": "button",
+          "settings": {
             "button_label": "Día del Padre",
             "button_link": "shopify://collections/dia-del-padre",
             "open_new_window": false,
@@ -328,6 +351,7 @@
       },
       "block_order": [
         "button_YfAny9",
+        "button_CEnHcy",
         "tree_menu_FxFEXV",
         "tree_menu_4Hjg4P",
         "tree_menu_eMW3PW",
@@ -376,10 +400,10 @@
     "mobile-navigation": {
       "type": "mobile-navigation",
       "blocks": {
-        "button_LVneNi": {
+        "button_YLmAc7": {
           "type": "button",
           "settings": {
-            "button_label": "Cyber Day",
+            "button_label": "Ofertas Black",
             "button_link": "shopify://collections/descuentos-activos",
             "open_new_window": false,
             "show_button_style": "primary",
@@ -399,9 +423,8 @@
             "colors_text_link_dark": "rgba(0,0,0,0)"
           }
         },
-        "button_YLmAc7": {
+        "button_ENXF8b": {
           "type": "button",
-          "disabled": true,
           "settings": {
             "button_label": "Día del Padre",
             "button_link": "shopify://collections/dia-del-padre",
@@ -425,6 +448,7 @@
         },
         "menu_cdXaXw": {
           "type": "menu",
+          "disabled": true,
           "settings": {
             "heading": "Descuentos Cyber",
             "menu": "descuentos-black",
@@ -611,7 +635,7 @@
           "type": "menu",
           "settings": {
             "heading": "Colecciones",
-            "menu": "colecciones-cyber",
+            "menu": "colecciones-1",
             "menu_item_link": "",
             "open_new_window": false,
             "show_collection_image": false,
@@ -834,8 +858,8 @@
         }
       },
       "block_order": [
-        "button_LVneNi",
         "button_YLmAc7",
+        "button_ENXF8b",
         "menu_cdXaXw",
         "menu_PKxhN3",
         "menu_EhKMaa",
@@ -873,8 +897,8 @@
       "settings": {
         "enable": true,
         "show_only_on_homepage": false,
-        "image": "shopify://shop_images/Huincha-sabado-y-domingo_desktop.jpg",
-        "image_mobile": "shopify://shop_images/Huincha-sabado-y-domingo_mobile.jpg",
+        "image": "shopify://shop_images/GENERAL_huincha_desktop_73e7aec3-4845-4699-959a-f625f78dd9fc.jpg",
+        "image_mobile": "shopify://shop_images/GENERAL_huincha_mobile_8391a2fe-6a25-4325-87b0-8a332d57299a.jpg",
         "image_alt": "",
         "link": "shopify://collections/all",
         "open_new_window": false,
