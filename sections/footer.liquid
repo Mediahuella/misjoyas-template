@@ -93,7 +93,11 @@
                       <ul class="mt-6">
                         {%- for link in block.settings.menu.links -%}
                           <li class="mb-1 first:pt-0 pt-2">
-                            <a href="{{ link.url }}" class="hover-text-link nav-link relative block lg:inline-block">
+                            <a href="{{ link.url }}"
+                              {% if link.url contains 'drive.google.com/file/d/1stNa4K17A7htbf1P383OBR3HscnyHbbn' %}
+                                target="_blank" rel="noopener noreferrer"
+                              {% endif %}
+                              class="hover-text-link nav-link relative block lg:inline-block">
                               {{ link.title }}
                             </a>
                           </li>
