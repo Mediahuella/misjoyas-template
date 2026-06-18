@@ -178,8 +178,6 @@
                 </div>
               </div>
             {% endif %}
-            {% comment %} Cart progress bar {% endcomment %}
-            {% render 'cart-progress-bar' %}
             {% comment %} Cart items {% endcomment %}
             <div {% if is_update_date %}x-intersect.once="updateDate(`{{ update_date_string }}`)"{% endif %} 
               class="misjoyas-cart__items relative pl-5 pr-5 lg:pl-0 lg:pr-0 bg-[rgba(var(--colors-text),0.05)] lg:bg-none overflow-auto scrollbar-body scrollbar-visible flex-1 z-20 pt-2 pb-2
@@ -213,9 +211,7 @@
                   </div>
                 {% endif %}
               {% endif %}
-              {% unless settings.enable_cart_progress_bar %}
-                {% render 'freeshipping' %}
-              {% endunless %}
+              {% render 'freeshipping' %}
               
               {% if settings.show_in_cart_items == 'show_cart' %}
                 {% comment %}theme-check-disable TranslationKeyExists{% endcomment %}
