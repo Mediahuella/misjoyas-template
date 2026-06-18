@@ -7,6 +7,7 @@
   \************************/
 () {
 
+function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
 function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -460,6 +461,368 @@ window.bindFeaturedCollectionMjArrows = function (root, desktopMove, mobileMove)
   }
   updateDisabled();
 };
+
+/**
+ * Debugger del cart drawer Mis Joyas.
+ *
+ * Uso en consola:
+ *   MisJoyasCartDebug.run()           — informe completo
+ *   MisJoyasCartDebug.watch()         — log al abrir/cerrar/recargar carrito
+ *   MisJoyasCartDebug.unwatch()
+ *   MisJoyasCartDebug.fetchSection()  — compara HTML del section API
+ *
+ * Activar watch al cargar:
+ *   localStorage.setItem('misjoyas_cart_debug', '1'); location.reload();
+ *   — o añadir ?mj_cart_debug=1 a la URL
+ */
+(function initMisJoyasCartDebug() {
+  var LOG = '[MisJoyas Cart Debug]';
+  var STORAGE_KEY = 'misjoyas_cart_debug';
+  var isEnabled = function isEnabled() {
+    try {
+      if (localStorage.getItem(STORAGE_KEY) === '1') return true;
+    } catch (e) {/* ignore */}
+    return new URLSearchParams(window.location.search).has('mj_cart_debug');
+  };
+  var getDrawer = function getDrawer() {
+    return document.getElementById('CartDrawer');
+  };
+  var getMiniCartStore = function getMiniCartStore() {
+    var _window$Alpine, _window$Alpine$store;
+    return ((_window$Alpine = window.Alpine) === null || _window$Alpine === void 0 || (_window$Alpine$store = _window$Alpine.store) === null || _window$Alpine$store === void 0 ? void 0 : _window$Alpine$store.call(_window$Alpine, 'xMiniCart')) || null;
+  };
+  var getCartBubbleCount = function getCartBubbleCount() {
+    var bubble = document.querySelector('#cart-icon-bubble [aria-hidden="true"]') || document.querySelector('#cart-icon-bubble span');
+    return parseInt((bubble === null || bubble === void 0 ? void 0 : bubble.textContent) || '0', 10) || 0;
+  };
+  var scanStylesheets = function scanStylesheets() {
+    var mainCssLinks = _toConsumableArray(document.querySelectorAll('link[rel="stylesheet"]')).filter(function (link) {
+      return /main\.css/i.test(link.href);
+    }).map(function (link) {
+      return {
+        href: link.href,
+        loaded: !!link.sheet
+      };
+    });
+    var misjoyasSelectors = [];
+    var blockedSheets = [];
+    var _iterator = _createForOfIteratorHelper(document.styleSheets),
+      _step;
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var sheet = _step.value;
+        var rules = void 0;
+        try {
+          rules = sheet.cssRules;
+        } catch (error) {
+          blockedSheets.push({
+            href: sheet.href || '(inline)',
+            reason: error.message
+          });
+          continue;
+        }
+        var _iterator2 = _createForOfIteratorHelper(rules || []),
+          _step2;
+        try {
+          for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+            var rule = _step2.value;
+            var selector = rule.selectorText || '';
+            if (selector.includes('misjoyas-cart')) {
+              misjoyasSelectors.push({
+                href: sheet.href || '(inline)',
+                selector: selector
+              });
+            }
+          }
+        } catch (err) {
+          _iterator2.e(err);
+        } finally {
+          _iterator2.f();
+        }
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+    return {
+      mainCssLinks: mainCssLinks,
+      misjoyasRuleCount: misjoyasSelectors.length,
+      misjoyasSample: misjoyasSelectors.slice(0, 5),
+      blockedSheets: blockedSheets
+    };
+  };
+  var inspectStyles = function inspectStyles(drawer) {
+    if (!drawer) return null;
+    var panel = drawer.querySelector('#update-cart, .misjoyas-cart__panel');
+    var title = drawer.querySelector('.misjoyas-cart__title');
+    var progress = drawer.querySelector('.misjoyas-cart-progress');
+    var read = function read(el) {
+      if (!el) return null;
+      var style = getComputedStyle(el);
+      return {
+        display: style.display,
+        visibility: style.visibility,
+        opacity: style.opacity,
+        maxWidth: style.maxWidth,
+        width: style.width,
+        zIndex: style.zIndex,
+        fontSize: style.fontSize,
+        color: style.color
+      };
+    };
+    return {
+      drawer: read(drawer),
+      panel: read(panel),
+      title: read(title),
+      progress: read(progress)
+    };
+  };
+  var inspectAlpine = function inspectAlpine(drawer) {
+    var _window$Alpine2, _drawer$hasAttribute;
+    var miniCart = getMiniCartStore();
+    var alpineData = drawer && ((_window$Alpine2 = window.Alpine) === null || _window$Alpine2 === void 0 || (_window$Alpine2 = _window$Alpine2._x_dataStack) === null || _window$Alpine2 === void 0 ? void 0 : _window$Alpine2[0]);
+    return {
+      alpineLoaded: !!window.Alpine,
+      miniCart: miniCart ? {
+        open: miniCart.open,
+        loading: miniCart.loading,
+        type: miniCart.type,
+        needReload: miniCart.needReload
+      } : null,
+      drawerXData: alpineData ? Object.keys(alpineData) : null,
+      xCloakPresent: (_drawer$hasAttribute = drawer === null || drawer === void 0 ? void 0 : drawer.hasAttribute('x-cloak')) !== null && _drawer$hasAttribute !== void 0 ? _drawer$hasAttribute : false
+    };
+  };
+  var inspectDom = function inspectDom() {
+    var _drawer$classList$con, _drawer$className$inc, _drawer$innerHTML;
+    var drawers = _toConsumableArray(document.querySelectorAll('#CartDrawer'));
+    var drawer = drawers[0] || null;
+    return {
+      drawerCount: drawers.length,
+      drawerPresent: !!drawer,
+      classes: (drawer === null || drawer === void 0 ? void 0 : drawer.className) || null,
+      hasMisjoyasRootClass: (_drawer$classList$con = drawer === null || drawer === void 0 ? void 0 : drawer.classList.contains('misjoyas-cart')) !== null && _drawer$classList$con !== void 0 ? _drawer$classList$con : false,
+      hasLegacyMjClass: (_drawer$className$inc = drawer === null || drawer === void 0 ? void 0 : drawer.className.includes('mj-cart')) !== null && _drawer$className$inc !== void 0 ? _drawer$className$inc : false,
+      progressPresent: !!(drawer !== null && drawer !== void 0 && drawer.querySelector('.misjoyas-cart-progress')),
+      progressLegacyMj: !!(drawer !== null && drawer !== void 0 && drawer.querySelector('.mj-cart__progress')),
+      panelPresent: !!(drawer !== null && drawer !== void 0 && drawer.querySelector('.misjoyas-cart__panel, #update-cart')),
+      renderedIn: drawer !== null && drawer !== void 0 && drawer.closest('#ajax-loading-cart') ? 'section cart-drawer (#ajax-loading-cart)' : drawer ? 'snippet directo (theme.liquid)' : null,
+      innerHTMLLength: (drawer === null || drawer === void 0 || (_drawer$innerHTML = drawer.innerHTML) === null || _drawer$innerHTML === void 0 ? void 0 : _drawer$innerHTML.length) || 0
+    };
+  };
+  var inspectOpenLogic = function inspectOpenLogic() {
+    var drawer = getDrawer();
+    var itemCount = getCartBubbleCount();
+    var hasProgress = !!(drawer !== null && drawer !== void 0 && drawer.querySelector('.misjoyas-cart-progress'));
+    var miniCart = getMiniCartStore();
+    return {
+      itemCount: itemCount,
+      hasProgress: hasProgress,
+      wouldForceReloadOnOpen: itemCount > 0 && !hasProgress,
+      reloadBlockedByLoading: !!(miniCart !== null && miniCart !== void 0 && miniCart.loading),
+      onCartPage: window.location.pathname === '/cart',
+      cartTypeSettingGuess: drawer !== null && drawer !== void 0 && drawer.classList.contains('drawer') ? 'drawer' : drawer !== null && drawer !== void 0 && drawer.classList.contains('popup') ? 'popup' : null
+    };
+  };
+  var summarizeIssues = function summarizeIssues(report) {
+    var _report$computed, _report$alpine$miniCa, _report$computed2;
+    var issues = [];
+    if (!report.dom.drawerPresent) {
+      issues.push('No existe #CartDrawer en el DOM.');
+    }
+    if (report.dom.drawerCount > 1) {
+      issues.push("Hay ".concat(report.dom.drawerCount, " elementos #CartDrawer (IDs duplicados)."));
+    }
+    if (report.dom.drawerPresent && !report.dom.hasMisjoyasRootClass) {
+      issues.push('El drawer no tiene la clase raíz .misjoyas-cart — el CSS de Figma no aplicará.');
+    }
+    if (report.dom.hasLegacyMjClass) {
+      issues.push('Aún hay clases legacy .mj-cart* en el drawer.');
+    }
+    if (report.stylesheets.misjoyasRuleCount === 0) {
+      issues.push('No se encontraron reglas CSS .misjoyas-cart en stylesheets accesibles (main.css no cargado o desactualizado).');
+    }
+    if (report.stylesheets.mainCssLinks.length === 0) {
+      issues.push('No hay <link> a main.css en la página.');
+    }
+    if (report.openLogic.wouldForceReloadOnOpen) {
+      issues.push('openCart() forzará reLoad() porque falta .misjoyas-cart-progress en el drawer actual.');
+    }
+    if (!report.alpine.miniCart) {
+      issues.push('Alpine.store("xMiniCart") no está disponible.');
+    }
+    if (report.alpine.miniCart && report.alpine.drawerXData && !report.alpine.drawerXData.includes('loading')) {
+      issues.push('x-data="xCart" podría no estar inicializado en #CartDrawer.');
+    }
+    if (report.dom.drawerPresent && ((_report$computed = report.computed) === null || _report$computed === void 0 || (_report$computed = _report$computed.drawer) === null || _report$computed === void 0 ? void 0 : _report$computed.display) === 'none' && (_report$alpine$miniCa = report.alpine.miniCart) !== null && _report$alpine$miniCa !== void 0 && _report$alpine$miniCa.open) {
+      issues.push('El store dice open=true pero #CartDrawer tiene display:none.');
+    }
+    if (report.dom.drawerPresent && ((_report$computed2 = report.computed) === null || _report$computed2 === void 0 || (_report$computed2 = _report$computed2.panel) === null || _report$computed2 === void 0 ? void 0 : _report$computed2.maxWidth) === '384px') {
+      issues.push('Panel sigue con max-width ~384px (md:w-96 del tema base) — CSS Mis Joyas no está ganando.');
+    }
+    return issues;
+  };
+  var run = function run() {
+    var context = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    var drawer = getDrawer();
+    var report = {
+      at: new Date().toISOString(),
+      trigger: context.trigger || 'manual',
+      url: window.location.href,
+      dom: inspectDom(),
+      alpine: inspectAlpine(drawer),
+      openLogic: inspectOpenLogic(),
+      stylesheets: scanStylesheets(),
+      computed: inspectStyles(drawer)
+    };
+    report.issues = summarizeIssues(report);
+    console.group("".concat(LOG, " ").concat(report.trigger));
+    console.log('Resumen DOM', report.dom);
+    console.log('Alpine / estado', report.alpine);
+    console.log('Lógica openCart / reLoad', report.openLogic);
+    console.log('CSS cargado', report.stylesheets);
+    console.log('Estilos computados', report.computed);
+    if (report.issues.length) {
+      console.warn('Posibles causas:', report.issues);
+    } else {
+      console.info('No se detectaron problemas obvios. Si el diseño sigue mal, ejecuta MisJoyasCartDebug.fetchSection().');
+    }
+    console.groupEnd();
+    return report;
+  };
+  var fetchSection = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2() {
+      var _sectionDrawer$classL, _liveDrawer$classList, response, json, html, doc, sectionDrawer, liveDrawer, sectionInfo, liveInfo, _t2;
+      return _regenerator().w(function (_context2) {
+        while (1) switch (_context2.p = _context2.n) {
+          case 0:
+            console.group("".concat(LOG, " fetchSection()"));
+            _context2.p = 1;
+            _context2.n = 2;
+            return fetch("".concat(window.location.pathname, "?sections=cart-drawer"));
+          case 2:
+            response = _context2.v;
+            _context2.n = 3;
+            return response.json();
+          case 3:
+            json = _context2.v;
+            html = json['cart-drawer'] || '';
+            doc = new DOMParser().parseFromString(html, 'text/html');
+            sectionDrawer = doc.querySelector('#CartDrawer');
+            liveDrawer = getDrawer();
+            sectionInfo = {
+              htmlLength: html.length,
+              hasCartDrawer: !!sectionDrawer,
+              sectionClasses: (sectionDrawer === null || sectionDrawer === void 0 ? void 0 : sectionDrawer.className) || null,
+              sectionHasMisjoyas: (_sectionDrawer$classL = sectionDrawer === null || sectionDrawer === void 0 ? void 0 : sectionDrawer.classList.contains('misjoyas-cart')) !== null && _sectionDrawer$classL !== void 0 ? _sectionDrawer$classL : false,
+              sectionHasProgress: html.includes('misjoyas-cart-progress'),
+              sectionHasLegacyMj: html.includes('mj-cart')
+            };
+            liveInfo = {
+              classes: (liveDrawer === null || liveDrawer === void 0 ? void 0 : liveDrawer.className) || null,
+              hasMisjoyas: (_liveDrawer$classList = liveDrawer === null || liveDrawer === void 0 ? void 0 : liveDrawer.classList.contains('misjoyas-cart')) !== null && _liveDrawer$classList !== void 0 ? _liveDrawer$classList : false,
+              hasProgress: !!(liveDrawer !== null && liveDrawer !== void 0 && liveDrawer.querySelector('.misjoyas-cart-progress'))
+            };
+            console.log('Section API (cart-drawer)', sectionInfo);
+            console.log('DOM live (#CartDrawer)', liveInfo);
+            if (sectionInfo.sectionClasses !== liveInfo.classes) {
+              console.warn('El HTML del section API no coincide con el drawer en pantalla — puede haber caché o un render distinto.');
+            }
+            if (sectionInfo.sectionHasMisjoyas && !liveInfo.hasMisjoyas) {
+              console.warn('El section trae .misjoyas-cart pero el DOM live no — reLoad() podría no estar aplicando el HTML nuevo.');
+            }
+            console.groupEnd();
+            return _context2.a(2, {
+              sectionInfo: sectionInfo,
+              liveInfo: liveInfo,
+              htmlSnippet: html.slice(0, 500)
+            });
+          case 4:
+            _context2.p = 4;
+            _t2 = _context2.v;
+            console.error('Error al fetch cart-drawer section', _t2);
+            console.groupEnd();
+            throw _t2;
+          case 5:
+            return _context2.a(2);
+        }
+      }, _callee2, null, [[1, 4]]);
+    }));
+    return function fetchSection() {
+      return _ref.apply(this, arguments);
+    };
+  }();
+  var wrapped = false;
+  var watch = function watch() {
+    if (wrapped) {
+      console.info("".concat(LOG, " watch ya activo"));
+      return;
+    }
+    var wrapStore = function wrapStore() {
+      var store = getMiniCartStore();
+      if (!store || store.__mjDebugWrapped) return !!store;
+      ['openCart', 'hideCart', 'reLoad'].forEach(function (method) {
+        var _store$method;
+        var original = (_store$method = store[method]) === null || _store$method === void 0 ? void 0 : _store$method.bind(store);
+        if (!original) return;
+        store[method] = function () {
+          console.group("".concat(LOG, " xMiniCart.").concat(method, "()"));
+          run({
+            trigger: "xMiniCart.".concat(method)
+          });
+          console.groupEnd();
+          return original.apply(void 0, arguments);
+        };
+      });
+      store.__mjDebugWrapped = true;
+      wrapped = true;
+      console.info("".concat(LOG, " watch activo \u2014 abre/cierra el carrito para ver logs"));
+      return true;
+    };
+    document.addEventListener('alpine:init', wrapStore);
+    if (!wrapStore()) {
+      window.setTimeout(wrapStore, 500);
+      window.setTimeout(wrapStore, 2000);
+    }
+    document.addEventListener('eurus:cart:items-changed', function () {
+      console.info("".concat(LOG, " evento eurus:cart:items-changed"));
+      run({
+        trigger: 'eurus:cart:items-changed'
+      });
+    });
+  };
+  var unwatch = function unwatch() {
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch (e) {/* ignore */}
+    console.info("".concat(LOG, " Para desactivar watch recarga sin ?mj_cart_debug=1"));
+  };
+  window.MisJoyasCartDebug = {
+    run: run,
+    watch: watch,
+    unwatch: unwatch,
+    fetchSection: fetchSection,
+    enable: function enable() {
+      try {
+        localStorage.setItem(STORAGE_KEY, '1');
+      } catch (e) {/* ignore */}
+      watch();
+      run({
+        trigger: 'enable'
+      });
+    }
+  };
+  console.info("".concat(LOG, " Debugger listo. Comandos: MisJoyasCartDebug.run(), .watch(), .fetchSection(), .enable()"));
+  if (isEnabled()) {
+    watch();
+    window.addEventListener('load', function () {
+      run({
+        trigger: 'auto-load'
+      });
+    });
+  }
+})();
 
 /***/ },
 

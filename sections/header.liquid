@@ -458,10 +458,6 @@
           {%- endif -%}
         </div>
       {%- endif -%}
-
-      {%- unless template == 'cart' -%}
-        <div @init-run.window="$store.xHeaderMenu.renderAjax($el, 'cart-drawer', '#ajax-loading-cart');"></div>
-      {%- endunless -%}
       
       {% render 'section-divider', classHeader: ' absolute top-full left-0 w-full' %}
     </div>

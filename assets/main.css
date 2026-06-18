@@ -1836,6 +1836,23 @@ video {
 
 /* ===== Mini cart / drawer Mis Joyas (Figma) ===== */
 
+/* Drawer abierto: por encima del header (z-50 / z-60). Solo cuando tiene la clase --open. */
+#CartDrawer.misjoyas-cart.misjoyas-cart--open {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 80 !important;
+}
+
+#CartDrawer.misjoyas-cart.misjoyas-cart--force-closed {
+  display: none !important;
+}
+
+#CartDrawer.misjoyas-cart.misjoyas-cart--force-closed #CartDrawer-Overlay,
+#CartDrawer.misjoyas-cart.misjoyas-cart--force-closed > .drawer,
+#CartDrawer.misjoyas-cart.misjoyas-cart--force-closed > .popup {
+  display: none !important;
+}
+
 #CartDrawer.misjoyas-cart #update-cart.misjoyas-cart__panel {
   width: 100% !important;
   max-width: 600px !important;
@@ -2193,8 +2210,14 @@ video {
   opacity: 0.7;
 }
 
-#CartDrawer.misjoyas-cart .misjoyas-cart-item__qty-btn:hover {
+#CartDrawer.misjoyas-cart .misjoyas-cart-item__qty-btn:hover:not(:disabled) {
   opacity: 1;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-item__qty-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 #CartDrawer.misjoyas-cart .misjoyas-cart-item__qty-input {

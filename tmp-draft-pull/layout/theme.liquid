@@ -218,7 +218,9 @@
 
       {% render 'popups' %}
 
-      {% render 'cart-drawer' %}
+      {%- unless template.name == 'cart' -%}
+        {% render 'cart-drawer' %}
+      {%- endunless -%}
 
       {% if settings.enable_scroll_top_desktop or settings.enable_scroll_top_mobile %}
         {% render 'scroll-to-top' %}

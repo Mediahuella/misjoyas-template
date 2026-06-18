@@ -322,6 +322,16 @@
         "slide_kit_1": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/Banner-secundario_Descuentos_desktop.jpg",
+            "image_mobile": "shopify://shop_images/Banner-secundario_Descuentos_mobile.jpg",
+            "image_alt": "",
+            "link": "shopify://pages/fidelizacion",
+            "open_new_window": false
+          }
+        },
+        "slide_tB7k7t": {
+          "type": "slide",
+          "settings": {
             "image": "shopify://shop_images/banner-2_kit_desktop_f6963582-dae0-469d-8a30-aa7cc720f347.jpg",
             "image_mobile": "shopify://shop_images/banner-2_kit_mobile_ae851128-fb2c-4924-8f3e-74dc451a1325.jpg",
             "image_alt": "",
@@ -342,6 +352,7 @@
       },
       "block_order": [
         "slide_kit_1",
+        "slide_tB7k7t",
         "slide_zrye8m"
       ],
       "name": "Banner kit",

@@ -897,8 +897,8 @@
       "settings": {
         "enable": true,
         "show_only_on_homepage": false,
-        "image": "shopify://shop_images/Huincha_compra-minima_desktop.jpg",
-        "image_mobile": "shopify://shop_images/Huincha_compra-minima_mobile.jpg",
+        "image": "shopify://shop_images/Huincha_descuentos_desktop.jpg",
+        "image_mobile": "shopify://shop_images/Huincha_descuentos_mobile.jpg",
         "image_alt": "",
         "link": "shopify://collections/all",
         "open_new_window": false,

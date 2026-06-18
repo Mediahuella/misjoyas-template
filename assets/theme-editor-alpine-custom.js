@@ -840,7 +840,7 @@ document.addEventListener('alpine:init', () => {
                     const sectionElement = document.querySelector(section.selector);
                     if (sectionElement) {
                       if (response.sections[section.id])
-                        sectionElement.innerHTML = getSectionInnerHTML(response.sections[section.id], section.selector);
+                        window.setSectionInnerHTML(sectionElement, response.sections[section.id], section.selector);
                     }
                   }));
                   if (!Alpine.store('xCartNoti') || !Alpine.store('xCartNoti').enable) {
@@ -868,7 +868,7 @@ document.addEventListener('alpine:init', () => {
                 const sectionElement = document.querySelector(section.selector);
                 if (sectionElement) {
                   if (response.sections[section.id])
-                    sectionElement.innerHTML = getSectionInnerHTML(response.sections[section.id], section.selector);
+                    window.setSectionInnerHTML(sectionElement, response.sections[section.id], section.selector);
                 }
               }));
               if (!Alpine.store('xCartNoti') || !Alpine.store('xCartNoti').enable) {
@@ -2500,12 +2500,12 @@ document.addEventListener('alpine:init', () => {
                 const sectionElement = document.querySelector(section.selector);
                 if (sectionElement) {
                   if (response.sections[section.id]) {
-                    sectionElement.innerHTML = getSectionInnerHTML(response.sections[section.id], section.selector);
+                    window.setSectionInnerHTML(sectionElement, response.sections[section.id], section.selector);
                     if (section.selector == '#CartDrawer' || section.selector == '#main-cart-footer' ) {
-                      cartDrawer = getSectionInnerHTML(response.sections[section.id], section.selector);
+                      cartDrawer = window.getSectionInnerHTML(response.sections[section.id], section.selector);
                     }
                     if(section.selector == '#main-cart-items') {
-                      cartPage =  getSectionInnerHTML(response.sections[section.id], section.selector);
+                      cartPage = window.getSectionInnerHTML(response.sections[section.id], section.selector);
                     }
                   }
                 }
@@ -3390,7 +3390,7 @@ requestAnimationFrame(() => {
 
             if (sectionElement) {
               if (response.sections[section.id])
-                sectionElement.innerHTML = getSectionInnerHTML(response.sections[section.id], section.selector);
+                window.setSectionInnerHTML(sectionElement, response.sections[section.id], section.selector);
             }
           }));
           if (Alpine.store('xQuickView') && Alpine.store('xQuickView').show) {
@@ -3837,7 +3837,7 @@ requestAnimationFrame(() => {
 
             if (sectionElement) {
               if (response.sections[section.id])
-                sectionElement.innerHTML = getSectionInnerHTML(response.sections[section.id], section.selector);
+                window.setSectionInnerHTML(sectionElement, response.sections[section.id], section.selector);
             }
           }));
           if (Alpine.store('xQuickView') && Alpine.store('xQuickView').show) {
@@ -4367,7 +4367,7 @@ requestAnimationFrame(() => {
 
               if (sectionElement) {
                 if (response.sections[section.id])
-                  sectionElement.innerHTML = getSectionInnerHTML(response.sections[section.id], section.selector);
+                  window.setSectionInnerHTML(sectionElement, response.sections[section.id], section.selector);
               }
             }));
             if (Alpine.store('xQuickView') && Alpine.store('xQuickView').show) {
