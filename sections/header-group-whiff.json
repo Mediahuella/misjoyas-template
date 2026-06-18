@@ -15,7 +15,7 @@
       "type": "misjoyas-topbar",
       "settings": {
         "enable": true,
-        "text": "15% dcto en la categoría Día del Padre  — 🎁 ¡Prepara tu stock hoy! 🎁",
+        "text": "¡No te lo pierdas! — 🎁 ESPECIAL DÍA DEL PADRE — 10% DCTO en cadenas italianas 🎁",
         "text_color": "#ffffff",
         "background_color": "#000000",
         "animation_speed": 20,
@@ -897,8 +897,8 @@
       "settings": {
         "enable": true,
         "show_only_on_homepage": false,
-        "image": "shopify://shop_images/GENERAL_huincha_desktop_73e7aec3-4845-4699-959a-f625f78dd9fc.jpg",
-        "image_mobile": "shopify://shop_images/GENERAL_huincha_mobile_8391a2fe-6a25-4325-87b0-8a332d57299a.jpg",
+        "image": "shopify://shop_images/Huincha_compra-minima_desktop.jpg",
+        "image_mobile": "shopify://shop_images/Huincha_compra-minima_mobile.jpg",
         "image_alt": "",
         "link": "shopify://collections/all",
         "open_new_window": false,

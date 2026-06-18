@@ -15,10 +15,20 @@
         "slide_6gVGPW": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Banner_dia_del_padre_desktop.jpg",
-            "image_mobile": "shopify://shop_images/Banner_dia_del_padre_mobile.jpg",
+            "image": "shopify://shop_images/Banner-especial-dia-del-padre_desktop.jpg",
+            "image_mobile": "shopify://shop_images/Banner-especial-dia-del-padre_mobile.jpg",
             "image_alt": "",
-            "link": "shopify://collections/dia-del-padre",
+            "link": "shopify://collections/cadenas",
+            "open_new_window": false
+          }
+        },
+        "slide_aKdGEi": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Banner_compra-minima_Desktop_00fc8bc8-a7b6-46ab-a41f-cb9ac0a4d61e.jpg",
+            "image_mobile": "shopify://shop_images/Banner_compra-minima_mobile_7e864395-0255-41f0-8306-9408ea4f883d.jpg",
+            "image_alt": "",
+            "link": "shopify://collections/all",
             "open_new_window": false
           }
         },
@@ -35,6 +45,7 @@
       },
       "block_order": [
         "slide_6gVGPW",
+        "slide_aKdGEi",
         "slide_dqdmni"
       ],
       "settings": {
@@ -258,7 +269,7 @@
           "settings": {
             "prefix": "🛍️",
             "bold_text": "VENTA EXCLUSIVA MAYORISTA",
-            "suffix": "— Compra mínima $49.990 🛍️",
+            "suffix": "— Compra mínima $39.990 🛍️",
             "link": "",
             "open_new_window": false
           }
@@ -812,6 +823,17 @@
         "countdown": false,
         "available_routes": "/"
       }
+    },
+    "popup_rWghyY": {
+      "type": "popup",
+      "name": "Popup imagen",
+      "settings": {
+        "image": "shopify://shop_images/compra-minima_popup_14d0a74d-8e89-4f5b-99a1-6b7c6a599780.jpg",
+        "start": "2026-06-15 00:00:01",
+        "ends": "2027-06-15 00:00:01",
+        "countdown": false,
+        "available_routes": "/"
+      }
     }
   },
   "order": [
@@ -832,6 +854,7 @@
     "multicolumn_bQPMpc",
     "popup_6AnBUK",
     "popup_yGHy4R",
-    "popup_h9bTpX"
+    "popup_h9bTpX",
+    "popup_rWghyY"
   ]
 }
