@@ -571,7 +571,7 @@
                 -%}
                 {% comment %}theme-check-enable TranslationKeyExists{% endcomment %}
               {% endif %}
-              <form action="{{ routes.cart_url }}" id="CartDrawer-Form" class="grow flex flex-wrap" method="post">
+              <form action="{{ routes.cart_url }}" id="CartDrawer-Form" class="grow flex flex-wrap" method="post" @submit="$store.xCartHelper.goToCheckout($event)">
                 <div id="CartDrawer-CartItems" class="flex grow flex-col">
                   <div class="grow">
                     <table class="block w-full cart-items" role="table">
@@ -1142,6 +1142,9 @@
                 <div id="CartDrawer-CartErrors" role="alert"></div>
               </form>
             </div>
+            {%- if section != blank -%}
+              {% render 'cart-drawer-app-blocks', section: section %}
+            {%- endif -%}
             <div class="footer-cart-drawer-mobile misjoyas-cart__footer">
               {% comment %} Cart upsell {% endcomment %}
               {% if settings.enable_upsell_minicart %}
@@ -1546,11 +1549,10 @@
 
                   <button
                     id="checkout-submit"
-                    class="misjoyas-cart__checkout button button-solid leading-normal w-full justify-center cursor-pointer"
+                    class="misjoyas-cart__checkout cart__checkout-button button button-solid leading-normal w-full justify-center cursor-pointer"
                     type="submit"
                     name="checkout"
                     form="CartDrawer-Form"
-                    @click="$store.xCartHelper.goToCheckout($event)"
                     {% if cart == empty %}disabled{% endif %}
                     {{ block.shopify_attributes }}
                   >

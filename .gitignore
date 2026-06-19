@@ -2,3 +2,5 @@ node_modules
 .shopify
 .DS_Store
 shopify.theme.toml
+tmp-*/
+tmp-remote-check/

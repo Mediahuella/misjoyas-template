@@ -179,7 +179,7 @@
         {% else %}
           {% sections 'header-group' %}
       {% endcase %}
-      
+
       {% case settings.selected_preset %}
         {% when "breath" %}
           {% sections 'aside-group-breath' %}
@@ -218,7 +218,9 @@
 
       {% render 'popups' %}
 
-      {% render 'cart-drawer' %}
+      {%- if settings.cart_type == 'drawer' -%}
+        {%- sections 'overlay-group' -%}
+      {%- endif -%}
 
       {% if settings.enable_scroll_top_desktop or settings.enable_scroll_top_mobile %}
         {% render 'scroll-to-top' %}
@@ -273,15 +275,25 @@
     <script src="{{ 'main.js' | asset_url }}" defer></script>
     <script src="{{ 'vendors.js' | asset_url }}" defer></script>
     <script>
+      (function () {
+        var load = {% if request.design_mode %}true{% else %}false{% endif %};
+        if (!load) {
+          try { load = localStorage.getItem('misjoyas_cart_debug') === '1'; } catch (e) {}
+        }
+        if (!load) {
+          load = /(?:\?|&)mj_cart_debug=1(?:&|$)/.test(location.search);
+        }
+        if (!load) return;
+        var s = document.createElement('script');
+        s.src = {{ 'cart-debug.js' | asset_url | json }};
+        s.defer = true;
+        document.head.appendChild(s);
+      })();
+    </script>
+    <script>
       window.addEventListener("load", (event) => {
         deferScriptLoad('instant.page', '{{ 'instant.page.v5.1.1.js' | asset_url }}', () => {}, true);
       });
-  </script>
-  {% include 'store-credit-launcher' %}
-  {% comment %}  {% endcomment %}
-
-
-
-
+    </script>
 </body>
 </html>

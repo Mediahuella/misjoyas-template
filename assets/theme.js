@@ -128,7 +128,10 @@ const getCartBubbleCount = () => {
   return parseInt(bubble?.textContent || '0', 10) || 0;
 };
 
-const cartDrawerSectionHasProgress = (html) => (html || '').includes('misjoyas-cart-progress');
+const cartDrawerHasProgress = (source) => {
+  if (typeof source === 'string') return source.includes('misjoyas-cart-progress');
+  return !!document.getElementById('CartDrawer')?.querySelector('.misjoyas-cart-progress');
+};
 
 const syncCartDrawerVisibility = (isOpen) => {
   const drawer = document.getElementById('CartDrawer');
@@ -291,33 +294,26 @@ const buildCardPriceHtml = (v, priceEl) => {
 
 (function initCardProductVariantPrice() {
   window.updateCardProductVariantPrice = function(selectEl) {
-    console.log('[cardProduct] updateCardProductVariantPrice INICIO', { selectEl: !!selectEl, id: selectEl?.id, value: selectEl?.value });
     if (!selectEl?.id?.startsWith('variant-select-')) {
-      console.log('[cardProduct] updateCardProductVariantPrice ABORT: id no empieza con variant-select-');
       return;
     }
     const priceId = selectEl.id.replace('variant-select-', '');
-    console.log('[cardProduct] priceId extraído:', priceId);
 
     const s = document.getElementById('variant-prices-' + priceId);
     if (!s) {
-      console.log('[cardProduct] ABORT: no se encontró variant-prices-' + priceId);
       return;
     }
     const variants = JSON.parse(s.textContent);
     const variantId = parseInt(selectEl.value, 10);
     const v = variants.find(x => x.id === variantId);
     if (!v) {
-      console.log('[cardProduct] ABORT: variante no encontrada', { variantId, variantsIds: variants.map(x => x.id) });
       return;
     }
-    console.log('[cardProduct] variante encontrada:', { id: v.id, price: v.price, price_formatted: v.price_formatted, compare_at_price: v.compare_at_price });
 
     const cardInfo = selectEl.closest('.card-info');
     let el = null;
     if (cardInfo) {
       const priceContainer = cardInfo.querySelector('[data-card-price-id="' + priceId + '"]');
-      console.log('[cardProduct] búsqueda en cardInfo:', { cardInfo: !!cardInfo, priceContainer: !!priceContainer });
       if (priceContainer) el = priceContainer.querySelector('.main-product-price');
       if (!el) el = cardInfo.querySelector('.main-product-price');
     }
@@ -325,21 +321,16 @@ const buildCardPriceHtml = (v, priceEl) => {
       const card = selectEl.closest('.card-product');
       const priceContainer = card?.querySelector('[data-card-price-id="' + priceId + '"]');
       el = priceContainer?.querySelector('.main-product-price') || card?.querySelector('.main-product-price');
-      console.log('[cardProduct] fallback búsqueda en card:', { card: !!card, el: !!el });
     }
     if (!el) {
-      console.log('[cardProduct] ABORT: no se encontró elemento .main-product-price');
       return;
     }
     const inner = el.firstElementChild;
     if (!inner) {
-      console.log('[cardProduct] ABORT: main-product-price no tiene firstElementChild');
       return;
     }
-    console.log('[cardProduct] elementos encontrados, actualizando precio a:', v.price_formatted);
 
     inner.outerHTML = buildCardPriceHtml(v, el);
-    console.log('[cardProduct] updateCardProductVariantPrice FIN - precio actualizado correctamente');
   };
 
   const updateCardProductPrice = (priceId, variantId, selectEl) => {
@@ -376,12 +367,10 @@ const buildCardPriceHtml = (v, priceEl) => {
 
   const attachToSelects = () => {
     var selects = document.querySelectorAll('select[id^="variant-select-"]');
-    if (selects.length) console.log('[cardProduct] attachToSelects found', selects.length, 'selects');
     selects.forEach((sel) => {
       if (sel._cardProductBound) return;
       sel._cardProductBound = true;
       sel.addEventListener('change', () => {
-        console.log('[cardProduct] change from attachToSelects', sel.id, sel.value);
         const priceId = sel.id.replace('variant-select-', '');
         updateCardProductPrice(priceId, sel.value, sel);
       });
@@ -1000,25 +989,24 @@ requestAnimationFrame(() => {
       },
       goToCheckout(e) {
         this.validateCart();
-        
-        if (this.validated) {
-          let formData = {
-            'attributes': {
+
+        if (!this.validated) {
+          e.preventDefault();
+          return;
+        }
+
+        fetch(Shopify.routes.root + 'cart/update', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            attributes: {
               'collection-pagination': null,
               'blog-pagination': null,
               'choose_option_id': null,
               'datetime-updated': null
             }
-          };
-
-          fetch(Shopify.routes.root+'cart/update', {
-            method:'POST',
-            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-            body: JSON.stringify(formData)
-          });
-        } else {
-          e.preventDefault();
-        }
+          })
+        });
       },
       getSectionsToRender() {
         const cartItemEl = document.getElementById('main-cart-items');
@@ -1269,7 +1257,7 @@ requestAnimationFrame(() => {
 
             const bubble = getCartBubbleCount();
             const sectionHtml = response[id] || '';
-            if (bubble > 0 && !cartDrawerSectionHasProgress(sectionHtml)) {
+            if (bubble > 0 && !cartDrawerHasProgress(sectionHtml)) {
               Alpine.store('xMiniCart')?.reLoad();
               return;
             }
@@ -1782,8 +1770,7 @@ requestAnimationFrame(() => {
       openCart() {
         if (window.location.pathname != '/cart') {
           const itemCount = getCartBubbleCount();
-          const needsProgressRefresh = itemCount > 0
-            && !document.getElementById('CartDrawer')?.querySelector('.misjoyas-cart-progress');
+          const needsProgressRefresh = itemCount > 0 && !cartDrawerHasProgress();
 
           const openUi = () => {
           requestAnimationFrame(() => {

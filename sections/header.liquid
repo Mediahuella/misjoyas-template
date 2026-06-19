@@ -196,9 +196,6 @@
           {% comment %} Mobile header layout: logo left, menu right{% endcomment %}
           {% if section.settings.mobile_header_layout == 'left-right' %}
             <div class="flex justify-end lg:order-4 [grid-area:icons] -mr-2{% unless logo_above %} pb-header{% endunless %}">
-              {%- if settings.search_enabled -%}
-                {%- render 'header-search-mobile' -%}
-              {%- endif -%}
               {%- if shop.customer_accounts_enabled -%}
                 <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
                   aria-label="{{ 'customer.log_in' | t }}"
@@ -324,7 +321,6 @@
           <div class="x-header-store-selector-container self-center md:block hidden"></div>
           {%- if settings.search_enabled -%}
             {%- render 'header-search-inline' -%}
-            {%- render 'header-search-mobile' -%}
           {%- endif -%}
           {%- if shop.customer_accounts_enabled -%}
             <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"

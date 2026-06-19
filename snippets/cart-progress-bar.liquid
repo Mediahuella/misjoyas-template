@@ -101,7 +101,7 @@
 
     assign amount_needed_formatted = amount_needed | times: 100 | money
   -%}
-  <div class="cart-progress-bar misjoyas-cart-progress" x-data="{ active: false }" x-intersect:enter="active = true" x-intersect:leave="active = false">
+  <div class="cart-progress-bar misjoyas-cart-progress">
     {% if current_tier < 4 %}
       <p class="misjoyas-cart-progress__message">
         {{ 'general.cart.progress_message_html' | t: amount: amount_needed_formatted, benefit: next_tier_label }}
