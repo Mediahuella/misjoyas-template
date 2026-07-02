@@ -12,17 +12,17 @@
     "banner_principal_home": {
       "type": "banner-principal",
       "blocks": {
-        "slide_6gVGPW": {
+        "slide_aKdGEi": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Banner-especial-dia-del-padre_desktop.jpg",
-            "image_mobile": "shopify://shop_images/Banner-especial-dia-del-padre_mobile.jpg",
+            "image": "shopify://shop_images/Banner-SmartTv_desktop.jpg",
+            "image_mobile": "shopify://shop_images/Banner-SmartTv_mobile.jpg",
             "image_alt": "",
-            "link": "shopify://collections/cadenas",
+            "link": "https://misjoyas.cl/collections/all",
             "open_new_window": false
           }
         },
-        "slide_aKdGEi": {
+        "slide_jhGfFd": {
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/Banner_compra-minima_Desktop_00fc8bc8-a7b6-46ab-a41f-cb9ac0a4d61e.jpg",
@@ -44,8 +44,8 @@
         }
       },
       "block_order": [
-        "slide_6gVGPW",
         "slide_aKdGEi",
+        "slide_jhGfFd",
         "slide_dqdmni"
       ],
       "settings": {
@@ -341,6 +341,7 @@
         },
         "slide_zrye8m": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/banner-2_dia_del_padre_desktop.jpg",
             "image_mobile": "shopify://shop_images/banner-2_dia_del_padre_mobile.jpg",
@@ -716,7 +717,7 @@
             "title_link": "",
             "open_new_window": false,
             "heading_size": 80,
-            "text": "<p>A todo el país por compras sobre $99.900.</p>"
+            "text": "<p>A todo el país por compras sobre $99.990.</p>"
           }
         },
         "column_wN96ct": {

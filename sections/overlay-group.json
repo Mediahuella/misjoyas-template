@@ -13,8 +13,6 @@
   "sections": {
     "cart-drawer": {
       "type": "cart-drawer",
-      "blocks": {},
-      "block_order": [],
       "settings": {}
     }
   },
