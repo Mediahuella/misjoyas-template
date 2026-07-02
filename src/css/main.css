@@ -117,7 +117,7 @@
   min-width: 44px;
   height: 25px;
   padding: 5px 12px 6px;
-  background: #0060F9;
+  background: #000000;
   color: #fff;
   font-size: 12.5px;
   font-weight: 600;
@@ -339,6 +339,54 @@
     line-height: 18px;
     padding: 5px 8px;
   }
+}
+
+/* ===== Badge peso de la pieza (página de producto) ===== */
+
+.misjoyas-weight-badge {
+  display: inline-flex;
+  align-items: center;
+  background: #f2f2f2;
+  color: #222;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 6px 10px 6px 16px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+}
+
+.misjoyas-weight-text {
+  letter-spacing: 0;
+}
+
+@media (max-width: 600px) {
+  .misjoyas-weight-badge {
+    font-size: 12px;
+    line-height: 18px;
+    padding: 5px 8px 5px 12px;
+  }
+}
+
+.misjoyas-weight-debug {
+  display: block;
+  background: #fff8e6;
+  border: 1px dashed #e6b800;
+  border-radius: 6px;
+  color: #5c4a00;
+  font-size: 12px;
+  line-height: 1.5;
+  margin-bottom: 6px;
+  padding: 8px 10px;
+}
+
+.misjoyas-weight-debug ul {
+  margin: 6px 0 0;
+  padding-left: 18px;
+}
+
+.misjoyas-weight-debug p {
+  margin: 0;
 }
 
 /* ===== Garantía de satisfacción (página de producto) ===== */
@@ -819,6 +867,82 @@
   margin-bottom: 0 !important;
 }
 
+/* ===== Carruseles con tarjetas de producto: misma altura (botón/variante anclados abajo) =====
+   El equal-height de theme.css.liquid solo estira los grids (#items-grid y splide__list con
+   md:grid-cols-*), y excluye explícitamente los carruseles. Acá lo extendemos a los carruseles
+   splide que contienen .card-product (recently-viewed, featured-collection, recomendaciones, etc.).
+   La tarjeta puede SER el slide (via class_slide) o ir envuelta en un .splide__slide.
+   Se scopea con :has() para no afectar carruseles de colecciones, logos o blog. */
+
+.x-splide.splide .splide__list:has(> .splide__slide.card-product),
+.x-splide.splide .splide__list:has(> .splide__slide > .card-product) {
+  align-items: stretch;
+}
+
+/* Slide estirado a la altura de la fila (anula cualquier h-auto que impida el stretch) */
+.x-splide.splide .splide__list > .splide__slide.card-product,
+.x-splide.splide .splide__list > .splide__slide:has(> .card-product) {
+  height: auto;
+  align-self: stretch;
+}
+
+/* Cuando la card va ENVUELTA en el slide (.splide__slide > .card-product, ej. product-recommendations):
+   el slide estira y la card interna llena con height:100% → se activa el equal-height. */
+.x-splide.splide .splide__list > .splide__slide > .card-product {
+  height: 100%;
+}
+
+/* Cuando la card ES el slide (.splide__slide.card-product, ej. featured / recently-viewed):
+   NO ponerle height:100%. En flexbox, una altura distinta de `auto` desactiva el align-items:stretch,
+   y como el padre tiene altura indefinida, height:100% colapsa la card a su contenido → cards
+   de distinta altura. Forzamos height:auto para que el stretch las iguale; el equal-height de
+   theme.css (height:100%) se anula acá por especificidad. */
+.x-splide.splide .splide__list > .splide__slide.card-product {
+  height: auto !important;
+  align-self: stretch;
+}
+
+/* Completar la cadena flex hacia adentro: el div que envuelve el cuerpo (.card-info-wrapper)
+   debe crecer y ser columna. En grids esto lo da la clase 'grow' condicional del markup
+   (solo con fit_grid_layout o mediaGallery); en carruseles se pierde y la cadena se corta,
+   dejando el botón pegado al contenido en vez de al fondo del slide estirado. */
+.x-splide.splide .splide__list > .splide__slide.card-product > div:has(> .card-info-wrapper),
+.x-splide.splide .splide__list > .splide__slide > .card-product > div:has(> .card-info-wrapper) {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* En carruseles el slide ya se estira a la altura del más alto, así que el min-height
+   de .card-info-equal-height (188/180px, pensado para grids) sobra y empuja el contenido
+   fuera de la tarjeta → el botón se desborda/recorta abajo. Lo anulamos en carruseles. */
+.x-splide.splide .splide__list > .splide__slide.card-product .card-info-equal-height,
+.x-splide.splide .splide__list > .splide__slide > .card-product .card-info-equal-height {
+  min-height: 0;
+}
+
+/* El botón ATC trae h-full en el markup (card-product.liquid). Con el equal-height del
+   carrusel, el .card-product-atc-wrapper crece para llenar el slide estirado y el botón con
+   h-full se estira de más (sobre todo en mobile, con imágenes cuadradas). Lo fijamos a su
+   alto natural para que sea consistente con los botones de los otros componentes; sigue
+   pegado abajo por el margin-top:auto del wrapper. */
+.x-splide.splide .splide__list > .splide__slide.card-product .card-product-atc-btn,
+.x-splide.splide .splide__list > .splide__slide > .card-product .card-product-atc-btn {
+  height: auto;
+}
+
+/* El otro botón ATC del snippet (.bottom_atc, controlado por quickview, suele mostrarse en
+   MOBILE) vive fuera de la cadena equal-height y trae h-full en su form y su botón. En
+   carruseles eso lo estira de más y descuadra la nivelación. Lo fijamos a alto natural;
+   queda al fondo igual porque el .card-info-wrapper de arriba crece (flex:1). */
+.x-splide.splide .splide__list > .splide__slide.card-product .bottom_atc .form,
+.x-splide.splide .splide__list > .splide__slide > .card-product .bottom_atc .form,
+.x-splide.splide .splide__list > .splide__slide.card-product .bottom_atc .button,
+.x-splide.splide .splide__list > .splide__slide > .card-product .bottom_atc .button {
+  height: auto;
+}
+
 /* ===== Badges en tarjetas: esquina, sin borde (Figma Cyber Day) ===== */
 
 .card-product .label-container,
@@ -860,7 +984,7 @@
 
 /* Badge % descuento en cards — desktop 20px, mobile proporcional (ratio PDP 30/36) */
 .card-product .bottom-left-container .x-badge-content.x-badge-text {
-  background-color: #0060F9 !important;
+  background-color: #000000 !important;
   color: #ffffff !important;
   font-size: calc(20px * 5 / 6) !important;
   line-height: 1.2 !important;
@@ -980,6 +1104,23 @@
 }
 
 /* ===== Mini cart / drawer Mis Joyas (Figma) ===== */
+
+/* Drawer abierto: por encima del header (z-50 / z-60). Solo cuando tiene la clase --open. */
+#CartDrawer.misjoyas-cart.misjoyas-cart--open {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 80 !important;
+}
+
+#CartDrawer.misjoyas-cart.misjoyas-cart--force-closed {
+  display: none !important;
+}
+
+#CartDrawer.misjoyas-cart.misjoyas-cart--force-closed #CartDrawer-Overlay,
+#CartDrawer.misjoyas-cart.misjoyas-cart--force-closed > .drawer,
+#CartDrawer.misjoyas-cart.misjoyas-cart--force-closed > .popup {
+  display: none !important;
+}
 
 #CartDrawer.misjoyas-cart #update-cart.misjoyas-cart__panel {
   width: 100% !important;
@@ -1338,8 +1479,14 @@
   opacity: 0.7;
 }
 
-#CartDrawer.misjoyas-cart .misjoyas-cart-item__qty-btn:hover {
+#CartDrawer.misjoyas-cart .misjoyas-cart-item__qty-btn:hover:not(:disabled) {
   opacity: 1;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart-item__qty-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 #CartDrawer.misjoyas-cart .misjoyas-cart-item__qty-input {
@@ -1372,6 +1519,27 @@
   background: transparent;
   color: #9da5af;
   cursor: pointer;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__apps {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border-top: 1px solid rgba(45, 45, 45, 0.12);
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__apps-heading {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #2d2d2d;
+}
+
+#CartDrawer.misjoyas-cart .misjoyas-cart__app-block {
+  width: 100%;
 }
 
 #CartDrawer.misjoyas-cart .misjoyas-cart-item__remove-icon,

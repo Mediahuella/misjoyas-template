@@ -17,16 +17,70 @@ function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present,
 function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
 function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
-document.addEventListener('alpine:init', function () {
-  Alpine.store('xSearchBar', {
-    mobileOpen: false,
-    toggle: function toggle() {
-      this.mobileOpen = !this.mobileOpen;
-    },
-    close: function close() {
-      this.mobileOpen = false;
+// Sube el botÃ³n flotante de WhatsApp (app WhatsUp) por encima de la barra sticky
+// de "agregar al carro" en mobile, para que no se interpongan. El botÃ³n vive dentro
+// de un shadow DOM con `bottom: 16px` fijo, asÃ­ que se controla via custom property
+// (las CSS custom properties sÃ­ cruzan el shadow boundary).
+(function () {
+  if (window.__mjWaStickyOffset) return;
+  window.__mjWaStickyOffset = true;
+  var GAP = 12; // separaciÃ³n entre el botÃ³n y la barra
+  var BASE_BOTTOM = 16; // bottom original del botÃ³n (app)
+  var isMobile = function isMobile() {
+    return window.matchMedia('(max-width: 767px)').matches;
+  };
+  var waEl = null;
+  var styleInjected = false;
+  function injectShadowStyle(el) {
+    if (styleInjected || !el || !el.shadowRoot) return;
+    var target = el.shadowRoot.querySelector('.whatsup-whatsapp-button');
+    if (!target) return;
+    var style = document.createElement('style');
+    style.textContent = '.whatsup-whatsapp-button{bottom:var(--mj-wa-bottom,' + BASE_BOTTOM + 'px)!important;' + 'transition:bottom .3s cubic-bezier(0.075,0.82,0.165,1);}';
+    el.shadowRoot.appendChild(style);
+    styleInjected = true;
+  }
+  function update() {
+    if (!waEl) return;
+    var bar = document.querySelector('[id^="sticky-add-to-cart-"]');
+    var bottom = BASE_BOTTOM;
+    if (isMobile() && bar && getComputedStyle(bar).display !== 'none') {
+      var h = bar.getBoundingClientRect().height;
+      if (h > 0) bottom = Math.round(h + GAP);
     }
-  });
+    waEl.style.setProperty('--mj-wa-bottom', bottom + 'px');
+  }
+  function start() {
+    waEl = document.querySelector('whatsup-whatsapp-button');
+    if (!waEl) return false;
+    injectShadowStyle(waEl);
+    if (!styleInjected) return false;
+    var bar = document.querySelector('[id^="sticky-add-to-cart-"]');
+    if (bar) {
+      new MutationObserver(update).observe(bar, {
+        attributes: true,
+        attributeFilter: ['style', 'class']
+      });
+    }
+    window.addEventListener('resize', update, {
+      passive: true
+    });
+    window.addEventListener('scroll', update, {
+      passive: true
+    });
+    update();
+    return true;
+  }
+
+  // La app y el custom element cargan de forma diferida; reintentar hasta que existan.
+  if (!start()) {
+    var tries = 0;
+    var timer = setInterval(function () {
+      if (start() || ++tries > 60) clearInterval(timer);
+    }, 500);
+  }
+})();
+document.addEventListener('alpine:init', function () {
   Alpine.data('xInlineSearch', function (type, maxResults) {
     return {
       query: '',
@@ -155,6 +209,10 @@ document.addEventListener('alpine:init', function () {
       bootstrap: function bootstrap() {
         var mounted = this.claimAutoButton() || this.initWithSdk() || this.initWithCustomEvent();
         this.purgeStrayWishlist();
+        if (mounted && this._pollTimer) {
+          window.clearInterval(this._pollTimer);
+          this._pollTimer = null;
+        }
         return mounted;
       },
       isInsideWishlistSlot: function isInsideWishlistSlot(node) {
@@ -173,7 +231,7 @@ document.addEventListener('alpine:init', function () {
           return true;
         }
         var label = "".concat(((_node$getAttribute = node.getAttribute) === null || _node$getAttribute === void 0 ? void 0 : _node$getAttribute.call(node, 'aria-label')) || '', " ").concat(node.textContent || '');
-        return /wishlist|deseados|lista de deseados|añadir a favoritos|agregar a la lista|add to wishlist/i.test(label);
+        return /wishlist|deseados|lista de deseados|aÃ±adir a favoritos|agregar a la lista|add to wishlist/i.test(label);
       },
       purgeStrayWishlist: function purgeStrayWishlist() {
         var _this5 = this;
@@ -356,8 +414,8 @@ document.addEventListener('alpine:init', function () {
  */
 window.bindFeaturedCollectionMjArrows = function (root, desktopMove, mobileMove) {
   if (!(root !== null && root !== void 0 && root.splide)) return;
-  var prev = root.querySelector('[data-fc-mj-arrow="prev"]');
-  var next = root.querySelector('[data-fc-mj-arrow="next"]');
+  var prev = root.querySelector('[data-fc-mj-arrow="prev"]') || root.querySelector('.splide__arrow--prev');
+  var next = root.querySelector('[data-fc-mj-arrow="next"]') || root.querySelector('.splide__arrow--next');
   var getMove = function getMove() {
     return window.innerWidth >= 768 ? desktopMove : mobileMove;
   };
@@ -376,6 +434,7 @@ window.bindFeaturedCollectionMjArrows = function (root, desktopMove, mobileMove)
   if (prev && !prev.dataset.fcMjBound) {
     prev.dataset.fcMjBound = '1';
     prev.addEventListener('click', function (event) {
+      if (window.innerWidth < 768) return;
       event.preventDefault();
       event.stopPropagation();
       root.splide.go('-' + getMove());
@@ -384,6 +443,7 @@ window.bindFeaturedCollectionMjArrows = function (root, desktopMove, mobileMove)
   if (next && !next.dataset.fcMjBound) {
     next.dataset.fcMjBound = '1';
     next.addEventListener('click', function (event) {
+      if (window.innerWidth < 768) return;
       event.preventDefault();
       event.stopPropagation();
       root.splide.go('+' + getMove());

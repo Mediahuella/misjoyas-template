@@ -291,6 +291,14 @@
                       {{ block.settings.heading }} {{ current_variant.sku | escape }}
                     {%- endif -%}
                   </div>
+                {%- when 'variant_weight' -%}
+                  <div id="product-weight-{{ section.id }}" class="w-full{% if show_content_center %} text-center{% endif %}" {{ block.shopify_attributes }}>
+                    {% render 'misjoyas-variant-weight',
+                      product: product,
+                      metafield_namespace: block.settings.metafield_namespace,
+                      metafield_key: block.settings.metafield_key
+                    %}
+                  </div>
                 {%- when 'vendor' -%}
                   {%- if block.settings.link_vendor -%}
                     {%- assign vendor_handle = product.vendor | handleize -%}

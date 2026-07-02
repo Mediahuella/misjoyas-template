@@ -43,6 +43,20 @@
       overflow: hidden;
       line-height: 0;
     }
+    .coupon-badges-{{ section.id }} .coupon-badges__link picture,
+    .coupon-badges-{{ section.id }} .coupon-badges__card picture {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    .coupon-badges-{{ section.id }} .coupon-badges__img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      border-radius: 4px;
+    }
     @media (min-width: 768px) {
       .coupon-badges-{{ section.id }} .coupon-badges__track {
         display: flex;
@@ -65,14 +79,9 @@
       .coupon-badges-{{ section.id }} .coupon-badges__card {
         height: var(--coupon-badge-height);
       }
-    }
-    .coupon-badges-{{ section.id }} .coupon-badges__img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      border-radius: 4px;
+      .coupon-badges-{{ section.id }} .coupon-badges__img {
+        object-fit: cover;
+      }
     }
     .coupon-badges-{{ section.id }} .coupon-badges__placeholder {
       display: flex;
@@ -101,6 +110,7 @@
           assign badge_image = block.settings.image
           assign badge_image_mobile = block.settings.image_mobile
           assign badge_link = block.settings.link
+          assign badge_width_mobile = badge_height_mobile | times: 194 | divided_by: 114
           if block.settings.image_alt != blank
             assign badge_alt = block.settings.image_alt
           else
@@ -122,7 +132,11 @@
               {%- if badge_image_mobile != blank -%}
                 <source
                   media="(max-width: 767px)"
-                  srcset="{{ badge_image_mobile | image_url: width: 800 }}"
+                  srcset="
+                    {{ badge_image_mobile | image_url: width: 194 }} 194w,
+                    {{ badge_image_mobile | image_url: width: 388 }} 388w
+                  "
+                  sizes="calc((min(100vw - 2.5rem, 25rem) - 2rem - {{ badge_gap_mobile }}px) / 2)"
                 >
               {%- endif -%}
               {{
@@ -131,9 +145,11 @@
                 | image_tag:
                   class: 'coupon-badges__img',
                   widths: '194, 360, 480, 720',
-                  sizes: '(max-width: 767px) calc(50vw - 1.375rem), 360px',
+                  sizes: '(max-width: 767px) calc((min(100vw - 2.5rem, 25rem) - 2rem - 12px) / 2), 360px',
                   alt: badge_alt,
-                  loading: 'lazy'
+                  loading: 'lazy',
+                  width: badge_width_mobile,
+                  height: badge_height_mobile
               }}
             </picture>
             {%- if badge_link != blank -%}

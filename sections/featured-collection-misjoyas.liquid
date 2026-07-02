@@ -66,6 +66,9 @@
       padding-right: 0;
     }
   }
+  .featured-collection-mj-{{ section.id }} .featured-collection-mj__slider {
+    position: relative;
+  }
   .featured-collection-mj-{{ section.id }} .featured-collection-mj__carousel {
     position: relative;
   }
@@ -89,11 +92,11 @@
       width: calc(((100% + {{ gap_desktop }}px) / {{ columns_desktop }}) - {{ gap_desktop }}px);
     }
   }
-  .featured-collection-mj-{{ section.id }} .featured-collection-mj__arrows {
+  .featured-collection-mj-{{ section.id }} .splide__arrows {
     display: none;
   }
   @media (min-width: 768px) {
-    .featured-collection-mj-{{ section.id }} .featured-collection-mj__arrows {
+    .featured-collection-mj-{{ section.id }} .splide__arrows {
       display: block;
       position: absolute;
       inset: 0;
@@ -101,10 +104,42 @@
       z-index: 30;
     }
   }
+  .featured-collection-mj-{{ section.id }} .featured-collection-mj__progress {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 1.25rem 0 0;
+    padding: 0 1rem;
+    box-sizing: border-box;
+  }
+  @media (min-width: 768px) {
+    .featured-collection-mj-{{ section.id }} .featured-collection-mj__progress {
+      display: none !important;
+    }
+  }
+  .featured-collection-mj-{{ section.id }} .featured-collection-mj__progress .splide-progress {
+    display: block;
+    width: 100%;
+    min-height: 3px;
+    overflow: hidden;
+    border-radius: 4px;
+    background: rgba(34, 34, 34, 0.12);
+  }
+  .featured-collection-mj-{{ section.id }} .featured-collection-mj__progress .splide-progress-bar {
+    display: block;
+    height: 3px;
+    max-width: 100%;
+    border-radius: 4px;
+    background: #222222;
+    margin: 0;
+    transform: none;
+    transition: width 0.25s ease;
+    will-change: width;
+  }
   .featured-collection-mj-{{ section.id }} .featured-collection-mj__arrow {
     pointer-events: auto;
     position: absolute;
-    top: 30%;
+    top: 50%;
     transform: translateY(-50%);
     display: flex;
     align-items: center;
@@ -114,12 +149,11 @@
     min-height: 44px;
     padding: 10px 2px;
     border: none;
-    background: transparent;
+    background: rgba(255, 255, 255, 0.9);
     color: #222222;
     box-shadow: none;
     cursor: pointer;
-    z-index: 21;
-    transition: opacity 0.15s ease;
+    transition: background-color 0.15s ease, opacity 0.15s ease;
   }
   .featured-collection-mj-{{ section.id }} .x-splide:hover .featured-collection-mj__arrow {
     transform: translateY(-50%);
@@ -127,20 +161,22 @@
   .featured-collection-mj-{{ section.id }} .featured-collection-mj__arrow:hover,
   .featured-collection-mj-{{ section.id }} .featured-collection-mj__arrow:focus,
   .featured-collection-mj-{{ section.id }} .featured-collection-mj__arrow:focus-visible {
-    background: transparent;
+    background: rgba(255, 255, 255, 1);
     color: #222222;
     box-shadow: none;
-    opacity: 0.65;
+    opacity: 1;
   }
   .featured-collection-mj-{{ section.id }} .featured-collection-mj__arrow:disabled {
-    opacity: 0.25;
+    opacity: 0.4;
     cursor: not-allowed;
   }
   .featured-collection-mj-{{ section.id }} .featured-collection-mj__arrow--prev {
     left: 0;
+    border-radius: 0 6px 6px 0;
   }
   .featured-collection-mj-{{ section.id }} .featured-collection-mj__arrow--next {
     right: 0;
+    border-radius: 6px 0 0 6px;
   }
   .featured-collection-mj-{{ section.id }} .featured-collection-mj__arrow-icon {
     display: flex;
@@ -207,6 +243,7 @@
         </p>
       {%- endif -%}
     {%- else -%}
+      <div class="featured-collection-mj__slider">
       <div
         id="featured-collection-mj-{{ section.id }}"
         class="featured-collection-mj__carousel carousel-mobile carousel-tablet overflow-hidden x-splide splide visible disable-effect-hover{% unless enable_slider %} featured-collection-mj__carousel--static{% endunless %}"
@@ -249,12 +286,22 @@
               }
             },
             "classes": {
+              "arrows": "splide__arrows",
               "pagination": "hidden"
             },
             "events": [
               {
-                "event": "mounted",
+                "event": "ready",
                 "callback": function () {
+                  document.dispatchEvent(new CustomEvent("eurus:{{ section.id }}:splide-ready"));
+                }
+              },
+              {
+                "event": "mounted resized",
+                "callback": function () {
+                  if (window.bindFeaturedCollectionMjProgress) {
+                    window.bindFeaturedCollectionMjProgress("{{ section.id }}");
+                  }
                   if (window.bindFeaturedCollectionMjArrows) {
                     window.bindFeaturedCollectionMjArrows(
                       document.getElementById("featured-collection-mj-{{ section.id }}"),
@@ -304,13 +351,12 @@
           </div>
         </div>
         {%- if enable_slider -%}
-          <div class="featured-collection-mj__arrows{% if settings.lang_direction contains request.locale.iso_code %} rtl{% endif %}">
+          <div class="splide__arrows{% if settings.lang_direction contains request.locale.iso_code %} rtl{% endif %}">
             <button
               type="button"
               data-fc-mj-arrow="prev"
-              class="featured-collection-mj__arrow featured-collection-mj__arrow--prev none_border"
+              class="featured-collection-mj__arrow featured-collection-mj__arrow--prev splide__arrow splide__arrow--prev none_border"
               aria-label="{{ 'sections.featured-collection-misjoyas.previous' | t }}"
-              aria-disabled="true"
             >
               <span class="featured-collection-mj__arrow-icon rotate-90 rtl:-rotate-90" aria-hidden="true">
                 {% render 'icon-alls', icon: 'icon-caret' %}
@@ -319,9 +365,8 @@
             <button
               type="button"
               data-fc-mj-arrow="next"
-              class="featured-collection-mj__arrow featured-collection-mj__arrow--next none_border"
+              class="featured-collection-mj__arrow featured-collection-mj__arrow--next splide__arrow splide__arrow--next none_border"
               aria-label="{{ 'sections.featured-collection-misjoyas.next' | t }}"
-              aria-disabled="false"
             >
               <span class="featured-collection-mj__arrow-icon -rotate-90 rtl:rotate-90" aria-hidden="true">
                 {% render 'icon-alls', icon: 'icon-caret' %}
@@ -329,6 +374,33 @@
             </button>
           </div>
         {%- endif -%}
+      </div>
+      {%- if enable_slider -%}
+        {%- liquid
+          assign progress_bar_count = slider_slide_count
+          assign slide_count_f = progress_bar_count | times: 1.0
+          assign mobile_width_bar = columns_mobile | times: 1.0 | divided_by: slide_count_f
+          if mobile_width_bar > 1.0
+            assign mobile_width_bar = 1.0
+          endif
+        -%}
+        {%- style -%}
+          #featured-collection-mj-progress-{{ section.id }} .splide-progress-bar {
+            width: {{ mobile_width_bar | times: 100 }}%;
+          }
+        {%- endstyle -%}
+        <div
+          id="featured-collection-mj-progress-{{ section.id }}"
+          class="featured-collection-mj__progress"
+        >
+          <div class="splide-progress rounded-md">
+            <div
+              class="splide-progress-bar-{{ section.id }} splide-progress-bar rounded-md"
+              data-thumb-pct="{{ mobile_width_bar | times: 100 }}"
+            ></div>
+          </div>
+        </div>
+      {%- endif -%}
       </div>
 
       {%- liquid
@@ -354,28 +426,94 @@
 
 {%- if enable_slider and featured_collection != blank -%}
   <script>
+    window.bindFeaturedCollectionMjProgress = window.bindFeaturedCollectionMjProgress || function (sectionId) {
+      var root = document.getElementById('featured-collection-mj-' + sectionId);
+      var wrap = document.getElementById('featured-collection-mj-progress-' + sectionId);
+      if (!root || !root.splide || !wrap) return false;
+      if (root.dataset.fcMjProgressBound === '1') return true;
+
+      var splide = root.splide;
+      var bar = wrap.querySelector('.splide-progress-bar');
+      if (!bar) return false;
+
+      root.dataset.fcMjProgressBound = '1';
+      var thumbPct = parseFloat(bar.dataset.thumbPct) || 25;
+      var rafId = null;
+
+      function applyWidth(animate) {
+        if (window.innerWidth >= 768) return;
+        var end = splide.Components.Controller.getEnd();
+        var index = Math.max(0, Math.min(splide.index, end));
+        var width = end <= 0 ? thumbPct : thumbPct + (index / end) * (100 - thumbPct);
+        bar.style.marginLeft = '0';
+        bar.style.marginRight = '0';
+        bar.style.transform = 'none';
+        bar.style.width = width + '%';
+        bar.style.transition = animate === false ? 'none' : 'width 0.25s ease';
+      }
+
+      function schedule(animate) {
+        if (rafId) cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(function () {
+          rafId = null;
+          applyWidth(animate);
+        });
+      }
+
+      splide.on('mounted', function () { schedule(true); });
+      splide.on('move', function () { schedule(true); });
+      splide.on('moved', function () { schedule(true); });
+      splide.on('scroll', function () { schedule(false); });
+      splide.on('dragged', function () { schedule(true); });
+      splide.on('resized', function () { schedule(true); });
+      splide.on('refresh', function () { schedule(true); });
+
+      schedule(true);
+      return true;
+    };
+
     (function () {
-      var rootId = 'featured-collection-mj-{{ section.id }}';
+      var sid = '{{ section.id }}';
       var desktopMove = {{ columns_desktop }};
       var mobileMove = {{ columns_mobile }};
 
-      function tryBind() {
+      function bindProgress() {
+        if (window.bindFeaturedCollectionMjProgress) {
+          return window.bindFeaturedCollectionMjProgress(sid);
+        }
+        return false;
+      }
+
+      function bindArrows() {
         if (typeof window.bindFeaturedCollectionMjArrows !== 'function') return false;
-        var root = document.getElementById(rootId);
+        var root = document.getElementById('featured-collection-mj-' + sid);
         if (!root || !root.splide) return false;
         window.bindFeaturedCollectionMjArrows(root, desktopMove, mobileMove);
         return true;
       }
 
-      if (!tryBind()) {
-        var attempts = 0;
-        var timer = setInterval(function () {
-          if (tryBind() || ++attempts > 150) clearInterval(timer);
-        }, 100);
+      function tick() {
+        bindProgress();
+        bindArrows();
       }
 
-      document.addEventListener('shopify:section:load', function () {
-        setTimeout(tryBind, 250);
+      function resetBindings() {
+        var root = document.getElementById('featured-collection-mj-' + sid);
+        if (root) delete root.dataset.fcMjProgressBound;
+      }
+
+      var attempts = 0;
+      var timer = setInterval(function () {
+        tick();
+        var root = document.getElementById('featured-collection-mj-' + sid);
+        if ((root && root.splide) || ++attempts > 150) clearInterval(timer);
+      }, 100);
+
+      document.addEventListener('shopify:section:load', function (event) {
+        if (event.target && event.target.querySelector('#featured-collection-mj-' + sid)) {
+          resetBindings();
+          setTimeout(tick, 300);
+        }
       });
     })();
   </script>

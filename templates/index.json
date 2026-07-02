@@ -12,29 +12,28 @@
     "banner_principal_home": {
       "type": "banner-principal",
       "blocks": {
-        "slide_iP9k3K": {
+        "slide_6gVGPW": {
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/Banner1_General_Desktop.jpg",
             "image_mobile": "shopify://shop_images/Banner1_General_Mobile.jpg",
             "image_alt": "",
-            "link": "shopify://collections/descuentos-activos",
+            "link": "shopify://collections/cadenas",
             "open_new_window": false
           }
         },
-        "slide_Dei6nU": {
+        "slide_aKdGEi": {
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/Banner2_aros_desktop_61b827bb-9178-470c-b686-fdd6eb9b209e.jpg",
             "image_mobile": "shopify://shop_images/Banner2_aros_Mobile_41c2a24d-4389-41e4-bc40-85c80e3bb6bf.jpg",
             "image_alt": "",
-            "link": "shopify://collections/descuentos-activos",
+            "link": "shopify://collections/all",
             "open_new_window": false
           }
         },
-        "slide_UaRP7F": {
+        "slide_dqdmni": {
           "type": "slide",
-          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Banner3_anillos_desktop.jpg",
             "image_mobile": "shopify://shop_images/Banner3_anillos_Mobile_afaa744d-1f55-4415-92a1-286039f62e65.jpg",
@@ -66,10 +65,9 @@
         }
       },
       "block_order": [
-        "slide_iP9k3K",
-        "slide_Dei6nU",
-        "slide_UaRP7F",
-        "slide_qikfwm"
+        "slide_6gVGPW",
+        "slide_aKdGEi",
+        "slide_dqdmni"
       ],
       "settings": {
         "auto_play": true,
@@ -81,13 +79,14 @@
     },
     "home_countdown_timer": {
       "type": "countdown-timer",
+      "disabled": true,
       "settings": {
         "enable": true,
         "show_only_on_homepage": true,
-        "title": "Cyber Day",
+        "title": "Últimas horas",
         "subtitle": "¡Apúrate! quedan",
-        "target_date": "2026-05-30",
-        "target_time": "12:00",
+        "target_date": "2026-06-03",
+        "target_time": "23:59",
         "timezone": "-4",
         "hours_label": "horas",
         "minutes_label": "min",
@@ -109,49 +108,50 @@
     "coupon_badges_a6Th3k": {
       "type": "coupon-badges",
       "blocks": {
-        "badge_mhjcNr": {
+        "badge_bqDeg7": {
           "type": "badge",
           "settings": {
-            "image": "shopify://shop_images/Cajas-DCTO-70.jpg",
+            "image": "shopify://shop_images/caja-dcto_60.jpg",
             "image_alt": "",
-            "link": "",
-            "open_new_window": false
-          }
-        },
-        "badge_bCqfL6": {
-          "type": "badge",
-          "settings": {
-            "image": "shopify://shop_images/Cajas-DCTO-60.jpg",
-            "image_alt": "",
-            "link": "",
+            "link": "shopify://collections/descuento-70",
             "open_new_window": false
           }
         },
         "badge_XAczzt": {
           "type": "badge",
           "settings": {
-            "image": "shopify://shop_images/Cajas-DCTO-50.jpg",
+            "image": "shopify://shop_images/caja-dcto_40-60.jpg",
             "image_alt": "",
-            "link": "",
+            "link": "shopify://collections/descuento-60",
             "open_new_window": false
           }
         },
-        "badge_bqDeg7": {
+        "badge_bCqfL6": {
           "type": "badge",
           "settings": {
-            "image": "shopify://shop_images/Cajas-DCTO-40.jpg",
+            "image": "shopify://shop_images/caja-dcto_20-40.jpg",
             "image_alt": "",
-            "link": "",
+            "link": "shopify://collections/descuento-40",
+            "open_new_window": false
+          }
+        },
+        "badge_mhjcNr": {
+          "type": "badge",
+          "settings": {
+            "image": "shopify://shop_images/caja-dcto_10-20.jpg",
+            "image_alt": "",
+            "link": "shopify://collections/descuento-20",
             "open_new_window": false
           }
         }
       },
       "block_order": [
-        "badge_mhjcNr",
-        "badge_bCqfL6",
+        "badge_bqDeg7",
         "badge_XAczzt",
-        "badge_bqDeg7"
+        "badge_bCqfL6",
+        "badge_mhjcNr"
       ],
+      "disabled": true,
       "name": "Coupon badges",
       "settings": {
         "enable": true,
@@ -235,7 +235,7 @@
       "settings": {
         "title_icon": "",
         "title_icon_color": "#68b5a3",
-        "title": "Ofertas exclusivas Cyber Day",
+        "title": "Lo más vendido",
         "collection": "c_mas-vendidos",
         "products_to_show": 16,
         "gap": 16,
@@ -248,7 +248,7 @@
         "show_rating": false,
         "show_highlighted_attributes": true,
         "show_view_all": true,
-        "button_label": "Ver todos los productos",
+        "button_label": "Ver todo lo más vendido",
         "button_link": "",
         "open_new_window": false
       }
@@ -290,7 +290,7 @@
           "settings": {
             "prefix": "🛍️",
             "bold_text": "VENTA EXCLUSIVA MAYORISTA",
-            "suffix": "— Compra mínima $49.990 🛍️",
+            "suffix": "— Compra mínima $39.990 🛍️",
             "link": "",
             "open_new_window": false
           }
@@ -333,7 +333,7 @@
         "show_rating": false,
         "show_highlighted_attributes": true,
         "show_view_all": true,
-        "button_label": "Ver todos los productos",
+        "button_label": "Ver todos los productos nuevos",
         "button_link": "",
         "open_new_window": false
       }
@@ -342,6 +342,16 @@
       "type": "banner-kit",
       "blocks": {
         "slide_kit_1": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Banner-secundario_Descuentos_desktop.jpg",
+            "image_mobile": "shopify://shop_images/Banner-secundario_Descuentos_mobile.jpg",
+            "image_alt": "",
+            "link": "shopify://pages/fidelizacion",
+            "open_new_window": false
+          }
+        },
+        "slide_tB7k7t": {
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/banner-2_kit_desktop_f6963582-dae0-469d-8a30-aa7cc720f347.jpg",
@@ -364,6 +374,7 @@
       },
       "block_order": [
         "slide_kit_1",
+        "slide_tB7k7t",
         "slide_zrye8m"
       ],
       "name": "Banner kit",
@@ -629,7 +640,7 @@
         "column_DFytx6": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/caja-emprende.jpg",
+            "image": "shopify://shop_images/emprende-07_jpg.jpg",
             "image_alt": "",
             "image_link": "shopify://pages/todo-para-emprender",
             "open_new_window_image": false,
@@ -812,11 +823,12 @@
     },
     "popup_6AnBUK": {
       "type": "popup",
+      "disabled": true,
       "name": "Popup imagen",
       "settings": {
         "image": "shopify://shop_images/Dia1_joyero_popup_dc534a97-5d7e-4b31-a0cb-91c6f7895450.jpg",
-        "start": "2026-05-29 00:01:00",
-        "ends": "2026-05-30 00:01:00",
+        "start": "2026-05-01 00:01:00",
+        "ends": "2026-06-01 23:59:00",
         "countdown": false,
         "available_routes": "/"
       }
@@ -826,9 +838,9 @@
       "disabled": true,
       "name": "Popup imagen",
       "settings": {
-        "image": "shopify://shop_images/Dia2_kit_popup_8e7e8ef7-53e6-4c39-af97-51f023760e7b.jpg",
-        "start": "2026-05-29 00:01:00",
-        "ends": "2026-05-30 00:01:00",
+        "image": "shopify://shop_images/compra-minima_popup.jpg",
+        "start": "2026-06-02 00:00:01",
+        "ends": "2026-06-02 23:59:00",
         "countdown": false,
         "available_routes": "/"
       }
@@ -839,8 +851,19 @@
       "name": "Popup imagen",
       "settings": {
         "image": "shopify://shop_images/Dia3_aros_popup_e0d881cf-996a-455e-a08e-e4a4c3a67cea.jpg",
-        "start": "2026-05-29 00:01:00",
-        "ends": "2026-05-30 00:01:00",
+        "start": "2026-06-03 00:00:01",
+        "ends": "2026-06-03 23:59:00",
+        "countdown": false,
+        "available_routes": "/"
+      }
+    },
+    "popup_rWghyY": {
+      "type": "popup",
+      "name": "Popup imagen",
+      "settings": {
+        "image": "shopify://shop_images/compra-minima_popup_14d0a74d-8e89-4f5b-99a1-6b7c6a599780.jpg",
+        "start": "2026-06-15 00:00:01",
+        "ends": "2027-06-15 00:00:01",
         "countdown": false,
         "available_routes": "/"
       }
@@ -864,6 +887,7 @@
     "multicolumn_bQPMpc",
     "popup_6AnBUK",
     "popup_yGHy4R",
-    "popup_h9bTpX"
+    "popup_h9bTpX",
+    "popup_rWghyY"
   ]
 }

@@ -31,10 +31,6 @@
         {% if section.settings.auto_play %}
           "autoplay": true,
           "interval": {{ section.settings.change_slides_speed | times: 1000 }},
-        {% else %}
-          "wheel": true,
-          "releaseWheel": true,
-          "waitForTransition": true,
         {% endif %}
         "classes": {
           "arrows": "splide__arrows block",

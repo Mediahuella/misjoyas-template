@@ -76,7 +76,7 @@
                       {%- endif -%}
                       {%- if forloop.first -%}
                         <div class="tw-hidden md:tw-flex tw-flex-col tw-gap-2 tw-mt-4">
-                          <img src="{{ 'ccs-cyber-2026.png' | asset_url }}" alt="Empresa Oficial CCS Cyber 2026" width="103" height="103" loading="lazy">
+                          {% comment %} <img src="{{ 'ccs-cyber-2026.png' | asset_url }}" alt="Empresa Oficial CCS Cyber 2026" width="103" height="103" loading="lazy"> {% endcomment %}
                           <img src="{{ 'ccs-confianza.png' | asset_url }}" alt="Sello Confianza Ecommerce CCS" width="112" height="118" loading="lazy">
                         </div>
                       {%- endif -%}
@@ -93,7 +93,11 @@
                       <ul class="mt-6">
                         {%- for link in block.settings.menu.links -%}
                           <li class="mb-1 first:pt-0 pt-2">
-                            <a href="{{ link.url }}" class="hover-text-link nav-link relative block lg:inline-block">
+                            <a href="{{ link.url }}"
+                              {% if link.url contains 'drive.google.com/file/d/1stNa4K17A7htbf1P383OBR3HscnyHbbn' %}
+                                target="_blank" rel="noopener noreferrer"
+                              {% endif %}
+                              class="hover-text-link nav-link relative block lg:inline-block">
                               {{ link.title }}
                             </a>
                           </li>
@@ -370,7 +374,7 @@
   >
     <div class="{% if section.settings.additional_layout == 'horizontal' %}flex flex-col lg:flex lg:flex-row gap-x-7 items-center w-full justify-between{% else %}flex flex-col{% endif %}">
       <div class="tw-flex md:tw-hidden tw-flex-col tw-gap-2 tw-mb-4">
-        <img src="{{ 'ccs-cyber-2026.png' | asset_url }}" alt="Empresa Oficial CCS Cyber 2026" width="103" height="103" loading="lazy">
+        {% comment %} <img src="{{ 'ccs-cyber-2026.png' | asset_url }}" alt="Empresa Oficial CCS Cyber 2026" width="103" height="103" loading="lazy"> {% endcomment %}
         <img src="{{ 'ccs-confianza.png' | asset_url }}" alt="Sello Confianza Ecommerce CCS" width="112" height="118" loading="lazy">
       </div>
       <div class="tw-flex tw-items-center tw-gap-1.5 tw-rounded-md tw-px-2.5 tw-py-1.5 tw-my-2 lg:tw-my-0 tw-shrink-0" style="background-color: #222222;">

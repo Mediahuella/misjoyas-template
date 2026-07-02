@@ -389,7 +389,7 @@
         "heading": "You May Also Like...",
         "heading_size": 110,
         "heading_alignment": "left",
-        "products_to_show": 8,
+        "products_to_show": 10,
         "background_color_light": "",
         "background_color_dark": "",
         "show_vendor": false,

@@ -1,10 +1,70 @@
-document.addEventListener('alpine:init', () => {
-  Alpine.store('xSearchBar', {
-    mobileOpen: false,
-    toggle() { this.mobileOpen = !this.mobileOpen; },
-    close() { this.mobileOpen = false; }
-  });
+﻿// Sube el botÃ³n flotante de WhatsApp (app WhatsUp) por encima de la barra sticky
+// de "agregar al carro" en mobile, para que no se interpongan. El botÃ³n vive dentro
+// de un shadow DOM con `bottom: 16px` fijo, asÃ­ que se controla via custom property
+// (las CSS custom properties sÃ­ cruzan el shadow boundary).
+(function () {
+  if (window.__mjWaStickyOffset) return;
+  window.__mjWaStickyOffset = true;
 
+  const GAP = 12; // separaciÃ³n entre el botÃ³n y la barra
+  const BASE_BOTTOM = 16; // bottom original del botÃ³n (app)
+  const isMobile = () => window.matchMedia('(max-width: 767px)').matches;
+
+  let waEl = null;
+  let styleInjected = false;
+
+  function injectShadowStyle(el) {
+    if (styleInjected || !el || !el.shadowRoot) return;
+    const target = el.shadowRoot.querySelector('.whatsup-whatsapp-button');
+    if (!target) return;
+    const style = document.createElement('style');
+    style.textContent =
+      '.whatsup-whatsapp-button{bottom:var(--mj-wa-bottom,' + BASE_BOTTOM + 'px)!important;' +
+      'transition:bottom .3s cubic-bezier(0.075,0.82,0.165,1);}';
+    el.shadowRoot.appendChild(style);
+    styleInjected = true;
+  }
+
+  function update() {
+    if (!waEl) return;
+    const bar = document.querySelector('[id^="sticky-add-to-cart-"]');
+    let bottom = BASE_BOTTOM;
+    if (isMobile() && bar && getComputedStyle(bar).display !== 'none') {
+      const h = bar.getBoundingClientRect().height;
+      if (h > 0) bottom = Math.round(h + GAP);
+    }
+    waEl.style.setProperty('--mj-wa-bottom', bottom + 'px');
+  }
+
+  function start() {
+    waEl = document.querySelector('whatsup-whatsapp-button');
+    if (!waEl) return false;
+    injectShadowStyle(waEl);
+    if (!styleInjected) return false;
+
+    const bar = document.querySelector('[id^="sticky-add-to-cart-"]');
+    if (bar) {
+      new MutationObserver(update).observe(bar, {
+        attributes: true,
+        attributeFilter: ['style', 'class'],
+      });
+    }
+    window.addEventListener('resize', update, { passive: true });
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+    return true;
+  }
+
+  // La app y el custom element cargan de forma diferida; reintentar hasta que existan.
+  if (!start()) {
+    let tries = 0;
+    const timer = setInterval(() => {
+      if (start() || ++tries > 60) clearInterval(timer);
+    }, 500);
+  }
+})();
+
+document.addEventListener('alpine:init', () => {
   Alpine.data('xInlineSearch', (type, maxResults) => ({
     query: '',
     result: '',
@@ -108,6 +168,10 @@ document.addEventListener('alpine:init', () => {
     bootstrap() {
       const mounted = this.claimAutoButton() || this.initWithSdk() || this.initWithCustomEvent();
       this.purgeStrayWishlist();
+      if (mounted && this._pollTimer) {
+        window.clearInterval(this._pollTimer);
+        this._pollTimer = null;
+      }
       return mounted;
     },
 
@@ -130,7 +194,7 @@ document.addEventListener('alpine:init', () => {
       }
 
       const label = `${node.getAttribute?.('aria-label') || ''} ${node.textContent || ''}`;
-      return /wishlist|deseados|lista de deseados|añadir a favoritos|agregar a la lista|add to wishlist/i.test(label);
+      return /wishlist|deseados|lista de deseados|aÃ±adir a favoritos|agregar a la lista|add to wishlist/i.test(label);
     },
 
     purgeStrayWishlist() {
@@ -338,8 +402,12 @@ document.addEventListener('alpine:init', () => {
 window.bindFeaturedCollectionMjArrows = function (root, desktopMove, mobileMove) {
   if (!root?.splide) return;
 
-  const prev = root.querySelector('[data-fc-mj-arrow="prev"]');
-  const next = root.querySelector('[data-fc-mj-arrow="next"]');
+  const prev =
+    root.querySelector('[data-fc-mj-arrow="prev"]') ||
+    root.querySelector('.splide__arrow--prev');
+  const next =
+    root.querySelector('[data-fc-mj-arrow="next"]') ||
+    root.querySelector('.splide__arrow--next');
   const getMove = () => (window.innerWidth >= 768 ? desktopMove : mobileMove);
 
   const updateDisabled = () => {
@@ -358,6 +426,7 @@ window.bindFeaturedCollectionMjArrows = function (root, desktopMove, mobileMove)
   if (prev && !prev.dataset.fcMjBound) {
     prev.dataset.fcMjBound = '1';
     prev.addEventListener('click', (event) => {
+      if (window.innerWidth < 768) return;
       event.preventDefault();
       event.stopPropagation();
       root.splide.go('-' + getMove());
@@ -367,6 +436,7 @@ window.bindFeaturedCollectionMjArrows = function (root, desktopMove, mobileMove)
   if (next && !next.dataset.fcMjBound) {
     next.dataset.fcMjBound = '1';
     next.addEventListener('click', (event) => {
+      if (window.innerWidth < 768) return;
       event.preventDefault();
       event.stopPropagation();
       root.splide.go('+' + getMove());

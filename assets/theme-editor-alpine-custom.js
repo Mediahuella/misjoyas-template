@@ -840,7 +840,7 @@ document.addEventListener('alpine:init', () => {
                     const sectionElement = document.querySelector(section.selector);
                     if (sectionElement) {
                       if (response.sections[section.id])
-                        sectionElement.innerHTML = getSectionInnerHTML(response.sections[section.id], section.selector);
+                        window.setSectionInnerHTML(sectionElement, response.sections[section.id], section.selector);
                     }
                   }));
                   if (!Alpine.store('xCartNoti') || !Alpine.store('xCartNoti').enable) {
@@ -868,7 +868,7 @@ document.addEventListener('alpine:init', () => {
                 const sectionElement = document.querySelector(section.selector);
                 if (sectionElement) {
                   if (response.sections[section.id])
-                    sectionElement.innerHTML = getSectionInnerHTML(response.sections[section.id], section.selector);
+                    window.setSectionInnerHTML(sectionElement, response.sections[section.id], section.selector);
                 }
               }));
               if (!Alpine.store('xCartNoti') || !Alpine.store('xCartNoti').enable) {
@@ -1294,6 +1294,7 @@ document.addEventListener('alpine:init', () => {
   
         this._renderPriceProduct(html);
         this._renderSkuProduct(html);
+        this._renderProductWeight(html);
         this._renderProductBadges(html);
         this._renderInventoryStatus(html);
         this._renderInventoryQuantity(html);
@@ -1332,6 +1333,7 @@ document.addEventListener('alpine:init', () => {
               && html.getElementById(`x-product-template-${productId}-${sectionId}`)) {
               this._renderPriceProduct(html);
               this._renderSkuProduct(html);
+              this._renderProductWeight(html);
               this._renderProductBadges(html);
               this._renderInventoryStatus(html);
               this._renderInventoryQuantity(html);
@@ -1666,6 +1668,12 @@ document.addEventListener('alpine:init', () => {
 
       if (source && destination) destination.innerHTML = source.innerHTML;
     },
+    _renderProductWeight(html) {
+      const destination = document.getElementById('product-weight-' + sectionId);
+      const source = html.getElementById('product-weight-' + sectionId);
+
+      if (source && destination) destination.innerHTML = source.innerHTML;
+    },
     _renderProductBadges(html) {
       const destination = document.getElementById('x-badges-' + sectionId);
       const source = html.getElementById('x-badges-'+ sectionId);
@@ -1958,6 +1966,7 @@ document.addEventListener('alpine:init', () => {
         this._renderInventoryStatus(html);
         this._renderInventoryQuantity(html);
         this._renderSkuProduct(html);
+        this._renderProductWeight(html);
         this._renderBuyButtons(html);
         this._setMessagePreOrder(html);
         this._setEstimateDelivery(html);
@@ -2491,12 +2500,12 @@ document.addEventListener('alpine:init', () => {
                 const sectionElement = document.querySelector(section.selector);
                 if (sectionElement) {
                   if (response.sections[section.id]) {
-                    sectionElement.innerHTML = getSectionInnerHTML(response.sections[section.id], section.selector);
+                    window.setSectionInnerHTML(sectionElement, response.sections[section.id], section.selector);
                     if (section.selector == '#CartDrawer' || section.selector == '#main-cart-footer' ) {
-                      cartDrawer = getSectionInnerHTML(response.sections[section.id], section.selector);
+                      cartDrawer = window.getSectionInnerHTML(response.sections[section.id], section.selector);
                     }
                     if(section.selector == '#main-cart-items') {
-                      cartPage =  getSectionInnerHTML(response.sections[section.id], section.selector);
+                      cartPage = window.getSectionInnerHTML(response.sections[section.id], section.selector);
                     }
                   }
                 }
@@ -3381,7 +3390,7 @@ requestAnimationFrame(() => {
 
             if (sectionElement) {
               if (response.sections[section.id])
-                sectionElement.innerHTML = getSectionInnerHTML(response.sections[section.id], section.selector);
+                window.setSectionInnerHTML(sectionElement, response.sections[section.id], section.selector);
             }
           }));
           if (Alpine.store('xQuickView') && Alpine.store('xQuickView').show) {
@@ -3828,7 +3837,7 @@ requestAnimationFrame(() => {
 
             if (sectionElement) {
               if (response.sections[section.id])
-                sectionElement.innerHTML = getSectionInnerHTML(response.sections[section.id], section.selector);
+                window.setSectionInnerHTML(sectionElement, response.sections[section.id], section.selector);
             }
           }));
           if (Alpine.store('xQuickView') && Alpine.store('xQuickView').show) {
@@ -4358,7 +4367,7 @@ requestAnimationFrame(() => {
 
               if (sectionElement) {
                 if (response.sections[section.id])
-                  sectionElement.innerHTML = getSectionInnerHTML(response.sections[section.id], section.selector);
+                  window.setSectionInnerHTML(sectionElement, response.sections[section.id], section.selector);
               }
             }));
             if (Alpine.store('xQuickView') && Alpine.store('xQuickView').show) {

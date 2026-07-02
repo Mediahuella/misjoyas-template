@@ -193,9 +193,9 @@
     "cart_custom_field_label": "TEST",
     "enable_cart_timer": false,
     "hide_cart": false,
-    "enable_free_shipping": false,
-    "order_amount_freeshipping": "CLP:90000",
-    "enable_cart_progress_bar": false,
+    "enable_free_shipping": true,
+    "order_amount_freeshipping": "CLP:99990",
+    "enable_cart_progress_bar": true,
     "enable_estimate_shipping": false,
     "auto_calculate_shipping": false,
     "show_estimate_cart": false,
@@ -407,6 +407,13 @@
         "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
         "disabled": false,
         "settings": {}
+      },
+      "14429071373314833104": {
+        "type": "shopify://apps/candy-rack/blocks/head/cb9c657f-334f-4905-80c2-f69cca01460c",
+        "disabled": false,
+        "settings": {
+          "script_load_mode": "async"
+        }
       }
     }
   },
@@ -547,8 +554,8 @@
       "cart_show_vendor": false,
       "show_cart_note": true,
       "show_cart_payment_methods": true,
-      "enable_featured_discount": false,
-      "cart_enable_savings_amount": false,
+      "enable_featured_discount": true,
+      "cart_enable_savings_amount": true,
       "cart_enable_terms_and_conditions": false,
       "cart_terms_and_conditions_page": "",
       "cart_upsell_product_list": [],
