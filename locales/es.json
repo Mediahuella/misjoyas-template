@@ -814,7 +814,8 @@
         "vat_label_html": " "
       },
       "shipping": {
-        "no_rates_for_cart_or_destination_notice": "No hay métodos de envío disponibles para tu carro o dirección"
+        "no_rates_for_cart_or_destination_notice": "No hay métodos de envío disponibles para tu carro o dirección",
+        "shipping_method_title": "Métodos de envío (Si no tienes cobertura contáctanos)"
       },
       "payment": {
         "subscription_agreement_label": "Uno o varios artículos del carro son una compra diferida o recurrente.  a la continuar con el pago, aceptas que se aplicarán cargos a la forma de pago automática según el precio y la frecuencia indicados en esta página hasta que termino o la canceles.  Todas las cancelaciones están sujetas a {{ cancellation_policy_label }}",

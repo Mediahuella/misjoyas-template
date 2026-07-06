@@ -12,21 +12,31 @@
     "banner_principal_home": {
       "type": "banner-principal",
       "blocks": {
-        "slide_6gVGPW": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/Banner1_General_Desktop.jpg",
-            "image_mobile": "shopify://shop_images/Banner1_General_Mobile.jpg",
-            "image_alt": "",
-            "link": "shopify://collections/cadenas",
-            "open_new_window": false
-          }
-        },
         "slide_aKdGEi": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Banner2_aros_desktop_61b827bb-9178-470c-b686-fdd6eb9b209e.jpg",
-            "image_mobile": "shopify://shop_images/Banner2_aros_Mobile_41c2a24d-4389-41e4-bc40-85c80e3bb6bf.jpg",
+            "image": "shopify://shop_images/banner-lanzamiento_desktop.jpg",
+            "image_mobile": "shopify://shop_images/banner-lanzamiento_mobile.jpg",
+            "image_alt": "",
+            "link": "shopify://collections/dia-del-nino",
+            "open_new_window": false
+          }
+        },
+        "slide_KjcGdc": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Banner-SmartTv_desktop.jpg",
+            "image_mobile": "shopify://shop_images/Banner-SmartTv_mobile.jpg",
+            "image_alt": "",
+            "link": "https://misjoyas.cl/collections/all",
+            "open_new_window": false
+          }
+        },
+        "slide_jhGfFd": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Banner_compra-minima_Desktop_00fc8bc8-a7b6-46ab-a41f-cb9ac0a4d61e.jpg",
+            "image_mobile": "shopify://shop_images/Banner_compra-minima_mobile_7e864395-0255-41f0-8306-9408ea4f883d.jpg",
             "image_alt": "",
             "link": "shopify://collections/all",
             "open_new_window": false
@@ -35,38 +45,18 @@
         "slide_dqdmni": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Banner3_anillos_desktop.jpg",
-            "image_mobile": "shopify://shop_images/Banner3_anillos_Mobile_afaa744d-1f55-4415-92a1-286039f62e65.jpg",
+            "image": "shopify://shop_images/Banner_general_desktop_63bac82c-dc7e-4bd6-a604-23a15312461c.jpg",
+            "image_mobile": "shopify://shop_images/Banner_general_mobile_cba64c29-6305-4fca-90d9-4a62da46c2c8.jpg",
             "image_alt": "",
-            "link": "shopify://collections/descuentos-activos",
-            "open_new_window": false
-          }
-        },
-        "slide_qikfwm": {
-          "type": "slide",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/Banner4_collares_desktop.jpg",
-            "image_mobile": "shopify://shop_images/Banner4_collares_Mobile_399a20ec-e690-409e-820f-59d9ef024f2d.jpg",
-            "image_alt": "",
-            "link": "shopify://collections/collares",
-            "open_new_window": false
-          }
-        },
-        "slide_TcigXr": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/Banner5_pulseras_desktop.jpg",
-            "image_mobile": "shopify://shop_images/Banner5_pulseras_Mobile_87980a70-68f4-40b5-8e48-7f54b92cac8a.jpg",
-            "image_alt": "",
-            "link": "shopify://collections/pulseras",
+            "link": "shopify://collections/all",
             "open_new_window": false
           }
         }
       },
       "block_order": [
-        "slide_6gVGPW",
         "slide_aKdGEi",
+        "slide_KjcGdc",
+        "slide_jhGfFd",
         "slide_dqdmni"
       ],
       "settings": {
@@ -321,7 +311,6 @@
         "title_icon_color": "#68b5a3",
         "title": "¡Lo último!",
         "collection": "nuevo",
-        "collection": "nuevo",
         "products_to_show": 16,
         "gap": 16,
         "gap_mobile": 12,
@@ -363,6 +352,7 @@
         },
         "slide_zrye8m": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/banner-2_dia_del_padre_desktop.jpg",
             "image_mobile": "shopify://shop_images/banner-2_dia_del_padre_mobile.jpg",
@@ -738,7 +728,7 @@
             "title_link": "",
             "open_new_window": false,
             "heading_size": 80,
-            "text": "<p>A todo el país por compras sobre $99.900.</p>"
+            "text": "<p>A todo el país por compras sobre $99.990.</p>"
           }
         },
         "column_wN96ct": {
@@ -859,6 +849,7 @@
     },
     "popup_rWghyY": {
       "type": "popup",
+      "disabled": true,
       "name": "Popup imagen",
       "settings": {
         "image": "shopify://shop_images/compra-minima_popup_14d0a74d-8e89-4f5b-99a1-6b7c6a599780.jpg",

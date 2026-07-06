@@ -15,87 +15,13 @@
       "type": "misjoyas-topbar",
       "settings": {
         "enable": true,
-        "text": "¡No te lo pierdas! — 🎁 ESPECIAL DÍA DEL PADRE — 10% DCTO en cadenas italianas 🎁",
+        "text": "Emprende con joyas de plata 925 certificada — 🛍️ Descuentos exclusivos para mayoristas 🛍️",
         "text_color": "#ffffff",
         "background_color": "#000000",
         "animation_speed": 20,
         "font_size": 14,
         "gap": 60,
         "padding_vertical": 10
-      }
-    },
-    "scrolling_banner_hGGpmb": {
-      "type": "scrolling-banner",
-      "blocks": {
-        "text_VMHXVq": {
-          "type": "text",
-          "settings": {
-            "text": "Compra mínima $49.990",
-            "highlight_type": "underline",
-            "text_size": 70,
-            "text_color": "primary",
-            "spacing_left": 0,
-            "spacing_right": 0,
-            "spacing_left_mobile": 0,
-            "spacing_right_mobile": 0
-          }
-        },
-        "text_zKkjcQ": {
-          "type": "text",
-          "settings": {
-            "text": "Despacho Express en 24 horas",
-            "highlight_type": "underline",
-            "text_size": 70,
-            "text_color": "primary",
-            "spacing_left": 0,
-            "spacing_right": 0,
-            "spacing_left_mobile": 0,
-            "spacing_right_mobile": 0
-          }
-        },
-        "icon_R36zgp": {
-          "type": "icon",
-          "settings": {
-            "icon": "delivery-truck",
-            "another_icon": "",
-            "custom_icon": "",
-            "height_icon": 20,
-            "spacing_left": 0,
-            "spacing_right": 0,
-            "spacing_left_mobile": 0,
-            "spacing_right_mobile": 0
-          }
-        }
-      },
-      "block_order": [
-        "text_VMHXVq",
-        "text_zKkjcQ",
-        "icon_R36zgp"
-      ],
-      "disabled": true,
-      "settings": {
-        "show_border": false,
-        "speed": 50,
-        "direction": "right",
-        "pause_hover": true,
-        "enable_rotating_effect": false,
-        "overlay_opacity": 0,
-        "bg_light": "#000000",
-        "color_text_light": "#ffffff",
-        "color_text_light_2": "rgba(0,0,0,0)",
-        "color_heading_highlight_light": "rgba(0,0,0,0)",
-        "bg_dark": "rgba(0,0,0,0)",
-        "color_text_dark": "rgba(0,0,0,0)",
-        "color_text_dark_2": "rgba(0,0,0,0)",
-        "color_heading_highlight_dark": "rgba(0,0,0,0)",
-        "space_block": 60,
-        "desktop_height": "750px",
-        "padding_top": 8,
-        "padding_bottom": 8,
-        "space_block_mobile": 10,
-        "mobile_height": "500px",
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0
       }
     },
     "announcement-bar": {
@@ -192,11 +118,34 @@
         "button_YfAny9": {
           "type": "button",
           "settings": {
+            "button_label": "Día del niño",
+            "button_link": "shopify://collections/dia-del-nino",
+            "open_new_window": false,
+            "show_button_style": "primary",
+            "button_light": "#b495f9",
+            "button_text_light": "#ffffff",
+            "button_hover_light": "#b495f9",
+            "button_text_hover_light": "#ffffff",
+            "secondary_button_light": "rgba(0,0,0,0)",
+            "secondary_button_text_light": "rgba(0,0,0,0)",
+            "colors_text_link": "rgba(0,0,0,0)",
+            "button_dark": "rgba(0,0,0,0)",
+            "button_text_dark": "rgba(0,0,0,0)",
+            "button_hover_dark": "rgba(0,0,0,0)",
+            "button_text_hover_dark": "rgba(0,0,0,0)",
+            "secondary_button_dark": "rgba(0,0,0,0)",
+            "secondary_button_text_dark": "rgba(0,0,0,0)",
+            "colors_text_link_dark": "rgba(0,0,0,0)"
+          }
+        },
+        "button_qcPwPX": {
+          "type": "button",
+          "settings": {
             "button_label": "Ofertas Black",
             "button_link": "shopify://collections/descuentos-activos",
             "open_new_window": false,
             "show_button_style": "primary",
-            "button_light": "#f83785",
+            "button_light": "#000000",
             "button_text_light": "#ffffff",
             "button_hover_light": "#f83785",
             "button_text_hover_light": "#ffffff",
@@ -214,6 +163,7 @@
         },
         "button_CEnHcy": {
           "type": "button",
+          "disabled": true,
           "settings": {
             "button_label": "Día del Padre",
             "button_link": "shopify://collections/dia-del-padre",
@@ -351,6 +301,7 @@
       },
       "block_order": [
         "button_YfAny9",
+        "button_qcPwPX",
         "button_CEnHcy",
         "tree_menu_FxFEXV",
         "tree_menu_4Hjg4P",
@@ -403,13 +354,36 @@
         "button_YLmAc7": {
           "type": "button",
           "settings": {
+            "button_label": "Día del niño",
+            "button_link": "shopify://collections/dia-del-nino",
+            "open_new_window": false,
+            "show_button_style": "primary",
+            "button_light": "#b495f9",
+            "button_text_light": "#ffffff",
+            "button_hover_light": "#b495f9",
+            "button_text_hover_light": "#ffffff",
+            "secondary_button_light": "rgba(0,0,0,0)",
+            "secondary_button_text_light": "rgba(0,0,0,0)",
+            "colors_text_link": "rgba(0,0,0,0)",
+            "button_dark": "rgba(0,0,0,0)",
+            "button_text_dark": "rgba(0,0,0,0)",
+            "button_hover_dark": "rgba(0,0,0,0)",
+            "button_text_hover_dark": "rgba(0,0,0,0)",
+            "secondary_button_dark": "rgba(0,0,0,0)",
+            "secondary_button_text_dark": "rgba(0,0,0,0)",
+            "colors_text_link_dark": "rgba(0,0,0,0)"
+          }
+        },
+        "button_iKAzyJ": {
+          "type": "button",
+          "settings": {
             "button_label": "Ofertas Black",
             "button_link": "shopify://collections/descuentos-activos",
             "open_new_window": false,
             "show_button_style": "primary",
-            "button_light": "#f83785",
+            "button_light": "#000000",
             "button_text_light": "#ffffff",
-            "button_hover_light": "#f83785",
+            "button_hover_light": "#000000",
             "button_text_hover_light": "#ffffff",
             "secondary_button_light": "rgba(0,0,0,0)",
             "secondary_button_text_light": "rgba(0,0,0,0)",
@@ -425,6 +399,7 @@
         },
         "button_ENXF8b": {
           "type": "button",
+          "disabled": true,
           "settings": {
             "button_label": "Día del Padre",
             "button_link": "shopify://collections/dia-del-padre",
@@ -859,6 +834,7 @@
       },
       "block_order": [
         "button_YLmAc7",
+        "button_iKAzyJ",
         "button_ENXF8b",
         "menu_cdXaXw",
         "menu_PKxhN3",
@@ -897,8 +873,8 @@
       "settings": {
         "enable": true,
         "show_only_on_homepage": false,
-        "image": "shopify://shop_images/Huincha_descuentos_desktop_019b7b03-6a54-46c0-880f-2847b152e558.jpg",
-        "image_mobile": "shopify://shop_images/Huincha_descuentos_mobile_e84dd59c-1429-4416-9f3d-f5feb8840d26.jpg",
+        "image": "shopify://shop_images/Huincha-SmartTv_desktop.jpg",
+        "image_mobile": "shopify://shop_images/Huincha-SmartTv_mobile.jpg",
         "image_alt": "",
         "link": "shopify://collections/all",
         "open_new_window": false,
@@ -909,7 +885,6 @@
   },
   "order": [
     "misjoyas-topbar",
-    "scrolling_banner_hGGpmb",
     "announcement-bar",
     "header",
     "mobile-navigation",
