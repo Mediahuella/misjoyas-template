@@ -15,6 +15,16 @@
         "slide_aKdGEi": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/banner-lanzamiento_desktop.jpg",
+            "image_mobile": "shopify://shop_images/banner-lanzamiento_mobile.jpg",
+            "image_alt": "",
+            "link": "shopify://collections/dia-del-nino",
+            "open_new_window": false
+          }
+        },
+        "slide_KjcGdc": {
+          "type": "slide",
+          "settings": {
             "image": "shopify://shop_images/Banner-SmartTv_desktop.jpg",
             "image_mobile": "shopify://shop_images/Banner-SmartTv_mobile.jpg",
             "image_alt": "",
@@ -45,6 +55,7 @@
       },
       "block_order": [
         "slide_aKdGEi",
+        "slide_KjcGdc",
         "slide_jhGfFd",
         "slide_dqdmni"
       ],
@@ -838,6 +849,7 @@
     },
     "popup_rWghyY": {
       "type": "popup",
+      "disabled": true,
       "name": "Popup imagen",
       "settings": {
         "image": "shopify://shop_images/compra-minima_popup_14d0a74d-8e89-4f5b-99a1-6b7c6a599780.jpg",

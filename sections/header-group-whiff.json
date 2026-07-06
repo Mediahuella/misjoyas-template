@@ -15,7 +15,7 @@
       "type": "misjoyas-topbar",
       "settings": {
         "enable": true,
-        "text": "Emprende con Joyas de Plata 925 — Ahora tu compra mínima desde $ 39.990",
+        "text": "Emprende con joyas de plata 925 certificada — 🛍️ Descuentos exclusivos para mayoristas 🛍️",
         "text_color": "#ffffff",
         "background_color": "#000000",
         "animation_speed": 20,
@@ -118,11 +118,34 @@
         "button_YfAny9": {
           "type": "button",
           "settings": {
+            "button_label": "Día del niño",
+            "button_link": "shopify://collections/dia-del-nino",
+            "open_new_window": false,
+            "show_button_style": "primary",
+            "button_light": "#b495f9",
+            "button_text_light": "#ffffff",
+            "button_hover_light": "#b495f9",
+            "button_text_hover_light": "#ffffff",
+            "secondary_button_light": "rgba(0,0,0,0)",
+            "secondary_button_text_light": "rgba(0,0,0,0)",
+            "colors_text_link": "rgba(0,0,0,0)",
+            "button_dark": "rgba(0,0,0,0)",
+            "button_text_dark": "rgba(0,0,0,0)",
+            "button_hover_dark": "rgba(0,0,0,0)",
+            "button_text_hover_dark": "rgba(0,0,0,0)",
+            "secondary_button_dark": "rgba(0,0,0,0)",
+            "secondary_button_text_dark": "rgba(0,0,0,0)",
+            "colors_text_link_dark": "rgba(0,0,0,0)"
+          }
+        },
+        "button_qcPwPX": {
+          "type": "button",
+          "settings": {
             "button_label": "Ofertas Black",
             "button_link": "shopify://collections/descuentos-activos",
             "open_new_window": false,
             "show_button_style": "primary",
-            "button_light": "#f83785",
+            "button_light": "#000000",
             "button_text_light": "#ffffff",
             "button_hover_light": "#f83785",
             "button_text_hover_light": "#ffffff",
@@ -278,6 +301,7 @@
       },
       "block_order": [
         "button_YfAny9",
+        "button_qcPwPX",
         "button_CEnHcy",
         "tree_menu_FxFEXV",
         "tree_menu_4Hjg4P",
@@ -330,13 +354,36 @@
         "button_YLmAc7": {
           "type": "button",
           "settings": {
+            "button_label": "Día del niño",
+            "button_link": "shopify://collections/dia-del-nino",
+            "open_new_window": false,
+            "show_button_style": "primary",
+            "button_light": "#b495f9",
+            "button_text_light": "#ffffff",
+            "button_hover_light": "#b495f9",
+            "button_text_hover_light": "#ffffff",
+            "secondary_button_light": "rgba(0,0,0,0)",
+            "secondary_button_text_light": "rgba(0,0,0,0)",
+            "colors_text_link": "rgba(0,0,0,0)",
+            "button_dark": "rgba(0,0,0,0)",
+            "button_text_dark": "rgba(0,0,0,0)",
+            "button_hover_dark": "rgba(0,0,0,0)",
+            "button_text_hover_dark": "rgba(0,0,0,0)",
+            "secondary_button_dark": "rgba(0,0,0,0)",
+            "secondary_button_text_dark": "rgba(0,0,0,0)",
+            "colors_text_link_dark": "rgba(0,0,0,0)"
+          }
+        },
+        "button_iKAzyJ": {
+          "type": "button",
+          "settings": {
             "button_label": "Ofertas Black",
             "button_link": "shopify://collections/descuentos-activos",
             "open_new_window": false,
             "show_button_style": "primary",
-            "button_light": "#f83785",
+            "button_light": "#000000",
             "button_text_light": "#ffffff",
-            "button_hover_light": "#f83785",
+            "button_hover_light": "#000000",
             "button_text_hover_light": "#ffffff",
             "secondary_button_light": "rgba(0,0,0,0)",
             "secondary_button_text_light": "rgba(0,0,0,0)",
@@ -787,6 +834,7 @@
       },
       "block_order": [
         "button_YLmAc7",
+        "button_iKAzyJ",
         "button_ENXF8b",
         "menu_cdXaXw",
         "menu_PKxhN3",

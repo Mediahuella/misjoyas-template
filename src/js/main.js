@@ -450,3 +450,32 @@ window.bindFeaturedCollectionMjArrows = function (root, desktopMove, mobileMove)
 
   updateDisabled();
 };
+
+/**
+ * Carga xBadges en todas las tarjetas del carrusel (slides fuera del viewport no disparan x-intersect).
+ */
+window.loadFeaturedCollectionMjBadges = function (root) {
+  if (!root || root.dataset.fcMjBadgesLoaded === '1') return true;
+
+  const run = () => {
+    const store = window.Alpine?.store('xBadges');
+    const hasBlockData = document.getElementsByClassName('x-badges-block-data').length > 0;
+    if (!store || !hasBlockData) return false;
+
+    root.querySelectorAll('.link-product-variant[x-labels-data]').forEach((link) => {
+      store.load(link, () => {}, null, true);
+    });
+
+    root.dataset.fcMjBadgesLoaded = '1';
+    return true;
+  };
+
+  if (run()) return true;
+
+  let attempts = 0;
+  const timer = setInterval(() => {
+    if (run() || ++attempts > 100) clearInterval(timer);
+  }, 100);
+
+  return false;
+};
