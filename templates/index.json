@@ -15,6 +15,16 @@
         "slide_aKdGEi": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/Banner-rebajas_desktop.jpg",
+            "image_mobile": "shopify://shop_images/Banner-rebajas_mobile.jpg",
+            "image_alt": "",
+            "link": "shopify://collections/descuento-invierno",
+            "open_new_window": false
+          }
+        },
+        "slide_GJzrPK": {
+          "type": "slide",
+          "settings": {
             "image": "shopify://shop_images/banner-lanzamiento_desktop.jpg",
             "image_mobile": "shopify://shop_images/banner-lanzamiento_mobile.jpg",
             "image_alt": "",
@@ -24,6 +34,7 @@
         },
         "slide_KjcGdc": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Banner-SmartTv_desktop.jpg",
             "image_mobile": "shopify://shop_images/Banner-SmartTv_mobile.jpg",
@@ -55,6 +66,7 @@
       },
       "block_order": [
         "slide_aKdGEi",
+        "slide_GJzrPK",
         "slide_KjcGdc",
         "slide_jhGfFd",
         "slide_dqdmni"

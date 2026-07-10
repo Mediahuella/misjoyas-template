@@ -456,30 +456,6 @@ window.bindFeaturedCollectionMjArrows = function (root, desktopMove, mobileMove)
   updateDisabled();
 };
 
-/**
- * Carga xBadges en todas las tarjetas del carrusel (slides fuera del viewport no disparan x-intersect).
- */
-window.loadFeaturedCollectionMjBadges = function (root) {
-  if (!root || root.dataset.fcMjBadgesLoaded === '1') return true;
-  var run = function run() {
-    var _window$Alpine;
-    var store = (_window$Alpine = window.Alpine) === null || _window$Alpine === void 0 ? void 0 : _window$Alpine.store('xBadges');
-    var hasBlockData = document.getElementsByClassName('x-badges-block-data').length > 0;
-    if (!store || !hasBlockData) return false;
-    root.querySelectorAll('.link-product-variant[x-labels-data]').forEach(function (link) {
-      store.load(link, function () {}, null, true);
-    });
-    root.dataset.fcMjBadgesLoaded = '1';
-    return true;
-  };
-  if (run()) return true;
-  var attempts = 0;
-  var timer = setInterval(function () {
-    if (run() || ++attempts > 100) clearInterval(timer);
-  }, 100);
-  return false;
-};
-
 /***/ },
 
 /***/ "./src/css/main.css"
