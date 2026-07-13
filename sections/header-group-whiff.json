@@ -355,7 +355,7 @@
           "type": "button",
           "settings": {
             "button_label": "Rebajas de invierno",
-            "button_link": "",
+            "button_link": "shopify://collections/descuento-invierno",
             "open_new_window": false,
             "show_button_style": "primary",
             "button_light": "#fd2975",
