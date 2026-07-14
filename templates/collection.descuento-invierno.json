@@ -73,91 +73,43 @@
         "col_04": {
           "type": "collection",
           "settings": {
-            "collection": "aros-bano-de-oro-18-k"
+            "collection": "descuento-invierno-anillos"
           }
         },
         "col_05": {
           "type": "collection",
           "settings": {
-            "collection": "plata-sola-1"
+            "collection": "descuento-invierno-collares"
           }
         },
         "col_06": {
           "type": "collection",
           "settings": {
-            "collection": "con-chiches"
+            "collection": "colgantes-micro-circon-y-circon"
           }
         },
         "col_07": {
           "type": "collection",
           "settings": {
-            "collection": "pulseras-bano-de-oro-18-k"
+            "collection": "colgantes-plata-sola"
           }
         },
         "col_08": {
           "type": "collection",
           "settings": {
-            "collection": "anillos-micro-circon"
+            "collection": "colgantes-y-collares-religiosos"
           }
         },
         "col_09": {
           "type": "collection",
           "settings": {
-            "collection": "solitario-y-compromiso"
+            "collection": "descuento-invierno-pulseras"
           }
         },
         "col_10": {
           "type": "collection",
           "settings": {
-            "collection": "anillos-bano-de-oro-18-k"
-          }
-        },
-        "col_11": {
-          "type": "collection",
-          "settings": {
-            "collection": "colgantes-micro-circon-y-circon"
-          }
-        },
-        "col_12": {
-          "type": "collection",
-          "settings": {
-            "collection": "colgantes-plata-sola"
-          }
-        },
-        "col_13": {
-          "type": "collection",
-          "settings": {
-            "collection": "colgantes-y-collares-religiosos"
-          }
-        },
-        "col_14": {
-          "type": "collection",
-          "settings": {
-            "collection": "colgantes-bano-de-oro-18k"
-          }
-        },
-        "col_15": {
-          "type": "collection",
-          "settings": {
-            "collection": "collares-circon-y-cristales"
-          }
-        },
-        "col_16": {
-          "type": "collection",
-          "settings": {
-            "collection": "collares-piedras-y-perlas"
-          }
-        },
-        "col_17": {
-          "type": "collection",
-          "settings": {
-            "collection": "collares-bano-de-oro-18k"
-          }
-        },
-        "col_18": {
-          "type": "collection",
-          "settings": {
-            "collection": "conjuntos-bano-de-oro-18k"
+            "collection": "descuento-invierno-bano-oro"
           }
         }
       },
@@ -171,15 +123,7 @@
         "col_07",
         "col_08",
         "col_09",
-        "col_10",
-        "col_11",
-        "col_12",
-        "col_13",
-        "col_14",
-        "col_15",
-        "col_16",
-        "col_17",
-        "col_18"
+        "col_10"
       ],
       "settings": {
         "title": "",
