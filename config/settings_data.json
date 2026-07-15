@@ -194,7 +194,7 @@
     "enable_cart_timer": false,
     "hide_cart": false,
     "enable_free_shipping": true,
-    "order_amount_freeshipping": "CLP:99990",
+    "order_amount_freeshipping": "CLP:59990",
     "enable_cart_progress_bar": true,
     "enable_estimate_shipping": false,
     "auto_calculate_shipping": false,

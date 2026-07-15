@@ -115,11 +115,34 @@
     "header": {
       "type": "header",
       "blocks": {
+        "tree_menu_4D8BF6": {
+          "type": "tree_menu",
+          "settings": {
+            "heading": "Licenciatura",
+            "menu": "licenciatura",
+            "menu_item_link": "",
+            "open_new_window": false,
+            "show_image_collection": false,
+            "show_first_image_product": false,
+            "show_image_product": false,
+            "collection_metafield": "",
+            "label": "",
+            "label_position": "above",
+            "label_color": "#ce021e",
+            "label_text_color_light": "#ffffff",
+            "label_color_dark": "#ce021e",
+            "label_text_color_dark": "#ffffff",
+            "icon": "none",
+            "another_icon": "",
+            "custom_icon": ""
+          }
+        },
         "button_YfAny9": {
           "type": "button",
+          "disabled": true,
           "settings": {
-            "button_label": "Rebajas de invierno",
-            "button_link": "shopify://collections/descuento-invierno",
+            "button_label": "Licenciatura",
+            "button_link": "https://misjoyas.cl/search?options%5Bprefix%5D=last&q=c_licenciatura",
             "open_new_window": false,
             "show_button_style": "primary",
             "button_light": "#fd2975",
@@ -300,6 +323,7 @@
         }
       },
       "block_order": [
+        "tree_menu_4D8BF6",
         "button_YfAny9",
         "button_qcPwPX",
         "button_CEnHcy",
@@ -873,8 +897,8 @@
       "settings": {
         "enable": true,
         "show_only_on_homepage": false,
-        "image": "shopify://shop_images/Huincha-rebajas_desktop.jpg",
-        "image_mobile": "shopify://shop_images/Huincha-rebajas_mobile.jpg",
+        "image": "shopify://shop_images/huincha-joyero_desktop.jpg",
+        "image_mobile": "shopify://shop_images/huincha-joyero_mobile.jpg",
         "image_alt": "",
         "link": "shopify://collections/all",
         "open_new_window": false,
