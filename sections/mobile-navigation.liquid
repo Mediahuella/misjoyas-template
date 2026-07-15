@@ -151,6 +151,29 @@
                     if block.settings.menu.links != blank
                       assign is_link = true
                     endif
+                    assign mobile_menu_use_button = block.settings.enable_button_style
+                    assign mobile_menu_btn_variant = 'button-disable-effect'
+                    if block.settings.show_button_style == 'secondary'
+                      assign mobile_menu_btn_variant = 'button-outline'
+                    elsif block.settings.show_button_style == 'text-link'
+                      assign mobile_menu_btn_variant = 'button-text-link'
+                    endif
+                    assign mobile_menu_button_wrapper_class = 'mobile-menu-button-' | append: block.id
+                    assign mobile_menu_row_classes = 'flex items-center ml-5 mr-5'
+                    unless mobile_menu_use_button
+                      assign mobile_menu_row_classes = mobile_menu_row_classes | append: ' border-b'
+                      if forloop.first and index == 1
+                        assign mobile_menu_row_classes = mobile_menu_row_classes | append: ' border-t'
+                      endif
+                    else
+                      assign mobile_menu_row_classes = mobile_menu_row_classes | append: ' py-2'
+                    endunless
+                    assign mobile_menu_trigger_classes = 'flex items-center w-full'
+                    if mobile_menu_use_button
+                      assign mobile_menu_trigger_classes = mobile_menu_trigger_classes | append: ' button ' | append: mobile_menu_btn_variant | append: ' leading-normal pl-2 pr-2 py-2.5 duration-200 transition'
+                    else
+                      assign mobile_menu_trigger_classes = mobile_menu_trigger_classes | append: ' disable-effect'
+                    endif
                   -%}
                   {% capture menu_title %}
                     {% assign title = block.settings.heading %}
@@ -178,26 +201,29 @@
                     {% endif %}
                   {% endcapture %}
                   <li x-data='{ active: false }' class="x-block-menu-{{ forloop.index }} block-mobile-navigation" {{ block.shopify_attributes }}>
-                    <div {% if is_link %}@click="$store.xMobileNav.setActiveLink('{{ index }}'); $store.xMobileNav.scrollTop();"{% endif %} class="flex items-center ml-5 mr-5 border-b{% if forloop.first and index == 1 %} border-t{% endif %}">
+                    {%- if mobile_menu_use_button -%}
+                      {%- render 'header-menu-button-styles', block: block, css_class: mobile_menu_button_wrapper_class, text_only_hover: true -%}
+                    {%- endif -%}
+                    <div {% if is_link %}@click="$store.xMobileNav.setActiveLink('{{ index }}'); $store.xMobileNav.scrollTop();"{% endif %} class="{{ mobile_menu_row_classes }}{% if mobile_menu_use_button %} {{ mobile_menu_button_wrapper_class }}{% endif %}">
                       {% if is_link %}
-                        <p class="flex-1 pt-3.5 pb-3.5 flex items-center disable-effect{% if request.path == link %} effect-inline active{% endif %}"
-                          :class="active && 'effect-inline'">
-                          <span class="p-break-words">{{ menu_title }}</span>
-                        </p>
-                        <span
-                          class="icon-caret-mobile h-11 w-8 pt-4 block {%- if request.path == link %} text-[rgba(var(--colors-text-link))]{% endif %}{% if is_rtl %} rotate-90 pr-2.5 pl-2{% else %} -rotate-90 pl-2.5 pr-2{% endif %}"
-                          :class="{ 'text-[rgba(var(--colors-text-link))]': active }"
-                        >{% render 'icon-alls', icon: 'icon-caret' %}</span>
+                        <div class="{{ mobile_menu_trigger_classes }}{% unless mobile_menu_use_button %}{% if request.path == link %} effect-inline active{% endif %}{% endunless %}"
+                          {% unless mobile_menu_use_button %}:class="active && 'effect-inline'"{% endunless %}>
+                          <span class="flex-1 p-break-words{% if mobile_menu_use_button %} text-left{% else %} pt-3.5 pb-3.5{% endif %}">{{ menu_title }}</span>
+                          <span
+                            class="icon-caret-mobile h-11 w-8{% if mobile_menu_use_button %} py-0{% else %} pt-4{% endif %} block{%- if request.path == link and mobile_menu_use_button == false %} text-[rgba(var(--colors-text-link))]{% endif %}{% if is_rtl %} rotate-90 pr-2.5 pl-2{% else %} -rotate-90 pl-2.5 pr-2{% endif %}"
+                            {% unless mobile_menu_use_button %}:class="{ 'text-[rgba(var(--colors-text-link))]': active }"{% endunless %}
+                          >{% render 'icon-alls', icon: 'icon-caret' %}</span>
+                        </div>
                       {% else %}
                         {% if link %}
                           <a href="{{ link }}" {% if block.settings.open_new_window %} target="_blank"{% endif %}
-                            class="flex-1 pt-3.5 pb-3.5 flex items-center disable-effect{% if request.path == link %} effect-inline active{% endif %}"
+                            class="{{ mobile_menu_trigger_classes }}{% unless mobile_menu_use_button %}{% if request.path == link %} effect-inline active{% endif %}{% endunless %}"
                           >
                         {% else %}
-                          <p class="flex-1 pt-3.5 pb-3.5 flex items-center disable-effect{% if request.path == link %} effect-inline active{% endif %}">
+                          <div class="{{ mobile_menu_trigger_classes }}{% unless mobile_menu_use_button %}{% if request.path == link %} effect-inline active{% endif %}{% endunless %}">
                         {% endif %}
-                          <span class="p-break-words">{{ menu_title }}</span>
-                        {% if link %}</a>{% else %}</p>{% endif %}
+                          <span class="flex-1 p-break-words{% if mobile_menu_use_button %} text-left{% else %} pt-3.5 pb-3.5{% endif %}">{{ menu_title }}</span>
+                        {% if link %}</a>{% else %}</div>{% endif %}
                       {% endif %}
                     </div>
                     {%- if is_link -%}
@@ -2233,6 +2259,84 @@
           "type": "url",
           "id": "block_link_4",
           "label": "t:sections.header.settings.block_link.label"
+        },
+        {
+          "type": "header",
+          "content": "Estilo botón"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_button_style",
+          "default": false,
+          "label": "Mostrar con fondo de botón"
+        },
+        {
+          "type": "select",
+          "id": "show_button_style",
+          "options": [
+            {
+              "value": "primary",
+              "label": "t:sections.all.button.button_style.primary"
+            },
+            {
+              "value": "secondary",
+              "label": "t:sections.all.button.button_style.secondary"
+            },
+            {
+              "value": "text-link",
+              "label": "t:settings_schema.colors.colors_text_link"
+            }
+          ],
+          "label": "t:sections.all.button.button_style.label",
+          "default": "primary"
+        },
+        {
+          "type": "color",
+          "id": "button_light",
+          "label": "t:sections.all.button.primary_button_light",
+          "default": "rgba(0,0,0,0)"
+        },
+        {
+          "type": "color",
+          "id": "button_text_light",
+          "label": "t:sections.all.button.primary_button_text_light",
+          "default": "rgba(0,0,0,0)"
+        },
+        {
+          "type": "color",
+          "id": "button_hover_light",
+          "label": "t:sections.all.button.primary_button_hover_light",
+          "default": "rgba(0,0,0,0)"
+        },
+        {
+          "type": "color",
+          "id": "button_text_hover_light",
+          "label": "t:sections.all.button.primary_button_hover_text_light",
+          "default": "rgba(0,0,0,0)"
+        },
+        {
+          "type": "color",
+          "id": "button_dark",
+          "label": "t:sections.all.button.primary_button_dark",
+          "default": "rgba(0,0,0,0)"
+        },
+        {
+          "type": "color",
+          "id": "button_text_dark",
+          "label": "t:sections.all.button.primary_button_text_dark",
+          "default": "rgba(0,0,0,0)"
+        },
+        {
+          "type": "color",
+          "id": "button_hover_dark",
+          "label": "t:sections.all.button.primary_button_hover_dark",
+          "default": "rgba(0,0,0,0)"
+        },
+        {
+          "type": "color",
+          "id": "button_text_hover_dark",
+          "label": "t:sections.all.button.primary_button_hover_text_dark",
+          "default": "rgba(0,0,0,0)"
         }
       ]
     },

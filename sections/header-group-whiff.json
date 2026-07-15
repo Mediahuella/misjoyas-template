@@ -134,7 +134,17 @@
             "label_text_color_dark": "#ffffff",
             "icon": "none",
             "another_icon": "",
-            "custom_icon": ""
+            "custom_icon": "",
+            "enable_button_style": true,
+            "show_button_style": "primary",
+            "button_light": "#fd2975",
+            "button_text_light": "#ffffff",
+            "button_hover_light": "#fd2975",
+            "button_text_hover_light": "#ffffff",
+            "button_dark": "rgba(0,0,0,0)",
+            "button_text_dark": "rgba(0,0,0,0)",
+            "button_hover_dark": "rgba(0,0,0,0)",
+            "button_text_hover_dark": "rgba(0,0,0,0)"
           }
         },
         "button_YfAny9": {
@@ -228,7 +238,17 @@
             "label_text_color_dark": "#ffffff",
             "icon": "none",
             "another_icon": "",
-            "custom_icon": ""
+            "custom_icon": "",
+            "enable_button_style": false,
+            "show_button_style": "primary",
+            "button_light": "rgba(0,0,0,0)",
+            "button_text_light": "rgba(0,0,0,0)",
+            "button_hover_light": "rgba(0,0,0,0)",
+            "button_text_hover_light": "rgba(0,0,0,0)",
+            "button_dark": "rgba(0,0,0,0)",
+            "button_text_dark": "rgba(0,0,0,0)",
+            "button_hover_dark": "rgba(0,0,0,0)",
+            "button_text_hover_dark": "rgba(0,0,0,0)"
           }
         },
         "tree_menu_4Hjg4P": {
@@ -250,7 +270,17 @@
             "label_text_color_dark": "#ffffff",
             "icon": "none",
             "another_icon": "",
-            "custom_icon": ""
+            "custom_icon": "",
+            "enable_button_style": false,
+            "show_button_style": "primary",
+            "button_light": "rgba(0,0,0,0)",
+            "button_text_light": "rgba(0,0,0,0)",
+            "button_hover_light": "rgba(0,0,0,0)",
+            "button_text_hover_light": "rgba(0,0,0,0)",
+            "button_dark": "rgba(0,0,0,0)",
+            "button_text_dark": "rgba(0,0,0,0)",
+            "button_hover_dark": "rgba(0,0,0,0)",
+            "button_text_hover_dark": "rgba(0,0,0,0)"
           }
         },
         "tree_menu_eMW3PW": {
@@ -272,7 +302,17 @@
             "label_text_color_dark": "#ffffff",
             "icon": "none",
             "another_icon": "",
-            "custom_icon": ""
+            "custom_icon": "",
+            "enable_button_style": false,
+            "show_button_style": "primary",
+            "button_light": "rgba(0,0,0,0)",
+            "button_text_light": "rgba(0,0,0,0)",
+            "button_hover_light": "rgba(0,0,0,0)",
+            "button_text_hover_light": "rgba(0,0,0,0)",
+            "button_dark": "rgba(0,0,0,0)",
+            "button_text_dark": "rgba(0,0,0,0)",
+            "button_hover_dark": "rgba(0,0,0,0)",
+            "button_text_hover_dark": "rgba(0,0,0,0)"
           }
         },
         "button_xHbCrf": {
@@ -375,8 +415,80 @@
     "mobile-navigation": {
       "type": "mobile-navigation",
       "blocks": {
+        "menu_licenciatura": {
+          "type": "menu",
+          "settings": {
+            "heading": "Licenciatura",
+            "menu": "licenciatura",
+            "menu_item_link": "",
+            "open_new_window": false,
+            "show_collection_image": false,
+            "show_first_image_product": false,
+            "sub_show_collection_image": false,
+            "sub_show_first_image_product": false,
+            "sub_column": "2",
+            "item_image_type": "large",
+            "collection_metafield": "",
+            "enable_overlay": false,
+            "overlay_opacity": 0,
+            "heading_promotion": "",
+            "heading_size": 100,
+            "text": "",
+            "text_size": 100,
+            "button_label": "",
+            "button_link": "",
+            "open_new_window_button": false,
+            "button_style": "primary",
+            "text_color": "rgba(0,0,0,0)",
+            "button_color": "rgba(0,0,0,0)",
+            "button_text_color": "rgba(0,0,0,0)",
+            "button_hover_color": "rgba(0,0,0,0)",
+            "button_text_hover_color": "rgba(0,0,0,0)",
+            "button_secondary_color": "rgba(0,0,0,0)",
+            "button_secondary_text_color": "rgba(0,0,0,0)",
+            "colors_text_link": "rgba(0,0,0,0)",
+            "enable_quick_access_blocks": false,
+            "quick_access_enable_swiper_mobile": false,
+            "quick_access_corner_radius": 0,
+            "quick_access_icon_size": 24,
+            "quick_access_font_size": 90,
+            "color_bg_quick_access": "rgba(0,0,0,0)",
+            "color_button_quick_access": "rgba(0,0,0,0)",
+            "color_text_button_quick_access": "rgba(0,0,0,0)",
+            "color_bg_dark_quick_access": "rgba(0,0,0,0)",
+            "color_button_dark_quick_access": "rgba(0,0,0,0)",
+            "color_text_button_dark_quick_access": "rgba(0,0,0,0)",
+            "quick_access_icon": "truck",
+            "quick_access_custom_icon": "",
+            "block_title": "",
+            "block_link": "",
+            "quick_access_icon_2": "truck",
+            "quick_access_custom_icon_2": "",
+            "block_title_2": "",
+            "block_link_2": "",
+            "quick_access_icon_3": "truck",
+            "quick_access_custom_icon_3": "",
+            "block_title_3": "",
+            "block_link_3": "",
+            "quick_access_icon_4": "truck",
+            "quick_access_custom_icon_4": "",
+            "block_title_4": "",
+            "block_link_4": "",
+            "enable_button_style": true,
+            "show_button_style": "primary",
+            "button_light": "#fd2975",
+            "button_text_light": "#ffffff",
+            "button_hover_light": "#fd2975",
+            "button_text_hover_light": "#ffffff",
+            "button_dark": "rgba(0,0,0,0)",
+            "button_text_dark": "rgba(0,0,0,0)",
+            "button_hover_dark": "rgba(0,0,0,0)",
+            "button_text_hover_dark": "rgba(0,0,0,0)"
+          }
+        },
         "button_YLmAc7": {
           "type": "button",
+          "disabled": true,
           "settings": {
             "button_label": "Rebajas de invierno",
             "button_link": "shopify://collections/descuento-invierno",
@@ -504,7 +616,17 @@
             "quick_access_icon_4": "truck",
             "quick_access_custom_icon_4": "",
             "block_title_4": "",
-            "block_link_4": ""
+            "block_link_4": "",
+            "enable_button_style": false,
+            "show_button_style": "primary",
+            "button_light": "rgba(0,0,0,0)",
+            "button_text_light": "rgba(0,0,0,0)",
+            "button_hover_light": "rgba(0,0,0,0)",
+            "button_text_hover_light": "rgba(0,0,0,0)",
+            "button_dark": "rgba(0,0,0,0)",
+            "button_text_dark": "rgba(0,0,0,0)",
+            "button_hover_dark": "rgba(0,0,0,0)",
+            "button_text_hover_dark": "rgba(0,0,0,0)"
           }
         },
         "menu_PKxhN3": {
@@ -565,7 +687,17 @@
             "quick_access_icon_4": "truck",
             "quick_access_custom_icon_4": "",
             "block_title_4": "",
-            "block_link_4": ""
+            "block_link_4": "",
+            "enable_button_style": false,
+            "show_button_style": "primary",
+            "button_light": "rgba(0,0,0,0)",
+            "button_text_light": "rgba(0,0,0,0)",
+            "button_hover_light": "rgba(0,0,0,0)",
+            "button_text_hover_light": "rgba(0,0,0,0)",
+            "button_dark": "rgba(0,0,0,0)",
+            "button_text_dark": "rgba(0,0,0,0)",
+            "button_hover_dark": "rgba(0,0,0,0)",
+            "button_text_hover_dark": "rgba(0,0,0,0)"
           }
         },
         "menu_EhKMaa": {
@@ -627,7 +759,17 @@
             "quick_access_icon_4": "truck",
             "quick_access_custom_icon_4": "",
             "block_title_4": "",
-            "block_link_4": ""
+            "block_link_4": "",
+            "enable_button_style": false,
+            "show_button_style": "primary",
+            "button_light": "rgba(0,0,0,0)",
+            "button_text_light": "rgba(0,0,0,0)",
+            "button_hover_light": "rgba(0,0,0,0)",
+            "button_text_hover_light": "rgba(0,0,0,0)",
+            "button_dark": "rgba(0,0,0,0)",
+            "button_text_dark": "rgba(0,0,0,0)",
+            "button_hover_dark": "rgba(0,0,0,0)",
+            "button_text_hover_dark": "rgba(0,0,0,0)"
           }
         },
         "menu_rCBWkB": {
@@ -688,7 +830,17 @@
             "quick_access_icon_4": "truck",
             "quick_access_custom_icon_4": "",
             "block_title_4": "",
-            "block_link_4": ""
+            "block_link_4": "",
+            "enable_button_style": false,
+            "show_button_style": "primary",
+            "button_light": "rgba(0,0,0,0)",
+            "button_text_light": "rgba(0,0,0,0)",
+            "button_hover_light": "rgba(0,0,0,0)",
+            "button_text_hover_light": "rgba(0,0,0,0)",
+            "button_dark": "rgba(0,0,0,0)",
+            "button_text_dark": "rgba(0,0,0,0)",
+            "button_hover_dark": "rgba(0,0,0,0)",
+            "button_text_hover_dark": "rgba(0,0,0,0)"
           }
         },
         "menu_VcqNG3": {
@@ -750,7 +902,17 @@
             "quick_access_icon_4": "truck",
             "quick_access_custom_icon_4": "",
             "block_title_4": "",
-            "block_link_4": ""
+            "block_link_4": "",
+            "enable_button_style": false,
+            "show_button_style": "primary",
+            "button_light": "rgba(0,0,0,0)",
+            "button_text_light": "rgba(0,0,0,0)",
+            "button_hover_light": "rgba(0,0,0,0)",
+            "button_text_hover_light": "rgba(0,0,0,0)",
+            "button_dark": "rgba(0,0,0,0)",
+            "button_text_dark": "rgba(0,0,0,0)",
+            "button_hover_dark": "rgba(0,0,0,0)",
+            "button_text_hover_dark": "rgba(0,0,0,0)"
           }
         },
         "button_8fk9pJ": {
@@ -857,6 +1019,7 @@
         }
       },
       "block_order": [
+        "menu_licenciatura",
         "button_YLmAc7",
         "button_iKAzyJ",
         "button_ENXF8b",

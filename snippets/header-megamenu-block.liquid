@@ -368,11 +368,31 @@
                      assign is_active = true
                     endif
                   endfor
-                endif 
+                endif
+                assign tree_menu_use_button = block.settings.enable_button_style
+                assign tree_menu_btn_variant = 'button-disable-effect'
+                if block.settings.show_button_style == 'secondary'
+                  assign tree_menu_btn_variant = 'button-outline'
+                elsif block.settings.show_button_style == 'text-link'
+                  assign tree_menu_btn_variant = 'button-text-link'
+                endif
+                assign tree_menu_link_classes = 'cursor-pointer tree-menu-item p-break-words justify-center pt-1 pb-1 relative duration-200 transition is-focus:link-active hover-text-link'
+                if tree_menu_use_button
+                  assign tree_menu_link_classes = 'button ' | append: tree_menu_btn_variant | append: ' leading-normal inline-flex items-center pl-2 pr-2 pt-1 pb-1 md:pl-2.5 md:pr-2.5 duration-200 transition'
+                endif
+                if is_link or block.settings.label_position == 'aside'
+                  assign tree_menu_link_classes = tree_menu_link_classes | append: ' flex items-center'
+                else
+                  assign tree_menu_link_classes = tree_menu_link_classes | append: ' inline-block'
+                endif
+                if is_active or request.path == link
+                  assign tree_menu_link_classes = tree_menu_link_classes | append: ' link-active'
+                endif
+                assign tree_menu_button_wrapper_class = 'tree-menu-button-' | append: block.id
               -%}
               <li
               id="{{ block.id }}"
-              class="{% if section.settings.primary_menu_label_animation %}flip-container pr-0{% else %}pr-5{% endif %} tree-menu{% if logo_center %} mr-7{% else %} {% if section.settings.primary_menu_label_animation %}pl-0{% else %}pl-5{% endif %}{% endif %}{% if is_link %} relative has-dropdown{% endif %}"
+              class="{% if section.settings.primary_menu_label_animation and tree_menu_use_button == false %}flip-container pr-0{% else %}pr-5{% endif %} tree-menu{% if logo_center %} mr-7{% else %} {% if section.settings.primary_menu_label_animation and tree_menu_use_button == false %}pl-0{% else %}pl-5{% endif %}{% endif %}{% if is_link %} relative has-dropdown{% endif %}"
               {% if select_motion == 'hover' %}
                 x-on:mouseover="$store.xHeaderMenu.selectItem($el); $el.classList.add('is-focus');"
                 @mouseleave="$el.classList.remove('is-focus');"
@@ -388,7 +408,7 @@
                 @focusout="$el.classList.remove('is-focus');"
               {% endif %}
             >
-              <div class="relative cursor-pointer tree-menu-item p-break-words{% if is_link or block.settings.label_position == "aside" %} flex items-center{% else %} inline-block{% endif %} justify-center pt-1 pb-1 relative duration-200 transition hover-text-link is-focus:link-active{% if is_active or request.path == link %} link-active{% endif %}" x-data='{ active: false }' 
+              <div class="relative cursor-pointer{% unless tree_menu_use_button %} tree-menu-item p-break-words{% endunless %}{% if is_link or block.settings.label_position == "aside" %} flex items-center{% else %} inline-block{% endif %} justify-center pt-1 pb-1 relative duration-200 transition{% unless tree_menu_use_button %} hover-text-link{% endunless %} is-focus:link-active{% if is_active or request.path == link %} link-active{% endif %}" x-data='{ active: false }' 
                 {% if is_link %}
                   {% if select_motion == 'click' %}
                     @click="$store.xHeaderMenu.clickItem($el, $event, false, false, {{ block.settings.open_new_window }})"
@@ -397,19 +417,25 @@
                   {% endif %}
                 {% endif %}
               >
-                <div class="{% if section.settings.primary_menu_label_animation %}overflow-hidden pr-5 pl-5 pb-[1px]{% endif %} flex items-center">
+                {%- if tree_menu_use_button -%}
+                  {%- render 'header-menu-button-styles', block: block, css_class: tree_menu_button_wrapper_class, text_only_hover: true -%}
+                {%- endif -%}
+                <div class="{% if tree_menu_use_button %}{{ tree_menu_button_wrapper_class }} duration-200 transition{% elsif section.settings.primary_menu_label_animation %} overflow-hidden pr-5 pl-5 pb-[1px]{% endif %} flex items-center">
                   <div class="relative">
                     <a
                       href="{% if link %}{{ link }}{% else %}#{% endif %}"
-                      class="{% if section.settings.primary_menu_label_animation %}front{% endif %} cursor-pointer tree-menu-item p-break-words{% if is_link or block.settings.label_position == "aside" %} flex items-center{% else %} inline-block{% endif %} justify-center pt-1 pb-1 relative duration-200 transition hover-text-link is-focus:link-active{% if is_active or request.path == link %} link-active{% endif %}" 
+                      class="{% if section.settings.primary_menu_label_animation and tree_menu_use_button == false %}front{% endif %} {{ tree_menu_link_classes }}" 
                       {% if block.settings.open_new_window and link %} target="_blank"{% endif %}
                     > 
                       {{ menu_title }}
+                      {%- if is_link and tree_menu_use_button -%}
+                        <span class="w-5{% if is_rtl %} pr-2{% else %} pl-2{% endif %}">{% render 'icon-alls', icon: 'icon-caret' %}</span>
+                      {%- endif -%}
                     </a>
-                    {%- if section.settings.primary_menu_label_animation -%}
+                    {%- if section.settings.primary_menu_label_animation and tree_menu_use_button == false -%}
                       <a
                         href="{% if link %}{{ link }}{% else %}#{% endif %}"
-                        class="back cursor-pointer tree-menu-item p-break-words{% if is_link or block.settings.label_position == "aside" %} flex items-center{% else %} inline-block{% endif %} justify-center pt-1 pb-1 relative duration-200 transition hover-text-link is-focus:link-active{% if is_active or request.path == link %} link-active{% endif %}" 
+                        class="back {{ tree_menu_link_classes }}" 
                         {% if is_link %}
                           {% if select_motion == 'click' %}
                             @click="$store.xHeaderMenu.clickItem($el, $event, false, false, {{ block.settings.open_new_window }})"
@@ -420,10 +446,13 @@
                         {% if block.settings.open_new_window and link %} target="_blank"{% endif %}
                       > 
                         {{ menu_title }}
+                        {%- if is_link and tree_menu_use_button -%}
+                          <span class="w-5{% if is_rtl %} pr-2{% else %} pl-2{% endif %}">{% render 'icon-alls', icon: 'icon-caret' %}</span>
+                        {%- endif -%}
                       </a>
                     {%- endif -%}
                   </div>
-                  {%- if is_link -%}
+                  {%- if is_link and tree_menu_use_button == false -%}
                     <span class="w-5{% if is_rtl %} pr-2{% else %} pl-2{% endif %}">{% render 'icon-alls', icon: 'icon-caret' %}</span>
                   {%- endif -%}
                   {%- if block.settings.label != blank -%}
