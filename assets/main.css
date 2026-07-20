@@ -537,11 +537,17 @@ video {
   margin-top: 8px;
   margin-bottom: 8px;
 }
+.tw-mb-2 {
+  margin-bottom: 8px;
+}
 .tw-mb-4 {
   margin-bottom: 16px;
 }
 .tw-mt-4 {
   margin-top: 16px;
+}
+.tw-mt-6 {
+  margin-top: 24px;
 }
 .tw-mt-\[6px\] {
   margin-top: 6px;
