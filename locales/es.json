@@ -141,6 +141,7 @@
       "message": "Comentario",
       "post": "Publicar comentario",
       "back_to_blog": "volver al blog",
+      "download_attachment": "Descargar archivo",
       "share": "Comparte este artículo",
       "success": "¡Tu comentario fue publicado exitosamente! ¡Gracias!",
       "success_moderated": "Tu comentario fue publicado exitosamente. Lo publicaremos en un rato, ya que nuestro blog está moderado.",
