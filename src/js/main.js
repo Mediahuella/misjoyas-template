@@ -399,6 +399,42 @@ document.addEventListener('alpine:init', () => {
 /**
  * Flechas custom para featured-collection-misjoyas (Splide arrows: false).
  */
+window.syncFeaturedCollectionMjLoUltimoNav = function (root) {
+  if (!root?.classList.contains('featured-collection-mj--lo-ultimo')) return;
+
+  const nav = root.querySelector('.featured-collection-mj__nav');
+  if (!nav) return;
+
+  const isDesktop = window.innerWidth >= 768;
+  if (isDesktop) {
+    nav.style.removeProperty('display');
+    nav.style.removeProperty('visibility');
+    nav.style.removeProperty('pointer-events');
+  } else {
+    nav.style.setProperty('display', 'none', 'important');
+    nav.style.setProperty('visibility', 'hidden', 'important');
+    nav.style.setProperty('pointer-events', 'none', 'important');
+  }
+};
+
+window.bindFeaturedCollectionMjLoUltimoDrag = function (root) {
+  if (!root?.splide || !root.classList.contains('featured-collection-mj--lo-ultimo')) return;
+  if (root.dataset.loUltimoDragBound === '1') return;
+
+  root.dataset.loUltimoDragBound = '1';
+  const splide = root.splide;
+  const section = root.closest('.featured-collection-mj--lo-ultimo');
+
+  const setDragging = (isDragging) => {
+    root.classList.toggle('is-dragging', isDragging);
+    section?.classList.toggle('is-dragging', isDragging);
+  };
+
+  splide.on('drag', () => setDragging(true));
+  splide.on('dragged', () => setDragging(false));
+  splide.on('destroy', () => setDragging(false));
+};
+
 window.bindFeaturedCollectionMjArrows = function (root, desktopMove, mobileMove) {
   if (!root?.splide) return;
 
