@@ -15,10 +15,21 @@
         "slide_aKdGEi": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Banner-joyero-desktop.jpg",
-            "image_mobile": "shopify://shop_images/Banner-joyero-mobile.jpg",
+            "image": "shopify://shop_images/Banner_dcto-dia-nino_desktop.jpg",
+            "image_mobile": "shopify://shop_images/Banner_dcto-dia-nino_mobile.jpg",
             "image_alt": "",
-            "link": "shopify://collections/all",
+            "link": "shopify://collections/dia-del-nino",
+            "open_new_window": false
+          }
+        },
+        "slide_GJzrPK": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/banner-lanzamiento_desktop.jpg",
+            "image_mobile": "shopify://shop_images/banner-lanzamiento_mobile.jpg",
+            "image_alt": "",
+            "link": "shopify://collections/dia-del-nino",
             "open_new_window": false
           }
         },
@@ -29,16 +40,6 @@
             "image_mobile": "shopify://shop_images/banner-licenciatura_mobile.png",
             "image_alt": "",
             "link": "https://misjoyas.cl/search?options%5Bprefix%5D=last&q=c_licenciatura",
-            "open_new_window": false
-          }
-        },
-        "slide_GJzrPK": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/banner-lanzamiento_desktop.jpg",
-            "image_mobile": "shopify://shop_images/banner-lanzamiento_mobile.jpg",
-            "image_alt": "",
-            "link": "shopify://collections/dia-del-nino",
             "open_new_window": false
           }
         },
@@ -65,8 +66,8 @@
       },
       "block_order": [
         "slide_aKdGEi",
-        "slide_D8eTJ4",
         "slide_GJzrPK",
+        "slide_D8eTJ4",
         "slide_jhGfFd",
         "slide_dqdmni"
       ],
@@ -739,7 +740,7 @@
             "title_link": "",
             "open_new_window": false,
             "heading_size": 80,
-            "text": "<p>A todo el país por compras sobre $59.990</p>"
+            "text": "<p>A todo el país por compras sobre $99.990</p>"
           }
         },
         "column_wN96ct": {

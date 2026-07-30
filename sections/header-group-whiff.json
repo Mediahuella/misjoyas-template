@@ -147,30 +147,6 @@
             "button_text_hover_dark": "rgba(0,0,0,0)"
           }
         },
-        "button_YfAny9": {
-          "type": "button",
-          "disabled": true,
-          "settings": {
-            "button_label": "Licenciatura",
-            "button_link": "https://misjoyas.cl/search?options%5Bprefix%5D=last&q=c_licenciatura",
-            "open_new_window": false,
-            "show_button_style": "primary",
-            "button_light": "#fd2975",
-            "button_text_light": "#ffffff",
-            "button_hover_light": "#fd2975",
-            "button_text_hover_light": "#ffffff",
-            "secondary_button_light": "rgba(0,0,0,0)",
-            "secondary_button_text_light": "rgba(0,0,0,0)",
-            "colors_text_link": "rgba(0,0,0,0)",
-            "button_dark": "rgba(0,0,0,0)",
-            "button_text_dark": "rgba(0,0,0,0)",
-            "button_hover_dark": "rgba(0,0,0,0)",
-            "button_text_hover_dark": "rgba(0,0,0,0)",
-            "secondary_button_dark": "rgba(0,0,0,0)",
-            "secondary_button_text_dark": "rgba(0,0,0,0)",
-            "colors_text_link_dark": "rgba(0,0,0,0)"
-          }
-        },
         "button_qcPwPX": {
           "type": "button",
           "settings": {
@@ -364,7 +340,6 @@
       },
       "block_order": [
         "tree_menu_4D8BF6",
-        "button_YfAny9",
         "button_qcPwPX",
         "button_CEnHcy",
         "tree_menu_FxFEXV",
@@ -1060,8 +1035,8 @@
       "settings": {
         "enable": true,
         "show_only_on_homepage": false,
-        "image": "shopify://shop_images/huincha-joyero_desktop.jpg",
-        "image_mobile": "shopify://shop_images/huincha-joyero_mobile.jpg",
+        "image": "shopify://shop_images/Huincha-sorteo_desktop.jpg",
+        "image_mobile": "shopify://shop_images/Huincha-sorteo_mobile.jpg",
         "image_alt": "",
         "link": "shopify://collections/all",
         "open_new_window": false,
