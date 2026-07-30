@@ -69,6 +69,7 @@
     },
     "promotion_banner_enEGwp": {
       "type": "promotion-banner",
+      "disabled": true,
       "name": "t:sections.promotion-banner.name",
       "settings": {
         "heading": "Promotion Banner",

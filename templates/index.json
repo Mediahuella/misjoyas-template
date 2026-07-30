@@ -19,10 +19,17 @@
             "image_mobile": "shopify://shop_images/Banner_dcto-dia-nino_mobile.jpg",
             "image_alt": "",
             "link": "shopify://collections/dia-del-nino",
-            "open_new_window": false,
-            "schedule_enabled": true,
-            "schedule_start": "",
-            "schedule_end": "2026-08-02 23:59:00"
+            "open_new_window": false
+          }
+        },
+        "slide_D8eTJ4": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/banner-licenciatura_desktop.png",
+            "image_mobile": "shopify://shop_images/banner-licenciatura_mobile.png",
+            "image_alt": "",
+            "link": "https://misjoyas.cl/search?options%5Bprefix%5D=last&q=c_licenciatura",
+            "open_new_window": false
           }
         },
         "slide_GJzrPK": {
@@ -33,23 +40,7 @@
             "image_mobile": "shopify://shop_images/banner-lanzamiento_mobile.jpg",
             "image_alt": "",
             "link": "shopify://collections/dia-del-nino",
-            "open_new_window": false,
-            "schedule_enabled": false,
-            "schedule_start": "",
-            "schedule_end": ""
-          }
-        },
-        "slide_D8eTJ4": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/banner-licenciatura_desktop.png",
-            "image_mobile": "shopify://shop_images/banner-licenciatura_mobile.png",
-            "image_alt": "",
-            "link": "https://misjoyas.cl/search?options%5Bprefix%5D=last&q=c_licenciatura",
-            "open_new_window": false,
-            "schedule_enabled": false,
-            "schedule_start": "",
-            "schedule_end": ""
+            "open_new_window": false
           }
         },
         "slide_jhGfFd": {
@@ -59,10 +50,7 @@
             "image_mobile": "shopify://shop_images/Banner_compra-minima_mobile_7e864395-0255-41f0-8306-9408ea4f883d.jpg",
             "image_alt": "",
             "link": "shopify://collections/all",
-            "open_new_window": false,
-            "schedule_enabled": false,
-            "schedule_start": "",
-            "schedule_end": ""
+            "open_new_window": false
           }
         },
         "slide_dqdmni": {
@@ -72,17 +60,14 @@
             "image_mobile": "shopify://shop_images/Banner_general_mobile_cba64c29-6305-4fca-90d9-4a62da46c2c8.jpg",
             "image_alt": "",
             "link": "shopify://collections/all",
-            "open_new_window": false,
-            "schedule_enabled": false,
-            "schedule_start": "",
-            "schedule_end": ""
+            "open_new_window": false
           }
         }
       },
       "block_order": [
         "slide_aKdGEi",
-        "slide_GJzrPK",
         "slide_D8eTJ4",
+        "slide_GJzrPK",
         "slide_jhGfFd",
         "slide_dqdmni"
       ],
@@ -360,16 +345,6 @@
         "slide_kit_1": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Banner_secundario_desktop_aa8dca55-d325-4388-a0b0-511289084eb0.jpg",
-            "image_mobile": "shopify://shop_images/Banner_secundario_mobile_b8491767-b642-4318-915e-da8194699dc7.jpg",
-            "image_alt": "",
-            "link": "shopify://pages/quienes-somos",
-            "open_new_window": false
-          }
-        },
-        "slide_LUmEed": {
-          "type": "slide",
-          "settings": {
             "image": "shopify://shop_images/Banner-secundario_Descuentos_desktop.jpg",
             "image_mobile": "shopify://shop_images/Banner-secundario_Descuentos_mobile.jpg",
             "image_alt": "",
@@ -401,7 +376,6 @@
       },
       "block_order": [
         "slide_kit_1",
-        "slide_LUmEed",
         "slide_tB7k7t",
         "slide_zrye8m"
       ],
