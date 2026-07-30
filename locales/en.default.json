@@ -337,6 +337,7 @@
       "aria_label": "Main banner",
       "slide_alt": "Promotional banner",
       "placeholder": "Upload a desktop image (1920×580 px recommended) in this slide block.",
+      "no_active_slides": "No slides are active for the current date and time. Check each slide's schedule settings.",
       "previous": "Previous slide",
       "next": "Next slide"
     },

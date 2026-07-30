@@ -337,6 +337,7 @@
       "aria_label": "Banner principal",
       "slide_alt": "Banner promocional",
       "placeholder": "Sube la imagen de escritorio (recomendado 1920×580 px) en este bloque.",
+      "no_active_slides": "No hay diapositivas activas para la fecha y hora actuales. Revisa la programación de cada diapositiva.",
       "previous": "Diapositiva anterior",
       "next": "Siguiente diapositiva"
     },
