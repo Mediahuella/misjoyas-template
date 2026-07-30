@@ -1707,6 +1707,7 @@ requestAnimationFrame(() => {
       },
       close() {
         this.show = false;
+        this.currentMenuLinks = [];
         Alpine.store('xPopup').close();
       },
       setActiveLink(linkId) {

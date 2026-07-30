@@ -72,7 +72,7 @@
     },
     "search": {
       "search": "Buscar...",
-      "placeholder": "¿Qué estás buscando?"
+      "placeholder": "¿Qué joya estás buscando?"
     },
     "cart": {
       "item_added_to_cart": "Artículo agregado al carro",
@@ -390,7 +390,8 @@
       "boxes_card_alt": "Imagen promocional"
     },
     "mobile-navigation": {
-      "my_cart": "Mi carro"
+      "my_cart": "Mi carro",
+      "stores_footer": "Tiendas — 37 en todo Chile"
     },
     "cart": {
       "title": "Tu carro",

@@ -1,0 +1,105 @@
+{% comment %}
+  MisJoyas desktop mega menu (Figma)
+  Accepts: block
+{% endcomment %}
+{%- liquid
+  assign mega_heading = block.settings.mega_heading
+  assign promo_badge = block.settings.promo_badge
+  assign promo_badge_bg = block.settings.promo_badge_bg
+  assign cta_label = block.settings.cta_label
+  assign cta_link = block.settings.cta_link
+  if cta_link == blank and block.settings.menu_item_link != blank
+    assign cta_link = block.settings.menu_item_link
+  endif
+  assign has_promo = false
+  if block.settings.promo_image != blank
+    assign has_promo = true
+  endif
+-%}
+<div class="mj-mega{% if has_promo %} mj-mega--with-promo{% endif %}">
+  {%- if mega_heading != blank -%}
+    <p class="mj-mega__heading">{{ mega_heading | escape }}</p>
+  {%- endif -%}
+
+  <div class="mj-mega__body">
+    <div class="mj-mega__columns">
+      {%- for link in block.settings.menu.links -%}
+        <div class="mj-mega__col">
+          <a href="{{ link.url }}" class="mj-mega__col-title">{{ link.title | escape }}</a>
+          <span class="mj-mega__col-line" aria-hidden="true"></span>
+          {%- if link.links != blank -%}
+            <ul class="mj-mega__links" role="list">
+              {%- for childlink in link.links -%}
+                <li class="mj-mega__link-item">
+                  <a href="{{ childlink.url }}" class="mj-mega__link">{{ childlink.title | escape }}</a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+
+    {%- if has_promo -%}
+      <div class="mj-mega__promo">
+        {%- if promo_badge != blank -%}
+          <span
+            class="mj-mega__badge"
+            {% if promo_badge_bg != blank and promo_badge_bg.alpha != 0.0 %}
+              style="background-color: {{ promo_badge_bg }};"
+            {% endif %}
+          >{{ promo_badge | escape }}</span>
+        {%- endif -%}
+
+        <div class="mj-mega__promo-frame">
+          <img
+            class="mj-mega__sparkle mj-mega__sparkle--left"
+            src="{{ 'mj-mega-sparkle.png' | asset_url }}"
+            width="55"
+            height="55"
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+          >
+          <div class="mj-mega__promo-media">
+            {%- liquid
+              assign promo_alt = block.settings.promo_image.alt
+              if promo_alt == blank
+                assign promo_alt = block.settings.heading
+              endif
+            -%}
+            {{
+              block.settings.promo_image
+              | image_url: width: 720
+              | image_tag:
+                loading: 'lazy',
+                class: 'mj-mega__promo-img',
+                widths: '260, 360, 520, 720',
+                sizes: '260px',
+                alt: promo_alt
+            }}
+          </div>
+          <img
+            class="mj-mega__sparkle mj-mega__sparkle--right"
+            src="{{ 'mj-mega-sparkle.png' | asset_url }}"
+            width="55"
+            height="55"
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+          >
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+
+  {%- if cta_label != blank -%}
+    <div class="mj-mega__footer">
+      {%- if cta_link != blank -%}
+        <a href="{{ cta_link }}" class="mj-mega__cta">{{ cta_label | escape }}</a>
+      {%- else -%}
+        <span class="mj-mega__cta mj-mega__cta--disabled">{{ cta_label | escape }}</span>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+</div>

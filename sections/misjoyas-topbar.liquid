@@ -2,6 +2,8 @@
 {%- style -%}
   .mj-topbar-{{ section.id }} {
     width: 100%;
+    max-width: 100%;
+    overflow: hidden;
     background: {{ section.settings.background_color }};
     color: {{ section.settings.text_color }};
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -11,6 +13,9 @@
     align-items: center;
     justify-content: center;
     flex-wrap: nowrap;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
     gap: {{ section.settings.gap_desktop }}px;
     min-height: 36px;
     padding: 2px 16px 5px;
@@ -21,6 +26,8 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
+    flex: 0 1 auto;
+    min-width: 0;
     color: inherit;
     text-decoration: none;
     white-space: nowrap;
@@ -39,6 +46,9 @@
     object-fit: cover;
     flex-shrink: 0;
   }
+  .mj-topbar__text {
+    font-weight: 400;
+  }
   .mj-topbar__text strong {
     font-weight: 600;
   }
@@ -49,12 +59,18 @@
     flex-shrink: 0;
     color: {{ section.settings.accent_color }};
   }
+  /* Mobile — Figma 1414:4314: side inset + gap, without overflowing the viewport */
   @media (max-width: 749px) {
     .mj-topbar__inner-{{ section.id }} {
+      justify-content: center;
       gap: {{ section.settings.gap_mobile }}px;
+      padding: 2px 20px 5px;
     }
     .mj-topbar__item-{{ section.id }}--hide-mobile {
       display: none;
+    }
+    .mj-topbar__item-{{ section.id }}--underline .mj-topbar__text {
+      text-decoration: none;
     }
   }
 {%- endstyle -%}

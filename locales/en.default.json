@@ -72,7 +72,7 @@
     },
     "search": {
       "search": "Search...",
-      "placeholder": "What are you looking for?"
+      "placeholder": "What jewelry are you looking for?"
     },
     "cart": {
       "item_added_to_cart": "Item added to cart",
@@ -390,7 +390,8 @@
       "boxes_card_alt": "Promotional image"
     },
     "mobile-navigation": {
-      "my_cart": "My cart"
+      "my_cart": "My cart",
+      "stores_footer": "Stores — 37 across Chile"
     },
     "cart": {
       "title": "Your cart",
