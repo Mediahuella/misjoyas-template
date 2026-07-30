@@ -16,7 +16,7 @@
     assign has_promo = true
   endif
 -%}
-<div class="mj-mega{% if has_promo %} mj-mega--with-promo{% endif %}">
+<div class="mj-mega">
   {%- if mega_heading != blank -%}
     <p class="mj-mega__heading">{{ mega_heading | escape }}</p>
   {%- endif -%}

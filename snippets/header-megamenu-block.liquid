@@ -362,6 +362,8 @@
                 assign is_active = false
                 if block.settings.menu_item_link != blank
                   assign link = block.settings.menu_item_link
+                elsif block.settings.cta_link != blank
+                  assign link = block.settings.cta_link
                 endif
                 if block.settings.menu.links != blank
                   assign is_link = true

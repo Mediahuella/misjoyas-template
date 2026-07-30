@@ -1,6 +1,6 @@
 {% comment %}
-  Side drill-down panel for MisJoyas mobile nav (Figma Paso 3).
-  Accepts: links, back_title, panel_heading, panel_id, start_id, is_rtl, block, section, menus
+  Side drill-down panel for MisJoyas mobile nav.
+  Accepts: links, back_title, panel_heading, panel_id, start_id, is_rtl
 {% endcomment %}
 <div class="mj-mobile-nav__panel-inner background-header w-full h-full overflow-y-auto scrollbar-body">
   {%- if panel_heading != blank -%}
@@ -52,10 +52,7 @@
           panel_heading: panel_heading,
           panel_id: nested_id,
           start_id: nested_id,
-          is_rtl: is_rtl,
-          block: block,
-          section: section,
-          menus: menus
+          is_rtl: is_rtl
         %}
       </div>
     {%- endif -%}

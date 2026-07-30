@@ -28,15 +28,12 @@
   assign show_footer_login = true
   assign show_footer_social = true
   assign stores_text = 'sections.mobile-navigation.stores_footer' | t
-  if stores_text == blank or stores_text contains 'Translation missing'
-    assign stores_text = 'Tiendas — 37 en todo Chile'
-  endif
   assign stores_href = pages['tiendas'].url | default: '/pages/tiendas'
-  assign footer_link_1_text = 'Plata 925 certificada'
-  assign footer_link_1_url = collections['plata-925'].url | default: '/collections/plata-925'
+  assign footer_link_1_text = blank
+  assign footer_link_1_url = blank
   assign footer_link_1_show_check = true
-  assign footer_link_2_text = 'Todo para emprender'
-  assign footer_link_2_url = pages['todo-para-emprender'].url | default: '/pages/todo-para-emprender'
+  assign footer_link_2_text = blank
+  assign footer_link_2_url = blank
   assign show_language = false
 
   if ui != blank
@@ -50,19 +47,11 @@
     if ui.settings.stores_footer_link != blank
       assign stores_href = ui.settings.stores_footer_link
     endif
-    if ui.settings.footer_link_1_text != blank
-      assign footer_link_1_text = ui.settings.footer_link_1_text
-    endif
-    if ui.settings.footer_link_1_link != blank
-      assign footer_link_1_url = ui.settings.footer_link_1_link
-    endif
+    assign footer_link_1_text = ui.settings.footer_link_1_text
+    assign footer_link_1_url = ui.settings.footer_link_1_link
     assign footer_link_1_show_check = ui.settings.footer_link_1_show_check
-    if ui.settings.footer_link_2_text != blank
-      assign footer_link_2_text = ui.settings.footer_link_2_text
-    endif
-    if ui.settings.footer_link_2_link != blank
-      assign footer_link_2_url = ui.settings.footer_link_2_link
-    endif
+    assign footer_link_2_text = ui.settings.footer_link_2_text
+    assign footer_link_2_url = ui.settings.footer_link_2_link
     if ui.settings.show_currency_selector or ui.settings.show_language_selector
       assign show_language = true
     endif

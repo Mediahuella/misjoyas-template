@@ -1,7 +1,5 @@
 {% comment %}
-  MisJoyas mobile nav item — accepts header blocks (button / tree_menu)
-  or legacy mobile-navigation menu blocks.
-
+  MisJoyas mobile nav item — header blocks: button / tree_menu.
   Accepts: block, section, index, menus, is_rtl
 {% endcomment %}
 {%- liquid
@@ -43,11 +41,7 @@
     assign item_heading = block.settings.heading
     assign item_heading_rich = block.settings.heading_rich
     assign open_new_window = block.settings.open_new_window
-    if block.settings.mega_heading != blank
-      assign panel_heading = block.settings.mega_heading
-    elsif block.settings.panel_heading != blank
-      assign panel_heading = block.settings.panel_heading
-    endif
+    assign panel_heading = block.settings.mega_heading
   endif
 
   assign btn_variant = 'button-solid'
@@ -124,10 +118,7 @@
           panel_heading: panel_heading,
           panel_id: index,
           start_id: index,
-          is_rtl: is_rtl,
-          block: block,
-          section: section,
-          menus: menus
+          is_rtl: is_rtl
         %}
       </div>
     {%- endif -%}
@@ -197,10 +188,7 @@
             panel_heading: panel_heading,
             panel_id: child_id,
             start_id: child_id,
-            is_rtl: is_rtl,
-            block: block,
-            section: section,
-            menus: menus
+            is_rtl: is_rtl
           %}
         </div>
       {%- endif -%}

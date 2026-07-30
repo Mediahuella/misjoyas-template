@@ -2234,33 +2234,12 @@
     right: 0;
   }
 
-  .mj-mega__promo-link {
-    display: block;
-    position: relative;
-    width: 100%;
-    height: 100%;
-    color: inherit;
-    text-decoration: none;
-  }
-
   .mj-mega__promo-img {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 4px;
-  }
-
-  .mj-mega__promo-caption {
-    position: absolute;
-    left: 12px;
-    right: 12px;
-    bottom: 12px;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 20px;
-    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
   }
 
   .mj-mega__footer {
