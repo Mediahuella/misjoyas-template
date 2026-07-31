@@ -122,109 +122,66 @@
         "padding_bottom_mobile": 16
       }
     },
-    "coupon_badges_a6Th3k": {
-      "type": "coupon-badges",
-      "blocks": {
-        "badge_bqDeg7": {
-          "type": "badge",
-          "settings": {
-            "image": "shopify://shop_images/caja-dcto_60.jpg",
-            "image_alt": "",
-            "link": "shopify://collections/descuento-70",
-            "open_new_window": false
-          }
-        },
-        "badge_XAczzt": {
-          "type": "badge",
-          "settings": {
-            "image": "shopify://shop_images/caja-dcto_40-60.jpg",
-            "image_alt": "",
-            "link": "shopify://collections/descuento-60",
-            "open_new_window": false
-          }
-        },
-        "badge_bCqfL6": {
-          "type": "badge",
-          "settings": {
-            "image": "shopify://shop_images/caja-dcto_20-40.jpg",
-            "image_alt": "",
-            "link": "shopify://collections/descuento-40",
-            "open_new_window": false
-          }
-        },
-        "badge_mhjcNr": {
-          "type": "badge",
-          "settings": {
-            "image": "shopify://shop_images/caja-dcto_10-20.jpg",
-            "image_alt": "",
-            "link": "shopify://collections/descuento-20",
-            "open_new_window": false
-          }
-        }
-      },
-      "block_order": [
-        "badge_bqDeg7",
-        "badge_XAczzt",
-        "badge_bCqfL6",
-        "badge_mhjcNr"
-      ],
-      "disabled": true,
-      "name": "Coupon badges",
-      "settings": {
-        "enable": true,
-        "show_only_on_homepage": false,
-        "gap": 16,
-        "gap_mobile": 12,
-        "padding_mobile_y": 20,
-        "badge_height": 212,
-        "badge_height_mobile": 114,
-        "badge_max_width": 360
-      }
-    },
     "media_gallery_Fbr4fr": {
       "type": "category-cards",
       "blocks": {
         "category_aros": {
           "type": "category",
           "settings": {
-            "image": "shopify://shop_images/aros.jpg",
-            "image_hover": "shopify://shop_images/aros-hover.jpg",
-            "label": "aros",
+            "label": "Aros",
             "image_alt": "",
-            "link": "shopify://collections/aros",
+            "image_plata": "shopify://shop_images/aros.jpg",
+            "image_plata_hover": "shopify://shop_images/aros-hover.jpg",
+            "link_plata": "shopify://collections/aros",
+            "link_oro": "",
             "open_new_window": false
           }
         },
         "category_anillos": {
           "type": "category",
           "settings": {
-            "image": "shopify://shop_images/anillos_4e574ef7-be3d-45a3-9c8c-01d9856cda9c.jpg",
-            "image_hover": "shopify://shop_images/anillos-hover_9be2d7af-58dd-48b6-b7e0-9cb51c1491fa.jpg",
-            "label": "anillos",
+            "label": "Anillos",
             "image_alt": "",
-            "link": "shopify://collections/anillos",
+            "image_plata": "shopify://shop_images/anillos_4e574ef7-be3d-45a3-9c8c-01d9856cda9c.jpg",
+            "image_plata_hover": "shopify://shop_images/anillos-hover_9be2d7af-58dd-48b6-b7e0-9cb51c1491fa.jpg",
+            "link_plata": "shopify://collections/anillos",
+            "link_oro": "",
             "open_new_window": false
           }
         },
         "category_cadenas": {
           "type": "category",
           "settings": {
-            "image": "shopify://shop_images/cadenas.jpg",
-            "image_hover": "shopify://shop_images/cadenas-hover.jpg",
-            "label": "cadenas",
+            "label": "Cadenas",
             "image_alt": "",
-            "link": "shopify://collections/cadenas",
+            "image_plata": "shopify://shop_images/cadenas.jpg",
+            "image_plata_hover": "shopify://shop_images/cadenas-hover.jpg",
+            "link_plata": "shopify://collections/cadenas",
+            "link_oro": "",
+            "open_new_window": false
+          }
+        },
+        "category_colgantes": {
+          "type": "category",
+          "settings": {
+            "label": "Colgantes",
+            "image_alt": "",
+            "image_plata": "shopify://shop_images/colgantes_733c11ee-41b2-4e7c-b02f-132caa32a760.jpg",
+            "image_plata_hover": "shopify://shop_images/colgantes-hover_f23d0dba-4588-4021-9957-34c9d8bcd39d.jpg",
+            "link_plata": "shopify://collections/colgantes",
+            "link_oro": "",
             "open_new_window": false
           }
         },
         "category_pulseras": {
           "type": "category",
           "settings": {
-            "image": "shopify://shop_images/pulseras.jpg",
-            "image_hover": "shopify://shop_images/pulseras-hover.jpg",
-            "label": "pulseras",
+            "label": "Pulseras",
             "image_alt": "",
-            "link": "shopify://collections/pulseras",
+            "image_plata": "shopify://shop_images/pulseras.jpg",
+            "image_plata_hover": "shopify://shop_images/pulseras-hover.jpg",
+            "link_plata": "shopify://collections/pulseras",
+            "link_oro": "",
             "open_new_window": false
           }
         }
@@ -233,15 +190,26 @@
         "category_aros",
         "category_anillos",
         "category_cadenas",
+        "category_colgantes",
         "category_pulseras"
       ],
       "name": "Category cards",
       "settings": {
-        "heading": "",
-        "gap": 16,
+        "eyebrow": "Explora por tipo",
+        "heading": "Nuestras categorías",
+        "switch_label_plata": "Plata 925",
+        "switch_label_oro": "Baño de oro 18K",
+        "cta_label_plata": "Ver todo Plata 925",
+        "cta_link_plata": "shopify://collections/plata-925",
+        "cta_label_oro": "Ver todo Baño de oro 18K",
+        "cta_link_oro": "shopify://collections/bano-de-oro-18k",
+        "cta_open_new_window": false,
+        "gap": 12,
         "gap_mobile": 12,
-        "padding_y": 30,
-        "padding_y_mobile": 30,
+        "padding_x": 80,
+        "padding_x_mobile": 20,
+        "padding_y": 40,
+        "padding_y_mobile": 40,
         "card_max_width": 360,
         "card_width_mobile": 280
       }
@@ -901,13 +869,12 @@
   "order": [
     "banner_principal_home",
     "home_countdown_timer",
-    "coupon_badges_a6Th3k",
     "media_gallery_Fbr4fr",
+    "banner_kit_mfxgQe",
     "featured_collection_misjoyas_WHddHm",
     "17733201952ee1ad52",
     "ticker_6VWRFH",
     "featured_collection_misjoyas_PnenNE",
-    "banner_kit_mfxgQe",
     "image_with_text_xTkd4d",
     "featured_collection_misjoyas_yCxarR",
     "image_with_text_tCdRr9",

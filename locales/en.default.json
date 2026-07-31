@@ -366,7 +366,8 @@
     "category-cards": {
       "aria_label": "Category cards",
       "card_alt": "Category",
-      "placeholder": "Upload a square image (360×360 px recommended) in this block."
+      "switch_aria": "Filter by material",
+      "placeholder": "Upload a square image (246×246 px recommended) in this block."
     },
     "featured-collection-misjoyas": {
       "aria_label": "Featured collection",

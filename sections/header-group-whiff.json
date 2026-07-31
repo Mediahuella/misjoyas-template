@@ -405,8 +405,6 @@
     },
     "mobile-navigation": {
       "type": "mobile-navigation",
-      "blocks": {},
-      "block_order": [],
       "settings": {
         "logo": "shopify://shop_images/color_de_peloRecurso_4.svg",
         "show_stores_footer": true,
