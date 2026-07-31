@@ -104,7 +104,7 @@
                         </div>
                       {%- endif -%}
                       {%- if forloop.first -%}
-                        <div class="tw-hidden md:tw-flex tw-flex-col tw-gap-2 tw-mt-4">
+                        <div class="tw-hidden md:tw-flex tw-flex-row tw-items-start tw-gap-5 tw-mt-4">
                           {% comment %} <img src="{{ 'ccs-cyber-2026.png' | asset_url }}" alt="Empresa Oficial CCS Cyber 2026" width="103" height="103" loading="lazy"> {% endcomment %}
                           <img
                             src="{{ 'ccs-confianza.png' | asset_url }}"
@@ -112,6 +112,15 @@
                             width="112"
                             height="118"
                             loading="lazy"
+                            class="tw-w-[112px] tw-h-[118px] tw-object-contain"
+                          >
+                          <img
+                            src="{{ 'sello-estandar_MJ.png' | asset_url }}"
+                            alt="Sello Estándar MisJoyas"
+                            width="112"
+                            height="118"
+                            loading="lazy"
+                            class="tw-w-[112px] tw-h-[118px] tw-object-contain"
                           >
                         </div>
                       {%- endif -%}
@@ -487,24 +496,66 @@
   {%- endif -%}
   <div class="additional-footer {{ class_rtl }}{% if section.settings.additional_layout == 'horizontal' %} x-page-width page-width mx-auto lg:flex lg:flex-row lg:justify-between items-center{% else %} mx-5{% endif -%}">
     <div class="{% if section.settings.additional_layout == 'horizontal' %}flex flex-col lg:flex lg:flex-row gap-x-7 items-center w-full justify-between{% else %}flex flex-col{% endif %}">
-      <div class="tw-flex md:tw-hidden tw-flex-col tw-gap-2 tw-mb-4">
-        {% comment %} <img src="{{ 'ccs-cyber-2026.png' | asset_url }}" alt="Empresa Oficial CCS Cyber 2026" width="103" height="103" loading="lazy"> {% endcomment %}
-        <img
-          src="{{ 'ccs-confianza.png' | asset_url }}"
-          alt="Sello Confianza Ecommerce CCS"
-          width="112"
-          height="118"
-          loading="lazy"
-        >
+      {%- comment -%} Mobile: sellos + etiquetas + medios de pago (Figma 1601:10909) {%- endcomment -%}
+      <div class="tw-flex md:tw-hidden tw-flex-col tw-gap-5 tw-items-start tw-self-start tw-w-full tw-mb-4">
+        <div class="tw-flex tw-flex-row tw-items-start tw-gap-5">
+          <img
+            src="{{ 'ccs-confianza.png' | asset_url }}"
+            alt="Sello Confianza Ecommerce CCS"
+            width="112"
+            height="118"
+            loading="lazy"
+            class="tw-w-[112px] tw-h-[118px] tw-object-contain"
+          >
+          <img
+            src="{{ 'sello-estandar_MJ.png' | asset_url }}"
+            alt="Sello Estándar MisJoyas"
+            width="112"
+            height="118"
+            loading="lazy"
+            class="tw-w-[112px] tw-h-[118px] tw-object-contain"
+          >
+        </div>
+        <div class="tw-flex tw-flex-row tw-flex-wrap tw-items-center tw-gap-2.5">
+          <span
+            class="tw-inline-flex tw-items-center tw-justify-center tw-h-[30px] tw-px-2 tw-rounded tw-text-sm tw-font-semibold tw-leading-5 tw-whitespace-nowrap tw-text-white"
+            style="background-color: #737373;"
+          >
+            Plata fina certificada • Ley 925
+          </span>
+          <span
+            class="tw-inline-flex tw-items-center tw-justify-center tw-h-[30px] tw-px-2 tw-rounded tw-text-sm tw-font-semibold tw-leading-5 tw-whitespace-nowrap"
+            style="background-color: #fcdf97; color: #222222;"
+          >
+            Baño de oro • 18 kilates
+          </span>
+        </div>
+        {%- if section.settings.payment_enable -%}
+          <img
+            src="{{ 'footer-medios-pago.png' | asset_url }}"
+            alt="Medios de pago: Visa, Mastercard, American Express, Diners Club, RedCompra"
+            loading="lazy"
+            width="364"
+            height="62"
+            class="footer-medios-pago"
+          >
+        {%- endif -%}
       </div>
-      <div
-        class="tw-flex tw-items-center tw-gap-1.5 tw-rounded-md tw-px-2.5 tw-py-1.5 tw-my-2 lg:tw-my-0 tw-shrink-0"
-        style="background-color: #222222;"
-      >
-        <span class="tw-block tw-w-5 tw-h-5 tw-shrink-0">{% render 'icon-alls', icon: 'icon-success' %}</span>
-        <span class="tw-text-xs tw-font-semibold tw-text-white tw-whitespace-nowrap" style="letter-spacing: 0.2px;"
-          >Plata fina certificada • Ley 925</span
+
+      {%- comment -%} Desktop: etiquetas (sellos van en la columna de marca) {%- endcomment -%}
+      <div class="tw-hidden md:tw-flex tw-flex-wrap tw-items-center tw-justify-center tw-gap-3">
+        <span
+          class="tw-inline-flex tw-items-center tw-justify-center tw-h-[30px] tw-px-2 tw-rounded tw-text-sm tw-font-semibold tw-leading-5 tw-whitespace-nowrap tw-text-white"
+          style="background-color: #737373;"
         >
+          Plata fina certificada • Ley 925
+        </span>
+        <span
+          class="tw-inline-flex tw-items-center tw-justify-center tw-h-[30px] tw-px-2 tw-rounded tw-text-sm tw-font-semibold tw-leading-5 tw-whitespace-nowrap"
+          style="background-color: #fcdf97; color: #222222;"
+        >
+          Baño de oro • 18 kilates
+        </span>
       </div>
       {%- if section.settings.show_language_selector or section.settings.show_currency_selector -%}
         <div class="mb-3 md:mb-2{% if section.settings.additional_layout == 'vertical' %} lg:mb-2{% else %} lg:mb-0{% endif %}">
@@ -546,7 +597,7 @@
           loading="lazy"
           width="410"
           height="126"
-          class="footer-medios-pago tw-mt-4 md:tw-mt-0"
+          class="footer-medios-pago tw-hidden md:tw-block"
         >
       {%- endif -%}
     </div>
