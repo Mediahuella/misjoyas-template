@@ -260,8 +260,8 @@
       "type": "banner-pequeno",
       "name": "Banner pequeño",
       "settings": {
-        "image": "shopify://shop_images/banner-oro18k_desktop.jpg",
-        "image_mobile": "shopify://shop_images/banner-oro18k_mobile.jpg",
+        "image": "shopify://shop_images/banner-oro_desktop.jpg",
+        "image_mobile": "shopify://shop_images/banner-oro_mobile.jpg",
         "image_alt": "",
         "button_label": "Ver nueva línea",
         "button_link": "",
@@ -278,6 +278,71 @@
       }
     },
     "featured_collection_misjoyas_WHddHm": {
+      "type": "featured-collection-misjoyas",
+      "name": "Colección destacada",
+      "settings": {
+        "title_icon": "",
+        "title_icon_color": "#68b5a3",
+        "title": "Aqui va baño de oro",
+        "collection": "",
+        "products_to_show": 16,
+        "gap": 16,
+        "gap_mobile": 12,
+        "columns_desktop": 4,
+        "padding_y": 40,
+        "padding_y_mobile": 30,
+        "show_quickview": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "show_highlighted_attributes": true,
+        "show_view_all": true,
+        "button_label": "Ver todo lo más vendido",
+        "button_link": "",
+        "open_new_window": false
+      }
+    },
+    "ticker_6VWRFH": {
+      "type": "ticker",
+      "blocks": {
+        "message_KqMqYG": {
+          "type": "message",
+          "settings": {
+            "prefix": "✨",
+            "bold_text": "KIT EMPRENDEDOR DE REGALO EN TU PRIMERA COMPRA",
+            "suffix": "✨",
+            "link": "",
+            "open_new_window": false
+          }
+        },
+        "message_dAiT8j": {
+          "type": "message",
+          "settings": {
+            "prefix": "🛍️",
+            "bold_text": "VENTA EXCLUSIVA MAYORISTA",
+            "suffix": "— Compra mínima $39.990 🛍️",
+            "link": "",
+            "open_new_window": false
+          }
+        }
+      },
+      "block_order": [
+        "message_KqMqYG",
+        "message_dAiT8j"
+      ],
+      "name": "Ticker",
+      "settings": {
+        "enable": true,
+        "show_only_on_homepage": false,
+        "background_color": "#79d5c9",
+        "text_color": "#222222",
+        "animation_speed": 25,
+        "gap": 60,
+        "gap_mobile": 20,
+        "padding_vertical": 10,
+        "pause_on_hover": false
+      }
+    },
+    "featured_collection_misjoyas_thbPcm": {
       "type": "featured-collection-misjoyas",
       "name": "Colección destacada",
       "settings": {
@@ -315,51 +380,86 @@
       "block_order": [
         "vizup_videos_videos_block_JQJAWt"
       ],
+      "disabled": true,
       "settings": {
         "include_margins": true,
         "content_alignment": "left"
       }
     },
-    "ticker_6VWRFH": {
-      "type": "ticker",
+    "banner_destacados_home": {
+      "type": "banner-destacados",
       "blocks": {
-        "message_KqMqYG": {
-          "type": "message",
+        "card_large": {
+          "type": "card",
           "settings": {
-            "prefix": "✨",
-            "bold_text": "KIT EMPRENDEDOR DE REGALO EN TU PRIMERA COMPRA",
-            "suffix": "✨",
-            "link": "",
-            "open_new_window": false
+            "card_layout": "large",
+            "image": "shopify://shop_images/emprende-07_jpg.jpg",
+            "image_alt": "",
+            "link": "shopify://pages/todo-para-emprender",
+            "open_new_window": false,
+            "badge": "Nueva colección",
+            "heading": "Día del niño",
+            "button_label": "Ver colección",
+            "show_gradient": true
           }
         },
-        "message_dAiT8j": {
-          "type": "message",
+        "card_medium_1": {
+          "type": "card",
           "settings": {
-            "prefix": "🛍️",
-            "bold_text": "VENTA EXCLUSIVA MAYORISTA",
-            "suffix": "— Compra mínima $39.990 🛍️",
+            "card_layout": "medium",
+            "image": "shopify://shop_images/caja-quienes-comos.jpg",
+            "image_alt": "",
+            "link": "shopify://pages/quienes-somos",
+            "open_new_window": false,
+            "badge": "Anticípate",
+            "heading": "Licenciatura",
+            "button_label": "Ver productos",
+            "show_gradient": false
+          }
+        },
+        "card_medium_2": {
+          "type": "card",
+          "settings": {
+            "card_layout": "medium",
+            "image_alt": "",
             "link": "",
-            "open_new_window": false
+            "open_new_window": false,
+            "badge": "Las que más brillan",
+            "heading": "Moissanita",
+            "button_label": "Ver productos",
+            "show_gradient": false
+          }
+        },
+        "card_wide": {
+          "type": "card",
+          "settings": {
+            "card_layout": "wide",
+            "image_alt": "",
+            "link": "",
+            "open_new_window": false,
+            "badge": "Descuentos por poco tiempo",
+            "heading": "Rebajas de invierno",
+            "button_label": "Renueva tu stock",
+            "show_gradient": false
           }
         }
       },
       "block_order": [
-        "message_KqMqYG",
-        "message_dAiT8j"
+        "card_large",
+        "card_medium_1",
+        "card_medium_2",
+        "card_wide"
       ],
-      "disabled": true,
-      "name": "Ticker",
+      "name": "Banner destacados",
       "settings": {
-        "enable": true,
-        "show_only_on_homepage": false,
-        "background_color": "#79D5C9",
-        "text_color": "#222222",
-        "animation_speed": 25,
-        "gap": 60,
-        "gap_mobile": 20,
-        "padding_vertical": 10,
-        "pause_on_hover": false
+        "eyebrow": "por ocasión",
+        "heading": "Colecciones destacadas",
+        "gap": 12,
+        "border_radius": 4,
+        "padding_x": 80,
+        "padding_x_mobile": 20,
+        "padding_y": 40,
+        "padding_y_mobile": 50
       }
     },
     "featured_collection_misjoyas_PnenNE": {
@@ -368,7 +468,7 @@
       "settings": {
         "title_icon": "✦",
         "title_icon_color": "#68b5a3",
-        "title": "¡Lo último!",
+        "title": "Recién llegados",
         "collection": "nuevo",
         "products_to_show": 16,
         "gap": 16,
@@ -438,6 +538,7 @@
         "heading_Y8f7GB",
         "button_RpGpU4"
       ],
+      "disabled": true,
       "name": "t:sections.image-with-text.name",
       "settings": {
         "show_hero": false,
@@ -484,6 +585,7 @@
     },
     "featured_collection_misjoyas_yCxarR": {
       "type": "featured-collection-misjoyas",
+      "disabled": true,
       "name": "Colección destacada",
       "settings": {
         "title_icon": "",
@@ -558,6 +660,7 @@
         "heading_8eVc66",
         "button_RVytLf"
       ],
+      "disabled": true,
       "name": "t:sections.image-with-text.name",
       "settings": {
         "show_hero": false,
@@ -604,6 +707,7 @@
     },
     "featured_collection_misjoyas_WKk9MB": {
       "type": "featured-collection-misjoyas",
+      "disabled": true,
       "name": "Colección destacada",
       "settings": {
         "title_icon": "",
@@ -626,184 +730,96 @@
         "open_new_window": false
       }
     },
-    "banner_destacados_home": {
-      "type": "banner-destacados",
-      "name": "Banner destacados",
+    "huincha_iconos_home": {
+      "type": "huincha-iconos",
       "blocks": {
-        "card_large": {
-          "type": "card",
+        "item_plata": {
+          "type": "item",
           "settings": {
-            "card_layout": "large",
-            "image": "shopify://shop_images/emprende-07_jpg.jpg",
-            "image_mobile": "",
-            "image_alt": "",
-            "link": "shopify://pages/todo-para-emprender",
-            "open_new_window": false,
-            "badge": "Nueva colección",
-            "heading": "Día del niño",
-            "button_label": "Ver colección",
-            "show_gradient": true
+            "icon": "plata-certificada.svg",
+            "title": "PLATA 925 CERTIFICADA",
+            "text": "Pureza garantizada"
           }
         },
-        "card_medium_1": {
-          "type": "card",
+        "item_hipo": {
+          "type": "item",
           "settings": {
-            "card_layout": "medium",
-            "image": "shopify://shop_images/caja-quienes-comos.jpg",
-            "image_mobile": "",
-            "image_alt": "",
-            "link": "shopify://pages/quienes-somos",
-            "open_new_window": false,
-            "badge": "Anticípate",
-            "heading": "Licenciatura",
-            "button_label": "Ver productos",
-            "show_gradient": false
+            "icon": "libre-niquel.svg",
+            "title": "HIPOALERGÉNICO",
+            "text": "Libre de níquel"
           }
         },
-        "card_medium_2": {
-          "type": "card",
+        "item_garantia": {
+          "type": "item",
           "settings": {
-            "card_layout": "medium",
-            "image": "",
-            "image_mobile": "",
-            "image_alt": "",
-            "link": "",
-            "open_new_window": false,
-            "badge": "Las que más brillan",
-            "heading": "Moissanita",
-            "button_label": "Ver productos",
-            "show_gradient": false
+            "icon": "garantia.svg",
+            "title": "GARANTÍA",
+            "text": "Respaldo de marca"
           }
         },
-        "card_wide": {
-          "type": "card",
+        "item_despacho": {
+          "type": "item",
           "settings": {
-            "card_layout": "wide",
-            "image": "",
-            "image_mobile": "",
-            "image_alt": "",
-            "link": "",
-            "open_new_window": false,
-            "badge": "Descuentos por poco tiempo",
-            "heading": "Rebajas de invierno",
-            "button_label": "Renueva tu stock",
-            "show_gradient": false
+            "icon": "despachos.svg",
+            "title": "DESPACHO A TODO CHILE",
+            "text": "Gratis sobre $99.990"
+          }
+        },
+        "item_cuotas": {
+          "type": "item",
+          "settings": {
+            "icon": "cuotas.svg",
+            "title": "HASTA 6 CUOTAS",
+            "text": "Sin interés"
           }
         }
       },
       "block_order": [
-        "card_large",
-        "card_medium_1",
-        "card_medium_2",
-        "card_wide"
+        "item_plata",
+        "item_hipo",
+        "item_garantia",
+        "item_despacho",
+        "item_cuotas"
       ],
+      "name": "Huincha iconos",
       "settings": {
-        "eyebrow": "por ocasión",
-        "heading": "Colecciones destacadas",
         "gap": 12,
-        "border_radius": 4,
         "padding_x": 80,
         "padding_x_mobile": 20,
-        "padding_y": 40,
-        "padding_y_mobile": 50
+        "padding_y": 42,
+        "padding_y_mobile": 40
       }
     },
-    "multicolumn_bQPMpc": {
-      "type": "multicolumn",
+    "banner_kit_QzyCmc": {
+      "type": "banner-kit",
       "blocks": {
-        "column_cHxEYG": {
-          "type": "column",
+        "slide_tjrM9B": {
+          "type": "slide",
           "settings": {
-            "icon": "shopping-cart",
-            "another_icon": "",
-            "custom_image": "shopify://shop_images/Titulo_secundario_39.png",
-            "custom_icon": "",
-            "title": "DESPACHO GRATIS",
-            "highlight_type": "underline",
-            "title_link": "",
-            "open_new_window": false,
-            "heading_size": 80,
-            "text": "<p>A todo el país por compras sobre $99.990</p>"
-          }
-        },
-        "column_wN96ct": {
-          "type": "column",
-          "settings": {
-            "icon": "truck",
-            "another_icon": "",
-            "custom_image": "shopify://shop_images/Titulo_secundario_37.png",
-            "custom_icon": "",
-            "title": "KIT DE REGALO",
-            "highlight_type": "underline",
-            "title_link": "",
-            "open_new_window": false,
-            "heading_size": 80,
-            "text": "<p>Con tu primera compra</p>"
-          }
-        },
-        "column_N4cXGz": {
-          "type": "column",
-          "settings": {
-            "icon": "question-mark",
-            "another_icon": "",
-            "custom_image": "shopify://shop_images/Titulo_secundario_38.png",
-            "custom_icon": "",
-            "title": "VISITA NUESTRAS SUCURSALES",
-            "highlight_type": "underline",
-            "title_link": "shopify://pages/tiendas",
-            "open_new_window": false,
-            "heading_size": 80,
-            "text": "<p>Trabajamos para estar más cerca de ti</p>"
+            "image": "shopify://shop_images/Banner-tienda_desktop.jpg",
+            "image_mobile": "shopify://shop_images/Banner-tienda_mobile.jpg",
+            "image_alt": "",
+            "link": "shopify://pages/tiendas",
+            "open_new_window": false
           }
         }
       },
       "block_order": [
-        "column_cHxEYG",
-        "column_wN96ct",
-        "column_N4cXGz"
+        "slide_tjrM9B"
       ],
+      "name": "Banner 2",
       "settings": {
-        "title": "",
-        "highlight_type": "underline",
-        "heading_size": 100,
-        "heading_tag": "h2",
-        "secondary_background": "section",
-        "border_column": "none",
-        "column_content_alignment": "center",
-        "icon_position": "above",
-        "icon_size": 55,
-        "enable_desktop_slider": true,
-        "swiper_on_mobile": true,
-        "enable_arrow_mobile": true,
+        "enable": true,
+        "show_only_on_homepage": false,
         "auto_play": true,
-        "change_bar_every": 5,
-        "background_color_light": "#222222",
-        "heading_light": "#ffffff",
-        "text_light": "#ffffff",
-        "color_heading_highlight_light": "#ffffff",
-        "line_border_light": "#222222",
-        "color_icon_light": "#ffffff",
-        "background_color_dark": "#222222",
-        "heading_dark": "rgba(0,0,0,0)",
-        "text_dark": "rgba(0,0,0,0)",
-        "color_heading_highlight_dark": "rgba(0,0,0,0)",
-        "line_border_dark": "rgba(0,0,0,0)",
-        "color_icon_dark": "rgba(0,0,0,0)",
-        "column_layout_desktop": "lg:w-1/3",
-        "section_height_desktop": "md:py-0",
-        "spacing_desktop": 0,
-        "full_width": false,
-        "padding_full_width": false,
-        "show_section_divider": false,
-        "padding_top": 8,
-        "padding_bottom": 16,
-        "column_layout_mobile": "w-1/2",
-        "section_height_mobile": "py-5",
-        "spacing_mobile": 0,
-        "full_width_mobile": true,
-        "show_section_divider_mobile": false,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0
+        "change_slides_speed": 5,
+        "show_progress": true,
+        "show_sparkles": true,
+        "banner_height": 340,
+        "banner_height_mobile": 636,
+        "border_radius": 4,
+        "padding_y": 40,
+        "padding_y_mobile": 40
       }
     },
     "popup_6AnBUK": {
@@ -862,15 +878,17 @@
     "banner_kit_mfxgQe",
     "banner_pequeno_home",
     "featured_collection_misjoyas_WHddHm",
-    "17733201952ee1ad52",
     "ticker_6VWRFH",
+    "featured_collection_misjoyas_thbPcm",
+    "17733201952ee1ad52",
+    "banner_destacados_home",
     "featured_collection_misjoyas_PnenNE",
     "image_with_text_xTkd4d",
     "featured_collection_misjoyas_yCxarR",
     "image_with_text_tCdRr9",
     "featured_collection_misjoyas_WKk9MB",
-    "banner_destacados_home",
-    "multicolumn_bQPMpc",
+    "huincha_iconos_home",
+    "banner_kit_QzyCmc",
     "popup_6AnBUK",
     "popup_yGHy4R",
     "popup_h9bTpX",

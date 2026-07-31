@@ -401,6 +401,10 @@
       "block_placeholder": "Sube una imagen para esta tarjeta.",
       "card_alt": "Colección destacada"
     },
+    "huincha-iconos": {
+      "aria_label": "Huincha de iconos",
+      "placeholder": "Agrega ítems con icono a esta sección."
+    },
     "mobile-navigation": {
       "my_cart": "Mi carro",
       "stores_footer": "Tiendas — 37 en todo Chile"
