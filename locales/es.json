@@ -349,6 +349,11 @@
       "previous": "Diapositiva anterior",
       "next": "Diapositiva siguiente"
     },
+    "banner-pequeno": {
+      "aria_label": "Banner promocional pequeño",
+      "alt": "Banner promocional",
+      "placeholder": "Sube la imagen de escritorio (1280×246 px) y la de móvil (400×550 px)."
+    },
     "countdown-timer": {
       "aria_label": "Contador regresivo",
       "image_alt": "Promoción con cuenta regresiva",

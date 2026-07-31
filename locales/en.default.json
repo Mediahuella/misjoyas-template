@@ -349,6 +349,11 @@
       "previous": "Previous slide",
       "next": "Next slide"
     },
+    "banner-pequeno": {
+      "aria_label": "Small promotional banner",
+      "alt": "Promotional banner",
+      "placeholder": "Upload a desktop image (1280×246 px) and a mobile image (400×550 px)."
+    },
     "countdown-timer": {
       "aria_label": "Countdown timer",
       "image_alt": "Countdown promotion",

@@ -256,6 +256,24 @@
         "padding_y_mobile": 40
       }
     },
+    "banner_pequeno_home": {
+      "type": "banner-pequeno",
+      "name": "Banner pequeño",
+      "settings": {
+        "button_label": "Ver nueva línea",
+        "button_link": "",
+        "open_new_window": false,
+        "button_bg": "#f83785",
+        "button_color": "#ffffff",
+        "banner_height": 248,
+        "banner_height_mobile": 552,
+        "border_radius": 4,
+        "padding_x": 80,
+        "padding_x_mobile": 20,
+        "padding_y": 40,
+        "padding_y_mobile": 40
+      }
+    },
     "featured_collection_misjoyas_WHddHm": {
       "type": "featured-collection-misjoyas",
       "name": "Colección destacada",
@@ -845,6 +863,7 @@
     "home_countdown_timer",
     "media_gallery_Fbr4fr",
     "banner_kit_mfxgQe",
+    "banner_pequeno_home",
     "featured_collection_misjoyas_WHddHm",
     "17733201952ee1ad52",
     "ticker_6VWRFH",
