@@ -84,7 +84,7 @@
         <div class="misjoyas-price__row{% if price_class != blank %} {{ price_class }}{% endif %}">
           <span class="misjoyas-price__current">{{ money_price }}</span>
           <span class="misjoyas-price__compare">{{ money_compare }}</span>
-          {%- if misjoyas_context == 'pdp' -%}
+          {%- if misjoyas_context == 'pdp' or misjoyas_context == 'card' -%}
             <span class="misjoyas-price__badge">-{{ sale_pct }}%</span>
           {%- endif -%}
         </div>

@@ -210,8 +210,17 @@ requestAnimationFrame(() => {
         }
 
         let position = label.settings.position;
+        // Cards: % descuento va junto al precio (price.liquid), no sobre la imagen
         if (productData.container == 'card' && label.type === 'sale-label') {
-          position = 'bottom-left';
+          return;
+        }
+        // Cards: Nuevo + promociones arriba a la izquierda (Figma)
+        if (productData.container == 'card' && (
+          label.type === 'new-label'
+          || label.type === 'tag-label'
+          || label.settings.image
+        )) {
+          position = 'top-left';
         }
 
         let container = el.querySelector(`.${position}-container`);
@@ -305,10 +314,11 @@ requestAnimationFrame(() => {
           const sizeClass = productData.container == 'product-info' ? '' : ` pt-${padding_mobile} pb-${padding_mobile} pl-${padding_mobile + 1.5} pr-${padding_mobile + 1.5} md:pt-${padding} md:pb-${padding} md:pl-${padding + 1.5} md:pr-${padding + 1.5}`;
           const inlineStyle = productData.container == 'product-info' ? '' : `style="font-size: var(--font-size-scale);"`;
           const inlineStyleIcon = productData.container == 'product-info' ? '' : `style="height: var(--font-size-scale); width: var(--font-size-scale); min-width: var(--font-size-scale);"`;
+          const newLabelClass = label.type === 'new-label' ? ' x-badge-text--new' : '';
           content = content.length > 0
             ? `<div
                 x-ref="content"
-                class='x-badge-content ltr x-badge-text select-none inline-flex justify-center${sizeClass} items-center{css-opacity}{css-type} gap-2'
+                class='x-badge-content ltr x-badge-text${newLabelClass} select-none inline-flex justify-center${sizeClass} items-center{css-opacity}{css-type} gap-2'
                 ${inlineStyle}
               ><span class="icon-label empty:hidden" ${inlineStyleIcon}>${label.settings.icon}</span><span class="leading-normal w-fit p-break-words">${content}</span></div>` : false;
 

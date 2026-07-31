@@ -236,6 +236,8 @@
           "settings": {
             "video": "shopify://files/videos/MISJOYAS.mp4",
             "image_alt": "",
+            "button_label": "",
+            "button_link": "",
             "link": "shopify://collections/dia-del-padre",
             "open_new_window": false
           }
@@ -305,6 +307,8 @@
         "gap": 16,
         "gap_mobile": 12,
         "columns_desktop": 4,
+        "padding_x": 80,
+        "padding_x_mobile": 20,
         "padding_y": 40,
         "padding_y_mobile": 30,
         "show_quickview": true,
@@ -370,6 +374,8 @@
         "gap": 16,
         "gap_mobile": 12,
         "columns_desktop": 4,
+        "padding_x": 80,
+        "padding_x_mobile": 20,
         "padding_y": 40,
         "padding_y_mobile": 30,
         "show_quickview": true,
@@ -490,6 +496,8 @@
         "gap": 16,
         "gap_mobile": 12,
         "columns_desktop": 4,
+        "padding_x": 80,
+        "padding_x_mobile": 20,
         "padding_y": 40,
         "padding_y_mobile": 30,
         "show_quickview": true,
@@ -612,6 +620,8 @@
         "gap": 16,
         "gap_mobile": 12,
         "columns_desktop": 4,
+        "padding_x": 80,
+        "padding_x_mobile": 20,
         "padding_y": 40,
         "padding_y_mobile": 30,
         "show_quickview": true,
@@ -734,6 +744,8 @@
         "gap": 16,
         "gap_mobile": 12,
         "columns_desktop": 4,
+        "padding_x": 80,
+        "padding_x_mobile": 20,
         "padding_y": 40,
         "padding_y_mobile": 30,
         "show_quickview": true,
@@ -815,6 +827,8 @@
             "image": "shopify://shop_images/Banner-tienda-texto_desktop.jpg",
             "image_mobile": "shopify://shop_images/Banner-tienda-texto_mobile.jpg",
             "image_alt": "",
+            "button_label": "Encuentra tu tienda",
+            "button_link": "shopify://pages/tiendas",
             "link": "shopify://pages/tiendas",
             "open_new_window": false
           }

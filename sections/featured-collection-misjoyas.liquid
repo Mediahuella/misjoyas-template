@@ -5,6 +5,8 @@
   assign columns_desktop = section.settings.columns_desktop
   assign gap_mobile = section.settings.gap_mobile
   assign gap_desktop = section.settings.gap
+  assign pad_x = section.settings.padding_x | default: 80
+  assign pad_x_mobile = section.settings.padding_x_mobile | default: 20
 
   assign enable_slider = false
   if featured_collection != blank
@@ -33,14 +35,20 @@
     --fc-mj-gap: {{ gap_desktop }}px;
     --fc-mj-gap-mobile: {{ gap_mobile }}px;
     width: 100%;
-    padding-top: {{ section.settings.padding_y_mobile }}px;
-    padding-bottom: {{ section.settings.padding_y_mobile }}px;
+    padding: {{ section.settings.padding_y_mobile }}px {{ pad_x_mobile }}px;
+    box-sizing: border-box;
   }
   @media (min-width: 768px) {
     .featured-collection-mj-{{ section.id }} {
-      padding-top: {{ section.settings.padding_y }}px;
-      padding-bottom: {{ section.settings.padding_y }}px;
+      padding: {{ section.settings.padding_y }}px {{ pad_x }}px;
     }
+  }
+  .featured-collection-mj-{{ section.id }} .featured-collection-mj__inner {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
   }
   .featured-collection-mj-{{ section.id }} .featured-collection-mj__heading {
     margin: 0 0 1.875rem;
@@ -62,14 +70,8 @@
     }
   }
   .featured-collection-mj-{{ section.id }} .featured-collection-mj__track {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  @media (min-width: 768px) {
-    .featured-collection-mj-{{ section.id }} .featured-collection-mj__track {
-      padding-left: 0;
-      padding-right: 0;
-    }
+    padding-left: 0;
+    padding-right: 0;
   }
   .featured-collection-mj-{{ section.id }} .featured-collection-mj__slider {
     position: relative;
@@ -119,7 +121,7 @@
     align-items: center;
     width: 100%;
     margin: 1.25rem 0 0;
-    padding: 0 1rem;
+    padding: 0;
     box-sizing: border-box;
   }
   @media (min-width: 768px) {
@@ -236,7 +238,7 @@
   role="region"
   aria-label="{{ 'sections.featured-collection-misjoyas.aria_label' | t }}"
 >
-  <div class="x-page-width page-width">
+  <div class="featured-collection-mj__inner">
     {%- if section.settings.title != blank -%}
       <h2 class="featured-collection-mj__heading">
         {%- if section.settings.title_icon != blank -%}
@@ -593,6 +595,24 @@
       "max": 5,
       "step": 1,
       "default": 4
+    },
+    {
+      "type": "range",
+      "id": "padding_x",
+      "label": "Padding horizontal — escritorio (px)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_x_mobile",
+      "label": "Padding horizontal — móvil (px)",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "default": 20
     },
     {
       "type": "range",
