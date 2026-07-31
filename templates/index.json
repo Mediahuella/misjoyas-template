@@ -348,12 +348,13 @@
         "message_KqMqYG",
         "message_dAiT8j"
       ],
+      "disabled": true,
       "name": "Ticker",
       "settings": {
         "enable": true,
         "show_only_on_homepage": false,
-        "background_color": "#68b5a3",
-        "text_color": "#ffffff",
+        "background_color": "#79D5C9",
+        "text_color": "#222222",
         "animation_speed": 25,
         "gap": 60,
         "gap_mobile": 20,
