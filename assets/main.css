@@ -539,10 +539,6 @@ video {
 .tw-z-\[60\] {
   z-index: 60;
 }
-.tw-my-2 {
-  margin-top: 8px;
-  margin-bottom: 8px;
-}
 .tw-mb-4 {
   margin-bottom: 16px;
 }
@@ -576,20 +572,20 @@ video {
 .tw-h-5 {
   height: 20px;
 }
+.tw-h-\[118px\] {
+  height: 118px;
+}
 .tw-h-\[18px\] {
   height: 18px;
+}
+.tw-h-\[30px\] {
+  height: 30px;
 }
 .tw-h-\[50px\] {
   height: 50px;
 }
 .tw-h-full {
   height: 100%;
-}
-.tw-h-\[118px\] {
-  height: 118px;
-}
-.tw-h-\[30px\] {
-  height: 30px;
 }
 .tw-max-h-96 {
   max-height: 384px;
@@ -603,6 +599,9 @@ video {
 .tw-w-5 {
   width: 20px;
 }
+.tw-w-\[112px\] {
+  width: 112px;
+}
 .tw-w-\[18px\] {
   width: 18px;
 }
@@ -614,9 +613,6 @@ video {
 }
 .tw-w-full {
   width: 100%;
-}
-.tw-w-\[112px\] {
-  width: 112px;
 }
 .tw-min-w-0 {
   min-width: 0px;
@@ -648,20 +644,14 @@ video {
 .tw-justify-center {
   justify-content: center;
 }
-.tw-gap-1\.5 {
-  gap: 6px;
-}
-.tw-gap-2 {
-  gap: 8px;
+.tw-gap-2\.5 {
+  gap: 10px;
 }
 .tw-gap-3 {
   gap: 12px;
 }
 .tw-gap-5 {
   gap: 20px;
-}
-.tw-gap-2\.5 {
-  gap: 10px;
 }
 .tw-self-start {
   align-self: flex-start;
@@ -680,9 +670,6 @@ video {
 }
 .tw-rounded-full {
   border-radius: 9999px;
-}
-.tw-rounded-md {
-  border-radius: 6px;
 }
 .tw-border {
   border-width: 1px;
@@ -728,25 +715,17 @@ video {
 .tw-p-8 {
   padding: 32px;
 }
-.tw-px-2\.5 {
-  padding-left: 10px;
-  padding-right: 10px;
+.tw-px-2 {
+  padding-left: 8px;
+  padding-right: 8px;
 }
 .tw-px-4 {
   padding-left: 16px;
   padding-right: 16px;
 }
-.tw-py-1\.5 {
-  padding-top: 6px;
-  padding-bottom: 6px;
-}
 .tw-py-3 {
   padding-top: 12px;
   padding-bottom: 12px;
-}
-.tw-px-2 {
-  padding-left: 8px;
-  padding-right: 8px;
 }
 .tw-pl-3 {
   padding-left: 12px;
@@ -765,18 +744,14 @@ video {
   font-size: 14px;
   line-height: 20px;
 }
-.tw-text-xs {
-  font-size: 12px;
-  line-height: 16px;
-}
 .tw-font-semibold {
   font-weight: 600;
 }
-.tw-leading-\[22px\] {
-  line-height: 22px;
-}
 .tw-leading-5 {
   line-height: 20px;
+}
+.tw-leading-\[22px\] {
+  line-height: 22px;
 }
 .tw-text-\[\#2d2d2d\] {
   --tw-text-opacity: 1;
@@ -3530,10 +3505,6 @@ video {
 }
 @media (min-width: 768px) {
 
-  .md\:tw-mt-0 {
-    margin-top: 0px;
-  }
-
   .md\:tw-block {
     display: block;
   }
@@ -3547,11 +3518,6 @@ video {
   }
 }
 @media (min-width: 1024px) {
-
-  .lg\:tw-my-0 {
-    margin-top: 0px;
-    margin-bottom: 0px;
-  }
 
   .lg\:\[grid-area\:auto\] {
     grid-area: auto;

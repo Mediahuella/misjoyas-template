@@ -19,12 +19,30 @@
       endif
       assign show_sparkles = section.settings.show_sparkles
       assign autoplay_ms = section.settings.change_slides_speed | default: 5 | times: 1000
+      assign mobile_ratio_w = 440
+      assign mobile_ratio_h = kit_height_mobile
+      assign mobile_ratio_found = false
+      for block in section.blocks
+        unless mobile_ratio_found
+          if block.settings.image_mobile != blank
+            assign mobile_ratio_w = block.settings.image_mobile.width
+            assign mobile_ratio_h = block.settings.image_mobile.height
+            assign mobile_ratio_found = true
+          elsif block.settings.image != blank
+            assign mobile_ratio_w = block.settings.image.width
+            assign mobile_ratio_h = block.settings.image.height
+            assign mobile_ratio_found = true
+          endif
+        endunless
+      endfor
     -%}
 
     {%- style -%}
       .banner-kit-{{ section.id }} {
         --banner-2-h: {{ kit_height }}px;
         --banner-2-h-mobile: {{ kit_height_mobile }}px;
+        --banner-2-desktop-ratio: 1440 / {{ kit_height }};
+        --banner-2-mobile-ratio: {{ mobile_ratio_w }} / {{ mobile_ratio_h }};
         --banner-2-radius: {{ section.settings.border_radius }}px;
         --banner-2-autoplay: {{ autoplay_ms }}ms;
         width: 100%;
@@ -46,14 +64,14 @@
       .banner-kit-{{ section.id }} .banner-kit__frame {
         position: relative;
         width: 100%;
-        height: var(--banner-2-h-mobile);
+        height: auto;
         border-radius: var(--banner-2-radius);
         overflow: hidden;
         background: #1a1a1a;
       }
       @media (min-width: 768px) {
         .banner-kit-{{ section.id }} .banner-kit__frame {
-          height: var(--banner-2-h);
+          aspect-ratio: var(--banner-2-desktop-ratio);
         }
       }
       .banner-kit-{{ section.id }} .banner-kit__slider,
@@ -61,20 +79,36 @@
       .banner-kit-{{ section.id }} .splide__list,
       .banner-kit-{{ section.id }} .banner-kit__slide {
         width: 100%;
-        height: 100%;
+        height: auto;
+      }
+      @media (min-width: 768px) {
+        .banner-kit-{{ section.id }} .banner-kit__slider,
+        .banner-kit-{{ section.id }} .splide__track,
+        .banner-kit-{{ section.id }} .splide__list,
+        .banner-kit-{{ section.id }} .banner-kit__slide {
+          height: 100%;
+        }
       }
       .banner-kit-{{ section.id }} .banner-kit__slide {
         position: relative;
       }
       .banner-kit-{{ section.id }} .banner-kit__media,
       .banner-kit-{{ section.id }} .banner-kit__media-link {
-        position: absolute;
-        inset: 0;
+        position: relative;
+        inset: auto;
+        display: block;
         width: 100%;
-        height: 100%;
+        height: auto;
+      }
+      @media (min-width: 768px) {
+        .banner-kit-{{ section.id }} .banner-kit__media,
+        .banner-kit-{{ section.id }} .banner-kit__media-link {
+          position: absolute;
+          inset: 0;
+          height: 100%;
+        }
       }
       .banner-kit-{{ section.id }} .banner-kit__media-link {
-        display: block;
         z-index: 1;
       }
       .banner-kit-{{ section.id }} .banner-kit__picture,
@@ -82,19 +116,43 @@
         display: block;
         position: relative;
         width: 100%;
-        height: 100%;
+        height: auto;
       }
-      .banner-kit-{{ section.id }} .banner-kit__img,
+      @media (min-width: 768px) {
+        .banner-kit-{{ section.id }} .banner-kit__picture,
+        .banner-kit-{{ section.id }} .banner-kit__video-wrap {
+          height: 100%;
+        }
+      }
+      .banner-kit-{{ section.id }} .banner-kit__img {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: unset;
+        object-position: center;
+      }
+      @media (min-width: 768px) {
+        .banner-kit-{{ section.id }} .banner-kit__img {
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      .banner-kit-{{ section.id }} .banner-kit__video-wrap {
+        aspect-ratio: var(--banner-2-mobile-ratio);
+      }
+      @media (min-width: 768px) {
+        .banner-kit-{{ section.id }} .banner-kit__video-wrap {
+          aspect-ratio: auto;
+        }
+      }
       .banner-kit-{{ section.id }} .banner-kit__video {
         display: block;
+        position: absolute;
+        inset: 0;
         width: 100%;
         height: 100%;
         object-fit: cover;
         object-position: center;
-      }
-      .banner-kit-{{ section.id }} .banner-kit__video {
-        position: absolute;
-        inset: 0;
       }
       .banner-kit-{{ section.id }} .banner-kit__sparkle {
         position: absolute;
@@ -123,6 +181,64 @@
         .banner-kit-{{ section.id }} .banner-kit__sparkle {
           display: none;
         }
+      }
+      .banner-kit-{{ section.id }} .banner-kit__content {
+        position: absolute;
+        z-index: 3;
+        left: 20px;
+        right: 20px;
+        bottom: 40px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        pointer-events: none;
+      }
+      @media (min-width: 768px) {
+        .banner-kit-{{ section.id }} .banner-kit__content {
+          left: 40px;
+          right: 80px;
+          top: 50%;
+          bottom: auto;
+          width: auto;
+          transform: translateY(-50%);
+          align-items: center;
+          justify-content: flex-end;
+        }
+      }
+      .banner-kit-{{ section.id }} .banner-kit__cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        min-height: 50px;
+        padding: 12px 32px;
+        border: 0;
+        border-radius: 4px;
+        background: #f83785;
+        background-image: none;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 22px;
+        text-decoration: none;
+        white-space: nowrap;
+        flex-shrink: 0;
+        pointer-events: auto;
+        transition: background-color 0.2s ease, color 0.2s ease;
+      }
+      .banner-kit-{{ section.id }} .banner-kit__cta:hover,
+      .banner-kit-{{ section.id }} .banner-kit__cta:focus,
+      .banner-kit-{{ section.id }} .banner-kit__cta:focus-visible,
+      .banner-kit-{{ section.id }} .banner-kit__cta:active {
+        background: #000 !important;
+        background-image: none !important;
+        color: #fff !important;
+        text-decoration: none;
+      }
+      .banner-kit-{{ section.id }} .banner-kit__cta::before,
+      .banner-kit-{{ section.id }} .banner-kit__cta::after {
+        content: none !important;
+        display: none !important;
       }
       .banner-kit-{{ section.id }} .banner-kit__placeholder {
         display: flex;
@@ -196,6 +312,12 @@
                 "arrows": false,
                 "pagination": false,
                 "autoplay": false,
+                "autoHeight": false,
+                "breakpoints": {
+                  "767": {
+                    "autoHeight": true
+                  }
+                },
                 {%- if settings.lang_direction contains request.locale.iso_code -%}
                   "direction": "rtl",
                 {%- endif -%}
@@ -370,6 +492,11 @@
                         assign has_media = true
                       endif
                       assign slide_link = block.settings.link
+                      assign button_label = block.settings.button_label
+                      assign button_link = block.settings.button_link
+                      if button_link == blank
+                        assign button_link = slide_link
+                      endif
                       if block.settings.image_alt != blank
                         assign slide_alt = block.settings.image_alt
                       else
@@ -489,7 +616,7 @@
                           </div>
                         {%- endcapture -%}
 
-                        {%- if slide_link != blank -%}
+                        {%- if button_label == blank and slide_link != blank -%}
                           <a
                             href="{{ slide_link }}"
                             class="banner-kit__media-link"
@@ -500,6 +627,22 @@
                           </a>
                         {%- else -%}
                           {{ slide_media }}
+                        {%- endif -%}
+
+                        {%- if button_label != blank -%}
+                          <div class="banner-kit__content">
+                            {%- if button_link != blank -%}
+                              <a
+                                href="{{ button_link }}"
+                                class="banner-kit__cta disable-effect"
+                                {% if block.settings.open_new_window %}target="_blank" rel="noopener noreferrer"{% endif %}
+                              >
+                                {{ button_label | escape }}
+                              </a>
+                            {%- else -%}
+                              <span class="banner-kit__cta">{{ button_label | escape }}</span>
+                            {%- endif -%}
+                          </div>
                         {%- endif -%}
                       {%- elsif request.design_mode -%}
                         <div class="banner-kit__placeholder">
@@ -590,20 +733,22 @@
     {
       "type": "range",
       "id": "banner_height",
-      "label": "Altura — escritorio (px)",
+      "label": "Altura de referencia — escritorio (px)",
       "min": 280,
       "max": 560,
       "step": 10,
-      "default": 340
+      "default": 340,
+      "info": "Define la proporción 1440×altura. El banner ocupa todo el ancho y la altura se adapta."
     },
     {
       "type": "range",
       "id": "banner_height_mobile",
-      "label": "Altura — móvil (px)",
+      "label": "Altura de referencia — móvil (px)",
       "min": 400,
       "max": 800,
       "step": 4,
-      "default": 636
+      "default": 636,
+      "info": "Solo como respaldo para videos. Las imágenes usan su proporción natural."
     },
     {
       "type": "range",
@@ -668,9 +813,26 @@
           "label": "Texto alternativo"
         },
         {
+          "type": "header",
+          "content": "Botón"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Texto del botón",
+          "info": "Si está vacío, el botón no se muestra."
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Enlace del botón",
+          "info": "Si está vacío, se usa el enlace de la diapositiva."
+        },
+        {
           "type": "url",
           "id": "link",
-          "label": "Enlace"
+          "label": "Enlace de la diapositiva",
+          "info": "Si no hay botón, toda la imagen/video usa este enlace."
         },
         {
           "type": "checkbox",

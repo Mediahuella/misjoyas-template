@@ -12,6 +12,19 @@
     "banner_principal_home": {
       "type": "banner-principal",
       "blocks": {
+        "slide_rqPLBL": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Banner_Adoro_desktop.jpg",
+            "image_mobile": "shopify://shop_images/Banner_Adoro_mobile.jpg",
+            "image_alt": "",
+            "link": "",
+            "open_new_window": false,
+            "schedule_enabled": false,
+            "schedule_start": "",
+            "schedule_end": ""
+          }
+        },
         "slide_GJzrPK": {
           "type": "slide",
           "settings": {
@@ -80,6 +93,7 @@
         }
       },
       "block_order": [
+        "slide_rqPLBL",
         "slide_GJzrPK",
         "slide_BxDhPT",
         "slide_D8eTJ4",
@@ -232,6 +246,8 @@
             "image": "shopify://shop_images/Banner_secundario_desktop_aa8dca55-d325-4388-a0b0-511289084eb0.jpg",
             "image_mobile": "shopify://shop_images/Banner_secundario_mobile_b8491767-b642-4318-915e-da8194699dc7.jpg",
             "image_alt": "",
+            "button_label": "Quiero ser mayorista",
+            "button_link": "shopify://pages/quienes-somos",
             "link": "shopify://pages/quienes-somos",
             "open_new_window": false
           }
@@ -796,8 +812,8 @@
         "slide_tjrM9B": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Banner-tienda_desktop.jpg",
-            "image_mobile": "shopify://shop_images/Banner-tienda_mobile.jpg",
+            "image": "shopify://shop_images/Banner-tienda-texto_desktop.jpg",
+            "image_mobile": "shopify://shop_images/Banner-tienda-texto_mobile.jpg",
             "image_alt": "",
             "link": "shopify://pages/tiendas",
             "open_new_window": false
