@@ -107,8 +107,9 @@
     background: #000;
     color: #fff;
   }
-  .cuadro-footer-{{ section.id }} .cuadro-footer__btn--primary:hover {
-    background: #222;
+  .cuadro-footer-{{ section.id }} .cuadro-footer__btn--primary:hover,
+  .cuadro-footer-{{ section.id }} .cuadro-footer__btn--primary:focus-visible {
+    background: #f83785;
     color: #fff;
   }
   .cuadro-footer-{{ section.id }} .cuadro-footer__btn--secondary {
@@ -117,9 +118,11 @@
     color: #000;
     padding: 10px 30px;
   }
-  .cuadro-footer-{{ section.id }} .cuadro-footer__btn--secondary:hover {
-    background: #000;
-    color: #fff;
+  .cuadro-footer-{{ section.id }} .cuadro-footer__btn--secondary:hover,
+  .cuadro-footer-{{ section.id }} .cuadro-footer__btn--secondary:focus-visible {
+    background: #fff;
+    border-color: #000;
+    color: #000;
   }
 {%- endstyle -%}
 
