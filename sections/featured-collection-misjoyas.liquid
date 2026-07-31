@@ -50,12 +50,32 @@
     padding-left: 0;
     padding-right: 0;
   }
-  .featured-collection-mj-{{ section.id }} .featured-collection-mj__heading {
+  .featured-collection-mj-{{ section.id }} .featured-collection-mj__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
     margin: 0 0 1.875rem;
     text-align: center;
+  }
+  @media (min-width: 768px) {
+    .featured-collection-mj-{{ section.id }} .featured-collection-mj__header {
+      margin-bottom: 2rem;
+    }
+  }
+  .featured-collection-mj-{{ section.id }} .featured-collection-mj__eyebrow {
+    margin: 0;
+    color: {{ section.settings.eyebrow_color }};
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    text-transform: uppercase;
+  }
+  .featured-collection-mj-{{ section.id }} .featured-collection-mj__heading {
+    margin: 0;
     color: #222222;
-    font-size: 1.875rem;
-    line-height: 2.25rem;
+    font-size: 1.625rem;
+    line-height: 2rem;
     font-weight: 400;
   }
   .featured-collection-mj-{{ section.id }} .featured-collection-mj__heading-icon {
@@ -64,9 +84,8 @@
   }
   @media (min-width: 768px) {
     .featured-collection-mj-{{ section.id }} .featured-collection-mj__heading {
-      font-size: 2.25rem;
-      line-height: 2.625rem;
-      margin-bottom: 2rem;
+      font-size: 2rem;
+      line-height: 2.5rem;
     }
   }
   .featured-collection-mj-{{ section.id }} .featured-collection-mj__track {
@@ -239,13 +258,20 @@
   aria-label="{{ 'sections.featured-collection-misjoyas.aria_label' | t }}"
 >
   <div class="featured-collection-mj__inner">
-    {%- if section.settings.title != blank -%}
-      <h2 class="featured-collection-mj__heading">
-        {%- if section.settings.title_icon != blank -%}
-          <span class="featured-collection-mj__heading-icon" aria-hidden="true">{{ section.settings.title_icon | escape }}</span>
+    {%- if section.settings.eyebrow != blank or section.settings.title != blank -%}
+      <div class="featured-collection-mj__header">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="featured-collection-mj__eyebrow">{{ section.settings.eyebrow | escape }}</p>
         {%- endif -%}
-        {{- section.settings.title | escape -}}
-      </h2>
+        {%- if section.settings.title != blank -%}
+          <h2 class="featured-collection-mj__heading">
+            {%- if section.settings.title_icon != blank -%}
+              <span class="featured-collection-mj__heading-icon" aria-hidden="true">{{ section.settings.title_icon | escape }}</span>
+            {%- endif -%}
+            {{- section.settings.title | escape -}}
+          </h2>
+        {%- endif -%}
+      </div>
     {%- endif -%}
 
     {%- if featured_collection == blank -%}
@@ -542,6 +568,18 @@
       "label": "Icono del título",
       "default": "✦",
       "info": "Símbolo decorativo antes del título (ej. ✦)."
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Colección"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Color del eyebrow",
+      "default": "#68B5A3"
     },
     {
       "type": "color",

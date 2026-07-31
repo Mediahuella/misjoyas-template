@@ -300,8 +300,10 @@
       "name": "Colección destacada",
       "settings": {
         "title_icon": "",
+        "eyebrow": "",
+        "eyebrow_color": "#68b5a3",
         "title_icon_color": "#68b5a3",
-        "title": "Aqui va baño de oro",
+        "title": "Aqui va coleccion de oro",
         "collection": "",
         "products_to_show": 16,
         "gap": 16,
@@ -367,6 +369,8 @@
       "name": "Colección destacada",
       "settings": {
         "title_icon": "",
+        "eyebrow": "Los favoritos",
+        "eyebrow_color": "#222222",
         "title_icon_color": "#68b5a3",
         "title": "Lo más vendido",
         "collection": "c_mas-vendidos",
@@ -488,7 +492,9 @@
       "type": "featured-collection-misjoyas",
       "name": "Colección destacada",
       "settings": {
-        "title_icon": "✦",
+        "title_icon": "",
+        "eyebrow": "Novedades",
+        "eyebrow_color": "#222222",
         "title_icon_color": "#68b5a3",
         "title": "Recién llegados",
         "collection": "nuevo",
@@ -613,6 +619,8 @@
       "name": "Colección destacada",
       "settings": {
         "title_icon": "",
+        "eyebrow": "Aros",
+        "eyebrow_color": "#68b5a3",
         "title_icon_color": "#68b5a3",
         "title": "Elige tus aros favoritos",
         "collection": "aros",
@@ -737,6 +745,8 @@
       "name": "Colección destacada",
       "settings": {
         "title_icon": "",
+        "eyebrow": "Cadenas",
+        "eyebrow_color": "#68b5a3",
         "title_icon_color": "#68b5a3",
         "title": "Las cadenas que más se venden",
         "collection": "cadenas",

@@ -972,7 +972,7 @@ video {
   white-space: nowrap;
 }
 
-/* % descuento junto al precio — Figma card 1813:9947 */
+/* % descuento junto al precio — Figma desktop 1813:9947 / mobile 1823:11419 */
 .card-product .misjoyas-price--card .misjoyas-price__badge,
 .x-card-price .misjoyas-price--card .misjoyas-price__badge {
   display: inline-flex;
@@ -988,6 +988,35 @@ video {
   font-weight: 600;
   line-height: 20px;
   white-space: nowrap;
+}
+
+@media (max-width: 767px) {
+  .card-product .misjoyas-price--card .misjoyas-price__row,
+  .x-card-price .misjoyas-price--card .misjoyas-price__row {
+    gap: 6px;
+  }
+
+  .card-product .misjoyas-price--card .misjoyas-price__current,
+  .x-card-price .misjoyas-price--card .misjoyas-price__current {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .card-product .misjoyas-price--card .misjoyas-price__compare,
+  .x-card-price .misjoyas-price--card .misjoyas-price__compare {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .card-product .misjoyas-price--card .misjoyas-price__badge,
+  .x-card-price .misjoyas-price--card .misjoyas-price__badge {
+    min-height: 20px;
+    height: 20px;
+    padding: 0 6px;
+    border-radius: 2px;
+    font-size: 12px;
+    line-height: 16px;
+  }
 }
 
 /* Card title — 1rem (theme default: 0.9rem con title_size_card: 90) */
