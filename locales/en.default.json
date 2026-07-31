@@ -405,6 +405,9 @@
       "aria_label": "Benefits bar",
       "placeholder": "Add icon items to this section."
     },
+    "cuadro-footer": {
+      "aria_label": "Club MisJoyas"
+    },
     "mobile-navigation": {
       "my_cart": "My cart",
       "stores_footer": "Stores — 37 across Chile"

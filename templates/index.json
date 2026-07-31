@@ -822,6 +822,27 @@
         "padding_y_mobile": 40
       }
     },
+    "cuadro_footer_home": {
+      "type": "cuadro-footer",
+      "name": "Cuadro footer",
+      "settings": {
+        "eyebrow": "CLUB MISJOYAS",
+        "heading": "Súmate al club",
+        "text": "<p>Convierte tus compras en recompensas.</p><p>Inscríbete, acumula puntos con cada compra y canjéalos por beneficios exclusivos.</p>",
+        "button_label_1": "Únete ahora",
+        "button_link_1": "https://misjoyas.cl/account/register",
+        "open_new_window_1": false,
+        "button_label_2": "Saber más",
+        "button_link_2": "shopify://pages/club-misjoyas",
+        "open_new_window_2": false,
+        "background": "#79d5c9",
+        "border_radius": 4,
+        "padding_x": 80,
+        "padding_x_mobile": 20,
+        "padding_y": 40,
+        "padding_y_mobile": 40
+      }
+    },
     "popup_6AnBUK": {
       "type": "popup",
       "disabled": true,
@@ -889,6 +910,7 @@
     "featured_collection_misjoyas_WKk9MB",
     "huincha_iconos_home",
     "banner_kit_QzyCmc",
+    "cuadro_footer_home",
     "popup_6AnBUK",
     "popup_yGHy4R",
     "popup_h9bTpX",
