@@ -342,10 +342,10 @@
       "next": "Siguiente diapositiva"
     },
     "banner-kit": {
-      "aria_label": "Banner promocional kit de regalo",
-      "alt": "Kit de regalo en tu primera compra",
-      "slide_alt": "Banner promocional kit de regalo",
-      "placeholder": "Sube la imagen de escritorio (recomendado 1488×400 px) y la de móvil (recomendado 440×400 px).",
+      "aria_label": "Banner 2",
+      "alt": "Banner promocional",
+      "slide_alt": "Banner promocional",
+      "placeholder": "Sube un video o imagen de escritorio (~1440×340 px) y de móvil (~440×634 px).",
       "previous": "Diapositiva anterior",
       "next": "Diapositiva siguiente"
     },

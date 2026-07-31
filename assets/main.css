@@ -521,6 +521,9 @@ video {
 .tw-relative {
   position: relative;
 }
+.tw-inset-0 {
+  inset: 0px;
+}
 .tw-left-0 {
   left: 0px;
 }
@@ -575,6 +578,9 @@ video {
 }
 .tw-h-\[50px\] {
   height: 50px;
+}
+.tw-h-full {
+  height: 100%;
 }
 .tw-max-h-96 {
   max-height: 384px;
@@ -3488,6 +3494,10 @@ video {
 
   .md\:tw-mt-0 {
     margin-top: 0px;
+  }
+
+  .md\:tw-block {
+    display: block;
   }
 
   .md\:tw-flex {

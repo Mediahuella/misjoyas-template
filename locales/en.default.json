@@ -342,10 +342,10 @@
       "next": "Next slide"
     },
     "banner-kit": {
-      "aria_label": "Gift kit promotional banner",
-      "alt": "Gift kit on your first purchase",
-      "slide_alt": "Gift kit promotional banner",
-      "placeholder": "Upload a desktop image (1488×400 px recommended) and a mobile image (440×400 px recommended).",
+      "aria_label": "Banner 2",
+      "alt": "Promotional banner",
+      "slide_alt": "Promotional banner",
+      "placeholder": "Upload a video or image for desktop (~1440×340 px) and mobile (~440×634 px).",
       "previous": "Previous slide",
       "next": "Next slide"
     },

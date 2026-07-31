@@ -214,6 +214,48 @@
         "card_width_mobile": 280
       }
     },
+    "banner_kit_mfxgQe": {
+      "type": "banner-kit",
+      "blocks": {
+        "slide_zrye8m": {
+          "type": "slide",
+          "settings": {
+            "video": "shopify://files/videos/MISJOYAS.mp4",
+            "image_alt": "",
+            "link": "shopify://collections/dia-del-padre",
+            "open_new_window": false
+          }
+        },
+        "slide_kit_1": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Banner_secundario_desktop_aa8dca55-d325-4388-a0b0-511289084eb0.jpg",
+            "image_mobile": "shopify://shop_images/Banner_secundario_mobile_b8491767-b642-4318-915e-da8194699dc7.jpg",
+            "image_alt": "",
+            "link": "shopify://pages/quienes-somos",
+            "open_new_window": false
+          }
+        }
+      },
+      "block_order": [
+        "slide_zrye8m",
+        "slide_kit_1"
+      ],
+      "name": "Banner 2",
+      "settings": {
+        "enable": true,
+        "show_only_on_homepage": false,
+        "auto_play": true,
+        "change_slides_speed": 4,
+        "show_progress": true,
+        "show_sparkles": true,
+        "banner_height": 340,
+        "banner_height_mobile": 636,
+        "border_radius": 4,
+        "padding_y": 40,
+        "padding_y_mobile": 40
+      }
+    },
     "featured_collection_misjoyas_WHddHm": {
       "type": "featured-collection-misjoyas",
       "name": "Colección destacada",
@@ -320,74 +362,6 @@
         "button_label": "Ver todos los productos nuevos",
         "button_link": "",
         "open_new_window": false
-      }
-    },
-    "banner_kit_mfxgQe": {
-      "type": "banner-kit",
-      "blocks": {
-        "slide_kit_1": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/Banner_secundario_desktop_aa8dca55-d325-4388-a0b0-511289084eb0.jpg",
-            "image_mobile": "shopify://shop_images/Banner_secundario_mobile_b8491767-b642-4318-915e-da8194699dc7.jpg",
-            "image_alt": "",
-            "link": "shopify://pages/quienes-somos",
-            "open_new_window": false
-          }
-        },
-        "slide_LUmEed": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/Banner-secundario_Descuentos_desktop.jpg",
-            "image_mobile": "shopify://shop_images/Banner-secundario_Descuentos_mobile.jpg",
-            "image_alt": "",
-            "link": "shopify://pages/fidelizacion",
-            "open_new_window": false
-          }
-        },
-        "slide_tB7k7t": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/Banner-secundario-Kit_desktop.jpg",
-            "image_mobile": "shopify://shop_images/Banner-secundario-Kit_mobile.jpg",
-            "image_alt": "",
-            "link": "shopify://products/kit-primera-compra",
-            "open_new_window": false
-          }
-        },
-        "slide_zrye8m": {
-          "type": "slide",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/banner-2_dia_del_padre_desktop.jpg",
-            "image_mobile": "shopify://shop_images/banner-2_dia_del_padre_mobile.jpg",
-            "image_alt": "",
-            "link": "shopify://collections/dia-del-padre",
-            "open_new_window": false
-          }
-        }
-      },
-      "block_order": [
-        "slide_kit_1",
-        "slide_LUmEed",
-        "slide_tB7k7t",
-        "slide_zrye8m"
-      ],
-      "name": "Banner kit",
-      "settings": {
-        "enable": true,
-        "show_only_on_homepage": false,
-        "auto_play": true,
-        "change_slides_speed": 4,
-        "show_arrows": true,
-        "image_alt": "Kit de regalo en tu primera compra",
-        "link": "",
-        "open_new_window": false,
-        "banner_height": 400,
-        "banner_height_mobile": 400,
-        "border_radius": 4,
-        "padding_y": 40,
-        "padding_y_mobile": 30
       }
     },
     "image_with_text_xTkd4d": {
