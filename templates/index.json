@@ -626,93 +626,86 @@
         "open_new_window": false
       }
     },
-    "text_column_with_image_PEq4Ck": {
-      "type": "text-column-with-image",
+    "banner_destacados_home": {
+      "type": "banner-destacados",
+      "name": "Banner destacados",
       "blocks": {
-        "column_DFytx6": {
-          "type": "column",
+        "card_large": {
+          "type": "card",
           "settings": {
+            "card_layout": "large",
             "image": "shopify://shop_images/emprende-07_jpg.jpg",
+            "image_mobile": "",
             "image_alt": "",
-            "image_link": "shopify://pages/todo-para-emprender",
-            "open_new_window_image": false,
-            "sub_title": "",
-            "title": "Column",
-            "highlight_type": "underline",
-            "heading_size": 100,
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post.</p>",
-            "button_label": "",
-            "button_link": "",
+            "link": "shopify://pages/todo-para-emprender",
             "open_new_window": false,
-            "show_button_style": "primary"
+            "badge": "Nueva colección",
+            "heading": "Día del niño",
+            "button_label": "Ver colección",
+            "show_gradient": true
           }
         },
-        "column_NMDJkE": {
-          "type": "column",
+        "card_medium_1": {
+          "type": "card",
           "settings": {
+            "card_layout": "medium",
             "image": "shopify://shop_images/caja-quienes-comos.jpg",
+            "image_mobile": "",
             "image_alt": "",
-            "image_link": "shopify://pages/quienes-somos",
-            "open_new_window_image": false,
-            "sub_title": "",
-            "title": "Column",
-            "highlight_type": "underline",
-            "heading_size": 100,
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post.</p>",
-            "button_label": "",
-            "button_link": "",
+            "link": "shopify://pages/quienes-somos",
             "open_new_window": false,
-            "show_button_style": "primary"
+            "badge": "Anticípate",
+            "heading": "Licenciatura",
+            "button_label": "Ver productos",
+            "show_gradient": false
+          }
+        },
+        "card_medium_2": {
+          "type": "card",
+          "settings": {
+            "card_layout": "medium",
+            "image": "",
+            "image_mobile": "",
+            "image_alt": "",
+            "link": "",
+            "open_new_window": false,
+            "badge": "Las que más brillan",
+            "heading": "Moissanita",
+            "button_label": "Ver productos",
+            "show_gradient": false
+          }
+        },
+        "card_wide": {
+          "type": "card",
+          "settings": {
+            "card_layout": "wide",
+            "image": "",
+            "image_mobile": "",
+            "image_alt": "",
+            "link": "",
+            "open_new_window": false,
+            "badge": "Descuentos por poco tiempo",
+            "heading": "Rebajas de invierno",
+            "button_label": "Renueva tu stock",
+            "show_gradient": false
           }
         }
       },
       "block_order": [
-        "column_DFytx6",
-        "column_NMDJkE"
+        "card_large",
+        "card_medium_1",
+        "card_medium_2",
+        "card_wide"
       ],
-      "name": "Columnas con imagen",
       "settings": {
-        "title": "",
-        "highlight_type": "underline",
-        "heading_size": 100,
-        "heading_tag": "h2",
-        "layout_style": "image_boxes",
-        "box_gap": 16,
-        "box_border_radius": 4,
-        "box_padding_y": 40,
-        "box_padding_y_mobile": 15,
-        "secondary_background": "column",
-        "image_ratio": "75%",
-        "rounded_corner_image": false,
-        "column_content_alignment": "center",
-        "background_color_light": "rgba(0,0,0,0)",
-        "heading_light": "rgba(0,0,0,0)",
-        "text_light": "rgba(0,0,0,0)",
-        "color_heading_highlight_light": "rgba(0,0,0,0)",
-        "background_color_dark": "rgba(0,0,0,0)",
-        "heading_dark": "rgba(0,0,0,0)",
-        "text_dark": "rgba(0,0,0,0)",
-        "color_heading_highlight_dark": "rgba(0,0,0,0)",
-        "enable_desktop_slider": false,
-        "swiper_on_mobile": false,
-        "enable_arrow_mobile": false,
-        "auto_play": false,
-        "change_bar_every": 5,
-        "image_position_desktop": "top",
-        "column_layout_desktop": "lg:w-1/4",
-        "spacing_desktop": 28,
-        "full_width": false,
-        "padding_full_width": false,
-        "show_section_divider": false,
-        "padding_top": 28,
-        "padding_bottom": 28,
-        "image_position_mobile": "top",
-        "column_layout_mobile": "w-full",
-        "spacing_mobile": 16,
-        "full_width_mobile": false,
-        "show_section_divider_mobile": false,
-        "padding_top_mobile": 20,
-        "padding_bottom_mobile": 20
+        "eyebrow": "por ocasión",
+        "heading": "Colecciones destacadas",
+        "gap": 12,
+        "border_radius": 4,
+        "padding_x": 80,
+        "padding_x_mobile": 20,
+        "padding_y": 40,
+        "padding_y_mobile": 50
       }
     },
     "multicolumn_bQPMpc": {
@@ -876,7 +869,7 @@
     "featured_collection_misjoyas_yCxarR",
     "image_with_text_tCdRr9",
     "featured_collection_misjoyas_WKk9MB",
-    "text_column_with_image_PEq4Ck",
+    "banner_destacados_home",
     "multicolumn_bQPMpc",
     "popup_6AnBUK",
     "popup_yGHy4R",

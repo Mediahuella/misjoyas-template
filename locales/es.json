@@ -395,6 +395,12 @@
       "boxes_block_placeholder": "Sube una imagen para esta columna.",
       "boxes_card_alt": "Imagen promocional"
     },
+    "banner-destacados": {
+      "aria_label": "Banner destacados",
+      "placeholder": "Agrega tarjetas a esta sección.",
+      "block_placeholder": "Sube una imagen para esta tarjeta.",
+      "card_alt": "Colección destacada"
+    },
     "mobile-navigation": {
       "my_cart": "Mi carro",
       "stores_footer": "Tiendas — 37 en todo Chile"
