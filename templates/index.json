@@ -260,6 +260,9 @@
       "type": "banner-pequeno",
       "name": "Banner pequeño",
       "settings": {
+        "image": "shopify://shop_images/banner-oro18k_desktop.jpg",
+        "image_mobile": "shopify://shop_images/banner-oro18k_mobile.jpg",
+        "image_alt": "",
         "button_label": "Ver nueva línea",
         "button_link": "",
         "open_new_window": false,
