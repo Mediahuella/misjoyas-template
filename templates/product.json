@@ -130,8 +130,8 @@
             "button_style": "solid_button",
             "button_size": "small_button",
             "clickable_product": true,
-            "max_products": 5,
-            "corner_radius": 0,
+            "max_products": 3,
+            "corner_radius": 20,
             "background_color": "#ffffff",
             "text_color": "#282a2c",
             "solid_button_background_color": "#282a2c",
@@ -140,7 +140,7 @@
             "top_padding": 24,
             "bottom_padding": 24,
             "specific_offer_id": "",
-            "custom_css": ""
+            "custom_css": ".candyrack-ppp-button-layout__offer {\n  border: 1px solid #79D5C9 !important;\n  border-width: 2px !important;\n}"
           }
         },
         "html_HPUmhe": {
@@ -398,6 +398,40 @@
         "padding_bottom_mobile": 0
       }
     },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "custom_css": [
+        ".card-product {border: 1px solid #e0e0e0;}"
+      ],
+      "settings": {
+        "heading": "Puede que también te guste",
+        "highlight_type": "underline",
+        "heading_size": 70,
+        "heading_tag": "h3",
+        "heading_alignment": "center",
+        "products_to_show": 10,
+        "background_color_light": "#ffffff",
+        "background_color_dark": "",
+        "show_vendor": false,
+        "show_rating": false,
+        "show_highlighted_attributes": true,
+        "show_quickview": true,
+        "enable_carousel_desktop": true,
+        "enable_swiper_mobile": true,
+        "enable_arrow_mobile": false,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_section_divider": true,
+        "spacing": 16,
+        "padding_top": 32,
+        "padding_bottom": 40,
+        "columns_mobile": "2",
+        "show_section_divider_mobile": false,
+        "spacing_mobile": 16,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 32
+      }
+    },
     "custom_liquid_NLGn9E": {
       "type": "custom-liquid",
       "name": "t:sections.custom-liquid.name",
@@ -445,8 +479,8 @@
       "settings": {
         "enable": true,
         "show_only_on_homepage": false,
-        "background_color": "#68b5a3",
-        "text_color": "#ffffff",
+        "background_color": "#79d5c9",
+        "text_color": "#222222",
         "animation_speed": 25,
         "gap": 60,
         "gap_mobile": 20,
@@ -454,38 +488,25 @@
         "pause_on_hover": false
       }
     },
-    "product-recommendations": {
-      "type": "product-recommendations",
-      "custom_css": [
-        ".card-product {border: 1px solid #e0e0e0;}"
-      ],
+    "banner_pequeno_C9R6ib": {
+      "type": "banner-pequeno",
+      "name": "Banner pequeño",
       "settings": {
-        "heading": "Puede que también te guste",
-        "highlight_type": "underline",
-        "heading_size": 70,
-        "heading_tag": "h3",
-        "heading_alignment": "center",
-        "products_to_show": 10,
-        "background_color_light": "#ffffff",
-        "background_color_dark": "",
-        "show_vendor": false,
-        "show_rating": false,
-        "show_highlighted_attributes": true,
-        "show_quickview": true,
-        "enable_carousel_desktop": true,
-        "enable_swiper_mobile": true,
-        "enable_arrow_mobile": false,
-        "columns_desktop": 4,
-        "full_width": false,
-        "show_section_divider": true,
-        "spacing": 16,
-        "padding_top": 32,
-        "padding_bottom": 40,
-        "columns_mobile": "2",
-        "show_section_divider_mobile": false,
-        "spacing_mobile": 16,
-        "padding_top_mobile": 24,
-        "padding_bottom_mobile": 32
+        "image": "shopify://shop_images/Banner-mayorista_desktop.jpg",
+        "image_mobile": "shopify://shop_images/Banner-mayorista_mobile.jpg",
+        "image_alt": "",
+        "button_label": "Ver nueva línea",
+        "button_link": "",
+        "open_new_window": false,
+        "button_bg": "#f83785",
+        "button_color": "#ffffff",
+        "banner_height": 248,
+        "banner_height_mobile": 552,
+        "border_radius": 4,
+        "padding_x": 80,
+        "padding_x_mobile": 20,
+        "padding_y": 40,
+        "padding_y_mobile": 40
       }
     },
     "recently_viewed_4h746e": {
@@ -511,296 +532,14 @@
         "padding_top_mobile": 24,
         "padding_bottom_mobile": 32
       }
-    },
-    "1773246905d9151850": {
-      "type": "apps",
-      "blocks": {
-        "vizup_videos_videos_block_XmgpEc": {
-          "type": "shopify://apps/vizup-videos/blocks/videos-block/eaecaa7b-ab6b-40ae-8ddf-50daa867f3eb",
-          "settings": {
-            "videoc_widget_id": "",
-            "custom_css": ""
-          }
-        }
-      },
-      "block_order": [
-        "vizup_videos_videos_block_XmgpEc"
-      ],
-      "disabled": true,
-      "settings": {
-        "include_margins": true,
-        "content_alignment": "left"
-      }
-    },
-    "custom_liquid_tRBp6e": {
-      "type": "custom-liquid",
-      "name": "t:sections.custom-liquid.name",
-      "settings": {
-        "custom_liquid": "{% render 'misjoyas-trust-section' %}",
-        "full_width": false,
-        "show_section_divider": false,
-        "padding_top": 28,
-        "padding_bottom": 28,
-        "full_width_mobile": false,
-        "show_section_divider_mobile": false,
-        "padding_top_mobile": 28,
-        "padding_bottom_mobile": 28
-      }
-    },
-    "custom_liquid_iRmK4m": {
-      "type": "custom-liquid",
-      "name": "t:sections.custom-liquid.name",
-      "settings": {
-        "custom_liquid": "<div class=\"misjoyas-comparison\">\n\n<h2 class=\"misjoyas-title\">¿Por qué elegirnos?</h2>\n\n<table class=\"misjoyas-table\">\n\n<thead>\n<tr>\n<th></th>\n<th>Otras marcas</th>\n<th class=\"misjoyas-us\">Nosotros</th>\n</tr>\n</thead>\n\n<tbody>\n\n<tr>\n<td>Calidad del material</td>\n<td>Plata de baja calidad o baños</td>\n<td class=\"misjoyas-us\">Plata fina certificada Ley 925</td>\n</tr>\n\n<tr>\n<td>Precios</td>\n<td>Precios elevados</td>\n<td class=\"misjoyas-us\">Precios competitivos y descuentos por volumen</td>\n</tr>\n\n<tr>\n<td>Variedad de diseños</td>\n<td>Colecciones limitadas</td>\n<td class=\"misjoyas-us\">Amplia variedad de modelos modernos</td>\n</tr>\n\n<tr>\n<td>Confianza</td>\n<td>Poca información del material</td>\n<td class=\"misjoyas-us\">Transparencia y calidad garantizada</td>\n</tr>\n\n<tr>\n<td>Oportunidad de negocio</td>\n<td>No pensado para emprendedores</td>\n<td class=\"misjoyas-us\">Ideal para revender y emprender</td>\n</tr>\n\n</tbody>\n\n</table>\n\n</div>\n\n<style>\n\n.misjoyas-comparison{\nmargin:50px 0;\ntext-align:center;\nfont-family:inherit;\n}\n\n.misjoyas-title{\nfont-size:28px;\nmargin-bottom:25px;\n}\n\n.misjoyas-table{\nwidth:100%;\nmax-width:900px;\nmargin:auto;\nborder-collapse:collapse;\nfont-size:14px;\n}\n\n.misjoyas-table th,\n.misjoyas-table td{\npadding:14px;\nborder-bottom:1px solid #eee;\n}\n\n.misjoyas-table th{\nbackground:#f8f8f8;\nfont-weight:600;\n}\n\n.misjoyas-us{\nbackground:#f3f7f5;\nfont-weight:600;\ncolor:#0b6b4f;\n}\n\n.misjoyas-table tr:hover{\nbackground:#fafafa;\n}\n\n/* responsive */\n\n@media (max-width:768px){\n\n.misjoyas-table{\nfont-size:12px;\n}\n\n.misjoyas-table th,\n.misjoyas-table td{\npadding:10px;\n}\n\n}\n\n</style>",
-        "full_width": false,
-        "show_section_divider": false,
-        "padding_top": 28,
-        "padding_bottom": 28,
-        "full_width_mobile": false,
-        "show_section_divider_mobile": false,
-        "padding_top_mobile": 28,
-        "padding_bottom_mobile": 28
-      }
-    },
-    "multicolumn_FfPreB": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_PdD7Dx": {
-          "type": "column",
-          "settings": {
-            "icon": "truck",
-            "another_icon": "",
-            "custom_image": "shopify://shop_images/Container.png",
-            "custom_icon": "",
-            "title": "DESPACHO GRATIS",
-            "highlight_type": "underline",
-            "title_link": "",
-            "open_new_window": false,
-            "heading_size": 100,
-            "text": "<p>A todo el país por compras sobre $99.990</p>"
-          }
-        },
-        "column_633PUV": {
-          "type": "column",
-          "settings": {
-            "icon": "truck",
-            "another_icon": "",
-            "custom_image": "shopify://shop_images/Container2.png",
-            "custom_icon": "",
-            "title": "KIT DE REGALO",
-            "highlight_type": "underline",
-            "title_link": "",
-            "open_new_window": false,
-            "heading_size": 100,
-            "text": "<p>Con tu primera compra</p>"
-          }
-        },
-        "column_LbBjyq": {
-          "type": "column",
-          "settings": {
-            "icon": "truck",
-            "another_icon": "",
-            "custom_image": "shopify://shop_images/carbon_ibm-data-product-exchange.png",
-            "custom_icon": "",
-            "title": "CAMBIOS Y DEVOLUCIONES",
-            "highlight_type": "underline",
-            "title_link": "",
-            "open_new_window": false,
-            "heading_size": 100,
-            "text": "<p>Conoce nuestras políticas</p>"
-          }
-        }
-      },
-      "block_order": [
-        "column_PdD7Dx",
-        "column_633PUV",
-        "column_LbBjyq"
-      ],
-      "name": "t:sections.multicolumn.name",
-      "settings": {
-        "title": "",
-        "highlight_type": "underline",
-        "heading_size": 100,
-        "heading_tag": "h2",
-        "secondary_background": "section",
-        "border_column": "none",
-        "column_content_alignment": "center",
-        "icon_position": "above",
-        "icon_size": 45,
-        "enable_desktop_slider": true,
-        "swiper_on_mobile": false,
-        "enable_arrow_mobile": false,
-        "auto_play": true,
-        "change_bar_every": 5,
-        "background_color_light": "#232323",
-        "heading_light": "rgba(0,0,0,0)",
-        "text_light": "#ffffff",
-        "color_heading_highlight_light": "rgba(0,0,0,0)",
-        "line_border_light": "rgba(0,0,0,0)",
-        "color_icon_light": "rgba(0,0,0,0)",
-        "background_color_dark": "#232323",
-        "heading_dark": "rgba(0,0,0,0)",
-        "text_dark": "rgba(0,0,0,0)",
-        "color_heading_highlight_dark": "rgba(0,0,0,0)",
-        "line_border_dark": "rgba(0,0,0,0)",
-        "color_icon_dark": "rgba(0,0,0,0)",
-        "column_layout_desktop": "lg:w-1/4",
-        "section_height_desktop": "md:py-7",
-        "spacing_desktop": 28,
-        "full_width": false,
-        "padding_full_width": false,
-        "show_section_divider": false,
-        "padding_top": 28,
-        "padding_bottom": 28,
-        "column_layout_mobile": "w-full",
-        "section_height_mobile": "py-5",
-        "spacing_mobile": 16,
-        "full_width_mobile": false,
-        "show_section_divider_mobile": false,
-        "padding_top_mobile": 20,
-        "padding_bottom_mobile": 20
-      }
-    },
-    "product_description_jXVpPU": {
-      "type": "product-description",
-      "disabled": true,
-      "name": "t:sections.product-description.name",
-      "settings": {
-        "heading": "",
-        "highlight_type": "font_highlight",
-        "heading_size": 100,
-        "heading_tag": "h2",
-        "heading_alignment": "center",
-        "number_of_lines_shown": "none",
-        "read_more_label": "",
-        "see_less_label": "See less",
-        "text_size": 100,
-        "background_color_light": "rgba(0,0,0,0)",
-        "heading_light": "rgba(0,0,0,0)",
-        "color_heading_highlight_light": "rgba(0,0,0,0)",
-        "text_color_light": "rgba(0,0,0,0)",
-        "background_color_dark": "rgba(0,0,0,0)",
-        "heading_dark": "rgba(0,0,0,0)",
-        "color_heading_highlight_dark": "rgba(0,0,0,0)",
-        "text_color_dark": "rgba(0,0,0,0)",
-        "width_content": 75,
-        "full_width": false,
-        "show_section_divider": true,
-        "line_spacing": 150,
-        "padding_top": 28,
-        "padding_bottom": 28,
-        "show_section_divider_mobile": true,
-        "padding_top_mobile": 28,
-        "padding_bottom_mobile": 28
-      }
-    },
-    "logo_list_GgziEF": {
-      "type": "logo-list",
-      "blocks": {
-        "logo_QK8kBy": {
-          "type": "logo",
-          "disabled": true,
-          "settings": {
-            "image_logo": "shopify://shop_images/plata_fina_certificada_negro.png",
-            "image_link": "",
-            "open_new_window": false
-          }
-        },
-        "logo_XDkGfK": {
-          "type": "logo",
-          "disabled": true,
-          "settings": {
-            "image_logo": "shopify://shop_images/plata_fina_certificada_negro.png",
-            "image_link": "",
-            "open_new_window": false
-          }
-        },
-        "logo_i9Yp4e": {
-          "type": "logo",
-          "disabled": true,
-          "settings": {
-            "image_logo": "shopify://shop_images/plata_fina_certificada_negro.png",
-            "image_link": "",
-            "open_new_window": false
-          }
-        },
-        "logo_byXAtb": {
-          "type": "logo",
-          "disabled": true,
-          "settings": {
-            "image_logo": "shopify://shop_images/plata_fina_certificada_negro.png",
-            "image_link": "",
-            "open_new_window": false
-          }
-        }
-      },
-      "block_order": [
-        "logo_QK8kBy",
-        "logo_XDkGfK",
-        "logo_i9Yp4e",
-        "logo_byXAtb"
-      ],
-      "disabled": true,
-      "name": "t:sections.logo-list.name",
-      "settings": {
-        "heading": "",
-        "highlight_type": "underline",
-        "heading_size": 100,
-        "heading_tag": "h2",
-        "heading_alignment": "center",
-        "corner_image": 0,
-        "show_border": false,
-        "image_ratio": "auto",
-        "background_color_light": "rgba(0,0,0,0)",
-        "background_color_dark": "rgba(0,0,0,0)",
-        "enable_carousel_on_desktop": false,
-        "enable_arrow_mobile": false,
-        "auto_switch_bar": true,
-        "change_bar_every": 5,
-        "show_navigation": true,
-        "columns_desktop": 9,
-        "full_width": false,
-        "show_section_divider": false,
-        "spacing": 16,
-        "padding_top": 28,
-        "padding_bottom": 28,
-        "layout_mobile": "carousel",
-        "columns_mobile": "2",
-        "show_section_divider_mobile": false,
-        "spacing_mobile": 16,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 28
-      }
-    },
-    "custom_liquid_RXYqQR": {
-      "type": "custom-liquid",
-      "disabled": true,
-      "name": "t:sections.custom-liquid.name",
-      "settings": {
-        "custom_liquid": "<div class=\"review-slider-section\">\n\n<h2 class=\"review-title\">Opiniones de nuestros clientes</h2>\n\n<div class=\"review-slider\" id=\"reviewSlider\">\n\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Excelente calidad, la plata se ve muy fina.</p><span>Camila R.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Muy buena experiencia comprando en esta tienda.</p><span>Valentina M.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Las joyas llegaron perfectas.</p><span>Fernanda L.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Precios muy buenos para la calidad.</p><span>Daniela S.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Compré para revender y me fue excelente.</p><span>Natalia P.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Diseños muy elegantes.</p><span>Carolina G.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>La calidad me sorprendió mucho.</p><span>Sofía T.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Muy recomendable si buscas plata 925.</p><span>Paula V.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Todo llegó rápido y perfecto.</p><span>Andrea C.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Excelente atención.</p><span>Marcela D.</span></div>\n\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Muy buena calidad de productos.</p><span>Antonia L.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>La plata se nota auténtica.</p><span>Laura S.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Gran variedad de modelos.</p><span>Verónica M.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Tienda muy confiable.</p><span>Gabriela P.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Muy satisfecha con la compra.</p><span>Daniela F.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Volveré a comprar.</p><span>Rocío N.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Joyas muy elegantes.</p><span>Camila B.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Excelente precio calidad.</p><span>Valeria R.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Muy recomendable.</p><span>Claudia T.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Perfecto para emprender.</p><span>Nicole A.</span></div>\n\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Productos hermosos.</p><span>Carla M.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Me encantó la colección.</p><span>Francisca L.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Gran calidad.</p><span>Natalia G.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Todo llegó muy bien protegido.</p><span>Daniela P.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Muy confiables.</p><span>Macarena S.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Excelente experiencia.</p><span>Paula C.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Volveré a comprar seguro.</p><span>Andrea L.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Joyas muy lindas.</p><span>Camila F.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Muy buena tienda.</p><span>Valentina D.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Precios excelentes.</p><span>Fernanda R.</span></div>\n\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Me encantó comprar acá.</p><span>Rocío M.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Muy buena calidad.</p><span>Antonia G.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Piezas preciosas.</p><span>Carolina S.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Muy recomendable.</p><span>Sofía L.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Todo perfecto.</p><span>Claudia R.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Diseños hermosos.</p><span>Paula N.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Excelente compra.</p><span>Gabriela S.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Joyas increíbles.</p><span>Valeria P.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Gran calidad.</p><span>Natalia C.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Muy satisfecha.</p><span>Daniela M.</span></div>\n\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Excelente tienda.</p><span>Carla P.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Muy buena calidad.</p><span>Camila S.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Todo llegó perfecto.</p><span>Fernanda M.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Muy buena compra.</p><span>Valentina L.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Muy recomendable.</p><span>Rocío P.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Gran experiencia.</p><span>Claudia M.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Gran calidad.</p><span>Paula S.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Me encantó.</p><span>Andrea P.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Muy buena tienda.</p><span>Natalia R.</span></div>\n<div class=\"review-card\"><div class=\"stars\">★★★★★</div><p>Joyas increíbles.</p><span>Camila N.</span></div>\n\n</div>\n</div>\n\n<style>\n\n.review-slider-section{\nmax-width:1100px;\nmargin:70px auto;\ntext-align:center;\noverflow:hidden;\n}\n\n.review-title{\nfont-size:28px;\nmargin-bottom:30px;\n}\n\n.review-slider{\ndisplay:flex;\ngap:30px;\noverflow-x:auto;\nscroll-snap-type:x mandatory;\npadding:20px 40%;\nscroll-behavior:smooth;\n}\n\n.review-card{\nflex:0 0 340px;\nbackground:#fff;\nborder-radius:12px;\npadding:20px;\nbox-shadow:0 8px 20px rgba(0,0,0,0.08);\nscroll-snap-align:center;\ntext-align:left;\n}\n\n.stars{\ncolor:#f5b301;\nmargin-bottom:8px;\n}\n\n.review-card span{\ndisplay:block;\nmargin-top:10px;\nfont-weight:600;\n}\n\n.review-slider::-webkit-scrollbar{\ndisplay:none;\n}\n\n.review-slider{\nscrollbar-width:none;\n}\n\n@media(max-width:768px){\n\n.review-slider{\npadding:20px 25%;\n}\n\n.review-card{\nflex:0 0 260px;\n}\n\n}\n\n</style>\n\n<script>\n\nconst slider=document.getElementById(\"reviewSlider\")\n\nsetInterval(()=>{\nslider.scrollBy({\nleft:370,\nbehavior:\"smooth\"\n})\n},3500)\n\n</script>",
-        "full_width": false,
-        "show_section_divider": false,
-        "padding_top": 28,
-        "padding_bottom": 28,
-        "full_width_mobile": false,
-        "show_section_divider_mobile": false,
-        "padding_top_mobile": 28,
-        "padding_bottom_mobile": 28
-      }
     }
   },
   "order": [
     "main",
+    "product-recommendations",
     "custom_liquid_NLGn9E",
     "ticker_EDChGG",
-    "product-recommendations",
-    "recently_viewed_4h746e",
-    "1773246905d9151850",
-    "custom_liquid_tRBp6e",
-    "custom_liquid_iRmK4m",
-    "multicolumn_FfPreB",
-    "product_description_jXVpPU",
-    "logo_list_GgziEF",
-    "custom_liquid_RXYqQR"
+    "banner_pequeno_C9R6ib",
+    "recently_viewed_4h746e"
   ]
 }

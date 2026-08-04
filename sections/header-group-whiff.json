@@ -426,6 +426,7 @@
     },
     "huincha_header_TEzGXy": {
       "type": "huincha-header",
+      "disabled": true,
       "name": "Huincha header",
       "settings": {
         "enable": true,
