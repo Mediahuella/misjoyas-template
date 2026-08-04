@@ -26,6 +26,29 @@
   }
 }
 
+/*
+  Figma Familias Tipográficas (1947:7484):
+  Fustat Regular (400) — títulos, cuerpo, descripciones
+  Fustat SemiBold (600) — CTAs, precios, links
+*/
+:root {
+  --font-button-weight: 600;
+}
+
+.font-medium,
+.md\:font-medium {
+  font-weight: 400;
+}
+
+.font-bold,
+.font-semibold,
+.tw-font-semibold,
+.tw-font-bold,
+strong,
+b {
+  font-weight: 600;
+}
+
 /* Footer: forzar 4 columnas en desktop (md:w-1/4 no está en el CSS upstream del tema) */
 @media (min-width: 768px) {
   .section-footer div[class*="footer-col--"] {
@@ -2060,7 +2083,7 @@
 
   .mj-header-nav .mj-nav-item__link .mj-menu-title__text strong,
   .mj-header-nav .mj-nav-item__link .mj-menu-title__text b {
-    font-weight: 700;
+    font-weight: 600;
   }
 
   .mj-header-nav .mj-nav-item__link:hover {
@@ -2143,7 +2166,7 @@
     margin: 0 0 16px;
     color: #000;
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 24px;
     letter-spacing: 0.02em;
     text-transform: uppercase;
@@ -2385,7 +2408,7 @@
 }
 
 .mj-mobile-nav__logo-text {
-  font-weight: 700;
+  font-weight: 600;
   font-size: 16px;
   color: #000;
 }
@@ -2472,7 +2495,7 @@
 
 .mj-mobile-nav__title-text strong,
 .mj-mobile-nav__title-text b {
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .mj-mobile-nav__badge {
@@ -2552,7 +2575,7 @@
 .mj-mobile-nav__panel-heading {
   margin: 0 0 20px;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 24px;
   letter-spacing: 0.01em;
   text-transform: uppercase;

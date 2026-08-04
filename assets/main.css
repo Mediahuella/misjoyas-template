@@ -539,24 +539,20 @@ video {
 .tw-z-\[60\] {
   z-index: 60;
 }
-.tw-mx-auto {
-  margin-left: auto;
-  margin-right: auto;
-}
 .tw-mb-4 {
   margin-bottom: 16px;
 }
 .tw-mt-1\.5 {
   margin-top: 6px;
 }
+.tw-mt-2 {
+  margin-top: 8px;
+}
 .tw-mt-4 {
   margin-top: 16px;
 }
 .tw-mt-6 {
   margin-top: 24px;
-}
-.tw-mt-2 {
-  margin-top: 8px;
 }
 .tw-block {
   display: block;
@@ -567,12 +563,6 @@ video {
 .tw-inline-flex {
   display: inline-flex;
 }
-.tw-grid {
-  display: grid;
-}
-.tw-contents {
-  display: contents;
-}
 .tw-hidden {
   display: none;
 }
@@ -581,6 +571,9 @@ video {
 }
 .tw-h-10 {
   height: 40px;
+}
+.tw-h-3 {
+  height: 12px;
 }
 .tw-h-5 {
   height: 20px;
@@ -600,17 +593,20 @@ video {
 .tw-h-full {
   height: 100%;
 }
-.tw-h-3 {
-  height: 12px;
-}
 .tw-max-h-96 {
   max-height: 384px;
 }
 .tw-max-h-\[55vh\] {
   max-height: 55vh;
 }
+.tw-w-1\/2 {
+  width: 50%;
+}
 .tw-w-10 {
   width: 40px;
+}
+.tw-w-3\/4 {
+  width: 75%;
 }
 .tw-w-5 {
   width: 20px;
@@ -630,12 +626,6 @@ video {
 .tw-w-full {
   width: 100%;
 }
-.tw-w-1\/2 {
-  width: 50%;
-}
-.tw-w-3\/4 {
-  width: 75%;
-}
 .tw-min-w-0 {
   min-width: 0px;
 }
@@ -647,9 +637,6 @@ video {
 }
 .tw-shrink-0 {
   flex-shrink: 0;
-}
-.tw-grid-cols-2 {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 .tw-flex-row {
   flex-direction: row;
@@ -677,9 +664,6 @@ video {
 }
 .tw-gap-5 {
   gap: 20px;
-}
-.tw-gap-4 {
-  gap: 16px;
 }
 .tw-self-start {
   align-self: flex-start;
@@ -754,13 +738,13 @@ video {
   padding-left: 16px;
   padding-right: 16px;
 }
-.tw-py-3 {
-  padding-top: 12px;
-  padding-bottom: 12px;
-}
 .tw-px-5 {
   padding-left: 20px;
   padding-right: 20px;
+}
+.tw-py-3 {
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
 .tw-pl-3 {
   padding-left: 12px;
@@ -847,6 +831,29 @@ video {
   Preflight resets h1-h6, a, img globally; these overrides restore
   expected behavior inside the upstream theme components.
 */
+
+/*
+  Figma Familias Tipográficas (1947:7484):
+  Fustat Regular (400) — títulos, cuerpo, descripciones
+  Fustat SemiBold (600) — CTAs, precios, links
+*/
+:root {
+  --font-button-weight: 600;
+}
+
+.font-medium,
+.md\:font-medium {
+  font-weight: 400;
+}
+
+.font-bold,
+.font-semibold,
+.tw-font-semibold,
+.tw-font-bold,
+strong,
+b {
+  font-weight: 600;
+}
 
 /* Footer: forzar 4 columnas en desktop (md:w-1/4 no está en el CSS upstream del tema) */
 @media (min-width: 768px) {
@@ -2886,7 +2893,7 @@ video {
 
   .mj-header-nav .mj-nav-item__link .mj-menu-title__text strong,
   .mj-header-nav .mj-nav-item__link .mj-menu-title__text b {
-    font-weight: 700;
+    font-weight: 600;
   }
 
   .mj-header-nav .mj-nav-item__link:hover {
@@ -2969,7 +2976,7 @@ video {
     margin: 0 0 16px;
     color: #000;
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 24px;
     letter-spacing: 0.02em;
     text-transform: uppercase;
@@ -3214,7 +3221,7 @@ video {
 }
 
 .mj-mobile-nav__logo-text {
-  font-weight: 700;
+  font-weight: 600;
   font-size: 16px;
   color: #000;
 }
@@ -3301,7 +3308,7 @@ video {
 
 .mj-mobile-nav__title-text strong,
 .mj-mobile-nav__title-text b {
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .mj-mobile-nav__badge {
@@ -3382,7 +3389,7 @@ video {
 .mj-mobile-nav__panel-heading {
   margin: 0 0 20px;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 24px;
   letter-spacing: 0.01em;
   text-transform: uppercase;
@@ -3598,15 +3605,6 @@ video {
 
   .md\:tw-hidden {
     display: none;
-  }
-
-  .md\:tw-gap-4 {
-    gap: 16px;
-  }
-
-  .md\:tw-px-0 {
-    padding-left: 0px;
-    padding-right: 0px;
   }
 }
 @media (min-width: 1024px) {
