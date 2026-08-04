@@ -920,7 +920,7 @@
         "gift_card_price_must_be_greater_than_zero": "El producto {{ name }} del paquete no se puede agregar al carro.",
         "cart_too_large": "El carro es demasiado grande",
         "only_one_added_to_cart": "Debido a la disponibilidad, solo se añadió un artículo al carro.",
-        "only_n_added_to_cart": "Debido a la disponibilidad, solo se añadieron {{ quuantity }} artículos al carro",
+        "only_n_added_to_cart": "Debido a la disponibilidad, solo se añadieron {{ quantity }} artículos al carro",
         "maximum_available_quantity_reached": "Tu carro ya tiene la cantidad máxima de este artículo",
         "cart_attributes_error": "Los atributos del carro incluyen datos no válidos"
       }
