@@ -539,6 +539,10 @@ video {
 .tw-z-\[60\] {
   z-index: 60;
 }
+.tw-mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
 .tw-mb-4 {
   margin-bottom: 16px;
 }
@@ -551,6 +555,9 @@ video {
 .tw-mt-6 {
   margin-top: 24px;
 }
+.tw-mt-2 {
+  margin-top: 8px;
+}
 .tw-block {
   display: block;
 }
@@ -559,6 +566,12 @@ video {
 }
 .tw-inline-flex {
   display: inline-flex;
+}
+.tw-grid {
+  display: grid;
+}
+.tw-contents {
+  display: contents;
 }
 .tw-hidden {
   display: none;
@@ -587,6 +600,9 @@ video {
 .tw-h-full {
   height: 100%;
 }
+.tw-h-3 {
+  height: 12px;
+}
 .tw-max-h-96 {
   max-height: 384px;
 }
@@ -614,6 +630,12 @@ video {
 .tw-w-full {
   width: 100%;
 }
+.tw-w-1\/2 {
+  width: 50%;
+}
+.tw-w-3\/4 {
+  width: 75%;
+}
 .tw-min-w-0 {
   min-width: 0px;
 }
@@ -625,6 +647,9 @@ video {
 }
 .tw-shrink-0 {
   flex-shrink: 0;
+}
+.tw-grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 .tw-flex-row {
   flex-direction: row;
@@ -653,8 +678,14 @@ video {
 .tw-gap-5 {
   gap: 20px;
 }
+.tw-gap-4 {
+  gap: 16px;
+}
 .tw-self-start {
   align-self: flex-start;
+}
+.tw-overflow-hidden {
+  overflow: hidden;
 }
 .tw-overflow-y-auto {
   overflow-y: auto;
@@ -726,6 +757,10 @@ video {
 .tw-py-3 {
   padding-top: 12px;
   padding-bottom: 12px;
+}
+.tw-px-5 {
+  padding-left: 20px;
+  padding-right: 20px;
 }
 .tw-pl-3 {
   padding-left: 12px;
@@ -3563,6 +3598,15 @@ video {
 
   .md\:tw-hidden {
     display: none;
+  }
+
+  .md\:tw-gap-4 {
+    gap: 16px;
+  }
+
+  .md\:tw-px-0 {
+    padding-left: 0px;
+    padding-right: 0px;
   }
 }
 @media (min-width: 1024px) {

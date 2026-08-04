@@ -381,10 +381,17 @@
       "previous": "Previous products",
       "next": "Next products"
     },
+    "product-recommendations": {
+      "design_mode_hint": "Preview only — real recommendations appear on the live product page.",
+      "previous": "Previous products",
+      "next": "Next products",
+      "aria_label": "Product recommendations"
+    },
     "recently-viewed-products": {
       "name": "Recently viewed",
       "aria_label": "Recently viewed products",
       "placeholder": "Browse products to see them here.",
+      "design_mode_hint": "Preview only — recently viewed products appear after browsing the store.",
       "previous": "Previous products",
       "next": "Next products",
       "remove": "Remove from recently viewed"
