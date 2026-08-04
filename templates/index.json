@@ -12,22 +12,21 @@
     "banner_principal_home": {
       "type": "banner-principal",
       "blocks": {
-        "slide_aKdGEi": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/Banner_dcto-dia-nino_desktop.jpg",
-            "image_mobile": "shopify://shop_images/Banner_dcto-dia-nino_mobile.jpg",
-            "image_alt": "",
-            "link": "shopify://collections/dia-del-nino",
-            "open_new_window": false,
-            "schedule_enabled": true,
-            "schedule_start": "",
-            "schedule_end": "2026-08-02 23:59:00"
-          }
-        },
         "slide_GJzrPK": {
           "type": "slide",
-          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Banner-Especial-Aniversario_desktop.jpg",
+            "image_mobile": "shopify://shop_images/Banner-Especial-Aniversario_mobile.jpg",
+            "image_alt": "",
+            "link": "shopify://collections/aniversario",
+            "open_new_window": false,
+            "schedule_enabled": false,
+            "schedule_start": "",
+            "schedule_end": ""
+          }
+        },
+        "slide_BxDhPT": {
+          "type": "slide",
           "settings": {
             "image": "shopify://shop_images/banner-lanzamiento_desktop.jpg",
             "image_mobile": "shopify://shop_images/banner-lanzamiento_mobile.jpg",
@@ -54,6 +53,7 @@
         },
         "slide_jhGfFd": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Banner_compra-minima_Desktop_00fc8bc8-a7b6-46ab-a41f-cb9ac0a4d61e.jpg",
             "image_mobile": "shopify://shop_images/Banner_compra-minima_mobile_7e864395-0255-41f0-8306-9408ea4f883d.jpg",
@@ -68,8 +68,8 @@
         "slide_dqdmni": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Banner_general_desktop_63bac82c-dc7e-4bd6-a604-23a15312461c.jpg",
-            "image_mobile": "shopify://shop_images/Banner_general_mobile_cba64c29-6305-4fca-90d9-4a62da46c2c8.jpg",
+            "image": "shopify://shop_images/Banner_general_Desktop_b480a481-46bd-432e-92e7-eaeada413d47.jpg",
+            "image_mobile": "shopify://shop_images/Banner_general_Mobile_c5bb8df0-cd03-4a29-b3e2-e02c7c0b59e0.jpg",
             "image_alt": "",
             "link": "shopify://collections/all",
             "open_new_window": false,
@@ -80,8 +80,8 @@
         }
       },
       "block_order": [
-        "slide_aKdGEi",
         "slide_GJzrPK",
+        "slide_BxDhPT",
         "slide_D8eTJ4",
         "slide_jhGfFd",
         "slide_dqdmni"
@@ -360,6 +360,17 @@
         "slide_kit_1": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/Banner-sorteo_secundario_desktop_f8ebacd9-9c94-410d-94a1-67bbd5c05ad7.jpg",
+            "image_mobile": "shopify://shop_images/Banner-sorteo_secundario_mobile_fd15134b-a6de-46d1-a83e-e0beb774ff02.jpg",
+            "image_alt": "",
+            "link": "shopify://pages/quienes-somos",
+            "open_new_window": false
+          }
+        },
+        "slide_cdmXne": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
             "image": "shopify://shop_images/Banner_secundario_desktop_aa8dca55-d325-4388-a0b0-511289084eb0.jpg",
             "image_mobile": "shopify://shop_images/Banner_secundario_mobile_b8491767-b642-4318-915e-da8194699dc7.jpg",
             "image_alt": "",
@@ -386,24 +397,13 @@
             "link": "shopify://products/kit-primera-compra",
             "open_new_window": false
           }
-        },
-        "slide_zrye8m": {
-          "type": "slide",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/banner-2_dia_del_padre_desktop.jpg",
-            "image_mobile": "shopify://shop_images/banner-2_dia_del_padre_mobile.jpg",
-            "image_alt": "",
-            "link": "shopify://collections/dia-del-padre",
-            "open_new_window": false
-          }
         }
       },
       "block_order": [
         "slide_kit_1",
+        "slide_cdmXne",
         "slide_LUmEed",
-        "slide_tB7k7t",
-        "slide_zrye8m"
+        "slide_tB7k7t"
       ],
       "name": "Banner kit",
       "settings": {
@@ -668,7 +668,7 @@
         "column_DFytx6": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/emprende-07_jpg.jpg",
+            "image": "shopify://shop_images/Emprende-con-MISJOYAS.jpg",
             "image_alt": "",
             "image_link": "shopify://pages/todo-para-emprender",
             "open_new_window_image": false,
@@ -686,7 +686,7 @@
         "column_NMDJkE": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/caja-quienes-comos.jpg",
+            "image": "shopify://shop_images/Quienes-somos.jpg",
             "image_alt": "",
             "image_link": "shopify://pages/quienes-somos",
             "open_new_window_image": false,

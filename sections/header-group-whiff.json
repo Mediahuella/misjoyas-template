@@ -118,8 +118,8 @@
         "tree_menu_4D8BF6": {
           "type": "tree_menu",
           "settings": {
-            "heading": "Licenciatura",
-            "menu": "licenciatura",
+            "heading": "Especial Aniversario",
+            "menu": "aniversario",
             "menu_item_link": "",
             "open_new_window": false,
             "show_image_collection": false,
@@ -149,6 +149,7 @@
         },
         "button_qcPwPX": {
           "type": "button",
+          "disabled": true,
           "settings": {
             "button_label": "Ofertas Black",
             "button_link": "shopify://collections/descuentos-activos",
@@ -263,7 +264,7 @@
           "type": "tree_menu",
           "settings": {
             "heading": "Colecciones",
-            "menu": "colecciones-rebajas-invierno",
+            "menu": "colecciones-aniversario",
             "menu_item_link": "",
             "open_new_window": false,
             "show_image_collection": false,
@@ -392,6 +393,7 @@
       "blocks": {
         "menu_licenciatura": {
           "type": "menu",
+          "disabled": true,
           "settings": {
             "heading": "Licenciatura",
             "menu": "licenciatura",
@@ -487,6 +489,7 @@
         },
         "button_iKAzyJ": {
           "type": "button",
+          "disabled": true,
           "settings": {
             "button_label": "Ofertas Black",
             "button_link": "shopify://collections/descuentos-activos",
@@ -751,7 +754,7 @@
           "type": "menu",
           "settings": {
             "heading": "Colecciones",
-            "menu": "colecciones-rebajas-invierno",
+            "menu": "colecciones-aniversario",
             "menu_item_link": "",
             "open_new_window": false,
             "show_collection_image": false,
