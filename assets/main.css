@@ -1035,29 +1035,54 @@ b {
 @media (max-width: 767px) {
   .card-product .misjoyas-price--card .misjoyas-price__row,
   .x-card-price .misjoyas-price--card .misjoyas-price__row {
-    gap: 6px;
+    flex-wrap: wrap;
+    align-items: center;
+    -moz-column-gap: 6px;
+         column-gap: 6px;
+    row-gap: 4px;
   }
 
   .card-product .misjoyas-price--card .misjoyas-price__current,
   .x-card-price .misjoyas-price--card .misjoyas-price__current {
     font-size: 18px;
     line-height: 24px;
+    order: 0;
   }
 
   .card-product .misjoyas-price--card .misjoyas-price__compare,
   .x-card-price .misjoyas-price--card .misjoyas-price__compare {
     font-size: 14px;
     line-height: 20px;
+    order: 0;
+  }
+
+  /*
+    Pantallas chicas (2 cards):
+    Línea 1 — precio rosado + tachado
+    Línea 2 — tag % dcto (tamaño natural, sin recorte ni barra full-width)
+  */
+  .card-product .misjoyas-price--card .misjoyas-price__row::before,
+  .x-card-price .misjoyas-price--card .misjoyas-price__row::before {
+    content: '';
+    flex: 0 0 100%;
+    width: 100%;
+    height: 0;
+    order: 1;
   }
 
   .card-product .misjoyas-price--card .misjoyas-price__badge,
   .x-card-price .misjoyas-price--card .misjoyas-price__badge {
+    order: 2;
+    flex: 0 0 auto;
+    width: auto;
+    max-width: 100%;
     min-height: 20px;
     height: 20px;
     padding: 0 6px;
     border-radius: 2px;
     font-size: 12px;
     line-height: 16px;
+    justify-content: center;
   }
 }
 
@@ -1065,6 +1090,48 @@ b {
 .card-product .x-card-title,
 .card-product [class*="card-product-title-text-"] {
   font-size: 1rem !important;
+}
+
+/*
+  Recomendaciones / últimos vistos (móvil): alinear precio, atributos y variante
+  aunque falte oferta, material o selector. Desktop conserva peek y equal-height.
+*/
+@media (max-width: 767px) {
+  .product-recommendations .card-product .card__heading,
+  .recently-viewed-section .card-product .card__heading {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    min-height: 2.5rem; /* 2 líneas × ~1.25 line-height */
+    margin-bottom: 0.75rem;
+  }
+
+  /* Ranura de atributos destacados (material, etc.) aunque empty:hidden la oculte */
+  .product-recommendations .card-info-inner > div[class*="gap-[3px]"],
+  .recently-viewed-section .card-info-inner > div[class*="gap-[3px]"] {
+    min-height: 30px;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .product-recommendations .card-info-inner > div[class*="gap-[3px]"]:empty,
+  .recently-viewed-section .card-info-inner > div[class*="gap-[3px]"]:empty {
+    display: flex !important;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  /* Reserva altura de 2 líneas (precios + tag) para alinear cards con/sin oferta */
+  .product-recommendations .card-product .x-card-price,
+  .recently-viewed-section .card-product .x-card-price {
+    min-height: 48px;
+    align-content: flex-start;
+  }
+
+  .product-recommendations .card-product-equal-height .card-product-atc-wrapper .card-product-variant-area,
+  .recently-viewed-section .card-product-equal-height .card-product-atc-wrapper .card-product-variant-area {
+    min-height: 40px;
+  }
 }
 
 /* PDP mobile: márgenes 20px (Figma Product Info Container) */

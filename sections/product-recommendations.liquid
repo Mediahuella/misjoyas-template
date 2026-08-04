@@ -14,6 +14,10 @@
   assign pad_x = section.settings.padding_x | default: 80
   assign pad_x_mobile = section.settings.padding_x_mobile | default: 20
 
+  # Peek solo desktop (Figma 1838:14769). Mobile: 2 cards exactas (sin recorte).
+  assign per_page_desktop = columns_desktop | times: 1.0 | plus: 0.25
+  assign per_page_mobile = columns_mobile | times: 1.0
+
   assign disable_quickview = true
   if section.settings.show_quickview
     assign disable_quickview = false
@@ -46,10 +50,12 @@
     width: 100%;
     padding: {{ section.settings.padding_top_mobile }}px {{ pad_x_mobile }}px {{ section.settings.padding_bottom_mobile }}px;
     box-sizing: border-box;
+    overflow: hidden;
   }
   @media (min-width: 768px) {
     .product-rec-mj-{{ section.id }} {
-      padding: {{ section.settings.padding_top }}px {{ pad_x }}px {{ section.settings.padding_bottom }}px;
+      /* Desktop: sin padding derecho para peek del 5.º producto */
+      padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px {{ pad_x }}px;
     }
   }
   .product-rec-mj-{{ section.id }} .product-rec-mj__inner {
@@ -58,6 +64,12 @@
     margin: 0;
     padding-left: 0;
     padding-right: 0;
+  }
+  @media (min-width: 768px) {
+    .product-rec-mj-{{ section.id }} .product-rec-mj__header,
+    .product-rec-mj-{{ section.id }} .product-rec-mj__footer {
+      padding-right: {{ pad_x }}px;
+    }
   }
   .product-rec-mj-{{ section.id }} .product-rec-mj__header {
     display: flex;
@@ -108,7 +120,7 @@
       {%- else -%}
         margin-right: {{ gap_mobile }}px;
       {%- endif -%}
-      width: calc(((100% + {{ gap_mobile }}px) / {{ columns_mobile }}) - {{ gap_mobile }}px);
+      width: calc(((100% + {{ gap_mobile }}px) / {{ per_page_mobile }}) - {{ gap_mobile }}px);
     }
   }
   @media (min-width: 768px) {
@@ -118,7 +130,7 @@
       {%- else -%}
         margin-right: {{ gap_desktop }}px;
       {%- endif -%}
-      width: calc(((100% + {{ gap_desktop }}px) / {{ columns_desktop }}) - {{ gap_desktop }}px);
+      width: calc(((100% + {{ gap_desktop }}px) / {{ per_page_desktop }}) - {{ gap_desktop }}px);
     }
   }
   .product-rec-mj-{{ section.id }} .splide__arrows {
@@ -246,7 +258,6 @@
   .product-rec-mj-{{ section.id }} .product-rec-mj__footer {
     display: flex;
     justify-content: center;
-    padding: 0;
   }
 {%- endstyle -%}
 
@@ -319,34 +330,37 @@
                   "mediaQuery": "min",
                   "updateOnMove": "true",
                   "gap": "{{ gap_mobile }}px",
-                  "perPage": {{ columns_mobile }},
-                  "perMove": {{ columns_mobile }},
+                  "perPage": {{ per_page_mobile }},
+                  "perMove": 1,
                   "autoWidth": false,
                   "arrows": false,
                   "pagination": false,
                   "drag": true,
                   "trimSpace": false,
+                  "focus": 0,
                   {%- if settings.lang_direction contains request.locale.iso_code -%}
                     "direction": "rtl",
                   {%- endif -%}
                   "breakpoints": {
                     300: {
                       "gap": "{{ gap_mobile }}px",
-                      "perPage": {{ columns_mobile }},
-                      "perMove": {{ columns_mobile }}
+                      "perPage": {{ per_page_mobile }},
+                      "perMove": 1
                     },
                     768: {
                       "destroy": false,
-                      "perPage": {{ columns_desktop }},
-                      "perMove": {{ columns_desktop }},
+                      "perPage": {{ per_page_desktop }},
+                      "perMove": 1,
                       "autoWidth": false,
                       "gap": "{{ gap_desktop }}px",
-                      "drag": true
+                      "drag": true,
+                      "focus": 0
                     },
                     1024: {
-                      "perPage": {{ columns_desktop }},
-                      "perMove": {{ columns_desktop }},
-                      "gap": "{{ gap_desktop }}px"
+                      "perPage": {{ per_page_desktop }},
+                      "perMove": 1,
+                      "gap": "{{ gap_desktop }}px",
+                      "focus": 0
                     }
                   },
                   "classes": {
@@ -369,8 +383,8 @@
                         if (window.bindFeaturedCollectionMjArrows) {
                           window.bindFeaturedCollectionMjArrows(
                             document.getElementById("product-rec-mj-{{ section.id }}"),
-                            {{ columns_desktop }},
-                            {{ columns_mobile }}
+                            1,
+                            1
                           );
                         }
                       }
@@ -443,7 +457,7 @@
             {%- if enable_slider -%}
               {%- liquid
                 assign slide_count_f = slide_count | times: 1.0
-                assign mobile_width_bar = columns_mobile | times: 1.0 | divided_by: slide_count_f
+                assign mobile_width_bar = per_page_mobile | divided_by: slide_count_f
                 if mobile_width_bar > 1.0
                   assign mobile_width_bar = 1.0
                 endif
