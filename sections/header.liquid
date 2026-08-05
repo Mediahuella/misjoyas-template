@@ -527,8 +527,20 @@
 {%- comment -%}
   Mobile drawer is rendered here so it can use the same header blocks as desktop.
   Shopify cannot read another section's blocks from mobile-navigation.
+  Resolve logo here: SectionDrop may not serialize through {% render %}.
 {%- endcomment -%}
-{% render 'mj-mobile-nav-drawer', nav_section: section %}
+{%- liquid
+  assign mj_mobile_ui = sections['mobile-navigation']
+  assign mj_drawer_logo = blank
+  if mj_mobile_ui != blank and mj_mobile_ui.settings.logo != blank
+    assign mj_drawer_logo = mj_mobile_ui.settings.logo
+  endif
+-%}
+{% render 'mj-mobile-nav-drawer',
+  nav_section: section,
+  ui: mj_mobile_ui,
+  drawer_logo: mj_drawer_logo
+%}
 {% schema %}
 {
   "name": "t:sections.header.name",
@@ -3313,6 +3325,13 @@
           "content": "Imagen del desplegable"
         },
         {
+          "type": "checkbox",
+          "id": "show_promo_image",
+          "label": "Mostrar imagen promocional",
+          "default": true,
+          "info": "Si está apagado, se oculta la imagen y el menú usa todo el ancho del panel."
+        },
+        {
           "type": "image_picker",
           "id": "promo_image",
           "label": "Imagen promocional"
@@ -3337,7 +3356,8 @@
           "type": "checkbox",
           "id": "enable_button_style",
           "default": false,
-          "label": "Mostrar con fondo de botón"
+          "label": "Mostrar con fondo de botón",
+          "info": "Activa fondo en el título. En hover pasa a negro, sin subrayado."
         },
         {
           "type": "select",

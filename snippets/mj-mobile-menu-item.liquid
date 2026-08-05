@@ -1,5 +1,8 @@
 {% comment %}
   MisJoyas mobile nav item — header blocks: button / tree_menu.
+  Mirrors desktop: tree_menu with a menu = dropdown (accordion), even if
+  enable_button_style is on. cta_link must NOT collapse that into a plain link
+  (desktop still shows the megamenu when cta_link is set).
   Accepts: block, section, index, menus, is_rtl
 {% endcomment %}
 {%- liquid
@@ -10,7 +13,7 @@
 
   assign menu_link = blank
   assign has_menu = false
-  assign use_button = false
+  assign use_button_style = false
   assign title_color = blank
   assign badge_label = blank
   assign panel_heading = blank
@@ -19,22 +22,22 @@
   assign open_new_window = false
 
   if is_header_button
-    assign use_button = true
     assign menu_link = block.settings.button_link
     assign item_heading = block.settings.button_label
     assign item_heading_rich = block.settings.button_label_rich
     assign open_new_window = block.settings.open_new_window
+    assign use_button_style = true
   else
+    if block.settings.menu != blank and block.settings.menu.links != blank
+      assign has_menu = true
+    endif
     if block.settings.menu_item_link != blank
       assign menu_link = block.settings.menu_item_link
     elsif block.settings.cta_link != blank
       assign menu_link = block.settings.cta_link
     endif
-    if block.settings.menu != blank and block.settings.menu.links != blank
-      assign has_menu = true
-    endif
     if block.settings.enable_button_style
-      assign use_button = true
+      assign use_button_style = true
     endif
     assign title_color = block.settings.title_color
     assign badge_label = block.settings.label
@@ -49,6 +52,8 @@
     assign btn_variant = 'button-outline'
   elsif block.settings.show_button_style == 'text-link'
     assign btn_variant = 'button-text-link'
+  else
+    assign btn_variant = 'button-disable-effect'
   endif
   assign wrapper_class = 'mobile-menu-button-' | append: block.id
 -%}
@@ -83,7 +88,8 @@
   {%- endif -%}
 {%- endcapture -%}
 
-{%- if use_button -%}
+{%- if is_header_button -%}
+  {%- comment -%} Pure Header Button block: CTA link only. {%- endcomment -%}
   <li class="mj-mobile-nav__cta-item x-block-menu-{{ index }} block-mobile-navigation" {{ block.shopify_attributes }}>
     {%- render 'header-menu-button-styles', block: block, css_class: wrapper_class, text_only_hover: true -%}
     <div class="mj-mobile-nav__cta {{ wrapper_class }}">
@@ -95,52 +101,38 @@
         >
           {{ menu_title }}
         </a>
-      {%- elsif has_menu -%}
-        <button
-          type="button"
-          class="button {{ btn_variant }} mj-mobile-nav__cta-btn"
-          @click="$store.xMobileNav.setActiveLink('{{ index }}'); $store.xMobileNav.scrollTop();"
-        >
-          {{ menu_title }}
-        </button>
       {%- else -%}
         <span class="button {{ btn_variant }} mj-mobile-nav__cta-btn opacity-70">{{ menu_title }}</span>
       {%- endif -%}
     </div>
-    {%- if has_menu and menu_link == blank -%}
-      <div
-        class="menu-drawer mj-mobile-nav__panel duration-300 ease-in-out top-0 left-0 absolute background-header w-full h-full z-20 invisible{% if is_rtl %} -translate-x-full{% else %} translate-x-full{% endif %}"
-        :class="{ 'menu-opening': $store.xMobileNav.currentMenuLinks.includes('{{ index }}') }"
-      >
-        {% render 'mj-mobile-drill-panel',
-          links: block.settings.menu.links,
-          back_title: item_heading,
-          panel_heading: panel_heading,
-          panel_id: index,
-          start_id: index,
-          is_rtl: is_rtl
-        %}
-      </div>
-    {%- endif -%}
   </li>
 
 {%- elsif has_menu -%}
+  {%- comment -%}
+    Tree menu with children = accordion (desktop megamenu equivalent).
+    enable_button_style only changes the trigger look, not the interaction.
+  {%- endcomment -%}
   <li
     x-data="{ open: false }"
-    class="mj-mobile-nav__item x-block-menu-{{ index }} block-mobile-navigation"
+    class="mj-mobile-nav__item x-block-menu-{{ index }} block-mobile-navigation{% if use_button_style %} mj-mobile-nav__item--button{% endif %}"
     {{ block.shopify_attributes }}
   >
+    {%- if use_button_style -%}
+      {%- render 'header-menu-button-styles', block: block, css_class: wrapper_class, text_only_hover: true -%}
+    {%- endif -%}
     <button
       type="button"
-      class="mj-mobile-nav__trigger"
+      class="mj-mobile-nav__trigger{% if use_button_style %} button {{ btn_variant }} mj-mobile-nav__cta-btn {{ wrapper_class }}{% endif %}"
       @click="open = !open"
       :aria-expanded="open.toString()"
     >
       <span
         class="mj-mobile-nav__title"
-        {% if title_color != blank and title_color.alpha != 0.0 %}
-          style="color: {{ title_color }};"
-        {% endif %}
+        {% unless use_button_style %}
+          {% if title_color != blank and title_color.alpha != 0.0 %}
+            style="color: {{ title_color }};"
+          {% endif %}
+        {% endunless %}
       >
         {{ menu_title }}
       </span>
@@ -193,6 +185,25 @@
         </div>
       {%- endif -%}
     {%- endfor -%}
+  </li>
+
+{%- elsif use_button_style -%}
+  {%- comment -%} Tree menu styled as button but with no children: CTA link. {%- endcomment -%}
+  <li class="mj-mobile-nav__cta-item x-block-menu-{{ index }} block-mobile-navigation" {{ block.shopify_attributes }}>
+    {%- render 'header-menu-button-styles', block: block, css_class: wrapper_class, text_only_hover: true -%}
+    <div class="mj-mobile-nav__cta {{ wrapper_class }}">
+      {%- if menu_link != blank -%}
+        <a
+          href="{{ menu_link }}"
+          {% if open_new_window %}target="_blank"{% endif %}
+          class="button {{ btn_variant }} mj-mobile-nav__cta-btn"
+        >
+          {{ menu_title }}
+        </a>
+      {%- else -%}
+        <span class="button {{ btn_variant }} mj-mobile-nav__cta-btn opacity-70">{{ menu_title }}</span>
+      {%- endif -%}
+    </div>
   </li>
 
 {%- elsif item_heading != blank or item_heading_rich != blank -%}

@@ -325,10 +325,15 @@
               {% if enable_slider %}
                 x-data-slider="{{ section.id }}"
                 x-intersect.once.margin.200px='$store.xSplide.load($el, {
-                  "speed": 1000,
+                  "speed": 360,
+                  "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
                   "type": "slide",
                   "mediaQuery": "min",
-                  "updateOnMove": "true",
+                  "updateOnMove": true,
+                  "waitForTransition": false,
+                  "flickPower": 350,
+                  "flickMaxPages": 2,
+                  "dragMinThreshold": { "mouse": 0, "touch": 5 },
                   "gap": "{{ gap_mobile }}px",
                   "perPage": {{ per_page_mobile }},
                   "perMove": 1,
@@ -345,7 +350,9 @@
                     300: {
                       "gap": "{{ gap_mobile }}px",
                       "perPage": {{ per_page_mobile }},
-                      "perMove": 1
+                      "perMove": 1,
+                      "speed": 360,
+                      "waitForTransition": false
                     },
                     768: {
                       "destroy": false,
@@ -354,13 +361,16 @@
                       "autoWidth": false,
                       "gap": "{{ gap_desktop }}px",
                       "drag": true,
-                      "focus": 0
+                      "focus": 0,
+                      "speed": 500,
+                      "waitForTransition": false
                     },
                     1024: {
                       "perPage": {{ per_page_desktop }},
                       "perMove": 1,
                       "gap": "{{ gap_desktop }}px",
-                      "focus": 0
+                      "focus": 0,
+                      "speed": 500
                     }
                   },
                   "classes": {

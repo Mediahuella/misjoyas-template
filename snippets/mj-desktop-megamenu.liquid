@@ -11,12 +11,16 @@
   if cta_link == blank and block.settings.menu_item_link != blank
     assign cta_link = block.settings.menu_item_link
   endif
+  assign show_promo_image = true
+  if block.settings.show_promo_image == false
+    assign show_promo_image = false
+  endif
   assign has_promo = false
-  if block.settings.promo_image != blank
+  if show_promo_image and block.settings.promo_image != blank
     assign has_promo = true
   endif
 -%}
-<div class="mj-mega">
+<div class="mj-mega{% unless has_promo %} mj-mega--no-promo{% endunless %}">
   {%- if mega_heading != blank -%}
     <p class="mj-mega__heading">{{ mega_heading | escape }}</p>
   {%- endif -%}

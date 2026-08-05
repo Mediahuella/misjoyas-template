@@ -107,6 +107,12 @@ requestAnimationFrame(() => {
           return;
         }
 
+        // Featured / PDP recommendations: labels immediately, skip Splide wait.
+        if (productCard && el.closest('.featured-collection-mj__carousel, .product-rec-mj__carousel, .recently-viewed__carousel')) {
+          this.doLoad(el, productCard, callback);
+          return;
+        }
+
         const sliderEl = el.closest('[x-data-slider]');
         if (sliderEl) {
           if (!sliderEl.classList.contains('is-initialized')) {
@@ -120,6 +126,17 @@ requestAnimationFrame(() => {
         } else {
           this.doLoad(el, productCard, callback);
         }
+      },
+      clearCardBadges(el) {
+        const cardProduct = el.closest('.card-product');
+        if (!cardProduct) return;
+        const currentLabels = cardProduct.getElementsByClassName('x-badge-container');
+        while (currentLabels?.length > 0) {
+          currentLabels[0].remove();
+        }
+        cardProduct.querySelectorAll('.label-container').forEach((node) => {
+          if (!node.querySelector('.x-badge-container')) node.remove();
+        });
       },
       doLoad(el, productCard, callback = () => {}) {
         this.initAllLabels(el, productCard);
@@ -146,17 +163,20 @@ requestAnimationFrame(() => {
           }
 
           if (Shopify.designMode || productCard) {
-            const cardProduct = el.closest('.card-product');
-            if (cardProduct) {
-              let currentLabels = cardProduct.getElementsByClassName('x-badge-container');
-              while (currentLabels?.length > 0) {
-                currentLabels[0].remove();
-              }  
-            }
+            this.clearCardBadges(el);
           }
 
           if (productCard) {
-            requestAnimationFrame(() => {
+            // Cancel stale frames so rapid load() calls (intersect + splide-ready) don't stack labels.
+            const gen = (el._mjBadgesGen = (el._mjBadgesGen || 0) + 1);
+            if (el._mjBadgesRaf) cancelAnimationFrame(el._mjBadgesRaf);
+
+            el._mjBadgesRaf = requestAnimationFrame(() => {
+              el._mjBadgesRaf = null;
+              if (el._mjBadgesGen !== gen) return;
+
+              this.clearCardBadges(el);
+
               let variantId = null;
               const variantEl = el.closest('.card-product')?.querySelector(".current-variant");
 
@@ -166,8 +186,11 @@ requestAnimationFrame(() => {
               }
               
               if (variantId) {
+                let matched = false;
                 productDatas.forEach(productData => {
+                  if (matched) return;
                   if (productData.variant_id === Number(variantId)) {
+                    matched = true;
                     for (let i = 0;i < allLabels.length;i++) {
                       let label = xParseJSON(allLabels[i].getAttribute('x-badges-block-data'));
                       if (!label.enable && !productData.isXBadgesPreview) return;

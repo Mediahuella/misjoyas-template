@@ -1,15 +1,23 @@
 {% comment %}
   MisJoyas mobile nav drawer.
   Renders from header.liquid so items use the same button / tree_menu blocks as desktop.
-  Optional UI chrome (logo, footer) from sections['mobile-navigation'] when present.
+  Optional UI chrome (logo, footer) from mobile-navigation section when present.
 
-  Accepts: nav_section (header section)
+  Accepts:
+  - nav_section (header section)
+  - ui (mobile-navigation section — optional; footer settings)
+  - drawer_logo (image from mobile-navigation, resolved in header.liquid)
 {% endcomment %}
 {%- liquid
-  assign ui = sections['mobile-navigation']
-  assign nav_logo = nav_section.settings.logo
-  if ui != blank and ui.settings.logo != blank
+  # Logo: drawer_logo (Mobile navigation) → asset Figma → header wordmark
+  assign nav_logo = blank
+  assign nav_logo_from_asset = false
+  if drawer_logo != blank
+    assign nav_logo = drawer_logo
+  elsif ui != blank and ui.settings.logo != blank
     assign nav_logo = ui.settings.logo
+  else
+    assign nav_logo_from_asset = true
   endif
 
   if settings.lang_direction contains request.locale.iso_code
@@ -90,8 +98,30 @@
             nav_logo
             | image_url: width: 120
             | image_tag:
-              widths: '60, 80, 120',
-              loading: 'lazy',
+              widths: '50, 100, 120',
+              sizes: '50px',
+              loading: 'eager',
+              alt: shop.name,
+              class: 'mj-mobile-nav__logo-img'
+          }}
+        {%- elsif nav_logo_from_asset -%}
+          <img
+            src="{{ 'mj-mobile-nav-isotipo.png' | asset_url }}"
+            alt="{{ shop.name | escape }}"
+            width="50"
+            height="50"
+            class="mj-mobile-nav__logo-img"
+            loading="eager"
+            decoding="async"
+          >
+        {%- elsif nav_section.settings.logo != blank -%}
+          {{
+            nav_section.settings.logo
+            | image_url: width: 120
+            | image_tag:
+              widths: '50, 100, 120',
+              sizes: '50px',
+              loading: 'eager',
               alt: shop.name,
               class: 'mj-mobile-nav__logo-img'
           }}

@@ -941,6 +941,23 @@ b {
   color: #ffffff !important;
   border-radius: 4px;
   transition: background-color 0.3s ease;
+  white-space: nowrap;
+}
+
+/* Mobile: "Añadir" | Desktop: "Añadir al carro" */
+.card-product-atc-btn__label-short {
+  display: inline !important;
+}
+.card-product-atc-btn__label-full {
+  display: none !important;
+}
+@media (min-width: 768px) {
+  .card-product-atc-btn__label-short {
+    display: none !important;
+  }
+  .card-product-atc-btn__label-full {
+    display: inline !important;
+  }
 }
 .card-product-atc-btn.button-solid,
 .card-product-atc-btn.button-solid:before {
@@ -2147,6 +2164,11 @@ b {
     z-index: 70;
   }
 
+  /* Títulos con fondo de botón: sin subrayado inferior */
+  .mj-header-nav .mj-nav-item--button.has-dropdown.is-focus .mj-nav-item__trigger::after {
+    display: none;
+  }
+
   .mj-header-nav .mj-nav-item__link {
     color: var(--mj-nav-item-color, #000);
     font-size: 18px;
@@ -2204,12 +2226,46 @@ b {
 
   .mj-header-nav .mj-nav-item__cta.button,
   .mj-header-nav .mj-nav-item__button.button {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 6px; /* mismo espacio texto–flecha que .mj-nav-item__link */
     min-height: 46px;
     padding: 11px 32px 12px !important;
     border-radius: 4px !important;
     font-size: 16px;
     font-weight: 600;
     line-height: 22px;
+    text-decoration: none !important;
+    border: none !important;
+    transition: background-color 0.2s ease, color 0.2s ease !important;
+  }
+
+  .mj-header-nav .mj-nav-item__cta .button-icon {
+    margin-left: 0;
+    width: 1.25rem;
+    transform: none;
+  }
+
+  .mj-header-nav .mj-nav-item__cta.button::before,
+  .mj-header-nav .mj-nav-item__cta.button::after,
+  .mj-header-nav .mj-nav-item__button.button::before,
+  .mj-header-nav .mj-nav-item__button.button::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  /* Hover negro, sin subrayado (títulos con bg / botones del menú) */
+  .mj-header-nav .mj-nav-item__cta.button:hover,
+  .mj-header-nav .mj-nav-item__cta.button:focus,
+  .mj-header-nav .mj-nav-item__cta.button:focus-visible,
+  .mj-header-nav .mj-nav-item__button.button:hover,
+  .mj-header-nav .mj-nav-item__button.button:focus,
+  .mj-header-nav .mj-nav-item__button.button:focus-visible,
+  .mj-header-nav .mj-nav-item--button.is-focus .mj-nav-item__button.button {
+    background: #000 !important;
+    background-image: none !important;
+    color: #fff !important;
+    text-decoration: none !important;
   }
 
   .mj-header-nav .mj-nav-dropdown--mega {
@@ -2263,6 +2319,17 @@ b {
     gap: 40px 60px;
     flex: 1 1 auto;
     min-width: 0;
+  }
+
+  /* Sin imagen promocional: el menú ocupa todo el ancho del panel */
+  .mj-mega--no-promo .mj-mega__body {
+    gap: 0;
+  }
+
+  .mj-mega--no-promo .mj-mega__columns {
+    flex: 1 1 100%;
+    width: 100%;
+    max-width: 100%;
   }
 
   .mj-mega__col {
@@ -2479,11 +2546,14 @@ b {
   line-height: 0;
 }
 
+/* Figma 1416:4390 / 1601:10771 — isotipo 50×50 */
 .mj-mobile-nav__logo-img {
   display: block;
   width: 50px;
   height: 50px;
+  max-width: 50px;
   object-fit: contain;
+  object-position: left center;
 }
 
 .mj-mobile-nav__logo-text {
@@ -2543,6 +2613,24 @@ b {
   font-size: 16px;
   line-height: 22px;
   text-align: center;
+}
+
+/* Tree menu with button style + children: pink trigger + caret, accordion below */
+.mj-mobile-nav__item--button .mj-mobile-nav__trigger.mj-mobile-nav__cta-btn {
+  gap: 6px;
+  width: auto;
+  max-width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+
+.mj-mobile-nav__item--button .mj-mobile-nav__caret {
+  color: inherit;
+  flex-shrink: 0;
+}
+
+.mj-mobile-nav__item--button .mj-mobile-nav__accordion {
+  width: 100%;
 }
 
 .mj-mobile-nav__item {

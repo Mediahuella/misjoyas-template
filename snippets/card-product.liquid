@@ -962,8 +962,15 @@
                             endif
                           %}
                           <span class="flex items-center justify-center gap-2">
-                            {% render 'button-label', button_label: button_label, show_button_style: 'primary' %}
-                            <span class="tw-w-5 tw-h-5 tw-flex tw-items-center tw-justify-center tw-shrink-0">{% render 'icon-cart-all', icon: 'icon-cart-quick-add' %}</span>
+                            {%- if can_show_preorder -%}
+                              {% render 'button-label', button_label: button_label, show_button_style: 'primary' %}
+                            {%- else -%}
+                              <span class="button-text is-focus-button:opacity-0 card-product-atc-btn__label">
+                                <span class="card-product-atc-btn__label-short">{{ 'products.product.add_to_cart_short' | t }}</span>
+                                <span class="card-product-atc-btn__label-full">{{ button_label | escape }}</span>
+                              </span>
+                            {%- endif -%}
+                            <span class="tw-w-5 tw-h-5 tw-flex tw-items-center tw-justify-center tw-shrink-0" aria-hidden="true">{% render 'icon-cart-all', icon: 'icon-cart-quick-add' %}</span>
                           </span>
                         {%- else -%}
                           {{ 'products.product.sold_out' | t }}
@@ -973,8 +980,11 @@
                           assign button_label = 'products.product.add_to_cart' | t
                         %}
                         <span class="flex items-center justify-center gap-2">
-                          {% render 'button-label', button_label: button_label, show_button_style: 'primary' %}
-                          <span class="tw-w-5 tw-h-5 tw-flex tw-items-center tw-justify-center tw-shrink-0">{% render 'icon-cart-all', icon: 'icon-cart-quick-add' %}</span>
+                          <span class="button-text is-focus-button:opacity-0 card-product-atc-btn__label">
+                            <span class="card-product-atc-btn__label-short">{{ 'products.product.add_to_cart_short' | t }}</span>
+                            <span class="card-product-atc-btn__label-full">{{ button_label | escape }}</span>
+                          </span>
+                          <span class="tw-w-5 tw-h-5 tw-flex tw-items-center tw-justify-center tw-shrink-0" aria-hidden="true">{% render 'icon-cart-all', icon: 'icon-cart-quick-add' %}</span>
                         </span>
                       {%- endif -%}
                     </span>

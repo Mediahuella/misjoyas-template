@@ -97,6 +97,7 @@
   }
   .featured-collection-mj-{{ section.id }} .featured-collection-mj__carousel {
     position: relative;
+    overflow: visible;
   }
   @media (max-width: 767px) {
     .featured-collection-mj-{{ section.id }} .preload-slide-{{ section.id }} {
@@ -119,20 +120,28 @@
     }
   }
   .featured-collection-mj-{{ section.id }} .splide__arrows {
-    display: none;
+    display: none !important;
   }
   @media (min-width: 768px) {
     .featured-collection-mj-{{ section.id }} .splide__arrows {
-      display: block;
+      display: block !important;
       position: absolute;
       inset: 0;
       pointer-events: none;
-      z-index: 30;
+      z-index: 60;
+    }
+    .featured-collection-mj-{{ section.id }} .featured-collection-mj__arrow {
+      display: flex !important;
+      visibility: visible !important;
+      opacity: 1;
+    }
+    .featured-collection-mj-{{ section.id }} .featured-collection-mj__arrow.hidden {
+      display: flex !important;
     }
   }
   {%- if is_lo_ultimo_carousel -%}
   .featured-collection-mj-{{ section.id }} .link-product-variant .label-container {
-    z-index: 35;
+    z-index: 20;
   }
   {%- endif -%}
   .featured-collection-mj-{{ section.id }} .featured-collection-mj__progress {
@@ -225,30 +234,35 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin-top: 1.875rem;
-    min-height: 3.125rem;
-    padding: 0.625rem 1.5rem;
-    border: 1px solid #222222;
+    box-sizing: border-box;
+    min-height: 50px;
+    padding: 10px 30px;
+    border: 1px solid #000000;
     border-radius: 4px;
-    color: #222222;
-    font-size: 1rem;
-    line-height: 1.375rem;
+    color: #000000;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 600;
     text-transform: uppercase;
     text-decoration: none;
     text-align: center;
-    max-width: 21.25rem;
-    width: calc(100% - 2.5rem);
+    width: auto;
+    max-width: none;
     background-color: transparent;
-    transition: background-color 0.15s ease;
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
   .featured-collection-mj-{{ section.id }} .featured-collection-mj__view-all:hover,
   .featured-collection-mj-{{ section.id }} .featured-collection-mj__view-all:focus-visible {
-    background-color: #f2f2f2;
+    background-color: #000000;
+    color: #ffffff;
   }
   .featured-collection-mj-{{ section.id }} .featured-collection-mj__footer {
     display: flex;
     justify-content: center;
-    padding: 0 1.25rem;
+    align-items: center;
+    margin-top: 30px;
+    min-height: 50px;
+    padding: 0;
   }
 {%- endstyle -%}
 
@@ -284,17 +298,23 @@
       <div class="featured-collection-mj__slider">
       <div
         id="featured-collection-mj-{{ section.id }}"
-        class="featured-collection-mj__carousel carousel-mobile carousel-tablet overflow-hidden x-splide splide visible disable-effect-hover{% unless enable_slider %} featured-collection-mj__carousel--static{% endunless %}"
+        class="featured-collection-mj__carousel carousel-mobile carousel-tablet x-splide splide visible disable-effect-hover{% if is_lo_ultimo_carousel %} featured-collection-mj--lo-ultimo{% endif %}{% unless enable_slider %} featured-collection-mj__carousel--static{% endunless %}"
         {% if enable_slider %}
           x-data-slider="{{ section.id }}"
           x-intersect.once.margin.200px='$store.xSplide.load($el, {
-            "speed": 1000,
+            "eager": true,
+            "speed": 360,
+            "easing": "cubic-bezier(0.22, 1, 0.36, 1)",
             "type": "slide",
             "mediaQuery": "min",
-            "updateOnMove": "true",
+            "updateOnMove": true,
+            "waitForTransition": false,
+            "flickPower": 350,
+            "flickMaxPages": 2,
+            "dragMinThreshold": { "mouse": 0, "touch": 5 },
             "gap": "{{ gap_mobile }}px",
             "perPage": {{ columns_mobile }},
-            "perMove": {{ columns_mobile }},
+            "perMove": 1,
             "autoWidth": false,
             "arrows": false,
             "pagination": false,
@@ -307,7 +327,9 @@
               300: {
                 "gap": "{{ gap_mobile }}px",
                 "perPage": {{ columns_mobile }},
-                "perMove": {{ columns_mobile }}
+                "perMove": 1,
+                "speed": 360,
+                "waitForTransition": false
               },
               768: {
                 "destroy": false,
@@ -315,16 +337,22 @@
                 "perMove": {{ columns_desktop }},
                 "autoWidth": false,
                 "gap": "{{ gap_desktop }}px",
-                "drag": true
+                "drag": true,
+                "speed": 500,
+                "waitForTransition": false
               },
               1024: {
                 "perPage": {{ columns_desktop }},
                 "perMove": {{ columns_desktop }},
-                "gap": "{{ gap_desktop }}px"
+                "gap": "{{ gap_desktop }}px",
+                "speed": 500
               }
             },
             "classes": {
               "arrows": "splide__arrows",
+              "arrow": "featured-collection-mj__arrow",
+              "prev": "featured-collection-mj__arrow--prev",
+              "next": "featured-collection-mj__arrow--next",
               "pagination": "hidden"
             },
             "events": [
@@ -603,7 +631,7 @@
       "id": "products_to_show",
       "label": "Productos a mostrar",
       "min": 4,
-      "max": 16,
+      "max": 30,
       "step": 1,
       "default": 8
     },

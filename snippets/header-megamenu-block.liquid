@@ -402,7 +402,7 @@
               -%}
               <li
               id="{{ block.id }}"
-              class="mj-nav-item tree-menu{% if is_link %} has-dropdown{% endif %}"
+              class="mj-nav-item tree-menu{% if is_link %} has-dropdown{% endif %}{% if tree_menu_use_button %} mj-nav-item--button{% endif %}"
               {% if mj_title_color != blank %}style="--mj-nav-item-color: {{ mj_title_color }};"{% endif %}
               {% if is_link %}@mouseover.once="$store.xHeaderMenu.initToggleMenuHeight($el)"{% endif %}
               {% if select_motion == 'hover' %}
@@ -430,7 +430,7 @@
                 {% endif %}
               >
                 {%- if tree_menu_use_button -%}
-                  {%- render 'header-menu-button-styles', block: block, css_class: tree_menu_button_wrapper_class, text_only_hover: true -%}
+                  {%- render 'header-menu-button-styles', block: block, css_class: tree_menu_button_wrapper_class, text_only_hover: false -%}
                   <div class="{{ tree_menu_button_wrapper_class }}">
                     <a
                       href="{% if link %}{{ link }}{% else %}#{% endif %}"
