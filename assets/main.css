@@ -1497,10 +1497,6 @@ b {
 }
 
 .section-product-info .misjoyas-item {
-  margin-bottom: 12px !important;
-}
-
-.section-product-info .misjoyas-item:last-child {
   margin-bottom: 0 !important;
 }
 
