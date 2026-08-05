@@ -19,6 +19,11 @@
   else
     assign media_alt = 'sections.banner-pequeno.alt' | t
   endif
+
+  assign button_position = section.settings.button_position | default: 'right'
+  if button_position != 'left' and button_position != 'right'
+    assign button_position = 'right'
+  endif
 -%}
 
 {%- style -%}
@@ -94,7 +99,12 @@
     bottom: 40px;
     display: flex;
     align-items: flex-end;
+  }
+  .banner-pequeno-{{ section.id }} .banner-pequeno__content--left {
     justify-content: flex-start;
+  }
+  .banner-pequeno-{{ section.id }} .banner-pequeno__content--right {
+    justify-content: flex-end;
   }
   @media (min-width: 768px) {
     .banner-pequeno-{{ section.id }} .banner-pequeno__content {
@@ -104,6 +114,11 @@
       bottom: auto;
       transform: translateY(-50%);
       align-items: center;
+    }
+    .banner-pequeno-{{ section.id }} .banner-pequeno__content--left {
+      justify-content: flex-start;
+    }
+    .banner-pequeno-{{ section.id }} .banner-pequeno__content--right {
       justify-content: flex-end;
     }
   }
@@ -201,7 +216,7 @@
       </div>
 
       {%- if section.settings.button_label != blank -%}
-        <div class="banner-pequeno__content">
+        <div class="banner-pequeno__content banner-pequeno__content--{{ button_position }}">
           {%- if section.settings.button_link != blank -%}
             <a
               href="{{ section.settings.button_link }}"
@@ -264,6 +279,22 @@
       "type": "url",
       "id": "button_link",
       "label": "Enlace del botón"
+    },
+    {
+      "type": "select",
+      "id": "button_position",
+      "label": "Posición del botón",
+      "options": [
+        {
+          "value": "left",
+          "label": "Izquierda"
+        },
+        {
+          "value": "right",
+          "label": "Derecha"
+        }
+      ],
+      "default": "right"
     },
     {
       "type": "checkbox",

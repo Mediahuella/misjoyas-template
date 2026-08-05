@@ -2896,6 +2896,16 @@ b {
 
 /* ===== MisJoyas desktop nav (Figma) ===== */
 @media (min-width: 1024px) {
+  /*
+    Figma 1582:5536 — fila logo/search/iconos:
+    contenido a ~100px del borde (inner x=101 en artboard 1440).
+    La barra beige del menú sigue a full-bleed vía breakout.
+  */
+  header.header.full-width {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
   /* Keep nav on its dedicated grid row (below logo/search) */
   header.header .mj-header-nav {
     grid-area: navigation !important;
@@ -2951,7 +2961,7 @@ b {
   .mj-header-nav .mj-nav-item__link {
     color: var(--mj-nav-item-color, #000);
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 500; /* solo títulos del menú */
     line-height: 24px;
     gap: 6px;
     text-decoration: none;
@@ -2960,7 +2970,7 @@ b {
 
   .mj-header-nav .mj-nav-item__link .mj-menu-title__text strong,
   .mj-header-nav .mj-nav-item__link .mj-menu-title__text b {
-    font-weight: 600;
+    font-weight: 500;
   }
 
   .mj-header-nav .mj-nav-item__link:hover {
@@ -3067,7 +3077,10 @@ b {
   }
 
   .mj-mega__col {
-    width: 200px;
+    width: -moz-max-content;
+    width: max-content;
+    min-width: 200px;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -3078,9 +3091,10 @@ b {
     display: block;
     color: #000;
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 500; /* solo títulos de categoría */
     line-height: 26px;
     text-decoration: none;
+    white-space: nowrap;
   }
 
   .mj-mega__col-title:hover {
@@ -3089,8 +3103,7 @@ b {
 
   .mj-mega__col-line {
     display: block;
-    width: 190px;
-    max-width: 100%;
+    width: 100%;
     height: 1px;
     margin-top: -12px;
     background: #d9d9d9;
@@ -3102,7 +3115,7 @@ b {
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 0;
     width: 100%;
   }
 
@@ -3113,6 +3126,7 @@ b {
     font-weight: 400;
     line-height: 22px;
     text-decoration: none;
+    white-space: nowrap;
   }
 
   .mj-mega__link:hover {

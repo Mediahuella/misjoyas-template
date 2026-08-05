@@ -239,7 +239,8 @@
         "slide_zrye8m": {
           "type": "slide",
           "settings": {
-            "video": "shopify://files/videos/MISJOYAS.mp4",
+            "video": "shopify://files/videos/banner-secundario1_desktop_e6005617-eec9-4294-b53d-8e76ff5beece.mp4",
+            "video_mobile": "shopify://files/videos/banner-secundario1_mobile.mp4",
             "image_alt": "",
             "button_label": "",
             "button_link": "",
