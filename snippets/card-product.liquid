@@ -511,6 +511,7 @@
           {%- endif -%}
         </div>
       </div>
+      {% render 'misjoyas-metal-tag', product: card_product, context: 'card' %}
       {% unless disable_quickview %}
         <div class="md:list-layout:hidden" x-show="$store.xQuickView" :class="$store.xQuickView && $store.xQuickView.btn_atc_bottom ? 'mobile-bottom':''">
           {%- unless settings.hide_cart -%} 

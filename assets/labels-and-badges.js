@@ -227,6 +227,12 @@ requestAnimationFrame(() => {
           }
       },
       appendLabel(el, label, productData) {
+        // Skip if this label block was already rendered on the card (guards race duplicates).
+        if (productData.container == 'card' && label.id) {
+          const card = el.closest('.card-product') || el;
+          if (card.querySelector(`.x-badge-${label.id}`)) return;
+        }
+
         if (productData.container == 'product-info' || label.settings.position == 'custom') {
           el.innerHTML += this.processTemplate(el, label, productData);
           return;

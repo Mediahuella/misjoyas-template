@@ -115,8 +115,9 @@ b {
 .section-product-info .misjoyas-price--pdp .misjoyas-price__current {
   font-weight: 600;
   color: #f83785;
-  font-size: 36px;
-  line-height: 42px;
+  /* Figma 1813:9322 / 1870:17658 */
+  font-size: 26px;
+  line-height: 32px;
   white-space: nowrap;
 }
 
@@ -125,8 +126,8 @@ b {
 }
 
 .section-product-info .misjoyas-price--pdp .misjoyas-price__compare {
-  font-size: 22px;
-  line-height: 28px;
+  font-size: 16px;
+  line-height: normal;
   font-weight: 400;
   color: #2d2d2d;
   text-decoration: line-through;
@@ -138,15 +139,16 @@ b {
   align-items: center;
   justify-content: center;
   min-width: 44px;
-  height: 25px;
-  padding: 5px 12px 6px;
-  background: #000000;
+  height: 26px;
+  padding: 5px 7px 6px;
+  background: #f83785;
   color: #fff;
-  font-size: 12.5px;
+  font-size: 14px;
   font-weight: 600;
-  line-height: 18.72px;
+  line-height: 20px;
   white-space: nowrap;
   box-sizing: border-box;
+  border-radius: 4px;
 }
 
 .section-product-info .misjoyas-price--pdp .misjoyas-price__unit {
@@ -277,10 +279,11 @@ b {
   }
 }
 
-/* Card title — 1rem (theme default: 0.9rem con title_size_card: 90) */
+/* Card / PLP title — Figma 26px */
 .card-product .x-card-title,
 .card-product [class*="card-product-title-text-"] {
-  font-size: 1rem !important;
+  font-size: 26px !important;
+  line-height: 32px;
 }
 
 /*
@@ -344,20 +347,22 @@ b {
     text-align: left;
   }
 
-  /* PDP price — Figma mobile (node 366:8522) */
+  /* PDP price — same Figma scale on mobile (1870:17658) */
   .section-product-info .misjoyas-price--pdp .misjoyas-price__current {
-    font-size: 30px;
-    line-height: 36px;
+    font-size: 26px;
+    line-height: 32px;
   }
 
   .section-product-info .misjoyas-price--pdp .misjoyas-price__compare {
-    font-size: 20px;
-    line-height: 26px;
+    font-size: 16px;
+    line-height: normal;
   }
 
   .section-product-info .misjoyas-price--pdp .misjoyas-price__badge {
-    min-width: 43px;
-    height: 24px;
+    min-width: 44px;
+    height: 26px;
+    font-size: 14px;
+    line-height: 20px;
   }
 
   /* Galería: imagen grande sin miniaturas + flechas overlay (Figma Product Image) */
@@ -570,7 +575,132 @@ b {
   }
 }
 
-/* ===== PDP: título + compartir (Figma desktop + mobile) ===== */
+/* ===== PDP spacing — Figma info-column (1813:9322 / 1870:17658) ===== */
+
+/* Columna: 20px entre bloques */
+.section-product-info .product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.section-product-info .product-info > * {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.section-product-info .product-info > *:empty,
+.section-product-info .misjoyas-product-sku:empty,
+.section-product-info [id^='sku-']:empty {
+  display: none !important;
+}
+
+/* Header: metal → título = 6px */
+.section-product-info .x-block-product-title {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.section-product-info .x-block-product-title .misjoyas-metal-tag--pdp {
+  margin-bottom: 0;
+}
+
+/* Precio → cuotas = 8px */
+.section-product-info .misjoyas-price--pdp .misjoyas-price__unit {
+  margin-top: 8px !important;
+}
+
+/* Variantes: sin pb-5 extra */
+.section-product-info .product-form__input {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.section-product-info .product-form__input + .product-form__input {
+  margin-top: 12px !important;
+}
+
+.section-product-info .options-container {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Label → control = 6px */
+.section-product-info .product-form__input > legend,
+.section-product-info .product-form__input > label,
+.section-product-info .product-form__quantity > label {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.section-product-info .product-form__quantity .inline-flex {
+  margin-top: 0 !important;
+}
+
+/* Qty + ATC en fila (Figma action-bar, gap 12px) */
+.section-product-info .product-info:has(> .product-form__quantity + .button-product) {
+  display: grid;
+  grid-template-columns: minmax(110px, 134px) minmax(0, 1fr);
+  column-gap: 12px;
+  row-gap: 20px;
+  align-items: end;
+}
+
+.section-product-info .product-info:has(> .product-form__quantity + .button-product) > *:not(.product-form__quantity):not(.button-product) {
+  grid-column: 1 / -1;
+}
+
+.section-product-info .product-info:has(> .product-form__quantity + .button-product) > .product-form__quantity {
+  grid-column: 1;
+  width: 100%;
+}
+
+.section-product-info .product-info:has(> .product-form__quantity + .button-product) > .button-product {
+  grid-column: 2;
+  width: 100%;
+  align-self: end;
+}
+
+/* Descripción / RTE */
+.section-product-info .x-block-description .rte,
+.section-product-info .x-block-description .rte p {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.section-product-info .x-block-description .rte p + p {
+  margin-top: 8px !important;
+}
+
+/* Acordeones: párrafos 8px; ítems 12px (Figma delivery-methods) */
+.section-product-info .misjoyas-content p {
+  margin-top: 0 !important;
+  margin-bottom: 8px !important;
+  line-height: 1.5 !important;
+}
+
+.section-product-info .misjoyas-content p:last-child {
+  margin-bottom: 0 !important;
+}
+
+.section-product-info .misjoyas-item {
+  margin-bottom: 12px !important;
+}
+
+.section-product-info .misjoyas-item:last-child {
+  margin-bottom: 0 !important;
+}
+
+.section-product-info .misjoyas-accordion,
+.section-product-info .custom-html {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* ===== PDP: título + compartir (Figma 1813:9322 / 1870:17658) ===== */
 
 .misjoyas-product-title-row {
   display: flex;
@@ -584,9 +714,13 @@ b {
   text-align: center;
 }
 
-.misjoyas-product-title-row__title {
+.misjoyas-product-title-row__title,
+.section-product-info .product-title.misjoyas-product-title-row__title {
   flex: 1;
   min-width: 0;
+  font-size: 26px !important;
+  line-height: 32px !important;
+  font-weight: 600;
 }
 
 .misjoyas-product-title-row__actions {
@@ -1087,6 +1221,85 @@ b {
 .x-splide.splide .splide__list > .splide__slide.card-product .bottom_atc .button,
 .x-splide.splide .splide__list > .splide__slide > .card-product .bottom_atc .button {
   height: auto;
+}
+
+/* ===== Metal type tag — Figma cards / PLP / PDP ===== */
+.misjoyas-metal-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  pointer-events: none;
+}
+
+.misjoyas-metal-tag__swatch {
+  display: block;
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #a5a5a5;
+}
+
+.misjoyas-metal-tag--oro .misjoyas-metal-tag__swatch {
+  background-color: #fcdf97;
+}
+
+.misjoyas-metal-tag--plata-oro .misjoyas-metal-tag__swatch {
+  /* Left silver / right gold (Figma split swatch) */
+  background: linear-gradient(90deg, #a5a5a5 50%, #fcdf97 50%);
+}
+
+.misjoyas-metal-tag__label {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  color: #000000;
+  white-space: nowrap;
+}
+
+/* Cards + PLP grid: overlaid bottom-left of product image */
+.misjoyas-metal-tag--card {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  top: auto;
+  right: auto;
+  z-index: 21;
+  max-width: calc(100% - 16px);
+}
+
+.misjoyas-metal-tag--card .misjoyas-metal-tag__label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.misjoyas-metal-tag--pdp {
+  position: relative;
+  margin-bottom: 0;
+}
+
+.misjoyas-metal-tag--pdp .misjoyas-metal-tag__label {
+  margin-left: 2px;
+}
+
+/* PDP SKU — Figma 12px (no change) */
+.section-product-info .misjoyas-product-sku,
+.section-product-info [id^='sku-'] {
+  font-size: 12px;
+  line-height: 18px;
+}
+
+@media (max-width: 767px) {
+  .misjoyas-metal-tag--card {
+    left: 4px;
+    bottom: 4px;
+    max-width: calc(100% - 8px);
+  }
+
+  .misjoyas-metal-tag--card .misjoyas-metal-tag__swatch {
+    width: 10px;
+    height: 10px;
+  }
 }
 
 /* ===== Badges en tarjetas — Figma 1813:9947 ===== */

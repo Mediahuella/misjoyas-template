@@ -286,7 +286,7 @@
                   %}
                 {%- when 'product_sku' -%}
                   {% assign current_variant = product.selected_or_first_available_variant %}
-                  <div id="sku-{{ section.id }}" class="mb-5 capitalize leading-tight w-full{% if show_content_center %} text-center{% endif %}" {{ block.shopify_attributes }}>
+                  <div id="sku-{{ section.id }}" class="misjoyas-product-sku mb-5 capitalize leading-tight w-full{% if show_content_center %} text-center{% endif %}" {{ block.shopify_attributes }}>
                     {%- if current_variant.sku != blank -%}
                       {{ block.settings.heading }} {{ current_variant.sku | escape }}
                     {%- endif -%}
@@ -426,6 +426,9 @@
                     }
                   {% endstyle %}
                   <div class="x-block-product-title mb-5 w-full{% if show_content_center %} text-center{% endif %}" {{ block.shopify_attributes }}>
+                    <div class="{% if show_content_center %}tw-flex tw-justify-center{% endif %}">
+                      {% render 'misjoyas-metal-tag', product: product, context: 'pdp' %}
+                    </div>
                     <div class="misjoyas-product-title-row{% if show_content_center %} misjoyas-product-title-row--center{% endif %}">
                       <{{ block.settings.heading_tag }} class="product-title h2 title-size--{{ block.id }} mb-0 leading-tight misjoyas-product-title-row__title">
                         {{ product.title | escape }}
