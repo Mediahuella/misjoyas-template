@@ -27,6 +27,7 @@
         },
         "slide_GJzrPK": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Banner-Especial-Aniversario_desktop.jpg",
             "image_mobile": "shopify://shop_images/Banner-Especial-Aniversario_mobile.jpg",
@@ -40,6 +41,7 @@
         },
         "slide_BxDhPT": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/banner-lanzamiento_desktop.jpg",
             "image_mobile": "shopify://shop_images/banner-lanzamiento_mobile.jpg",
@@ -53,6 +55,7 @@
         },
         "slide_D8eTJ4": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/banner-licenciatura_desktop.png",
             "image_mobile": "shopify://shop_images/banner-licenciatura_mobile.png",
@@ -80,6 +83,7 @@
         },
         "slide_dqdmni": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Banner_general_desktop_63bac82c-dc7e-4bd6-a604-23a15312461c.jpg",
             "image_mobile": "shopify://shop_images/Banner_general_mobile_cba64c29-6305-4fca-90d9-4a62da46c2c8.jpg",
@@ -223,8 +227,6 @@
         "slide_kit_1": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Banner_secundario_desktop_aa8dca55-d325-4388-a0b0-511289084eb0.jpg",
-            "image_mobile": "shopify://shop_images/Banner_secundario_mobile_b8491767-b642-4318-915e-da8194699dc7.jpg",
             "image_alt": "",
             "button_label": "Quiero ser mayorista",
             "button_link": "shopify://pages/quienes-somos",

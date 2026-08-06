@@ -531,14 +531,7 @@
           </span>
         </div>
         {%- if section.settings.payment_enable -%}
-          <img
-            src="{{ 'footer-medios-pago.png' | asset_url }}"
-            alt="Medios de pago: Visa, Mastercard, American Express, Diners Club, RedCompra"
-            loading="lazy"
-            width="364"
-            height="62"
-            class="footer-medios-pago"
-          >
+          {% render 'misjoyas-payment-logos', transfer_logo: 'transferencia-blanco.png' %}
         {%- endif -%}
       </div>
 
@@ -591,14 +584,7 @@
         </div>
       </div>
       {%- if section.settings.payment_enable -%}
-        <img
-          src="{{ 'footer-medios-pago.png' | asset_url }}"
-          alt="Medios de pago: Visa, Mastercard, American Express, Diners Club, RedCompra"
-          loading="lazy"
-          width="410"
-          height="126"
-          class="footer-medios-pago tw-hidden md:tw-block"
-        >
+        {% render 'misjoyas-payment-logos', class: 'tw-hidden md:tw-flex', transfer_logo: 'transferencia-blanco.png' %}
       {%- endif -%}
     </div>
   </div>

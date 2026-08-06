@@ -56,20 +56,41 @@ b {
   }
 }
 
-/* Medios de pago — Figma: mobile 364×62, desktop 410×126 */
-.footer-medios-pago {
-  display: block;
-  width: 364px;
+/* Medios de pago footer / PDP — Webpay, Mercado Pago, Transferencia
+   (display vía Tailwind: no forzar aquí o pisa tw-hidden en mobile) */
+.misjoyas-payment-logos {
+  min-width: 0;
   max-width: 100%;
-  height: 62px;
+}
+
+.misjoyas-payment-logos__logo {
+  display: block;
+  height: 40px;
+  width: auto;
   object-fit: contain;
-  object-position: left center;
+}
+
+.misjoyas-payment-logos__logo--webpay {
+  max-width: 120px;
+}
+
+.misjoyas-payment-logos__logo--mp,
+.misjoyas-payment-logos__logo--transfer {
+  width: 100px;
 }
 
 @media (min-width: 768px) {
-  .footer-medios-pago {
-    width: 410px;
-    height: 126px;
+  .misjoyas-payment-logos__logo {
+    height: 48px;
+  }
+
+  .misjoyas-payment-logos__logo--webpay {
+    max-width: 140px;
+  }
+
+  .misjoyas-payment-logos__logo--mp,
+  .misjoyas-payment-logos__logo--transfer {
+    width: 120px;
   }
 }
 
@@ -628,10 +649,14 @@ b {
 
 /* Label → control = 6px */
 .section-product-info .product-form__input > legend,
-.section-product-info .product-form__input > label,
-.section-product-info .product-form__quantity > label {
+.section-product-info .product-form__input > label {
   display: block;
   margin-bottom: 6px;
+}
+
+/* Figma action-bar: sin label “Cantidad” */
+.section-product-info .product-form__quantity > label {
+  display: none !important;
 }
 
 .section-product-info .product-form__quantity .inline-flex {
@@ -639,27 +664,57 @@ b {
 }
 
 /* Qty + ATC en fila (Figma action-bar, gap 12px) */
-.section-product-info .product-info:has(> .product-form__quantity + .button-product) {
-  display: grid;
-  grid-template-columns: minmax(110px, 134px) minmax(0, 1fr);
-  column-gap: 12px;
-  row-gap: 20px;
-  align-items: end;
-}
-
-.section-product-info .product-info:has(> .product-form__quantity + .button-product) > *:not(.product-form__quantity):not(.button-product) {
-  grid-column: 1 / -1;
-}
-
-.section-product-info .product-info:has(> .product-form__quantity + .button-product) > .product-form__quantity {
-  grid-column: 1;
+.section-product-info .mj-pdp-action-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   width: 100%;
+  margin-bottom: 20px;
 }
 
-.section-product-info .product-info:has(> .product-form__quantity + .button-product) > .button-product {
-  grid-column: 2;
+.section-product-info .mj-pdp-action-bar .product-form__quantity {
+  flex: 0 0 134px;
+  width: 134px;
+  max-width: 134px;
+  margin-bottom: 0 !important;
+}
+
+.section-product-info .mj-pdp-action-bar .button-product {
+  flex: 1 1 auto;
+  width: auto !important;
+  min-width: 0;
+  margin-bottom: 0 !important;
+}
+
+.section-product-info .mj-pdp-action-bar .button-product .add_to_cart_button {
+  height: 50px;
+  min-height: 50px;
+  margin-bottom: 0 !important;
+}
+
+.section-product-info .product-form__quantity > .w-full {
+  width: 100% !important;
+  height: 100%;
+}
+
+.section-product-info .product-form__quantity .inline-flex {
+  box-sizing: border-box;
   width: 100%;
-  align-self: end;
+  height: 50px;
+  min-height: 50px;
+  border-color: #2d2d2d !important;
+  border-radius: 4px;
+}
+
+.section-product-info .product-form__quantity .inline-flex input[type='number'] {
+  width: 40px;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.section-product-info .button-product .add_to_cart_button {
+  min-height: 50px;
+  height: 100%;
 }
 
 /* Descripción / RTE */
@@ -885,6 +940,14 @@ b {
 .section-product-info .add_to_cart_button.button-solid:not(:disabled):hover .button-text::after,
 .section-product-info .add_to_cart_button.button-solid:not(:disabled):focus-visible .button-text::after {
   background-color: #ffffff !important;
+}
+
+/* Sin subrayado junto al icono del carrito (Figma action-bar) */
+.section-product-info .button-product .add_to_cart_button .button-text::after,
+.section-product-info .button-product .add_to_cart_button:hover .button-text::after {
+  content: none !important;
+  display: none !important;
+  width: 0 !important;
 }
 
 .misjoyas-share {
@@ -2735,6 +2798,102 @@ b {
   .mj-mega__cta--disabled {
     opacity: 0.6;
     cursor: not-allowed;
+  }
+
+  /* Category cards — Figma 2484:9482 (menú plano, ej. Baño de oro) */
+  .mj-mega--categories {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 60px 40px;
+  }
+
+  .mj-mega--categories .mj-mega__heading {
+    width: 100%;
+    margin: 0 0 16px;
+    text-align: left;
+  }
+
+  .mj-mega__cats {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 50px;
+    width: 100%;
+  }
+
+  .mj-mega__cat {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    width: 138px;
+    text-decoration: none;
+    color: #000;
+  }
+
+  .mj-mega__cat:hover .mj-mega__cat-title {
+    color: #f83785;
+  }
+
+  .mj-mega__cat-media {
+    display: block;
+    width: 138px;
+    height: 138px;
+    border-radius: 4px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .mj-mega__cat-media--empty {
+    background: #f5f5f5;
+  }
+
+  .mj-mega__cat-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+
+  .mj-mega__cat-title {
+    display: block;
+    width: 100%;
+    color: #000;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 26px;
+  }
+
+  .mj-mega__cat-line {
+    display: block;
+    width: 134px;
+    max-width: 100%;
+    height: 1px;
+    background: #000;
+  }
+
+  .mj-mega--categories .mj-mega__footer {
+    margin-top: 60px;
+  }
+
+  @media (max-width: 1200px) {
+    .mj-mega__cats {
+      gap: 32px;
+    }
+  }
+
+  @media (max-width: 1100px) {
+    .mj-mega--categories {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    .mj-mega__cats {
+      gap: 24px;
+    }
   }
 }
 
