@@ -8,18 +8,15 @@
   assign size_mobile = section.settings.size_mobile | default: 50
   assign right_desktop = section.settings.offset_right | default: 20
   assign right_mobile = section.settings.offset_right_mobile | default: 17
-  assign top_desktop = section.settings.offset_top | default: 610
-  assign top_mobile = section.settings.offset_top_mobile | default: 810
-  assign safe_gap = 20
-  assign safe_desktop = size_desktop | plus: safe_gap
-  assign safe_mobile = size_mobile | plus: safe_gap
+  assign bottom_desktop = section.settings.offset_bottom | default: 24
+  assign bottom_mobile = section.settings.offset_bottom_mobile | default: 20
 -%}
 {%- style -%}
   .mj-wa-float-{{ section.id }} {
-    --mj-wa-top: min({{ top_mobile }}px, calc(100vh - {{ safe_mobile }}px));
+    --mj-wa-bottom: {{ bottom_mobile }}px;
     position: fixed;
     z-index: {{ section.settings.z_index | default: 100 }};
-    top: var(--mj-wa-top);
+    bottom: var(--mj-wa-bottom);
     right: {{ right_mobile }}px;
     width: {{ size_mobile }}px;
     height: {{ size_mobile }}px;
@@ -29,7 +26,7 @@
     border-radius: 50%;
     line-height: 0;
     text-decoration: none;
-    transition: transform 0.2s ease, top 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: transform 0.2s ease, bottom 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
   .mj-wa-float-{{ section.id }}:hover,
   .mj-wa-float-{{ section.id }}:focus-visible {
@@ -44,7 +41,7 @@
   }
   @media (min-width: 768px) {
     .mj-wa-float-{{ section.id }} {
-      --mj-wa-top: min({{ top_desktop }}px, calc(100vh - {{ safe_desktop }}px));
+      --mj-wa-bottom: {{ bottom_desktop }}px;
       right: {{ right_desktop }}px;
       width: {{ size_desktop }}px;
       height: {{ size_desktop }}px;
@@ -106,21 +103,21 @@
     },
     {
       "type": "range",
-      "id": "offset_top",
-      "label": "Margen top — escritorio (px)",
-      "min": 40,
-      "max": 900,
-      "step": 10,
-      "default": 610
+      "id": "offset_bottom",
+      "label": "Margen inferior — escritorio (px)",
+      "min": 8,
+      "max": 80,
+      "step": 2,
+      "default": 24
     },
     {
       "type": "range",
-      "id": "offset_top_mobile",
-      "label": "Margen top — móvil (px)",
-      "min": 40,
-      "max": 900,
-      "step": 10,
-      "default": 810
+      "id": "offset_bottom_mobile",
+      "label": "Margen inferior — móvil (px)",
+      "min": 8,
+      "max": 80,
+      "step": 2,
+      "default": 20
     },
     {
       "type": "range",

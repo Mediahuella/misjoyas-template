@@ -11,17 +11,12 @@
 
   function update() {
     if (!waEl) return;
-    waEl.style.removeProperty('--mj-wa-top');
+    waEl.style.removeProperty('--mj-wa-bottom');
     const bar = document.querySelector('[id^="sticky-add-to-cart-"]');
     if (!isMobile() || !bar || getComputedStyle(bar).display === 'none') return;
     const h = bar.getBoundingClientRect().height;
     if (h <= 0) return;
-    const size = waEl.getBoundingClientRect().height || 50;
-    const maxTop = Math.round(window.innerHeight - h - GAP - size);
-    const currentTop = waEl.getBoundingClientRect().top;
-    if (currentTop + size > window.innerHeight - h - GAP) {
-      waEl.style.setProperty('--mj-wa-top', Math.max(20, maxTop) + 'px');
-    }
+    waEl.style.setProperty('--mj-wa-bottom', Math.round(h + GAP) + 'px');
   }
 
   function start() {

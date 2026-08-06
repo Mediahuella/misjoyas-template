@@ -29,17 +29,12 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
   var waEl = null;
   function update() {
     if (!waEl) return;
-    waEl.style.removeProperty('--mj-wa-top');
+    waEl.style.removeProperty('--mj-wa-bottom');
     var bar = document.querySelector('[id^="sticky-add-to-cart-"]');
     if (!isMobile() || !bar || getComputedStyle(bar).display === 'none') return;
     var h = bar.getBoundingClientRect().height;
     if (h <= 0) return;
-    var size = waEl.getBoundingClientRect().height || 50;
-    var maxTop = Math.round(window.innerHeight - h - GAP - size);
-    var currentTop = waEl.getBoundingClientRect().top;
-    if (currentTop + size > window.innerHeight - h - GAP) {
-      waEl.style.setProperty('--mj-wa-top', Math.max(20, maxTop) + 'px');
-    }
+    waEl.style.setProperty('--mj-wa-bottom', Math.round(h + GAP) + 'px');
   }
   function start() {
     waEl = document.querySelector('[data-mj-wa-float]');
