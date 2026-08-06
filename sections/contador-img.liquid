@@ -39,7 +39,12 @@
     </div>
     <div class="countdown-wrapper">
       {% if section.settings.title != blank %}
-        <h2 class="countdown-title">{{ section.settings.title }}</h2>
+        <h2
+          class="countdown-title"
+          style="color: {{ section.settings.title_color | default: '#546e7a' }};"
+        >
+          {{ section.settings.title }}
+        </h2>
       {% endif %}
       <div class="countdown-timer">
         <div class="countdown-item">
@@ -152,6 +157,22 @@
 </script>
 
 <style>
+  @font-face {
+    font-family: 'Agenda';
+    src: url('{{ 'agenda-regular.otf' | asset_url }}') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Agenda';
+    src: url('{{ 'agenda-medium.ttf' | asset_url }}') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+
   .hidden {
     display: none !important;
   }
@@ -241,7 +262,7 @@
     Escala proporcional (móvil): 1rem = unidad base del bloque.
     Título 1.75em, números 5.75em, etiquetas 1.5em, huecos 1em — mismas ratios en desktop vía --cd-num.
   */
-  .countdown-wrapper {
+  #countdown-container-{{ section.id }} .countdown-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -249,43 +270,44 @@
     gap: 1em;
     margin-bottom: 2rem;
     font-size: 1rem;
+    font-family: 'Agenda', sans-serif;
   }
 
-  /* Sans geométrica ~medium (tipo Montserrat/Lato Medium); usa la fuente de títulos del tema */
-  .countdown-title {
+  #countdown-container-{{ section.id }} .countdown-title {
     margin: 0;
-    font-family: var(--font-heading-family);
-    font-style: var(--font-heading-style);
+    font-family: 'Agenda', sans-serif;
+    font-style: normal;
     font-size: 1.25em;
     font-weight: 500;
     line-height: 1.2;
     text-transform: uppercase;
     letter-spacing: 0.02em;
-    color: #546e7a;
     text-align: center;
     width: 100%;
   }
 
-  .countdown-timer {
+  #countdown-container-{{ section.id }} .countdown-timer {
     display: flex;
     flex-direction: row;
     gap: 1em;
     justify-content: center;
   }
 
-  .countdown-item {
+  #countdown-container-{{ section.id }} .countdown-item {
     text-align: center;
     min-width: 0;
     flex: 1 1 0;
   }
 
-  .countdown-number {
+  #countdown-container-{{ section.id }} .countdown-number {
+    font-family: 'Agenda', sans-serif;
     font-size: 42px;
     line-height: 1.05;
-    font-weight: 600;
+    font-weight: 500;
   }
 
-  .countdown-label {
+  #countdown-container-{{ section.id }} .countdown-label {
+    font-family: 'Agenda', sans-serif;
     font-size: 9.5px;
     color: #4B5563;
     text-transform: uppercase;
@@ -506,6 +528,12 @@
     {
       "type": "header",
       "content": "Styling"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Color del título",
+      "default": "#546e7a"
     },
     {
       "type": "color",

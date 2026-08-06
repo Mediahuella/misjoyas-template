@@ -122,6 +122,26 @@
         "padding_bottom_mobile": 16
       }
     },
+    "home_countdown_img": {
+      "type": "contador-img",
+      "settings": {
+        "title": "Quedan:",
+        "desktop_image": "shopify://shop_images/contador_desktop_1.png",
+        "mobile_image": "shopify://shop_images/contador_mobile_1.png",
+        "target_date": "2026-08-08",
+        "target_time": "23:59",
+        "hours_label": "HORAS",
+        "minutes_label": "MIN.",
+        "seconds_label": "SEG.",
+        "title_color": "#546e7a",
+        "number_color": "#222222",
+        "hide_when_expired": true,
+        "expired_message": "The countdown has ended!",
+        "padding_top": 36,
+        "padding_top_mobile": 36,
+        "padding_bottom": 36
+      }
+    },
     "coupon_badges_a6Th3k": {
       "type": "coupon-badges",
       "blocks": {
@@ -895,23 +915,6 @@
         "ends": "2027-06-15 00:00:01",
         "countdown": false,
         "available_routes": "/"
-      }
-    },
-    "home_countdown_img": {
-      "type": "contador-img",
-      "settings": {
-        "title": "Quedan:",
-        "target_date": "2026-12-31",
-        "target_time": "23:59",
-        "hours_label": "HORAS",
-        "minutes_label": "MIN.",
-        "seconds_label": "SEG.",
-        "number_color": "#00CEBA",
-        "hide_when_expired": true,
-        "expired_message": "The countdown has ended!",
-        "padding_top": 36,
-        "padding_top_mobile": 36,
-        "padding_bottom": 36
       }
     }
   },
