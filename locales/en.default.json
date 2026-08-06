@@ -358,6 +358,9 @@
       "alt": "Promotional banner",
       "placeholder": "Upload a desktop image (1280×246 px) and a mobile image (400×550 px)."
     },
+    "misjoyas-whatsapp-float": {
+      "aria_label": "Chat on WhatsApp"
+    },
     "countdown-timer": {
       "aria_label": "Countdown timer",
       "image_alt": "Countdown promotion",

@@ -1,46 +1,32 @@
-﻿// Sube el botÃ³n flotante de WhatsApp (app WhatsUp) por encima de la barra sticky
-// de "agregar al carro" en mobile, para que no se interpongan. El botÃ³n vive dentro
-// de un shadow DOM con `bottom: 16px` fijo, asÃ­ que se controla via custom property
-// (las CSS custom properties sÃ­ cruzan el shadow boundary).
+﻿// Ajusta el botón flotante de WhatsApp para que no quede bajo la barra sticky
+// de "agregar al carro" en mobile.
 (function () {
   if (window.__mjWaStickyOffset) return;
   window.__mjWaStickyOffset = true;
 
-  const GAP = 12; // separaciÃ³n entre el botÃ³n y la barra
-  const BASE_BOTTOM = 16; // bottom original del botÃ³n (app)
+  const GAP = 12;
   const isMobile = () => window.matchMedia('(max-width: 767px)').matches;
 
   let waEl = null;
-  let styleInjected = false;
-
-  function injectShadowStyle(el) {
-    if (styleInjected || !el || !el.shadowRoot) return;
-    const target = el.shadowRoot.querySelector('.whatsup-whatsapp-button');
-    if (!target) return;
-    const style = document.createElement('style');
-    style.textContent =
-      '.whatsup-whatsapp-button{bottom:var(--mj-wa-bottom,' + BASE_BOTTOM + 'px)!important;' +
-      'transition:bottom .3s cubic-bezier(0.075,0.82,0.165,1);}';
-    el.shadowRoot.appendChild(style);
-    styleInjected = true;
-  }
 
   function update() {
     if (!waEl) return;
+    waEl.style.removeProperty('--mj-wa-top');
     const bar = document.querySelector('[id^="sticky-add-to-cart-"]');
-    let bottom = BASE_BOTTOM;
-    if (isMobile() && bar && getComputedStyle(bar).display !== 'none') {
-      const h = bar.getBoundingClientRect().height;
-      if (h > 0) bottom = Math.round(h + GAP);
+    if (!isMobile() || !bar || getComputedStyle(bar).display === 'none') return;
+    const h = bar.getBoundingClientRect().height;
+    if (h <= 0) return;
+    const size = waEl.getBoundingClientRect().height || 50;
+    const maxTop = Math.round(window.innerHeight - h - GAP - size);
+    const currentTop = waEl.getBoundingClientRect().top;
+    if (currentTop + size > window.innerHeight - h - GAP) {
+      waEl.style.setProperty('--mj-wa-top', Math.max(20, maxTop) + 'px');
     }
-    waEl.style.setProperty('--mj-wa-bottom', bottom + 'px');
   }
 
   function start() {
-    waEl = document.querySelector('whatsup-whatsapp-button');
+    waEl = document.querySelector('[data-mj-wa-float]');
     if (!waEl) return false;
-    injectShadowStyle(waEl);
-    if (!styleInjected) return false;
 
     const bar = document.querySelector('[id^="sticky-add-to-cart-"]');
     if (bar) {
@@ -55,7 +41,6 @@
     return true;
   }
 
-  // La app y el custom element cargan de forma diferida; reintentar hasta que existan.
   if (!start()) {
     let tries = 0;
     const timer = setInterval(() => {

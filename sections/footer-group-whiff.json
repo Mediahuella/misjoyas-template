@@ -11,6 +11,21 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
+    "misjoyas_whatsapp_float": {
+      "type": "misjoyas-whatsapp-float",
+      "settings": {
+        "enable": true,
+        "phone": "56945454917",
+        "message": "¡Hola! 👋 Me gustaría hacer una consulta con MisJoyas. ¿Me pueden orientar, por favor?",
+        "offset_top": 610,
+        "offset_top_mobile": 810,
+        "offset_right": 20,
+        "offset_right_mobile": 17,
+        "size_desktop": 60,
+        "size_mobile": 50,
+        "z_index": 100
+      }
+    },
     "footer": {
       "type": "footer",
       "blocks": {
@@ -83,6 +98,7 @@
     }
   },
   "order": [
+    "misjoyas_whatsapp_float",
     "footer"
   ]
 }

@@ -358,6 +358,9 @@
       "alt": "Banner promocional",
       "placeholder": "Sube la imagen de escritorio (1280×246 px) y la de móvil (400×550 px)."
     },
+    "misjoyas-whatsapp-float": {
+      "aria_label": "Chatear por WhatsApp"
+    },
     "countdown-timer": {
       "aria_label": "Contador regresivo",
       "image_alt": "Promoción con cuenta regresiva",
