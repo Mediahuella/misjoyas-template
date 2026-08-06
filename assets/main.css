@@ -1160,6 +1160,31 @@ b {
   }
 }
 
+/*
+ * PDP gutters — align with banner-pequeno
+ * mobile: 20px | desktop: 80px
+ */
+.theme-template-product .section-custom-liquid .custom-liquid.page-width {
+  max-width: none;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-sizing: border-box;
+}
+
+.theme-template-product .misjoyas-details,
+.theme-template-product .misjoyas-estandar {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .theme-template-product .section-custom-liquid .custom-liquid.page-width {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+}
+
 /* PDP mobile: márgenes 20px (Figma Product Info Container) */
 @media (max-width: 767px) {
   .section-product-info .product-content-container {
@@ -1197,10 +1222,11 @@ b {
     line-height: 20px;
   }
 
-  /* Galería: imagen grande sin miniaturas + flechas overlay (Figma Product Image) */
-  .section-product-info .product-media-container {
-    padding-left: 20px;
-    padding-right: 20px;
+  /* Galería full-bleed del tema → forzar gutter 20px como banner-pequeno */
+  .section-product-info .ltr.full-width-mobile .product-media-container {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    box-sizing: border-box;
   }
 
   .section-product-info .product-media-container [id^="x-product-thumbnail-"] {
@@ -1552,14 +1578,24 @@ b {
   margin-bottom: 0 !important;
 }
 
-.section-product-info .misjoyas-item {
-  margin-bottom: 0 !important;
-}
-
 .section-product-info .misjoyas-accordion,
 .section-product-info .custom-html {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
+}
+
+.section-product-info .misjoyas-accordion {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+}
+
+.section-product-info .misjoyas-item {
+  margin: 0 !important;
+}
+
+.section-product-info .misjoyas-item + .misjoyas-item {
+  margin-top: 10px !important;
 }
 
 /* ===== PDP: título + compartir (Figma 1813:9322 / 1870:17658) ===== */
@@ -2295,6 +2331,16 @@ b {
   min-height: 26px;
   border-radius: 4px !important;
   opacity: 1 !important;
+}
+
+@media (max-width: 767px) {
+  .card-product .x-badge-content.x-badge-text--new,
+  .card-product [class*='x-badge-new'] .x-badge-content.x-badge-text {
+    font-size: 10px !important;
+    line-height: 16px !important;
+    min-height: 22px;
+    padding: 2px 5px !important;
+  }
 }
 
 .card-product .x-badge-content.label-img {
@@ -3472,6 +3518,23 @@ b {
     color: #f83785;
   }
 
+  /* Ofertas: "entre" en 1ª línea, descuentos en 2ª */
+  .mj-mega--ofertas .mj-mega__col-title--stacked {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    white-space: normal;
+  }
+
+  .mj-mega--ofertas .mj-mega__col-title-row {
+    display: block;
+    line-height: 26px;
+  }
+
+  .mj-mega--ofertas .mj-mega__col-title--stacked + .mj-mega__col-line {
+    margin-top: 0;
+  }
+
   .mj-mega__col-line {
     display: block;
     width: 100%;
@@ -3683,6 +3746,20 @@ b {
     line-height: 26px;
   }
 
+  /* Ofertas cards: "Entre" en 1ª línea, rango en 2ª */
+  .mj-mega--ofertas .mj-mega__cat-title--stacked {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    white-space: normal;
+  }
+
+  .mj-mega--ofertas .mj-mega__cat-title-row {
+    display: block;
+    line-height: 26px;
+    white-space: nowrap;
+  }
+
   .mj-mega__cat-line {
     display: block;
     width: 134px;
@@ -3832,6 +3909,17 @@ b {
   text-align: center;
 }
 
+/* Texto/caret blancos (pisa el color negro global del drawer) — igual que desktop */
+.mj-mobile-nav__cta-btn.button,
+.mj-mobile-nav__cta-btn.button .mj-mobile-nav__title,
+.mj-mobile-nav__cta-btn.button .mj-mobile-nav__title-text,
+.mj-mobile-nav__cta-btn.button .mj-mobile-nav__caret,
+.mj-mobile-nav__item--button .mj-mobile-nav__trigger.mj-mobile-nav__cta-btn,
+.mj-mobile-nav__item--button .mj-mobile-nav__trigger.mj-mobile-nav__cta-btn .mj-mobile-nav__title,
+.mj-mobile-nav__item--button .mj-mobile-nav__trigger.mj-mobile-nav__cta-btn .mj-mobile-nav__caret {
+  color: #fff !important;
+}
+
 /* Tree menu with button style + children: pink trigger + caret, accordion below */
 .mj-mobile-nav__item--button .mj-mobile-nav__trigger.mj-mobile-nav__cta-btn {
   gap: 6px;
@@ -3842,7 +3930,6 @@ b {
 }
 
 .mj-mobile-nav__item--button .mj-mobile-nav__caret {
-  color: inherit;
   flex-shrink: 0;
 }
 
@@ -4039,6 +4126,13 @@ b {
   color: #fff;
 }
 
+.mj-mobile-nav__stores-icon img {
+  display: block;
+  width: 28px;
+  height: 28px;
+  filter: brightness(0) invert(1);
+}
+
 .mj-mobile-nav__stores-text {
   color: #fff;
 }
@@ -4052,7 +4146,8 @@ b {
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  padding: 28px 20px 24px;
+  padding: 28px 20px 20px;
+  color: #fff;
 }
 
 .mj-mobile-nav__footer-links {
@@ -4068,7 +4163,7 @@ b {
   align-items: center;
   justify-content: center;
   gap: 6px;
-  color: #fff;
+  color: #fff !important;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
@@ -4085,34 +4180,48 @@ b {
 
 .mj-mobile-nav__footer-check {
   display: inline-flex;
+  width: 20px;
+  height: 20px;
   color: #fff;
   line-height: 0;
+  flex-shrink: 0;
+}
+
+.mj-mobile-nav__footer-check img {
+  display: block;
+  width: 20px;
+  height: 20px;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .mj-mobile-nav__footer-chevron {
   display: inline-block;
   width: 0;
   height: 0;
-  border-top: 4px solid transparent;
-  border-bottom: 4px solid transparent;
-  border-left: 5px solid #f83785;
+  border-top: 4.33px solid transparent;
+  border-bottom: 4.33px solid transparent;
+  border-left: 3.5px solid #f83785;
   margin-left: 2px;
+  flex-shrink: 0;
 }
 
 .mj-mobile-nav__footer-account-icon {
   display: inline-flex;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   color: #fff;
+  flex-shrink: 0;
 }
 
 .mj-mobile-nav__footer-account-icon svg {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
 }
 
 .mj-mobile-nav__footer-link--account {
   font-weight: 600;
+  gap: 4px;
 }
 
 .mj-mobile-nav__footer-social {
@@ -4120,23 +4229,35 @@ b {
   justify-content: center;
 }
 
-.mj-mobile-nav__footer-social ul {
+.mj-mobile-nav__footer-social ul,
+.mj-mobile-nav__footer-social-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: flex-start;
   gap: 8px;
   margin: 0;
-  padding: 0;
+  padding: 10px 0;
   list-style: none;
 }
 
 .mj-mobile-nav__footer-social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 13px;
   color: #fff !important;
-  border-color: #fff !important;
+  border: 1px solid #fff !important;
+  border-radius: 9999px;
   opacity: 1 !important;
+  box-sizing: border-box;
 }
 
 .mj-mobile-nav__footer-social svg {
+  width: 18px;
+  height: 18px;
   color: #fff;
   fill: currentColor;
 }
@@ -4146,6 +4267,433 @@ b {
 .mj-mobile-nav .block-mobile-navigation .border-t,
 .mj-mobile-nav .block-mobile-navigation .border-y {
   border-color: transparent;
+}
+
+/* ===== MISJOYAS PDP EXTRACTED STYLES (cacheable) ===== */
+/* from product.json → html_prodDesc_style_0.css */
+.misjoyas-product-desc{
+  width:100%;
+  margin:0 0 16px;
+  color:#000;
+  font-size:15px;
+  font-weight:400;
+  line-height:22px;
+}
+@media (max-width:767px){
+  .misjoyas-product-desc{
+    font-size:14px;
+    line-height:20px;
+    margin-bottom:12px;
+  }
+}
+
+/* from product.json → html_MEaFay_style_0.css */
+.misjoyas-wholesale {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.misjoyas-wholesale__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 16px;
+  background: rgba(248, 55, 133, 0.12);
+  border: 0;
+  border-radius: 4px 4px 0 0;
+  cursor: pointer;
+  text-align: left;
+  color: #000;
+  font-family: inherit;
+  font-weight: 700;
+}
+.misjoyas-wholesale[data-open="false"] .misjoyas-wholesale__header {
+  border-radius: 4px;
+}
+.misjoyas-wholesale__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #f83785;
+}
+.misjoyas-wholesale__icon img {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+.misjoyas-wholesale__title {
+  flex: 1;
+  min-width: 0;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: normal;
+  color: #000;
+}
+.misjoyas-wholesale__toggle {
+  flex-shrink: 0;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  width: 1em;
+  text-align: center;
+  color: #000;
+}
+.misjoyas-wholesale__panel {
+  border: 1px solid #e0e0e0;
+  border-top: 0;
+  border-radius: 0 0 4px 4px;
+  background: #fff;
+}
+.misjoyas-wholesale[data-open="false"] .misjoyas-wholesale__panel {
+  display: none;
+}
+.misjoyas-wholesale__body {
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: normal;
+  color: #000;
+}
+.misjoyas-wholesale__body p {
+  margin: 0;
+}
+.misjoyas-wholesale__note {
+  color: #737373;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+/* from product.json → html_goldExp_style_0.css */
+.misjoyas-gold-experience{width:100%;margin-bottom:20px;display:flex;flex-direction:column;gap:12px}
+.misjoyas-gold-experience__box{background:#ffebbb;border-radius:4px;padding:16px;color:#000}
+.misjoyas-gold-experience__title{margin:0 0 6px;font-size:14px;font-weight:700;line-height:normal}
+.misjoyas-gold-experience__text{margin:0;font-size:14px;font-weight:400;line-height:1.4}
+.misjoyas-gold-experience__badges{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;font-size:14px;font-weight:600;line-height:20px;color:#000}
+.misjoyas-gold-experience__badges > span{display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
+.misjoyas-gold-experience__star{color:#fcdf97;font-weight:700}
+@media (max-width:600px){
+.misjoyas-gold-experience__badges{gap:8px 12px}
+}
+
+/* from product.json → html_9PyUAj_style_0.css */
+.misjoyas-accordion{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  width:100%;
+  margin:0;
+  font-family:inherit;
+}
+.misjoyas-item{
+  border:1px solid #e0e0e0;
+  border-radius:4px;
+  overflow:hidden;
+  background:#fff;
+  margin:0;
+}
+.misjoyas-accordion-btn{
+  width:100%;
+  background:#fff;
+  border:none;
+  padding:16px;
+  text-align:left;
+  color:#222;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  cursor:pointer;
+  font-family:inherit;
+}
+.misjoyas-accordion-btn:hover{
+  background:#fafafa;
+}
+.misjoyas-accordion-btn__label{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex:1;
+  min-width:0;
+}
+.misjoyas-accordion-btn__icon{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  width:28px;
+  height:28px;
+}
+.misjoyas-accordion-btn__icon--shipping{
+  width:24px;
+  height:24px;
+}
+.misjoyas-accordion-btn__icon img{
+  display:block;
+  width:28px;
+  height:28px;
+}
+.misjoyas-accordion-btn__icon--shipping img{
+  width:24px;
+  height:24px;
+}
+.misjoyas-accordion-btn__text{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  min-width:0;
+}
+.misjoyas-accordion-btn__title{
+  color:#222;
+  font-size:14px;
+  font-weight:700;
+  line-height:normal;
+}
+.misjoyas-accordion-btn__subtitle{
+  color:#737373;
+  font-size:14px;
+  font-weight:400;
+  line-height:normal;
+}
+.misjoyas-arrow{
+  flex-shrink:0;
+  font-size:20px;
+  font-weight:400;
+  line-height:1;
+  color:#000;
+  width:1em;
+  text-align:center;
+}
+.misjoyas-content{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .35s ease;
+  padding:0 16px;
+  font-size:13px;
+  color:#555;
+}
+.misjoyas-content.is-open{
+  padding-bottom:16px;
+}
+.misjoyas-content p{
+  margin:10px 0;
+  line-height:1.6;
+}
+.misjoyas-content p:first-child{
+  margin-top:0;
+}
+
+/* from product.json → html_fMA38V_style_0.css */
+.misjoyas-wa-help{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  width:100%;
+  margin-top:20px;
+  margin-bottom:20px;
+  padding:10px 16px;
+  background:rgba(121,213,201,0.24);
+  border-radius:4px;
+  color:#000;
+  text-decoration:none;
+  box-sizing:border-box;
+  font-family:inherit;
+}
+.misjoyas-wa-help:hover{
+  color:#000;
+  text-decoration:none;
+}
+.misjoyas-wa-help__left{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  min-width:0;
+}
+.misjoyas-wa-help__icon{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  width:24px;
+  height:24px;
+}
+.misjoyas-wa-help__icon img{
+  display:block;
+  width:24px;
+  height:24px;
+}
+.misjoyas-wa-help__question{
+  font-size:14px;
+  font-weight:700;
+  line-height:normal;
+}
+.misjoyas-wa-help__cta{
+  flex-shrink:0;
+  font-size:14px;
+  font-weight:400;
+  line-height:normal;
+  text-decoration:underline;
+  text-underline-offset:2px;
+}
+@media (max-width:600px){
+  .misjoyas-wa-help{
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .misjoyas-wa-help__cta{
+    margin-left:32px;
+  }
+}
+
+/* from product.json → html_cgMNhC_style_0.css */
+.misjoyas-payment{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  width:100%;
+  margin-top:20px;
+  margin-bottom:20px;
+  font-family:inherit;
+}
+.misjoyas-payment__label{
+  flex-shrink:0;
+  color:#000;
+  font-size:14px;
+  font-weight:700;
+  line-height:normal;
+  white-space:nowrap;
+}
+/* PDP usa el snippet .misjoyas-payment-logos; forzar tamaño PDP (40px) */
+.misjoyas-payment .misjoyas-payment-logos__logo {
+  height: 40px;
+}
+.misjoyas-payment .misjoyas-payment-logos__logo--webpay {
+  max-width: 120px;
+}
+.misjoyas-payment .misjoyas-payment-logos__logo--mp,
+.misjoyas-payment .misjoyas-payment-logos__logo--transfer {
+  width: 100px;
+}
+@media (min-width: 768px) {
+  .misjoyas-payment .misjoyas-payment-logos__logo {
+    height: 40px;
+  }
+  .misjoyas-payment .misjoyas-payment-logos__logo--webpay {
+    max-width: 120px;
+  }
+  .misjoyas-payment .misjoyas-payment-logos__logo--mp,
+  .misjoyas-payment .misjoyas-payment-logos__logo--transfer {
+    width: 100px;
+  }
+}
+@media (max-width:600px){
+  .misjoyas-payment{
+    align-items:flex-start;
+    flex-direction:column;
+    gap:10px;
+  }
+  .misjoyas-payment .misjoyas-payment-logos__logo {
+    height: 36px;
+  }
+  .misjoyas-payment .misjoyas-payment-logos__logo--webpay {
+    max-width: 110px;
+  }
+  .misjoyas-payment .misjoyas-payment-logos__logo--mp,
+  .misjoyas-payment .misjoyas-payment-logos__logo--transfer {
+    width: 90px;
+  }
+}
+
+/* from product.json → sec_custom_liquid_NLGn9E_style_0.css */
+.misjoyas-details{
+  width:100%;
+  font-family:inherit;
+  color:#000;
+}
+.misjoyas-details__item{
+  border-top:1px solid #e0e0e0;
+  background:#fff;
+}
+.misjoyas-details__header{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:8px;
+  width:100%;
+  padding:20px 0 0;
+  border:0;
+  background:transparent;
+  cursor:pointer;
+  text-align:left;
+  color:#000 !important;
+  font-family:inherit;
+}
+.misjoyas-details__title{
+  flex:1;
+  min-width:0;
+  font-size:18px;
+  font-weight:700;
+  line-height:24px;
+  color:#000 !important;
+  opacity:1;
+  visibility:visible;
+}
+.misjoyas-details__toggle{
+  flex-shrink:0;
+  font-size:26px;
+  font-weight:400;
+  line-height:32px;
+  width:1em;
+  text-align:center;
+  color:#000 !important;
+  opacity:1;
+  visibility:visible;
+}
+.misjoyas-details__panel{
+  overflow:hidden;
+}
+.misjoyas-details__item[data-open="false"] .misjoyas-details__panel{
+  display:none;
+}
+.misjoyas-details__body{
+  padding:8px 0 20px;
+  font-size:15px;
+  font-weight:400;
+  line-height:22px;
+  color:#000;
+}
+.misjoyas-estandar{
+  width:100%;
+  margin:20px 0 0;
+  padding:20px 0 0;
+}
+.misjoyas-estandar__img{
+  display:block;
+  width:100%;
+  height:auto;
+  border-radius:4px;
+}
+@media (max-width:767px){
+  .misjoyas-details__title{
+    font-size:16px;
+    line-height:22px;
+  }
+  .misjoyas-details__toggle{
+    font-size:22px;
+    line-height:28px;
+  }
+  .misjoyas-details__body{
+    font-size:14px;
+    line-height:20px;
+  }
+  .misjoyas-estandar{
+    margin-top:12px;
+    padding-top:12px;
+  }
 }
 .placeholder\:tw-text-\[\#2d2d2d\]::-moz-placeholder {
   --tw-text-opacity: 1;
@@ -4188,4 +4736,5 @@ b {
     grid-area: icons;
   }
 }
+
 

@@ -582,10 +582,13 @@
 
       var attempts = 0;
       var timer = setInterval(function () {
-        tick();
-        var root = document.getElementById('featured-collection-mj-' + sid);
-        if ((root && root.splide) || ++attempts > 150) clearInterval(timer);
-      }, 100);
+        var progressOk = bindProgress();
+        var arrowsOk = bindArrows();
+        attempts += 1;
+        if ((progressOk && arrowsOk) || attempts > 80) {
+          clearInterval(timer);
+        }
+      }, 250);
 
       document.addEventListener('shopify:section:load', function (event) {
         if (event.target && event.target.querySelector('#featured-collection-mj-' + sid)) {

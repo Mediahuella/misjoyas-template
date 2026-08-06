@@ -12,30 +12,50 @@
     <div
       class="countdown-image{% if desktop_image != blank and mobile_image != blank %} countdown-image--split{% elsif desktop_image == blank and mobile_image != blank %} countdown-image--only-mobile{% endif %}"
     >
-      {% if desktop_image != blank %}
+      {%- if desktop_image != blank and mobile_image != blank -%}
+        <picture>
+          <source
+            media="(max-width: 749px)"
+            srcset="{{ mobile_image | image_url: width: 375 }} 375w, {{ mobile_image | image_url: width: 750 }} 750w, {{ mobile_image | image_url: width: 768 }} 768w"
+            sizes="100vw"
+          >
+          <img
+            src="{{ desktop_image | image_url: width: 1080 }}"
+            srcset="{{ desktop_image | image_url: width: 750 }} 750w, {{ desktop_image | image_url: width: 1080 }} 1080w"
+            sizes="100vw"
+            alt="{{ desktop_image.alt | default: mobile_image.alt | default: 'Cuenta Regresiva' }}"
+            loading="lazy"
+            decoding="async"
+            class="countdown-image-img countdown-image-desktop"
+            width="{{ desktop_image.width }}"
+            height="{{ desktop_image.height }}"
+          >
+        </picture>
+      {%- elsif desktop_image != blank -%}
         <img
           src="{{ desktop_image | image_url: width: 1080 }}"
           srcset="{{ desktop_image | image_url: width: 750 }} 750w, {{ desktop_image | image_url: width: 1080 }} 1080w"
           sizes="100vw"
           alt="{{ desktop_image.alt | default: 'Cuenta Regresiva' }}"
           loading="lazy"
+          decoding="async"
           class="countdown-image-img countdown-image-desktop"
           width="{{ desktop_image.width }}"
           height="{{ desktop_image.height }}"
         >
-      {% endif %}
-      {% if mobile_image != blank %}
+      {%- elsif mobile_image != blank -%}
         <img
           src="{{ mobile_image | image_url: width: 768 }}"
           srcset="{{ mobile_image | image_url: width: 375 }} 375w, {{ mobile_image | image_url: width: 750 }} 750w, {{ mobile_image | image_url: width: 768 }} 768w"
           sizes="100vw"
           alt="{{ mobile_image.alt | default: 'Cuenta Regresiva' }}"
           loading="lazy"
+          decoding="async"
           class="countdown-image-img countdown-image-mobile"
           width="{{ mobile_image.width }}"
           height="{{ mobile_image.height }}"
         >
-      {% endif %}
+      {%- endif -%}
     </div>
     <div class="countdown-wrapper">
       {% if section.settings.title != blank %}
@@ -219,22 +239,9 @@
     display: block;
   }
 
-  /* Desktop + móvil: en pantallas grandes solo desktop */
-  @media screen and (min-width: 750px) {
-    #countdown-container-{{ section.id }} .countdown-image--split .countdown-image-mobile {
-      display: none;
-    }
-  }
-
-  /* Con ambas imágenes: en móvil solo la versión mobile */
-  @media screen and (max-width: 749px) {
-    #countdown-container-{{ section.id }} .countdown-image--split .countdown-image-desktop {
-      display: none;
-    }
-
-    #countdown-container-{{ section.id }} .countdown-image--split .countdown-image-mobile {
-      display: block;
-    }
+  /* Split usa <picture>: el browser elige fuente; el img siempre visible */
+  #countdown-container-{{ section.id }} .countdown-image--split .countdown-image-desktop {
+    display: block;
   }
 
   /*

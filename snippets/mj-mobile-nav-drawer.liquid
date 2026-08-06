@@ -34,32 +34,37 @@
   assign show_stores = true
   assign show_footer_links = true
   assign show_footer_login = true
-  assign show_footer_social = true
+  assign show_footer_social = false
   assign stores_text = 'sections.mobile-navigation.stores_footer' | t
   assign stores_href = pages['tiendas'].url | default: '/pages/tiendas'
   assign footer_link_1_text = blank
   assign footer_link_1_url = blank
-  assign footer_link_1_show_check = true
-  assign footer_link_2_text = blank
-  assign footer_link_2_url = blank
+  assign footer_link_1_show_check = false
+  assign footer_link_2_text = 'Todo para **emprender**'
+  assign footer_link_2_url = pages['todo-para-emprender'].url | default: '/pages/todo-para-emprender'
   assign show_language = false
 
   if ui != blank
-    assign show_stores = ui.settings.show_stores_footer
-    assign show_footer_links = ui.settings.show_footer_links
-    assign show_footer_login = ui.settings.show_footer_login
-    assign show_footer_social = ui.settings.show_footer_social
+    assign show_stores = ui.settings.show_stores_footer | default: true, allow_false: true
+    assign show_footer_links = ui.settings.show_footer_links | default: true, allow_false: true
+    assign show_footer_login = ui.settings.show_footer_login | default: true, allow_false: true
+    assign show_footer_social = ui.settings.show_footer_social | default: false, allow_false: true
     if ui.settings.stores_footer_text != blank
       assign stores_text = ui.settings.stores_footer_text
     endif
     if ui.settings.stores_footer_link != blank
       assign stores_href = ui.settings.stores_footer_link
     endif
+    # Empty string in editor means hide link 1 (do not fall back to Plata 925)
     assign footer_link_1_text = ui.settings.footer_link_1_text
     assign footer_link_1_url = ui.settings.footer_link_1_link
-    assign footer_link_1_show_check = ui.settings.footer_link_1_show_check
-    assign footer_link_2_text = ui.settings.footer_link_2_text
-    assign footer_link_2_url = ui.settings.footer_link_2_link
+    assign footer_link_1_show_check = ui.settings.footer_link_1_show_check | default: false, allow_false: true
+    if ui.settings.footer_link_2_text != blank
+      assign footer_link_2_text = ui.settings.footer_link_2_text
+    endif
+    if ui.settings.footer_link_2_link != blank
+      assign footer_link_2_url = ui.settings.footer_link_2_link
+    endif
     if ui.settings.show_currency_selector or ui.settings.show_language_selector
       assign show_language = true
     endif
@@ -169,12 +174,14 @@
         {%- if show_stores -%}
           <a href="{{ stores_href }}" class="mj-mobile-nav__stores disable-effect">
             <span class="mj-mobile-nav__stores-icon" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
-                <path d="M3 9.5L4.5 4h15L21 9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M4 9.5V20h16V9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M9.5 20v-6h5v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M4 9.5h3.2a2.3 2.3 0 0 0 4.6 0h.4a2.3 2.3 0 0 0 4.6 0H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
+              <img
+                src="{{ 'tiendas.svg' | asset_url }}"
+                width="28"
+                height="28"
+                alt=""
+                decoding="async"
+                focusable="false"
+              >
             </span>
             <span class="mj-mobile-nav__stores-text">
               {%- assign stores_parts = stores_text | split: '—' -%}
@@ -194,20 +201,47 @@
                 <a href="{{ footer_link_1_url | default: '#' }}" class="mj-mobile-nav__footer-link disable-effect">
                   {%- if footer_link_1_show_check -%}
                     <span class="mj-mobile-nav__footer-check" aria-hidden="true">
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="8" cy="8" r="7.25" stroke="currentColor" stroke-width="1.5"/>
-                        <path d="M4.75 8.25L7 10.5L11.25 5.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
+                      <img
+                        src="{{ 'misjoyas-topbar-check.png' | asset_url }}"
+                        width="20"
+                        height="20"
+                        alt=""
+                        decoding="async"
+                      >
                     </span>
                   {%- endif -%}
-                  <span class="mj-mobile-nav__footer-link-text">{{ footer_link_1_text | escape }}</span>
+                  <span class="mj-mobile-nav__footer-link-text">
+                    {%- assign fl1_parts = footer_link_1_text | split: '**' -%}
+                    {%- if fl1_parts.size > 1 -%}
+                      {%- for part in fl1_parts -%}
+                        {%- assign fl1_mod = forloop.index0 | modulo: 2 -%}
+                        {%- if fl1_mod == 1 -%}<strong>{{ part | escape }}</strong>{%- else -%}{{ part | escape }}{%- endif -%}
+                      {%- endfor -%}
+                    {%- elsif footer_link_1_text == 'Plata 925 certificada' -%}
+                      <strong>Plata 925</strong> certificada
+                    {%- else -%}
+                      {{ footer_link_1_text | escape }}
+                    {%- endif -%}
+                  </span>
                   <span class="mj-mobile-nav__footer-chevron" aria-hidden="true"></span>
                 </a>
               {%- endif -%}
 
               {%- if show_footer_links and footer_link_2_text != blank -%}
                 <a href="{{ footer_link_2_url | default: '#' }}" class="mj-mobile-nav__footer-link disable-effect">
-                  <span class="mj-mobile-nav__footer-link-text">{{ footer_link_2_text | escape }}</span>
+                  <span class="mj-mobile-nav__footer-link-text">
+                    {%- assign fl2_parts = footer_link_2_text | split: '**' -%}
+                    {%- if fl2_parts.size > 1 -%}
+                      {%- for part in fl2_parts -%}
+                        {%- assign fl2_mod = forloop.index0 | modulo: 2 -%}
+                        {%- if fl2_mod == 1 -%}<strong>{{ part | escape }}</strong>{%- else -%}{{ part | escape }}{%- endif -%}
+                      {%- endfor -%}
+                    {%- elsif footer_link_2_text == 'Todo para emprender' -%}
+                      Todo para <strong>emprender</strong>
+                    {%- else -%}
+                      {{ footer_link_2_text | escape }}
+                    {%- endif -%}
+                  </span>
                   <span class="mj-mobile-nav__footer-chevron" aria-hidden="true"></span>
                 </a>
               {%- endif -%}
@@ -235,7 +269,9 @@
 
           {%- if show_footer_social -%}
             <div class="mj-mobile-nav__footer-social">
-              {% render 'social-icons', footer: true %}
+              <ul class="mj-mobile-nav__footer-social-list" role="list">
+                {% render 'social-icons', footer: true %}
+              </ul>
             </div>
           {%- endif -%}
         </div>

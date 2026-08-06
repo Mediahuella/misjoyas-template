@@ -9,25 +9,12 @@
     - Recubrimiento Baño de Oro 18 k → Baño de oro 18K
     - Baño de Oro 18k / Baño de Oro 18 k → Plata 925 con baño de oro 18K
 {% endcomment %}
+{%- capture metal_str -%}{%- render 'misjoyas-metal-str', product: product -%}{%- endcapture -%}
+{%- assign metal_str = metal_str | strip -%}
 {%- liquid
   assign metal_context = context | default: 'card'
   assign metal_variant = blank
   assign metal_label = blank
-  assign metal_str = blank
-  assign metal_mf = product.metafields.custom.tipo_de_metal
-
-  if metal_mf != blank
-    assign metal_str = metal_mf | metafield_text | strip
-    if metal_str == blank
-      if metal_mf.type contains 'list.'
-        assign metal_str = metal_mf.value | first | append: '' | strip
-      elsif metal_mf.value.system != blank
-        assign metal_str = metal_mf.value.label | default: metal_mf.value.name | default: metal_mf.value.value | append: '' | strip
-      else
-        assign metal_str = metal_mf.value | default: metal_mf | append: '' | strip
-      endif
-    endif
-  endif
 
   if metal_str != blank
     assign metal_key = metal_str | downcase | replace: 'á', 'a' | replace: 'é', 'e' | replace: 'í', 'i' | replace: 'ó', 'o' | replace: 'ú', 'u' | replace: 'ñ', 'n'

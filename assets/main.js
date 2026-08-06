@@ -45,11 +45,11 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
         attributes: true,
         attributeFilter: ['style', 'class']
       });
+      if (typeof ResizeObserver !== 'undefined') {
+        new ResizeObserver(update).observe(bar);
+      }
     }
     window.addEventListener('resize', update, {
-      passive: true
-    });
-    window.addEventListener('scroll', update, {
       passive: true
     });
     update();
@@ -472,6 +472,83 @@ window.bindFeaturedCollectionMjArrows = function (root, desktopMove, mobileMove)
   }
   updateDisabled();
 };
+
+/* ===== MISJOYAS PDP EXTRACTED SCRIPTS ===== */
+(function () {
+  function bindWholesale() {
+    document.querySelectorAll('.misjoyas-wholesale').forEach(function (el) {
+      if (el.dataset.bound) return;
+      el.dataset.bound = '1';
+      var btn = el.querySelector('.misjoyas-wholesale__header');
+      var toggle = el.querySelector('.misjoyas-wholesale__toggle');
+      if (!btn || !toggle) return;
+      btn.addEventListener('click', function () {
+        var open = el.getAttribute('data-open') !== 'false';
+        el.setAttribute('data-open', open ? 'false' : 'true');
+        btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+        toggle.textContent = open ? '+' : '−';
+      });
+    });
+  }
+  function bindAccordion() {
+    document.querySelectorAll('.misjoyas-accordion').forEach(function (accordion) {
+      if (accordion.dataset.bound) return;
+      accordion.dataset.bound = '1';
+      accordion.querySelectorAll('.misjoyas-accordion-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var item = btn.closest('.misjoyas-item');
+          var content = item && item.querySelector('.misjoyas-content');
+          var arrow = btn.querySelector('.misjoyas-arrow');
+          if (!content || !arrow) return;
+          var isOpen = btn.getAttribute('aria-expanded') === 'true';
+          accordion.querySelectorAll('.misjoyas-accordion-btn').forEach(function (otherBtn) {
+            otherBtn.setAttribute('aria-expanded', 'false');
+            var a = otherBtn.querySelector('.misjoyas-arrow');
+            if (a) a.textContent = '+';
+          });
+          accordion.querySelectorAll('.misjoyas-content').forEach(function (c) {
+            c.style.maxHeight = null;
+            c.classList.remove('is-open');
+          });
+          if (!isOpen) {
+            btn.setAttribute('aria-expanded', 'true');
+            content.classList.add('is-open');
+            content.style.maxHeight = content.scrollHeight + 'px';
+            arrow.textContent = '−';
+          }
+        });
+      });
+    });
+  }
+  function bindDetails() {
+    document.querySelectorAll('.misjoyas-details').forEach(function (root) {
+      if (root.dataset.bound) return;
+      root.dataset.bound = '1';
+      root.querySelectorAll('.misjoyas-details__header').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var item = btn.closest('.misjoyas-details__item');
+          if (!item) return;
+          var open = item.getAttribute('data-open') !== 'false';
+          item.setAttribute('data-open', open ? 'false' : 'true');
+          btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+          var toggle = btn.querySelector('.misjoyas-details__toggle');
+          if (toggle) toggle.textContent = open ? '+' : '−';
+        });
+      });
+    });
+  }
+  function bindAll() {
+    bindWholesale();
+    bindAccordion();
+    bindDetails();
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bindAll);
+  } else {
+    bindAll();
+  }
+  document.addEventListener('shopify:section:load', bindAll);
+})();
 
 /***/ },
 

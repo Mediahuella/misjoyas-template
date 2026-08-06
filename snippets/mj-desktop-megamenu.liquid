@@ -26,6 +26,12 @@
   assign menu_links = block.settings.menu.links
   assign link_count = menu_links.size
 
+  assign is_ofertas = false
+  assign heading_key = block.settings.heading | downcase | strip
+  if heading_key == 'ofertas' or block.settings.menu == 'descuentos-black'
+    assign is_ofertas = true
+  endif
+
   assign is_flat_categories = true
   for link in menu_links
     if link.links != blank
@@ -36,7 +42,7 @@
 -%}
 
 {%- if is_flat_categories -%}
-  <div class="mj-mega mj-mega--categories">
+  <div class="mj-mega mj-mega--categories{% if is_ofertas %} mj-mega--ofertas{% endif %}">
     {%- if mega_heading != blank -%}
       <p class="mj-mega__heading">{{ mega_heading | escape }}</p>
     {%- endif -%}
@@ -63,6 +69,37 @@
             when 8
               assign cat_image = block.settings.category_image_8
           endcase
+
+          assign title_text = link.title
+          assign title_lower = title_text | downcase
+          assign title_stacked = false
+          assign title_line_1 = blank
+          assign title_line_2 = blank
+          if is_ofertas
+            if title_lower contains 'entre '
+              assign title_stacked = true
+              if title_text contains 'Entre '
+                assign title_parts = title_text | split: 'Entre '
+                assign title_line_1 = title_parts.first | append: 'Entre'
+                assign title_line_2 = title_parts.last | strip
+              else
+                assign title_parts = title_text | split: 'entre '
+                assign title_line_1 = title_parts.first | append: 'entre'
+                assign title_line_2 = title_parts.last | strip
+              endif
+            elsif title_lower contains 'sobre '
+              assign title_stacked = true
+              if title_text contains 'Sobre '
+                assign title_parts = title_text | split: 'Sobre '
+                assign title_line_1 = title_parts.first | append: 'Sobre'
+                assign title_line_2 = title_parts.last | strip
+              else
+                assign title_parts = title_text | split: 'sobre '
+                assign title_line_1 = title_parts.first | append: 'sobre'
+                assign title_line_2 = title_parts.last | strip
+              endif
+            endif
+          endif
         -%}
         <a href="{{ link.url }}" class="mj-mega__cat">
           {%- if cat_image != blank -%}
@@ -81,7 +118,14 @@
           {%- else -%}
             <span class="mj-mega__cat-media mj-mega__cat-media--empty" aria-hidden="true"></span>
           {%- endif -%}
-          <span class="mj-mega__cat-title">{{ link.title | escape }}</span>
+          <span class="mj-mega__cat-title{% if title_stacked %} mj-mega__cat-title--stacked{% endif %}">
+            {%- if title_stacked -%}
+              <span class="mj-mega__cat-title-row">{{ title_line_1 | strip | escape }}</span>
+              <span class="mj-mega__cat-title-row">{{ title_line_2 | escape }}</span>
+            {%- else -%}
+              {{ title_text | escape }}
+            {%- endif -%}
+          </span>
           <span class="mj-mega__cat-line" aria-hidden="true"></span>
         </a>
       {%- endfor -%}
@@ -138,7 +182,7 @@
       endif
     endfor
   -%}
-  <div class="mj-mega{% unless has_promo %} mj-mega--no-promo{% endunless %}">
+  <div class="mj-mega{% if is_ofertas %} mj-mega--ofertas{% endif %}{% unless has_promo %} mj-mega--no-promo{% endunless %}">
     {%- if mega_heading != blank -%}
       <p class="mj-mega__heading">{{ mega_heading | escape }}</p>
     {%- endif -%}
@@ -166,23 +210,62 @@
           <div class="mj-mega__stack">
             {%- for idx_str in stack_indexes -%}
               {%- assign idx = idx_str | plus: 0 -%}
-              {%- for link in menu_links -%}
-                {%- if forloop.index0 == idx -%}
-                  <div class="mj-mega__col">
-                    <a href="{{ link.url }}" class="mj-mega__col-title">{{ link.title | escape }}</a>
-                    <span class="mj-mega__col-line" aria-hidden="true"></span>
-                    {%- if link.links != blank -%}
-                      <ul class="mj-mega__links" role="list">
-                        {%- for childlink in link.links -%}
-                          <li class="mj-mega__link-item">
-                            <a href="{{ childlink.url }}" class="mj-mega__link">{{ childlink.title | escape }}</a>
-                          </li>
-                        {%- endfor -%}
-                      </ul>
+              {%- for link in menu_links offset: idx limit: 1 -%}
+                <div class="mj-mega__col">
+                  {%- liquid
+                    assign title_text = link.title
+                    assign title_lower = title_text | downcase
+                    assign title_stacked = false
+                    assign title_line_1 = blank
+                    assign title_line_2 = blank
+                    if is_ofertas
+                      if title_lower contains 'entre '
+                        assign title_stacked = true
+                        if title_text contains 'Entre '
+                          assign title_parts = title_text | split: 'Entre '
+                          assign title_line_1 = title_parts.first | append: 'Entre'
+                          assign title_line_2 = title_parts.last | strip
+                        else
+                          assign title_parts = title_text | split: 'entre '
+                          assign title_line_1 = title_parts.first | append: 'entre'
+                          assign title_line_2 = title_parts.last | strip
+                        endif
+                      elsif title_lower contains 'sobre '
+                        assign title_stacked = true
+                        if title_text contains 'Sobre '
+                          assign title_parts = title_text | split: 'Sobre '
+                          assign title_line_1 = title_parts.first | append: 'Sobre'
+                          assign title_line_2 = title_parts.last | strip
+                        else
+                          assign title_parts = title_text | split: 'sobre '
+                          assign title_line_1 = title_parts.first | append: 'sobre'
+                          assign title_line_2 = title_parts.last | strip
+                        endif
+                      endif
+                    endif
+                  -%}
+                  <a
+                    href="{{ link.url }}"
+                    class="mj-mega__col-title{% if title_stacked %} mj-mega__col-title--stacked{% endif %}"
+                  >
+                    {%- if title_stacked -%}
+                      <span class="mj-mega__col-title-row">{{ title_line_1 | strip | escape }}</span>
+                      <span class="mj-mega__col-title-row">{{ title_line_2 | escape }}</span>
+                    {%- else -%}
+                      {{ title_text | escape }}
                     {%- endif -%}
-                  </div>
-                  {%- break -%}
-                {%- endif -%}
+                  </a>
+                  <span class="mj-mega__col-line" aria-hidden="true"></span>
+                  {%- if link.links != blank -%}
+                    <ul class="mj-mega__links" role="list">
+                      {%- for childlink in link.links -%}
+                        <li class="mj-mega__link-item">
+                          <a href="{{ childlink.url }}" class="mj-mega__link">{{ childlink.title | escape }}</a>
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  {%- endif -%}
+                </div>
               {%- endfor -%}
             {%- endfor -%}
           </div>
