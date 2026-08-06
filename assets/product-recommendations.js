@@ -9,14 +9,22 @@ window.bindProductRecMjProgress = window.bindProductRecMjProgress || function (s
   if (!bar) return false;
 
   root.dataset.prMjProgressBound = '1';
-  var thumbPct = parseFloat(bar.dataset.thumbPct) || 25;
   var rafId = null;
 
+  function getThumbPct() {
+    var isDesktop = window.innerWidth >= 768;
+    var fromData = parseFloat(isDesktop ? bar.dataset.thumbPctDesktop : bar.dataset.thumbPctMobile);
+    if (!isNaN(fromData) && fromData > 0) return fromData;
+    var perPage = Number(splide.options.perPage) || 1;
+    var length = splide.length || 1;
+    return Math.min(100, (perPage / length) * 100);
+  }
+
   function applyWidth(animate) {
-    if (window.innerWidth >= 768) return;
+    var thumbPct = getThumbPct();
     var end = splide.Components.Controller.getEnd();
     var index = Math.max(0, Math.min(splide.index, end));
-    var width = end <= 0 ? thumbPct : thumbPct + (index / end) * (100 - thumbPct);
+    var width = end <= 0 ? 100 : thumbPct + (index / end) * (100 - thumbPct);
     bar.style.marginLeft = '0';
     bar.style.marginRight = '0';
     bar.style.transform = 'none';

@@ -279,11 +279,11 @@ b {
   }
 }
 
-/* Card / PLP title — Figma 26px */
+/* Card / PLP title — Figma Body S-regular 16/22 */
 .card-product .x-card-title,
 .card-product [class*="card-product-title-text-"] {
-  font-size: 26px !important;
-  line-height: 32px;
+  font-size: 16px !important;
+  line-height: 22px;
 }
 
 /*
@@ -1106,6 +1106,15 @@ b {
 .card-product-atc-btn *,
 .card-product-atc-btn:hover * {
   text-decoration: none !important;
+}
+
+/* Sin subrayado de animación global (settings.buttons_animation = underline) */
+.card-product-atc-btn .button-text::after,
+.card-product-atc-btn:hover .button-text::after,
+.card-product:hover .card-product-atc-btn .button-text::after {
+  content: none !important;
+  display: none !important;
+  width: 0 !important;
 }
 
 /* Selector de variante en tarjeta */
@@ -2521,13 +2530,24 @@ b {
     width: 100%;
   }
 
+  /* Filas de columnas (masonry vía Liquid): ítems extras van bajo la columna más corta */
   .mj-mega__columns {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: flex-start;
-    gap: 40px 60px;
+    gap: 48px;
     flex: 1 1 auto;
     min-width: 0;
+    width: 100%;
+  }
+
+  .mj-mega__stack {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
   }
 
   /* Sin imagen promocional: el menú ocupa todo el ancho del panel */
@@ -2536,19 +2556,30 @@ b {
   }
 
   .mj-mega--no-promo .mj-mega__columns {
-    flex: 1 1 100%;
     width: 100%;
     max-width: 100%;
   }
 
   .mj-mega__col {
-    width: max-content;
-    min-width: 200px;
+    width: 100%;
+    min-width: 0;
     max-width: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 20px;
+  }
+
+  @media (max-width: 1400px) {
+    .mj-mega__columns {
+      gap: 40px;
+    }
+  }
+
+  @media (max-width: 1100px) {
+    .mj-mega__columns {
+      gap: 32px;
+    }
   }
 
   .mj-mega__col-title {

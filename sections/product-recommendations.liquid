@@ -153,11 +153,6 @@
     padding: 0;
     box-sizing: border-box;
   }
-  @media (min-width: 768px) {
-    .product-rec-mj-{{ section.id }} .product-rec-mj__progress {
-      display: none !important;
-    }
-  }
   .product-rec-mj-{{ section.id }} .product-rec-mj__progress .splide-progress {
     display: block;
     width: 100%;
@@ -471,10 +466,19 @@
                 if mobile_width_bar > 1.0
                   assign mobile_width_bar = 1.0
                 endif
+                assign desktop_width_bar = per_page_desktop | divided_by: slide_count_f
+                if desktop_width_bar > 1.0
+                  assign desktop_width_bar = 1.0
+                endif
               -%}
               {%- style -%}
                 #product-rec-mj-progress-{{ section.id }} .splide-progress-bar {
                   width: {{ mobile_width_bar | times: 100 }}%;
+                }
+                @media (min-width: 768px) {
+                  #product-rec-mj-progress-{{ section.id }} .splide-progress-bar {
+                    width: {{ desktop_width_bar | times: 100 }}%;
+                  }
                 }
               {%- endstyle -%}
               <div
@@ -484,7 +488,8 @@
                 <div class="splide-progress rounded-md">
                   <div
                     class="splide-progress-bar-{{ section.id }} splide-progress-bar rounded-md"
-                    data-thumb-pct="{{ mobile_width_bar | times: 100 }}"
+                    data-thumb-pct-mobile="{{ mobile_width_bar | times: 100 }}"
+                    data-thumb-pct-desktop="{{ desktop_width_bar | times: 100 }}"
                   ></div>
                 </div>
               </div>

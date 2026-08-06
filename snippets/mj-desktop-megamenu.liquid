@@ -1,6 +1,9 @@
 {% comment %}
   MisJoyas desktop mega menu (Figma)
   Accepts: block
+
+  First N categories fill columns left → right.
+  Extra categories stack under the first column (Aros).
 {% endcomment %}
 {%- liquid
   assign mega_heading = block.settings.mega_heading
@@ -19,6 +22,47 @@
   if show_promo_image and block.settings.promo_image != blank
     assign has_promo = true
   endif
+
+  assign menu_links = block.settings.menu.links
+  assign link_count = menu_links.size
+  assign stack_count = 5
+  if link_count < stack_count
+    assign stack_count = link_count
+  endif
+  if stack_count < 1
+    assign stack_count = 1
+  endif
+
+  assign stack_items_0 = ''
+  assign stack_items_1 = ''
+  assign stack_items_2 = ''
+  assign stack_items_3 = ''
+  assign stack_items_4 = ''
+
+  for link in menu_links
+    assign link_token = forloop.index0 | append: ''
+    if forloop.index0 < stack_count
+      assign target = forloop.index0
+    else
+      assign target = 0
+    endif
+
+    if target == 0
+      if stack_items_0 != blank
+        assign stack_items_0 = stack_items_0 | append: ',' | append: link_token
+      else
+        assign stack_items_0 = link_token
+      endif
+    elsif target == 1
+      assign stack_items_1 = link_token
+    elsif target == 2
+      assign stack_items_2 = link_token
+    elsif target == 3
+      assign stack_items_3 = link_token
+    else
+      assign stack_items_4 = link_token
+    endif
+  endfor
 -%}
 <div class="mj-mega{% unless has_promo %} mj-mega--no-promo{% endunless %}">
   {%- if mega_heading != blank -%}
@@ -27,19 +71,46 @@
 
   <div class="mj-mega__body">
     <div class="mj-mega__columns">
-      {%- for link in block.settings.menu.links -%}
-        <div class="mj-mega__col">
-          <a href="{{ link.url }}" class="mj-mega__col-title">{{ link.title | escape }}</a>
-          <span class="mj-mega__col-line" aria-hidden="true"></span>
-          {%- if link.links != blank -%}
-            <ul class="mj-mega__links" role="list">
-              {%- for childlink in link.links -%}
-                <li class="mj-mega__link-item">
-                  <a href="{{ childlink.url }}" class="mj-mega__link">{{ childlink.title | escape }}</a>
-                </li>
-              {%- endfor -%}
-            </ul>
-          {%- endif -%}
+      {%- for stack_i in (0..4) -%}
+        {%- if stack_i >= stack_count -%}{%- break -%}{%- endif -%}
+        {%- liquid
+          case stack_i
+            when 0
+              assign stack_items = stack_items_0
+            when 1
+              assign stack_items = stack_items_1
+            when 2
+              assign stack_items = stack_items_2
+            when 3
+              assign stack_items = stack_items_3
+            else
+              assign stack_items = stack_items_4
+          endcase
+          assign stack_indexes = stack_items | split: ','
+        -%}
+        {%- if stack_items == blank -%}{%- continue -%}{%- endif -%}
+        <div class="mj-mega__stack">
+          {%- for idx_str in stack_indexes -%}
+            {%- assign idx = idx_str | plus: 0 -%}
+            {%- for link in menu_links -%}
+              {%- if forloop.index0 == idx -%}
+                <div class="mj-mega__col">
+                  <a href="{{ link.url }}" class="mj-mega__col-title">{{ link.title | escape }}</a>
+                  <span class="mj-mega__col-line" aria-hidden="true"></span>
+                  {%- if link.links != blank -%}
+                    <ul class="mj-mega__links" role="list">
+                      {%- for childlink in link.links -%}
+                        <li class="mj-mega__link-item">
+                          <a href="{{ childlink.url }}" class="mj-mega__link">{{ childlink.title | escape }}</a>
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  {%- endif -%}
+                </div>
+                {%- break -%}
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endfor -%}
         </div>
       {%- endfor -%}
     </div>

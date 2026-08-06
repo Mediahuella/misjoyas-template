@@ -4,21 +4,22 @@
   assign pad_y = section.settings.padding_y | default: 42
   assign pad_y_mobile = section.settings.padding_y_mobile | default: 40
   assign gap = section.settings.gap | default: 12
-
+  assign bg_color = section.settings.background_color | default: '#000000'
+  assign text_color = section.settings.text_color | default: '#ffffff'
 -%}
 
 {%- style -%}
   #shopify-section-{{ section.id }},
   .section-huincha-iconos,
   .huincha-iconos-{{ section.id }} {
-    background: #000000 !important;
-    background-color: #000000 !important;
+    background: {{ bg_color }} !important;
+    background-color: {{ bg_color }} !important;
     background-image: none !important;
     opacity: 1 !important;
   }
   .huincha-iconos-{{ section.id }} {
     width: 100%;
-    color: #ffffff;
+    color: {{ text_color }};
     padding: {{ pad_y_mobile }}px {{ pad_x_mobile }}px;
     box-sizing: border-box;
     min-height: 220px;
@@ -96,7 +97,7 @@
     font-size: 18px;
     font-weight: 600;
     line-height: 24px;
-    color: #ffffff;
+    color: {{ text_color }};
     text-transform: uppercase;
   }
   .huincha-iconos-{{ section.id }} .huincha-iconos__text {
@@ -104,10 +105,10 @@
     font-size: 16px;
     font-weight: 400;
     line-height: 22px;
-    color: #ffffff;
+    color: {{ text_color }};
   }
   .huincha-iconos-{{ section.id }} .huincha-iconos__placeholder {
-    color: #ffffff;
+    color: {{ text_color }};
     font-size: 0.875rem;
     text-align: center;
     opacity: 0.8;
@@ -116,7 +117,7 @@
 
 <div
   class="huincha-iconos-{{ section.id }}"
-  style="background:#000000;background-color:#000000;color:#ffffff;"
+  style="background:{{ bg_color }};background-color:{{ bg_color }};color:{{ text_color }};"
   role="region"
   aria-label="{{ 'sections.huincha-iconos.aria_label' | t }}"
 >
@@ -166,6 +167,26 @@
     "groups": ["header", "footer", "aside"]
   },
   "settings": [
+    {
+      "type": "header",
+      "content": "Colores"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Color de fondo",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Color de texto",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Espaciado"
+    },
     {
       "type": "range",
       "id": "gap",

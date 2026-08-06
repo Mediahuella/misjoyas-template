@@ -108,34 +108,6 @@
         "banner_height_mobile": 400
       }
     },
-    "home_countdown_timer": {
-      "type": "countdown-timer",
-      "disabled": true,
-      "settings": {
-        "enable": true,
-        "show_only_on_homepage": true,
-        "title": "Últimas horas",
-        "subtitle": "¡Apúrate! quedan",
-        "target_date": "2026-06-03",
-        "target_time": "23:59",
-        "timezone": "-4",
-        "hours_label": "horas",
-        "minutes_label": "min",
-        "seconds_label": "seg",
-        "hide_when_expired": true,
-        "expired_message": "La promoción ha finalizado",
-        "cta_text": "",
-        "cta_url": "",
-        "box_background": "#f83785",
-        "box_text_color": "#ffffff",
-        "colon_color": "#000000",
-        "label_color": "#000000",
-        "padding_top": 20,
-        "padding_bottom": 20,
-        "padding_top_mobile": 16,
-        "padding_bottom_mobile": 16
-      }
-    },
     "media_gallery_Fbr4fr": {
       "type": "category-cards",
       "blocks": {
@@ -834,6 +806,8 @@
       ],
       "name": "Huincha iconos",
       "settings": {
+        "background_color": "#222222",
+        "text_color": "#ffffff",
         "gap": 12,
         "padding_x": 80,
         "padding_x_mobile": 20,
@@ -947,7 +921,6 @@
   },
   "order": [
     "banner_principal_home",
-    "home_countdown_timer",
     "media_gallery_Fbr4fr",
     "banner_kit_mfxgQe",
     "banner_pequeno_home",
