@@ -393,10 +393,9 @@
       "blocks": {
         "menu_licenciatura": {
           "type": "menu",
-          "disabled": true,
           "settings": {
-            "heading": "Licenciatura",
-            "menu": "licenciatura",
+            "heading": "Especial Aniversario",
+            "menu": "aniversario",
             "menu_item_link": "",
             "open_new_window": false,
             "show_collection_image": false,

@@ -896,11 +896,29 @@
         "countdown": false,
         "available_routes": "/"
       }
+    },
+    "home_countdown_img": {
+      "type": "contador-img",
+      "settings": {
+        "title": "Quedan:",
+        "target_date": "2026-12-31",
+        "target_time": "23:59",
+        "hours_label": "HORAS",
+        "minutes_label": "MIN.",
+        "seconds_label": "SEG.",
+        "number_color": "#00CEBA",
+        "hide_when_expired": true,
+        "expired_message": "The countdown has ended!",
+        "padding_top": 36,
+        "padding_top_mobile": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "banner_principal_home",
     "home_countdown_timer",
+    "home_countdown_img",
     "coupon_badges_a6Th3k",
     "media_gallery_Fbr4fr",
     "featured_collection_misjoyas_WHddHm",
