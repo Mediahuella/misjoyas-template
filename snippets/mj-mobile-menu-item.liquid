@@ -122,17 +122,17 @@
     {%- endif -%}
     <button
       type="button"
-      class="mj-mobile-nav__trigger{% if use_button_style %} button {{ btn_variant }} mj-mobile-nav__cta-btn {{ wrapper_class }}{% endif %}"
+      class="mj-mobile-nav__trigger{% if use_button_style %} button {{ btn_variant }} mj-mobile-nav__cta-btn {{ wrapper_class }}{% endif %}{% unless use_button_style %}{% if title_color != blank and title_color.alpha != 0.0 %} has-custom-color{% endif %}{% endunless %}"
+      {% unless use_button_style %}
+        {% if title_color != blank and title_color.alpha != 0.0 %}
+          style="--mj-nav-item-color: {{ title_color }};"
+        {% endif %}
+      {% endunless %}
       @click="open = !open"
       :aria-expanded="open.toString()"
     >
       <span
-        class="mj-mobile-nav__title"
-        {% unless use_button_style %}
-          {% if title_color != blank and title_color.alpha != 0.0 %}
-            style="color: {{ title_color }};"
-          {% endif %}
-        {% endunless %}
+        class="mj-mobile-nav__title{% unless use_button_style %}{% if title_color != blank and title_color.alpha != 0.0 %} has-custom-color{% endif %}{% endunless %}"
       >
         {{ menu_title }}
       </span>
@@ -212,8 +212,8 @@
       <a
         href="{{ menu_link }}"
         {% if open_new_window %}target="_blank"{% endif %}
-        class="mj-mobile-nav__trigger"
-        {% if title_color != blank and title_color.alpha != 0.0 %}style="color: {{ title_color }};"{% endif %}
+        class="mj-mobile-nav__trigger{% if title_color != blank and title_color.alpha != 0.0 %} has-custom-color{% endif %}"
+        {% if title_color != blank and title_color.alpha != 0.0 %}style="--mj-nav-item-color: {{ title_color }};"{% endif %}
       >
         {{ menu_title }}
         {%- if badge_label != blank -%}
@@ -221,7 +221,10 @@
         {%- endif -%}
       </a>
     {%- else -%}
-      <div class="mj-mobile-nav__trigger" {% if title_color != blank and title_color.alpha != 0.0 %}style="color: {{ title_color }};"{% endif %}>
+      <div
+        class="mj-mobile-nav__trigger{% if title_color != blank and title_color.alpha != 0.0 %} has-custom-color{% endif %}"
+        {% if title_color != blank and title_color.alpha != 0.0 %}style="--mj-nav-item-color: {{ title_color }};"{% endif %}
+      >
         {{ menu_title }}
         {%- if badge_label != blank -%}
           <span class="mj-mobile-nav__badge">{{ badge_label | escape }}</span>

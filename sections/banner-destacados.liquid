@@ -3,11 +3,21 @@
   assign pad_x_mobile = section.settings.padding_x_mobile | default: 20
   assign pad_y = section.settings.padding_y | default: 40
   assign pad_y_mobile = section.settings.padding_y_mobile | default: 50
+  assign margin_top = section.settings.margin_top | default: 0
+  assign margin_top_mobile = section.settings.margin_top_mobile | default: 0
   assign gap = section.settings.gap | default: 12
   assign radius = section.settings.border_radius | default: 4
 -%}
 
 {%- style -%}
+  #shopify-section-{{ section.id }} {
+    margin-top: {{ margin_top_mobile }}px;
+  }
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} {
+      margin-top: {{ margin_top }}px;
+    }
+  }
   .banner-destacados-{{ section.id }} {
     --bd-gap: {{ gap }}px;
     --bd-radius: {{ radius }}px;
@@ -456,6 +466,28 @@
       "id": "heading",
       "label": "Título",
       "default": "Colecciones destacadas"
+    },
+    {
+      "type": "header",
+      "content": "Espaciado"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Margin top — escritorio (px)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_top_mobile",
+      "label": "Margin top — móvil (px)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 0
     },
     {
       "type": "header",

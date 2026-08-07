@@ -151,7 +151,7 @@
       <ul
         id="menu-level-0"
         role="list"
-        class="menu-parent relative h-full w-full mj-mobile-nav__list"
+        class="menu-parent relative w-full mj-mobile-nav__list"
       >
         <li class="block-mobile-navigation x-header-store-selector-container pl-5 pr-5 pb-5"></li>
         {%- for block in nav_section.blocks -%}
@@ -171,32 +171,32 @@
 
     {%- if show_stores or show_footer_links or show_footer_login or show_footer_social -%}
       <div class="mj-mobile-nav__footer">
-        {%- if show_stores -%}
-          <a href="{{ stores_href }}" class="mj-mobile-nav__stores disable-effect">
-            <span class="mj-mobile-nav__stores-icon" aria-hidden="true">
-              <img
-                src="{{ 'tiendas.svg' | asset_url }}"
-                width="28"
-                height="28"
-                alt=""
-                decoding="async"
-                focusable="false"
-              >
-            </span>
-            <span class="mj-mobile-nav__stores-text">
-              {%- assign stores_parts = stores_text | split: '—' -%}
-              {%- if stores_parts.size > 1 -%}
-                <strong>{{ stores_parts.first | strip | escape }} — </strong>{{ stores_parts.last | strip | escape }}
-              {%- else -%}
-                {{ stores_text | escape }}
-              {%- endif -%}
-            </span>
-          </a>
-        {%- endif -%}
-
         <div class="mj-mobile-nav__footer-body">
-          {%- if show_footer_links or show_footer_login -%}
+          {%- if show_stores or show_footer_links or show_footer_login -%}
             <div class="mj-mobile-nav__footer-links">
+              {%- if show_stores -%}
+                <a href="{{ stores_href }}" class="mj-mobile-nav__stores disable-effect">
+                  <span class="mj-mobile-nav__stores-icon" aria-hidden="true">
+                    <img
+                      src="{{ 'tiendas.svg' | asset_url }}"
+                      width="28"
+                      height="28"
+                      alt=""
+                      decoding="async"
+                      focusable="false"
+                    >
+                  </span>
+                  <span class="mj-mobile-nav__stores-text">
+                    {%- assign stores_parts = stores_text | split: '—' -%}
+                    {%- if stores_parts.size > 1 -%}
+                      <strong>{{ stores_parts.first | strip | escape }} — </strong>{{ stores_parts.last | strip | escape }}
+                    {%- else -%}
+                      {{ stores_text | escape }}
+                    {%- endif -%}
+                  </span>
+                </a>
+              {%- endif -%}
+
               {%- if show_footer_links and footer_link_1_text != blank -%}
                 <a href="{{ footer_link_1_url | default: '#' }}" class="mj-mobile-nav__footer-link disable-effect">
                   {%- if footer_link_1_show_check -%}
