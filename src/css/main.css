@@ -1709,6 +1709,19 @@ b {
   letter-spacing: 0;
 }
 
+@media (min-width: 1024px) {
+  #CartDrawer.misjoyas-cart .misjoyas-cart__title {
+    font-size: 24px !important;
+    line-height: 30px !important;
+  }
+
+  #CartDrawer.misjoyas-cart .misjoyas-cart__total-label,
+  #CartDrawer.misjoyas-cart .misjoyas-cart__total-value {
+    font-size: 24px !important;
+    line-height: 30px !important;
+  }
+}
+
 #CartDrawer.misjoyas-cart .misjoyas-cart__header-divider {
   height: 1px;
   margin: 20px 30px 0;
