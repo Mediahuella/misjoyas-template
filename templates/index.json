@@ -122,6 +122,27 @@
         "padding_bottom_mobile": 16
       }
     },
+    "home_contador_img": {
+      "type": "contador-img",
+      "name": "Countdown Timer img",
+      "settings": {
+        "title": "Quedan:",
+        "desktop_image": "shopify://shop_images/contador_desktop_2b594b0b-af8f-4c70-b809-da25438216ee.png",
+        "mobile_image": "shopify://shop_images/contador_mobile_1_54e6acc2-d7e2-4620-a46d-8ea51ccf86e4.png",
+        "target_date": "2026-08-10",
+        "target_time": "08:00",
+        "hours_label": "HORAS",
+        "minutes_label": "MIN.",
+        "seconds_label": "SEG.",
+        "title_color": "#222222",
+        "number_color": "#000000",
+        "hide_when_expired": true,
+        "expired_message": "¡La cuenta regresiva ha terminado!",
+        "padding_top": 36,
+        "padding_top_mobile": 36,
+        "padding_bottom": 36
+      }
+    },
     "coupon_badges_a6Th3k": {
       "type": "coupon-badges",
       "blocks": {
@@ -896,11 +917,38 @@
         "countdown": false,
         "available_routes": "/"
       }
+    },
+    "1786050416f53d2c3e": {
+      "type": "apps",
+      "blocks": {
+        "loox_reviews_loox_agg_section_wthE3x": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-agg-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "reviews_to_display": "product_store_reviews",
+            "default_tab": "automatic",
+            "only_photos": false,
+            "hide_thumbnails": false,
+            "product_handle": "",
+            "aggregated": true,
+            "data-limit": 12,
+            "maxwidth": 1080,
+            "is_sample": true
+          }
+        }
+      },
+      "block_order": [
+        "loox_reviews_loox_agg_section_wthE3x"
+      ],
+      "settings": {
+        "include_margins": true,
+        "content_alignment": "left"
+      }
     }
   },
   "order": [
     "banner_principal_home",
     "home_countdown_timer",
+    "home_contador_img",
     "coupon_badges_a6Th3k",
     "media_gallery_Fbr4fr",
     "featured_collection_misjoyas_WHddHm",
@@ -917,6 +965,7 @@
     "popup_6AnBUK",
     "popup_yGHy4R",
     "popup_h9bTpX",
-    "popup_rWghyY"
+    "popup_rWghyY",
+    "1786050416f53d2c3e"
   ]
 }

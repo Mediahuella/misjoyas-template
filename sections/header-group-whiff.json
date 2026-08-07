@@ -137,9 +137,9 @@
             "custom_icon": "",
             "enable_button_style": true,
             "show_button_style": "primary",
-            "button_light": "#fd2975",
+            "button_light": "#f83785",
             "button_text_light": "#ffffff",
-            "button_hover_light": "#fd2975",
+            "button_hover_light": "#f83785",
             "button_text_hover_light": "#ffffff",
             "button_dark": "rgba(0,0,0,0)",
             "button_text_dark": "rgba(0,0,0,0)",
@@ -264,7 +264,7 @@
           "type": "tree_menu",
           "settings": {
             "heading": "Colecciones",
-            "menu": "colecciones-aniversario",
+            "menu": "colecciones-rebajas-invierno",
             "menu_item_link": "",
             "open_new_window": false,
             "show_image_collection": false,
@@ -393,10 +393,9 @@
       "blocks": {
         "menu_licenciatura": {
           "type": "menu",
-          "disabled": true,
           "settings": {
-            "heading": "Licenciatura",
-            "menu": "licenciatura",
+            "heading": "Especial Aniversario",
+            "menu": "aniversario",
             "menu_item_link": "",
             "open_new_window": false,
             "show_collection_image": false,
@@ -453,7 +452,7 @@
             "block_link_4": "",
             "enable_button_style": true,
             "show_button_style": "primary",
-            "button_light": "#fd2975",
+            "button_light": "#f83785",
             "button_text_light": "#ffffff",
             "button_hover_light": "#fd2975",
             "button_text_hover_light": "#ffffff",
@@ -754,7 +753,7 @@
           "type": "menu",
           "settings": {
             "heading": "Colecciones",
-            "menu": "colecciones-aniversario",
+            "menu": "colecciones-rebajas-invierno",
             "menu_item_link": "",
             "open_new_window": false,
             "show_collection_image": false,
@@ -919,6 +918,7 @@
         },
         "button_rwKxp9": {
           "type": "button",
+          "disabled": true,
           "settings": {
             "button_label": "Tiendas",
             "button_link": "https://misjoyas.cl/pages/tiendas",

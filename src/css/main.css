@@ -33,6 +33,117 @@
   }
 }
 
+/* Header desktop — Figma Navbar 342:2628: logo | menú | buscador + iconos */
+@media (min-width: 1024px) {
+  header.header .mj-header-search,
+  header.header .header__inline-menu.x-container-header-nav,
+  header.header .header-icon-account {
+    display: flex !important;
+  }
+
+  header.header .x-container-header-mobile-nav {
+    display: none !important;
+  }
+
+  header.header .mj-header-nav {
+    justify-content: flex-start;
+    min-width: 0;
+  }
+
+  header.header .mj-header-nav__list {
+    gap: 16px;
+    flex-wrap: nowrap;
+  }
+
+  header.header .mj-header-nav__list > .tree-menu,
+  header.header .mj-header-nav__list > li {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Links normales: 18px negro + caret (no aplica a botones CTA) */
+  header.header .mj-header-nav .tree-menu-item,
+  header.header .mj-header-nav .tree-menu-item a:not(.button) {
+    font-size: 18px;
+    line-height: 26px;
+    color: #000;
+    font-weight: 400;
+  }
+
+  header.header .mj-header-nav .tree-menu-item {
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+
+  header.header .mj-header-nav .tree-menu-item .w-5,
+  header.header .mj-header-nav .has-dropdown > .relative > .w-5 {
+    width: 20px;
+    height: 10px;
+    padding-left: 8px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  header.header .mj-header-nav .tree-menu-item .w-5 svg,
+  header.header .mj-header-nav .has-dropdown > .relative > .w-5 svg {
+    width: 12px;
+    height: 7px;
+  }
+
+  /* CTA “Especial Aniversario”: rosa, redondeado, texto blanco */
+  header.header .mj-header-nav .button.button-solid,
+  header.header .mj-header-nav a.button.button-solid {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: #f83785 !important;
+    background-image: none !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 4px !important;
+    font-size: 18px !important;
+    line-height: 26px !important;
+    font-weight: 400 !important;
+    padding: 3px 10px 4px !important;
+    min-height: 0 !important;
+    box-shadow: none !important;
+    overflow: hidden !important;
+  }
+
+  header.header .mj-header-nav .button.button-solid,
+  header.header .mj-header-nav .button.button-solid *,
+  header.header .mj-header-nav a.button.button-solid {
+    color: #ffffff !important;
+  }
+
+  header.header .mj-header-nav .button.button-solid::before,
+  header.header .mj-header-nav .button.button-solid::after {
+    display: none !important;
+    content: none !important;
+    border-radius: 4px !important;
+  }
+
+  header.header .mj-header-nav .button.button-solid:hover,
+  header.header .mj-header-nav .button.button-solid:focus,
+  header.header .mj-header-nav .button.button-solid:focus-visible,
+  header.header .mj-header-nav a.button.button-solid:hover {
+    background-color: #f83785 !important;
+    color: #ffffff !important;
+    opacity: 0.92;
+  }
+
+  header.header .x-container-header-icons {
+    gap: 16px;
+    align-items: center;
+  }
+
+  header.header .mj-header-search {
+    width: 468px;
+    max-width: min(468px, 32vw);
+  }
+}
+
 /* Medios de pago — Figma: mobile 364×62, desktop 410×126 */
 .footer-medios-pago {
   display: block;

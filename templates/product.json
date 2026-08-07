@@ -39,6 +39,21 @@
             "text_size_price": 100
           }
         },
+        "loox_reviews_loox_rating_nKnGXr": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-rating/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "contentSize": 16,
+            "pattern": "",
+            "hideText": false,
+            "alignment": "",
+            "layout": "",
+            "textColor": "",
+            "starColor": "",
+            "showAllReviews": false,
+            "looxOpenFloatingWidget": false,
+            "emptyRatingWidget": false
+          }
+        },
         "variant_weight_mjPeso": {
           "type": "variant_weight",
           "settings": {
@@ -324,6 +339,10 @@
           "settings": {
             "reelplus_carousel_widget": "widget-93ad9074-f320-4fe9-b1ab-49915ba35baf"
           }
+        },
+        "loox_reviews_loox_reviews_stories_in9C7k": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-reviews-stories/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {}
         }
       },
       "block_order": [
@@ -331,6 +350,7 @@
         "logo_cyber_Va6mqR",
         "product_sku_8UPmFF",
         "price",
+        "loox_reviews_loox_rating_nKnGXr",
         "variant_weight_mjPeso",
         "html_FyjCUi",
         "html_EdbWHG",
@@ -352,7 +372,8 @@
         "text_jLJ9eC",
         "selleasy_lb_upsell_widget_bl_DphFhP",
         "subscriptions_app_block_qYcpmR",
-        "reelplus_carousel_fBRWnE"
+        "reelplus_carousel_fBRWnE",
+        "loox_reviews_loox_reviews_stories_in9C7k"
       ],
       "custom_css": [],
       "settings": {
@@ -787,6 +808,31 @@
         "padding_top_mobile": 28,
         "padding_bottom_mobile": 28
       }
+    },
+    "178604940132173b8e": {
+      "type": "apps",
+      "blocks": {
+        "loox_reviews_loox_dynamic_section_LAU4H8": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-dynamic-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "reviews_to_display": "",
+            "default_tab": "automatic",
+            "only_photos": false,
+            "aggregated": false,
+            "limit": 20,
+            "hide_thumbnails": false,
+            "maxwidth": 1080,
+            "is_sample": true
+          }
+        }
+      },
+      "block_order": [
+        "loox_reviews_loox_dynamic_section_LAU4H8"
+      ],
+      "settings": {
+        "include_margins": true,
+        "content_alignment": "left"
+      }
     }
   },
   "order": [
@@ -801,6 +847,7 @@
     "multicolumn_FfPreB",
     "product_description_jXVpPU",
     "logo_list_GgziEF",
-    "custom_liquid_RXYqQR"
+    "custom_liquid_RXYqQR",
+    "178604940132173b8e"
   ]
 }

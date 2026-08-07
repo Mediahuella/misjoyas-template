@@ -26,8 +26,8 @@
     }
   {% endif %}
 {%- endstyle -%}
-<nav x-on:click.away="$store.xHeaderMenu.hideMenu($el)" class="x-container-header-nav [grid-area:navigation] w-full pb-header{% if logo_above %} lg:[grid-area:navigation] mt-4{% else %}{% unless logo_center %} lg:[grid-area:auto]{% endunless %}{% endif %} order-3 hidden header__inline-menu lg:flex items-center{% if section.settings.logo_position == 'left-center' or section.settings.logo_position == "above-center" %} justify-center{% endif %}{% if section.settings.logo_position == 'left-right' %} justify-end pr-5{% endif %}">
-  <ul class="list-menu inline-flex flex-wrap items-center{% if section.settings.logo_position == 'left-right' %} justify-end{% endif %}{% if section.settings.logo_position == 'left-center' or section.settings.logo_position == "above-center" %} justify-center{% endif %}">
+<nav x-on:click.away="$store.xHeaderMenu.hideMenu($el)" class="mj-header-nav x-container-header-nav [grid-area:navigation] w-full pb-header{% if logo_above %} lg:[grid-area:navigation] mt-4{% else %}{% unless logo_center %} lg:[grid-area:auto]{% endunless %}{% endif %} order-3 hidden header__inline-menu lg:flex items-center{% if section.settings.logo_position == 'left-center' or section.settings.logo_position == "above-center" %} justify-center{% endif %}{% if section.settings.logo_position == 'left-right' %} justify-end pr-5{% endif %}">
+  <ul class="mj-header-nav__list list-menu inline-flex flex-wrap items-center{% if section.settings.logo_position == 'left-right' %} justify-end{% endif %}{% if section.settings.logo_position == 'left-center' or section.settings.logo_position == "above-center" %} justify-center{% endif %}">
     {%- if section.blocks == blank -%}
       {%- if section.settings.menu != blank -%}
         {%- for link in section.settings.menu.links -%}
@@ -453,7 +453,9 @@
                     {%- endif -%}
                   </div>
                   {%- if is_link and tree_menu_use_button == false -%}
-                    <span class="w-5{% if is_rtl %} pr-2{% else %} pl-2{% endif %}">{% render 'icon-alls', icon: 'icon-caret' %}</span>
+                    <span class="mj-menu-caret w-5{% if is_rtl %} pr-2{% else %} pl-2{% endif %}" aria-hidden="true">
+                      <img src="{{ 'misjoyas-menu-caret.svg' | asset_url }}" alt="" width="12" height="7" class="tw-w-3 tw-h-[7px] tw-block" loading="lazy">
+                    </span>
                   {%- endif -%}
                   {%- if block.settings.label != blank -%}
                     {%- style -%}
