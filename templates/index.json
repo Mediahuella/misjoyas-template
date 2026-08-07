@@ -25,37 +25,8 @@
             "schedule_end": ""
           }
         },
-        "slide_GJzrPK": {
-          "type": "slide",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/Banner-Especial-Aniversario_desktop.jpg",
-            "image_mobile": "shopify://shop_images/Banner-Especial-Aniversario_mobile.jpg",
-            "image_alt": "",
-            "link": "#",
-            "open_new_window": false,
-            "schedule_enabled": false,
-            "schedule_start": "",
-            "schedule_end": ""
-          }
-        },
-        "slide_BxDhPT": {
-          "type": "slide",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/banner-lanzamiento_desktop.jpg",
-            "image_mobile": "shopify://shop_images/banner-lanzamiento_mobile.jpg",
-            "image_alt": "",
-            "link": "shopify://collections/dia-del-nino",
-            "open_new_window": false,
-            "schedule_enabled": false,
-            "schedule_start": "",
-            "schedule_end": ""
-          }
-        },
         "slide_D8eTJ4": {
           "type": "slide",
-          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/banner-licenciatura_desktop.png",
             "image_mobile": "shopify://shop_images/banner-licenciatura_mobile.png",
@@ -67,12 +38,11 @@
             "schedule_end": ""
           }
         },
-        "slide_jhGfFd": {
+        "slide_748Wyf": {
           "type": "slide",
-          "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/Banner_compra-minima_Desktop_00fc8bc8-a7b6-46ab-a41f-cb9ac0a4d61e.jpg",
-            "image_mobile": "shopify://shop_images/Banner_compra-minima_mobile_7e864395-0255-41f0-8306-9408ea4f883d.jpg",
+            "image": "shopify://shop_images/Banner3_compra-minima_Desktop.jpg",
+            "image_mobile": "shopify://shop_images/Banner3_compra-minima_Mobile.jpg",
             "image_alt": "",
             "link": "shopify://collections/all",
             "open_new_window": false,
@@ -81,12 +51,11 @@
             "schedule_end": ""
           }
         },
-        "slide_dqdmni": {
+        "slide_3VgVYr": {
           "type": "slide",
-          "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/Banner_general_desktop_63bac82c-dc7e-4bd6-a604-23a15312461c.jpg",
-            "image_mobile": "shopify://shop_images/Banner_general_mobile_cba64c29-6305-4fca-90d9-4a62da46c2c8.jpg",
+            "image": "shopify://shop_images/Banner4_general_Desktop.jpg",
+            "image_mobile": "shopify://shop_images/Banner4_general_Mobile.jpg",
             "image_alt": "",
             "link": "shopify://collections/all",
             "open_new_window": false,
@@ -98,11 +67,9 @@
       },
       "block_order": [
         "slide_rqPLBL",
-        "slide_GJzrPK",
-        "slide_BxDhPT",
         "slide_D8eTJ4",
-        "slide_jhGfFd",
-        "slide_dqdmni"
+        "slide_748Wyf",
+        "slide_3VgVYr"
       ],
       "settings": {
         "auto_play": true,
@@ -195,9 +162,9 @@
         "switch_label_plata": "Plata 925",
         "switch_label_oro": "Baño de oro 18K",
         "cta_label_plata": "Ver todo Plata 925",
-        "cta_link_plata": "",
+        "cta_link_plata": "shopify://collections/plata-925",
         "cta_label_oro": "Ver todo Baño de oro 18K",
-        "cta_link_oro": "shopify://collections/bano-de-oro-18k",
+        "cta_link_oro": "shopify://collections/recubrimiento-bano-de-oro-18k",
         "cta_open_new_window": false,
         "gap": 12,
         "gap_mobile": 12,
@@ -216,23 +183,24 @@
           "type": "slide",
           "settings": {
             "video": "shopify://files/videos/banner-secundario1_desktop_e6005617-eec9-4294-b53d-8e76ff5beece.mp4",
-            "video_mobile": "shopify://files/videos/banner-secundario1_mobile.mp4",
+            "video_mobile": "shopify://files/videos/banner-secundario1_mobile.mp4.mp4",
             "image_alt": "",
             "button_label": "",
-            "button_link": "",
-            "link": "shopify://collections/dia-del-padre",
+            "button_link": "shopify://pages/todo-para-emprender",
+            "link": "shopify://pages/todo-para-emprender",
             "open_new_window": false
           }
         },
         "slide_kit_1": {
           "type": "slide",
-          "disabled": true,
           "settings": {
+            "image": "shopify://shop_images/Banner_secundario_desktop_bfd896c2-5528-4d5b-922c-1be45786bd6e.jpg",
+            "image_mobile": "shopify://shop_images/Banner_secundario_mobile_4793a1a8-b66d-4c89-8072-91d111fc7877.jpg",
             "image_alt": "",
-            "button_label": "Quiero ser mayorista",
-            "button_link": "shopify://pages/quienes-somos",
-            "link": "shopify://pages/quienes-somos",
-            "open_new_window": false
+            "button_label": "",
+            "button_link": "",
+            "link": "https://cdn.shopify.com/s/files/1/0930/7324/4449/files/Landing_Page_Sorteo_Gift_cards__Agosto_2026.pdf?v=1785425973",
+            "open_new_window": true
           }
         }
       },
@@ -263,7 +231,7 @@
         "image_mobile": "shopify://shop_images/banner-oro_mobile.jpg",
         "image_alt": "",
         "button_label": "Ver nueva línea",
-        "button_link": "",
+        "button_link": "shopify://collections/recubrimiento-bano-de-oro-18k",
         "button_position": "right",
         "open_new_window": false,
         "button_bg": "#f83785",
@@ -273,7 +241,7 @@
         "border_radius": 4,
         "padding_x": 80,
         "padding_x_mobile": 20,
-        "padding_y": 40,
+        "padding_y": 12,
         "padding_y_mobile": 40
       }
     },
@@ -285,22 +253,22 @@
         "eyebrow": "",
         "eyebrow_color": "#68b5a3",
         "title_icon_color": "#68b5a3",
-        "title": "Aqui va coleccion de oro",
-        "collection": "",
+        "title": "",
+        "collection": "recubrimiento-bano-de-oro-18k",
         "products_to_show": 16,
         "gap": 16,
         "gap_mobile": 12,
         "columns_desktop": 4,
         "padding_x": 80,
         "padding_x_mobile": 20,
-        "padding_y": 40,
-        "padding_y_mobile": 30,
+        "padding_y": 0,
+        "padding_y_mobile": 0,
         "show_quickview": true,
         "show_vendor": false,
         "show_rating": false,
         "show_highlighted_attributes": true,
         "show_view_all": true,
-        "button_label": "Ver todo lo más vendido",
+        "button_label": "Ver todo Adoro",
         "button_link": "",
         "open_new_window": false
       }
@@ -504,103 +472,6 @@
         "open_new_window": false
       }
     },
-    "image_with_text_xTkd4d": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading_Y8f7GB": {
-          "type": "heading",
-          "settings": {
-            "subheading": "",
-            "heading": "Aros de Plata",
-            "highlight_type": "underline",
-            "heading_base_size": 100,
-            "heading_tag": "h2",
-            "text": "<p>Tenemos una gran variedad de <strong>aros de plata </strong>en Mis Joyas para ti. Entre ellos se destacan los aros argolla, aros con perla, swarovski, aros con circón, lapidados y más también.</p>",
-            "number_of_lines_shown": "none",
-            "read_more_label": "Read more",
-            "see_less_label": "See less",
-            "heading_light": "#000000",
-            "text_light": "#000000",
-            "color_heading_highlight_light": "rgba(0,0,0,0)",
-            "heading_dark": "rgba(0,0,0,0)",
-            "text_dark": "rgba(0,0,0,0)",
-            "color_heading_highlight_dark": "rgba(0,0,0,0)"
-          }
-        },
-        "button_RpGpU4": {
-          "type": "button",
-          "settings": {
-            "button_label": "VER TODO",
-            "button_link": "shopify://collections/aros",
-            "open_new_window": true,
-            "show_button_mobile": false,
-            "show_button_style": "primary",
-            "button_light": "#222222",
-            "button_text_light": "rgba(0,0,0,0)",
-            "button_hover_light": "rgba(0,0,0,0)",
-            "button_text_hover_light": "rgba(0,0,0,0)",
-            "secondary_button_light": "rgba(0,0,0,0)",
-            "secondary_button_text_light": "rgba(0,0,0,0)",
-            "colors_text_link": "rgba(0,0,0,0)",
-            "button_dark": "rgba(0,0,0,0)",
-            "button_text_dark": "rgba(0,0,0,0)",
-            "button_hover_dark": "rgba(0,0,0,0)",
-            "button_text_hover_dark": "rgba(0,0,0,0)",
-            "secondary_button_dark": "rgba(0,0,0,0)",
-            "secondary_button_text_dark": "rgba(0,0,0,0)",
-            "colors_text_link_dark": "rgba(0,0,0,0)"
-          }
-        }
-      },
-      "block_order": [
-        "heading_Y8f7GB",
-        "button_RpGpU4"
-      ],
-      "disabled": true,
-      "name": "t:sections.image-with-text.name",
-      "settings": {
-        "show_hero": false,
-        "video": "shopify://files/videos/video-aros.mp4",
-        "show_sound_control": false,
-        "video_url": "",
-        "video_alt_text": "",
-        "enable_video_autoplay": true,
-        "desktop_height": "450px",
-        "mobile_height": "natural",
-        "desktop_image_width": "medium",
-        "image_layout": "normal",
-        "image_corner_radius": 0,
-        "content_layout": "no-overlap",
-        "spacing_image": false,
-        "text_position": "center",
-        "text_alignment": "start",
-        "background_color_light": "#ffffff",
-        "background_color_dark": "rgba(0,0,0,0)",
-        "line_border": "dashed",
-        "icon_position": "col",
-        "icon_size": 45,
-        "alignment": "center",
-        "columns_desktop": 4,
-        "columns_mobile": "2",
-        "heading_color_light": "#157f7f",
-        "text_color_light": "rgba(0,0,0,0)",
-        "line_border_light": "rgba(0,0,0,0)",
-        "icon_color_light": "rgba(0,0,0,0)",
-        "heading_color_dark": "rgba(0,0,0,0)",
-        "text_color_dark": "rgba(0,0,0,0)",
-        "line_border_dark": "rgba(0,0,0,0)",
-        "icon_color_dark": "rgba(0,0,0,0)",
-        "image_alignment": "left",
-        "full_width": false,
-        "padding_full_width": false,
-        "top_padding": 0,
-        "bottom_padding": 0,
-        "image_alignment_mobile": "left",
-        "full_width_mobile": true,
-        "top_padding_mobile": 0,
-        "bottom_padding_mobile": 0
-      }
-    },
     "featured_collection_misjoyas_yCxarR": {
       "type": "featured-collection-misjoyas",
       "disabled": true,
@@ -794,9 +665,9 @@
         "item_cuotas": {
           "type": "item",
           "settings": {
-            "icon": "cuotas.svg",
-            "title": "HASTA 6 CUOTAS",
-            "text": "Sin interés"
+            "icon": "iconamoon_gift-light.svg",
+            "title": "kit de regalo",
+            "text": "En tu primera compra sobre $100.000"
           }
         }
       },
@@ -816,6 +687,32 @@
         "padding_x_mobile": 20,
         "padding_y": 42,
         "padding_y_mobile": 40
+      }
+    },
+    "178611785999cb7c28": {
+      "type": "apps",
+      "blocks": {
+        "loox_reviews_loox_agg_section_8ptcj6": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-agg-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "reviews_to_display": "",
+            "default_tab": "automatic",
+            "only_photos": false,
+            "hide_thumbnails": false,
+            "product_handle": "",
+            "aggregated": false,
+            "data-limit": 20,
+            "maxwidth": 1080,
+            "is_sample": true
+          }
+        }
+      },
+      "block_order": [
+        "loox_reviews_loox_agg_section_8ptcj6"
+      ],
+      "settings": {
+        "include_margins": true,
+        "content_alignment": "left"
       }
     },
     "banner_kit_QzyCmc": {
@@ -933,11 +830,11 @@
     "17733201952ee1ad52",
     "banner_destacados_home",
     "featured_collection_misjoyas_PnenNE",
-    "image_with_text_xTkd4d",
     "featured_collection_misjoyas_yCxarR",
     "image_with_text_tCdRr9",
     "featured_collection_misjoyas_WKk9MB",
     "huincha_iconos_home",
+    "178611785999cb7c28",
     "banner_kit_QzyCmc",
     "cuadro_footer_home",
     "popup_6AnBUK",

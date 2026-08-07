@@ -5,7 +5,9 @@ const buildCardPriceHtml = (v, priceEl) => {
 
   if (isMisjoyasCard) {
     if (v.compare_at_price > v.price) {
-      return '<div class="misjoyas-price__row"><span class="misjoyas-price__current">' + v.price_formatted + closeSpan + '<span class="misjoyas-price__compare">' + v.compare_at_price_formatted + closeSpan + closeDiv;
+      let salePct = Math.round((v.compare_at_price - v.price) * 100 / v.compare_at_price);
+      if (salePct === 100) salePct = 99;
+      return '<div class="misjoyas-price__row"><span class="misjoyas-price__current">' + v.price_formatted + closeSpan + '<span class="misjoyas-price__compare">' + v.compare_at_price_formatted + closeSpan + '<span class="misjoyas-price__badge">-' + salePct + '%</span>' + closeDiv;
     }
     return '<span class="misjoyas-price__current misjoyas-price__current--regular">' + v.price_formatted + closeSpan;
   }

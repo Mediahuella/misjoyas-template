@@ -140,7 +140,7 @@
             "top_padding": 24,
             "bottom_padding": 24,
             "specific_offer_id": "",
-            "custom_css": ".candyrack-ppp-button-layout__offer {\n  border: 1px solid #79D5C9 !important;\n  border-width: 2px !important;\n}"
+            "custom_css": ".candyrack-ppp-button-layout__offer {\n  border: 1px solid #79D5C9 !important;\n}"
           }
         },
         "complementary_XCwmDV": {
@@ -162,7 +162,7 @@
         "html_9PyUAj": {
           "type": "html",
           "settings": {
-            "custom_html": "<div class=\"misjoyas-accordion\">\n  <!-- DESPACHO -->\n  <div class=\"misjoyas-item\">\n    <button type=\"button\" class=\"misjoyas-accordion-btn\" aria-expanded=\"false\">\n      <span class=\"misjoyas-accordion-btn__label\">\n        <span\n          class=\"misjoyas-accordion-btn__icon misjoyas-accordion-btn__icon--shipping\"\n          aria-hidden=\"true\"\n        >\n          <img\n            src=\"{{ 'envios.svg' | asset_url }}\"\n            alt=\"\"\n            width=\"24\"\n            height=\"24\"\n            loading=\"lazy\"\n          />\n        </span>\n        <span class=\"misjoyas-accordion-btn__text\">\n          <span class=\"misjoyas-accordion-btn__title\">Despacho a domicilio gratis</span>\n          <span class=\"misjoyas-accordion-btn__subtitle\">Por compras sobre $99.990 · a todo Chile</span>\n        </span>\n      </span>\n      <span class=\"misjoyas-arrow\">+</span>\n    </button>\n\n    <div class=\"misjoyas-content\">\n      <p>En MISJOYAS® trabajamos para que recibas tu pedido de forma rápida y segura.</p>\n      <p>Tu pedido se procesará en un plazo máximo de <strong>24 horas hábiles</strong> una vez confirmado el pago.</p>\n      <p>Realizamos envíos a todo Chile mediante:</p>\n      <p>• Chilexpress<br />• Correos de Chile</p>\n      <p>\n        <strong>✓ Despacho Gratis</strong><br />\n        Por compras sobre <strong>$99.990</strong> obtienes <strong>DESPACHO GRATIS</strong>.\n      </p>\n    </div>\n  </div>\n\n  <!-- BENEFICIOS -->\n  <div class=\"misjoyas-item\">\n    <button type=\"button\" class=\"misjoyas-accordion-btn\" aria-expanded=\"false\">\n      <span class=\"misjoyas-accordion-btn__label\">\n        <span class=\"misjoyas-accordion-btn__icon\" aria-hidden=\"true\">\n          <img\n            src=\"{{ 'beneficios2.svg' | asset_url }}\"\n            alt=\"\"\n            width=\"28\"\n            height=\"28\"\n            loading=\"lazy\"\n          />\n        </span>\n        <span class=\"misjoyas-accordion-btn__text\">\n          <span class=\"misjoyas-accordion-btn__title\">Beneficios y descuentos</span>\n          <span class=\"misjoyas-accordion-btn__subtitle\">Descuentos exclusivos mayoristas y tarjeta de fidelización.</span>\n        </span>\n      </span>\n      <span class=\"misjoyas-arrow\">+</span>\n    </button>\n\n    <div class=\"misjoyas-content\">\n      <p><strong>✓ Tarjeta de fidelización</strong></p>\n      <p>En tu primera compra desde <strong>$80.000</strong> recibes tu tarjeta de fidelización y un sticker para acumular beneficios.</p>\n      <p>Cada compra posterior sobre este monto recibe un sticker. Al completar <strong>10 stickers</strong> recibes un <strong>regalo premium exclusivo</strong>.</p>\n      <p><strong>Importante:</strong> debes iniciar sesión antes de comprar para recibir este beneficio.</p>\n    </div>\n  </div>\n\n  <!-- CAMBIOS -->\n  <div class=\"misjoyas-item\">\n    <button type=\"button\" class=\"misjoyas-accordion-btn\" aria-expanded=\"false\">\n      <span class=\"misjoyas-accordion-btn__label\">\n        <span class=\"misjoyas-accordion-btn__icon\" aria-hidden=\"true\">\n          <img\n            src=\"{{ 'cambios.svg' | asset_url }}\"\n            alt=\"\"\n            width=\"28\"\n            height=\"28\"\n            loading=\"lazy\"\n          />\n        </span>\n        <span class=\"misjoyas-accordion-btn__text\">\n          <span class=\"misjoyas-accordion-btn__title\">Cambios y devoluciones</span>\n          <span class=\"misjoyas-accordion-btn__subtitle\">En MISJOYAS® buscamos que cada compra cumpla con tus expectativas.</span>\n        </span>\n      </span>\n      <span class=\"misjoyas-arrow\">+</span>\n    </button>\n\n    <div class=\"misjoyas-content\">\n      <p>En MISJOYAS® buscamos que cada compra cumpla con tus expectativas.</p>\n      <p>\n        <strong>✓ Garantía legal</strong><br />\n        Si recibes un producto con fallas de fábrica puedes pedir reparación, cambio o devolución hasta <strong>6 meses</strong> después de recibirlo.\n      </p>\n      <p>\n        <strong>✓ Garantía de satisfacción MISJOYAS®</strong><br />\n        Si el producto no cumple tus expectativas puedes solicitar cambio o devolución dentro de los <strong>primeros 10 días</strong>.\n      </p>\n      <p><strong>✓ Cómo realizar tu cambio o devolución</strong></p>\n      <p>Correo: contacto@misjoyas.cl<br />WhatsApp: +56 9 4545 4917</p>\n    </div>\n  </div>\n</div>\n"
+            "custom_html": "<div class=\"misjoyas-accordion\">\n  <!-- DESPACHO -->\n  <div class=\"misjoyas-item\">\n    <button type=\"button\" class=\"misjoyas-accordion-btn\" aria-expanded=\"false\">\n      <span class=\"misjoyas-accordion-btn__label\">\n        <span\n          class=\"misjoyas-accordion-btn__icon misjoyas-accordion-btn__icon--shipping\"\n          aria-hidden=\"true\"\n        >\n          <img\n            src=\"{{ 'envios.svg' | asset_url }}\"\n            alt=\"\"\n            width=\"24\"\n            height=\"24\"\n            loading=\"lazy\"\n          />\n        </span>\n        <span class=\"misjoyas-accordion-btn__text\">\n          <span class=\"misjoyas-accordion-btn__title\">Despacho a domicilio gratis</span>\n          <span class=\"misjoyas-accordion-btn__subtitle\">Por compras sobre $99.990 · a todo Chile</span>\n        </span>\n      </span>\n      <span class=\"misjoyas-arrow\">+</span>\n    </button>\n\n    <div class=\"misjoyas-content\">\n      <p>En MISJOYAS® trabajamos para que recibas tu pedido de forma rápida y segura.</p>\n      <p>Tu pedido se procesará en un plazo máximo de <strong>24 horas hábiles</strong> una vez confirmado el pago.</p>\n      <p>Realizamos envíos a todo Chile mediante:</p>\n      <p>• Chilexpress<br />• Correos de Chile</p>\n      <p>\n        <strong>✓ Despacho Gratis</strong><br />\n        Por compras sobre <strong>$99.990</strong> obtienes <strong>DESPACHO GRATIS</strong>.\n      </p>\n    </div>\n  </div>\n\n  <!-- BENEFICIOS -->\n  <div class=\"misjoyas-item\">\n    <button type=\"button\" class=\"misjoyas-accordion-btn\" aria-expanded=\"false\">\n      <span class=\"misjoyas-accordion-btn__label\">\n        <span class=\"misjoyas-accordion-btn__icon\" aria-hidden=\"true\">\n          <img\n            src=\"{{ 'beneficios2.svg' | asset_url }}\"\n            alt=\"\"\n            width=\"28\"\n            height=\"28\"\n            loading=\"lazy\"\n          />\n        </span>\n        <span class=\"misjoyas-accordion-btn__text\">\n          <span class=\"misjoyas-accordion-btn__title\">Beneficios y descuentos</span>\n          <span class=\"misjoyas-accordion-btn__subtitle\">Descuentos exclusivos mayoristas y tarjeta de fidelización.</span>\n        </span>\n      </span>\n      <span class=\"misjoyas-arrow\">+</span>\n    </button>\n\n    <div class=\"misjoyas-content\">\n      <p><strong>✓ Tarjeta de fidelización</strong></p>\n      <p>En tu primera compra desde <strong>$80.000</strong> recibes tu tarjeta de fidelización y un sticker para acumular beneficios.</p>\n      <p>Cada compra posterior sobre este monto recibe un sticker. Al completar <strong>10 stickers</strong> recibes un <strong>regalo premium exclusivo</strong>.</p>\n      <p><strong>Importante:</strong> debes iniciar sesión antes de comprar para recibir este beneficio.</p>\n    </div>\n  </div>\n\n  <!-- CAMBIOS -->\n  <div class=\"misjoyas-item\">\n    <button type=\"button\" class=\"misjoyas-accordion-btn\" aria-expanded=\"false\">\n      <span class=\"misjoyas-accordion-btn__label\">\n        <span class=\"misjoyas-accordion-btn__icon\" aria-hidden=\"true\">\n          <img\n            src=\"{{ 'cambios.svg' | asset_url }}\"\n            alt=\"\"\n            width=\"28\"\n            height=\"28\"\n            loading=\"lazy\"\n          />\n        </span>\n        <span class=\"misjoyas-accordion-btn__text\">\n          <span class=\"misjoyas-accordion-btn__title\">Cambios y devoluciones</span>\n          <span class=\"misjoyas-accordion-btn__subtitle\">En MISJOYAS® buscamos que cada compra cumpla con tus expectativas.</span>\n        </span>\n      </span>\n      <span class=\"misjoyas-arrow\">+</span>\n    </button>\n\n    <div class=\"misjoyas-content\">\n      <p>En MISJOYAS® buscamos que cada compra cumpla con tus expectativas.</p>\n      <p>\n        <strong>✓ Garantía legal</strong><br />\n        Si recibes un producto con fallas de fábrica puedes pedir reparación, cambio o devolución hasta <strong>6 meses</strong> después de recibirlo.\n      </p>\n      <p>\n        <strong>✓ Garantía de satisfacción MISJOYAS®</strong><br />\n        Si el producto no cumple tus expectativas puedes solicitar cambio o devolución dentro de los <strong>primeros 10 días</strong>.\n      </p>\n      <p><strong>✓ Cómo realizar tu cambio o devolución</strong></p>\n      <p>Correo: contacto@misjoyas.cl<br />WhatsApp: +56 9 4545 4917</p>\n    </div>\n  </div>\n</div>"
           }
         },
         "html_fMA38V": {
@@ -482,8 +482,8 @@
       "type": "banner-pequeno",
       "name": "Banner pequeño",
       "settings": {
-        "image": "shopify://shop_images/Banner-mayorista_desktop_56fded01-6fb1-4185-93f1-09a1aac25799.jpg",
-        "image_mobile": "shopify://shop_images/Banner-mayorista_mobile_ebf2e74a-2fb3-4bef-80ea-6fb695851ab7.jpg",
+        "image": "shopify://shop_images/Banner-mayorista_mobile_66d5152e-f993-4eb5-bb90-1a2472b3ff87.jpg",
+        "image_mobile": "shopify://shop_images/Banner-mayorista_mobile_1.jpg",
         "image_alt": "",
         "button_label": "Ver todos los beneficios",
         "button_link": "shopify://pages/fidelizacion",
@@ -498,6 +498,31 @@
         "padding_x_mobile": 20,
         "padding_y": 40,
         "padding_y_mobile": 40
+      }
+    },
+    "1786119016b83f66d9": {
+      "type": "apps",
+      "blocks": {
+        "loox_reviews_loox_dynamic_section_ErKkWA": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-dynamic-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "reviews_to_display": "",
+            "default_tab": "automatic",
+            "only_photos": false,
+            "aggregated": false,
+            "limit": 20,
+            "hide_thumbnails": false,
+            "maxwidth": 1080,
+            "is_sample": true
+          }
+        }
+      },
+      "block_order": [
+        "loox_reviews_loox_dynamic_section_ErKkWA"
+      ],
+      "settings": {
+        "include_margins": true,
+        "content_alignment": "left"
       }
     },
     "recently_viewed_4h746e": {
@@ -539,6 +564,7 @@
     "product-recommendations",
     "ticker_EDChGG",
     "banner_pequeno_C9R6ib",
+    "1786119016b83f66d9",
     "recently_viewed_4h746e"
   ]
 }

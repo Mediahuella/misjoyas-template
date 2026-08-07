@@ -24,7 +24,12 @@
       assign mobile_ratio_found = false
       for block in section.blocks
         unless mobile_ratio_found
-          if block.settings.image_mobile != blank
+          # Preferir preview del video mobile para no forzar un ratio ajeno (evita crop/escala pixelada)
+          if block.settings.video_mobile != blank and block.settings.video_mobile.preview_image != blank
+            assign mobile_ratio_w = block.settings.video_mobile.preview_image.width
+            assign mobile_ratio_h = block.settings.video_mobile.preview_image.height
+            assign mobile_ratio_found = true
+          elsif block.settings.image_mobile != blank
             assign mobile_ratio_w = block.settings.image_mobile.width
             assign mobile_ratio_h = block.settings.image_mobile.height
             assign mobile_ratio_found = true
@@ -152,7 +157,30 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        object-position: center;
+        object-position: center center;
+      }
+      @media (max-width: 767px) {
+        /*
+          Video mobile a tamaño intrínseco (sin caja forzada que lo estire).
+          Si el MP4 es ~440px, object-fit:cover en un frame alto lo pixelaba en retina.
+        */
+        .banner-kit-{{ section.id }} .banner-kit__video-wrap {
+          aspect-ratio: auto;
+          height: auto;
+        }
+        .banner-kit-{{ section.id }} .banner-kit__video-wrap > div {
+          position: relative !important;
+          inset: auto !important;
+          width: 100%;
+          height: auto;
+        }
+        .banner-kit-{{ section.id }} .banner-kit__video {
+          position: relative;
+          inset: auto;
+          width: 100%;
+          height: auto;
+          object-fit: unset;
+        }
       }
       .banner-kit-{{ section.id }} .banner-kit__sparkle {
         position: absolute;
@@ -523,21 +551,35 @@
                                 endif
                               -%}
                               <div class="banner-kit__video-wrap" data-banner2-has-video>
+                                {%- liquid
+                                  # Mobile: si el video móvil es de baja resolución (<750px),
+                                  # usar el de escritorio (más nítido en pantallas retina).
+                                  assign video_for_mobile = slide_video_mobile
+                                  if video_for_mobile == blank
+                                    assign video_for_mobile = slide_video
+                                  endif
+                                  if slide_video_mobile != blank and slide_video != blank and slide_video_mobile.preview_image != blank
+                                    if slide_video_mobile.preview_image.width < 750
+                                      assign video_for_mobile = slide_video
+                                    endif
+                                  endif
+                                -%}
                                 {%- if slide_video != blank and slide_video_mobile != blank -%}
-                                  <div class="tw-absolute tw-inset-0 tw-w-full tw-h-full md:tw-hidden">
+                                  <div class="banner-kit__video-slot banner-kit__video-slot--mobile tw-w-full md:tw-hidden">
                                     {{
-                                      slide_video_mobile
+                                      video_for_mobile
                                       | video_tag:
-                                        image_size: '1100x',
+                                        image_size: '1920x',
                                         autoplay: true,
                                         loop: video_loop,
                                         muted: true,
                                         controls: false,
                                         playsinline: true,
+                                        preload: 'auto',
                                         class: 'banner-kit__video'
                                     }}
                                   </div>
-                                  <div class="tw-absolute tw-inset-0 tw-w-full tw-h-full tw-hidden md:tw-block">
+                                  <div class="banner-kit__video-slot banner-kit__video-slot--desktop tw-hidden tw-w-full tw-h-full md:tw-block md:tw-absolute md:tw-inset-0">
                                     {{
                                       slide_video
                                       | video_tag:
@@ -564,14 +606,15 @@
                                   }}
                                 {%- else -%}
                                   {{
-                                    slide_video_mobile
+                                    video_for_mobile
                                     | video_tag:
-                                      image_size: '1100x',
+                                      image_size: '1920x',
                                       autoplay: true,
                                       loop: video_loop,
                                       muted: true,
                                       playsinline: true,
                                       controls: false,
+                                      preload: 'auto',
                                       class: 'banner-kit__video'
                                   }}
                                 {%- endif -%}
@@ -793,7 +836,7 @@
           "type": "video",
           "id": "video_mobile",
           "label": "Video (móvil)",
-          "info": "Recomendado 440×636 px (ratio ~0.69:1). Si está vacío, se usa el de escritorio."
+          "info": "Recomendado 1080×1560 px (ratio ~0.69:1) para nitidez en retina. Si el archivo es <750px de ancho, el tema usa el video de escritorio. Si está vacío, también se usa el de escritorio."
         },
         {
           "type": "image_picker",
@@ -805,7 +848,7 @@
           "type": "image_picker",
           "id": "image_mobile",
           "label": "Imagen (móvil)",
-          "info": "Recomendado 440×636 px."
+          "info": "Recomendado 1080×1560 px (no 440px: se ve pixelado en móviles)."
         },
         {
           "type": "text",

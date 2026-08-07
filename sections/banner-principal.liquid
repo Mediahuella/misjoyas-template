@@ -73,10 +73,11 @@
     line-height: 0;
   }
   @media (min-width: 768px) {
+    /* Altura por aspect-ratio del slide (sin clamp 30vw que acortaba al achicar) */
     .banner-principal-{{ section.id }} {
       --banner-principal-slide-h: min(
         calc(100vw * {{ desktop_ar_h }} / {{ desktop_ar_w }}),
-        clamp(300px, 30vw, var(--banner-principal-max-h))
+        var(--banner-principal-max-h)
       );
     }
   }

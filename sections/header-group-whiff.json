@@ -14,6 +14,18 @@
     "misjoyas-topbar": {
       "type": "misjoyas-topbar",
       "blocks": {
+        "item_ReMrki": {
+          "type": "item",
+          "settings": {
+            "text": "Plata 925 certificada",
+            "link": "shopify://collections/plata-925",
+            "open_new_window": false,
+            "show_icon": true,
+            "show_chevron": true,
+            "underline": true,
+            "hide_on_mobile": false
+          }
+        },
         "topbar_item_emprender": {
           "type": "item",
           "settings": {
@@ -52,6 +64,7 @@
         }
       },
       "block_order": [
+        "item_ReMrki",
         "topbar_item_emprender",
         "topbar_item_tiendas",
         "topbar_item_despacho"
@@ -200,6 +213,13 @@
             "promo_image": "shopify://shop_images/5526a2fd0c2a23caa2b8d0388cbf2337f7968d0b.jpg",
             "promo_badge": "Plata fina certificada • Ley 925",
             "promo_badge_bg": "#dadad8",
+            "category_image_1": "shopify://shop_images/placas-lisas-grabadas.png",
+            "category_image_2": "shopify://shop_images/colgantes-letra-plata.png",
+            "category_image_3": "shopify://shop_images/colgantes-letra-plata-oro.png",
+            "category_image_4": "shopify://shop_images/colgantes-letra-circon_4dbc0e82-419d-47ce-a6cb-69b6db0504ee.png",
+            "category_image_5": "shopify://shop_images/collares.png",
+            "category_image_7": "shopify://shop_images/joyas-personalizadas.png",
+            "category_image_8": "shopify://shop_images/insumos.png",
             "enable_button_style": true,
             "show_button_style": "primary",
             "button_light": "#f83785",
@@ -350,7 +370,7 @@
         "tree_menu_ofertas": {
           "type": "tree_menu",
           "settings": {
-            "heading": "Ofertas",
+            "heading": "Ofertas Black",
             "title_color": "#f83785",
             "menu": "descuentos-black",
             "label": "",

@@ -24,12 +24,21 @@
   if button_position != 'left' and button_position != 'right'
     assign button_position = 'right'
   endif
+
+  # Ratio desktop: imagen real o artboard 1440 × altura configurada
+  assign desktop_ratio_w = 1440
+  assign desktop_ratio_h = banner_h
+  if media_image != blank and media_image.width > 0 and media_image.height > 0
+    assign desktop_ratio_w = media_image.width
+    assign desktop_ratio_h = media_image.height
+  endif
 -%}
 
 {%- style -%}
   .banner-pequeno-{{ section.id }} {
     --bp-h: {{ banner_h }}px;
     --bp-h-mobile: {{ banner_h_mobile }}px;
+    --bp-desktop-ratio: {{ desktop_ratio_w }} / {{ desktop_ratio_h }};
     --bp-radius: {{ radius }}px;
     --bp-pad-x: {{ pad_x }}px;
     --bp-pad-x-mobile: {{ pad_x_mobile }}px;
@@ -52,7 +61,8 @@
   }
   @media (min-width: 768px) {
     .banner-pequeno-{{ section.id }} .banner-pequeno__frame {
-      height: var(--bp-h);
+      height: auto;
+      aspect-ratio: var(--bp-desktop-ratio);
     }
   }
   .banner-pequeno-{{ section.id }} .banner-pequeno__media {

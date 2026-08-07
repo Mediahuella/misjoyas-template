@@ -521,9 +521,6 @@ video {
 .tw-relative {
   position: relative;
 }
-.tw-inset-0 {
-  inset: 0px;
-}
 .tw-left-0 {
   left: 0px;
 }
@@ -858,10 +855,35 @@ b {
   font-weight: 600;
 }
 
+/* Migas de pan: sin fondo */
+[class*="bg-breadcrumb--"] {
+  background: transparent !important;
+}
+
 /* Footer: forzar 4 columnas en desktop (md:w-1/4 no está en el CSS upstream del tema) */
 @media (min-width: 768px) {
   .section-footer div[class*="footer-col--"] {
     width: 25% !important;
+  }
+
+  /* Mantener gutters 80px (page-width del tema baja a 20px al achicar el viewport) */
+  .section-footer .page-width,
+  .section-footer .x-page-width {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+
+  .section-footer .additional-footer:not(.page-width) {
+    margin-left: 80px;
+    margin-right: 80px;
+  }
+
+  /* PLP / colecciones: mismos gutters 80px */
+  .theme-template-collection .page-width,
+  .theme-template-collection .x-page-width,
+  .theme-template-collection .full-width {
+    padding-left: 80px !important;
+    padding-right: 80px !important;
   }
 }
 
@@ -1500,10 +1522,12 @@ b {
   margin-top: 0 !important;
 }
 
-/* Qty + ATC en fila (Figma action-bar, gap 12px) */
+/* Qty + ATC en fila (Figma action-bar, gap 12px).
+   flex-end: si GPO/opciones (ej. Grabado) van arriba del ATC,
+   el qty se alinea con el botón y no “se sube” al centro. */
 .section-product-info .mj-pdp-action-bar {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   gap: 12px;
   width: 100%;
   margin-bottom: 20px;
@@ -1521,6 +1545,18 @@ b {
   width: auto !important;
   min-width: 0;
   margin-bottom: 0 !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.section-product-info .mj-pdp-action-bar .button-product form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
+  width: 100%;
 }
 
 .section-product-info .mj-pdp-action-bar .button-product .add_to_cart_button {
@@ -1587,7 +1623,7 @@ b {
 .section-product-info .misjoyas-accordion {
   display: flex !important;
   flex-direction: column !important;
-  gap: 10px !important;
+  gap: 6px !important;
 }
 
 .section-product-info .misjoyas-item {
@@ -1595,7 +1631,7 @@ b {
 }
 
 .section-product-info .misjoyas-item + .misjoyas-item {
-  margin-top: 10px !important;
+  margin-top: 0 !important;
 }
 
 /* ===== PDP: título + compartir (Figma 1813:9322 / 1870:17658) ===== */
@@ -1970,9 +2006,16 @@ b {
 
 /* ===== Tarjeta de producto: diseño Figma ===== */
 
-/* Borde gris claro en cada tarjeta */
+/* Borde + radio 4px; sin espacio bajo el botón ATC (anula pb-4 / md:pb-5 / rounded-[10px]) */
 .card-product {
   border: 1px solid #e0e0e0;
+  border-radius: 4px !important;
+  overflow: hidden;
+  padding-bottom: 0.5rem !important;
+}
+
+.card-product .card-info-inner {
+  margin-bottom: 0 !important;
 }
 
 /* Botón ATC: texto 16px, negro default, rosa Mis Joyas en hover */
@@ -2184,7 +2227,14 @@ b {
   max-width: calc(100% - 16px);
 }
 
+.misjoyas-metal-tag--card .misjoyas-metal-tag__swatch {
+  width: 12px;
+  height: 12px;
+}
+
 .misjoyas-metal-tag--card .misjoyas-metal-tag__label {
+  font-size: 12px;
+  line-height: 16px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -3309,18 +3359,27 @@ b {
     display: none;
   }
 
+  /* Títulos L1: Licenciatura, Plata 925, Baño de oro, Colecciones, Insumos, Ofertas */
   .mj-header-nav .mj-nav-item__link {
     color: var(--mj-nav-item-color, #000);
     font-size: 18px;
-    font-weight: 500; /* solo títulos del menú */
+    font-weight: 500;
     line-height: 24px;
     gap: 6px;
     text-decoration: none;
     transition: color 0.2s ease;
   }
 
+  .mj-header-nav .mj-nav-item__link .mj-menu-title__text {
+    font-weight: 500;
+  }
+
   .mj-header-nav .mj-nav-item__link .mj-menu-title__text strong,
-  .mj-header-nav .mj-nav-item__link .mj-menu-title__text b {
+  .mj-header-nav .mj-nav-item__link .mj-menu-title__text b,
+  .mj-header-nav .mj-nav-item__button .mj-menu-title__text strong,
+  .mj-header-nav .mj-nav-item__button .mj-menu-title__text b,
+  .mj-header-nav .mj-nav-item__cta .mj-menu-title__text strong,
+  .mj-header-nav .mj-nav-item__cta .mj-menu-title__text b {
     font-weight: 500;
   }
 
@@ -3373,11 +3432,16 @@ b {
     padding: 11px 32px 12px !important;
     border-radius: 4px !important;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500; /* Licenciatura (button style) — mismo peso que L1 */
     line-height: 22px;
     text-decoration: none !important;
     border: none !important;
     transition: background-color 0.2s ease, color 0.2s ease !important;
+  }
+
+  .mj-header-nav .mj-nav-item__button .mj-menu-title__text,
+  .mj-header-nav .mj-nav-item__cta .mj-menu-title__text {
+    font-weight: 500;
   }
 
   .mj-header-nav .mj-nav-item__cta .button-icon {
@@ -3489,7 +3553,7 @@ b {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 20px;
+    gap: 0;
   }
 
   @media (max-width: 1400px) {
@@ -3504,14 +3568,20 @@ b {
     }
   }
 
-  .mj-mega__col-title {
+  /* Categorías L2 del desplegable: Aros, Cadenas, Pulseras, Anillos, etc. */
+  .mj-mega__col-title,
+  .mj-mega__col-title-row {
     display: block;
     color: #000;
-    font-size: 20px;
-    font-weight: 500; /* solo títulos de categoría */
-    line-height: 26px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
     text-decoration: none;
     white-space: nowrap;
+  }
+
+  .mj-mega__col-title--stacked {
+    white-space: normal;
   }
 
   .mj-mega__col-title:hover {
@@ -3528,7 +3598,7 @@ b {
 
   .mj-mega--ofertas .mj-mega__col-title-row {
     display: block;
-    line-height: 26px;
+    line-height: 24px;
   }
 
   .mj-mega--ofertas .mj-mega__col-title--stacked + .mj-mega__col-line {
@@ -3539,7 +3609,7 @@ b {
     display: block;
     width: 100%;
     height: 1px;
-    margin-top: -12px;
+    margin: 6px 0 6px; /* título → línea → listado (antes ~20px bajo la línea) */
     background: #d9d9d9;
   }
 
@@ -3556,9 +3626,9 @@ b {
   .mj-mega__link {
     display: inline-block;
     color: #000;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 400;
-    line-height: 22px;
+    line-height: 20px;
     text-decoration: none;
     white-space: nowrap;
   }
@@ -3737,13 +3807,14 @@ b {
     border-radius: 4px;
   }
 
-  .mj-mega__cat-title {
+  .mj-mega__cat-title,
+  .mj-mega__cat-title-row {
     display: block;
     width: 100%;
     color: #000;
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 26px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
   }
 
   /* Ofertas cards: "Entre" en 1ª línea, rango en 2ª */
@@ -3756,7 +3827,7 @@ b {
 
   .mj-mega--ofertas .mj-mega__cat-title-row {
     display: block;
-    line-height: 26px;
+    line-height: 24px;
     white-space: nowrap;
   }
 
@@ -4383,7 +4454,7 @@ b {
 .misjoyas-accordion{
   display:flex;
   flex-direction:column;
-  gap:10px;
+  gap:6px;
   width:100%;
   margin:0;
   font-family:inherit;
@@ -4713,6 +4784,14 @@ b {
   opacity: 0.9;
 }
 @media (min-width: 768px) {
+
+  .md\:tw-absolute {
+    position: absolute;
+  }
+
+  .md\:tw-inset-0 {
+    inset: 0px;
+  }
 
   .md\:tw-block {
     display: block;
