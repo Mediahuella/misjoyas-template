@@ -743,8 +743,8 @@
         "slide_tjrM9B": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Banner-tienda-texto_desktop.jpg",
-            "image_mobile": "shopify://shop_images/Banner-tienda-texto_mobile.jpg",
+            "image": "shopify://shop_images/Banner-tienda-texto_desktop_773a187d-3739-4fcc-a13d-fbd7dc69c4b9.jpg",
+            "image_mobile": "shopify://shop_images/Banner-tienda-texto_mobile_0c09f50e-276b-4560-9f83-0cca618d1f96.jpg",
             "image_alt": "",
             "button_label": "Encuentra tu tienda",
             "button_link": "shopify://pages/tiendas",
