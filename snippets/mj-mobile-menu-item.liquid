@@ -165,6 +165,16 @@
           <a href="{{ child.url }}" class="mj-mobile-nav__sublink">{{ child.title | escape }}</a>
         {%- endif -%}
       {%- endfor -%}
+
+      {%- liquid
+        assign view_all_link = block.settings.cta_link
+        if view_all_link == blank and block.settings.menu_item_link != blank
+          assign view_all_link = block.settings.menu_item_link
+        endif
+      -%}
+      {%- if view_all_link != blank -%}
+        <a href="{{ view_all_link }}" class="mj-mobile-nav__sublink mj-mobile-nav__view-all">{{ 'templates.search.view_all' | t }}</a>
+      {%- endif -%}
     </div>
 
     {%- for child in block.settings.menu.links -%}

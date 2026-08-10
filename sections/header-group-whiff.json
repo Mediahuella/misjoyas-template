@@ -18,7 +18,7 @@
           "type": "item",
           "settings": {
             "text": "Plata 925 certificada",
-            "link": "shopify://collections/plata-925",
+            "link": "shopify://blogs/tips-claves/certificacion-de-pureza-garantizada-plata-fina-925-de-mis-joyas",
             "open_new_window": false,
             "show_icon": true,
             "show_chevron": true,
@@ -218,6 +218,7 @@
             "category_image_3": "shopify://shop_images/colgantes-letra-plata-oro.png",
             "category_image_4": "shopify://shop_images/colgantes-letra-circon_4dbc0e82-419d-47ce-a6cb-69b6db0504ee.png",
             "category_image_5": "shopify://shop_images/collares.png",
+            "category_image_6": "shopify://shop_images/cadenas.png",
             "category_image_7": "shopify://shop_images/joyas-personalizadas.png",
             "category_image_8": "shopify://shop_images/insumos.png",
             "enable_button_style": true,

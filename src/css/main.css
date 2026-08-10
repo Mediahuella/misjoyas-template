@@ -3295,6 +3295,13 @@ b {
   padding: 6px 0 0;
 }
 
+/* “Ver todo…” como una subcategoría más del accordion */
+.mj-mobile-nav__view-all--disabled {
+  opacity: 0.6;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
 .mj-mobile-nav__sublink {
   display: inline-block;
   width: fit-content;
