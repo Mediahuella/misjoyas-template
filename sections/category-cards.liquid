@@ -356,13 +356,13 @@
     },
     setMaterial(value) {
       this.material = value;
-      this.startAuto();
+      {% comment %} this.startAuto(); {% endcomment %}
     }
   }"
-  x-init="startAuto()"
+  {% comment %} x-init="startAuto()"
   @mouseenter="window.matchMedia('(hover: hover)').matches && stopAuto()"
-  @mouseleave="window.matchMedia('(hover: hover)').matches && startAuto()"
->
+  @mouseleave="window.matchMedia('(hover: hover)').matches && startAuto()" {% endcomment %}
+> 
   <div class="category-cards__header">
     {%- if section.settings.eyebrow != blank -%}
       <p class="category-cards__eyebrow">{{ section.settings.eyebrow | escape }}</p>
