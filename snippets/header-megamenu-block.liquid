@@ -438,6 +438,12 @@
                       {% if block.settings.open_new_window and link %} target="_blank"{% endif %}
                     >
                       {{ menu_title }}
+                      {%- if block.settings.label != blank -%}
+                        <span
+                          class="mj-nav-item__badge"
+                          style="background: {{ block.settings.label_color }}; color: {{ block.settings.label_text_color_light }};"
+                        >{{ block.settings.label | escape }}</span>
+                      {%- endif -%}
                       {%- if is_link -%}{% render 'mj-menu-caret' %}{%- endif -%}
                     </a>
                   </div>

@@ -2624,6 +2624,13 @@ b {
     font-weight: 600;
     line-height: 20px;
     white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* Badge visible junto al título con fondo de botón */
+  .mj-header-nav .mj-nav-item__button .mj-nav-item__badge {
+    position: relative;
+    z-index: 1;
   }
 
   .mj-header-nav .mj-nav-item__cta.button,
@@ -2632,7 +2639,7 @@ b {
     align-items: center;
     gap: 6px; /* mismo espacio texto–flecha que .mj-nav-item__link */
     min-height: 46px;
-    padding: 11px 32px 12px !important;
+    padding: 11px 16px 12px !important;
     border-radius: 4px !important;
     font-size: 16px;
     font-weight: 500; /* Licenciatura (button style) — mismo peso que L1 */
@@ -3185,6 +3192,7 @@ b {
   width: auto;
 }
 
+/* Colores desde customizer (mismo header-menu-button-styles que desktop) */
 .mj-mobile-nav__cta-btn.button,
 .mj-mobile-nav__cta .mj-mobile-nav__cta-btn {
   display: inline-flex;
@@ -3192,28 +3200,40 @@ b {
   justify-content: center;
   width: auto;
   min-height: 46px;
-  padding: 11px 32px 12px !important;
+  padding: 11px 16px 12px !important;
   border-radius: 4px !important;
-  background: #f83785 !important;
-  color: #fff !important;
+  background: rgba(var(--colors-button, 248, 55, 133)) !important;
+  background-image: none !important;
+  color: rgb(var(--colors-button-text, 255, 255, 255)) !important;
   font-weight: 600;
   font-size: 16px;
   line-height: 22px;
   text-align: center;
+  border: none !important;
+  text-decoration: none !important;
 }
 
-/* Texto/caret blancos (pisa el color negro global del drawer) — igual que desktop */
+.mj-mobile-nav__cta-btn.button::before,
+.mj-mobile-nav__cta-btn.button::after,
+.mj-mobile-nav__cta .mj-mobile-nav__cta-btn::before,
+.mj-mobile-nav__cta .mj-mobile-nav__cta-btn::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Texto/caret del botón: color del customizer (no el #000 global del drawer) */
 .mj-mobile-nav__cta-btn.button,
 .mj-mobile-nav__cta-btn.button .mj-mobile-nav__title,
 .mj-mobile-nav__cta-btn.button .mj-mobile-nav__title-text,
 .mj-mobile-nav__cta-btn.button .mj-mobile-nav__caret,
 .mj-mobile-nav__item--button .mj-mobile-nav__trigger.mj-mobile-nav__cta-btn,
 .mj-mobile-nav__item--button .mj-mobile-nav__trigger.mj-mobile-nav__cta-btn .mj-mobile-nav__title,
+.mj-mobile-nav__item--button .mj-mobile-nav__trigger.mj-mobile-nav__cta-btn .mj-mobile-nav__title-text,
 .mj-mobile-nav__item--button .mj-mobile-nav__trigger.mj-mobile-nav__cta-btn .mj-mobile-nav__caret {
-  color: #fff !important;
+  color: rgb(var(--colors-button-text, 255, 255, 255)) !important;
 }
 
-/* Tree menu with button style + children: pink trigger + caret, accordion below */
+/* Tree menu with button style + children: trigger + caret, accordion below */
 .mj-mobile-nav__item--button .mj-mobile-nav__trigger.mj-mobile-nav__cta-btn {
   gap: 6px;
   width: auto;
