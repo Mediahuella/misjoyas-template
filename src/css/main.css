@@ -2695,6 +2695,18 @@ b {
     box-shadow: 0 4px 5px rgba(217, 217, 217, 0.4);
   }
 
+  /*
+    Evita recorte de categorías + CTA (ej. Baño de oro en viewports angostos):
+    el tema fija height: var(--menu-height) medido una vez; si el grid hace wrap
+    o el teleport llega tarde, el panel queda corto. Con height:auto al abrir
+    se muestra todo el contenido.
+  */
+  .mj-header-nav .mj-nav-dropdown--mega.toggle-menu:not(.toggle-menu-hidden) {
+    height: auto !important;
+    max-height: none;
+    overflow: visible;
+  }
+
   .mj-header-nav .mj-nav-dropdown--mega .mj-nav-dropdown__inner {
     width: 100%;
   }

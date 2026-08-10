@@ -404,11 +404,30 @@
               id="{{ block.id }}"
               class="mj-nav-item tree-menu{% if is_link %} has-dropdown{% endif %}{% if tree_menu_use_button %} mj-nav-item--button{% endif %}"
               {% if mj_title_color != blank %}style="--mj-nav-item-color: {{ mj_title_color }};"{% endif %}
-              {% if is_link %}@mouseover.once="$store.xHeaderMenu.initToggleMenuHeight($el)"{% endif %}
+              {%- if is_link -%}
+                x-data="{
+                  syncMegaHeight() {
+                    const inner = this.$el.querySelector('.mj-nav-dropdown__inner');
+                    if (!inner) return;
+                    const h = inner.scrollHeight || inner.clientHeight;
+                    if (!h) return;
+                    this.$el.style.setProperty('--init-menu-height', h);
+                    this.$el.style.setProperty('--menu-height', h + 'px');
+                  },
+                  openMega() {
+                    Alpine.store('xHeaderMenu').selectItem(this.$el);
+                    this.$el.classList.add('is-focus');
+                    this.$nextTick(() => {
+                      this.syncMegaHeight();
+                      requestAnimationFrame(() => this.syncMegaHeight());
+                    });
+                  }
+                }"
+              {%- endif -%}
               {% if select_motion == 'hover' %}
-                x-on:mouseover="$store.xHeaderMenu.selectItem($el); $el.classList.add('is-focus');"
+                x-on:mouseover="{% if is_link %}openMega(){% else %}$el.classList.add('is-focus'){% endif %}"
                 @mouseleave="$el.classList.remove('is-focus');"
-                @focusin="$store.xHeaderMenu.selectItem($el); $el.classList.add('is-focus');"
+                @focusin="{% if is_link %}openMega(){% else %}$el.classList.add('is-focus'){% endif %}"
                 @focusout="$el.classList.remove('is-focus');"
               {% else %}
                 {% if is_link == false and link %}
