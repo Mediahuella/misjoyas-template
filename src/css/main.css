@@ -1399,6 +1399,11 @@ b {
   background: linear-gradient(90deg, #a5a5a5 50%, #fcdf97 50%);
 }
 
+/* Acero quirúrgico — Figma 2474:9379 */
+.misjoyas-metal-tag--acero .misjoyas-metal-tag__swatch {
+  background-color: #000000;
+}
+
 .misjoyas-metal-tag__label {
   font-size: 14px;
   font-weight: 600;
@@ -3621,6 +3626,16 @@ b {
   font-size:15px;
   font-weight:400;
   line-height:22px;
+}
+.misjoyas-product-desc p{
+  margin:0 0 8px;
+}
+.misjoyas-product-desc p:last-child{
+  margin-bottom:0;
+}
+.misjoyas-product-desc strong,
+.misjoyas-product-desc b{
+  font-weight:600;
 }
 @media (max-width:767px){
   .misjoyas-product-desc{

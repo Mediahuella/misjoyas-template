@@ -8,6 +8,7 @@
     - Plata 925 → Plata 925
     - Recubrimiento Baño de Oro 18 k → Baño de oro 18K
     - Baño de Oro 18k / Baño de Oro 18 k → Plata 925 con baño de oro 18K
+    - Acero → Acero quirúrgico (Figma 2474:9379)
 {% endcomment %}
 {%- capture metal_str -%}{%- render 'misjoyas-metal-str', product: product -%}{%- endcapture -%}
 {%- assign metal_str = metal_str | strip -%}
@@ -22,6 +23,9 @@
     if metal_key == 'plata 925'
       assign metal_variant = 'plata'
       assign metal_label = 'products.product.metal_plata_925' | t
+    elsif metal_key == 'acero' or metal_key contains 'acero'
+      assign metal_variant = 'acero'
+      assign metal_label = 'products.product.metal_acero' | t
     elsif metal_key contains 'recubrimiento'
       assign metal_variant = 'oro'
       assign metal_label = 'products.product.metal_bano_oro_18k' | t
