@@ -151,6 +151,26 @@ b {
   line-height: 1;
 }
 
+/* Figma 1813:9345 / 2755:8965 — label + prices stack (gap 2px) */
+.section-product-info .misjoyas-price--pdp .misjoyas-price__stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  line-height: normal;
+}
+
+.section-product-info .misjoyas-price--pdp .misjoyas-price__label {
+  margin: 0;
+  padding: 0;
+  color: #000;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
 .section-product-info .misjoyas-price__row {
   display: flex;
   align-items: center;
@@ -175,7 +195,7 @@ b {
   font-size: 16px;
   line-height: normal;
   font-weight: 400;
-  color: #2d2d2d;
+  color: #000;
   text-decoration: line-through;
   white-space: nowrap;
 }

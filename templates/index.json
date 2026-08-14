@@ -15,6 +15,19 @@
         "slide_rqPLBL": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/Banner_aros-regalo_desktop.jpg",
+            "image_mobile": "shopify://shop_images/Banner_aros-regalo_mobile.jpg",
+            "image_alt": "",
+            "link": "shopify://collections/all",
+            "open_new_window": false,
+            "schedule_enabled": true,
+            "schedule_start": "2026-08-17 00:00:00",
+            "schedule_end": ""
+          }
+        },
+        "slide_W9Dcjj": {
+          "type": "slide",
+          "settings": {
             "image": "shopify://shop_images/Banner_Adoro_desktop.jpg",
             "image_mobile": "shopify://shop_images/Banner_Adoro_mobile.jpg",
             "image_alt": "",
@@ -59,14 +72,15 @@
             "image_alt": "",
             "link": "shopify://collections/all",
             "open_new_window": false,
-            "schedule_enabled": false,
+            "schedule_enabled": true,
             "schedule_start": "",
-            "schedule_end": ""
+            "schedule_end": "2026-08-17 00:00:00"
           }
         }
       },
       "block_order": [
         "slide_rqPLBL",
+        "slide_W9Dcjj",
         "slide_D8eTJ4",
         "slide_748Wyf",
         "slide_3VgVYr"
@@ -714,8 +728,31 @@
     "178611785999cb7c28": {
       "type": "apps",
       "blocks": {
+        "loox_reviews_loox_trust_badge_PENfMx": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-trust-badge/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "layout": "horizontal",
+            "alignment": "center",
+            "scheme-type": "inverted",
+            "review-title": "Evaluaciones",
+            "rating-icon": true,
+            "average-rating": true,
+            "loox-branding": false,
+            "review-count": true,
+            "open-reviews": true,
+            "show-border": true,
+            "border-radius": 8,
+            "font-size": 20,
+            "background-color": "",
+            "secondary-background-color": "",
+            "text-color": "",
+            "rating-icon-color": "",
+            "border-color": ""
+          }
+        },
         "loox_reviews_loox_agg_section_8ptcj6": {
           "type": "shopify://apps/loox-reviews/blocks/loox-agg-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "disabled": true,
           "settings": {
             "reviews_to_display": "",
             "default_tab": "automatic",
@@ -730,6 +767,7 @@
         }
       },
       "block_order": [
+        "loox_reviews_loox_trust_badge_PENfMx",
         "loox_reviews_loox_agg_section_8ptcj6"
       ],
       "settings": {

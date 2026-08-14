@@ -832,7 +832,8 @@
                 misjoyas_context: 'card'
               -%}
             {% elsif card_product.has_only_default_variant %}
-              {% render 'price', priceID: priceID, product: card_product, product_complementary: product_complementary, show_price_range: show_price_range, misjoyas_context: 'card' %}
+              <div class="loox-rating" data-id="{{ card_product.id }}" data-rating="{{ card_product.metafields.loox.avg_rating }}" data-raters="{{ card_product.metafields.loox.num_reviews }}"></div>
+{% render 'price', priceID: priceID, product: card_product, product_complementary: product_complementary, show_price_range: show_price_range, misjoyas_context: 'card' %}
             {% else %}
               {%- render 'price',
                 product: card_product,
