@@ -360,12 +360,6 @@
       "alt": "Banner promocional",
       "placeholder": "Sube la imagen de escritorio (1280×246 px) y la de móvil (400×550 px)."
     },
-    "banner-grid": {
-      "aria_label": "Banners promocionales",
-      "placeholder": "Agrega banners a esta sección.",
-      "block_placeholder": "Sube una imagen para este banner (634×246 px escritorio, 400×246 px móvil).",
-      "card_alt": "Banner promocional"
-    },
     "misjoyas-whatsapp-float": {
       "aria_label": "Chatear por WhatsApp"
     },

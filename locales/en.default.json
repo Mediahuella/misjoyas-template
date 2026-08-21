@@ -360,12 +360,6 @@
       "alt": "Promotional banner",
       "placeholder": "Upload a desktop image (1280×246 px) and a mobile image (400×550 px)."
     },
-    "banner-grid": {
-      "aria_label": "Promotional banners",
-      "placeholder": "Add banners to this section.",
-      "block_placeholder": "Upload an image for this banner (634×246 px desktop, 400×246 px mobile).",
-      "card_alt": "Promotional banner"
-    },
     "misjoyas-whatsapp-float": {
       "aria_label": "Chat on WhatsApp"
     },

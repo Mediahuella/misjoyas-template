@@ -12,20 +12,20 @@
     "banner_principal_home": {
       "type": "banner-principal",
       "blocks": {
-        "slide_W9Dcjj": {
+        "slide_rqPLBL": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Despacho_gratis_desktop.jpg",
-            "image_mobile": "shopify://shop_images/Despacho_gratis_mobile.jpg",
+            "image": "shopify://shop_images/Banner_aros-regalo_desktop.jpg",
+            "image_mobile": "shopify://shop_images/Banner_aros-regalo_mobile.jpg",
             "image_alt": "",
             "link": "shopify://collections/all",
             "open_new_window": false,
-            "schedule_enabled": false,
-            "schedule_start": "",
+            "schedule_enabled": true,
+            "schedule_start": "2026-08-17 00:00:00",
             "schedule_end": ""
           }
         },
-        "slide_jntNxD": {
+        "slide_W9Dcjj": {
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/Banner_Adoro_desktop.jpg",
@@ -63,13 +63,27 @@
             "schedule_start": "",
             "schedule_end": ""
           }
+        },
+        "slide_3VgVYr": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Banner4_general_Desktop.jpg",
+            "image_mobile": "shopify://shop_images/Banner4_general_Mobile.jpg",
+            "image_alt": "",
+            "link": "shopify://collections/all",
+            "open_new_window": false,
+            "schedule_enabled": true,
+            "schedule_start": "",
+            "schedule_end": "2026-08-17 00:00:00"
+          }
         }
       },
       "block_order": [
+        "slide_rqPLBL",
         "slide_W9Dcjj",
-        "slide_jntNxD",
         "slide_D8eTJ4",
-        "slide_748Wyf"
+        "slide_748Wyf",
+        "slide_3VgVYr"
       ],
       "settings": {
         "auto_play": true,
@@ -258,8 +272,8 @@
         "products_to_show": 16,
         "margin_top": 0,
         "margin_top_mobile": 0,
-        "margin_bottom": 32,
-        "margin_bottom_mobile": 32,
+        "margin_bottom": 20,
+        "margin_bottom_mobile": 20,
         "gap": 16,
         "gap_mobile": 12,
         "columns_desktop": 4,
@@ -318,48 +332,6 @@
         "pause_on_hover": false
       }
     },
-    "banner_grid_home": {
-      "type": "banner-grid",
-      "blocks": {
-        "banner_kit": {
-          "type": "banner",
-          "settings": {
-            "image": "shopify://shop_images/kit_desktop_1f15f7f4-2a57-494d-9826-dabeb42101cf.jpg",
-            "image_mobile": "shopify://shop_images/kit_mobile_39325a3e-ef72-43da-9060-fb1d35683846.jpg",
-            "image_alt": "",
-            "link": "shopify://collections/all",
-            "open_new_window": false
-          }
-        },
-        "banner_tramos": {
-          "type": "banner",
-          "settings": {
-            "image": "shopify://shop_images/tramos_desktop_2ad1773e-e43f-4f86-95e3-bdfecc5e71ef.jpg",
-            "image_mobile": "shopify://shop_images/tramos_mobile_06fe919e-9bc0-44fc-9299-3428951ce577.jpg",
-            "image_alt": "",
-            "link": "shopify://collections/all",
-            "open_new_window": false
-          }
-        }
-      },
-      "block_order": [
-        "banner_kit",
-        "banner_tramos"
-      ],
-      "name": "Banner grid",
-      "settings": {
-        "margin_top": 0,
-        "margin_top_mobile": 0,
-        "gap": 12,
-        "border_radius": 4,
-        "banner_height": 246,
-        "banner_height_mobile": 246,
-        "padding_x": 80,
-        "padding_x_mobile": 20,
-        "padding_y": 40,
-        "padding_y_mobile": 40
-      }
-    },
     "featured_collection_misjoyas_thbPcm": {
       "type": "featured-collection-misjoyas",
       "name": "Colección destacada",
@@ -390,6 +362,26 @@
         "button_label": "Ver todo lo más vendido",
         "button_link": "",
         "open_new_window": false
+      }
+    },
+    "17733201952ee1ad52": {
+      "type": "apps",
+      "blocks": {
+        "vizup_videos_videos_block_JQJAWt": {
+          "type": "shopify://apps/vizup-videos/blocks/videos-block/eaecaa7b-ab6b-40ae-8ddf-50daa867f3eb",
+          "settings": {
+            "videoc_widget_id": "",
+            "custom_css": ""
+          }
+        }
+      },
+      "block_order": [
+        "vizup_videos_videos_block_JQJAWt"
+      ],
+      "disabled": true,
+      "settings": {
+        "include_margins": true,
+        "content_alignment": "left"
       }
     },
     "banner_destacados_home": {
@@ -508,6 +500,169 @@
         "open_new_window": false
       }
     },
+    "featured_collection_misjoyas_yCxarR": {
+      "type": "featured-collection-misjoyas",
+      "disabled": true,
+      "name": "Colección destacada",
+      "settings": {
+        "title_icon": "",
+        "eyebrow": "Aros",
+        "eyebrow_color": "#68b5a3",
+        "title_icon_color": "#68b5a3",
+        "title": "Elige tus aros favoritos",
+        "collection": "aros",
+        "products_to_show": 16,
+        "margin_top": 0,
+        "margin_top_mobile": 0,
+        "margin_bottom": 0,
+        "margin_bottom_mobile": 0,
+        "gap": 16,
+        "gap_mobile": 12,
+        "columns_desktop": 4,
+        "padding_x": 80,
+        "padding_x_mobile": 20,
+        "padding_y": 40,
+        "padding_y_mobile": 30,
+        "show_quickview": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "show_highlighted_attributes": true,
+        "show_view_all": true,
+        "button_label": "Ver todos los aros",
+        "button_link": "",
+        "open_new_window": false
+      }
+    },
+    "image_with_text_tCdRr9": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_8eVc66": {
+          "type": "heading",
+          "settings": {
+            "subheading": "",
+            "heading": "Cadenas de plata fina 925",
+            "highlight_type": "underline",
+            "heading_base_size": 100,
+            "heading_tag": "h2",
+            "text": "<p>Las <strong>cadenas de plata 925 </strong>que trabajamos son de una excelente calidad, que tienen un estilo atemporal y a un valor inigualable en el negocio de las joyas.</p>",
+            "number_of_lines_shown": "none",
+            "read_more_label": "Read more",
+            "see_less_label": "See less",
+            "heading_light": "#000000",
+            "text_light": "#000000",
+            "color_heading_highlight_light": "rgba(0,0,0,0)",
+            "heading_dark": "rgba(0,0,0,0)",
+            "text_dark": "rgba(0,0,0,0)",
+            "color_heading_highlight_dark": "rgba(0,0,0,0)"
+          }
+        },
+        "button_RVytLf": {
+          "type": "button",
+          "settings": {
+            "button_label": "VER TODO",
+            "button_link": "shopify://collections/cadenas",
+            "open_new_window": false,
+            "show_button_mobile": false,
+            "show_button_style": "primary",
+            "button_light": "#222222",
+            "button_text_light": "rgba(0,0,0,0)",
+            "button_hover_light": "rgba(0,0,0,0)",
+            "button_text_hover_light": "rgba(0,0,0,0)",
+            "secondary_button_light": "rgba(0,0,0,0)",
+            "secondary_button_text_light": "rgba(0,0,0,0)",
+            "colors_text_link": "rgba(0,0,0,0)",
+            "button_dark": "rgba(0,0,0,0)",
+            "button_text_dark": "rgba(0,0,0,0)",
+            "button_hover_dark": "rgba(0,0,0,0)",
+            "button_text_hover_dark": "rgba(0,0,0,0)",
+            "secondary_button_dark": "rgba(0,0,0,0)",
+            "secondary_button_text_dark": "rgba(0,0,0,0)",
+            "colors_text_link_dark": "rgba(0,0,0,0)"
+          }
+        }
+      },
+      "block_order": [
+        "heading_8eVc66",
+        "button_RVytLf"
+      ],
+      "disabled": true,
+      "name": "t:sections.image-with-text.name",
+      "settings": {
+        "show_hero": false,
+        "video": "shopify://files/videos/video-cadenas.mp4",
+        "show_sound_control": false,
+        "video_url": "",
+        "video_alt_text": "",
+        "enable_video_autoplay": true,
+        "desktop_height": "450px",
+        "mobile_height": "400px",
+        "desktop_image_width": "medium",
+        "image_layout": "stacked",
+        "image_corner_radius": 0,
+        "content_layout": "no-overlap",
+        "spacing_image": false,
+        "text_position": "center",
+        "text_alignment": "start",
+        "background_color_light": "#ffffff",
+        "background_color_dark": "rgba(0,0,0,0)",
+        "line_border": "dashed",
+        "icon_position": "col",
+        "icon_size": 45,
+        "alignment": "center",
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "heading_color_light": "#000000",
+        "text_color_light": "#000000",
+        "line_border_light": "rgba(0,0,0,0)",
+        "icon_color_light": "rgba(0,0,0,0)",
+        "heading_color_dark": "rgba(0,0,0,0)",
+        "text_color_dark": "rgba(0,0,0,0)",
+        "line_border_dark": "rgba(0,0,0,0)",
+        "icon_color_dark": "rgba(0,0,0,0)",
+        "image_alignment": "right",
+        "full_width": false,
+        "padding_full_width": false,
+        "top_padding": 0,
+        "bottom_padding": 0,
+        "image_alignment_mobile": "left",
+        "full_width_mobile": true,
+        "top_padding_mobile": 0,
+        "bottom_padding_mobile": 0
+      }
+    },
+    "featured_collection_misjoyas_WKk9MB": {
+      "type": "featured-collection-misjoyas",
+      "disabled": true,
+      "name": "Colección destacada",
+      "settings": {
+        "title_icon": "",
+        "eyebrow": "Cadenas",
+        "eyebrow_color": "#68b5a3",
+        "title_icon_color": "#68b5a3",
+        "title": "Las cadenas que más se venden",
+        "collection": "cadenas",
+        "products_to_show": 16,
+        "margin_top": 0,
+        "margin_top_mobile": 0,
+        "margin_bottom": 0,
+        "margin_bottom_mobile": 0,
+        "gap": 16,
+        "gap_mobile": 12,
+        "columns_desktop": 4,
+        "padding_x": 80,
+        "padding_x_mobile": 20,
+        "padding_y": 40,
+        "padding_y_mobile": 30,
+        "show_quickview": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "show_highlighted_attributes": true,
+        "show_view_all": true,
+        "button_label": "Ver todas las cadenas",
+        "button_link": "",
+        "open_new_window": false
+      }
+    },
     "huincha_iconos_home": {
       "type": "huincha-iconos",
       "blocks": {
@@ -540,7 +695,7 @@
           "settings": {
             "icon": "despachos.svg",
             "title": "DESPACHO A TODO CHILE",
-            "text": "Gratis sobre $59.990"
+            "text": "Gratis sobre $99.990"
           }
         },
         "item_cuotas": {
@@ -686,6 +841,42 @@
         "countdown": false,
         "available_routes": "/"
       }
+    },
+    "popup_yGHy4R": {
+      "type": "popup",
+      "disabled": true,
+      "name": "Popup imagen",
+      "settings": {
+        "image": "shopify://shop_images/compra-minima_popup.jpg",
+        "start": "2026-06-02 00:00:01",
+        "ends": "2026-06-02 23:59:00",
+        "countdown": false,
+        "available_routes": "/"
+      }
+    },
+    "popup_h9bTpX": {
+      "type": "popup",
+      "disabled": true,
+      "name": "Popup imagen",
+      "settings": {
+        "image": "shopify://shop_images/Dia3_aros_popup_e0d881cf-996a-455e-a08e-e4a4c3a67cea.jpg",
+        "start": "2026-06-03 00:00:01",
+        "ends": "2026-06-03 23:59:00",
+        "countdown": false,
+        "available_routes": "/"
+      }
+    },
+    "popup_rWghyY": {
+      "type": "popup",
+      "disabled": true,
+      "name": "Popup imagen",
+      "settings": {
+        "image": "shopify://shop_images/compra-minima_popup_14d0a74d-8e89-4f5b-99a1-6b7c6a599780.jpg",
+        "start": "2026-06-15 00:00:01",
+        "ends": "2027-06-15 00:00:01",
+        "countdown": false,
+        "available_routes": "/"
+      }
     }
   },
   "order": [
@@ -695,14 +886,20 @@
     "banner_pequeno_home",
     "featured_collection_misjoyas_WHddHm",
     "ticker_6VWRFH",
-    "banner_grid_home",
     "featured_collection_misjoyas_thbPcm",
+    "17733201952ee1ad52",
     "banner_destacados_home",
     "featured_collection_misjoyas_PnenNE",
+    "featured_collection_misjoyas_yCxarR",
+    "image_with_text_tCdRr9",
+    "featured_collection_misjoyas_WKk9MB",
     "huincha_iconos_home",
     "178611785999cb7c28",
     "banner_kit_QzyCmc",
     "cuadro_footer_home",
-    "popup_6AnBUK"
+    "popup_6AnBUK",
+    "popup_yGHy4R",
+    "popup_h9bTpX",
+    "popup_rWghyY"
   ]
 }

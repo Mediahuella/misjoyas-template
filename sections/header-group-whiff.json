@@ -53,7 +53,7 @@
         "topbar_item_despacho": {
           "type": "item",
           "settings": {
-            "text": "<strong>Despacho gratis</strong> sobre $59.990",
+            "text": "<strong>Despacho gratis</strong> sobre $99.990",
             "link": "",
             "open_new_window": false,
             "show_icon": false,
@@ -475,12 +475,29 @@
         "background_color": "#ffffff",
         "text_color": "#000000"
       }
+    },
+    "huincha_header_TEzGXy": {
+      "type": "huincha-header",
+      "disabled": true,
+      "name": "Huincha header",
+      "settings": {
+        "enable": true,
+        "show_only_on_homepage": false,
+        "image": "shopify://shop_images/Huincha-sorteo_desktop.jpg",
+        "image_mobile": "shopify://shop_images/Huincha-sorteo_mobile.jpg",
+        "image_alt": "",
+        "link": "shopify://collections/all",
+        "open_new_window": false,
+        "banner_height": 100,
+        "banner_height_mobile": 130
+      }
     }
   },
   "order": [
     "misjoyas-topbar",
     "announcement-bar",
     "header",
-    "mobile-navigation"
+    "mobile-navigation",
+    "huincha_header_TEzGXy"
   ]
 }
