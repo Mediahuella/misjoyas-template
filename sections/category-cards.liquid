@@ -12,11 +12,6 @@
     assign cards_padding_x_mobile = 20
   endif
   assign card_max_width = section.settings.card_max_width
-  assign card_width_mobile = section.settings.card_width_mobile
-  assign enable_mobile_carousel = false
-  if section.blocks.size > 1
-    assign enable_mobile_carousel = true
-  endif
 
   assign switch_plata = section.settings.switch_label_plata
   if switch_plata == blank
@@ -46,7 +41,6 @@
     --category-cards-padding-x: {{ cards_padding_x }}px;
     --category-cards-padding-x-mobile: {{ cards_padding_x_mobile }}px;
     --category-cards-max-width: {{ card_max_width }}px;
-    --category-cards-width-mobile: {{ card_width_mobile }}px;
   }
   .category-cards-{{ section.id }} {
     width: 100%;
@@ -146,19 +140,16 @@
     padding-left: 0;
     padding-right: 0;
   }
-  .category-cards-{{ section.id }} .preload-slide-{{ section.id }} {
-    margin-right: var(--category-cards-gap-mobile);
-  }
-  @media (min-width: 768px) {
-    .category-cards-{{ section.id }} .preload-slide-{{ section.id }} {
-      margin-right: 0;
-    }
+  .category-cards-{{ section.id }} .category-cards__list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--category-cards-gap-mobile);
+    width: 100%;
   }
   .category-cards-{{ section.id }} .category-cards__item {
     position: relative;
-    flex-shrink: 0;
-    width: min(var(--category-cards-width-mobile), calc(100vw - 5.5rem));
-    height: min(var(--category-cards-width-mobile), calc(100vw - 5.5rem));
+    width: 100%;
+    aspect-ratio: 1 / 1;
   }
   .category-cards-{{ section.id }} .category-cards__set {
     position: absolute;
@@ -172,8 +163,6 @@
     z-index: 0;
   }
   .category-cards-{{ section.id }} .category-cards__set.is-active {
-    position: relative;
-    inset: auto;
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
@@ -275,8 +264,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 30px;
+    margin-top: 20px;
     min-height: 50px;
+  }
+  @media (min-width: 768px) {
+    .category-cards-{{ section.id }} .category-cards__footer {
+      margin-top: 30px;
+    }
   }
   .category-cards-{{ section.id }} .category-cards__cta {
     display: inline-flex;
@@ -311,8 +305,8 @@
     color: #fff;
   }
   @media (min-width: 768px) {
-    .category-cards-{{ section.id }} .splide__list.category-cards__list {
-      display: flex !important;
+    .category-cards-{{ section.id }} .category-cards__list {
+      display: flex;
       flex-wrap: nowrap;
       justify-content: stretch;
       align-items: stretch;
@@ -320,17 +314,12 @@
       width: 100%;
     }
     .category-cards-{{ section.id }} .category-cards__item {
-      width: auto !important;
+      width: auto;
       height: auto;
       flex: 1 1 0;
       min-width: 0;
       max-width: var(--category-cards-max-width);
-      margin-right: 0 !important;
       aspect-ratio: 1 / 1;
-    }
-    .category-cards-{{ section.id }} .category-cards__set.is-active {
-      position: absolute;
-      inset: 0;
     }
   }
 {%- endstyle -%}
@@ -395,39 +384,10 @@
 
   <div
     id="category-cards-{{ section.id }}"
-    class="category-cards__carousel carousel-mobile{% if enable_mobile_carousel %} x-splide splide visible{% endif %}"
-    {% if enable_mobile_carousel %}
-      x-intersect.once.margin.200px='$store.xSplide.load($el, {
-        "autoWidth": true,
-        "height": "{{ card_width_mobile }}px",
-        "focus": 0,
-        "type": "slide",
-        "mediaQuery": "min",
-        "gap": "{{ cards_gap_mobile }}px",
-        "arrows": false,
-        "pagination": false,
-        "drag": true,
-        "speed": 400,
-        "flickPower": 300,
-        "trimSpace": false,
-        "breakpoints": {
-          768: {
-            "destroy": true
-          }
-        },
-        "classes": {
-          "pagination": "hidden"
-        }
-      })'
-    {% endif %}
+    class="category-cards__carousel"
   >
-    {% if enable_mobile_carousel %}
-      <div class="splide__track category-cards__track overflow-hidden w-full">
-        <div class="splide__list category-cards__list w-full">
-    {% else %}
-      <div class="category-cards__track">
-        <div class="category-cards__list tw-flex tw-flex-wrap tw-justify-center" style="gap: {{ cards_gap }}px;">
-    {% endif %}
+    <div class="category-cards__track">
+      <div class="category-cards__list">
       {%- for block in section.blocks -%}
         {%- liquid
           assign image_plata = block.settings.image_plata
@@ -456,7 +416,7 @@
           endif
         -%}
         <div
-          class="category-cards__item{% if enable_mobile_carousel %} splide__slide x-splide-slide preload-slide-{{ section.id }}{% endif %}"
+          class="category-cards__item"
           {{ block.shopify_attributes }}
         >
           {%- comment -%} Plata set {%- endcomment -%}
@@ -482,7 +442,7 @@
                       | image_tag:
                         class: 'category-cards__img',
                         widths: '246, 360, 480, 720, 800',
-                        sizes: '(max-width: 767px) min(246px, calc(100vw - 5.5rem)), 246px',
+                        sizes: '(max-width: 767px) 50vw, 360px',
                         alt: card_alt,
                         loading: 'lazy'
                     }}
@@ -495,7 +455,7 @@
                         | image_tag:
                           class: 'category-cards__img',
                           widths: '246, 360, 480, 720, 800',
-                          sizes: '(max-width: 767px) min(246px, calc(100vw - 5.5rem)), 246px',
+                          sizes: '(max-width: 767px) 50vw, 360px',
                           alt: '',
                           loading: 'lazy'
                       }}
@@ -544,7 +504,7 @@
                       | image_tag:
                         class: 'category-cards__img',
                         widths: '246, 360, 480, 720, 800',
-                        sizes: '(max-width: 767px) min(246px, calc(100vw - 5.5rem)), 246px',
+                        sizes: '(max-width: 767px) 50vw, 360px',
                         alt: card_alt,
                         loading: 'lazy'
                     }}
@@ -557,7 +517,7 @@
                         | image_tag:
                           class: 'category-cards__img',
                           widths: '246, 360, 480, 720, 800',
-                          sizes: '(max-width: 767px) min(246px, calc(100vw - 5.5rem)), 246px',
+                          sizes: '(max-width: 767px) 50vw, 360px',
                           alt: '',
                           loading: 'lazy'
                       }}
@@ -584,13 +544,8 @@
           </div>
         </div>
       {%- endfor -%}
-    {% if enable_mobile_carousel %}
-        </div>
-      </div>
-    {% else %}
-        </div>
-      </div>
-    {% endif %}
+    </div>
+  </div>
   </div>
 
   {%- if section.settings.cta_link_plata != blank or section.settings.cta_link_oro != blank or cta_label_plata != blank -%}
@@ -757,16 +712,6 @@
       "max": 400,
       "step": 2,
       "default": 360
-    },
-    {
-      "type": "range",
-      "id": "card_width_mobile",
-      "label": "Ancho de tarjeta — móvil (px)",
-      "info": "Más bajo = se ve más la siguiente tarjeta.",
-      "min": 180,
-      "max": 360,
-      "step": 2,
-      "default": 280
     }
   ],
   "blocks": [
@@ -841,7 +786,8 @@
         { "type": "category", "settings": { "label": "Anillos" } },
         { "type": "category", "settings": { "label": "Cadenas" } },
         { "type": "category", "settings": { "label": "Colgantes" } },
-        { "type": "category", "settings": { "label": "Pulseras" } }
+        { "type": "category", "settings": { "label": "Pulseras" } },
+        { "type": "category", "settings": { "label": "Conjuntos" } }
       ]
     }
   ]
