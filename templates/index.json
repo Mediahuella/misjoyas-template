@@ -146,6 +146,18 @@
             "link_oro": "",
             "open_new_window": false
           }
+        },
+        "category_37QBct": {
+          "type": "category",
+          "settings": {
+            "label": "Conjuntos",
+            "image_alt": "",
+            "image_plata": "shopify://shop_images/conjuntos_1.jpg",
+            "link_plata": "shopify://collections/conjuntos",
+            "image_oro": "shopify://shop_images/conjuntos_c9c14639-3e14-4f14-98ae-9b989bf37c72.jpg",
+            "link_oro": "shopify://collections/conjuntos-bano-de-oro-18k",
+            "open_new_window": false
+          }
         }
       },
       "block_order": [
@@ -153,7 +165,8 @@
         "category_anillos",
         "category_cadenas",
         "category_colgantes",
-        "category_pulseras"
+        "category_pulseras",
+        "category_37QBct"
       ],
       "name": "Category cards",
       "settings": {
