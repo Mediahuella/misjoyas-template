@@ -52,11 +52,10 @@
             "custom_html": "{%- if product.description != blank -%}\n<div class=\"misjoyas-product-desc rte\">{{ product.description }}</div>\n{%- endif -%}"
           }
         },
-        "html_z7HzVj": {
+        "html_wUncyg": {
           "type": "html",
-          "disabled": true,
           "settings": {
-            "custom_html": "<div class=\"misjoyas-promo-banner\">\n\n  <div class=\"misjoyas-badge\">\n    Exclusivo por tiempo limitado\n  </div>\n\n  <div class=\"misjoyas-timer\">\n    ⏳ Oferta termina en: <span id=\"misjoyas-countdown\">05:00:00</span>\n  </div>\n\n  <div class=\"misjoyas-row\">\n    <div class=\"misjoyas-icon\">💎</div>\n    <div class=\"misjoyas-text\">\n      <strong>10% OFF</strong>\n      <span>Descuentos exclusivos por cantidad</span>\n    </div>\n    <div class=\"misjoyas-price\">Sobre compras de $150.000</div>\n  </div>\n\n  <div class=\"misjoyas-row\">\n    <div class=\"misjoyas-icon\">✨</div>\n    <div class=\"misjoyas-text\">\n      <strong>15% OFF</strong>\n      <span>Descuentos exclusivos por cantidad</span>\n    </div>\n    <div class=\"misjoyas-price\">Sobre compras de $400.000</div>\n  </div>\n\n  <div class=\"misjoyas-row\">\n    <div class=\"misjoyas-icon\">👑</div>\n    <div class=\"misjoyas-text\">\n      <strong>20% OFF</strong>\n      <span>Descuentos exclusivos por cantidad</span>\n    </div>\n    <div class=\"misjoyas-price\">Sobre compras de $1.000.000</div>\n  </div>\n\n</div>"
+            "custom_html": "{%- if product.tags contains 'NoZonaExtrema' -%}\n{% style %} \n.misjoyas-zona-extrema{\n    margin: 16px 0;\n    width: 100%;\n    font-size: 14px;\n    color: #6b5518;\n    background: #fdf6e3;\n    padding: 16px;\ntext-align:justify\n}\n{% endstyle %}\n<div class=\"misjoyas-zona-extrema\">\nPor normativa de las empresas de Courier, algunos productos como los líquidos de limpieza, paños y polvos de pulir tienen dificultades para despacharse a zonas extremas como Arica, Tarapacá, Aysén y Magallanes.\n</div>\n{%- endif -%}"
           }
         },
         "variant_picker": {
@@ -185,24 +184,6 @@
             "color_icon_dark": "rgba(0,0,0,0)"
           }
         },
-        "table_of_information_aYEGxp": {
-          "type": "table_of_information",
-          "disabled": true,
-          "settings": {
-            "show_in_tab": false,
-            "open_by_default": false,
-            "icon": "none",
-            "another_icon": "",
-            "custom_icon": "",
-            "use_secondary_background": false,
-            "heading": "Additional details",
-            "left_label": "Sort",
-            "right_label": "Values",
-            "details": "<p>Weight: 100g<br/>-Dimension: 16mm<br/><br/>-Size: Small<br/>Condition: Excellent<br/>Usage: Daily use<br/>Price range: Budget-friendly</p>",
-            "text_to_use_for_empty_fields": "-",
-            "extra_details": "<p>Add further details to enrich you product information.</p>"
-          }
-        },
         "sticky-atc": {
           "type": "sticky_add_to_cart",
           "settings": {
@@ -272,41 +253,9 @@
             "open_new_window_6": false
           }
         },
-        "text_jLJ9eC": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "text": "{{ product.description }}",
-            "number_of_lines_shown": "none",
-            "read_more_label": "",
-            "see_less_label": ""
-          }
-        },
         "selleasy_lb_upsell_widget_bl_DphFhP": {
           "type": "shopify://apps/selleasy/blocks/lb-upsell-widget-bl/790c1a03-a71f-4bc1-9869-00dad526d3c2",
           "settings": {}
-        },
-        "subscriptions_app_block_qYcpmR": {
-          "type": "shopify://apps/subscriptions/blocks/app-block/a3bfe9ec-96f8-4508-a003-df608a36d2ad",
-          "disabled": true,
-          "settings": {
-            "widget_style": "card",
-            "widget_style_card_selector": "radio_button",
-            "subscription_policy_url": "",
-            "color_text_body": "#6d7175",
-            "dividers_color": "#8f8d8d",
-            "background_color": "#ffffff",
-            "border_thickness": 1,
-            "border_radius": 0,
-            "product": "{{product}}"
-          }
-        },
-        "reelplus_carousel_fBRWnE": {
-          "type": "shopify://apps/reelplus/blocks/carousel/a8b9e6d7-1308-4956-b132-162738213898",
-          "disabled": true,
-          "settings": {
-            "reelplus_carousel_widget": "widget-93ad9074-f320-4fe9-b1ab-49915ba35baf"
-          }
         }
       },
       "block_order": [
@@ -316,7 +265,7 @@
         "price",
         "variant_weight_mjPeso",
         "html_prodDesc",
-        "html_z7HzVj",
+        "html_wUncyg",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
@@ -328,13 +277,9 @@
         "html_fMA38V",
         "html_cgMNhC",
         "gift_wrapping_EK3NQn",
-        "table_of_information_aYEGxp",
         "sticky-atc",
         "feature_icon_4cVkJd",
-        "text_jLJ9eC",
-        "selleasy_lb_upsell_widget_bl_DphFhP",
-        "subscriptions_app_block_qYcpmR",
-        "reelplus_carousel_fBRWnE"
+        "selleasy_lb_upsell_widget_bl_DphFhP"
       ],
       "custom_css": [],
       "settings": {
