@@ -2552,7 +2552,7 @@ b {
   }
 
   .mj-header-nav__list {
-    gap: 60px;
+    gap: 40px;
     width: 100%;
     justify-content: center;
     position: relative;

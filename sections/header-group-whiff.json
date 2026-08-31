@@ -194,6 +194,37 @@
             "colors_text_link_dark": "rgba(0,0,0,0)"
           }
         },
+        "tree_menu_iUQj9H": {
+          "type": "tree_menu",
+          "settings": {
+            "heading": "Anillos",
+            "title_color": "rgba(0,0,0,0)",
+            "menu": "anillos-week-sale",
+            "label": "20%OFF SOLO POR HOY",
+            "label_position": "above",
+            "label_color": "#f83785",
+            "label_text_color_light": "#ffffff",
+            "label_color_dark": "#f83785",
+            "label_text_color_dark": "#ffffff",
+            "mega_heading": "ANILLOS en Week sale 20%OFF",
+            "cta_label": "Ver todos los Anillos en oferta",
+            "cta_link": "shopify://collections/anillos-general",
+            "show_promo_image": true,
+            "promo_image": "shopify://shop_images/Anillos_62cd3b64-a8e3-4db1-80ac-29b9c6f4e935.jpg",
+            "promo_badge": "",
+            "promo_badge_bg": "#dadad8",
+            "enable_button_style": false,
+            "show_button_style": "primary",
+            "button_light": "rgba(0,0,0,0)",
+            "button_text_light": "rgba(0,0,0,0)",
+            "button_hover_light": "rgba(0,0,0,0)",
+            "button_text_hover_light": "rgba(0,0,0,0)",
+            "button_dark": "rgba(0,0,0,0)",
+            "button_text_dark": "rgba(0,0,0,0)",
+            "button_hover_dark": "rgba(0,0,0,0)",
+            "button_text_hover_dark": "rgba(0,0,0,0)"
+          }
+        },
         "tree_menu_bano_oro": {
           "type": "tree_menu",
           "settings": {
@@ -376,7 +407,7 @@
           "type": "tree_menu",
           "settings": {
             "heading": "Ofertas Black",
-            "title_color": "#f83785",
+            "title_color": "#000000",
             "menu": "descuentos-black",
             "label": "",
             "label_position": "aside",
@@ -409,6 +440,7 @@
       },
       "block_order": [
         "button_licenciatura",
+        "tree_menu_iUQj9H",
         "tree_menu_bano_oro",
         "tree_menu_4Hjg4P",
         "tree_menu_eMW3PW",

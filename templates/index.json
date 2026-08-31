@@ -12,17 +12,17 @@
     "banner_principal_home": {
       "type": "banner-principal",
       "blocks": {
-        "slide_W9Dcjj": {
+        "slide_HT8rBj": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Kit-premium_desktop_ed4ee981-3ea6-4654-addd-e27e14c7f8fd.jpg",
-            "image_mobile": "shopify://shop_images/Kit-premium_mobile_d92a968c-743b-4194-bf22-89c8c21f9c0e.jpg",
+            "image": "shopify://shop_images/lunes31-anillos_desktop.jpg",
+            "image_mobile": "shopify://shop_images/lunes31-anillos_mobile.jpg",
             "image_alt": "",
-            "link": "shopify://collections/all",
+            "link": "shopify://collections/anillos-general",
             "open_new_window": false,
             "schedule_enabled": true,
-            "schedule_start": "",
-            "schedule_end": "2026-08-30 23:59:00"
+            "schedule_start": "2026-08-31 08:00:00",
+            "schedule_end": "2026-08-31 23:59:00"
           }
         },
         "slide_jntNxD": {
@@ -66,7 +66,7 @@
         }
       },
       "block_order": [
-        "slide_W9Dcjj",
+        "slide_HT8rBj",
         "slide_jntNxD",
         "slide_D8eTJ4",
         "slide_748Wyf"
@@ -91,7 +91,7 @@
             "image_plata_hover": "shopify://shop_images/aros-hover.jpg",
             "link_plata": "shopify://collections/aros",
             "image_oro": "shopify://shop_images/aros_634c77d4-c24e-479e-8e1c-c15786235e61.jpg",
-            "link_oro": "",
+            "link_oro": "shopify://collections/aros-banos-de-oro-18-k",
             "open_new_window": false
           }
         },
@@ -104,7 +104,7 @@
             "image_plata_hover": "shopify://shop_images/anillos-hover_9be2d7af-58dd-48b6-b7e0-9cb51c1491fa.jpg",
             "link_plata": "shopify://collections/anillos",
             "image_oro": "shopify://shop_images/anillos_347c4500-c216-4f84-b09f-667ca6f7b9c5.jpg",
-            "link_oro": "",
+            "link_oro": "shopify://collections/anillos-recubrimiento-bano-de-oro-18k",
             "open_new_window": false
           }
         },
@@ -117,7 +117,7 @@
             "image_plata_hover": "shopify://shop_images/cadenas-hover.jpg",
             "link_plata": "shopify://collections/cadenas",
             "image_oro": "shopify://shop_images/collares.jpg",
-            "link_oro": "",
+            "link_oro": "shopify://collections/cadenas-recubrimiento-bano-de-oro-18k",
             "open_new_window": false
           }
         },
@@ -130,7 +130,7 @@
             "image_plata_hover": "shopify://shop_images/colgantes-hover_f23d0dba-4588-4021-9957-34c9d8bcd39d.jpg",
             "link_plata": "shopify://collections/colgantes",
             "image_oro": "shopify://shop_images/colgantes_181b6895-ce2f-4f39-8f4e-57f6541fc7dc.jpg",
-            "link_oro": "",
+            "link_oro": "shopify://collections/colgantes-recubrimiento-bano-de-oro-18k",
             "open_new_window": false
           }
         },
@@ -143,7 +143,7 @@
             "image_plata_hover": "shopify://shop_images/pulseras-hover.jpg",
             "link_plata": "shopify://collections/pulseras",
             "image_oro": "shopify://shop_images/pulseras_6f2728ff-84a5-4080-bde6-16f7aed8e3ec.jpg",
-            "link_oro": "",
+            "link_oro": "shopify://collections/pulseras-recubrimiento-bano-de-oro-18k",
             "open_new_window": false
           }
         },
@@ -155,7 +155,7 @@
             "image_plata": "shopify://shop_images/conjuntos_1.jpg",
             "link_plata": "shopify://collections/conjuntos",
             "image_oro": "shopify://shop_images/conjuntos_c9c14639-3e14-4f14-98ae-9b989bf37c72.jpg",
-            "link_oro": "shopify://collections/conjuntos-bano-de-oro-18k",
+            "link_oro": "shopify://collections/conjuntos-recubrimiento-bano-de-oro-18k",
             "open_new_window": false
           }
         }
@@ -630,7 +630,8 @@
       "settings": {
         "include_margins": true,
         "content_alignment": "left"
-      }
+      },
+      "disabled": true
     },
     "banner_kit_QzyCmc": {
       "type": "banner-kit",
@@ -698,6 +699,22 @@
         "countdown": false,
         "available_routes": "/"
       }
+    },
+    "resenas_destacadas_home": {
+      "type": "resenas-destacadas",
+      "settings": {
+        "title": "LO QUE DICEN NUESTRAS CLIENTAS",
+        "subtitle": "Reseñas reales de compras verificadas en misjoyas.cl",
+        "show_summary": true,
+        "rating_promedio": "4,8",
+        "total_resenas": "880",
+        "background_color": "#ffffff",
+        "card_background": "#f5f0e7",
+        "text_color": "#2d2d2d",
+        "star_color": "#f83785",
+        "padding_y": 56,
+        "padding_y_mobile": 40
+      }
     }
   },
   "order": [
@@ -712,6 +729,7 @@
     "banner_destacados_home",
     "featured_collection_misjoyas_PnenNE",
     "huincha_iconos_home",
+    "resenas_destacadas_home",
     "178611785999cb7c28",
     "banner_kit_QzyCmc",
     "cuadro_footer_home",
